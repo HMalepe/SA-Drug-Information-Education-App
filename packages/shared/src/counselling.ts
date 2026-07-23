@@ -305,6 +305,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-azithro": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this antibiotic exactly as directed on your labelled product.",
+        "Tell your pharmacist about other medicines you take — macrolides can interact with some products; Materia does not invent interaction lists or doses.",
+        "Finish the course unless your clinician tells you to stop.",
+        "If you get a severe rash, swelling, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antibiotic njengoba kubhalwe kumkhiqizo onelebula.",
+        "Tshela umkhiqizi ngemanye imithi oyisebenzisayo — ama-macrolide angase ahlangane neminye imikhiqizo; i-Materia ayiqambi uhlu noma imithamo.",
+        "Qeda ikhosi ngaphandle uma udokotela noma umkhiqizi ethi uma.",
+        "Uma uthola isikhumba esibi kakhulu, ukuvuvuka, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie antibiotika soos op die geëtiketteerde produk aangedui.",
+        "Sê vir jou apteker van ander medisyne wat jy neem — makroliede kan met sommige produkte wisselwerk; Materia versin nie wisselwerkingslyste of dosisse nie.",
+        "Voltooi die kuur tensy jou klinikus sê jy moet stop.",
+        "As jy ’n ernstige uitslag, swelling of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa antibiotic ena hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Bolella rakhemisi ka meriana e meng eo u e sebelisang — li-macrolide li ka kopana le lihlahiswa tse ling; Materia ha e iqape lethathamo kapa litekanyo.",
+        "Qetella thero ntle le haeba ngaka ea hau e re u emise.",
+        "Haeba u fumana lekhopho le tebileng, ho ruruha, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antibiotic ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Xelela usokhemisti ngamanye amayeza owasebenzisayo — ii-macrolides zinokudibana nezinye iimveliso; i-Materia ayiyiqiqi uluhlu okanye iidosi.",
+        "Gqiba ikhosi ngaphandle kokuba ugqirha wakho athi uyeke.",
+        "Ukuba ufumana irashi eqatha, ukudumba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
