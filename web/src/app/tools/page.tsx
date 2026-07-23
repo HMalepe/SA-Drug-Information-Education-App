@@ -10,6 +10,7 @@ export default function ToolsPage() {
   const [slug, setSlug] = useState("amoxicillin");
   const [lang, setLang] = useState("en");
   const [scheme, setScheme] = useState("Discovery Health");
+  const [scanInput, setScanInput] = useState("6001234567890");
   const [out, setOut] = useState("");
   const [offlineBadge, setOfflineBadge] = useState(false);
 
@@ -58,6 +59,31 @@ export default function ToolsPage() {
     const data = await res.json();
     if (res.ok) saveOfflinePack(data);
     setOut(JSON.stringify(data, null, 2));
+  }
+
+  async function resolveVision() {
+    const uid = await ensurePro();
+    const res = await fetch(`${API}/tools/vision/resolve`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: uid, input: scanInput }),
+    });
+    setOut(JSON.stringify(await res.json(), null, 2));
+  }
+
+  async function speakVoice() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/voice/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+    );
+    const data = await res.json();
+    setOut(JSON.stringify(data, null, 2));
+    if (res.ok && data.text && typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(data.text as string);
+      utter.lang = lang === "af" ? "af-ZA" : lang === "zu" ? "zu-ZA" : "en-ZA";
+      window.speechSynthesis.speak(utter);
+    }
   }
 
   return (
@@ -144,6 +170,9 @@ export default function ToolsPage() {
         >
           Counselling script
         </button>{" "}
+        <button className="btn" type="button" onClick={() => void speakVoice()}>
+          Voice read-aloud
+        </button>{" "}
         <button className="btn" type="button" onClick={() => void cacheOffline()}>
           Offline pack
         </button>{" "}
@@ -155,6 +184,22 @@ export default function ToolsPage() {
         >
           Read cache
         </button>
+      </div>
+
+      <div className="card">
+        <label className="muted">Barcode or brand text (vision stub)</label>
+        <input
+          style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
+          value={scanInput}
+          onChange={(e) => setScanInput(e.target.value)}
+          placeholder="6001234567890 or Amoxil"
+        />
+        <button className="btn" type="button" onClick={() => void resolveVision()}>
+          Resolve pack / barcode
+        </button>
+        <p className="muted" style={{ marginTop: 8 }}>
+          Suggestive only — confirm the physical pack. Camera capture later.
+        </p>
       </div>
 
       {out && (

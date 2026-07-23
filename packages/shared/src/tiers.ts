@@ -13,6 +13,10 @@ export type FeatureKey =
   | "cold_chain_notes"
   | "multilingual_counselling"
   | "offline_core"
+  | "cpd_dashboard"
+  | "voice_mode"
+  | "vision_scan"
+  | "institution_console"
   | "ask_materia_unlimited"
   | "billing_manage";
 
@@ -24,6 +28,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "academy_full",
     "companion_schedule",
     "companion_interaction_check",
+    "voice_mode",
     "ask_materia_unlimited",
   ],
   professional: [
@@ -39,6 +44,9 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "cold_chain_notes",
     "multilingual_counselling",
     "offline_core",
+    "cpd_dashboard",
+    "voice_mode",
+    "vision_scan",
     "ask_materia_unlimited",
     "billing_manage",
   ],
@@ -55,6 +63,10 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "cold_chain_notes",
     "multilingual_counselling",
     "offline_core",
+    "cpd_dashboard",
+    "voice_mode",
+    "vision_scan",
+    "institution_console",
     "ask_materia_unlimited",
     "billing_manage",
   ],

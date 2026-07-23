@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type {
+  Cohort,
   Course,
   Excipient,
   FormularyEntry,
@@ -9,16 +10,23 @@ import type {
   Lesson,
   Manufacturer,
   Molecule,
+  Organization,
   PriceRecord,
   Product,
   QuizQuestion,
   SafetyProfile,
+  Seat,
   Source,
   Tier,
   UserMode,
   UserProfile,
 } from "@materia/shared";
-import type { DoseRule, RegimenItem } from "@materia/shared";
+import type {
+  CpdCertificate,
+  CpdCreditEvent,
+  DoseRule,
+  RegimenItem,
+} from "@materia/shared";
 
 interface SeedFile {
   sources: Source[];
@@ -97,6 +105,11 @@ export const db = {
   progress: [] as ProgressRow[],
   regimens: new Map<string, RegimenItem[]>(),
   subscriptions: [] as SubscriptionStub[],
+  organisations: [] as Organization[],
+  seats: [] as Seat[],
+  cohorts: [] as Cohort[],
+  cpdEvents: [] as CpdCreditEvent[],
+  cpdCertificates: [] as CpdCertificate[],
 };
 
 export function getSource(id: string): Source | undefined {

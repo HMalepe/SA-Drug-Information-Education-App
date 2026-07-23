@@ -12,4 +12,7 @@ export * from "./offline.js";
 export * from "./formulary.js";
 export * from "./locum.js";
 export * from "./coldchain.js";
+export * from "./cpd.js";
+export * from "./vision.js";
+export * from "./institution.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

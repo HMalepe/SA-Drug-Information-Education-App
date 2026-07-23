@@ -186,6 +186,7 @@ export interface Organization {
   id: string;
   name: string;
   kind: "university" | "hospital" | "pharmacy_chain" | "other";
+  seatLimit?: number;
 }
 
 export interface Seat {
@@ -193,6 +194,7 @@ export interface Seat {
   orgId: string;
   userId: string;
   role: "member" | "admin";
+  joinedAt?: string;
 }
 
 export interface Cohort {

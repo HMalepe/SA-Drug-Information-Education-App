@@ -2,23 +2,34 @@ import cors from "cors";
 import express from "express";
 import { z } from "zod";
 import {
+  CPD_DISCLAIMER,
+  CPD_MODULES,
   COUNSELLING_LANGS,
+  DEMO_BARCODE_INDEX,
   TIER_PRICES_ZAR,
+  annualCreditsTarget,
+  buildCertificate,
   buildLocumBrief,
   buildOfflineEssential,
   buildSubstitutionOptions,
   calculateDose,
+  canAddSeat,
+  canAwardCpd,
   checkRegimenInteractions,
+  computeCohortAnalytics,
   courseCompletionPercent,
+  createOrganisation,
   expertLevelFromPercent,
   gateFeature,
   getColdChainNote,
   getCounsellingScript,
+  getCpdModule,
   gradeQuizAnswer,
   listColdChainNotes,
   listCounsellingLangs,
   listSchemes,
   matchFormularyAndCoPay,
+  resolveProductScan,
   resolveSearch,
   type CounsellingLang,
   type ScheduleCode,
@@ -642,6 +653,313 @@ app.get("/users/:id", (req, res) => {
     user,
     subscription: db.subscriptions.find((s) => s.userId === user.id) ?? null,
   });
+});
+
+/* ── CPD dashboard (Build Spec §7.7 / §12 — Pro) ── */
+app.get("/cpd/modules", (_req, res) => {
+  res.json({ modules: CPD_MODULES, disclaimer: CPD_DISCLAIMER, annualTarget: annualCreditsTarget() });
+});
+
+app.get("/cpd/dashboard/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "cpd_dashboard");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "CPD dashboard is a Professional feature", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const earned = db.cpdEvents.filter((e) => e.userId === user.id);
+  const total = earned.reduce((a, e) => a + e.credits, 0);
+  res.json({
+    disclaimer: CPD_DISCLAIMER,
+    annualTarget: annualCreditsTarget(),
+    creditsEarned: total,
+    events: earned,
+    certificates: db.cpdCertificates.filter((c) => c.userId === user.id),
+    modules: CPD_MODULES.map((m) => {
+      const course = getCourseById(m.courseId);
+      const progress = getOrCreateProgress(user.id, m.courseId);
+      const lessonsTotal = course?.lessons.filter((l) => l.publishState === "published").length ?? 0;
+      const gateStatus = canAwardCpd({
+        module: m,
+        lessonsCompleted: progress.completedLessonIds.length,
+        lessonsTotal,
+        quizCorrect: progress.quizCorrect,
+        alreadyAwarded: earned.some((e) => e.moduleId === m.id),
+      });
+      return { ...m, progress, eligibility: gateStatus };
+    }),
+  });
+});
+
+app.post("/cpd/claim", (req, res) => {
+  const schema = z.object({ userId: z.string(), moduleId: z.string() });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "cpd_dashboard");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "CPD is a Professional feature", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const mod = getCpdModule(parsed.data.moduleId);
+  if (!mod) {
+    res.status(404).json({ error: "Module not found" });
+    return;
+  }
+  const course = getCourseById(mod.courseId);
+  const progress = getOrCreateProgress(user.id, mod.courseId);
+  const lessonsTotal = course?.lessons.filter((l) => l.publishState === "published").length ?? 0;
+  const eligibility = canAwardCpd({
+    module: mod,
+    lessonsCompleted: progress.completedLessonIds.length,
+    lessonsTotal,
+    quizCorrect: progress.quizCorrect,
+    alreadyAwarded: db.cpdEvents.some((e) => e.userId === user.id && e.moduleId === mod.id),
+  });
+  if (!eligibility.ok) {
+    res.status(400).json({ error: eligibility.reason, disclaimer: CPD_DISCLAIMER });
+    return;
+  }
+  const cert = buildCertificate({
+    userId: user.id,
+    holderName: user.displayName ?? user.email,
+    module: mod,
+  });
+  const event = {
+    id: `cpd-evt-${db.cpdEvents.length + 1}`,
+    userId: user.id,
+    moduleId: mod.id,
+    credits: mod.credits,
+    awardedAt: cert.issuedAt,
+    certificateId: cert.id,
+  };
+  db.cpdEvents.push(event);
+  db.cpdCertificates.push(cert);
+  res.json({ event, certificate: cert, disclaimer: CPD_DISCLAIMER });
+});
+
+/* ── Vision scan resolve (Build Spec §9.5 — Pro) ── */
+app.post("/tools/vision/resolve", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    input: z.string().min(1).max(200),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "vision_scan");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Vision scan is a Professional feature", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const hits = resolveProductScan(
+    parsed.data.input,
+    db.molecules,
+    db.products,
+    DEMO_BARCODE_INDEX,
+  );
+  res.json({
+    hits,
+    note: "Suggestive only — confirm the physical pack. Camera capture hooks in next iteration.",
+  });
+});
+
+/* ── Voice script payload (TTS client-side — Student+) ── */
+app.get("/tools/voice/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "voice_mode");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Voice mode requires Student or Professional", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const lang = (String(req.query.lang ?? "en") as CounsellingLang) || "en";
+  const script = getCounsellingScript(mol.id, lang);
+  const moa = mol.moaSummary?.publishState === "published" ? mol.moaSummary.value : "";
+  const text = [
+    `${mol.innName}.`,
+    moa,
+    ...(script?.lines ?? []),
+    "This is a reference tool. Confirm clinically before acting.",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  res.json({
+    moleculeSlug: mol.slug,
+    lang,
+    text,
+    note: "Client should use browser speechSynthesis / device TTS. No patient identifiers in payload.",
+  });
+});
+
+/* ── Institution console (Build Spec §11 / Doc 8 A9) ── */
+app.post("/institution/orgs", (req, res) => {
+  const schema = z.object({
+    adminUserId: z.string(),
+    name: z.string().min(2),
+    kind: z.enum(["university", "hospital", "pharmacy_chain", "other"]),
+    seatLimit: z.number().int().positive().default(50),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const admin = requireUser(parsed.data.adminUserId);
+  if (!admin) {
+    res.status(401).json({ error: "Unknown admin user" });
+    return;
+  }
+  // Elevate to institution tier for console access
+  admin.tier = "institution";
+  const org = createOrganisation(parsed.data.name, parsed.data.kind, parsed.data.seatLimit);
+  db.organisations.push(org);
+  admin.orgId = org.id;
+  const seat = {
+    id: `seat-${db.seats.length + 1}`,
+    orgId: org.id,
+    userId: admin.id,
+    role: "admin" as const,
+    joinedAt: new Date().toISOString(),
+  };
+  db.seats.push(seat);
+  res.json({ org, seat });
+});
+
+app.post("/institution/seats", (req, res) => {
+  const schema = z.object({
+    orgId: z.string(),
+    adminUserId: z.string(),
+    memberEmail: z.string().email(),
+    memberMode: z.enum(["patient", "student", "pharmacist", "doctor"]).default("student"),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const admin = requireUser(parsed.data.adminUserId);
+  const org = db.organisations.find((o) => o.id === parsed.data.orgId);
+  if (!admin || !org) {
+    res.status(404).json({ error: "Org or admin not found" });
+    return;
+  }
+  const gate = gateFeature(admin.tier as Tier, "institution_console");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Institution console required", upgradeTo: "institution" });
+    return;
+  }
+  const isAdmin = db.seats.some(
+    (s) => s.orgId === org.id && s.userId === admin.id && s.role === "admin",
+  );
+  if (!isAdmin) {
+    res.status(403).json({ error: "Admin seat required" });
+    return;
+  }
+  if (!canAddSeat(org, db.seats)) {
+    res.status(400).json({ error: "Seat limit reached" });
+    return;
+  }
+  const member = upsertStubUser({
+    email: parsed.data.memberEmail,
+    mode: parsed.data.memberMode,
+    tier: "student",
+  });
+  member.orgId = org.id;
+  const seat = {
+    id: `seat-${db.seats.length + 1}`,
+    orgId: org.id,
+    userId: member.id,
+    role: "member" as const,
+    joinedAt: new Date().toISOString(),
+  };
+  db.seats.push(seat);
+  res.json({ member, seat });
+});
+
+app.post("/institution/cohorts", (req, res) => {
+  const schema = z.object({
+    orgId: z.string(),
+    adminUserId: z.string(),
+    name: z.string().min(2),
+    memberUserIds: z.array(z.string()).default([]),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const admin = requireUser(parsed.data.adminUserId);
+  if (!admin || !gateFeature(admin.tier as Tier, "institution_console").allowed) {
+    res.status(402).json({ error: "Institution console required" });
+    return;
+  }
+  const cohort = {
+    id: `cohort-${db.cohorts.length + 1}`,
+    orgId: parsed.data.orgId,
+    name: parsed.data.name,
+    memberUserIds: parsed.data.memberUserIds,
+  };
+  db.cohorts.push(cohort);
+  res.json({ cohort });
+});
+
+app.get("/institution/:orgId/analytics", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = requireUser(userId);
+  if (!user || !gateFeature(user.tier as Tier, "institution_console").allowed) {
+    res.status(402).json({ error: "Institution console required" });
+    return;
+  }
+  const org = db.organisations.find((o) => o.id === req.params.orgId);
+  if (!org) {
+    res.status(404).json({ error: "Org not found" });
+    return;
+  }
+  const seats = db.seats.filter((s) => s.orgId === org.id);
+  const cohorts = db.cohorts.filter((c) => c.orgId === org.id);
+  const analytics = cohorts.map((c) => {
+    const progress = c.memberUserIds.flatMap((uid) =>
+      db.progress
+        .filter((p) => p.userId === uid)
+        .map((p) => {
+          const course = getCourseById(p.courseId);
+          const total = course?.lessons.filter((l) => l.publishState === "published").length ?? 1;
+          return {
+            userId: uid,
+            completionPercent: courseCompletionPercent(p.completedLessonIds, total),
+            quizAttempts: p.quizAttempts,
+            quizCorrect: p.quizCorrect,
+          };
+        }),
+    );
+    return computeCohortAnalytics(c, progress);
+  });
+  res.json({ org, seats, cohorts, analytics });
 });
 
 app.listen(PORT, () => {
