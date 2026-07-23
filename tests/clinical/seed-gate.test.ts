@@ -80,10 +80,30 @@ describe("seed S0 gate", () => {
     assert.equal(hits[0]?.moleculeSlug, "atorvastatin");
   });
 
+  it("resolves Losec → omeprazole from gastrointestinal seed", () => {
+    const hits = resolveSearch("Losec", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "omeprazole");
+  });
+
+  it("resolves Imodium → loperamide from gastrointestinal seed", () => {
+    const hits = resolveSearch("Imodium", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "loperamide");
+  });
+
   it("publishes educational warfarin↔aspirin interaction without inventing a dose", () => {
     const ix = seeds
       .flatMap((s) => s.interactions ?? [])
       .find((i) => i.id === "ix-warfarin-aspirin");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
+
+  it("publishes educational omeprazole↔clopidogrel interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-omeprazole-clopidogrel");
     assert.ok(ix);
     assert.equal(ix.publishState, "published");
     assert.equal(ix.severity, "major");

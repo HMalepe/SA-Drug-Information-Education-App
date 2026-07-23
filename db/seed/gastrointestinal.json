@@ -1,0 +1,505 @@
+{
+  "meta": {
+    "therapeuticArea": "gastrointestinal",
+    "note": "Mid-tail routine dispensing scaffold (Doc 29). Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. PPI–clopidogrel flag is educational only — do not invent dose changes.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-astra", "name": "AstraZeneca", "madeInSa": false },
+    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false },
+    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
+    { "id": "mfr-takeda", "name": "Takeda", "madeInSa": false },
+    { "id": "mfr-boehringer", "name": "Boehringer Ingelheim", "madeInSa": false },
+    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler / diluent",
+      "allergyRisk": "Relevant in lactose intolerance / rare milk protein allergy contexts"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-omeprazole",
+      "slug": "omeprazole",
+      "innName": "Omeprazole",
+      "className": "Proton pump inhibitor (PPI)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["losec", "omeprazole", "ppi"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Irreversibly blocks the gastric H+/K+-ATPase (proton pump) → suppresses acid secretion — educational framing only; confirm against labelled product and SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-pantoprazole",
+      "slug": "pantoprazole",
+      "innName": "Pantoprazole",
+      "className": "Proton pump inhibitor (PPI)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["controloc", "pantocid", "pantoprazole"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "PPI that suppresses gastric acid via the proton pump — common SA counter molecule; dosing stays unpublished until founder review.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-esomeprazole",
+      "slug": "esomeprazole",
+      "innName": "Esomeprazole",
+      "className": "Proton pump inhibitor (PPI)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["nexium"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-lansoprazole",
+      "slug": "lansoprazole",
+      "innName": "Lansoprazole",
+      "className": "Proton pump inhibitor (PPI)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["lanzor", "prevacid"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-metoclopramide",
+      "slug": "metoclopramide",
+      "innName": "Metoclopramide",
+      "className": "Prokinetic / antiemetic (dopamine antagonist)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["maxolon", "clopamon"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Dopamine D2 antagonism with prokinetic and antiemetic effects — EPS risk is the counselling hook; never invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-domperidone",
+      "slug": "domperidone",
+      "innName": "Domperidone",
+      "className": "Peripheral dopamine antagonist (antiemetic / prokinetic)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["motilium"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-ondansetron",
+      "slug": "ondansetron",
+      "innName": "Ondansetron",
+      "className": "5-HT3 receptor antagonist (antiemetic)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["zofran"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-loperamide",
+      "slug": "loperamide",
+      "innName": "Loperamide",
+      "className": "Peripheral opioid agonist (antimotility)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["imodium", "loperamide"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Slows intestinal motility via peripheral µ-opioid receptors — red-flag diarrhoea / fever / bloody stool counselling is the teaching hook.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-hyoscine-butylbromide",
+      "slug": "hyoscine-butylbromide",
+      "innName": "Hyoscine butylbromide",
+      "className": "Antispasmodic (antimuscarinic)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["buscopan", "hyoscine butylbromide", "scopolamine butylbromide"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-bisacodyl",
+      "slug": "bisacodyl",
+      "innName": "Bisacodyl",
+      "className": "Stimulant laxative",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["dulcolax"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-lactulose",
+      "slug": "lactulose",
+      "innName": "Lactulose",
+      "className": "Osmotic laxative",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["duphalac", "lactulose"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-mesalazine",
+      "slug": "mesalazine",
+      "innName": "Mesalazine",
+      "className": "5-ASA (aminosalicylate)",
+      "therapeuticArea": "gastrointestinal",
+      "synonyms": ["mesalamine", "asacol", "pentasa", "mezavant"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-losec",
+      "moleculeId": "mol-omeprazole",
+      "manufacturerId": "mfr-astra",
+      "brandName": "Losec",
+      "strength": "20 mg / 40 mg",
+      "form": "capsule",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["losec"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-omeprazole-asp",
+      "moleculeId": "mol-omeprazole",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Omeprazole Aspen",
+      "strength": "20 mg",
+      "form": "capsule",
+      "schedule": "S3",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "bioequivalentFlag": true,
+      "synonymKeys": ["omeprazole aspen"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-controloc",
+      "moleculeId": "mol-pantoprazole",
+      "manufacturerId": "mfr-takeda",
+      "brandName": "Controloc",
+      "strength": "20 mg / 40 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["controloc"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-nexium",
+      "moleculeId": "mol-esomeprazole",
+      "manufacturerId": "mfr-astra",
+      "brandName": "Nexium",
+      "strength": "20 mg / 40 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["nexium"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-maxolon",
+      "moleculeId": "mol-metoclopramide",
+      "manufacturerId": "mfr-sanofi",
+      "brandName": "Maxolon",
+      "strength": "10 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["maxolon"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-motilium",
+      "moleculeId": "mol-domperidone",
+      "manufacturerId": "mfr-janssen",
+      "brandName": "Motilium",
+      "strength": "10 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["motilium"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-imodium",
+      "moleculeId": "mol-loperamide",
+      "manufacturerId": "mfr-janssen",
+      "brandName": "Imodium",
+      "strength": "2 mg",
+      "form": "capsule",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["imodium"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-buscopan",
+      "moleculeId": "mol-hyoscine-butylbromide",
+      "manufacturerId": "mfr-boehringer",
+      "brandName": "Buscopan",
+      "strength": "10 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["buscopan"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-dulcolax",
+      "moleculeId": "mol-bisacodyl",
+      "manufacturerId": "mfr-sanofi",
+      "brandName": "Dulcolax",
+      "strength": "5 mg",
+      "form": "tablet",
+      "schedule": "S1",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["dulcolax"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-zofran",
+      "moleculeId": "mol-ondansetron",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Zofran",
+      "strength": "4 mg / 8 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["zofran"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-omeprazole",
+      "moleculeId": "mol-omeprazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines. Do not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Suspected severe overdose / acute GI emergency is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [
+        {
+          "value": "Long-term PPI conversations often cover indication review, bone/magnesium/infection risk framing — escalate clinically; Materia does not invent monitoring intervals.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Swallow whole; take before food if that matches the labelled product. Ask about alarm symptoms (bleeding, weight loss, vomiting) — never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-metoclopramide",
+      "moleculeId": "mol-metoclopramide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Extrapyramidal symptoms and tardive dyskinesia risk are core counselling themes — escalate clinically; do not invent duration limits.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Warn about unusual movements, restlessness, or muscle stiffness — stop and seek care if they appear. Materia never invents a dose change.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-loperamide",
+      "moleculeId": "mol-loperamide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Do not use if fever, bloody stool, or suspected invasive diarrhoea without clinical advice. Hydration counselling first — never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-omeprazole-clopidogrel",
+      "moleculeAId": "mol-omeprazole",
+      "moleculeBId": "mol-clopidogrel",
+      "severity": "major",
+      "mechanism": {
+        "value": "Omeprazole may reduce clopidogrel bioactivation via CYP2C19 — educational interaction flag only; confirm against current SA guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose change — escalate to the clinician before switching PPI or antiplatelet therapy.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-losec",
+      "productId": "prod-losec",
+      "sepZar": 145.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-omeprazole-asp",
+      "productId": "prod-omeprazole-asp",
+      "sepZar": 52.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    },
+    {
+      "id": "price-controloc",
+      "productId": "prod-controloc",
+      "sepZar": 168.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-omeprazole",
+      "moleculeId": "mol-omeprazole",
+      "title": "Omeprazole — acid suppression without inventing doses",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-ome-1",
+          "order": 1,
+          "title": "What a PPI actually blocks",
+          "body": "PPIs shut down the final common pathway of acid secretion. Educational counselling: take as labelled, watch for alarm symptoms — Materia does not publish titration numbers here.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-ome-2",
+          "order": 2,
+          "title": "Clopidogrel conversations",
+          "body": "Omeprazole–clopidogrel CYP2C19 teaching is about escalating to the clinician, not inventing a switch. Confirm against current SA guidance and the labelled products.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-ome-1",
+          "prompt": "A patient on clopidogrel starts omeprazole. Best educational frame?",
+          "choices": [
+            "Double the clopidogrel dose immediately",
+            "Flag the CYP2C19 interaction and escalate clinically — do not invent a dose or brand switch",
+            "Stop clopidogrel without advice",
+            "Ignore it because PPIs are always safe"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Interaction counselling means escalate — Materia never invents antiplatelet or PPI dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}
