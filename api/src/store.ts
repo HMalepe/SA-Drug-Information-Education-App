@@ -38,6 +38,7 @@ import type {
   DependantProfile,
   ProfessionalNote,
   CardState,
+  AdherenceEvent,
 } from "@materia/shared";
 import type { MysteryRound } from "@materia/shared";
 
@@ -175,6 +176,7 @@ export const db = {
   progress: [] as ProgressRow[],
   regimens: new Map<string, RegimenItem[]>(),
   symptomLogs: new Map<string, SymptomLogEntry[]>(),
+  adherenceLogs: new Map<string, AdherenceEvent[]>(),
   dependants: [] as DependantProfile[],
   professionalNotes: [] as ProfessionalNote[],
   reviewCardStates: [] as CardState[],

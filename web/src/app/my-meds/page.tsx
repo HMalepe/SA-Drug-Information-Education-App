@@ -42,6 +42,13 @@ export default function MyMedsPage() {
     }>
   >([]);
   const [refillMeta, setRefillMeta] = useState("");
+  const [adherenceMeta, setAdherenceMeta] = useState("");
+  const [adherenceStats, setAdherenceStats] = useState<{
+    currentStreakDays: number;
+    bestStreakDays: number;
+    takenLast7Days: number;
+    expectedLast7Days: number;
+  } | null>(null);
   const [out, setOut] = useState("");
 
   async function start() {
@@ -236,6 +243,61 @@ export default function MyMedsPage() {
     setRefillRows(Array.isArray(data.rows) ? data.rows : []);
   }
 
+  async function markTaken(status: "taken" | "skipped") {
+    if (!userId) return;
+    const res = await fetch(`${API}/companion/adherence/${userId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        dependantId: activeDependantId || undefined,
+        moleculeId: "mol-amox",
+        moleculeName: "Amoxicillin",
+        brandName: "Amoxil",
+        scheduledTime: "08:00",
+        onDate: "2026-07-23",
+        status,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setAdherenceMeta(String(data.error ?? "Could not log adherence"));
+      setAdherenceStats(null);
+      return;
+    }
+    const report = data.report;
+    setAdherenceMeta(`${report?.note ?? ""} ${report?.disclaimer ?? ""}`);
+    setAdherenceStats(
+      report
+        ? {
+            currentStreakDays: report.currentStreakDays,
+            bestStreakDays: report.bestStreakDays,
+            takenLast7Days: report.takenLast7Days,
+            expectedLast7Days: report.expectedLast7Days,
+          }
+        : null,
+    );
+  }
+
+  async function loadAdherence() {
+    if (!userId) return;
+    const qsParts = ["asOf=2026-07-23"];
+    if (activeDependantId) qsParts.push(`dependantId=${encodeURIComponent(activeDependantId)}`);
+    const res = await fetch(`${API}/companion/adherence/${userId}?${qsParts.join("&")}`);
+    const data = await res.json();
+    if (!res.ok) {
+      setAdherenceMeta(String(data.error ?? "Could not load adherence"));
+      setAdherenceStats(null);
+      return;
+    }
+    setAdherenceMeta(`${data.note ?? ""} ${data.disclaimer ?? ""}`);
+    setAdherenceStats({
+      currentStreakDays: data.currentStreakDays,
+      bestStreakDays: data.bestStreakDays,
+      takenLast7Days: data.takenLast7Days,
+      expectedLast7Days: data.expectedLast7Days,
+    });
+  }
+
   return (
     <>
       <h1>My Meds</h1>
@@ -325,6 +387,15 @@ export default function MyMedsPage() {
             </button>
             <button className="btn" type="button" onClick={() => void loadRefills()}>
               Refill board (§6)
+            </button>
+            <button className="btn" type="button" onClick={() => void loadAdherence()}>
+              Adherence streak (§6)
+            </button>
+            <button className="btn" type="button" onClick={() => void markTaken("taken")}>
+              Mark 08:00 taken
+            </button>
+            <button className="btn" type="button" onClick={() => void markTaken("skipped")}>
+              Mark 08:00 skipped
             </button>
           </div>
           <p className="muted" style={{ marginTop: 8 }}>
@@ -429,6 +500,19 @@ export default function MyMedsPage() {
             </article>
           ))}
           {refillRows.length === 0 && <p className="muted">No regimen items yet.</p>}
+        </div>
+      )}
+      {adherenceMeta && (
+        <div className="card" style={{ marginTop: 12 }}>
+          <h2 style={{ marginTop: 0 }}>Adherence streak</h2>
+          <p className="muted">{adherenceMeta}</p>
+          {adherenceStats && (
+            <p style={{ marginTop: 8 }}>
+              Current {adherenceStats.currentStreakDays} day(s) · best {adherenceStats.bestStreakDays} ·
+              last 7 days {adherenceStats.takenLast7Days}/{adherenceStats.expectedLast7Days} taken
+              marks
+            </p>
+          )}
         </div>
       )}
       {out && (

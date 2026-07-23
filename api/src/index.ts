@@ -67,6 +67,9 @@ import {
   SA_CITY_CENTROIDS,
   buildMoleculeMonograph,
   buildRefillBoard,
+  appendAdherenceEvent,
+  buildAdherenceReport,
+  createAdherenceEvent,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -2051,6 +2054,93 @@ app.get("/companion/refills/:userId", (req, res) => {
       prices: db.priceRecords,
     }),
   );
+});
+
+/* ── Adherence streaks (Build Spec §6) ── */
+app.get("/companion/adherence/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const scope = companionScope(user.id, String(req.query.dependantId ?? "") || null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
+  const asOf =
+    typeof req.query.asOf === "string" && /^\d{4}-\d{2}-\d{2}$/.test(req.query.asOf)
+      ? req.query.asOf
+      : new Date().toISOString().slice(0, 10);
+  const regimen = db.regimens.get(scope) ?? [];
+  const events = db.adherenceLogs.get(scope) ?? [];
+  res.json(buildAdherenceReport({ regimen, events, asOf }));
+});
+
+app.post("/companion/adherence/:userId", (req, res) => {
+  const schema = z.object({
+    dependantId: z.string().optional(),
+    moleculeId: z.string().min(1),
+    moleculeName: z.string().min(1),
+    brandName: z.string().optional(),
+    scheduledTime: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/),
+    onDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    status: z.enum(["taken", "skipped"]),
+  });
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const scope = companionScope(user.id, parsed.data.dependantId ?? null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
+  const regimen = db.regimens.get(scope) ?? [];
+  const made = createAdherenceEvent({
+    userId: user.id,
+    moleculeId: parsed.data.moleculeId,
+    moleculeName: parsed.data.moleculeName,
+    brandName: parsed.data.brandName,
+    scheduledTime: parsed.data.scheduledTime,
+    onDate: parsed.data.onDate,
+    status: parsed.data.status,
+  });
+  if (!made.ok) {
+    res.status(400).json({ error: made.error });
+    return;
+  }
+  const existing = db.adherenceLogs.get(scope) ?? [];
+  const next = appendAdherenceEvent(existing, made.event, regimen);
+  if (!next.ok) {
+    res.status(400).json({ error: next.error });
+    return;
+  }
+  db.adherenceLogs.set(scope, next.events);
+  res.json({
+    event: made.event,
+    report: buildAdherenceReport({
+      regimen,
+      events: next.events,
+      asOf: parsed.data.onDate,
+    }),
+  });
 });
 
 app.post("/companion/reminders/dispatch", async (req, res) => {
