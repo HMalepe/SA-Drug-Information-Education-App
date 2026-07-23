@@ -162,8 +162,14 @@ app.get("/health", (_req, res) => {
 
 app.get("/search", (req, res) => {
   const q = String(req.query.q ?? "");
-  const hits = resolveSearch(q, db.molecules, db.products);
-  res.json({ query: q, hits });
+  const limitRaw = Number(req.query.limit ?? 20);
+  const limit = Number.isFinite(limitRaw) ? Math.min(50, Math.max(1, Math.floor(limitRaw))) : 20;
+  const hits = resolveSearch(q, db.molecules, db.products, limit);
+  res.json({
+    query: q,
+    hits,
+    note: "Molecule, brand, class, and authored indication routes — published catalogue only (§5.1).",
+  });
 });
 
 app.get("/molecules", (req, res) => {

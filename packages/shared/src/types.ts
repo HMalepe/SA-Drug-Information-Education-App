@@ -218,7 +218,7 @@ export interface UserProfile {
 }
 
 export interface SearchHit {
-  kind: "molecule" | "brand";
+  kind: "molecule" | "brand" | "class" | "area" | "indication";
   queryMatched: string;
   moleculeId: string;
   moleculeSlug: string;

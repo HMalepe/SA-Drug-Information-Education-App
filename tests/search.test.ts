@@ -1,6 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { resolveSearch, type Molecule, type Product } from "@materia/shared";
+import {
+  INDICATION_ROUTES,
+  listPublishedClasses,
+  resolveSearch,
+  type Molecule,
+  type Product,
+} from "@materia/shared";
 
 const molecules: Molecule[] = [
   {
@@ -20,6 +26,42 @@ const molecules: Molecule[] = [
     therapeuticArea: "antibiotics",
     synonyms: ["amoxil"],
     publishState: "published",
+  },
+  {
+    id: "mol-ena",
+    slug: "enalapril",
+    innName: "Enalapril",
+    className: "ACE inhibitor",
+    therapeuticArea: "antihypertensives",
+    synonyms: [],
+    publishState: "published",
+  },
+  {
+    id: "mol-lis",
+    slug: "lisinopril",
+    innName: "Lisinopril",
+    className: "ACE inhibitor",
+    therapeuticArea: "antihypertensives",
+    synonyms: [],
+    publishState: "published",
+  },
+  {
+    id: "mol-aml",
+    slug: "amlodipine",
+    innName: "Amlodipine",
+    className: "Dihydropyridine calcium-channel blocker",
+    therapeuticArea: "antihypertensives",
+    synonyms: [],
+    publishState: "published",
+  },
+  {
+    id: "mol-draft",
+    slug: "drafty",
+    innName: "Drafty",
+    className: "ACE inhibitor",
+    therapeuticArea: "antihypertensives",
+    synonyms: [],
+    publishState: "draft",
   },
 ];
 
@@ -55,5 +97,29 @@ describe("resolveSearch", () => {
   it("resolves molecule name", () => {
     const hits = resolveSearch("amoxicillin", molecules, products);
     assert.ok(hits.some((h) => h.moleculeSlug === "amoxicillin"));
+  });
+});
+
+describe("v47 class & indication search §5.1", () => {
+  it("lists ACE inhibitors from class phrase", () => {
+    const hits = resolveSearch("ACE inhibitors", molecules, products, 20);
+    assert.ok(hits.length >= 2);
+    assert.ok(hits.every((h) => h.moleculeSlug !== "drafty"));
+    assert.ok(hits.some((h) => h.moleculeSlug === "enalapril"));
+    assert.ok(hits.some((h) => h.moleculeSlug === "lisinopril"));
+    assert.ok(hits.some((h) => h.kind === "indication" || h.kind === "class"));
+  });
+
+  it("routes first-line SA hypertension to antihypertensive area", () => {
+    const hits = resolveSearch("first-line SA hypertension", molecules, products, 20);
+    assert.ok(hits.some((h) => h.moleculeSlug === "amlodipine"));
+    assert.ok(hits.some((h) => h.kind === "indication"));
+    assert.equal(hits.some((h) => h.moleculeSlug === "amoxicillin"), false);
+  });
+
+  it("exposes indication routes and published classes", () => {
+    assert.ok(INDICATION_ROUTES.some((r) => r.id === "ace-inhibitors"));
+    const classes = listPublishedClasses(molecules);
+    assert.ok(classes.includes("ACE inhibitor"));
   });
 });

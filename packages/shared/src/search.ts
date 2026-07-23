@@ -46,12 +46,99 @@ function fuzzyMatch(q: string, candidate: string): number | null {
   return null;
 }
 
-/** Lightweight brand → molecule resolution (Build Spec §5.1). */
+/**
+ * Authored educational indication → area/class routes (Build Spec §5.1).
+ * Original Materia aliases — not copied from SAMF/MIMS. Never invents molecules.
+ */
+export interface IndicationRoute {
+  id: string;
+  phrases: string[];
+  /** Match molecules whose therapeuticArea is in this set (normalized). */
+  therapeuticAreas?: string[];
+  /** Substring match against published className (normalized). */
+  classContains?: string[];
+}
+
+export const INDICATION_ROUTES: IndicationRoute[] = [
+  {
+    id: "ace-inhibitors",
+    phrases: ["ace inhibitor", "ace inhibitors", "acei"],
+    classContains: ["ace inhibitor"],
+  },
+  {
+    id: "arb",
+    phrases: ["arb", "arbs", "angiotensin receptor blocker", "angiotensin ii receptor"],
+    classContains: ["angiotensin receptor", "arb"],
+  },
+  {
+    id: "beta-blocker",
+    phrases: ["beta blocker", "beta blockers", "beta-blocker"],
+    classContains: ["beta blocker", "beta-blocker", "beta adrenergic"],
+  },
+  {
+    id: "ccb",
+    phrases: ["ccb", "calcium channel blocker", "calcium-channel blocker", "dihydropyridine"],
+    classContains: ["calcium channel", "dihydropyridine", "ccb"],
+  },
+  {
+    id: "sa-hypertension",
+    phrases: [
+      "hypertension",
+      "high blood pressure",
+      "first line sa hypertension",
+      "first-line sa hypertension",
+      "sa hypertension",
+    ],
+    therapeuticAreas: ["antihypertensives", "cardiovascular"],
+  },
+  {
+    id: "diabetes",
+    phrases: ["diabetes", "type 2 diabetes", "t2dm", "glycaemic", "glycemic"],
+    therapeuticAreas: ["diabetes", "endocrine"],
+  },
+  {
+    id: "macrolide",
+    phrases: ["macrolide", "macrolides"],
+    classContains: ["macrolide"],
+  },
+  {
+    id: "antibiotics",
+    phrases: ["antibiotic", "antibiotics", "antimicrobial"],
+    therapeuticAreas: ["antibiotics"],
+  },
+  {
+    id: "ppi",
+    phrases: ["ppi", "proton pump inhibitor", "proton-pump inhibitor"],
+    classContains: ["proton pump"],
+  },
+  {
+    id: "ssri",
+    phrases: ["ssri", "selective serotonin reuptake"],
+    classContains: ["selective serotonin reuptake", "ssri"],
+  },
+];
+
+function matchIndicationRoute(q: string, routes: IndicationRoute[]): IndicationRoute | null {
+  for (const route of routes) {
+    for (const phrase of route.phrases) {
+      const p = normalize(phrase);
+      if (!p) continue;
+      if (q === p || q.includes(p) || p.includes(q)) return route;
+      // multi-word: all tokens present
+      const tokens = p.split(" ").filter((t) => t.length > 2);
+      if (tokens.length >= 2 && tokens.every((t) => q.includes(t))) return route;
+    }
+  }
+  return null;
+}
+
+/** Lightweight brand → molecule resolution + class/indication lists (Build Spec §5.1). */
 export function resolveSearch(
   query: string,
   molecules: Molecule[],
   products: Product[],
-  limit = 10,
+  limit = 20,
+  routes: IndicationRoute[] = INDICATION_ROUTES,
 ): SearchHit[] {
   const q = normalize(query);
   if (!q) return [];
@@ -102,15 +189,89 @@ export function resolveSearch(
     }
   }
 
-  hits.sort((a, b) => b.score - a.score);
-  const seen = new Set<string>();
+  // Direct className / therapeuticArea matching
+  for (const m of molecules) {
+    if (m.publishState !== "published") continue;
+    const classN = normalize(m.className);
+    const areaN = normalize(m.therapeuticArea);
+    const classScore = fuzzyMatch(q, classN);
+    if (classScore != null || (q.length >= 3 && classN.includes(q))) {
+      hits.push({
+        kind: "class",
+        queryMatched: m.className,
+        moleculeId: m.id,
+        moleculeSlug: m.slug,
+        moleculeName: m.innName,
+        score: classScore ?? 60,
+      });
+    }
+    if (q.length >= 3 && (areaN === q || areaN.includes(q) || q.includes(areaN))) {
+      hits.push({
+        kind: "area",
+        queryMatched: m.therapeuticArea,
+        moleculeId: m.id,
+        moleculeSlug: m.slug,
+        moleculeName: m.innName,
+        score: areaN === q ? 80 : 62,
+      });
+    }
+  }
+
+  // Authored indication / class phrase routes
+  const route = matchIndicationRoute(q, routes);
+  if (route) {
+    const areas = new Set((route.therapeuticAreas ?? []).map(normalize));
+    const classNeedles = (route.classContains ?? []).map(normalize);
+    for (const m of molecules) {
+      if (m.publishState !== "published") continue;
+      const areaN = normalize(m.therapeuticArea);
+      const classN = normalize(m.className);
+      const areaHit = areas.size > 0 && areas.has(areaN);
+      const classHit = classNeedles.some((n) => n && classN.includes(n));
+      if (!areaHit && !classHit) continue;
+      hits.push({
+        kind: "indication",
+        queryMatched: route.phrases[0] ?? route.id,
+        moleculeId: m.id,
+        moleculeSlug: m.slug,
+        moleculeName: m.innName,
+        score: classHit ? 78 : 72,
+      });
+    }
+  }
+
+  hits.sort((a, b) => b.score - a.score || a.moleculeName.localeCompare(b.moleculeName));
+
+  const preferred = hits.filter((h) => h.kind === "molecule" || h.kind === "brand");
+  const secondary = hits.filter((h) => h.kind !== "molecule" && h.kind !== "brand");
+  const ordered = [...preferred, ...secondary];
+
   const deduped: SearchHit[] = [];
-  for (const h of hits) {
-    const k = `${h.kind}:${h.moleculeId}:${h.brandName ?? ""}`;
-    if (seen.has(k)) continue;
-    seen.add(k);
-    deduped.push(h);
+  const seenExact = new Set<string>();
+  const seenListMol = new Set<string>();
+  for (const h of ordered) {
+    if (h.kind === "molecule" || h.kind === "brand") {
+      const k = `${h.kind}:${h.moleculeId}:${h.brandName ?? ""}`;
+      if (seenExact.has(k)) continue;
+      seenExact.add(k);
+      deduped.push(h);
+    } else {
+      if (seenListMol.has(h.moleculeId)) continue;
+      seenListMol.add(h.moleculeId);
+      deduped.push(h);
+    }
     if (deduped.length >= limit) break;
   }
   return deduped;
+}
+
+/** List distinct published class labels (for browse / typeahead later). */
+export function listPublishedClasses(molecules: Molecule[]): string[] {
+  const set = new Set<string>();
+  for (const m of molecules) {
+    if (m.publishState !== "published") continue;
+    const c = m.className.trim();
+    if (c) set.add(c);
+  }
+  return [...set].sort((a, b) => a.localeCompare(b));
 }
