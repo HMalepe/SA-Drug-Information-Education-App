@@ -26,6 +26,7 @@ interface SaFocus {
   generics: Array<{ brandName: string; formLabel: string; schedule: string }>;
   schedulesInUse: string[];
   packForms: string[];
+  typicalStrengths: string[];
   counsellingLangs: Array<{ code?: string; lang?: string; label: string; lineCount: number }>;
   counsellingTeaserEn: string | null;
   packagingExercisePath: string;
@@ -166,6 +167,12 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
           <p className="muted" style={{ marginTop: 8 }}>
             Schedules: {saFocus.schedulesInUse.join(", ") || "—"} · Forms:{" "}
             {saFocus.packForms.join(", ") || "—"}
+          </p>
+          <p className="muted" style={{ marginTop: 8 }}>
+            Typical pack strengths (published rows only — not a prescribed dose):{" "}
+            {saFocus.typicalStrengths?.length
+              ? saFocus.typicalStrengths.join(" · ")
+              : "none published yet"}
           </p>
           {saFocus.counsellingTeaserEn && (
             <p style={{ marginTop: 8, lineHeight: 1.45 }}>

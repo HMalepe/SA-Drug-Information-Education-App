@@ -5,8 +5,8 @@ import type { Molecule, Product, ScheduleCode } from "./types.js";
 /**
  * Build Spec §7.6 — SA focus per lesson.
  * Grounds Academy theory in products learners actually handle:
- * originator, common SA generics, pack forms, scheduling, counselling langs.
- * Never invents imprint codes, doses, or unreviewed counselling.
+ * originator, common SA generics, pack forms, scheduling, typical strengths,
+ * counselling langs. Never invents imprint codes, prescribed doses, or unreviewed counselling.
  */
 
 export interface SaFocusBrand {
@@ -27,6 +27,11 @@ export interface SaFocusCard {
   generics: SaFocusBrand[];
   schedulesInUse: ScheduleCode[];
   packForms: string[];
+  /**
+   * Distinct pack strengths from published product rows (e.g. "500 mg").
+   * Educational stocked-strength cues only — never a prescribed dose.
+   */
+  typicalStrengths: string[];
   counsellingLangs: Array<{ lang: string; label: string; lineCount: number }>;
   /** First published English counselling line — educational teaser only */
   counsellingTeaserEn: string | null;
@@ -36,7 +41,7 @@ export interface SaFocusCard {
 }
 
 export const SA_FOCUS_DISCLAIMER =
-  "SA focus lists published Materia product and counselling metadata for learning. It is not a stock list, formulary, or dosing guide — confirm against the labelled product and your clinician.";
+  "SA focus lists published Materia product and counselling metadata for learning. Typical strengths are pack labels from published product rows — not a prescribed dose, stock guarantee, or formulary. Confirm against the labelled product and your clinician.";
 
 function toBrand(p: Product): SaFocusBrand {
   const kind = mapFormToVisualKind(p.form);
@@ -47,6 +52,20 @@ function toBrand(p: Product): SaFocusBrand {
     schedule: p.schedule,
     isOriginator: p.isOriginator,
   };
+}
+
+/** Distinct published pack strengths — never invented when seed is empty. */
+export function collectTypicalStrengths(products: Product[]): string[] {
+  const set = new Set<string>();
+  for (const p of products) {
+    if (p.publishState !== "published" || p.isDiscontinued) continue;
+    const s = p.strength?.trim();
+    if (!s || s.length < 2) continue;
+    // Reject free-text that looks like regimen instructions
+    if (/\b(take|dose|daily|bd|tds|qid|nocte)\b/i.test(s)) continue;
+    set.add(s);
+  }
+  return [...set].sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).slice(0, 12);
 }
 
 export function buildSaFocusCard(input: {
@@ -74,6 +93,7 @@ export function buildSaFocusCard(input: {
   const packForms = [
     ...new Set(published.map((p) => PACKAGING_VISUAL_LABELS[mapFormToVisualKind(p.form)])),
   ].sort();
+  const typicalStrengths = collectTypicalStrengths(published);
 
   const counsellingLangs = counsellingCoverage(input.molecule.id);
   const en = getCounsellingScript(input.molecule.id, "en");
@@ -90,13 +110,14 @@ export function buildSaFocusCard(input: {
     generics,
     schedulesInUse,
     packForms,
+    typicalStrengths,
     counsellingLangs,
     counsellingTeaserEn,
     packagingExercisePath: "/learn/packaging",
     note:
       brandCount > 0
-        ? `Published SA picture for ${input.molecule.innName}: ${brandCount} brand row(s), ${counsellingLangs.length} counselling language(s).`
-        : `No published SA brand rows for ${input.molecule.innName} yet — Materia will not invent generics or schedules.`,
+        ? `Published SA picture for ${input.molecule.innName}: ${brandCount} brand row(s), ${typicalStrengths.length} pack strength(s), ${counsellingLangs.length} counselling language(s).`
+        : `No published SA brand rows for ${input.molecule.innName} yet — Materia will not invent generics, schedules, or strengths.`,
     disclaimer: SA_FOCUS_DISCLAIMER,
   };
 }
