@@ -62,6 +62,7 @@ import {
   evaluateBadges,
   buildFoodTimingCues,
   enrichReminderBody,
+  buildLeaderboard,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -716,6 +717,96 @@ app.get("/academy/gamification/:userId", (req, res) => {
     products: db.products,
   });
   res.json(report);
+});
+
+/* ── Academy leaderboards (Build Spec §7.2) ── */
+app.get("/academy/leaderboard", (req, res) => {
+  const viewerUserId = String(req.query.userId ?? "").trim();
+  if (!viewerUserId) {
+    res.status(400).json({ error: "userId query required" });
+    return;
+  }
+  const user = requireUser(viewerUserId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Leaderboards require Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const limit = Number(req.query.limit ?? 25);
+  const board = buildLeaderboard({
+    progress: db.progress,
+    users: db.users.map((u) => ({ id: u.id, displayName: u.displayName })),
+    courses: db.courses.map((c) => ({
+      id: c.id,
+      moleculeId: c.moleculeId,
+      title: c.title,
+      lessons: c.lessons.map((l) => ({ id: l.id })),
+    })),
+    molecules: db.molecules,
+    products: db.products,
+    viewerUserId: user.id,
+    limit: Number.isFinite(limit) ? limit : 25,
+    scope: "individual",
+    scopeLabel: "Academy",
+  });
+  res.json(board);
+});
+
+app.get("/academy/leaderboard/cohort/:cohortId", (req, res) => {
+  const schemaOk = z.object({ userId: z.string() }).safeParse({ userId: req.query.userId });
+  if (!schemaOk.success) {
+    res.status(400).json({ error: "userId query required" });
+    return;
+  }
+  const user = requireUser(schemaOk.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Leaderboards require Student or Professional",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const cohort = db.cohorts.find((c) => c.id === req.params.cohortId);
+  if (!cohort) {
+    res.status(404).json({ error: "Cohort not found" });
+    return;
+  }
+  const isMember = cohort.memberUserIds.includes(user.id);
+  const hasOrgSeat = db.seats.some((s) => s.userId === user.id && s.orgId === cohort.orgId);
+  if (!isMember && !hasOrgSeat && user.tier !== "institution") {
+    res.status(403).json({ error: "Not a member of this cohort" });
+    return;
+  }
+  const board = buildLeaderboard({
+    progress: db.progress,
+    users: db.users.map((u) => ({ id: u.id, displayName: u.displayName })),
+    courses: db.courses.map((c) => ({
+      id: c.id,
+      moleculeId: c.moleculeId,
+      title: c.title,
+      lessons: c.lessons.map((l) => ({ id: l.id })),
+    })),
+    molecules: db.molecules,
+    products: db.products,
+    memberUserIds: cohort.memberUserIds,
+    viewerUserId: user.id,
+    scope: "cohort",
+    scopeLabel: cohort.name,
+  });
+  res.json(board);
 });
 
 /* ── Spaced repetition (Build Spec §7.5) ── */
