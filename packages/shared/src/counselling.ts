@@ -761,6 +761,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-aspirin": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this medicine exactly as directed on your labelled product — pain and heart-protection uses differ; follow the product and care plan you were given.",
+        "Tell your pharmacist about ulcer, bleeding history, asthma, or other pain/blood-thinning medicines; Materia does not invent a dose or combination rule.",
+        "Aspirin is generally not for children or teens with viral illness unless a clinician directs it — confirm against the labelled product.",
+        "If you get unusual bleeding, black stools, severe rash, swelling, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi njengoba kubhalwe kumkhiqizo onelebula — ukusebenziswa kobuhlungu nokuvikela inhliziyo kuyahlukana; landela umkhiqizo nohlelo lokwelashwa.",
+        "Tshela umkhiqizi ngesilonda sesisu, ukopha, i-asthma, noma eminye imithi yobuhlungu/okunciphisa ukopha; i-Materia ayiqambi umthamo noma umthetho wokuhlanganisa.",
+        "I-aspirin ngokuvamile ayenzelwe izingane noma abasha abanesifo se-virus ngaphandle uma udokotela eyala — qinisekisa kumkhiqizo onelebula.",
+        "Uma uthola ukopha okungajwayelekile, indle emnyama, isikhumba esibi, ukuvuvuka, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie medisyne soos op die geëtiketteerde produk aangedui — pyn- en hartbeskermingsgebruike verskil; volg die produk en sorgplan wat jy gekry het.",
+        "Sê vir jou apteker van maagsweer-, bloedinggeskiedenis, asma, of ander pyn-/bloedverdunningsmiddels; Materia versin nie ’n dosis of kombinasireël nie.",
+        "Aspirien is oor die algemeen nie vir kinders of tieners met virusinfeksie nie tensy ’n klinikus dit aanbeveel — bevestig teen die geëtiketteerde produk.",
+        "As jy ongewone bloeding, swart stoelgang, ernstige uitslag, swelling of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona hantle kamoo e hlalositsoeng holabel — tšebeliso ea bohloko le tšireletso ea pelo li fapana; latela sehlahiswa le moralo oa tlhokomelo.",
+        "Bolella rakhemisi ka leqeba la mpa, ho tsoa mali, asthma, kapa meriana e meng ea bohloko/e fokotsang mali; Materia ha e iqape tekanyo kapa molao oa ho kopanya.",
+        "Aspirin ka kakaretso ha e etsetsoe bana kapa bacha ba nang le boloetse ba vaerase ntle le haeba ngaka e e laela — netefatsa holabel.",
+        "Haeba u fumana ho tsoa mali ho sa tloaelehang, bolusepa bo botšo, lekhopho le tebileng, ho ruruha, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza ngokuchanekileyo njengoko kubhaliwe kwileyibhile — ukusetyenziswa kweentlungu nokukhusela intliziyo kuyahluka; landela imveliso necwangciso lokhathalelo.",
+        "Xelela usokhemisti ngesilonda sesisu, ukopha, i-asthma, okanye amanye amayeza eentlungu/okunciphisa ukopha; i-Materia ayiyiqiqi idosi okanye umgaqo wokudibanisa.",
+        "I-aspirin ngokuqhelekileyo ayenzelwanga abantwana okanye abatsha abanesifo se-virus ngaphandle kokuba ugqirha eyalela — qinisekisa kwileyibhile.",
+        "Ukuba ufumana ukopha okungaqhelekanga, indolwana emnyama, irashi eqatha, ukudumba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
