@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "therapeuticArea": "urology",
+    "note": "Mid-tail routine dispensing scaffold (Doc 29). Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. BPH, OAB, and PDE5 counselling hooks only — Materia never invents a dose. UTI antibiotics (ciprofloxacin/nitrofurantoin) live in antibiotics seed — not duplicated here.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-astellas", "name": "Astellas", "madeInSa": false },
+    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
+    { "id": "mfr-lilly", "name": "Eli Lilly", "madeInSa": false },
+    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
+    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
+    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
+    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler / diluent",
+      "allergyRisk": "Relevant in lactose intolerance / rare milk protein allergy contexts"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-tamsulosin",
+      "slug": "tamsulosin",
+      "innName": "Tamsulosin",
+      "className": "Alpha-1 blocker (BPH)",
+      "therapeuticArea": "urology",
+      "synonyms": ["flomax", "omnic", "tamsulosin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Relaxes prostatic / bladder-neck smooth muscle via alpha-1 blockade — educational framing only; confirm against labelled product. Never invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-alfuzosin",
+      "slug": "alfuzosin",
+      "innName": "Alfuzosin",
+      "className": "Alpha-1 blocker (BPH)",
+      "therapeuticArea": "urology",
+      "synonyms": ["xatral", "alfuzosin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-doxazosin",
+      "slug": "doxazosin",
+      "innName": "Doxazosin",
+      "className": "Alpha-1 blocker (BPH / hypertension contexts)",
+      "therapeuticArea": "urology",
+      "synonyms": ["cardura", "doxazosin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-finasteride",
+      "slug": "finasteride",
+      "innName": "Finasteride",
+      "className": "5-alpha reductase inhibitor",
+      "therapeuticArea": "urology",
+      "synonyms": ["proscar", "propecia", "finasteride"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Blocks conversion of testosterone to DHT — handling precautions and slow onset are teaching hooks; regimens stay clinician-directed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-dutasteride",
+      "slug": "dutasteride",
+      "innName": "Dutasteride",
+      "className": "5-alpha reductase inhibitor",
+      "therapeuticArea": "urology",
+      "synonyms": ["avodart", "dutasteride"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-sildenafil",
+      "slug": "sildenafil",
+      "innName": "Sildenafil",
+      "className": "PDE5 inhibitor",
+      "therapeuticArea": "urology",
+      "synonyms": ["viagra", "sildenafil"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Enhances nitric-oxide–cGMP pathway in erectile tissue — nitrate contraindication is the non-negotiable counselling hook.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-tadalafil",
+      "slug": "tadalafil",
+      "innName": "Tadalafil",
+      "className": "PDE5 inhibitor",
+      "therapeuticArea": "urology",
+      "synonyms": ["cialis", "tadalafil"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-vardenafil",
+      "slug": "vardenafil",
+      "innName": "Vardenafil",
+      "className": "PDE5 inhibitor",
+      "therapeuticArea": "urology",
+      "synonyms": ["levitra", "vardenafil"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-oxybutynin",
+      "slug": "oxybutynin",
+      "innName": "Oxybutynin",
+      "className": "Antimuscarinic (overactive bladder)",
+      "therapeuticArea": "urology",
+      "synonyms": ["ditropan", "oxybutynin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-solifenacin",
+      "slug": "solifenacin",
+      "innName": "Solifenacin",
+      "className": "Antimuscarinic (overactive bladder)",
+      "therapeuticArea": "urology",
+      "synonyms": ["vesicare", "solifenacin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-tolterodine",
+      "slug": "tolterodine",
+      "innName": "Tolterodine",
+      "className": "Antimuscarinic (overactive bladder)",
+      "therapeuticArea": "urology",
+      "synonyms": ["detrusitol", "tolterodine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-mirabegron",
+      "slug": "mirabegron",
+      "innName": "Mirabegron",
+      "className": "Beta-3 agonist (overactive bladder)",
+      "therapeuticArea": "urology",
+      "synonyms": ["betmiga", "myrbetriq", "mirabegron"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-potassium-citrate",
+      "slug": "potassium-citrate",
+      "innName": "Potassium citrate",
+      "className": "Urinary alkaliniser / stone support",
+      "therapeuticArea": "urology",
+      "synonyms": ["uratex", "potassium citrate"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-flomax",
+      "moleculeId": "mol-tamsulosin",
+      "manufacturerId": "mfr-astellas",
+      "brandName": "Flomax",
+      "strength": "0.4 mg",
+      "form": "capsule",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["flomax", "omnic"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-xatral",
+      "moleculeId": "mol-alfuzosin",
+      "manufacturerId": "mfr-sanofi",
+      "brandName": "Xatral",
+      "strength": "10 mg XL",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["xatral"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-proscar",
+      "moleculeId": "mol-finasteride",
+      "manufacturerId": "mfr-msd",
+      "brandName": "Proscar",
+      "strength": "5 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["proscar"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-avodart",
+      "moleculeId": "mol-dutasteride",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Avodart",
+      "strength": "0.5 mg",
+      "form": "capsule",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["avodart"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-viagra",
+      "moleculeId": "mol-sildenafil",
+      "manufacturerId": "mfr-pfizer",
+      "brandName": "Viagra",
+      "strength": "25 mg / 50 mg / 100 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["viagra"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-cialis",
+      "moleculeId": "mol-tadalafil",
+      "manufacturerId": "mfr-lilly",
+      "brandName": "Cialis",
+      "strength": "5 mg / 10 mg / 20 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["cialis"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-vesicare",
+      "moleculeId": "mol-solifenacin",
+      "manufacturerId": "mfr-astellas",
+      "brandName": "Vesicare",
+      "strength": "5 mg / 10 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["vesicare"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-ditropan",
+      "moleculeId": "mol-oxybutynin",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Ditropan",
+      "strength": "5 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["ditropan"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-betmiga",
+      "moleculeId": "mol-mirabegron",
+      "manufacturerId": "mfr-astellas",
+      "brandName": "Betmiga",
+      "strength": "25 mg / 50 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["betmiga"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-cardura",
+      "moleculeId": "mol-doxazosin",
+      "manufacturerId": "mfr-pfizer",
+      "brandName": "Cardura",
+      "strength": "1 mg / 2 mg / 4 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["cardura"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-tamsulosin",
+      "moleculeId": "mol-tamsulosin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines. Do not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Suspected acute urinary retention / severe hypotension is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "First-dose dizziness / orthostasis and cataract (floppy iris) history are counselling themes — escalate clinically.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Take as labelled; rise slowly if dizzy. Ask about PDE5 inhibitors. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-sildenafil",
+      "moleculeId": "mol-sildenafil",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Never combine with nitrates — profound hypotension risk. Escalate chest pain after use as emergency care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [
+        {
+          "value": "Alpha-blocker combinations can add hypotension risk — educational flag only; never invent spacing rules as prescriptions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Ask about nitrate sprays/tablets and heart medicines. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-finasteride",
+      "moleculeId": "mol-finasteride",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Benefit may take months; crushed tablets handling precautions matter in pregnancy contexts — escalate clinically. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-sildenafil-isosorbide",
+      "moleculeAId": "mol-sildenafil",
+      "moleculeBId": "mol-isosorbide-mn",
+      "severity": "contraindicated",
+      "mechanism": {
+        "value": "Combined PDE5 inhibition and nitrate nitric-oxide donation can cause profound hypotension — educational interaction flag only; confirm against current SA guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose change — do not combine; escalate to the clinician immediately if both are prescribed or requested together.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-flomax",
+      "productId": "prod-flomax",
+      "sepZar": 195.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-viagra",
+      "productId": "prod-viagra",
+      "sepZar": 280.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    },
+    {
+      "id": "price-proscar",
+      "productId": "prod-proscar",
+      "sepZar": 165.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-tamsulosin",
+      "moleculeId": "mol-tamsulosin",
+      "title": "Tamsulosin — BPH counselling without inventing doses",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-tam-uro-1",
+          "order": 1,
+          "title": "Flow improves; dizziness can too",
+          "body": "Alpha-blockers ease voiding symptoms but orthostasis counselling matters. Educational only — Materia does not publish mg schedules here.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-tam-uro-2",
+          "order": 2,
+          "title": "PDE5 inhibitors and nitrates",
+          "body": "Sildenafil–isosorbide teaching is about never combining (profound hypotension) and escalating to the clinician — not inventing a spacing schedule. Confirm against current SA guidance and the labelled products.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-tam-uro-1",
+          "prompt": "A patient on isosorbide mononitrate asks for Viagra. Best educational frame?",
+          "choices": [
+            "Fine if spaced a few hours",
+            "Flag contraindicated hypotension risk and escalate clinically — do not invent a dose or spacing rule",
+            "Halve both doses",
+            "Switch to tadalafil without advice"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Interaction counselling means escalate — Materia never invents PDE5 or nitrate dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}

@@ -295,4 +295,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-fluoxetine");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Flomax → tamsulosin from urology seed", () => {
+    const hits = resolveSearch("Flomax", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "tamsulosin");
+  });
+
+  it("resolves Viagra → sildenafil from urology seed", () => {
+    const hits = resolveSearch("Viagra", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "sildenafil");
+  });
+
+  it("publishes educational sildenafil↔isosorbide interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-sildenafil-isosorbide");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "contraindicated");
+    assert.equal(ix.moleculeBId, "mol-isosorbide-mn");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
