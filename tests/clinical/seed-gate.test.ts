@@ -49,4 +49,9 @@ describe("seed S0 gate", () => {
     const hits = resolveSearch("Norvasc", molecules, products);
     assert.equal(hits[0]?.moleculeSlug, "amlodipine");
   });
+
+  it("resolves Glucophage → metformin from diabetes seed", () => {
+    const hits = resolveSearch("Glucophage", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "metformin");
+  });
 });
