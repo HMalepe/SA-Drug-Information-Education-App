@@ -74,7 +74,8 @@ export default function ReviewPage() {
     <>
       <h1>Clinical review</h1>
       <p className="tagline">
-        Founder publish gate — surfaces draft facts. Never invents doses.
+        Founder publish gate — surfaces draft facts. Never invents doses. Decisions persist to
+        content/seed + content/review/decisions.jsonl.
       </p>
 
       {coverage && (

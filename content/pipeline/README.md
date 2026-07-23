@@ -13,7 +13,8 @@ Only **published** clinical facts render in app/web (constitution 3.3).
 3. Founder/clinician marks `reviewed`, then `published`.
 4. Run `node content/pipeline/generate-seed.mjs` and `npm run seed:check`.
 5. Optional public-data preview: `npm run ingest:preview` (SAHPRA/SEP fixtures → draft only; see `/content/ingest`).
-6. CI clinical-eval must pass (no published draft dosing).
+6. Founder review: use web `/review` or `npm run review:report`. Decisions persist to seed JSON + `content/review/decisions.jsonl`.
+7. CI clinical-eval must pass (no published draft dosing).
 
 ## Forbidden
 

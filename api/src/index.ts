@@ -67,6 +67,7 @@ import {
 } from "@materia/shared";
 import { createCheckoutSession, hmacSha512Hex, paystackConfigured } from "./billing/paystack.js";
 import { messagingProvidersStatus, sendOutbound } from "./messaging/dispatch.js";
+import { persistReviewDecision, reviewPersistEnabled } from "./reviewPersist.js";
 import { buildMolecule360 } from "./moleculeView.js";
 import { askMolecule } from "./rag.js";
 import {
@@ -1503,10 +1504,32 @@ app.post("/review/decide", (req, res) => {
     note: parsed.data.note,
   };
   db.reviewDecisions.push(decision);
+
+  let persisted: { ok: true; seedFile: string } | { ok: false; reason: string } | null = null;
+  if (reviewPersistEnabled()) {
+    persisted = persistReviewDecision({
+      decision,
+      moleculeId: item.moleculeId,
+      fieldPath: item.fieldPath,
+      publishState: next,
+    });
+    if (!persisted.ok) {
+      res.status(500).json({
+        error: "In-memory update ok but seed write-back failed",
+        reason: persisted.reason,
+        decision,
+      });
+      return;
+    }
+  }
+
   res.json({
     decision,
     item: { ...item, publishState: next },
-    note: "In-memory only until content files are updated in the authoring pipeline.",
+    persisted: persisted?.ok ? { seedFile: persisted.seedFile } : null,
+    note: reviewPersistEnabled()
+      ? "publishState written to content/seed + decisions.jsonl (text unchanged)."
+      : "In-memory only (REVIEW_PERSIST=false).",
   });
 });
 

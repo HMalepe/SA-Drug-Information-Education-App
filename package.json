@@ -19,7 +19,8 @@
     "typecheck": "npm run typecheck -w @materia/design-tokens -w @materia/shared -w @materia/api -w @materia/tests",
     "lint": "npm run typecheck",
     "seed:check": "node content/pipeline/validate-seed.mjs",
-    "ingest:preview": "node content/pipeline/ingest-public.mjs"
+    "ingest:preview": "node content/pipeline/ingest-public.mjs",
+    "review:report": "node content/pipeline/review-report.mjs"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
