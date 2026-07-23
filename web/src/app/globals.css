@@ -295,6 +295,29 @@ main {
   color: var(--slate);
 }
 
+.pearl-feed {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.pearl-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #dbe3ea;
+  border-radius: 12px;
+  padding: 16px 18px;
+  animation: toxicity-in 420ms ease both;
+}
+
+.pearl-reason {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--deep-teal);
+}
+
 .muted {
   color: var(--slate);
   font-size: 14px;

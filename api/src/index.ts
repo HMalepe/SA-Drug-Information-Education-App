@@ -22,6 +22,8 @@ import {
   calculateDose,
   assistDoseAdjustment,
   buildClashBoard,
+  buildPearlFeed,
+  collectPublishedPearls,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -777,6 +779,43 @@ app.post("/tools/clash-board", (req, res) => {
     safetyByMoleculeId,
   });
   res.json(board);
+});
+
+/* ── Clinical pearl feed (Build Spec §12 — Pro) ── */
+app.get("/pearls/today", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "pearl_feed");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Clinical pearl feed is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+
+  const specialtyAreas = String(req.query.specialty ?? "")
+    .split(/[,;]+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const weakAreas = String(req.query.weak ?? "")
+    .split(/[,;]+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const limit = Number(req.query.limit ?? 5);
+
+  const catalog = collectPublishedPearls(db.molecules, db.safetyProfiles);
+  const feed = buildPearlFeed({
+    catalog,
+    sources: db.sources,
+    specialtyAreas,
+    weakAreas,
+    userKey: user?.id ?? "anon",
+    limit: Number.isFinite(limit) ? limit : 5,
+  });
+  res.json(feed);
 });
 
 /* ── Companion reminders + messaging (Doc 16 WhatsApp/SMS/email) ── */

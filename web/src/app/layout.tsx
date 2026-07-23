@@ -26,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <nav className="muted" style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                   <a href="/learn">Learn</a>
                   <a href="/my-meds">My Meds</a>
+                  <a href="/pearls">Pearls</a>
                   <a href="/tools">Tools</a>
                   <a href="/excipients">Excipients</a>
                   <a href="/cpd">CPD</a>
