@@ -190,4 +190,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.severity, "major");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Chloromycetin → chloramphenicol-ophthalmic from ophthalmology seed", () => {
+    const hits = resolveSearch("Chloromycetin", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "chloramphenicol-ophthalmic");
+  });
+
+  it("resolves Xalatan → latanoprost from ophthalmology seed", () => {
+    const hits = resolveSearch("Xalatan", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "latanoprost");
+  });
+
+  it("publishes educational timolol-eye↔atenolol interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-timolol-eye-atenolol");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.equal(ix.moleculeBId, "mol-atenolol");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });

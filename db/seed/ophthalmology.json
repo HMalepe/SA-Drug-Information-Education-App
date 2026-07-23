@@ -1,0 +1,514 @@
+{
+  "meta": {
+    "therapeuticArea": "ophthalmology",
+    "note": "Mid-tail routine dispensing scaffold (Doc 29). Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. Eye-drop technique, contact-lens timing, and systemic absorption of topical betas are counselling hooks — Materia never invents a dose or drop schedule.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
+    { "id": "mfr-allergan", "name": "Allergan", "madeInSa": false },
+    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
+    { "id": "mfr-bausch", "name": "Bausch & Lomb", "madeInSa": false },
+    { "id": "mfr-santen", "name": "Santen", "madeInSa": false },
+    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true }
+  ],
+  "excipients": [
+    {
+      "id": "exc-benzalkonium",
+      "name": "Benzalkonium chloride",
+      "purpose": "Preservative in many multi-dose eye drops",
+      "allergyRisk": "Contact sensitisation / ocular irritation possible; unit-dose options may matter"
+    },
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-chloramphenicol-eye",
+      "slug": "chloramphenicol-ophthalmic",
+      "innName": "Chloramphenicol (ophthalmic)",
+      "className": "Topical ophthalmic antibiotic",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["chloromycetin", "chloramphenicol eye drops", "chloramphenicol eye ointment"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Inhibits bacterial protein synthesis on the ocular surface — educational framing for red-eye counselling only; confirm against labelled product. Never invent a dose or duration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-tobramycin-eye",
+      "slug": "tobramycin-ophthalmic",
+      "innName": "Tobramycin (ophthalmic)",
+      "className": "Topical ophthalmic aminoglycoside",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["tobrex", "tobramycin eye"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-ciprofloxacin-eye",
+      "slug": "ciprofloxacin-ophthalmic",
+      "innName": "Ciprofloxacin (ophthalmic)",
+      "className": "Topical ophthalmic fluoroquinolone",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["ciloxan", "ciprofloxacin eye"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-latanoprost",
+      "slug": "latanoprost",
+      "innName": "Latanoprost",
+      "className": "Prostaglandin analogue (glaucoma)",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["xalatan", "latanoprost"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Increases uveoscleral outflow to lower IOP — iris darkening / lash growth counselling hooks; regimens stay clinician-directed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-timolol-eye",
+      "slug": "timolol-ophthalmic",
+      "innName": "Timolol (ophthalmic)",
+      "className": "Topical beta-blocker (glaucoma)",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["timoptol", "timolol eye", "timoptic"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Reduces aqueous humour production via ocular beta blockade — systemic absorption and asthma/bradycardia cautions are the teaching hooks.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-brimonidine",
+      "slug": "brimonidine",
+      "innName": "Brimonidine",
+      "className": "Alpha-2 agonist (glaucoma)",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["alphagan", "brimonidine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-dorzolamide",
+      "slug": "dorzolamide",
+      "innName": "Dorzolamide",
+      "className": "Carbonic anhydrase inhibitor (topical)",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["trusopt", "dorzolamide"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-hypromellose",
+      "slug": "hypromellose",
+      "innName": "Hypromellose",
+      "className": "Ocular lubricant (artificial tears)",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["tears naturale", "hypromellose", "artificial tears"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-prednisolone-eye",
+      "slug": "prednisolone-ophthalmic",
+      "innName": "Prednisolone (ophthalmic)",
+      "className": "Topical ophthalmic corticosteroid",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["pred forte", "prednisolone acetate eye"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-olopatadine",
+      "slug": "olopatadine",
+      "innName": "Olopatadine",
+      "className": "Ocular antihistamine / mast-cell stabiliser",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["patanol", "opatanol", "olopatadine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-tropicamide",
+      "slug": "tropicamide",
+      "innName": "Tropicamide",
+      "className": "Mydriatic / cycloplegic",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["mydriacyl", "tropicamide"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-aciclovir-eye",
+      "slug": "aciclovir-ophthalmic",
+      "innName": "Aciclovir (ophthalmic)",
+      "className": "Topical ophthalmic antiviral",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["zovirax eye ointment", "aciclovir eye", "acyclovir eye"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-ketotifen-eye",
+      "slug": "ketotifen-ophthalmic",
+      "innName": "Ketotifen (ophthalmic)",
+      "className": "Ocular antihistamine / mast-cell stabiliser",
+      "therapeuticArea": "ophthalmology",
+      "synonyms": ["zaditen", "ketotifen eye"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-chloromycetin-eye",
+      "moleculeId": "mol-chloramphenicol-eye",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Chloromycetin Eye Drops",
+      "strength": "0.5% drops",
+      "form": "eye drops",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["chloromycetin", "chloramphenicol eye drops"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-tobrex",
+      "moleculeId": "mol-tobramycin-eye",
+      "manufacturerId": "mfr-novartis",
+      "brandName": "Tobrex",
+      "strength": "0.3% drops",
+      "form": "eye drops",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["tobrex"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-xalatan",
+      "moleculeId": "mol-latanoprost",
+      "manufacturerId": "mfr-pfizer",
+      "brandName": "Xalatan",
+      "strength": "0.005% drops",
+      "form": "eye drops",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["xalatan"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-timoptol",
+      "moleculeId": "mol-timolol-eye",
+      "manufacturerId": "mfr-santen",
+      "brandName": "Timoptol",
+      "strength": "0.25% / 0.5% drops",
+      "form": "eye drops",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["timoptol", "timoptic"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-alphagan",
+      "moleculeId": "mol-brimonidine",
+      "manufacturerId": "mfr-allergan",
+      "brandName": "Alphagan",
+      "strength": "0.15% / 0.2% drops",
+      "form": "eye drops",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["alphagan"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-trusopt",
+      "moleculeId": "mol-dorzolamide",
+      "manufacturerId": "mfr-santen",
+      "brandName": "Trusopt",
+      "strength": "2% drops",
+      "form": "eye drops",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["trusopt"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-tears-naturale",
+      "moleculeId": "mol-hypromellose",
+      "manufacturerId": "mfr-novartis",
+      "brandName": "Tears Naturale",
+      "strength": "lubricant drops (per label)",
+      "form": "eye drops",
+      "schedule": "S0",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["tears naturale"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-pred-forte",
+      "moleculeId": "mol-prednisolone-eye",
+      "manufacturerId": "mfr-allergan",
+      "brandName": "Pred Forte",
+      "strength": "1% suspension",
+      "form": "eye drops",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["pred forte"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-patanol",
+      "moleculeId": "mol-olopatadine",
+      "manufacturerId": "mfr-novartis",
+      "brandName": "Patanol",
+      "strength": "0.1% drops",
+      "form": "eye drops",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["patanol", "opatanol"],
+      "excipientIds": ["exc-benzalkonium"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-zovirax-eye",
+      "moleculeId": "mol-aciclovir-eye",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Zovirax Eye Ointment",
+      "strength": "3% ointment",
+      "form": "eye ointment",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["zovirax eye", "zovirax eye ointment"],
+      "excipientIds": [],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-chloramphenicol-eye",
+      "moleculeId": "mol-chloramphenicol-eye",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing / drop schedules not published in Materia yet — confirm against labelled product / SA guidelines. Do not invent a dose or duration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Suspected chemical eye injury / sudden vision loss is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Red-eye with pain, photophobia, or vision change needs clinician review — OTC antibiotic drops are not a substitute for diagnosis.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [
+        {
+          "value": "Teach drop technique and avoid contaminating the bottle tip — contact-lens advice belongs to the labelled product and clinician.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Wash hands; do not touch the dropper to the eye. Ask about contact lenses. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-timolol-eye",
+      "moleculeId": "mol-timolol-eye",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Systemic beta-blockade can occur from eye drops — ask about asthma, bradycardia, and oral beta-blockers; escalate clinically.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Punctal occlusion teaching reduces systemic absorption — do not invent a schedule. Escalate if breathless or very slow pulse.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-latanoprost",
+      "moleculeId": "mol-latanoprost",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Iris colour change and longer lashes are known counselling themes — evening use framing belongs to the labelled product; never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-timolol-eye-atenolol",
+      "moleculeAId": "mol-timolol-eye",
+      "moleculeBId": "mol-atenolol",
+      "severity": "major",
+      "mechanism": {
+        "value": "Additive systemic beta-blockade when ophthalmic timolol is combined with an oral beta-blocker — educational interaction flag only; confirm against current SA guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose change — escalate to the clinician before combining or adjusting ophthalmic and systemic beta-blockers.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-chloromycetin-eye",
+      "productId": "prod-chloromycetin-eye",
+      "sepZar": 55.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-xalatan",
+      "productId": "prod-xalatan",
+      "sepZar": 285.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    },
+    {
+      "id": "price-timoptol",
+      "productId": "prod-timoptol",
+      "sepZar": 95.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-chloramphenicol-eye",
+      "moleculeId": "mol-chloramphenicol-eye",
+      "title": "Chloramphenicol eye drops — technique without inventing doses",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-cae-1",
+          "order": 1,
+          "title": "When red eye is not simple",
+          "body": "Pain, photophobia, or vision change needs clinician review. Educational counselling: drop technique and bottle hygiene — Materia does not publish drop schedules here.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-cae-2",
+          "order": 2,
+          "title": "Eye-drop beta-blockers are still beta-blockers",
+          "body": "Timolol–atenolol teaching is about escalating additive bradycardia/hypotension risk to the clinician, not inventing a switch. Confirm against current SA guidance and the labelled products.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-cae-1",
+          "prompt": "A patient on atenolol starts Timoptol. Best educational frame?",
+          "choices": [
+            "Ignore it — eye drops stay in the eye",
+            "Flag additive systemic beta-blockade and escalate clinically — do not invent a dose",
+            "Double the atenolol",
+            "Stop all glaucoma therapy without advice"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Interaction counselling means escalate — Materia never invents ophthalmic or systemic beta-blocker dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}
