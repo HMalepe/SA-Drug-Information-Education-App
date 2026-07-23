@@ -319,7 +319,7 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: try <code>amoxicillin</code>, <code>amoxicillin-clavulanate</code>,{" "}
+          Published SA counselling: try <code>amoxicillin</code>, <code>ibuprofen</code>,{" "}
           <code>doxycycline</code>, <code>ciprofloxacin</code>, <code>azithromycin</code>, or{" "}
           <code>metronidazole</code> (EN/ZU/AF/ST/XH).
         </p>{" "}

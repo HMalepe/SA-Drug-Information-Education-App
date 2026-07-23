@@ -362,6 +362,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-ibuprofen": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this pain/inflammation medicine exactly as directed on your labelled product.",
+        "NSAID counselling often includes taking with food if stomach upset occurs — still confirm against the labelled product.",
+        "Tell your pharmacist about ulcer, asthma, bleeding history, or other pain medicines you use; Materia does not invent a dose or combination rule.",
+        "If you get a severe rash, swelling, black stools, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi wobuhlungu/ukuvuvuka njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukwelulekwa kwe-NSAID kuvame ukufaka ukudla uma isisu sikuxhalabisa — qinisekisa kumkhiqizo onelebula.",
+        "Tshela umkhiqizi ngesilonda sesisu, i-asthma, ukopha, noma eminye imithi yobuhlungu; i-Materia ayiqambi umthamo noma umthetho wokuhlanganisa.",
+        "Uma uthola isikhumba esibi kakhulu, ukuvuvuka, indle emnyama, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie pyn-/ontstekingsmiddel soos op die geëtiketteerde produk aangedui.",
+        "NSAID-berading sluit dikwels in om met kos te neem as maagongemak voorkom — bevestig steeds teen die geëtiketteerde produk.",
+        "Sê vir jou apteker van maagsweer-, asma- of bloedinggeskiedenis, of ander pynmiddels; Materia versin nie ’n dosis of kombinasireël nie.",
+        "As jy ’n ernstige uitslag, swelling, swart stoelgang of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona oa bohloko/ho ruruha hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Keletso ea NSAID hangata e kenyelletsa ho ja haeba mpa e u tšoenya — netefatsa holabel ea sehlahiswa.",
+        "Bolella rakhemisi ka leqeba la mpa, asthma, ho tsoa mali, kapa meriana e meng ea bohloko; Materia ha e iqape tekanyo kapa molao oa ho kopanya.",
+        "Haeba u fumana lekhopho le tebileng, ho ruruha, bolusepa bo botšo, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza leentlungu/ukudumba ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Iingcebiso ze-NSAID zihlala zibandakanya ukutya ukuba isisu sikuxhalabisa — qinisekisa kwileyibhile yemveliso.",
+        "Xelela usokhemisti ngesilonda sesisu, i-asthma, ukopha, okanye amanye amayeza eentlungu; i-Materia ayiyiqiqi idosi okanye umgaqo wokudibanisa.",
+        "Ukuba ufumana irashi eqatha, ukudumba, indolwana emnyama, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
