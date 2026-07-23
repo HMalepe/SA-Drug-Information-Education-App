@@ -704,6 +704,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-amlodipine": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this blood-pressure medicine exactly as directed on your labelled product.",
+        "Calcium-channel blocker counselling commonly includes ankle swelling and dizziness — tell your pharmacist if these bother you. Materia does not invent a dose or blood-pressure target.",
+        "Grapefruit products may affect some calcium-channel blockers — confirm against the labelled product; Materia does not invent a food list.",
+        "If you get severe dizziness, chest pain that is new or worse, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi womfutho wegazi njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukwelulekwa kwe-calcium-channel blocker kuvame ukufaka ukuvuvuka kwamaqakala nesiyezi — tshela umkhiqizi uma kukuhlupha. I-Materia ayiqambi umthamo noma umgomo womfutho wegazi.",
+        "Imikhiqizo ye-grapefruit ingase ithinte amanye ama-calcium-channel blockers — qinisekisa kumkhiqizo onelebula; i-Materia ayiqambi uhlu lokudla.",
+        "Uma uthola isiyezi esikhulu, ubuhlungu besifuba obusha noma obubi kakhulu, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie bloeddrukmiddel soos op die geëtiketteerde produk aangedui.",
+        "Kalsiumkanaalblokker-berading sluit dikwels enkelswelling en duiseligheid in — sê vir jou apteker as dit jou pla. Materia versin nie ’n dosis of bloeddrukteiken nie.",
+        "Pampelmousprodukte kan sommige kalsiumkanaalblokkers beïnvloed — bevestig teen die geëtiketteerde produk; Materia versin nie ’n koslys nie.",
+        "As jy ernstige duiseligheid, nuwe of erger borspyn, of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona oa khatello ea mali hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Keletso ea calcium-channel blocker hangata e kenyelletsa ho ruruha ha maoto le ho tsekela — bolella rakhemisi haeba ho u tšoenya. Materia ha e iqape tekanyo kapa sepheo sa khatello ea mali.",
+        "Lihlahiswa tsa grapefruit li ka ama li-calcium-channel blockers tse ling — netefatsa holabel; Materia ha e iqape lethathamo la lijo.",
+        "Haeba u fumana ho tsekela ho tebileng, bohloko ba sefuba bo bocha kapa bo mpefala, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza loxinzelelo lwegazi ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Iingcebiso ze-calcium-channel blocker zihlala zibandakanya ukudumba kwamaqakala nesiyezi — xelela usokhemisti ukuba oku kukukhathaza. I-Materia ayiyiqiqi idosi okanye usukelo loxinzelelo lwegazi.",
+        "Iimveliso ze-grapefruit zinokuchaphazela ezinye ii-calcium-channel blockers — qinisekisa kwileyibhile; i-Materia ayiyiqiqi uluhlu lokutya.",
+        "Ukuba ufumana isiyezi esiqatha, iintlungu zesifuba ezintsha okanye ezimbi ngakumbi, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
