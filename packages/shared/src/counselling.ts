@@ -818,6 +818,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-omeprazole": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this acid-reducing medicine exactly as directed on your labelled product.",
+        "PPI counselling often includes taking before food — confirm timing against the labelled product; Materia does not invent a clock schedule or dose.",
+        "Tell your pharmacist about other medicines you take — some products interact with PPIs.",
+        "If you get severe diarrhoea, black stools, a severe rash, swelling, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi onciphisa i-asidi njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukwelulekwa kwe-PPI kuvame ukufaka ukuthatha ngaphambi kokudla — qinisekisa isikhathi kumkhiqizo onelebula; i-Materia ayiqambi ishedyuli noma umthamo.",
+        "Tshela umkhiqizi ngemanye imithi oyisebenzisayo — eminye imikhiqizo ihlangana nama-PPI.",
+        "Uma uthola uhudo olukhulu, indle emnyama, isikhumba esibi, ukuvuvuka, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie suurverminderende middel soos op die geëtiketteerde produk aangedui.",
+        "PPI-berading sluit dikwels in om voor kos te neem — bevestig tydsberekening teen die geëtiketteerde produk; Materia versin nie ’n klokskedule of dosis nie.",
+        "Sê vir jou apteker van ander medisyne wat jy neem — sommige produkte wisselwerk met PPI’s.",
+        "As jy ernstige diarree, swart stoelgang, ’n ernstige uitslag, swelling of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona o fokotsang asiti hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Keletso ea PPI hangata e kenyelletsa ho e nka pele ho ja — netefatsa nako holabel; Materia ha e iqape kemiso ea nako kapa tekanyo.",
+        "Bolella rakhemisi ka meriana e meng eo u e sebelisang — lihlahiswa tse ling li kopana le li-PPI.",
+        "Haeba u fumana letšollo le tebileng, bolusepa bo botšo, lekhopho le tebileng, ho ruruha, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza elinciphisa i-asidi ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Iingcebiso ze-PPI zihlala zibandakanya ukuthatha phambi kokutya — qinisekisa ixesha kwileyibhile; i-Materia ayiyiqiqi ishedyuli okanye idosi.",
+        "Xelela usokhemisti ngamanye amayeza owasebenzisayo — ezinye iimveliso zidibana nee-PPI.",
+        "Ukuba ufumana urhudo oluqatha, indolwana emnyama, irashi eqatha, ukudumba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
