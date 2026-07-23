@@ -8,6 +8,7 @@ import {
   DEMO_BARCODE_INDEX,
   TIER_PRICES_ZAR,
   annualCreditsTarget,
+  buildAvailabilityForMolecule,
   buildCertificate,
   buildCounsellingHandout,
   buildLocumBrief,
@@ -29,11 +30,14 @@ import {
   getCounsellingScript,
   getCpdModule,
   gradeQuizAnswer,
+  isBillableTier,
+  listActiveShortages,
   listColdChainNotes,
   listCounsellingLangs,
   listSchemes,
   matchFormularyAndCoPay,
   normalizeReferralCode,
+  parsePaystackChargeSuccess,
   resolveProductScan,
   resolveSearch,
   sahpraFromCsv,
@@ -41,14 +45,17 @@ import {
   sumCredits,
   validateSahpraRows,
   validateSepRows,
+  verifyPaystackSignature,
   type CounsellingLang,
   type ScheduleCode,
   type Tier,
   type UserMode,
 } from "@materia/shared";
+import { createCheckoutSession, hmacSha512Hex, paystackConfigured } from "./billing/paystack.js";
 import { buildMolecule360 } from "./moleculeView.js";
 import { askMolecule } from "./rag.js";
 import {
+  activateSubscription,
   completeLesson,
   db,
   getCourseById,
@@ -65,7 +72,17 @@ const app = express();
 const PORT = Number(process.env.PORT ?? 4000);
 
 app.use(cors());
-app.use(express.json({ limit: "32kb" }));
+app.use(
+  express.json({
+    limit: "32kb",
+    verify: (req, _res, buf) => {
+      const url = req.url ?? "";
+      if (url.startsWith("/billing/webhook")) {
+        (req as express.Request & { rawBody?: string }).rawBody = buf.toString("utf8");
+      }
+    },
+  }),
+);
 
 function requireUser(userId: string | undefined) {
   if (!userId) return null;
@@ -568,20 +585,24 @@ app.post("/companion/interactions/check", (req, res) => {
   res.json(result);
 });
 
-/* ── Tiers / billing stub (Doc 6 — Paystack later) ── */
+/* ── Tiers / Paystack billing (Doc 6 / Doc 16) ── */
 app.get("/billing/tiers", (_req, res) => {
   res.json({
     prices: TIER_PRICES_ZAR,
-    provider: process.env.PAYSTACK_SECRET_KEY ? "paystack" : "stub",
-    note: "Launch pricing hypothesis — wire Paystack when ready. No charges in stub mode.",
+    provider: paystackConfigured() ? "paystack" : "stub",
+    publicKey: process.env.PAYSTACK_PUBLIC_KEY || null,
+    note: paystackConfigured()
+      ? "Paystack live initialize enabled. Tier activates on charge.success webhook."
+      : "Stub checkout — no charges. Set PAYSTACK_SECRET_KEY for live checkout.",
   });
 });
 
-app.post("/billing/subscribe", (req, res) => {
+app.post("/billing/subscribe", async (req, res) => {
   const schema = z.object({
     userId: z.string(),
     tier: z.enum(["free", "student", "professional"]),
     studentVerified: z.boolean().optional(),
+    callbackUrl: z.string().url().optional(),
   });
   const parsed = schema.safeParse(req.body);
   if (!parsed.success) {
@@ -594,7 +615,6 @@ app.post("/billing/subscribe", (req, res) => {
     return;
   }
   if (parsed.data.tier === "student" && !parsed.data.studentVerified && !user.studentVerified) {
-    // soft gate — Doc 8 A3
     res.status(403).json({
       error: "Student tier requires verification (institution email or SAPC student registration).",
       code: "STUDENT_VERIFICATION_REQUIRED",
@@ -604,18 +624,65 @@ app.post("/billing/subscribe", (req, res) => {
   if (parsed.data.studentVerified) {
     user.studentVerified = true;
   }
-  const result = setUserTier(user.id, parsed.data.tier, "stub");
-  res.json({
-    ...result,
-    checkout:
-      parsed.data.tier === "free"
-        ? null
-        : {
-            provider: "stub",
-            amountZar: TIER_PRICES_ZAR[parsed.data.tier].monthly,
-            message: "Paystack checkout URL will appear here when keys are configured.",
-          },
-  });
+
+  if (parsed.data.tier === "free") {
+    const result = setUserTier(user.id, "free", { provider: "stub", status: "active", applyTierNow: true });
+    res.json({ ...result, checkout: null });
+    return;
+  }
+
+  if (!isBillableTier(parsed.data.tier)) {
+    res.status(400).json({ error: "Tier not billable via self-serve checkout" });
+    return;
+  }
+
+  const callbackUrl =
+    parsed.data.callbackUrl ??
+    `${process.env.PUBLIC_WEB_URL ?? "http://localhost:3000"}/pricing?paid=1`;
+
+  try {
+    const checkout = await createCheckoutSession({
+      userId: user.id,
+      email: user.email,
+      tier: parsed.data.tier,
+      callbackUrl,
+    });
+    const live = checkout.provider === "paystack";
+    const result = setUserTier(user.id, parsed.data.tier, {
+      provider: checkout.provider,
+      status: live ? "pending_payment" : "active",
+      reference: checkout.reference,
+      applyTierNow: !live,
+    });
+    res.json({ ...result, checkout });
+  } catch (err) {
+    res.status(502).json({
+      error: err instanceof Error ? err.message : "Checkout initialize failed",
+    });
+  }
+});
+
+app.post("/billing/webhook/paystack", (req, res) => {
+  const raw =
+    (req as express.Request & { rawBody?: string }).rawBody ?? JSON.stringify(req.body ?? {});
+  const secret = process.env.PAYSTACK_SECRET_KEY?.trim() ?? "";
+  const signature = req.header("x-paystack-signature") ?? undefined;
+  if (paystackConfigured() && !verifyPaystackSignature(raw, signature, secret, hmacSha512Hex)) {
+    res.status(401).json({ error: "Invalid Paystack signature" });
+    return;
+  }
+  const event = (raw ? JSON.parse(raw) : req.body) as Parameters<typeof parsePaystackChargeSuccess>[0];
+  const parsed = parsePaystackChargeSuccess(event);
+  if (!parsed.ok) {
+    res.json({ received: true, handled: false, reason: parsed.reason });
+    return;
+  }
+  const activated = activateSubscription(parsed.reference, parsed.userId, parsed.tier);
+  if (!activated) {
+    res.status(404).json({ error: "User not found for webhook metadata" });
+    return;
+  }
+  res.json({ received: true, handled: true, subscription: activated.subscription });
 });
 
 app.post("/auth/stub-session", (req, res) => {
@@ -1106,6 +1173,54 @@ app.get("/tools/handout/:moleculeSlug", (req, res) => {
     return;
   }
   res.json(handout);
+});
+
+/* ── Shortage / availability (Build Spec §5.6 — Pro) ── */
+app.get("/tools/availability/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = requireUser(userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "shortage_alerts");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Shortage alerts are a Professional feature", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const rows = buildAvailabilityForMolecule({
+    moleculeId: mol.id,
+    products: db.products,
+    signals: db.availabilitySignals,
+  });
+  res.json({
+    moleculeSlug: mol.slug,
+    rows,
+    note: "Illustrative wholesaler signals until live feeds. Confirm stock locally before substituting.",
+  });
+});
+
+app.get("/tools/shortages", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = requireUser(userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "shortage_alerts");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Shortage alerts are a Professional feature", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  res.json({
+    shortages: listActiveShortages(db.products, db.availabilitySignals),
+    note: "Published shortage/limited signals only. Not a wholesaler order system.",
+  });
 });
 
 /* ── Ingest preview (Doc 16 — admin/content tooling) ── */

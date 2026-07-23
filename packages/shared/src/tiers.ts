@@ -19,6 +19,7 @@ export type FeatureKey =
   | "institution_console"
   | "handout_export"
   | "ambassador_tools"
+  | "shortage_alerts"
   | "ask_materia_unlimited"
   | "billing_manage";
 
@@ -60,6 +61,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "vision_scan",
     "handout_export",
     "ambassador_tools",
+    "shortage_alerts",
     "ask_materia_unlimited",
     "billing_manage",
   ],
@@ -82,6 +84,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "institution_console",
     "handout_export",
     "ambassador_tools",
+    "shortage_alerts",
     "ask_materia_unlimited",
     "billing_manage",
   ],

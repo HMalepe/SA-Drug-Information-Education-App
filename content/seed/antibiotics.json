@@ -669,6 +669,38 @@
     }
   ],
   "doseRules": [],
+  "availabilitySignals": [
+    {
+      "id": "avail-amoxil-pharmadynamics",
+      "productId": "prod-amoxil",
+      "wholesaler": "Pharmadynamics (illustrative)",
+      "signal": "shortage",
+      "note": "ILLUSTRATIVE shortage flag for demo — replace with live wholesaler feed",
+      "observedAt": "2026-07-20T08:00:00.000Z",
+      "sourceId": "src-materia-edu",
+      "publishState": "published"
+    },
+    {
+      "id": "avail-amox-aspen-united",
+      "productId": "prod-amoxicillin-asp",
+      "wholesaler": "United Pharmaceutical Distributors (illustrative)",
+      "signal": "in_stock",
+      "note": "ILLUSTRATIVE stock signal",
+      "observedAt": "2026-07-20T08:00:00.000Z",
+      "sourceId": "src-materia-edu",
+      "publishState": "published"
+    },
+    {
+      "id": "avail-augmentin-limited",
+      "productId": "prod-augmentin",
+      "wholesaler": "Pharmadynamics (illustrative)",
+      "signal": "limited",
+      "note": "ILLUSTRATIVE limited stock — confirm locally",
+      "observedAt": "2026-07-21T08:00:00.000Z",
+      "sourceId": "src-materia-edu",
+      "publishState": "published"
+    }
+  ],
   "formularyEntries": [
     {
       "id": "form-disco-amoxil",

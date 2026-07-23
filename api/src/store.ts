@@ -22,6 +22,7 @@ import type {
   UserProfile,
 } from "@materia/shared";
 import type {
+  AvailabilitySignal,
   CpdCertificate,
   CpdCreditEvent,
   DoseRule,
@@ -42,6 +43,7 @@ interface SeedFile {
   doseRules: DoseRule[];
   interactions?: Interaction[];
   formularyEntries?: FormularyEntry[];
+  availabilitySignals?: AvailabilitySignal[];
   courses: Array<
     Course & {
       lessons: Array<Omit<Lesson, "courseId"> & { order: number }>;
@@ -92,6 +94,7 @@ export const db = {
   doseRules: seed.doseRules ?? [],
   interactions: seed.interactions ?? [],
   formularyEntries: seed.formularyEntries ?? [],
+  availabilitySignals: (seed.availabilitySignals ?? []) as AvailabilitySignal[],
   courses: seed.courses.map((c) => ({
     ...c,
     lessons: c.lessons.map((l) => ({ ...l, courseId: c.id })),
@@ -215,19 +218,50 @@ export function recordQuizAttempt(userId: string, courseId: string, correct: boo
   return row;
 }
 
-export function setUserTier(userId: string, tier: Tier, provider: "stub" | "paystack" = "stub") {
+export function setUserTier(
+  userId: string,
+  tier: Tier,
+  opts: {
+    provider?: "stub" | "paystack";
+    status?: SubscriptionStub["status"];
+    reference?: string;
+    /** When false, keep current tier until payment confirms (live Paystack). */
+    applyTierNow?: boolean;
+  } = {},
+) {
+  const user = db.users.find((u) => u.id === userId);
+  if (!user) return null;
+  const provider = opts.provider ?? "stub";
+  const applyNow = opts.applyTierNow ?? true;
+  if (applyNow || tier === "free") {
+    user.tier = tier;
+  }
+  const sub: SubscriptionStub = {
+    userId,
+    tier,
+    status: opts.status ?? (tier === "free" ? "active" : "pending_payment"),
+    provider,
+    renewsAt: new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString(),
+    reference: opts.reference,
+  };
+  if (tier === "free") sub.status = "active";
+  db.subscriptions = db.subscriptions.filter((s) => s.userId !== userId);
+  db.subscriptions.push(sub);
+  return { user, subscription: sub };
+}
+
+export function activateSubscription(reference: string, userId: string, tier: Tier) {
   const user = db.users.find((u) => u.id === userId);
   if (!user) return null;
   user.tier = tier;
   const sub: SubscriptionStub = {
     userId,
     tier,
-    status: tier === "free" ? "active" : "pending_payment",
-    provider,
+    status: "active",
+    provider: "paystack",
     renewsAt: new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString(),
-    reference: provider === "paystack" ? `psk_stub_${userId}_${Date.now()}` : undefined,
+    reference,
   };
-  if (tier === "free") sub.status = "active";
   db.subscriptions = db.subscriptions.filter((s) => s.userId !== userId);
   db.subscriptions.push(sub);
   return { user, subscription: sub };

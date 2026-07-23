@@ -6,12 +6,16 @@ const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
 export default function PricingPage() {
   const [prices, setPrices] = useState<Record<string, { monthly: number; annual: number; label: string }>>({});
+  const [provider, setProvider] = useState("stub");
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
     void fetch(`${API}/billing/tiers`)
       .then((r) => r.json())
-      .then((d) => setPrices(d.prices ?? {}));
+      .then((d) => {
+        setPrices(d.prices ?? {});
+        setProvider(d.provider ?? "stub");
+      });
   }, []);
 
   async function subscribe(tier: "free" | "student" | "professional") {
@@ -32,16 +36,22 @@ export default function PricingPage() {
         userId: user.id,
         tier,
         studentVerified: tier === "student",
+        callbackUrl: `${window.location.origin}/pricing?paid=1`,
       }),
     });
     const data = await res.json();
     setMsg(JSON.stringify(data, null, 2));
+    const url = data.checkout?.authorizationUrl as string | undefined;
+    if (url) window.location.href = url;
   }
 
   return (
     <>
       <h1>Pricing</h1>
-      <p className="tagline">Launch hypothesis (Doc 6) — stub checkout until Paystack keys.</p>
+      <p className="tagline">
+        Launch hypothesis (Doc 6) — provider: {provider}
+        {provider === "stub" ? " (no charges until Paystack keys)." : " (live checkout)."}.
+      </p>
       <div style={{ display: "grid", gap: 12 }}>
         {Object.entries(prices).map(([key, p]) => (
           <div key={key} className="card">

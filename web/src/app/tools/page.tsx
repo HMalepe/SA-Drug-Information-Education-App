@@ -147,6 +147,16 @@ export default function ToolsPage() {
           <button className="btn" type="button" onClick={() => void call(`/tools/cold-chain`)}>
             Cold-chain notes
           </button>
+          <button
+            className="btn"
+            type="button"
+            onClick={() => void call(`/tools/availability/${encodeURIComponent(slug)}`)}
+          >
+            Availability
+          </button>
+          <button className="btn" type="button" onClick={() => void call(`/tools/shortages`)}>
+            Active shortages
+          </button>
         </div>
       </div>
 
