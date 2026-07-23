@@ -36,6 +36,11 @@ import {
   createDependantProfile,
   deactivateDependant,
   listActiveDependants,
+  createProfessionalNote,
+  upvoteProfessionalNote,
+  publishProfessionalNote,
+  listPublishedNotesForMolecule,
+  PROFESSIONAL_NOTES_DISCLAIMER,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -49,6 +54,7 @@ import {
   explainProductExcipients,
   EXCIPIENT_LIBRARY,
   gateFeature,
+  tierAllows,
   generateReferralCode,
   getColdChainNote,
   getCounsellingScript,
@@ -918,6 +924,155 @@ app.get("/companion/symptoms/:userId/export", (req, res) => {
     return;
   }
   res.json(summary);
+});
+
+/* ── Verified professional notes (Build Spec §12) ── */
+app.get("/notes", (req, res) => {
+  const slug = String(req.query.moleculeSlug ?? "amoxicillin");
+  const includeDraft = String(req.query.includeDraft ?? "") === "1";
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const published = listPublishedNotesForMolecule(db.professionalNotes, slug);
+  const drafts =
+    includeDraft && user && tierAllows(user.tier as Tier, "pro_notes")
+      ? db.professionalNotes.filter(
+          (n) =>
+            n.publishState === "draft" &&
+            (n.moleculeSlug === slug || n.authorUserId === user.id),
+        )
+      : [];
+  res.json({
+    moleculeSlug: slug,
+    notes: published,
+    drafts,
+    disclaimer: PROFESSIONAL_NOTES_DISCLAIMER,
+  });
+});
+
+app.post("/notes", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    moleculeSlug: z.string().min(1),
+    kind: z.enum(["counselling_tip", "stockout_intel", "practice_pearl"]),
+    body: z.string().min(12).max(500),
+    authorDisplayName: z.string().min(1).max(80),
+    authorCredential: z.string().max(80).optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "pro_notes");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Contributing notes requires Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const mol = getMoleculeBySlug(parsed.data.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const created = createProfessionalNote({
+    moleculeId: mol.id,
+    moleculeSlug: mol.slug,
+    moleculeName: mol.innName,
+    kind: parsed.data.kind,
+    body: parsed.data.body,
+    authorUserId: user.id,
+    authorDisplayName: parsed.data.authorDisplayName,
+    authorCredential: parsed.data.authorCredential,
+  });
+  if (!created.ok) {
+    res.status(400).json({ error: created.error });
+    return;
+  }
+  db.professionalNotes.push(created.note);
+  res.status(201).json({
+    note: created.note,
+    disclaimer: PROFESSIONAL_NOTES_DISCLAIMER,
+    noteStatus: "draft — awaiting review before public display",
+  });
+});
+
+app.post("/notes/:noteId/upvote", (req, res) => {
+  const schema = z.object({ userId: z.string() });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "pro_notes");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Upvoting notes requires Professional",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const idx = db.professionalNotes.findIndex((n) => n.id === req.params.noteId);
+  if (idx < 0) {
+    res.status(404).json({ error: "Note not found" });
+    return;
+  }
+  const result = upvoteProfessionalNote(db.professionalNotes[idx]!, user.id);
+  if (!result.ok) {
+    res.status(400).json({ error: result.error });
+    return;
+  }
+  db.professionalNotes[idx] = result.note;
+  res.json({ note: result.note });
+});
+
+app.post("/notes/:noteId/publish", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    attestation: z.string().min(8).max(240),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "pro_notes");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Publishing notes requires Professional", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const idx = db.professionalNotes.findIndex((n) => n.id === req.params.noteId);
+  if (idx < 0) {
+    res.status(404).json({ error: "Note not found" });
+    return;
+  }
+  const result = publishProfessionalNote(db.professionalNotes[idx]!, {
+    reviewerUserId: user.id,
+    attestation: parsed.data.attestation,
+  });
+  if (!result.ok) {
+    res.status(400).json({ error: result.error });
+    return;
+  }
+  db.professionalNotes[idx] = result.note;
+  res.json({ note: result.note, disclaimer: PROFESSIONAL_NOTES_DISCLAIMER });
 });
 
 app.post("/companion/interactions/check", (req, res) => {

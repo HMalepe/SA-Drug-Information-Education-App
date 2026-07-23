@@ -36,4 +36,5 @@ export * from "./pearlFeed.js";
 export * from "./insertTranslator.js";
 export * from "./symptoms.js";
 export * from "./caregiver.js";
+export * from "./proNotes.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

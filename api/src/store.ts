@@ -36,6 +36,7 @@ import type {
   SendResult,
   SymptomLogEntry,
   DependantProfile,
+  ProfessionalNote,
 } from "@materia/shared";
 
 interface SeedFile {
@@ -149,6 +150,7 @@ export const db = {
   regimens: new Map<string, RegimenItem[]>(),
   symptomLogs: new Map<string, SymptomLogEntry[]>(),
   dependants: [] as DependantProfile[],
+  professionalNotes: [] as ProfessionalNote[],
   subscriptions: [] as SubscriptionStub[],
   organisations: [] as Organization[],
   seats: [] as Seat[],
