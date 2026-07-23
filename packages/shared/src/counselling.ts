@@ -875,6 +875,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-atorvastatin": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this cholesterol medicine exactly as directed on your labelled product.",
+        "Statin counselling commonly includes reporting unexplained muscle pain, tenderness, or weakness to your pharmacist or clinician. Materia does not invent a dose or lipid target.",
+        "Tell your pharmacist about other medicines you take and about grapefruit products — some combinations matter; confirm against the labelled product.",
+        "If you get severe muscle pain with dark urine, yellowing of the skin/eyes, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi we-cholesterol njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukwelulekwa kwe-statin kuvame ukufaka ukubika ubuhlungu bemisipha obungachaziwe, ukuthamba, noma ubuthakathaka kumkhiqizi noma udokotela. I-Materia ayiqambi umthamo noma umgomo we-lipid.",
+        "Tshela umkhiqizi ngemanye imithi noyimikhiqizo ye-grapefruit — eminye imihlanganisela ibalulekile; qinisekisa kumkhiqizo onelebula.",
+        "Uma uthola ubuhlungu bemisipha obukhulu nomchamo omnyama, ukuphaphatheka kwesikhumba/amehlo, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie cholesterolmiddel soos op die geëtiketteerde produk aangedui.",
+        "Statien-berading sluit dikwels in om onverklaarde spierpyn, teerheid of swakheid by jou apteker of klinikus aan te meld. Materia versin nie ’n dosis of lipiedteiken nie.",
+        "Sê vir jou apteker van ander medisyne en pampelmousprodukte — sommige kombinasies maak saak; bevestig teen die geëtiketteerde produk.",
+        "As jy ernstige spierpyn met donker urine, vergeling van vel/oë, of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona oa cholesterol hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Keletso ea statin hangata e kenyelletsa ho tlaleha bohloko ba mesifa bo sa hlaloseng, ho utloa bohloko, kapa bofokoli ho rakhemisi kapa ngaka. Materia ha e iqape tekanyo kapa sepheo sa lipid.",
+        "Bolella rakhemisi ka meriana e meng le lihlahiswa tsa grapefruit — litlhophiso tse ling li bohlokoa; netefatsa holabel.",
+        "Haeba u fumana bohloko ba mesifa bo tebileng ka moroto o lefifi, ho mosehla ha letlalo/mahlo, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza le-cholesterol ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Iingcebiso ze-statin zihlala zibandakanya ukuxela iintlungu zemisipha ezingachazwanga, ukuthamba, okanye ubuthathaka kusokhemisti okanye ugqirha. I-Materia ayiyiqiqi idosi okanye usukelo lwe-lipid.",
+        "Xelela usokhemisti ngamanye amayeza kunye neemveliso ze-grapefruit — ezinye iindibaniselwano zibalulekile; qinisekisa kwileyibhile.",
+        "Ukuba ufumana iintlungu zemisipha eziqatha nomchamo omnyama, ukutyheliwa kwesikhumba/amehlo, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
