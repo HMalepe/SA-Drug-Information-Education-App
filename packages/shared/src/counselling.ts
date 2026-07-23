@@ -56,18 +56,24 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
     },
     st: {
       lang: "st",
-      publishState: "draft",
-      sourceNote: "Draft Sesotho — awaiting founder native-speaker review before publish",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
       lines: [
-        "[Draft] Sebelisa antibiotic kamoo e hlalositsoeng ho label.",
+        "Sebelisa antibiotic ena hantle kamoo e hlalositsoeng holabel ea hau.",
+        "Bolella rakhemisi haeba u kile ua ba le allergy ea penicillin kapa beta-lactam.",
+        "Qetella thero ntle le haeba ngaka ea hau e re u emise.",
+        "Haeba u fumana lekhopho, ho ruruha, kapa ho hema thata — batla thuso ea tšohanyetso.",
       ],
     },
     xh: {
       lang: "xh",
-      publishState: "draft",
-      sourceNote: "Draft isiXhosa — awaiting founder native-speaker review before publish",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
       lines: [
-        "[Draft] Sebenzisa i-antibiotic njengoko kubhaliwe kwileyibhile yakho.",
+        "Sebenzisa le antibiotic ngokuchanekileyo njengoko kubhaliwe kwileyibhile yakho.",
+        "Xelela usokhemisti ukuba wakhe waba ne-allergy ye-penicillin okanye ye-beta-lactam.",
+        "Gqiba ikhosi ngaphandle kokuba ugqirha wakho athi uyeke.",
+        "Ukuba ufumana irashi, ukudumba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
       ],
     },
   },
@@ -90,4 +96,15 @@ export function listCounsellingLangs(moleculeId: string): CounsellingLang[] {
   return (Object.keys(entry) as CounsellingLang[]).filter(
     (l) => entry[l]?.publishState === "published",
   );
+}
+
+/** Coverage helper for Academy / Insights — published SA counselling langs per molecule. */
+export function counsellingCoverage(
+  moleculeId: string,
+): Array<{ lang: CounsellingLang; label: string; lineCount: number }> {
+  return listCounsellingLangs(moleculeId).map((lang) => {
+    const script = getCounsellingScript(moleculeId, lang)!;
+    const label = COUNSELLING_LANGS.find((l) => l.code === lang)?.label ?? lang;
+    return { lang, label, lineCount: script.lines.length };
+  });
 }

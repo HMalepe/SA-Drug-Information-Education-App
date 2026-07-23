@@ -86,14 +86,24 @@ describe("substitution + SEP", () => {
 });
 
 describe("multilingual counselling", () => {
-  it("returns published EN/ZU/AF for amoxicillin", () => {
-    assert.deepEqual(listCounsellingLangs("mol-amox").sort(), ["af", "en", "zu"]);
+  it("returns published EN/ZU/AF/ST/XH for amoxicillin", () => {
+    assert.deepEqual(listCounsellingLangs("mol-amox").sort(), ["af", "en", "st", "xh", "zu"]);
     assert.ok(getCounsellingScript("mol-amox", "zu")?.lines.length);
   });
 
-  it("hides draft Sesotho from default get", () => {
-    assert.equal(getCounsellingScript("mol-amox", "st"), null);
-    assert.ok(getCounsellingScript("mol-amox", "st", true));
+  it("serves published Sesotho and isiXhosa without draft markers", () => {
+    const st = getCounsellingScript("mol-amox", "st");
+    const xh = getCounsellingScript("mol-amox", "xh");
+    assert.ok(st);
+    assert.ok(xh);
+    assert.equal(st!.publishState, "published");
+    assert.equal(xh!.publishState, "published");
+    assert.equal(st!.lines.length, 4);
+    assert.equal(xh!.lines.length, 4);
+    assert.equal(st!.lines.some((l) => /\[Draft\]/i.test(l)), false);
+    assert.equal(xh!.lines.some((l) => /\[Draft\]/i.test(l)), false);
+    assert.doesNotMatch(st!.lines.join(" "), /\d+\s*mg/i);
+    assert.doesNotMatch(xh!.lines.join(" "), /\d+\s*mg/i);
   });
 });
 

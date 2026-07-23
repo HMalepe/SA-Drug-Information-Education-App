@@ -131,7 +131,16 @@ export default function ToolsPage() {
     if (res.ok && data.text && typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(data.text as string);
-      utter.lang = lang === "af" ? "af-ZA" : lang === "zu" ? "zu-ZA" : "en-ZA";
+      utter.lang =
+        lang === "af"
+          ? "af-ZA"
+          : lang === "zu"
+            ? "zu-ZA"
+            : lang === "xh"
+              ? "xh-ZA"
+              : lang === "st"
+                ? "st-ZA"
+                : "en-ZA";
       window.speechSynthesis.speak(utter);
     }
   }
@@ -293,6 +302,8 @@ export default function ToolsPage() {
           <option value="en">English</option>
           <option value="zu">isiZulu</option>
           <option value="af">Afrikaans</option>
+          <option value="st">Sesotho</option>
+          <option value="xh">isiXhosa</option>
         </select>
         <button
           className="btn"
