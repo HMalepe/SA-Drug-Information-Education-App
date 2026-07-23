@@ -337,4 +337,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-ibuprofen");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Xylocaine → lidocaine from anaesthetics seed", () => {
+    const hits = resolveSearch("Xylocaine", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "lidocaine");
+  });
+
+  it("resolves Diprivan → propofol from anaesthetics seed", () => {
+    const hits = resolveSearch("Diprivan", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "propofol");
+  });
+
+  it("publishes educational midazolam↔fentanyl interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-midazolam-fentanyl");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.equal(ix.moleculeBId, "mol-fentanyl");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
