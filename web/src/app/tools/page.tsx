@@ -317,7 +317,10 @@ export default function ToolsPage() {
         </button>{" "}
         <button className="btn" type="button" onClick={() => void speakVoice()}>
           Voice read-aloud
-        </button>{" "}
+        </button>
+        <p className="muted" style={{ marginTop: 8 }}>
+          Published SA counselling: try <code>amoxicillin</code> or <code>doxycycline</code> (EN/ZU/AF/ST/XH).
+        </p>{" "}
         <button
           className="btn"
           type="button"
