@@ -56,6 +56,8 @@ import {
   buildDragDropRound,
   publicDragDropRound,
   gradeDragDrop,
+  buildTreatmentRound,
+  gradeBuildTreatment,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -1071,6 +1073,80 @@ app.post("/academy/drag-drop/:roundId/grade", (req, res) => {
     return;
   }
   const result = gradeDragDrop({ answerKey: round.answerKey, mapping: parsed.data.mapping });
+  res.json(result);
+});
+
+/* ── Build the Treatment (Build Spec §7.3) ── */
+app.post("/academy/build-treatment/start", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    seed: z.string().optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Build the Treatment requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const seed = parsed.data.seed ?? `${new Date().toISOString().slice(0, 10)}|${user.id}|${Date.now()}`;
+  const round = buildTreatmentRound({ seed });
+  if (!round) {
+    res.status(404).json({ error: "No published Build the Treatment cases" });
+    return;
+  }
+  db.treatmentRounds.set(round.roundId, { roundId: round.roundId, caseId: round.case.id });
+  res.status(201).json(round);
+});
+
+app.post("/academy/build-treatment/:roundId/grade", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    chosenOptionId: z.string(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Build the Treatment requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const meta = db.treatmentRounds.get(req.params.roundId);
+  if (!meta) {
+    res.status(404).json({ error: "Round not found" });
+    return;
+  }
+  const result = gradeBuildTreatment({
+    caseId: meta.caseId,
+    chosenOptionId: parsed.data.chosenOptionId,
+  });
+  if ("error" in result) {
+    res.status(400).json({ error: result.error });
+    return;
+  }
   res.json(result);
 });
 

@@ -42,6 +42,7 @@ import type {
 import type { MysteryRound } from "@materia/shared";
 
 type SpotRoundMeta = { roundId: string; cardId: string };
+type TreatmentRoundMeta = { roundId: string; caseId: string };
 
 export interface MatchRoundRecord {
   roundId: string;
@@ -182,6 +183,7 @@ export const db = {
   spotRounds: new Map<string, SpotRoundMeta>(),
   matchRounds: new Map<string, MatchRoundRecord>(),
   dragDropRounds: new Map<string, DragDropRoundRecord>(),
+  treatmentRounds: new Map<string, TreatmentRoundMeta>(),
   subscriptions: [] as SubscriptionStub[],
   organisations: [] as Organization[],
   seats: [] as Seat[],
