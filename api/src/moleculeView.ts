@@ -1,5 +1,7 @@
 import {
   MEDICINE_360_TABS,
+  buildMoleculeVisualGallery,
+  buildProductVisualCard,
   emptyStateMessage,
   explainProductExcipients,
   renderableFact,
@@ -68,10 +70,13 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
             manufacturer: manufacturers.find((m) => m.id === p.manufacturerId) ?? null,
             excipients: explainer.explanations,
             excipientEmptyNote: explainer.emptyNote,
+            visual: buildProductVisualCard(p),
           };
         }),
         explainerNote:
           "Excipients explained (Build Spec §5.4) — inactive until the wrong patient context. Confirm against the labelled pack.",
+        visualNote:
+          "Packaging form silhouettes (Build Spec §5.5) — educational placeholders; imprint codes are never invented.",
       },
       sources: [getSource("src-sahpra")].filter(Boolean) as Source[],
     },
@@ -161,11 +166,13 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
       sources: [],
     },
     animations: {
-      title: "Animations",
+      title: "Visual identification",
       body: {
-        empty: "MOA / ADME animations ship with Academy media assets — placeholder.",
+        ...buildMoleculeVisualGallery(products),
+        cameraNote:
+          "Camera / pill-ID model is not live yet — use Tools → barcode or form cue (e.g. “inhaler”) for suggestive resolve only.",
       },
-      sources: [],
+      sources: [getSource("src-sahpra")].filter(Boolean) as Source[],
     },
     quiz: {
       title: "Interactive Quiz",

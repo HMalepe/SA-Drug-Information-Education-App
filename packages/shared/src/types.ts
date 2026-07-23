@@ -23,7 +23,7 @@ export const MEDICINE_360_TABS = [
   { id: "pregnancy", index: 9, label: "Pregnancy & Breastfeeding" },
   { id: "overdose", index: 10, label: "Overdose & Emergency" },
   { id: "pearls", index: 11, label: "Clinical Pearls" },
-  { id: "animations", index: 12, label: "Animations" },
+  { id: "animations", index: 12, label: "Visual ID" },
   { id: "quiz", index: 13, label: "Interactive Quiz" },
   { id: "ai-tutor", index: 14, label: "AI Tutor" },
   { id: "counselling", index: 15, label: "Patient Counselling Points" },

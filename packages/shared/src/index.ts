@@ -14,6 +14,7 @@ export * from "./locum.js";
 export * from "./coldchain.js";
 export * from "./cpd.js";
 export * from "./vision.js";
+export * from "./visualId.js";
 export * from "./institution.js";
 export * from "./referral.js";
 export * from "./ingest.js";

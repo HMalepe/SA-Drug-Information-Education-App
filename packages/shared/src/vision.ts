@@ -1,6 +1,7 @@
 import type { Product } from "./types.js";
 import { resolveSearch } from "./search.js";
 import type { Molecule } from "./types.js";
+import { resolveVisualFormDescription } from "./visualId.js";
 
 export interface VisionResolveHit {
   kind: "barcode" | "brand_text" | "fuzzy";
@@ -14,8 +15,8 @@ export interface VisionResolveHit {
 }
 
 /**
- * Box / barcode resolve — suggestive only; user must confirm.
- * Maps GTIN/barcode stubs and brand text → molecule via published product index.
+ * Box / barcode / form-cue resolve — suggestive only; user must confirm.
+ * Maps GTIN/barcode stubs, brand text, and §5.5 form keywords → molecule.
  */
 export function resolveProductScan(
   rawInput: string,
@@ -47,17 +48,23 @@ export function resolveProductScan(
     }
   }
 
-  const hits = resolveSearch(q, molecules, products, 5);
-  return hits.map((h) => ({
-    kind: h.kind === "brand" ? ("brand_text" as const) : ("fuzzy" as const),
+  const textHits = resolveSearch(q, molecules, products, 5).map((h) => ({
+    kind: (h.kind === "brand" ? "brand_text" : "fuzzy") as "brand_text" | "fuzzy",
     query: q,
     moleculeId: h.moleculeId,
     moleculeSlug: h.moleculeSlug,
     moleculeName: h.moleculeName,
     brandName: h.brandName,
-    confidence: h.score >= 90 ? "high" : h.score >= 70 ? "medium" : "low",
-    note: "Text/OCR resolve is suggestive — confirm the physical product. Pill ID camera lands later.",
+    confidence: (h.score >= 90 ? "high" : h.score >= 70 ? "medium" : "low") as
+      | "high"
+      | "medium"
+      | "low",
+    note: "Text/OCR resolve is suggestive — confirm the physical product. Camera capture lands later.",
   }));
+
+  if (textHits.length > 0) return textHits;
+
+  return resolveVisualFormDescription(q, molecules, products, 5);
 }
 
 /** Demo barcode → product map (replace with real GTIN ingest). */

@@ -212,7 +212,7 @@ export default function ToolsPage() {
       </div>
 
       <div className="card">
-        <label className="muted">Barcode or brand text (vision stub)</label>
+        <label className="muted">Barcode, brand, or form cue (e.g. inhaler) — vision stub</label>
         <input
           style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
           value={scanInput}

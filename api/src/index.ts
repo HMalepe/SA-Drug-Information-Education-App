@@ -1046,7 +1046,7 @@ app.post("/tools/vision/resolve", (req, res) => {
   );
   res.json({
     hits,
-    note: "Suggestive only — confirm the physical pack. Camera capture hooks in next iteration.",
+    note: "Suggestive only — confirm the physical pack. Try a barcode, brand, or form cue (e.g. inhaler). Camera capture hooks later; imprint codes are never invented.",
   });
 });
 
