@@ -25,6 +25,9 @@ export default async function LearnPage() {
       <h1>Medicine Academy</h1>
       <p className="tagline">Stop memorising. Start understanding. — five lessons per molecule.</p>
       <p>
+        <a className="btn" href="/learn/badges" style={{ background: "var(--deep-teal)" }}>
+          Badges &amp; streaks (§7.2)
+        </a>{" "}
         <a className="btn" href="/learn/review">
           Spaced review (§7.5)
         </a>{" "}

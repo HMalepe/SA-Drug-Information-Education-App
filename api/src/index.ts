@@ -59,6 +59,7 @@ import {
   buildTreatmentRound,
   gradeBuildTreatment,
   buildPersonalAnalytics,
+  evaluateBadges,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -676,6 +677,37 @@ app.post("/academy/quiz/answer", (req, res) => {
   const grade = gradeQuizAnswer(question, parsed.data.selectedIndex);
   const progress = recordQuizAttempt(user.id, course.id, grade.correct);
   res.json({ grade, progress });
+});
+
+/* ── Gamification badges & streaks (Build Spec §7.2) ── */
+app.get("/academy/gamification/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Academy badges require Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const report = evaluateBadges({
+    userId: user.id,
+    progress: db.progress.filter((p) => p.userId === user.id),
+    courses: db.courses.map((c) => ({
+      id: c.id,
+      moleculeId: c.moleculeId,
+      title: c.title,
+      lessons: c.lessons.map((l) => ({ id: l.id })),
+    })),
+    molecules: db.molecules,
+    products: db.products,
+  });
+  res.json(report);
 });
 
 /* ── Spaced repetition (Build Spec §7.5) ── */
