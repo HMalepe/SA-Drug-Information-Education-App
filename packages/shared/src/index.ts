@@ -47,4 +47,5 @@ export * from "./personalAnalytics.js";
 export * from "./gamification.js";
 export * from "./foodTiming.js";
 export * from "./leaderboard.js";
+export * from "./pharmacyLocator.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

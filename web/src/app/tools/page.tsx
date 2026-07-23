@@ -16,6 +16,7 @@ export default function ToolsPage() {
   const [adjustContext, setAdjustContext] = useState("renal");
   const [clashSlugs, setClashSlugs] = useState("amoxicillin, warfarin, aspirin");
   const [insertLevel, setInsertLevel] = useState<"grade5" | "professional">("grade5");
+  const [city, setCity] = useState("johannesburg");
   const [out, setOut] = useState("");
   const [offlineBadge, setOfflineBadge] = useState(false);
 
@@ -337,6 +338,37 @@ export default function ToolsPage() {
         >
           Read cache
         </button>
+      </div>
+
+      <div className="card">
+        <label className="muted">City for pharmacy locator stub (Doc 16)</label>
+        <select
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          style={{ display: "block", margin: "8px 0 16px", padding: 10 }}
+        >
+          <option value="johannesburg">Johannesburg</option>
+          <option value="pretoria">Pretoria / Tshwane</option>
+          <option value="cape-town">Cape Town</option>
+          <option value="durban">Durban</option>
+          <option value="bloemfontein">Bloemfontein</option>
+          <option value="gqeberha">Gqeberha / PE</option>
+        </select>
+        <button
+          className="btn"
+          type="button"
+          onClick={() =>
+            void call(
+              `/tools/pharmacy-locator?city=${encodeURIComponent(city)}&moleculeSlug=${encodeURIComponent(slug)}&selectedProductId=prod-amoxil`,
+              "pharmacy_locator",
+            )
+          }
+        >
+          Nearby pharmacies + SEP refill prompt
+        </button>
+        <p className="muted" style={{ marginTop: 8 }}>
+          Illustrative directory only — not live stock or Google Places. SEP from published seed prices.
+        </p>
       </div>
 
       <div className="card">

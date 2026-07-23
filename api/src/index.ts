@@ -63,6 +63,8 @@ import {
   buildFoodTimingCues,
   enrichReminderBody,
   buildLeaderboard,
+  locatePharmacies,
+  SA_CITY_CENTROIDS,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -385,6 +387,51 @@ app.get("/tools/substitution/:moleculeSlug", (req, res) => {
     selectedProductId,
   );
   res.json({ molecule: { id: mol.id, slug: mol.slug, innName: mol.innName }, ...result });
+});
+
+/* ── Pharmacy locator stub (Doc 16 Maps/Places — illustrative) ── */
+app.get("/tools/pharmacy-locator", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "substitution_sep");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Pharmacy locator + SEP context is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const city = String(req.query.city ?? "").trim() || undefined;
+  const latRaw = req.query.lat != null ? Number(req.query.lat) : undefined;
+  const lngRaw = req.query.lng != null ? Number(req.query.lng) : undefined;
+  const lat = latRaw != null && Number.isFinite(latRaw) ? latRaw : undefined;
+  const lng = lngRaw != null && Number.isFinite(lngRaw) ? lngRaw : undefined;
+  const limit = Number(req.query.limit ?? 8);
+  const slug = String(req.query.moleculeSlug ?? "").trim();
+  const mol = slug ? getMoleculeBySlug(slug) : null;
+  if (slug && !mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const result = locatePharmacies({
+    city,
+    lat,
+    lng,
+    limit: Number.isFinite(limit) ? limit : 8,
+    moleculeId: mol?.id,
+    products: db.products,
+    prices: db.priceRecords,
+    selectedProductId: req.query.selectedProductId
+      ? String(req.query.selectedProductId)
+      : undefined,
+  });
+  res.json({
+    cities: SA_CITY_CENTROIDS.map((c) => ({ key: c.key, label: c.label })),
+    molecule: mol ? { id: mol.id, slug: mol.slug, innName: mol.innName } : null,
+    ...result,
+  });
 });
 
 /* ── Formulary + co-pay switch (Build Spec §12 — Pro) ── */
