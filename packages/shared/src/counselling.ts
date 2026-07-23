@@ -134,6 +134,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-metro": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this antimicrobial exactly as directed on your labelled product.",
+        "Alcohol is commonly counselled against during and shortly after this course — confirm the labelled product and ask your pharmacist; Materia does not invent a duration.",
+        "Metallic taste or mild stomach upset can occur — check the label and speak to your pharmacist if it worries you.",
+        "If you get a severe rash, swelling, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antimicrobial njengoba kubhalwe kumkhiqizo onelebula.",
+        "Utshwala kuvame ukwelulekwa ngakho ngesikhathi saleli khosi nangemva kwaso — qinisekisa ilebula futhi ubuze umkhiqizi; i-Materia ayiqambi isikhathi.",
+        "Ukunambitha okufana nensimbi noma isisu esithambile kungenzeka — hlole ilebula futhi ukhulume nomkhiqizi uma ukhathazekile.",
+        "Uma uthola isikhumba esibi kakhulu, ukuvuvuka, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie antimikrobiese middel soos op die geëtiketteerde produk aangedui.",
+        "Alkohol word dikwels afgeraai tydens en kort na hierdie kuur — bevestig die etiket en vra jou apteker; Materia versin nie ’n duur nie.",
+        "’n Metaalsmaak of ligte maagongemak kan voorkom — kontroleer die etiket en praat met jou apteker as jy bekommerd is.",
+        "As jy ’n ernstige uitslag, swelling of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa antimicrobial ena hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Joala hangata ho eletsoa hore u e qobe nakong ea thero ena le haufinyane ka mor’a eona — netefatsa leibole ’me u botse rakhemisi; Materia ha e iqape nako.",
+        "Tatso ea tšepe kapa ho opeloa ke mpeng ho ka etsahala — sheba leibole ’me u bue le rakhemisi haeba u tšoenyehile.",
+        "Haeba u fumana lekhopho le tebileng, ho ruruha, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antimicrobial ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Utywala kudla ngokucebiswa ukuba lungasetyenziswa ngexesha lekhosi nasekufutshane emva kwayo —qinisekisa ileyibhile kwaye ubuze usokhemisti; i-Materia ayiyiqiqi ixesha.",
+        "Incasa yentsimbi okanye ukuqaqanjelwa kwesisu okuncinci kunokwenzeka —qwalasela ileyibhile kwaye uthethe nosokhemisti ukuba uyakhathazeka.",
+        "Ukuba ufumana irashi eqatha, ukudumba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
