@@ -647,6 +647,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-enalapril": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this blood-pressure medicine exactly as directed on your labelled product.",
+        "ACE-inhibitor counselling commonly includes telling your pharmacist if you are pregnant, planning pregnancy, or breastfeeding — confirm against the labelled product. Materia does not invent a dose or blood-pressure target.",
+        "Report a new persistent dry cough, dizziness on standing, or kidney concerns to your pharmacist or clinician.",
+        "If you get swelling of the face, lips, tongue, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi womfutho wegazi njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukwelulekwa kwe-ACE-inhibitor kuvame ukufaka ukutshela umkhiqizi uma ukhulelwe, uhlela ukukhulelwa, noma uncelisa — qinisekisa kumkhiqizo onelebula. I-Materia ayiqambi umthamo noma umgomo womfutho wegazi.",
+        "Bika ukukhwehlela okomile okungapheli, isiyezi uma umi, noma izinkinga zezinso kumkhiqizi noma udokotela.",
+        "Uma uthola ukuvuvuka kobuso, izindebe, ulimi, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie bloeddrukmiddel soos op die geëtiketteerde produk aangedui.",
+        "ASE-inhibeerder-berading sluit dikwels in om jou apteker te sê as jy swanger is, beplan om swanger te word, of borsvoed — bevestig teen die geëtiketteerde produk. Materia versin nie ’n dosis of bloeddrukteiken nie.",
+        "Meld ’n nuwe aanhoudende droë hoes, duiseligheid wanneer jy opstaan, of nierkommer by jou apteker of klinikus.",
+        "As jy swelling van die gesig, lippe, tong of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona oa khatello ea mali hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Keletso ea ACE-inhibitor hangata e kenyelletsa ho bolella rakhemisi haeba u imme, u rera ho ima, kapa u anyesa — netefatsa holabel. Materia ha e iqape tekanyo kapa sepheo sa khatello ea mali.",
+        "Tlaleha khohlela e omehileng e sa feleng, ho tsekela ha u ema, kapa mathata a liphio ho rakhemisi kapa ngaka.",
+        "Haeba u fumana ho ruruha ha sefahleho, melomo, leleme, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza loxinzelelo lwegazi ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Iingcebiso ze-ACE-inhibitor zihlala zibandakanya ukuxelela usokhemisti ukuba ukhulelweyo, uceba ukukhulelwa, okanye uncancisayo — qinisekisa kwileyibhile. I-Materia ayiyiqiqi idosi okanye usukelo loxinzelelo lwegazi.",
+        "Xela ukukhohlela okomileyo okungapheliyo, isiyezi xa umile, okanye iinkxalabo zezintso kusokhemisti okanye ugqirha.",
+        "Ukuba ufumana ukudumba kobuso, imilebe, ulwimi, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
