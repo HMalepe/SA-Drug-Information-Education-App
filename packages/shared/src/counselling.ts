@@ -590,6 +590,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-metformin": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this diabetes medicine exactly as directed on your labelled product.",
+        "Metformin counselling often includes taking with food if stomach upset occurs — still confirm against the labelled product. Materia does not invent a dose or meal schedule.",
+        "Tell your pharmacist or clinician about kidney problems, heavy alcohol use, or severe dehydration/illness before and during use.",
+        "If you get unusual muscle pain, severe vomiting, trouble breathing, or extreme tiredness — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi wesifo sikashukela njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukwelulekwa kwe-metformin kuvame ukufaka ukudla uma isisu sikuxhalabisa — qinisekisa kumkhiqizo onelebula. I-Materia ayiqambi umthamo noma ishedyuli yokudla.",
+        "Tshela umkhiqizi noma udokotela ngezinkinga zezinso, ukuphuza kakhulu, noma ukoma/ukugula okukhulu ngaphambi nangesikhathi sokusebenzisa.",
+        "Uma uthola ubuhlungu bemisipha obungajwayelekile, ukuhlanza okukhulu, ukuphefumula kanzima, noma ukukhathala okwedlulele — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie diabetesmedisyne soos op die geëtiketteerde produk aangedui.",
+        "Metformin-berading sluit dikwels in om met kos te neem as maagongemak voorkom — bevestig steeds teen die geëtiketteerde produk. Materia versin nie ’n dosis of maaltydskedule nie.",
+        "Sê vir jou apteker of klinikus van nierprobleme, swaar alkoholgebruik, of ernstige dehidrasie/siekte voor en tydens gebruik.",
+        "As jy ongewone spierpyn, ernstige braking, asemhalingsprobleme of uiterste moegheid kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona oa diabetes hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Keletso ea metformin hangata e kenyelletsa ho ja haeba mpa e u tšoenya — netefatsa holabel. Materia ha e iqape tekanyo kapa kemiso ea lijo.",
+        "Bolella rakhemisi kapa ngaka ka mathata a liphio, ho noa haholo, kapa ho oma/ho kula ho tebileng pele le nakong ea tšebeliso.",
+        "Haeba u fumana bohloko ba mesifa bo sa tloaelehang, ho hlatsa ho tebileng, ho hema thata, kapa mokhathala o feteletseng — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza lesifo seswekile ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Iingcebiso ze-metformin zihlala zibandakanya ukutya ukuba isisu sikuxhalabisa — qinisekisa kwileyibhile. I-Materia ayiyiqiqi idosi okanye ishedyuli yokutya.",
+        "Xelela usokhemisti okanye ugqirha ngeengxaki zezintso, ukusela kakhulu, okanye ukoma/ukugula okuqatha phambi naxa usebenzisa.",
+        "Ukuba ufumana iintlungu zemisipha ezingaqhelekanga, ukugabha okuqatha, uxinzelelo lokuphefumla, okanye ukudinwa okugqithisileyo — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
