@@ -1,0 +1,5 @@
+# Illustrative SAHPRA-shaped fixture — NOT live register data. Map + founder review before publish.
+sahpraRegNo,brandName,innName,strength,form,schedule,manufacturerName,bioequivalentFlag
+A40/20.1.1/1234,Amoxil Demo,Amoxicillin,500 mg,capsule,S4,Demo Pharma,false
+A40/20.1.1/5678,Amoxicillin Aspen Demo,Amoxicillin,500 mg,capsule,S4,Aspen Demo,true
+A40/20.1.2/9999,Augmentin Demo,Amoxicillin-clavulanate,625 mg,tablet,S4,Demo Pharma,false

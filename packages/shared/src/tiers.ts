@@ -17,11 +17,20 @@ export type FeatureKey =
   | "voice_mode"
   | "vision_scan"
   | "institution_console"
+  | "handout_export"
+  | "ambassador_tools"
   | "ask_materia_unlimited"
   | "billing_manage";
 
 const MATRIX: Record<Tier, FeatureKey[]> = {
-  free: ["molecule_lookup", "academy_sample", "companion_schedule", "ask_materia_unlimited"],
+  free: [
+    "molecule_lookup",
+    "academy_sample",
+    "companion_schedule",
+    "handout_export",
+    "ambassador_tools",
+    "ask_materia_unlimited",
+  ],
   student: [
     "molecule_lookup",
     "academy_sample",
@@ -29,6 +38,8 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "companion_schedule",
     "companion_interaction_check",
     "voice_mode",
+    "handout_export",
+    "ambassador_tools",
     "ask_materia_unlimited",
   ],
   professional: [
@@ -47,6 +58,8 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "cpd_dashboard",
     "voice_mode",
     "vision_scan",
+    "handout_export",
+    "ambassador_tools",
     "ask_materia_unlimited",
     "billing_manage",
   ],
@@ -67,6 +80,8 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "voice_mode",
     "vision_scan",
     "institution_console",
+    "handout_export",
+    "ambassador_tools",
     "ask_materia_unlimited",
     "billing_manage",
   ],

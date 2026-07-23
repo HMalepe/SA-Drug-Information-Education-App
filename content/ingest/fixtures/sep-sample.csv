@@ -1,0 +1,5 @@
+# Illustrative DoH SEP-shaped fixture — NOT live SEP. Keep draft until verified.
+sahpraRegNo,brandName,sepZar,effectiveDate
+A40/20.1.1/1234,Amoxil Demo,89.50,2026-07-01
+A40/20.1.1/5678,Amoxicillin Aspen Demo,52.00,2026-07-01
+A40/20.1.2/9999,Augmentin Demo,145.00,2026-07-01

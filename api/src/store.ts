@@ -25,6 +25,9 @@ import type {
   CpdCertificate,
   CpdCreditEvent,
   DoseRule,
+  ReferralCode,
+  ReferralCredit,
+  ReferralRedemption,
   RegimenItem,
 } from "@materia/shared";
 
@@ -110,6 +113,9 @@ export const db = {
   cohorts: [] as Cohort[],
   cpdEvents: [] as CpdCreditEvent[],
   cpdCertificates: [] as CpdCertificate[],
+  referralCodes: [] as ReferralCode[],
+  referralRedemptions: [] as ReferralRedemption[],
+  referralCredits: [] as ReferralCredit[],
 };
 
 export function getSource(id: string): Source | undefined {

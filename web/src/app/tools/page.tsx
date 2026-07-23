@@ -173,6 +173,15 @@ export default function ToolsPage() {
         <button className="btn" type="button" onClick={() => void speakVoice()}>
           Voice read-aloud
         </button>{" "}
+        <button
+          className="btn"
+          type="button"
+          onClick={() =>
+            void call(`/tools/handout/${encodeURIComponent(slug)}?lang=${lang}`)
+          }
+        >
+          Counselling handout
+        </button>{" "}
         <button className="btn" type="button" onClick={() => void cacheOffline()}>
           Offline pack
         </button>{" "}

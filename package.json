@@ -18,7 +18,8 @@
     "test:clinical": "npm run test:clinical -w @materia/tests",
     "typecheck": "npm run typecheck -w @materia/design-tokens -w @materia/shared -w @materia/api -w @materia/tests",
     "lint": "npm run typecheck",
-    "seed:check": "node content/pipeline/validate-seed.mjs"
+    "seed:check": "node content/pipeline/validate-seed.mjs",
+    "ingest:preview": "node content/pipeline/ingest-public.mjs"
   },
   "devDependencies": {
     "typescript": "^5.8.3"

@@ -9,18 +9,22 @@ import {
   TIER_PRICES_ZAR,
   annualCreditsTarget,
   buildCertificate,
+  buildCounsellingHandout,
   buildLocumBrief,
   buildOfflineEssential,
+  buildReferralCredits,
   buildSubstitutionOptions,
   calculateDose,
   canAddSeat,
   canAwardCpd,
+  canRedeemReferral,
   checkRegimenInteractions,
   computeCohortAnalytics,
   courseCompletionPercent,
   createOrganisation,
   expertLevelFromPercent,
   gateFeature,
+  generateReferralCode,
   getColdChainNote,
   getCounsellingScript,
   getCpdModule,
@@ -29,8 +33,14 @@ import {
   listCounsellingLangs,
   listSchemes,
   matchFormularyAndCoPay,
+  normalizeReferralCode,
   resolveProductScan,
   resolveSearch,
+  sahpraFromCsv,
+  sepFromCsv,
+  sumCredits,
+  validateSahpraRows,
+  validateSepRows,
   type CounsellingLang,
   type ScheduleCode,
   type Tier,
@@ -960,6 +970,163 @@ app.get("/institution/:orgId/analytics", (req, res) => {
     return computeCohortAnalytics(c, progress);
   });
   res.json({ org, seats, cohorts, analytics });
+});
+
+/* ── Ambassador / referral (Doc 5 growth loop) ── */
+app.post("/ambassador/code", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    kind: z.enum(["ambassador", "standard"]).default("standard"),
+    campusLabel: z.string().optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "ambassador_tools");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Ambassador tools unavailable", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const existing = db.referralCodes.find((c) => c.ownerUserId === user.id && c.kind === parsed.data.kind);
+  if (existing) {
+    res.json({ code: existing });
+    return;
+  }
+  const code = {
+    code: generateReferralCode(user.id, parsed.data.kind),
+    ownerUserId: user.id,
+    createdAt: new Date().toISOString(),
+    kind: parsed.data.kind,
+    campusLabel: parsed.data.campusLabel,
+  };
+  db.referralCodes.push(code);
+  res.json({ code });
+});
+
+app.post("/ambassador/redeem", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    code: z.string().min(3),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const normalized = normalizeReferralCode(parsed.data.code);
+  const code = db.referralCodes.find((c) => c.code === normalized);
+  const eligibility = canRedeemReferral({
+    code,
+    refereeUserId: user.id,
+    existingRedemptions: db.referralRedemptions,
+  });
+  if (!eligibility.ok || !code) {
+    res.status(400).json({ error: eligibility.reason ?? "Invalid code" });
+    return;
+  }
+  const redemption = {
+    id: `red-${db.referralRedemptions.length + 1}`,
+    code: code.code,
+    referrerUserId: code.ownerUserId,
+    refereeUserId: user.id,
+    redeemedAt: new Date().toISOString(),
+  };
+  db.referralRedemptions.push(redemption);
+  const credits = buildReferralCredits({ redemption, code });
+  db.referralCredits.push(...credits);
+  res.json({
+    redemption,
+    credits,
+    note: "Referral credits are in-app units until Paystack rewards are configured.",
+  });
+});
+
+app.get("/ambassador/dashboard/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const codes = db.referralCodes.filter((c) => c.ownerUserId === user.id);
+  const redemptions = db.referralRedemptions.filter((r) => r.referrerUserId === user.id);
+  const credits = db.referralCredits.filter((c) => c.userId === user.id);
+  res.json({
+    codes,
+    redemptions,
+    credits,
+    creditBalance: sumCredits(db.referralCredits, user.id),
+    note: "Campus ambassadors: status + referral credit. No clinical privilege.",
+  });
+});
+
+/* ── Counselling handout export (Build Spec §12) ── */
+app.get("/tools/handout/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "handout_export");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Handout export gated", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const lang = (String(req.query.lang ?? "en") as CounsellingLang) || "en";
+  const script = getCounsellingScript(mol.id, lang);
+  if (!script || script.publishState !== "published") {
+    res.status(404).json({
+      error: "No published counselling script for this language",
+      available: listCounsellingLangs(mol.id),
+    });
+    return;
+  }
+  const handout = buildCounsellingHandout({
+    molecule: mol,
+    lang,
+    lines: script.lines,
+    sourceNote: script.sourceNote,
+  });
+  if (String(req.query.format ?? "") === "html") {
+    res.type("html").send(handout.html);
+    return;
+  }
+  res.json(handout);
+});
+
+/* ── Ingest preview (Doc 16 — admin/content tooling) ── */
+app.post("/ingest/preview", (req, res) => {
+  const schema = z.object({
+    kind: z.enum(["sahpra", "sep"]),
+    csv: z.string().min(10).max(200_000),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const preview =
+    parsed.data.kind === "sahpra"
+      ? validateSahpraRows(sahpraFromCsv(parsed.data.csv))
+      : validateSepRows(sepFromCsv(parsed.data.csv));
+  res.json({
+    preview,
+    warning: "Draft-only. Does not mutate published seed or live prices.",
+  });
 });
 
 app.listen(PORT, () => {

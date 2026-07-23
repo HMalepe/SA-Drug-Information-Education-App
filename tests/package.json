@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --import tsx --test search.test.ts grounding.test.ts dosing.test.ts academy.test.ts v3-moats.test.ts v3b-pro-tools.test.ts v3c-cpd-vision-institution.test.ts",
+    "test": "node --import tsx --test search.test.ts grounding.test.ts dosing.test.ts academy.test.ts v3-moats.test.ts v3b-pro-tools.test.ts v3c-cpd-vision-institution.test.ts v2d-ambassador-ingest-handout.test.ts",
     "test:clinical": "node --import tsx --test clinical/eval.test.ts clinical/seed-gate.test.ts",
     "typecheck": "node ../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
   },
