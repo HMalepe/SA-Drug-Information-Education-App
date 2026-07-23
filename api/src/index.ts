@@ -42,6 +42,10 @@ import {
   listSchemes,
   loadPublicFeed,
   matchFormularyAndCoPay,
+  buildReviewQueue,
+  nextPublishState,
+  summarizeCoverage,
+  validateReviewDecision,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
   previewUpcoming,
@@ -67,6 +71,7 @@ import { buildMolecule360 } from "./moleculeView.js";
 import { askMolecule } from "./rag.js";
 import {
   activateSubscription,
+  applyFactPublishState,
   completeLesson,
   db,
   getCourseById,
@@ -1416,6 +1421,97 @@ app.post("/analytics/events", (req, res) => {
 
 app.get("/analytics/summary", (_req, res) => {
   res.json(summarizeAnalytics(db.analyticsEvents));
+});
+
+/* ── Founder clinical review console (constitution 3.2–3.3) ── */
+app.get("/review/coverage", (_req, res) => {
+  res.json(
+    summarizeCoverage({
+      molecules: db.molecules,
+      safetyProfiles: db.safetyProfiles,
+    }),
+  );
+});
+
+app.get("/review/queue", (req, res) => {
+  const area = String(req.query.area ?? "").trim();
+  const statesRaw = String(req.query.states ?? "draft,reviewed");
+  const states = statesRaw
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s): s is "draft" | "reviewed" | "published" =>
+      s === "draft" || s === "reviewed" || s === "published",
+    );
+  let items = buildReviewQueue({
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+    states: states.length ? states : ["draft", "reviewed"],
+  });
+  if (area) items = items.filter((i) => i.therapeuticArea === area);
+  res.json({
+    count: items.length,
+    items,
+    note: "Founder gate only. Publishing never invents clinical text — it only changes publishState.",
+  });
+});
+
+app.post("/review/decide", (req, res) => {
+  const schema = z.object({
+    queueItemId: z.string(),
+    decision: z.enum(["keep_draft", "mark_reviewed", "publish"]),
+    reviewerLabel: z.string().min(2),
+    attestation: z.string().optional(),
+    note: z.string().optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const queue = buildReviewQueue({
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+    states: ["draft", "reviewed", "published"],
+  });
+  const item = queue.find((i) => i.id === parsed.data.queueItemId);
+  if (!item) {
+    res.status(404).json({ error: "Queue item not found" });
+    return;
+  }
+  const gate = validateReviewDecision({
+    item,
+    decision: parsed.data.decision,
+    attestation: parsed.data.attestation,
+  });
+  if (!gate.ok) {
+    res.status(400).json({ error: gate.reason });
+    return;
+  }
+  const next = nextPublishState(item.publishState, parsed.data.decision);
+  const applied = applyFactPublishState(item.moleculeId, item.fieldPath, next);
+  if (!applied) {
+    res.status(500).json({ error: "Could not locate fact to update" });
+    return;
+  }
+  const decision = {
+    id: `rev-${db.reviewDecisions.length + 1}`,
+    queueItemId: item.id,
+    decision: parsed.data.decision,
+    reviewerLabel: parsed.data.reviewerLabel,
+    attestation: parsed.data.attestation,
+    at: new Date().toISOString(),
+    note: parsed.data.note,
+  };
+  db.reviewDecisions.push(decision);
+  res.json({
+    decision,
+    item: { ...item, publishState: next },
+    note: "In-memory only until content files are updated in the authoring pipeline.",
+  });
+});
+
+app.get("/review/decisions", (_req, res) => {
+  res.json({ decisions: db.reviewDecisions.slice(-100) });
 });
 
 /* ── Ingest preview (Doc 16 — admin/content tooling) ── */

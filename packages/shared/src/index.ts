@@ -24,4 +24,5 @@ export * from "./reminders.js";
 export * from "./messaging.js";
 export * from "./analytics.js";
 export * from "./publicFeed.js";
+export * from "./reviewQueue.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

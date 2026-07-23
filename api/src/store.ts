@@ -31,6 +31,7 @@ import type {
   ReferralCredit,
   ReferralRedemption,
   ReminderPreferences,
+  ReviewDecision,
   RegimenItem,
   SendResult,
 } from "@materia/shared";
@@ -156,6 +157,7 @@ export const db = {
   reminderPrefs: new Map<string, ReminderPreferences>(),
   reminderDispatchLog: [] as Array<SendResult & { at: string; moleculeId: string }>,
   analyticsEvents: [] as AnalyticsEvent[],
+  reviewDecisions: [] as ReviewDecision[],
 };
 
 export function getSource(id: string): Source | undefined {
@@ -303,3 +305,53 @@ export function activateSubscription(reference: string, userId: string, tier: Ti
   db.subscriptions.push(sub);
   return { user, subscription: sub };
 }
+
+/** Mutate a sourced fact's publishState in memory (founder review console). Does not invent text. */
+export function applyFactPublishState(
+  moleculeId: string,
+  fieldPath: string,
+  publishState: "draft" | "reviewed" | "published",
+): boolean {
+  const mol = db.molecules.find((m) => m.id === moleculeId);
+  if (mol && (fieldPath === "chemistrySummary" || fieldPath === "moaSummary" || fieldPath === "discoveryNote")) {
+    const fact = mol[fieldPath];
+    if (!fact) return false;
+    fact.publishState = publishState;
+    return true;
+  }
+  const sp = db.safetyProfiles.find((s) => s.moleculeId === moleculeId);
+  if (!sp) return false;
+
+  const arrayMatch = fieldPath.match(/^(contraindications|warnings|clinicalPearls|counsellingPoints)\[(\d+)\]$/);
+  if (arrayMatch) {
+    const key = arrayMatch[1] as "contraindications" | "warnings" | "clinicalPearls" | "counsellingPoints";
+    const idx = Number(arrayMatch[2]);
+    const fact = sp[key]?.[idx];
+    if (!fact) return false;
+    fact.publishState = publishState;
+    return true;
+  }
+
+  const scalarKeys = [
+    "dosingAdult",
+    "dosingPaediatric",
+    "dosingGeriatric",
+    "renalAdjustment",
+    "hepaticAdjustment",
+    "foodLifestyle",
+    "pregnancy",
+    "breastfeeding",
+    "overdoseEarlySigns",
+    "overdoseSevereSigns",
+    "antidoteOrSupportive",
+    "emergencySteps",
+  ] as const;
+  if ((scalarKeys as readonly string[]).includes(fieldPath)) {
+    const fact = sp[fieldPath as (typeof scalarKeys)[number]];
+    if (!fact) return false;
+    fact.publishState = publishState;
+    return true;
+  }
+  return false;
+}
+
