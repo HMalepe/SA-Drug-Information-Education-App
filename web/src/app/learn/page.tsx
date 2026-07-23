@@ -34,6 +34,9 @@ export default async function LearnPage() {
         <a className="btn" href="/learn/review">
           Spaced review (§7.5)
         </a>{" "}
+        <a className="btn" href="/learn/adaptive" style={{ background: "var(--deep-teal)" }}>
+          Adaptive session (§7.5)
+        </a>{" "}
         <a className="btn" href="/learn/mystery" style={{ background: "var(--ink)" }}>
           Mystery Molecule (§7.3)
         </a>{" "}

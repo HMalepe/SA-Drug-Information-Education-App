@@ -43,6 +43,7 @@ import {
   PROFESSIONAL_NOTES_DISCLAIMER,
   applyReviewGrade,
   buildReviewSession,
+  buildAdaptiveSession,
   collectReviewCards,
   initialCardState,
   buildMysteryRound,
@@ -908,6 +909,40 @@ app.get("/academy/review/:userId", (req, res) => {
     ...session,
     poolSize: catalog.length,
   });
+});
+
+/* ── Adaptive learning session (Build Spec §7.5) ── */
+app.get("/academy/adaptive/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Adaptive learning requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const asOf =
+    typeof req.query.asOf === "string" && /^\d{4}-\d{2}-\d{2}$/.test(req.query.asOf)
+      ? req.query.asOf
+      : undefined;
+  const aheadDays = Number(req.query.aheadDays ?? 1);
+  res.json(
+    buildAdaptiveSession({
+      userId: user.id,
+      progress: db.progress,
+      courses: db.courses,
+      molecules: db.molecules,
+      safetyProfiles: db.safetyProfiles,
+      asOf,
+      aheadDays: Number.isFinite(aheadDays) ? aheadDays : 1,
+    }),
+  );
 });
 
 app.post("/academy/review/:userId/grade", (req, res) => {
