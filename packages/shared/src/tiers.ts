@@ -24,6 +24,7 @@ export type FeatureKey =
   | "pearl_feed"
   | "insert_translator"
   | "pro_notes"
+  | "personal_analytics"
   | "ask_materia_unlimited"
   | "billing_manage";
 
@@ -72,6 +73,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "pearl_feed",
     "insert_translator",
     "pro_notes",
+    "personal_analytics",
     "ask_materia_unlimited",
     "billing_manage",
   ],
@@ -99,6 +101,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "pearl_feed",
     "insert_translator",
     "pro_notes",
+    "personal_analytics",
     "ask_materia_unlimited",
     "billing_manage",
   ],

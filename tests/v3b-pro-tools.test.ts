@@ -150,5 +150,7 @@ describe("cold-chain notes", () => {
     assert.equal(tierAllows("free", "formulary_copay"), false);
     assert.equal(tierAllows("professional", "locum_brief"), true);
     assert.equal(tierAllows("professional", "cold_chain_notes"), true);
+    assert.equal(tierAllows("professional", "personal_analytics"), true);
+    assert.equal(tierAllows("free", "personal_analytics"), false);
   });
 });

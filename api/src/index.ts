@@ -58,6 +58,7 @@ import {
   gradeDragDrop,
   buildTreatmentRound,
   gradeBuildTreatment,
+  buildPersonalAnalytics,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -2560,6 +2561,37 @@ app.post("/analytics/events", (req, res) => {
 
 app.get("/analytics/summary", (_req, res) => {
   res.json(summarizeAnalytics(db.analyticsEvents));
+});
+
+app.get("/analytics/personal/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "personal_analytics");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Personal analytics requires Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const progress = db.progress.filter((p) => p.userId === user.id);
+  const report = buildPersonalAnalytics({
+    userId: user.id,
+    progress,
+    courses: db.courses.map((c) => ({
+      id: c.id,
+      moleculeId: c.moleculeId,
+      title: c.title,
+      lessons: c.lessons.map((l) => ({ id: l.id })),
+    })),
+    molecules: db.molecules,
+    events: db.analyticsEvents,
+  });
+  res.json(report);
 });
 
 /* ── Founder clinical review console (constitution 3.2–3.3) ── */

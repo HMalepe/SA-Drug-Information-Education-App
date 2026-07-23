@@ -43,4 +43,5 @@ export * from "./spotError.js";
 export * from "./matchGame.js";
 export * from "./dragDropGame.js";
 export * from "./buildTreatment.js";
+export * from "./personalAnalytics.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

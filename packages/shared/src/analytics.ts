@@ -64,6 +64,7 @@ const SAFE_PROP_KEYS = new Set([
   "code",
   "hasResults",
   "queryLen",
+  "userBucket",
 ]);
 
 const FORBIDDEN_PROP_KEYS = /^(email|phone|name|dose|question|answer|regimen|idNumber|saId)/i;
