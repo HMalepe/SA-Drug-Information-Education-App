@@ -232,4 +232,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-ferrous-sulfate");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Trexate → methotrexate from rheumatology seed", () => {
+    const hits = resolveSearch("Trexate", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "methotrexate");
+  });
+
+  it("resolves Zyloprim → allopurinol from rheumatology seed", () => {
+    const hits = resolveSearch("Zyloprim", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "allopurinol");
+  });
+
+  it("publishes educational methotrexate↔cotrim interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-methotrexate-cotrim");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.equal(ix.moleculeBId, "mol-cotrim");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
