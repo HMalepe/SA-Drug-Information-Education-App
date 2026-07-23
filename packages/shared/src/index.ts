@@ -34,4 +34,5 @@ export * from "./toxicityTimeline.js";
 export * from "./clashBoard.js";
 export * from "./pearlFeed.js";
 export * from "./insertTranslator.js";
+export * from "./symptoms.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

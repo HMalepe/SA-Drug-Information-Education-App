@@ -34,6 +34,7 @@ import type {
   ReviewDecision,
   RegimenItem,
   SendResult,
+  SymptomLogEntry,
 } from "@materia/shared";
 
 interface SeedFile {
@@ -145,6 +146,7 @@ export const db = {
   }>,
   progress: [] as ProgressRow[],
   regimens: new Map<string, RegimenItem[]>(),
+  symptomLogs: new Map<string, SymptomLogEntry[]>(),
   subscriptions: [] as SubscriptionStub[],
   organisations: [] as Organization[],
   seats: [] as Seat[],

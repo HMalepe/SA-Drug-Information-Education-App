@@ -20,6 +20,10 @@ export default function MyMedsPage() {
   const [regimenNote, setRegimenNote] = useState("");
   const [clashRows, setClashRows] = useState<ClashRow[]>([]);
   const [clashMeta, setClashMeta] = useState("");
+  const [symptomLabel, setSymptomLabel] = useState("nausea");
+  const [symptomAt, setSymptomAt] = useState("2026-07-20");
+  const [symptomSeverity, setSymptomSeverity] = useState(2);
+  const [symptomExport, setSymptomExport] = useState("");
   const [out, setOut] = useState("");
 
   async function start() {
@@ -92,6 +96,33 @@ export default function MyMedsPage() {
     );
   }
 
+  async function logSymptom() {
+    if (!userId) return;
+    const res = await fetch(`${API}/companion/symptoms/${userId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        at: symptomAt,
+        label: symptomLabel,
+        severity: symptomSeverity,
+        moleculeId: "mol-amox",
+        moleculeName: "Amoxicillin",
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setSymptomExport(String(data.error ?? "Could not log symptom"));
+      return;
+    }
+    setSymptomExport(data.exportText ?? JSON.stringify(data, null, 2));
+  }
+
+  async function exportSymptoms() {
+    if (!userId) return;
+    const res = await fetch(`${API}/companion/symptoms/${userId}/export?format=text`);
+    setSymptomExport(await res.text());
+  }
+
   async function preview() {
     if (!userId) return;
     const res = await fetch(`${API}/companion/reminders/${userId}?from=${nowHhmm}`);
@@ -146,6 +177,46 @@ export default function MyMedsPage() {
           <p className="muted" style={{ marginTop: 8 }}>
             Email/SMS/WhatsApp stay stub-logged until Resend/Twilio keys.
           </p>
+        </div>
+      )}
+      {userId && (
+        <div className="card" style={{ marginTop: 12 }}>
+          <h2 style={{ marginTop: 0 }}>Symptom diary (§6)</h2>
+          <p className="muted">
+            Patient-authored only — Materia does not diagnose or tell you to stop a medicine.
+          </p>
+          <label className="muted">Date</label>
+          <input
+            style={{ display: "block", width: "100%", margin: "8px 0", padding: 10 }}
+            value={symptomAt}
+            onChange={(e) => setSymptomAt(e.target.value)}
+          />
+          <label className="muted">Symptom label</label>
+          <input
+            style={{ display: "block", width: "100%", margin: "8px 0", padding: 10 }}
+            value={symptomLabel}
+            onChange={(e) => setSymptomLabel(e.target.value)}
+          />
+          <label className="muted">Severity (1–5)</label>
+          <input
+            type="number"
+            min={1}
+            max={5}
+            style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
+            value={symptomSeverity}
+            onChange={(e) => setSymptomSeverity(Number(e.target.value))}
+          />
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            <button className="btn" type="button" onClick={() => void logSymptom()}>
+              Log vs Amoxicillin
+            </button>
+            <button className="btn" type="button" onClick={() => void exportSymptoms()}>
+              Export for clinician
+            </button>
+          </div>
+          {symptomExport && (
+            <pre style={{ marginTop: 12, whiteSpace: "pre-wrap", fontSize: 13 }}>{symptomExport}</pre>
+          )}
         </div>
       )}
       {userId && <p className="muted">User: {userId}</p>}

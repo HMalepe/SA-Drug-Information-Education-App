@@ -27,6 +27,9 @@ import {
   findInsertDocument,
   translateInsert,
   listInsertDocuments,
+  appendSymptomLog,
+  buildSymptomSummary,
+  createSymptomLog,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -688,6 +691,102 @@ app.put("/companion/regimen/:userId", (req, res) => {
   }
   db.regimens.set(user.id, parsed.data.items);
   res.json({ regimen: parsed.data.items });
+});
+
+/* ── Symptom & side-effect tracking (Build Spec §6) ── */
+app.get("/companion/symptoms/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const entries = db.symptomLogs.get(user.id) ?? [];
+  res.json(buildSymptomSummary({ entries, regimen: db.regimens.get(user.id) ?? [] }));
+});
+
+app.post("/companion/symptoms/:userId", (req, res) => {
+  const schema = z.object({
+    at: z.string().min(8),
+    label: z.string().min(1).max(80),
+    severity: z.number().int().min(1).max(5),
+    moleculeId: z.string().optional(),
+    moleculeName: z.string().optional(),
+    note: z.string().max(280).optional(),
+  });
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+
+  let moleculeName = parsed.data.moleculeName;
+  const moleculeId = parsed.data.moleculeId;
+  if (moleculeId) {
+    const onRegimen = (db.regimens.get(user.id) ?? []).find((r) => r.moleculeId === moleculeId);
+    const mol = db.molecules.find((m) => m.id === moleculeId);
+    moleculeName = onRegimen?.moleculeName ?? mol?.innName ?? moleculeName;
+  }
+
+  const created = createSymptomLog({
+    userId: user.id,
+    at: parsed.data.at,
+    label: parsed.data.label,
+    severity: parsed.data.severity,
+    moleculeId,
+    moleculeName,
+    note: parsed.data.note,
+  });
+  if (!created.ok) {
+    res.status(400).json({ error: created.error });
+    return;
+  }
+  const appended = appendSymptomLog(db.symptomLogs.get(user.id) ?? [], created.entry);
+  if (!appended.ok) {
+    res.status(400).json({ error: appended.error });
+    return;
+  }
+  db.symptomLogs.set(user.id, appended.entries);
+  res.status(201).json(
+    buildSymptomSummary({ entries: appended.entries, regimen: db.regimens.get(user.id) ?? [] }),
+  );
+});
+
+app.get("/companion/symptoms/:userId/export", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const summary = buildSymptomSummary({
+    entries: db.symptomLogs.get(user.id) ?? [],
+    regimen: db.regimens.get(user.id) ?? [],
+  });
+  const format = String(req.query.format ?? "json");
+  if (format === "text") {
+    res.type("text/plain").send(summary.exportText);
+    return;
+  }
+  res.json(summary);
 });
 
 app.post("/companion/interactions/check", (req, res) => {
