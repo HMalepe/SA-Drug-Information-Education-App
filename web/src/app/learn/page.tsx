@@ -48,6 +48,9 @@ export default async function LearnPage() {
         </a>{" "}
         <a className="btn" href="/learn/build-treatment" style={{ background: "var(--deep-teal)" }}>
           Build the Treatment (§7.3)
+        </a>{" "}
+        <a className="btn" href="/learn/packaging" style={{ background: "var(--ink)" }}>
+          Packaging (§7.6)
         </a>
       </p>
       {courses.length === 0 ? (

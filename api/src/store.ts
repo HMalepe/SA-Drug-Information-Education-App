@@ -55,6 +55,22 @@ export interface MatchRoundRecord {
   answerKey: Record<string, string>;
 }
 
+export interface PackagingRoundRecord {
+  roundId: string;
+  packs: Array<{
+    cueId: string;
+    brandName: string;
+    formLabel: string;
+    schedule: string;
+    hint: string;
+  }>;
+  medicines: Array<{ id: string; name: string; slug: string }>;
+  pairCount: number;
+  note: string;
+  disclaimer: string;
+  answerKey: Record<string, string>;
+}
+
 export interface DragDropRoundRecord {
   roundId: string;
   medicines: Array<{ id: string; name: string; slug: string }>;
@@ -184,6 +200,7 @@ export const db = {
   mysteryUnlocks: new Map<string, number>(),
   spotRounds: new Map<string, SpotRoundMeta>(),
   matchRounds: new Map<string, MatchRoundRecord>(),
+  packagingRounds: new Map<string, PackagingRoundRecord>(),
   dragDropRounds: new Map<string, DragDropRoundRecord>(),
   treatmentRounds: new Map<string, TreatmentRoundMeta>(),
   subscriptions: [] as SubscriptionStub[],

@@ -51,4 +51,5 @@ export * from "./pharmacyLocator.js";
 export * from "./monograph.js";
 export * from "./refillSchedule.js";
 export * from "./adherence.js";
+export * from "./packagingGame.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

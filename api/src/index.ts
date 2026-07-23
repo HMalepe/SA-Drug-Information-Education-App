@@ -53,6 +53,9 @@ import {
   buildMatchRound,
   publicMatchRound,
   gradeMatch,
+  buildPackagingRound,
+  publicPackagingRound,
+  gradePackaging,
   buildDragDropRound,
   publicDragDropRound,
   gradeDragDrop,
@@ -1184,6 +1187,79 @@ app.post("/academy/match/:roundId/grade", (req, res) => {
     return;
   }
   const result = gradeMatch({ answerKey: round.answerKey, mapping: parsed.data.mapping });
+  res.json(result);
+});
+
+/* ── Packaging recognition (Build Spec §7.6) ── */
+app.post("/academy/packaging/start", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    seed: z.string().optional(),
+    size: z.number().int().min(2).max(6).optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Packaging recognition requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const seed = parsed.data.seed ?? `${new Date().toISOString().slice(0, 10)}|${user.id}|${Date.now()}`;
+  const round = buildPackagingRound({
+    molecules: db.molecules,
+    products: db.products,
+    seed,
+    size: parsed.data.size ?? 4,
+  });
+  if (!round) {
+    res.status(404).json({ error: "Need at least 2 published SA brand pack cues" });
+    return;
+  }
+  db.packagingRounds.set(round.roundId, round);
+  res.status(201).json(publicPackagingRound(round));
+});
+
+app.post("/academy/packaging/:roundId/grade", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    mapping: z.record(z.string(), z.string()),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Packaging recognition requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const round = db.packagingRounds.get(req.params.roundId);
+  if (!round) {
+    res.status(404).json({ error: "Round not found" });
+    return;
+  }
+  const result = gradePackaging({ answerKey: round.answerKey, mapping: parsed.data.mapping });
   res.json(result);
 });
 
