@@ -170,4 +170,24 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-doxy");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Zyrtec → cetirizine from ent-allergy seed", () => {
+    const hits = resolveSearch("Zyrtec", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "cetirizine");
+  });
+
+  it("resolves Clarityne → loratadine from ent-allergy seed", () => {
+    const hits = resolveSearch("Clarityne", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "loratadine");
+  });
+
+  it("publishes educational chlorphenamine↔diazepam interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-chlorphenamine-diazepam");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });

@@ -1,0 +1,516 @@
+{
+  "meta": {
+    "therapeuticArea": "ent-allergy",
+    "note": "Mid-tail routine dispensing scaffold (Doc 29). Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. Sedating vs non-sedating antihistamines and decongestant CV cautions are counselling hooks — Materia never invents a dose or driving clearance.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false },
+    { "id": "mfr-bayer", "name": "Bayer", "madeInSa": false },
+    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
+    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
+    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
+    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
+    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler / diluent",
+      "allergyRisk": "Relevant in lactose intolerance / rare milk protein allergy contexts"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-cetirizine",
+      "slug": "cetirizine",
+      "innName": "Cetirizine",
+      "className": "Second-generation H1 antihistamine",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["zyrtec", "texa", "cetirizine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Selective peripheral H1 blockade — educational framing for allergic rhinitis/urticaria counselling only; confirm against labelled product. Never invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-loratadine",
+      "slug": "loratadine",
+      "innName": "Loratadine",
+      "className": "Second-generation H1 antihistamine",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["clarityne", "claritin", "loratadine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Non-sedating H1 antihistamine teaching molecule — onset and once-daily framing stay educational; dosing unpublished until founder review.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-fexofenadine",
+      "slug": "fexofenadine",
+      "innName": "Fexofenadine",
+      "className": "Second-generation H1 antihistamine",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["telfast", "allegra", "fexofenadine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-desloratadine",
+      "slug": "desloratadine",
+      "innName": "Desloratadine",
+      "className": "Second-generation H1 antihistamine",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["aerius", "desloratadine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-chlorphenamine",
+      "slug": "chlorphenamine",
+      "innName": "Chlorphenamine",
+      "className": "First-generation H1 antihistamine (sedating)",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["chlorpheniramine", "allergex", "piriton"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Sedating H1 antihistamine — drowsiness and CNS-depressant combinations are the counselling hooks.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-diphenhydramine",
+      "slug": "diphenhydramine",
+      "innName": "Diphenhydramine",
+      "className": "First-generation H1 antihistamine (sedating)",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["benadryl", "diphenhydramine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-fluticasone-nasal",
+      "slug": "fluticasone-nasal",
+      "innName": "Fluticasone (nasal)",
+      "className": "Intranasal corticosteroid",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["flixonase", "avamys", "fluticasone nasal"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-mometasone-nasal",
+      "slug": "mometasone-nasal",
+      "innName": "Mometasone (nasal)",
+      "className": "Intranasal corticosteroid",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["nasonex", "mometasone nasal"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-xylometazoline",
+      "slug": "xylometazoline",
+      "innName": "Xylometazoline",
+      "className": "Topical nasal decongestant (alpha agonist)",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["otrivin", "xylometazoline"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-oxymetazoline",
+      "slug": "oxymetazoline",
+      "innName": "Oxymetazoline",
+      "className": "Topical nasal decongestant (alpha agonist)",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["iliadin", "oxymetazoline"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-pseudoephedrine",
+      "slug": "pseudoephedrine",
+      "innName": "Pseudoephedrine",
+      "className": "Oral sympathomimetic decongestant",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["sudafed", "pseudoephedrine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-montelukast",
+      "slug": "montelukast",
+      "innName": "Montelukast",
+      "className": "Leukotriene receptor antagonist",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["singulair", "montelukast"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-sodium-cromoglicate",
+      "slug": "sodium-cromoglicate",
+      "innName": "Sodium cromoglicate",
+      "className": "Mast-cell stabiliser (nasal / ocular contexts)",
+      "therapeuticArea": "ent-allergy",
+      "synonyms": ["cromolyn", "lomusol", "sodium cromoglycate"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-zyrtec",
+      "moleculeId": "mol-cetirizine",
+      "manufacturerId": "mfr-janssen",
+      "brandName": "Zyrtec",
+      "strength": "10 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["zyrtec"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-cetirizine-asp",
+      "moleculeId": "mol-cetirizine",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Cetirizine Aspen",
+      "strength": "10 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "bioequivalentFlag": true,
+      "synonymKeys": ["cetirizine aspen", "texa"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-clarityne",
+      "moleculeId": "mol-loratadine",
+      "manufacturerId": "mfr-bayer",
+      "brandName": "Clarityne",
+      "strength": "10 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["clarityne", "claritin"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-telfast",
+      "moleculeId": "mol-fexofenadine",
+      "manufacturerId": "mfr-sanofi",
+      "brandName": "Telfast",
+      "strength": "120 mg / 180 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["telfast"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-allergex",
+      "moleculeId": "mol-chlorphenamine",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Allergex",
+      "strength": "4 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["allergex", "piriton"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-flixonase",
+      "moleculeId": "mol-fluticasone-nasal",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Flixonase",
+      "strength": "nasal spray (per label)",
+      "form": "nasal spray",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["flixonase", "avamys"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-nasonex",
+      "moleculeId": "mol-mometasone-nasal",
+      "manufacturerId": "mfr-msd",
+      "brandName": "Nasonex",
+      "strength": "nasal spray (per label)",
+      "form": "nasal spray",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["nasonex"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-otrivin",
+      "moleculeId": "mol-xylometazoline",
+      "manufacturerId": "mfr-novartis",
+      "brandName": "Otrivin",
+      "strength": "nasal drops / spray (per label)",
+      "form": "nasal spray",
+      "schedule": "S1",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["otrivin"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-singulair",
+      "moleculeId": "mol-montelukast",
+      "manufacturerId": "mfr-msd",
+      "brandName": "Singulair",
+      "strength": "4 mg / 5 mg / 10 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["singulair"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-sudafed",
+      "moleculeId": "mol-pseudoephedrine",
+      "manufacturerId": "mfr-adcock",
+      "brandName": "Sudafed",
+      "strength": "60 mg (pack strengths per label)",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["sudafed"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-cetirizine",
+      "moleculeId": "mol-cetirizine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines. Do not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Suspected severe allergic reaction / anaphylaxis is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [
+        {
+          "value": "Second-generation agents are preferred when sedation must be minimised — still ask about alcohol and other sedatives.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "May still cause drowsiness in some people — test response before driving. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-chlorphenamine",
+      "moleculeId": "mol-chlorphenamine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Marked sedation — avoid alcohol and other CNS depressants unless the clinician directs; do not invent a driving clearance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Warn about drowsiness and dry mouth. Escalate if combined with benzodiazepines or alcohol. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-xylometazoline",
+      "moleculeId": "mol-xylometazoline",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Rebound congestion with prolonged use is the core counselling theme — escalate clinically; do not invent a maximum duration.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Short-term nasal decongestant use only as labelled. Ask about hypertension before oral decongestants. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-chlorphenamine-diazepam",
+      "moleculeAId": "mol-chlorphenamine",
+      "moleculeBId": "mol-diazepam",
+      "severity": "major",
+      "mechanism": {
+        "value": "Additive CNS depression when a sedating antihistamine is combined with a benzodiazepine — educational interaction flag only; confirm against current SA guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose change — escalate to the clinician before combining sedating antihistamines with benzodiazepines or alcohol.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-zyrtec",
+      "productId": "prod-zyrtec",
+      "sepZar": 98.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-cetirizine-asp",
+      "productId": "prod-cetirizine-asp",
+      "sepZar": 42.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    },
+    {
+      "id": "price-clarityne",
+      "productId": "prod-clarityne",
+      "sepZar": 105.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-cetirizine",
+      "moleculeId": "mol-cetirizine",
+      "title": "Cetirizine — allergy counselling without inventing doses",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-cet-1",
+          "order": 1,
+          "title": "Sedating vs non-sedating",
+          "body": "Second-generation antihistamines reduce but do not abolish drowsiness risk. Educational counselling: ask about driving and alcohol — Materia does not publish dosing numbers here.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-cet-2",
+          "order": 2,
+          "title": "When first-generation meets benzodiazepines",
+          "body": "Chlorphenamine–diazepam teaching is about escalating additive sedation to the clinician, not inventing a switch. Confirm against current SA guidance and the labelled products.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-cet-1",
+          "prompt": "A patient on diazepam asks for Allergex at night. Best educational frame?",
+          "choices": [
+            "Combine freely for better sleep",
+            "Flag additive CNS depression and escalate clinically — do not invent a dose",
+            "Double the diazepam",
+            "Stop diazepam without advice"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Interaction counselling means escalate — Materia never invents antihistamine or benzodiazepine dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}
