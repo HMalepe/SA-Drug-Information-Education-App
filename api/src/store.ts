@@ -53,6 +53,17 @@ export interface MatchRoundRecord {
   answerKey: Record<string, string>;
 }
 
+export interface DragDropRoundRecord {
+  roundId: string;
+  medicines: Array<{ id: string; name: string; slug: string }>;
+  buckets: Array<{ id: string; label: string }>;
+  itemCount: number;
+  bucketCount: number;
+  note: string;
+  disclaimer: string;
+  answerKey: Record<string, string>;
+}
+
 interface SeedFile {
   sources: Source[];
   manufacturers: Manufacturer[];
@@ -170,6 +181,7 @@ export const db = {
   mysteryUnlocks: new Map<string, number>(),
   spotRounds: new Map<string, SpotRoundMeta>(),
   matchRounds: new Map<string, MatchRoundRecord>(),
+  dragDropRounds: new Map<string, DragDropRoundRecord>(),
   subscriptions: [] as SubscriptionStub[],
   organisations: [] as Organization[],
   seats: [] as Seat[],

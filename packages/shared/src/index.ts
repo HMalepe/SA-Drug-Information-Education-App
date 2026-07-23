@@ -41,4 +41,5 @@ export * from "./spacedRepetition.js";
 export * from "./mysteryMolecule.js";
 export * from "./spotError.js";
 export * from "./matchGame.js";
+export * from "./dragDropGame.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

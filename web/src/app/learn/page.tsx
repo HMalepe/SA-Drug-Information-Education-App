@@ -36,6 +36,9 @@ export default async function LearnPage() {
         </a>{" "}
         <a className="btn" href="/learn/match" style={{ background: "var(--deep-teal)" }}>
           Match (§7.3)
+        </a>{" "}
+        <a className="btn" href="/learn/drag-drop">
+          Drag &amp; drop (§7.3)
         </a>
       </p>
       {courses.length === 0 ? (
