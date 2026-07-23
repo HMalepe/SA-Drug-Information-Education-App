@@ -320,7 +320,7 @@ export default function ToolsPage() {
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
           Published SA counselling: try <code>amoxicillin</code>, <code>ibuprofen</code>,{" "}
-          <code>levothyroxine</code>, <code>ciprofloxacin</code>, <code>azithromycin</code>, or{" "}
+          <code>levothyroxine</code>, <code>warfarin</code>, <code>azithromycin</code>, or{" "}
           <code>metronidazole</code> (EN/ZU/AF/ST/XH).
         </p>{" "}
         <button

@@ -476,6 +476,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-warfarin": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this anticoagulant exactly as directed on your labelled product and care plan.",
+        "Keep vitamin K–rich foods reasonably consistent week to week; sudden diet swings can affect anticoagulation teaching discussions — INR targets stay clinician-directed. Materia does not invent an INR or dose.",
+        "Tell your pharmacist before starting new medicines, herbals, or painkillers — many products interact with warfarin.",
+        "If you get unusual bleeding, black stools, severe headache, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi ovimbela ukopha njengoba kubhalwe kumkhiqizo onelebula nasezinhlelweni zokwelashwa.",
+        "Gcina ukudla okune-vitamin K ngokulinganayo isonto ngesonto; ukushintsha okungazelelwe kungathinta izingxoxo zokufundisa — ama-INR asala kudokotela. I-Materia ayiqambi i-INR noma umthamo.",
+        "Tshela umkhiqizi ngaphambi kokuqala imithi emisha, ama-herbals, noma imithi yobuhlungu — imikhiqizo eminingi ihlangana ne-warfarin.",
+        "Uma uthola ukopha okungajwayelekile, indle emnyama, ikhanda elibuhlungu kakhulu, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie antikoagulant soos op die geëtiketteerde produk en jou sorgplan aangedui.",
+        "Hou vitamien K-ryke kos redelik konsekwent week tot week; skielike dieetskommelings kan antikoagulasie-onderrig beïnvloed — INR-teikens bly klinikus-gerig. Materia versin nie ’n INR of dosis nie.",
+        "Sê vir jou apteker voordat jy nuwe medisyne, kruie of pynstillers begin — baie produkte wisselwerk met warfarin.",
+        "As jy ongewone bloeding, swart stoelgang, ernstige hoofpyn of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa anticoagulant ena hantle kamoo e hlalositsoeng holabel ea sehlahiswa le moralo oa tlhokomelo.",
+        "Boloka lijo tse nang le vitamin K ka mokhoa o ts'oanang beke le beke; liphetoho tsa tšohanyetso li ka ama lipuisano tsa thuto — li-INR li sala tsa ngaka. Materia ha e iqape INR kapa tekanyo.",
+        "Bolella rakhemisi pele u qala meriana e mecha, li-herbals, kapa meriana ea bohloko — lihlahiswa tse ngata li kopana le warfarin.",
+        "Haeba u fumana ho tsoa mali ho sa tloaelehang, bolusepa bo botšo, hlooho e bohloko haholo, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza lokuthintela ukopha ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso nakwicwangciso lokhathalelo.",
+        "Gcina ukutya okune-vitamin K ngokungaguquki iveki nganye; utshintsho olukhawulezayo lunokuchaphazela iingxoxo zokufundisa — ii-INR zihlala zilawulwa gugqirha. I-Materia ayiyiqiqi i-INR okanye idosi.",
+        "Xelela usokhemisti phambi kokuqala amayeza amatsha, ii-herbals, okanye amayeza eentlungu — iimveliso ezininzi zidibana ne-warfarin.",
+        "Ukuba ufumana ukopha okungaqhelekanga, indolwana emnyama, intloko ebuhlungu kakhulu, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
