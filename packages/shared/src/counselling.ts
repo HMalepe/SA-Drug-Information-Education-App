@@ -419,6 +419,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-levothyroxine": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this thyroid medicine exactly as directed on your labelled product.",
+        "Common teaching: take consistently on an empty stomach; iron, calcium, and some foods reduce absorption — ask your pharmacist how to separate them; Materia does not invent a spacing schedule or mcg dose.",
+        "Keep the same brand/generic where possible and tell your clinician before switching products.",
+        "If you get chest pain, severe palpitations, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi wethyroid njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukufundisa okujwayelekile: sebenzisa ngokungaguquki ngesisu esingenalutho; i-iron, i-calcium, nokudla okuthile kunciphisa ukumunca — buza umkhiqizi ukuthi uzihlukanise kanjani; i-Materia ayiqambi isikhathi noma umthamo we-mcg.",
+        "Gcina uhlobo olufanayo uma kungenzeka futhi tshela udokotela ngaphambi kokushintsha imikhiqizo.",
+        "Uma uthola ubuhlungu besifuba, ukushaya kwenhliziyo okubi, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie skildkliermedisyne soos op die geëtiketteerde produk aangedui.",
+        "Algemene onderrig: neem konsekwent op ’n leë maag; yster, kalsium en sommige kosse verminder absorpsie — vra jou apteker hoe om dit te skei; Materia versin nie ’n tydskedule of mcg-dosis nie.",
+        "Hou dieselfde handelsmerk/generiese produk waar moontlik en sê vir jou klinikus voor jy produkte wissel.",
+        "As jy borspyn, ernstige hartkloppings of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona oa thyroid hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Thuto e tloaelehileng: e nke ka mokhoa o ts'oanang ka mpa e se nang letho; tšepe, calcium le lijo tse ling li fokotsa absorption — botsa rakhemisi hore u li arole joang; Materia ha e iqape nako kapa tekanyo ea mcg.",
+        "Boloka mofuta o tšoanang ha ho khoneha ’me bolelle ngaka pele u fetola lihlahiswa.",
+        "Haeba u fumana bohloko ba sefuba, ho otla ha pelo ho tebileng, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza le-thyroid ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Ukufundisa okuqhelekileyo: sebenzisa ngokungaguquki ngesisu esingenanto; i-iron, i-calcium, kunye nokutya okuthile kunciphisa ukufunxwa — buza usokhemisti indlela yokuzahlula; i-Materia ayiyiqiqi ixesha okanye idosi ye-mcg.",
+        "Gcina uhlobo olufanayo xa kunokwenzeka kwaye xelela ugqirha phambi kokutshintsha iimveliso.",
+        "Ukuba ufumana iintlungu zesifuba, ukubetha kwentliziyo okuqatha, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
