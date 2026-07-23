@@ -54,4 +54,19 @@ describe("seed S0 gate", () => {
     const hits = resolveSearch("Glucophage", molecules, products);
     assert.equal(hits[0]?.moleculeSlug, "metformin");
   });
+
+  it("resolves Rimactane → rifampicin from hiv-tb seed", () => {
+    const hits = resolveSearch("Rimactane", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "rifampicin");
+  });
+
+  it("publishes educational rifampicin↔dolutegravir interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-rif-dtg");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });

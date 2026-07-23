@@ -1,0 +1,381 @@
+{
+  "meta": {
+    "therapeuticArea": "hiv-tb",
+    "note": "SA-critical chronic scaffold (Doc 29). Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. ART/TB regimens are clinician-directed — Materia teaches the why, not the prescription.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-cipla", "name": "Cipla", "madeInSa": true },
+    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
+    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
+    { "id": "mfr-msd", "name": "MSD", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler / diluent",
+      "allergyRisk": "Relevant in lactose intolerance / rare milk protein allergy contexts"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-tdf",
+      "slug": "tenofovir-disoproxil",
+      "innName": "Tenofovir disoproxil",
+      "className": "NRTI — nucleotide reverse transcriptase inhibitor",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["tdf", "viread", "tenofovir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Competes with natural nucleotides to terminate HIV reverse transcription — educational framing only; confirm against current SA ART guidance and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-lamivudine",
+      "slug": "lamivudine",
+      "innName": "Lamivudine",
+      "className": "NRTI — nucleoside reverse transcriptase inhibitor",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["3tc", "epivir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Chain-terminating NRTI used across ART backbones — teaching layer; regimens stay clinician-directed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-dolutegravir",
+      "slug": "dolutegravir",
+      "innName": "Dolutegravir",
+      "className": "Integrase strand transfer inhibitor (INSTI)",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["dtg", "tivicay"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-efavirenz",
+      "slug": "efavirenz",
+      "innName": "Efavirenz",
+      "className": "NNRTI",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["efv", "stocrin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-ritonavir",
+      "slug": "ritonavir",
+      "innName": "Ritonavir",
+      "className": "HIV protease inhibitor / PK booster",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["rtv", "norvir"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-rifampicin",
+      "slug": "rifampicin",
+      "innName": "Rifampicin",
+      "className": "Rifamycin antimycobacterial",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["rifampin", "rimactane"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Inhibits mycobacterial RNA polymerase — cornerstone TB teaching molecule; enzyme-induction interactions are the counselling hook.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-isoniazid",
+      "slug": "isoniazid",
+      "innName": "Isoniazid",
+      "className": "Antimycobacterial — cell-wall synthesis inhibitor",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["inh"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-pyrazinamide",
+      "slug": "pyrazinamide",
+      "innName": "Pyrazinamide",
+      "className": "Antimycobacterial",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["pza"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-ethambutol",
+      "slug": "ethambutol",
+      "innName": "Ethambutol",
+      "className": "Antimycobacterial",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["emb"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-cotrimoxazole",
+      "slug": "sulfamethoxazole-trimethoprim",
+      "innName": "Sulfamethoxazole-trimethoprim",
+      "className": "Sulphonamide + dihydrofolate reductase inhibitor",
+      "therapeuticArea": "hiv-tb",
+      "synonyms": ["co-trimoxazole", "bactrim", "septran", "cotrimoxazole"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-tle",
+      "moleculeId": "mol-tdf",
+      "manufacturerId": "mfr-cipla",
+      "brandName": "Teevir / TLD FDC demos",
+      "strength": "FDC (illustrative packaging row)",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "synonymKeys": ["tld", "teevir", "tenofovir lamivudine dolutegravir"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-viread",
+      "moleculeId": "mol-tdf",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Viread",
+      "strength": "300 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["viread"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-tivicay",
+      "moleculeId": "mol-dolutegravir",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Tivicay",
+      "strength": "50 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["tivicay", "dtg"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-rimactane",
+      "moleculeId": "mol-rifampicin",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Rimactane",
+      "strength": "150 mg / 300 mg",
+      "form": "capsule",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["rimactane", "rifampicin"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-inh-asp",
+      "moleculeId": "mol-isoniazid",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Isoniazid Aspen",
+      "strength": "100 mg / 300 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "synonymKeys": ["isoniazid"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-bactrim",
+      "moleculeId": "mol-cotrimoxazole",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Bactrim",
+      "strength": "400/80 mg · 800/160 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["bactrim", "septran", "cotrimoxazole"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-tdf",
+      "moleculeId": "mol-tdf",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult ART dosing not published in Materia yet — confirm against current SA ART guidelines and the labelled product. Do not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Severe toxicity / overdose is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Adherence and renal monitoring conversations matter — escalate clinically; Materia never invents ART regimens.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-rifampicin",
+      "moleculeId": "mol-rifampicin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult TB dosing not published in Materia yet — confirm against SA TB guidelines and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Orange-red body fluids are expected; enzyme induction can reduce effect of many medicines including some ART — check interactions with a clinician/pharmacist.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-rif-dtg",
+      "moleculeAId": "mol-rifampicin",
+      "moleculeBId": "mol-dolutegravir",
+      "severity": "major",
+      "mechanism": {
+        "value": "Rifampicin induces metabolising enzymes and can lower dolutegravir exposure — educational interaction flag only; confirm current SA guidance before acting.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose adjustment here — refer to current SA ART/TB guidance and the treating clinician.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-viread",
+      "productId": "prod-viread",
+      "sepZar": 180.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-rimactane",
+      "productId": "prod-rimactane",
+      "sepZar": 65.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-rifampicin",
+      "moleculeId": "mol-rifampicin",
+      "title": "Rifampicin — orange urine & enzyme induction",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-rif-1",
+          "order": 1,
+          "title": "Expected colour change",
+          "body": "Orange-red urine, tears, and sweat can alarm patients. Teaching that this is expected improves adherence — educational framing only.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-rif-2",
+          "order": 2,
+          "title": "Why ART + TB is high stakes",
+          "body": "Rifampicin induces drug-metabolising enzymes. Some ART exposures fall — Materia flags the interaction educationally and refuses to invent dose changes.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-rif-1",
+          "prompt": "A patient on rifampicin and dolutegravir asks if orange urine means kidney damage. Best educational frame?",
+          "choices": [
+            "Stop rifampicin immediately",
+            "Orange-red fluids are an expected rifampicin effect — still escalate new pain/oliguria clinically; do not invent a dose change",
+            "Double dolutegravir tonight",
+            "It means the TB is cured"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Colour change counselling prevents unnecessary stops — refer clinically; Materia never invents ART/TB dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}
