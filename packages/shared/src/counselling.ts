@@ -1103,6 +1103,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-hctz": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this water tablet / blood-pressure medicine exactly as directed on your labelled product.",
+        "Thiazide counselling commonly includes more frequent urination and sun sensitivity — confirm timing and sun advice against the labelled product. Materia does not invent a dose, clock time, or potassium target.",
+        "Tell your pharmacist about dizziness, muscle cramps, or if you become very dehydrated or unwell.",
+        "If you faint, get severe dizziness, chest pain, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le lithabhulethi lamanzi / umuthi womfutho wegazi njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ukwelulekwa kwe-thiazide kuvame ukufaka ukuchama kaningi nokuzwa ilanga — qinisekisa isikhathi neseluleko selanga kumkhiqizo onelebula. I-Materia ayiqambi umthamo, isikhathi, noma umgomo we-potassium.",
+        "Tshela umkhiqizi ngesiyezi, ukuqaqamba kwemisipha, noma uma oma kakhulu noma ugula.",
+        "Uma uwela, uthola isiyezi esikhulu, ubuhlungu besifuba, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie waterpil / bloeddrukmiddel soos op die geëtiketteerde produk aangedui.",
+        "Tiasied-berading sluit dikwels meer gereelde urinering en sonsensitiwiteit in — bevestig tydsberekening en sonadvies teen die geëtiketteerde produk. Materia versin nie ’n dosis, kloktyd of kaliumteiken nie.",
+        "Sê vir jou apteker van duiseligheid, spierkrampe, of as jy baie gedehidreer of siek word.",
+        "As jy flou word, ernstige duiseligheid, borspyn of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa pilisi ena ea metsi / moriana oa khatello ea mali hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Keletso ea thiazide hangata e kenyelletsa ho ntša moroto hangata le ho utloa letsatsi — netefatsa nako le keletso ea letsatsi holabel. Materia ha e iqape tekanyo, nako, kapa sepheo sa potassium.",
+        "Bolella rakhemisi ka ho tsekela, ho tsitsipa ha mesifa, kapa haeba u oma haholo kapa u kula.",
+        "Haeba u akheha, u fumana ho tsekela ho tebileng, bohloko ba sefuba, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli pilisi lamanzi / yeza loxinzelelo lwegazi ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Iingcebiso ze-thiazide zihlala zibandakanya ukuchama rhoqo kunye nokuziva ilanga — qinisekisa ixesha nengcebiso yelanga kwileyibhile. I-Materia ayiyiqiqi idosi, ixesha, okanye usukelo lwe-potassium.",
+        "Xelela usokhemisti ngesiyezi, ukuqaqamba kwemisipha, okanye ukuba woma kakhulu okanye uyagula.",
+        "Ukuba uyawa, ufumana isiyezi esiqatha, iintlungu zesifuba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
