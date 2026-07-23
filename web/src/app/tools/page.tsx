@@ -320,8 +320,8 @@ export default function ToolsPage() {
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
           Published SA counselling: try <code>amoxicillin</code>, <code>metformin</code>,{" "}
-          <code>omeprazole</code>, <code>atorvastatin</code>, <code>simvastatin</code>, or{" "}
-          <code>paracetamol</code> (EN/ZU/AF/ST/XH).
+          <code>salbutamol</code>, <code>atorvastatin</code>, <code>simvastatin</code>, or{" "}
+          <code>omeprazole</code> (EN/ZU/AF/ST/XH).
         </p>{" "}
         <button
           className="btn"

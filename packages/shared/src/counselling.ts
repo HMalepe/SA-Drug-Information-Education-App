@@ -989,6 +989,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-salbutamol": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Use this reliever inhaler exactly as directed on your labelled product and as shown by your pharmacist.",
+        "SABA counselling commonly includes technique checks (shake, breathe out, seal lips, slow inhale) — confirm every step against the labelled product; Materia does not invent a puff count or dose.",
+        "Tell your pharmacist if you need the reliever more often than usual — that may need clinical review, not a Materia schedule.",
+        "If breathing is getting worse, the inhaler is not helping, or you cannot speak in full sentences — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le inhaler yokuhlengahlengisa njengoba kubhalwe kumkhiqizo onelebula nanjengoba umkhiqizi ekhombisile.",
+        "Ukwelulekwa kwe-SABA kuvame ukufaka ukuhlola indlela (nyakazisa, phefumula uphume, vala izindebe, phefumula kancane) — qinisekisa isinyathelo ngasinye kumkhiqizo onelebula; i-Materia ayiqambi inani lama-puff noma umthamo.",
+        "Tshela umkhiqizi uma udinga i-reliever kaningi kunokujwayelekile — kungadinga ukubuyekezwa kudokotela, hhayi ishedyuli ye-Materia.",
+        "Uma ukuphefumula kuya kuba kubi, i-inhaler ayisizi, noma ungakwazi ukukhuluma imisho egcwele — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Gebruik hierdie verligtingsinhaler soos op die geëtiketteerde produk aangedui en soos jou apteker gewys het.",
+        "SABA-berading sluit dikwels tegniekkontroles in (skud, asem uit, seël lippe, stadig inasem) — bevestig elke stap teen die geëtiketteerde produk; Materia versin nie ’n puf-telling of dosis nie.",
+        "Sê vir jou apteker as jy die verligter meer as gewoonlik nodig het — dit mag kliniese hersiening nodig hê, nie ’n Materia-skedule nie.",
+        "As asemhaling versleg, die inhaler nie help nie, of jy nie vol sinne kan praat nie — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa inhaler ena ea phomolo hantle kamoo e hlalositsoeng holabel le kamoo rakhemisi a bontšitseng.",
+        "Keletso ea SABA hangata e kenyelletsa ho hlahloba mokhoa (tsukutla, hema ka ntle, koala melomo, hema butle) — netefatsa mohato o mong le o mong holabel; Materia ha e iqape palo ea li-puff kapa tekanyo.",
+        "Bolella rakhemisi haeba u hloka reliever hangata ho feta tloaelo — ho ka hloka tlhahlobo ea bongaka, eseng kemiso ea Materia.",
+        "Haeba ho hema ho mpefala, inhaler ha e thuse, kapa u sitoa ho bua lipolelo tse felletseng — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le inhaler yokukhulula ngokuchanekileyo njengoko kubhaliwe kwileyibhile nanjengoko usokhemisti ebonisile.",
+        "Iingcebiso ze-SABA zihlala zibandakanya ukujonga indlela (shukuma, phefumla uphume, vala imilebe, phefumla kancinci) — qinisekisa inyathelo ngalinye kwileyibhile; i-Materia ayiyiqiqi inani le-puff okanye idosi.",
+        "Xelela usokhemisti ukuba ufuna i-reliever rhoqo ngakumbi kunesiqhelo — kunokufuna ukuphononongwa kugqirha, hayi ishedyuli ye-Materia.",
+        "Ukuba ukuphefumla kuya kuba bi, i-inhaler ayincedisi, okanye awukwazi ukuthetha izivakalisi ezigcweleyo — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
