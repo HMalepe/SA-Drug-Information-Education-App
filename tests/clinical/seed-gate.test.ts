@@ -74,4 +74,19 @@ describe("seed S0 gate", () => {
     const hits = resolveSearch("Ventolin", molecules, products);
     assert.equal(hits[0]?.moleculeSlug, "salbutamol");
   });
+
+  it("resolves Lipitor → atorvastatin from cardiovascular seed", () => {
+    const hits = resolveSearch("Lipitor", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "atorvastatin");
+  });
+
+  it("publishes educational warfarin↔aspirin interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-warfarin-aspirin");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
