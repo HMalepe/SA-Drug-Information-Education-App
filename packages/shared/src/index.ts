@@ -9,4 +9,7 @@ export * from "./tiers.js";
 export * from "./substitution.js";
 export * from "./counselling.js";
 export * from "./offline.js";
+export * from "./formulary.js";
+export * from "./locum.js";
+export * from "./coldchain.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

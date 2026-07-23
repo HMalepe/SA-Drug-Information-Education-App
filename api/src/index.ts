@@ -4,6 +4,7 @@ import { z } from "zod";
 import {
   COUNSELLING_LANGS,
   TIER_PRICES_ZAR,
+  buildLocumBrief,
   buildOfflineEssential,
   buildSubstitutionOptions,
   calculateDose,
@@ -11,9 +12,13 @@ import {
   courseCompletionPercent,
   expertLevelFromPercent,
   gateFeature,
+  getColdChainNote,
   getCounsellingScript,
   gradeQuizAnswer,
+  listColdChainNotes,
   listCounsellingLangs,
+  listSchemes,
+  matchFormularyAndCoPay,
   resolveSearch,
   type CounsellingLang,
   type ScheduleCode,
@@ -28,6 +33,7 @@ import {
   getCourseById,
   getMoleculeBySlug,
   getOrCreateProgress,
+  getSafety,
   logConsent,
   recordQuizAttempt,
   setUserTier,
@@ -162,6 +168,94 @@ app.get("/tools/substitution/:moleculeSlug", (req, res) => {
     selectedProductId,
   );
   res.json({ molecule: { id: mol.id, slug: mol.slug, innName: mol.innName }, ...result });
+});
+
+/* ── Formulary + co-pay switch (Build Spec §12 — Pro) ── */
+app.get("/tools/formulary/schemes", (_req, res) => {
+  res.json({ schemes: listSchemes(db.formularyEntries) });
+});
+
+app.get("/tools/formulary/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "formulary_copay");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Formulary & co-pay calculator is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const schemeName = String(req.query.scheme ?? "Discovery Health");
+  const selectedProductId = req.query.selectedProductId
+    ? String(req.query.selectedProductId)
+    : undefined;
+  const result = matchFormularyAndCoPay({
+    moleculeId: mol.id,
+    schemeName,
+    products: db.products,
+    formulary: db.formularyEntries,
+    prices: db.priceRecords,
+    selectedProductId,
+  });
+  res.json({ molecule: { slug: mol.slug, innName: mol.innName }, ...result });
+});
+
+/* ── Locum / handover brief (Build Spec §12 — Pro) ── */
+app.get("/tools/locum/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "locum_brief");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Locum brief is a Professional feature", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const brief = buildLocumBrief({
+    moleculeId: mol.id,
+    innName: mol.innName,
+    className: mol.className,
+    products: db.products,
+    safety: getSafety(mol.id),
+  });
+  res.json({ brief });
+});
+
+/* ── Cold-chain / load-shedding notes (Build Spec §12 — Pro) ── */
+app.get("/tools/cold-chain", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "cold_chain_notes");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Cold-chain notes are a Professional feature",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const key = req.query.key ? String(req.query.key) : undefined;
+  if (key) {
+    const note = getColdChainNote(key);
+    if (!note) {
+      res.status(404).json({ error: "Note not found", available: listColdChainNotes().map((n) => n.productKey) });
+      return;
+    }
+    res.json({ note });
+    return;
+  }
+  res.json({ notes: listColdChainNotes() });
 });
 
 /* ── Multilingual counselling (Build Spec §9 — Pro) ── */

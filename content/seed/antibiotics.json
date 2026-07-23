@@ -669,6 +669,68 @@
     }
   ],
   "doseRules": [],
+  "formularyEntries": [
+    {
+      "id": "form-disco-amoxil",
+      "productId": "prod-amoxil",
+      "schemeName": "Discovery Health",
+      "reimbursed": true,
+      "coPayEstimateZar": 45,
+      "sourceId": "src-materia-edu",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed formulary — replace with scheme partnership data"
+    },
+    {
+      "id": "form-disco-aspen",
+      "productId": "prod-amoxicillin-asp",
+      "schemeName": "Discovery Health",
+      "reimbursed": true,
+      "coPayEstimateZar": 15,
+      "sourceId": "src-materia-edu",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed formulary — replace with scheme partnership data"
+    },
+    {
+      "id": "form-bonitas-amoxil",
+      "productId": "prod-amoxil",
+      "schemeName": "Bonitas",
+      "reimbursed": true,
+      "coPayEstimateZar": 40,
+      "sourceId": "src-materia-edu",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed formulary — replace with scheme partnership data"
+    },
+    {
+      "id": "form-bonitas-aspen",
+      "productId": "prod-amoxicillin-asp",
+      "schemeName": "Bonitas",
+      "reimbursed": true,
+      "coPayEstimateZar": 12,
+      "sourceId": "src-materia-edu",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed formulary — replace with scheme partnership data"
+    },
+    {
+      "id": "form-disco-augmentin",
+      "productId": "prod-augmentin",
+      "schemeName": "Discovery Health",
+      "reimbursed": true,
+      "coPayEstimateZar": 95,
+      "sourceId": "src-materia-edu",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed formulary — replace with scheme partnership data"
+    },
+    {
+      "id": "form-disco-sandoz",
+      "productId": "prod-coamoxiclav-sandoz",
+      "schemeName": "Discovery Health",
+      "reimbursed": true,
+      "coPayEstimateZar": 35,
+      "sourceId": "src-materia-edu",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed formulary — replace with scheme partnership data"
+    }
+  ],
   "courses": [
     {
       "id": "course-amox",

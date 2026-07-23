@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import type {
   Course,
   Excipient,
+  FormularyEntry,
   Interaction,
   Lesson,
   Manufacturer,
@@ -29,6 +30,7 @@ interface SeedFile {
   priceRecords: PriceRecord[];
   doseRules: DoseRule[];
   interactions?: Interaction[];
+  formularyEntries?: FormularyEntry[];
   courses: Array<
     Course & {
       lessons: Array<Omit<Lesson, "courseId"> & { order: number }>;
@@ -78,6 +80,7 @@ export const db = {
   priceRecords: seed.priceRecords,
   doseRules: seed.doseRules ?? [],
   interactions: seed.interactions ?? [],
+  formularyEntries: seed.formularyEntries ?? [],
   courses: seed.courses.map((c) => ({
     ...c,
     lessons: c.lessons.map((l) => ({ ...l, courseId: c.id })),
