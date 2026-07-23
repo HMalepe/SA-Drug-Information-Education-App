@@ -21,6 +21,7 @@ import {
   buildSubstitutionOptions,
   calculateDose,
   assistDoseAdjustment,
+  buildClashBoard,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -713,6 +714,69 @@ app.post("/companion/interactions/check", (req, res) => {
   const nameById = new Map(db.molecules.map((m) => [m.id, m.innName]));
   const result = checkRegimenInteractions(ids, db.interactions, nameById);
   res.json(result);
+});
+
+/* ── Full-regimen clash board (Build Spec §12 — Pro) ── */
+app.post("/tools/clash-board", (req, res) => {
+  const schema = z.object({
+    userId: z.string().optional(),
+    moleculeIds: z.array(z.string()).optional(),
+    moleculeSlugs: z.array(z.string()).optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = parsed.data.userId ? requireUser(parsed.data.userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "clash_board");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Clash board is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+
+  const fromSlugs = (parsed.data.moleculeSlugs ?? [])
+    .map((slug) => getMoleculeBySlug(slug.trim()))
+    .filter((m): m is NonNullable<typeof m> => Boolean(m))
+    .map((m) => m.id);
+
+  const fromIds = parsed.data.moleculeIds ?? [];
+  const fromRegimen = user ? (db.regimens.get(user.id) ?? []).map((r) => r.moleculeId) : [];
+  const ids = [...(fromSlugs.length || fromIds.length ? [...fromSlugs, ...fromIds] : fromRegimen)];
+  if (ids.length === 0) {
+    res.status(400).json({
+      error: "Provide moleculeSlugs, moleculeIds, or a saved companion regimen",
+    });
+    return;
+  }
+
+  const regimen = ids.map((id) => {
+    const mol = db.molecules.find((m) => m.id === id);
+    const fromSaved = user
+      ? (db.regimens.get(user.id) ?? []).find((r) => r.moleculeId === id)
+      : undefined;
+    return {
+      moleculeId: id,
+      moleculeName: fromSaved?.moleculeName ?? mol?.innName ?? id,
+    };
+  });
+
+  const safetyByMoleculeId = new Map(
+    db.safetyProfiles.filter((s) => ids.includes(s.moleculeId)).map((s) => [s.moleculeId, s] as const),
+  );
+
+  const board = buildClashBoard({
+    regimen,
+    molecules: db.molecules,
+    interactions: db.interactions,
+    safetyByMoleculeId,
+  });
+  res.json(board);
 });
 
 /* ── Companion reminders + messaging (Doc 16 WhatsApp/SMS/email) ── */

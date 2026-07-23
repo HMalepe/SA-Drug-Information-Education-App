@@ -14,6 +14,7 @@ export default function ToolsPage() {
   const [scanInput, setScanInput] = useState("6001234567890");
   const [egfr, setEgfr] = useState("45");
   const [adjustContext, setAdjustContext] = useState("renal");
+  const [clashSlugs, setClashSlugs] = useState("amoxicillin, warfarin, aspirin");
   const [out, setOut] = useState("");
   const [offlineBadge, setOfflineBadge] = useState(false);
 
@@ -93,6 +94,21 @@ export default function ToolsPage() {
       }),
     });
     track("tool_used", { tool: "dose_adjustment" }, { tier: "professional" });
+    setOut(JSON.stringify(await res.json(), null, 2));
+  }
+
+  async function runClashBoard() {
+    const uid = await ensurePro();
+    const moleculeSlugs = clashSlugs
+      .split(/[,;\n]+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+    const res = await fetch(`${API}/tools/clash-board`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: uid, moleculeSlugs }),
+    });
+    track("tool_used", { tool: "clash_board" }, { tier: "professional" });
     setOut(JSON.stringify(await res.json(), null, 2));
   }
 
@@ -220,6 +236,22 @@ export default function ToolsPage() {
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
           Never invents an adjusted mg/schedule — surfaces published renal/hepatic notes only.
+        </p>
+      </div>
+
+      <div className="card">
+        <label className="muted">Clash board (§12) — paste molecule slugs</label>
+        <textarea
+          style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10, minHeight: 72 }}
+          value={clashSlugs}
+          onChange={(e) => setClashSlugs(e.target.value)}
+          placeholder="amoxicillin, warfarin, aspirin"
+        />
+        <button className="btn" type="button" onClick={() => void runClashBoard()}>
+          Build clash board
+        </button>
+        <p className="muted" style={{ marginTop: 8 }}>
+          Colour-coded published interactions, duplications, class overlap, renal/hepatic/food flags. Empty ≠ safe.
         </p>
       </div>
 

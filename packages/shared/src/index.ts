@@ -31,4 +31,5 @@ export * from "./excipients.js";
 export * from "./modes.js";
 export * from "./doseAdjust.js";
 export * from "./toxicityTimeline.js";
+export * from "./clashBoard.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

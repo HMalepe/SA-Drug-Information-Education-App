@@ -253,6 +253,48 @@ main {
   font-size: 13px;
 }
 
+.clash-board {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.clash-row {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fff;
+  border-left: 4px solid var(--slate);
+}
+
+.clash-row.tone-red {
+  border-left-color: var(--danger);
+  background: #fef2f2;
+}
+
+.clash-row.tone-orange {
+  border-left-color: var(--caution);
+  background: #fff7ed;
+}
+
+.clash-row.tone-yellow {
+  border-left-color: var(--adjust);
+  background: #fffbeb;
+}
+
+.clash-row.tone-slate {
+  border-left-color: #64748b;
+  background: #f8fafc;
+}
+
+.clash-kind {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+}
+
 .muted {
   color: var(--slate);
   font-size: 14px;
