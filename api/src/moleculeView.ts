@@ -2,6 +2,7 @@ import {
   MEDICINE_360_TABS,
   buildMoleculeVisualGallery,
   buildProductVisualCard,
+  buildManufacturingTransparency,
   emptyStateMessage,
   explainProductExcipients,
   getModeLens,
@@ -84,10 +85,17 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
             visual: buildProductVisualCard(p),
           };
         }),
+        manufacturing: buildManufacturingTransparency({
+          molecule,
+          products,
+          manufacturers,
+        }),
         explainerNote:
           "Excipients explained (Build Spec §5.4) — inactive until the wrong patient context. Confirm against the labelled pack.",
         visualNote:
           "Packaging form silhouettes (Build Spec §5.5) — educational placeholders; imprint codes are never invented.",
+        manufacturingNote:
+          "Manufacturing transparency (Build Spec §5.3 / §10.1) — published manufacturer metadata only; blank sites are not guessed.",
         insertNote:
           "Package-insert summaries use Tools → Insert translator (Build Spec §9). Professional and Grade-5 passages are separately authored — never auto-invented.",
       },

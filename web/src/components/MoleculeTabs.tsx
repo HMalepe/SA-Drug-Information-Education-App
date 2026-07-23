@@ -170,15 +170,65 @@ type ProductRow = {
   };
 };
 
+type ManufacturingRow = {
+  productId: string;
+  brandName: string;
+  isOriginator: boolean;
+  schedule: string;
+  manufacturerName: string | null;
+  marketingCompany: string | null;
+  plantSite: string | null;
+  apiOrigin: string | null;
+  packagingSite: string | null;
+  madeInSa: boolean | null;
+  missingFields: string[];
+};
+
 function SaProductsPanel({ body }: { body: Record<string, unknown> }) {
   const products = (Array.isArray(body.lineage) ? body.lineage : []) as ProductRow[];
   const note = String(body.explainerNote ?? "");
   const visualNote = String(body.visualNote ?? "");
+  const manufacturingNote = String(body.manufacturingNote ?? "");
+  const manufacturing = body.manufacturing as
+    | { rows?: ManufacturingRow[]; note?: string; disclaimer?: string }
+    | null
+    | undefined;
 
   return (
     <div>
       {note ? <p className="muted">{note}</p> : null}
       {visualNote ? <p className="muted">{visualNote}</p> : null}
+      {manufacturingNote ? <p className="muted">{manufacturingNote}</p> : null}
+      {manufacturing?.rows && manufacturing.rows.length > 0 ? (
+        <section style={{ marginBottom: "1.5rem" }}>
+          <h3 style={{ marginBottom: "0.35rem" }}>Manufacturing transparency</h3>
+          {manufacturing.note ? <p className="muted">{manufacturing.note}</p> : null}
+          {manufacturing.rows.map((r) => (
+            <article key={r.productId} style={{ marginBottom: "1rem" }}>
+              <strong>
+                {r.brandName}
+                {r.isOriginator ? " · originator" : ""}
+              </strong>
+              <ul style={{ margin: "6px 0 0", paddingLeft: "1.1rem" }} className="muted">
+                <li>Manufacturer: {r.manufacturerName ?? "— not published"}</li>
+                <li>Marketing company: {r.marketingCompany ?? "— not published"}</li>
+                <li>Plant / finished site: {r.plantSite ?? "— not published"}</li>
+                <li>API origin: {r.apiOrigin ?? "— not published"}</li>
+                <li>Packaging site: {r.packagingSite ?? "— not published"}</li>
+                <li>
+                  Made in SA:{" "}
+                  {r.madeInSa == null ? "— not published" : r.madeInSa ? "Yes" : "No"}
+                </li>
+              </ul>
+            </article>
+          ))}
+          {manufacturing.disclaimer ? (
+            <p className="muted" style={{ fontSize: 13 }}>
+              {manufacturing.disclaimer}
+            </p>
+          ) : null}
+        </section>
+      ) : null}
       {products.length === 0 ? (
         <p className="muted">No published SA products linked yet.</p>
       ) : (
