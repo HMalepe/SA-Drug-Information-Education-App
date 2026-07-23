@@ -27,6 +27,9 @@ export default async function LearnPage() {
       <p>
         <a className="btn" href="/learn/review">
           Spaced review (§7.5)
+        </a>{" "}
+        <a className="btn" href="/learn/mystery" style={{ background: "var(--ink)" }}>
+          Mystery Molecule (§7.3)
         </a>
       </p>
       {courses.length === 0 ? (

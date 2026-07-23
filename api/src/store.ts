@@ -39,6 +39,7 @@ import type {
   ProfessionalNote,
   CardState,
 } from "@materia/shared";
+import type { MysteryRound } from "@materia/shared";
 
 interface SeedFile {
   sources: Source[];
@@ -153,6 +154,8 @@ export const db = {
   dependants: [] as DependantProfile[],
   professionalNotes: [] as ProfessionalNote[],
   reviewCardStates: [] as CardState[],
+  mysteryRounds: new Map<string, MysteryRound>(),
+  mysteryUnlocks: new Map<string, number>(),
   subscriptions: [] as SubscriptionStub[],
   organisations: [] as Organization[],
   seats: [] as Seat[],

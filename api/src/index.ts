@@ -45,6 +45,9 @@ import {
   buildReviewSession,
   collectReviewCards,
   initialCardState,
+  buildMysteryRound,
+  publicMysteryRound,
+  gradeMysteryGuess,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -744,6 +747,109 @@ app.post("/academy/review/:userId/grade", (req, res) => {
   if (idx >= 0) db.reviewCardStates[idx] = next;
   else db.reviewCardStates.push(next);
   res.json({ state: next });
+});
+
+/* ── Mystery Molecule mini-game (Build Spec §7.3) ── */
+app.post("/academy/mystery/start", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    seed: z.string().optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Mystery Molecule requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const seed = parsed.data.seed ?? `${new Date().toISOString().slice(0, 10)}|${user.id}|${Date.now()}`;
+  const round = buildMysteryRound({
+    molecules: db.molecules,
+    products: db.products,
+    seed,
+  });
+  if (!round) {
+    res.status(404).json({ error: "No eligible published molecules for a mystery round" });
+    return;
+  }
+  db.mysteryRounds.set(round.roundId, round);
+  db.mysteryUnlocks.set(round.roundId, 1);
+  res.status(201).json(publicMysteryRound(round, 1));
+});
+
+app.post("/academy/mystery/:roundId/hint", (req, res) => {
+  const schema = z.object({ userId: z.string() });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Mystery Molecule requires Student or Professional", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const round = db.mysteryRounds.get(req.params.roundId);
+  if (!round) {
+    res.status(404).json({ error: "Round not found" });
+    return;
+  }
+  const current = db.mysteryUnlocks.get(round.roundId) ?? 1;
+  const next = Math.min(current + 1, round.hints.length);
+  db.mysteryUnlocks.set(round.roundId, next);
+  res.json(publicMysteryRound(round, next));
+});
+
+app.post("/academy/mystery/:roundId/guess", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    guess: z.string().min(1).max(120),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Mystery Molecule requires Student or Professional", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const round = db.mysteryRounds.get(req.params.roundId);
+  if (!round) {
+    res.status(404).json({ error: "Round not found" });
+    return;
+  }
+  const result = gradeMysteryGuess({ round, guess: parsed.data.guess });
+  if (result.correct) {
+    db.mysteryUnlocks.set(round.roundId, round.hints.length);
+  }
+  res.json({
+    ...result,
+    view: publicMysteryRound(round, db.mysteryUnlocks.get(round.roundId) ?? 1),
+  });
 });
 
 /* ── Companion (Build Spec §6) ── */
