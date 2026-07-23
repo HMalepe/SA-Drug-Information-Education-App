@@ -7,6 +7,9 @@ export type FeatureKey =
   | "companion_schedule"
   | "companion_interaction_check"
   | "dose_calculator"
+  | "substitution_sep"
+  | "multilingual_counselling"
+  | "offline_core"
   | "ask_materia_unlimited"
   | "billing_manage";
 
@@ -27,6 +30,9 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "companion_schedule",
     "companion_interaction_check",
     "dose_calculator",
+    "substitution_sep",
+    "multilingual_counselling",
+    "offline_core",
     "ask_materia_unlimited",
     "billing_manage",
   ],
@@ -37,6 +43,9 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "companion_schedule",
     "companion_interaction_check",
     "dose_calculator",
+    "substitution_sep",
+    "multilingual_counselling",
+    "offline_core",
     "ask_materia_unlimited",
     "billing_manage",
   ],

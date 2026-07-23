@@ -6,4 +6,7 @@ export * from "./dosing.js";
 export * from "./academy.js";
 export * from "./companion.js";
 export * from "./tiers.js";
+export * from "./substitution.js";
+export * from "./counselling.js";
+export * from "./offline.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

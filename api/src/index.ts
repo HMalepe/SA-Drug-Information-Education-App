@@ -2,14 +2,21 @@ import cors from "cors";
 import express from "express";
 import { z } from "zod";
 import {
+  COUNSELLING_LANGS,
   TIER_PRICES_ZAR,
+  buildOfflineEssential,
+  buildSubstitutionOptions,
   calculateDose,
   checkRegimenInteractions,
   courseCompletionPercent,
   expertLevelFromPercent,
   gateFeature,
+  getCounsellingScript,
   gradeQuizAnswer,
+  listCounsellingLangs,
   resolveSearch,
+  type CounsellingLang,
+  type ScheduleCode,
   type Tier,
   type UserMode,
 } from "@materia/shared";
@@ -19,6 +26,7 @@ import {
   completeLesson,
   db,
   getCourseById,
+  getMoleculeBySlug,
   getOrCreateProgress,
   logConsent,
   recordQuizAttempt,
@@ -123,6 +131,120 @@ app.post("/tools/dose-calculator", (req, res) => {
   }
   const result = calculateDose(parsed.data, db.doseRules);
   res.json(result);
+});
+
+/* ── Substitution + SEP (Build Spec §5.6 / §10 — Pro) ── */
+app.get("/tools/substitution/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "substitution_sep");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Substitution & SEP engine is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const selectedProductId = req.query.selectedProductId
+    ? String(req.query.selectedProductId)
+    : undefined;
+  const result = buildSubstitutionOptions(
+    mol.id,
+    db.products,
+    db.priceRecords,
+    selectedProductId,
+  );
+  res.json({ molecule: { id: mol.id, slug: mol.slug, innName: mol.innName }, ...result });
+});
+
+/* ── Multilingual counselling (Build Spec §9 — Pro) ── */
+app.get("/tools/counselling/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "multilingual_counselling");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Multilingual counselling is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const lang = (String(req.query.lang ?? "en") as CounsellingLang) || "en";
+  const script = getCounsellingScript(mol.id, lang);
+  if (!script) {
+    res.status(404).json({
+      error: "No published counselling script for this language",
+      available: listCounsellingLangs(mol.id),
+      allLangs: COUNSELLING_LANGS,
+    });
+    return;
+  }
+  res.json({
+    moleculeSlug: mol.slug,
+    moleculeName: mol.innName,
+    available: listCounsellingLangs(mol.id),
+    script,
+  });
+});
+
+/* ── Offline core pack (Build Spec §12 — Pro) ── */
+app.get("/offline/pack", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "offline_core");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Offline core is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const slugs = String(req.query.slugs ?? "amoxicillin,amoxicillin-clavulanate,doxycycline")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const pack = slugs
+    .map((slug) => {
+      const mol = getMoleculeBySlug(slug);
+      if (!mol) return null;
+      const products = db.products.filter(
+        (p) => p.moleculeId === mol.id && p.publishState === "published",
+      );
+      const schedules = [...new Set(products.map((p) => p.schedule))] as ScheduleCode[];
+      const script = getCounsellingScript(mol.id, "en");
+      return buildOfflineEssential({
+        moleculeId: mol.id,
+        slug: mol.slug,
+        innName: mol.innName,
+        className: mol.className,
+        scheduleHints: schedules,
+        counsellingEn: script?.lines ?? [
+          "Counselling not yet published for offline pack — verify online.",
+        ],
+      });
+    })
+    .filter(Boolean);
+
+  res.json({
+    generatedAt: new Date().toISOString(),
+    count: pack.length,
+    essentials: pack,
+  });
 });
 
 /* ── Academy (playbook v2 / Build Spec §7) ── */

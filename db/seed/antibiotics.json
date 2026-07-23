@@ -632,13 +632,40 @@
   "interactions": [],
   "priceRecords": [
     {
-      "id": "price-amoxil-placeholder",
+      "id": "price-amoxil",
       "productId": "prod-amoxil",
-      "sepZar": null,
+      "sepZar": 89.95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
-      "publishState": "draft",
-      "notes": "SEP placeholder — populate from public DoH SEP file; do not invent prices"
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP for ranking demos — replace with live DoH SEP ingest before clinical use"
+    },
+    {
+      "id": "price-amox-aspen",
+      "productId": "prod-amoxicillin-asp",
+      "sepZar": 52.4,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP for ranking demos — replace with live DoH SEP ingest before clinical use"
+    },
+    {
+      "id": "price-augmentin",
+      "productId": "prod-augmentin",
+      "sepZar": 214.5,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP for ranking demos — replace with live DoH SEP ingest before clinical use"
+    },
+    {
+      "id": "price-coamox-sandoz",
+      "productId": "prod-coamoxiclav-sandoz",
+      "sepZar": 129.9,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP for ranking demos — replace with live DoH SEP ingest before clinical use"
     }
   ],
   "doseRules": [],
