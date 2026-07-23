@@ -50,8 +50,8 @@ export default async function HomePage({
       </div>
       <h2>{area ? area : "Seed coverage"}</h2>
       <p className="muted">
-        Antibiotics, analgesics, antihypertensives, diabetes, HIV/TB scaffolds (Doc 29). Dosing stays
-        draft.
+        Antibiotics, analgesics, antihypertensives, diabetes, HIV/TB, respiratory scaffolds (Doc 29).
+        Dosing stays draft.
       </p>
       {molecules.length === 0 ? (
         <div className="card">

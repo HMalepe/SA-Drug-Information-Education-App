@@ -69,4 +69,9 @@ describe("seed S0 gate", () => {
     assert.equal(ix.severity, "major");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Ventolin → salbutamol from respiratory seed", () => {
+    const hits = resolveSearch("Ventolin", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "salbutamol");
+  });
 });
