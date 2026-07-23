@@ -88,6 +88,8 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
           "Excipients explained (Build Spec §5.4) — inactive until the wrong patient context. Confirm against the labelled pack.",
         visualNote:
           "Packaging form silhouettes (Build Spec §5.5) — educational placeholders; imprint codes are never invented.",
+        insertNote:
+          "Package-insert summaries use Tools → Insert translator (Build Spec §9). Professional and Grade-5 passages are separately authored — never auto-invented.",
       },
       sources: [getSource("src-sahpra")].filter(Boolean) as Source[],
     },

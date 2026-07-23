@@ -24,6 +24,9 @@ import {
   buildClashBoard,
   buildPearlFeed,
   collectPublishedPearls,
+  findInsertDocument,
+  translateInsert,
+  listInsertDocuments,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -816,6 +819,53 @@ app.get("/pearls/today", (req, res) => {
     limit: Number.isFinite(limit) ? limit : 5,
   });
   res.json(feed);
+});
+
+/* ── Plain-English insert translator (Build Spec §9) ── */
+app.get("/tools/insert/:moleculeSlug", (req, res) => {
+  const levelRaw = String(req.query.level ?? "grade5");
+  const level = levelRaw === "professional" ? "professional" : "grade5";
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "insert_translator");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Insert translator not available on this tier",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  const doc = findInsertDocument({
+    moleculeSlug: req.params.moleculeSlug,
+    moleculeId: mol?.id,
+    productId: String(req.query.productId ?? "") || undefined,
+  });
+  const result = translateInsert({
+    document: doc,
+    level,
+    sources: db.sources,
+  });
+  res.json({
+    moleculeSlug: req.params.moleculeSlug,
+    moleculeName: mol?.innName,
+    ...result,
+  });
+});
+
+app.get("/tools/inserts", (_req, res) => {
+  res.json({
+    documents: listInsertDocuments().map((d) => ({
+      id: d.id,
+      moleculeSlug: d.moleculeSlug,
+      brandName: d.brandName,
+      levels: d.passages.filter((p) => p.publishState === "published").map((p) => p.level),
+    })),
+    note: "Educational Materia excerpts only — not commercial PIL reproductions.",
+  });
 });
 
 /* ── Companion reminders + messaging (Doc 16 WhatsApp/SMS/email) ── */

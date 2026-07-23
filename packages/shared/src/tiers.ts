@@ -22,6 +22,7 @@ export type FeatureKey =
   | "shortage_alerts"
   | "clash_board"
   | "pearl_feed"
+  | "insert_translator"
   | "ask_materia_unlimited"
   | "billing_manage";
 
@@ -32,6 +33,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "companion_schedule",
     "handout_export",
     "ambassador_tools",
+    "insert_translator",
     "ask_materia_unlimited",
   ],
   student: [
@@ -43,6 +45,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "voice_mode",
     "handout_export",
     "ambassador_tools",
+    "insert_translator",
     "ask_materia_unlimited",
   ],
   professional: [
@@ -66,6 +69,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "shortage_alerts",
     "clash_board",
     "pearl_feed",
+    "insert_translator",
     "ask_materia_unlimited",
     "billing_manage",
   ],
@@ -91,6 +95,7 @@ const MATRIX: Record<Tier, FeatureKey[]> = {
     "shortage_alerts",
     "clash_board",
     "pearl_feed",
+    "insert_translator",
     "ask_materia_unlimited",
     "billing_manage",
   ],

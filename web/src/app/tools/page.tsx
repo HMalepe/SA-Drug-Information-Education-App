@@ -15,6 +15,7 @@ export default function ToolsPage() {
   const [egfr, setEgfr] = useState("45");
   const [adjustContext, setAdjustContext] = useState("renal");
   const [clashSlugs, setClashSlugs] = useState("amoxicillin, warfarin, aspirin");
+  const [insertLevel, setInsertLevel] = useState<"grade5" | "professional">("grade5");
   const [out, setOut] = useState("");
   const [offlineBadge, setOfflineBadge] = useState(false);
 
@@ -109,6 +110,14 @@ export default function ToolsPage() {
       body: JSON.stringify({ userId: uid, moleculeSlugs }),
     });
     track("tool_used", { tool: "clash_board" }, { tier: "professional" });
+    setOut(JSON.stringify(await res.json(), null, 2));
+  }
+
+  async function runInsertTranslator() {
+    const res = await fetch(
+      `${API}/tools/insert/${encodeURIComponent(slug)}?level=${insertLevel}`,
+    );
+    track("tool_used", { tool: "insert_translator" }, { tier: "free" });
     setOut(JSON.stringify(await res.json(), null, 2));
   }
 
@@ -252,6 +261,25 @@ export default function ToolsPage() {
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
           Colour-coded published interactions, duplications, class overlap, renal/hepatic/food flags. Empty ≠ safe.
+        </p>
+      </div>
+
+      <div className="card">
+        <label className="muted">Insert translator (§9) — reading level</label>
+        <select
+          value={insertLevel}
+          onChange={(e) => setInsertLevel(e.target.value as "grade5" | "professional")}
+          style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
+        >
+          <option value="grade5">Grade ~5 plain English</option>
+          <option value="professional">Professional</option>
+        </select>
+        <button className="btn" type="button" onClick={() => void runInsertTranslator()}>
+          Show insert for slug
+        </button>
+        <p className="muted" style={{ marginTop: 8 }}>
+          Both levels are separately authored educational excerpts — Materia never invents a rewrite. Try{" "}
+          <code>amoxicillin</code> or <code>paracetamol</code>.
         </p>
       </div>
 
