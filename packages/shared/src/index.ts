@@ -45,4 +45,5 @@ export * from "./dragDropGame.js";
 export * from "./buildTreatment.js";
 export * from "./personalAnalytics.js";
 export * from "./gamification.js";
+export * from "./foodTiming.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

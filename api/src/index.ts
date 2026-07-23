@@ -60,6 +60,8 @@ import {
   gradeBuildTreatment,
   buildPersonalAnalytics,
   evaluateBadges,
+  buildFoodTimingCues,
+  enrichReminderBody,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -1845,12 +1847,34 @@ app.get("/companion/reminders/:userId", (req, res) => {
   }
   const regimen = db.regimens.get(user.id) ?? [];
   const fromHhmm = String(req.query.from ?? "08:00");
+  const foodTiming = buildFoodTimingCues({ regimen, safetyProfiles: db.safetyProfiles });
   res.json({
     upcoming: previewUpcoming({ regimen, fromHhmm, hoursAhead: 24 }),
     prefs: db.reminderPrefs.get(user.id) ?? null,
     recent: db.reminderDispatchLog.filter((l) => l.to === user.id || l.to === user.email).slice(-20),
+    foodTiming,
     disclaimer: "Reminders are support only and never change your dose.",
   });
+});
+
+app.get("/companion/food-timing/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const scope = companionScope(user.id, String(req.query.dependantId ?? "") || null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
+  const regimen = db.regimens.get(scope) ?? [];
+  res.json(buildFoodTimingCues({ regimen, safetyProfiles: db.safetyProfiles }));
 });
 
 app.post("/companion/reminders/dispatch", async (req, res) => {
@@ -1882,12 +1906,17 @@ app.post("/companion/reminders/dispatch", async (req, res) => {
     return;
   }
   const regimen = db.regimens.get(user.id) ?? [];
+  const foodTiming = buildFoodTimingCues({ regimen, safetyProfiles: db.safetyProfiles });
+  const cueByMol = new Map(foodTiming.cues.map((c) => [c.moleculeId, c]));
   const due = dueRemindersAt({
     userId: user.id,
     regimen,
     prefs,
     nowHhmm: parsed.data.nowHhmm,
-  });
+  }).map((reminder) => ({
+    ...reminder,
+    body: enrichReminderBody(reminder.body, cueByMol.get(reminder.moleculeId)),
+  }));
   const results = [];
   for (const reminder of due) {
     const outbound = toOutboundMessage(reminder, {
@@ -1916,7 +1945,8 @@ app.post("/companion/reminders/dispatch", async (req, res) => {
     nowHhmm: parsed.data.nowHhmm,
     dueCount: due.length,
     results,
-    note: "Support reminders only. Confirm against the labelled product.",
+    foodTiming,
+    note: "Support reminders only. Food hints echo published Food & Lifestyle notes. Confirm against the labelled product.",
   });
 });
 

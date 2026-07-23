@@ -28,6 +28,10 @@ export default function MyMedsPage() {
   const [depRelation, setDepRelation] = useState("parent");
   const [dependants, setDependants] = useState<Array<{ id: string; displayName: string; relation: string }>>([]);
   const [activeDependantId, setActiveDependantId] = useState<string>("");
+  const [foodCues, setFoodCues] = useState<
+    Array<{ moleculeName: string; tags: string[]; publishedNote: string; reminderHint: string }>
+  >([]);
+  const [foodMeta, setFoodMeta] = useState("");
   const [out, setOut] = useState("");
 
   async function start() {
@@ -190,6 +194,20 @@ export default function MyMedsPage() {
     setOut(JSON.stringify(await res.json(), null, 2));
   }
 
+  async function loadFoodTiming() {
+    if (!userId) return;
+    const qs = activeDependantId ? `?dependantId=${encodeURIComponent(activeDependantId)}` : "";
+    const res = await fetch(`${API}/companion/food-timing/${userId}${qs}`);
+    const data = await res.json();
+    if (!res.ok) {
+      setFoodMeta(String(data.error ?? "Could not load food timing"));
+      setFoodCues([]);
+      return;
+    }
+    setFoodMeta(`${data.note} ${data.disclaimer}`);
+    setFoodCues(Array.isArray(data.cues) ? data.cues : []);
+  }
+
   return (
     <>
       <h1>My Meds</h1>
@@ -274,6 +292,9 @@ export default function MyMedsPage() {
             <button className="btn" type="button" onClick={() => void loadClashBoard()}>
               Clash board (Pro)
             </button>
+            <button className="btn" type="button" onClick={() => void loadFoodTiming()}>
+              Food timing (§6)
+            </button>
           </div>
           <p className="muted" style={{ marginTop: 8 }}>
             Email/SMS/WhatsApp stay stub-logged until Resend/Twilio keys.
@@ -339,6 +360,23 @@ export default function MyMedsPage() {
             ))}
             {clashRows.length === 0 && <p className="muted">No published flags on this list.</p>}
           </div>
+        </div>
+      )}
+      {foodMeta && (
+        <div className="card" style={{ marginTop: 12 }}>
+          <h2 style={{ marginTop: 0 }}>Food &amp; lifestyle timing</h2>
+          <p className="muted">{foodMeta}</p>
+          {foodCues.map((c) => (
+            <article key={`${c.moleculeName}-${c.publishedNote.slice(0, 24)}`} style={{ marginTop: 12 }}>
+              <strong>{c.moleculeName}</strong>
+              <div className="muted">{c.tags.join(" · ")}</div>
+              <p style={{ margin: "6px 0" }}>{c.publishedNote}</p>
+              <p className="muted" style={{ fontSize: 13 }}>
+                {c.reminderHint}
+              </p>
+            </article>
+          ))}
+          {foodCues.length === 0 && <p className="muted">No published food notes on this regimen yet.</p>}
         </div>
       )}
       {out && (
