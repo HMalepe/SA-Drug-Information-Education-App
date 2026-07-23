@@ -497,12 +497,19 @@ app.get("/tools/locum/:moleculeSlug", (req, res) => {
     res.status(404).json({ error: "Molecule not found" });
     return;
   }
+  const langRaw = String(req.query.lang ?? "en").toLowerCase();
+  const counsellingLang = (["en", "zu", "af", "st", "xh"] as const).includes(
+    langRaw as "en" | "zu" | "af" | "st" | "xh",
+  )
+    ? (langRaw as "en" | "zu" | "af" | "st" | "xh")
+    : "en";
   const brief = buildLocumBrief({
     moleculeId: mol.id,
     innName: mol.innName,
     className: mol.className,
     products: db.products,
     safety: getSafety(mol.id),
+    counsellingLang,
   });
   res.json({ brief });
 });

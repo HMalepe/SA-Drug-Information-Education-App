@@ -1,3 +1,5 @@
+import { COUNSELLING_V80_TO_V89 } from "./counsellingV80V89.js";
+
 export type CounsellingLang = "en" | "zu" | "af" | "st" | "xh";
 
 export const COUNSELLING_LANGS: Array<{ code: CounsellingLang; label: string }> = [
@@ -1160,6 +1162,7 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  ...COUNSELLING_V80_TO_V89,
 };
 
 export function getCounsellingScript(

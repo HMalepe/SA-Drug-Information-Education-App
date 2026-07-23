@@ -136,6 +136,24 @@ describe("locum brief", () => {
     assert.ok(brief.schedules.includes("S4"));
     assert.ok(brief.topBrands.some((b) => b.brandName === "Amoxil"));
     assert.ok(brief.topWarnings.some((w) => /Penicillin allergy|allergy/i.test(w)));
+    assert.ok(brief.counsellingEn.length >= 1);
+    assert.equal(brief.counsellingLang, "en");
+    assert.deepEqual(brief.counsellingLines, brief.counsellingEn);
+    assert.ok(brief.availableCounsellingLangs.includes("en"));
+  });
+
+  it("surfaces published SA counselling languages on the locum brief", () => {
+    const zu = buildLocumBrief({
+      moleculeId: "mol-amox",
+      innName: "Amoxicillin",
+      className: "Aminopenicillin",
+      products,
+      counsellingLang: "zu",
+    });
+    assert.equal(zu.counsellingLang, "zu");
+    assert.ok(zu.counsellingLines.length >= 3);
+    assert.ok(zu.availableCounsellingLangs.includes("zu"));
+    assert.doesNotMatch(zu.counsellingLines.join(" "), /\d+\s*mg/i);
   });
 });
 

@@ -151,6 +151,76 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-23",
     },
   },
+  {
+    moleculeId: "mol-gliclazide",
+    fact: {
+      value:
+        "Sulfonylurea teaching: take with meals as on the labelled product — skipping meals raises hypoglycaemia risk discussions. Materia does not invent a dose or meal clock.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-23",
+    },
+  },
+  {
+    moleculeId: "mol-prednisone",
+    fact: {
+      value:
+        "Corticosteroid counselling often includes taking with food if stomach upset occurs — confirm against the labelled product. Materia does not invent a dose or taper.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-23",
+    },
+  },
+  {
+    moleculeId: "mol-isoniazid",
+    fact: {
+      value:
+        "Isoniazid counselling: follow labelled food advice; alcohol and liver concerns belong with the pharmacist/clinician. Materia does not invent a B6 dose or meal schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-23",
+    },
+  },
+  {
+    moleculeId: "mol-furosemide",
+    fact: {
+      value:
+        "Loop-diuretic teaching: strong urination is expected — confirm timing against the labelled product so toilet access is planned. Materia does not invent a clock schedule, dose, or electrolyte target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-23",
+    },
+  },
+  {
+    moleculeId: "mol-rifampicin",
+    fact: {
+      value:
+        "Rifampicin may be taken with or without food depending on the labelled product — confirm product-specific advice. Orange-red body fluids are a common teaching point, not a schedule. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-23",
+    },
+  },
+  {
+    moleculeId: "mol-digoxin",
+    fact: {
+      value:
+        "Keep diet and brand reasonably consistent week to week when on digoxin teaching plans — levels stay clinician-directed. Materia does not invent a digoxin level or dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-23",
+    },
+  },
+  {
+    moleculeId: "mol-spironolactone",
+    fact: {
+      value:
+        "Potassium-sparing diuretic teaching: avoid unprescribed potassium supplements and salt substitutes unless the clinician agrees — confirm against the labelled product. Materia does not invent a potassium target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-23",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

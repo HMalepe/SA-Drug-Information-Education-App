@@ -319,9 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: try <code>amoxicillin</code>, <code>metformin</code>,{" "}
-          <code>salbutamol</code>, <code>losartan</code>, <code>hydrochlorothiazide</code>, or{" "}
-          <code>omeprazole</code> (EN/ZU/AF/ST/XH).
+          Published SA counselling (v80–v89): try <code>furosemide</code>, <code>atenolol</code>,{" "}
+          <code>rifampicin</code>, <code>isoniazid</code>, <code>budesonide</code>, or{" "}
+          <code>sulfamethoxazole-trimethoprim</code> (EN/ZU/AF/ST/XH). Locum accepts{" "}
+          <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"
