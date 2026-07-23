@@ -29,7 +29,9 @@ import type {
   ReferralCode,
   ReferralCredit,
   ReferralRedemption,
+  ReminderPreferences,
   RegimenItem,
+  SendResult,
 } from "@materia/shared";
 
 interface SeedFile {
@@ -119,6 +121,8 @@ export const db = {
   referralCodes: [] as ReferralCode[],
   referralRedemptions: [] as ReferralRedemption[],
   referralCredits: [] as ReferralCredit[],
+  reminderPrefs: new Map<string, ReminderPreferences>(),
+  reminderDispatchLog: [] as Array<SendResult & { at: string; moleculeId: string }>,
 };
 
 export function getSource(id: string): Source | undefined {

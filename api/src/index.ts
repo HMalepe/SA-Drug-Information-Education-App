@@ -23,6 +23,7 @@ import {
   computeCohortAnalytics,
   courseCompletionPercent,
   createOrganisation,
+  dueRemindersAt,
   expertLevelFromPercent,
   gateFeature,
   generateReferralCode,
@@ -38,20 +39,24 @@ import {
   matchFormularyAndCoPay,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
+  previewUpcoming,
   resolveProductScan,
   resolveSearch,
   sahpraFromCsv,
   sepFromCsv,
   sumCredits,
+  toOutboundMessage,
   validateSahpraRows,
   validateSepRows,
   verifyPaystackSignature,
   type CounsellingLang,
+  type ReminderChannel,
   type ScheduleCode,
   type Tier,
   type UserMode,
 } from "@materia/shared";
 import { createCheckoutSession, hmacSha512Hex, paystackConfigured } from "./billing/paystack.js";
+import { messagingProvidersStatus, sendOutbound } from "./messaging/dispatch.js";
 import { buildMolecule360 } from "./moleculeView.js";
 import { askMolecule } from "./rag.js";
 import {
@@ -583,6 +588,144 @@ app.post("/companion/interactions/check", (req, res) => {
   const nameById = new Map(db.molecules.map((m) => [m.id, m.innName]));
   const result = checkRegimenInteractions(ids, db.interactions, nameById);
   res.json(result);
+});
+
+/* ── Companion reminders + messaging (Doc 16 WhatsApp/SMS/email) ── */
+app.get("/companion/messaging/status", (_req, res) => {
+  res.json({
+    providers: messagingProvidersStatus(),
+    note: "Stub logs locally until Resend/Twilio keys + DPA are configured. No clinical free-text to model providers.",
+  });
+});
+
+app.put("/companion/reminders/prefs/:userId", (req, res) => {
+  const schema = z.object({
+    channels: z.array(z.enum(["in_app", "email", "sms", "whatsapp"])).min(1),
+    phoneE164: z.string().optional(),
+    email: z.string().email().optional(),
+    timezone: z.string().default("Africa/Johannesburg"),
+    consentMessaging: z.boolean(),
+  });
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  if (!parsed.data.consentMessaging) {
+    res.status(400).json({
+      error: "POPIA messaging consent required before enabling reminders off-device.",
+      code: "MESSAGING_CONSENT_REQUIRED",
+    });
+    return;
+  }
+  const prefs = {
+    userId: user.id,
+    channels: parsed.data.channels as ReminderChannel[],
+    phoneE164: parsed.data.phoneE164,
+    email: parsed.data.email ?? user.email,
+    timezone: parsed.data.timezone,
+    popiaMessagingConsentAt: new Date().toISOString(),
+  };
+  db.reminderPrefs.set(user.id, prefs);
+  res.json({ prefs });
+});
+
+app.get("/companion/reminders/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const regimen = db.regimens.get(user.id) ?? [];
+  const fromHhmm = String(req.query.from ?? "08:00");
+  res.json({
+    upcoming: previewUpcoming({ regimen, fromHhmm, hoursAhead: 24 }),
+    prefs: db.reminderPrefs.get(user.id) ?? null,
+    recent: db.reminderDispatchLog.filter((l) => l.to === user.id || l.to === user.email).slice(-20),
+    disclaimer: "Reminders are support only and never change your dose.",
+  });
+});
+
+app.post("/companion/reminders/dispatch", async (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    nowHhmm: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const prefs = db.reminderPrefs.get(user.id);
+  if (!prefs?.popiaMessagingConsentAt) {
+    res.status(400).json({
+      error: "Set reminder preferences with messaging consent first.",
+      code: "MESSAGING_CONSENT_REQUIRED",
+    });
+    return;
+  }
+  const regimen = db.regimens.get(user.id) ?? [];
+  const due = dueRemindersAt({
+    userId: user.id,
+    regimen,
+    prefs,
+    nowHhmm: parsed.data.nowHhmm,
+  });
+  const results = [];
+  for (const reminder of due) {
+    const outbound = toOutboundMessage(reminder, {
+      email: prefs.email ?? user.email,
+      phoneE164: prefs.phoneE164,
+    });
+    if (!outbound) {
+      results.push({
+        channel: reminder.channel,
+        provider: "stub" as const,
+        status: "skipped" as const,
+        to: "",
+        detail: "Missing destination for channel",
+      });
+      continue;
+    }
+    const sent = await sendOutbound(outbound);
+    db.reminderDispatchLog.push({
+      ...sent,
+      at: new Date().toISOString(),
+      moleculeId: reminder.moleculeId,
+    });
+    results.push(sent);
+  }
+  res.json({
+    nowHhmm: parsed.data.nowHhmm,
+    dueCount: due.length,
+    results,
+    note: "Support reminders only. Confirm against the labelled product.",
+  });
 });
 
 /* ── Tiers / Paystack billing (Doc 6 / Doc 16) ── */
