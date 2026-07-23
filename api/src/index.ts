@@ -72,6 +72,7 @@ import {
   canRedeemReferral,
   checkRegimenInteractions,
   computeCohortAnalytics,
+  buildInstitutionLeaderboardBundle,
   courseCompletionPercent,
   createOrganisation,
   dueRemindersAt,
@@ -2577,6 +2578,48 @@ app.get("/institution/:orgId/analytics", (req, res) => {
     return computeCohortAnalytics(c, progress);
   });
   res.json({ org, seats, cohorts, analytics });
+});
+
+/* ── Institution XP leaderboards (Build Spec §7.2 + §11) ── */
+app.get("/institution/:orgId/leaderboards", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = requireUser(userId);
+  if (!user || !gateFeature(user.tier as Tier, "institution_console").allowed) {
+    res.status(402).json({ error: "Institution console required", upgradeTo: "institution" });
+    return;
+  }
+  const org = db.organisations.find((o) => o.id === req.params.orgId);
+  if (!org) {
+    res.status(404).json({ error: "Org not found" });
+    return;
+  }
+  const hasSeat = db.seats.some((s) => s.orgId === org.id && s.userId === user.id);
+  if (!hasSeat && user.tier !== "institution") {
+    res.status(403).json({ error: "Org seat required" });
+    return;
+  }
+  const seats = db.seats.filter((s) => s.orgId === org.id);
+  const cohorts = db.cohorts.filter((c) => c.orgId === org.id);
+  const limit = Number(req.query.limit ?? 25);
+  res.json(
+    buildInstitutionLeaderboardBundle({
+      org,
+      seats,
+      cohorts,
+      progress: db.progress,
+      users: db.users.map((u) => ({ id: u.id, displayName: u.displayName })),
+      courses: db.courses.map((c) => ({
+        id: c.id,
+        moleculeId: c.moleculeId,
+        title: c.title,
+        lessons: c.lessons.map((l) => ({ id: l.id })),
+      })),
+      molecules: db.molecules,
+      products: db.products,
+      viewerUserId: user.id,
+      limit: Number.isFinite(limit) ? limit : 25,
+    }),
+  );
 });
 
 /* ── Ambassador / referral (Doc 5 growth loop) ── */

@@ -86,7 +86,10 @@ export default function LeaderboardPage() {
     <>
       <TrackPage name="tool_used" props={{ tool: "academy_leaderboard" }} />
       <h1>Leaderboard</h1>
-      <p className="tagline">Academy XP ranks — individual board (§7.2). Cohort boards via Institution.</p>
+      <p className="tagline">
+        Academy XP ranks — individual board (§7.2). Cohort / org boards live on the{" "}
+        <a href="/institution">Institution console</a>.
+      </p>
       <div className="card">
         <button className="btn" type="button" onClick={() => void load()}>
           Load Academy leaderboard
