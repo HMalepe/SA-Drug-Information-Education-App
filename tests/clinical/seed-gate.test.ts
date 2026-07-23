@@ -109,4 +109,24 @@ describe("seed S0 gate", () => {
     assert.equal(ix.severity, "major");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Prozac → fluoxetine from mental-health seed", () => {
+    const hits = resolveSearch("Prozac", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "fluoxetine");
+  });
+
+  it("resolves Zoloft → sertraline from mental-health seed", () => {
+    const hits = resolveSearch("Zoloft", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "sertraline");
+  });
+
+  it("publishes educational fluoxetine↔tramadol interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-fluoxetine-tramadol");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
