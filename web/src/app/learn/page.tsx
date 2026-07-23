@@ -1,0 +1,46 @@
+import { apiGet } from "@/lib/api";
+
+interface CourseList {
+  courses: Array<{
+    id: string;
+    title: string;
+    moleculeSlug?: string;
+    moleculeName?: string;
+    lessonCount: number;
+    quizCount: number;
+  }>;
+}
+
+export default async function LearnPage() {
+  let courses: CourseList["courses"] = [];
+  try {
+    const data = await apiGet<CourseList>("/academy/courses");
+    courses = data.courses;
+  } catch {
+    courses = [];
+  }
+
+  return (
+    <>
+      <h1>Medicine Academy</h1>
+      <p className="tagline">Stop memorising. Start understanding. — five lessons per molecule.</p>
+      {courses.length === 0 ? (
+        <div className="card">Start the API (`npm run dev:api`) to load courses.</div>
+      ) : (
+        courses.map((c) => (
+          <a
+            key={c.id}
+            className="card"
+            href={`/learn/${c.id}`}
+            style={{ display: "block" }}
+          >
+            <strong>{c.title}</strong>
+            <div className="muted">
+              {c.moleculeName} · {c.lessonCount} lessons · {c.quizCount} quiz
+            </div>
+          </a>
+        ))
+      )}
+    </>
+  );
+}

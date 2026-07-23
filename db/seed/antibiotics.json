@@ -700,6 +700,180 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "course-amoxclav",
+      "moleculeId": "mol-amoxclav",
+      "title": "Amoxicillin–clavulanate — why the combo",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-amoxclav-1",
+          "order": 1,
+          "title": "The Story",
+          "body": "Clavulanate was added so amoxicillin could keep working when bacteria make beta-lactamase enzymes that would otherwise destroy the penicillin.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amoxclav-2",
+          "order": 2,
+          "title": "Chemical Structure",
+          "body": "Two partners: the aminopenicillin (cell-wall attack) plus a beta-lactamase inhibitor (shield).",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amoxclav-3",
+          "order": 3,
+          "title": "Mechanism of Action",
+          "body": "Amoxicillin blocks wall building; clavulanate occupies and inactivates many beta-lactamases — a bodyguard, not the main fighter.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amoxclav-4",
+          "order": 4,
+          "title": "Inside the Body",
+          "body": "Same oral pathway as amoxicillin for many products; ratio and salt form matter for which SKU you dispense — check the brand dossier.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amoxclav-5",
+          "order": 5,
+          "title": "Clinical Pearls",
+          "body": "In SA, Augmentin is the originator brand many patients know — resolve brand → molecule first, then counsel on allergy history.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-amoxclav-1",
+          "prompt": "Clavulanate’s main job in the combination is to…",
+          "choices": [
+            "Kill bacteria by blocking the 30S ribosome",
+            "Inhibit DNA gyrase",
+            "Protect amoxicillin from many beta-lactamases",
+            "Act as a painkiller"
+          ],
+          "correctIndex": 2,
+          "teachFromMiss": "Clavulanate is the shield — it disables beta-lactamases so amoxicillin can still hit the cell wall.",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "course-doxy",
+      "moleculeId": "mol-doxy",
+      "title": "Doxycycline — ribosome, not cell wall",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-doxy-1",
+          "order": 1,
+          "title": "The Story",
+          "body": "Tetracyclines opened a different attack surface — protein synthesis — useful when beta-lactams are not the right tool.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-doxy-2",
+          "order": 2,
+          "title": "Chemical Structure",
+          "body": "A four-ring tetracycline core; chelation with metals is the structural reason dairy and antacids matter for absorption counselling.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-doxy-3",
+          "order": 3,
+          "title": "Mechanism of Action",
+          "body": "Binds the 30S ribosomal subunit and stalls protein synthesis — not a cell-wall drug.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-doxy-4",
+          "order": 4,
+          "title": "Inside the Body",
+          "body": "Oral absorption can drop if taken with divalent cations (calcium, iron, antacids). Counselling timing is the practical pearl.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-doxy-5",
+          "order": 5,
+          "title": "Clinical Pearls",
+          "body": "Exam trap: ‘take with milk’ is often wrong for doxycycline because of chelation — spot-the-error gold.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-doxy-1",
+          "prompt": "Doxycycline primarily acts on the…",
+          "choices": [
+            "Bacterial cell wall",
+            "30S ribosomal subunit",
+            "50S ribosomal subunit",
+            "Folate pathway"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Tetracyclines → 30S. Macrolides/lincosamides → 50S. Beta-lactams → cell wall.",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "course-metro",
+      "moleculeId": "mol-metro",
+      "title": "Metronidazole — anaerobic DNA damage",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-metro-1",
+          "order": 1,
+          "title": "The Story",
+          "body": "Built for organisms that thrive without oxygen — activated inside them into reactive damage.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-metro-2",
+          "order": 2,
+          "title": "Chemical Structure",
+          "body": "A nitroimidazole; the nitro group is the fuse that anaerobic metabolism lights.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-metro-3",
+          "order": 3,
+          "title": "Mechanism of Action",
+          "body": "Reduced inside anaerobes to reactive products that damage microbial DNA.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-metro-4",
+          "order": 4,
+          "title": "Inside the Body",
+          "body": "Widely distributed; alcohol interaction counselling is a classic counter pearl (details pending sourced publish for specific guidance).",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-metro-5",
+          "order": 5,
+          "title": "Clinical Pearls",
+          "body": "Think anaerobes and protozoa when you see metronidazole on a script — then check the published counselling points.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-metro-1",
+          "prompt": "Metronidazole is best remembered as acting via…",
+          "choices": [
+            "Cell-wall synthesis blockade",
+            "DNA damage after anaerobic activation",
+            "30S protein-synthesis block",
+            "Beta-lactamase inhibition"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Nitroimidazoles are activated in anaerobic environments and damage DNA — different story from beta-lactams or tetracyclines.",
+          "publishState": "published"
+        }
+      ]
     }
   ]
 }

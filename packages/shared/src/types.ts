@@ -169,6 +169,9 @@ export interface Lesson {
   publishState: PublishState;
 }
 
+/** Alias kept for seed authors */
+export type LessonOrder = Lesson["order"];
+
 export interface QuizQuestion {
   id: string;
   courseId: string;
@@ -206,6 +209,7 @@ export interface UserProfile {
   mode: UserMode;
   tier: "free" | "student" | "professional" | "institution";
   language: string;
+  studentVerified?: boolean;
   popiaConsentAt?: string;
   medicalDisclaimerAcceptedAt?: string;
   orgId?: string;

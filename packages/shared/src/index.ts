@@ -3,4 +3,7 @@ export * from "./publish.js";
 export * from "./search.js";
 export * from "./grounding.js";
 export * from "./dosing.js";
+export * from "./academy.js";
+export * from "./companion.js";
+export * from "./tiers.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

@@ -19,7 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a className="brand" href="/">
               Mater<span>ia</span>
             </a>
-            <nav className="muted">
+            <nav className="muted" style={{ display: "flex", gap: 16 }}>
+              <a href="/learn">Learn</a>
+              <a href="/my-meds">My Meds</a>
+              <a href="/pricing">Pricing</a>
               <a href="/onboarding">Get started</a>
             </nav>
           </header>
