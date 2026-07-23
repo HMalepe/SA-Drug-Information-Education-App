@@ -149,4 +149,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.severity, "major");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Betnovate → betamethasone from dermatology seed", () => {
+    const hits = resolveSearch("Betnovate", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "betamethasone");
+  });
+
+  it("resolves Roaccutane → isotretinoin from dermatology seed", () => {
+    const hits = resolveSearch("Roaccutane", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "isotretinoin");
+  });
+
+  it("publishes educational isotretinoin↔doxycycline interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-isotretinoin-doxycycline");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.equal(ix.moleculeBId, "mol-doxy");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
