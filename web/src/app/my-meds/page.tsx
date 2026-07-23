@@ -24,6 +24,10 @@ export default function MyMedsPage() {
   const [symptomAt, setSymptomAt] = useState("2026-07-20");
   const [symptomSeverity, setSymptomSeverity] = useState(2);
   const [symptomExport, setSymptomExport] = useState("");
+  const [depName, setDepName] = useState("Mama Thandi");
+  const [depRelation, setDepRelation] = useState("parent");
+  const [dependants, setDependants] = useState<Array<{ id: string; displayName: string; relation: string }>>([]);
+  const [activeDependantId, setActiveDependantId] = useState<string>("");
   const [out, setOut] = useState("");
 
   async function start() {
@@ -70,6 +74,51 @@ export default function MyMedsPage() {
     } else {
       setRegimenNote(clash.note);
     }
+    const deps = await fetch(`${API}/companion/dependants/${data.user.id}`);
+    const depData = await deps.json();
+    setDependants(Array.isArray(depData.profiles) ? depData.profiles : []);
+  }
+
+  async function addDependant() {
+    if (!userId) return;
+    const res = await fetch(`${API}/companion/dependants/${userId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ displayName: depName, relation: depRelation }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setMsg(String(data.error ?? "Could not add profile"));
+      return;
+    }
+    setDependants(Array.isArray(data.profiles) ? data.profiles : []);
+    if (data.profile?.id) {
+      setActiveDependantId(data.profile.id);
+      await fetch(`${API}/companion/regimen/${userId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          dependantId: data.profile.id,
+          items: [
+            {
+              moleculeId: "mol-amox",
+              moleculeName: "Amoxicillin",
+              brandName: "Amoxil",
+              reminderTimes: ["08:00"],
+            },
+          ],
+        }),
+      });
+      setMsg(`Caregiver profile ready for ${data.profile.displayName}. Sample regimen scoped to them.`);
+    }
+  }
+
+  async function removeDependant(id: string) {
+    if (!userId) return;
+    const res = await fetch(`${API}/companion/dependants/${userId}/${id}`, { method: "DELETE" });
+    const data = await res.json();
+    setDependants(Array.isArray(data.profiles) ? data.profiles : []);
+    if (activeDependantId === id) setActiveDependantId("");
   }
 
   async function loadClashBoard() {
@@ -102,6 +151,7 @@ export default function MyMedsPage() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        dependantId: activeDependantId || undefined,
         at: symptomAt,
         label: symptomLabel,
         severity: symptomSeverity,
@@ -119,7 +169,8 @@ export default function MyMedsPage() {
 
   async function exportSymptoms() {
     if (!userId) return;
-    const res = await fetch(`${API}/companion/symptoms/${userId}/export?format=text`);
+    const qs = activeDependantId ? `?format=text&dependantId=${encodeURIComponent(activeDependantId)}` : "?format=text";
+    const res = await fetch(`${API}/companion/symptoms/${userId}/export${qs}`);
     setSymptomExport(await res.text());
   }
 
@@ -155,6 +206,56 @@ export default function MyMedsPage() {
           Set up sample regimen + consent
         </button>
       </div>
+      {userId && (
+        <div className="card" style={{ marginTop: 12 }}>
+          <h2 style={{ marginTop: 0 }}>Caregiver profiles (§6)</h2>
+          <p className="muted">
+            Organise a parent or child&apos;s reminders from one account — support only, never prescribing.
+          </p>
+          <label className="muted">Display name</label>
+          <input
+            style={{ display: "block", width: "100%", margin: "8px 0", padding: 10 }}
+            value={depName}
+            onChange={(e) => setDepName(e.target.value)}
+          />
+          <label className="muted">Relation</label>
+          <select
+            value={depRelation}
+            onChange={(e) => setDepRelation(e.target.value)}
+            style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
+          >
+            <option value="parent">Parent</option>
+            <option value="child">Child</option>
+            <option value="spouse">Spouse</option>
+            <option value="other">Other</option>
+            <option value="self">Self</option>
+          </select>
+          <button className="btn" type="button" onClick={() => void addDependant()}>
+            Add dependant profile
+          </button>
+          {dependants.length > 0 && (
+            <ul style={{ marginTop: 16, paddingLeft: 18 }}>
+              {dependants.map((d) => (
+                <li key={d.id} style={{ marginBottom: 8 }}>
+                  <button
+                    type="button"
+                    className={`tab${activeDependantId === d.id ? " active" : ""}`}
+                    onClick={() => setActiveDependantId(d.id)}
+                  >
+                    {d.displayName} · {d.relation}
+                  </button>{" "}
+                  <button className="btn" type="button" onClick={() => void removeDependant(d.id)}>
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {activeDependantId && (
+            <p className="muted">Active scope: {activeDependantId} (regimen/symptoms use this profile)</p>
+          )}
+        </div>
+      )}
       {userId && (
         <div className="card" style={{ marginTop: 12 }}>
           <label className="muted">Clock tick (HH:mm) for dispatch preview</label>

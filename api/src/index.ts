@@ -30,6 +30,12 @@ import {
   appendSymptomLog,
   buildSymptomSummary,
   createSymptomLog,
+  addDependantProfile,
+  CAREGIVER_DISCLAIMER,
+  companionScopeKey,
+  createDependantProfile,
+  deactivateDependant,
+  listActiveDependants,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -649,7 +655,15 @@ app.post("/academy/quiz/answer", (req, res) => {
 });
 
 /* ── Companion (Build Spec §6) ── */
-app.get("/companion/regimen/:userId", (req, res) => {
+function companionScope(userId: string, dependantId?: string | null): string | { error: string } {
+  const dep = dependantId?.trim();
+  if (!dep) return companionScopeKey(userId);
+  const profile = db.dependants.find((d) => d.id === dep && d.caregiverUserId === userId && d.active);
+  if (!profile) return { error: "Dependant profile not found or inactive" };
+  return companionScopeKey(userId, dep);
+}
+
+app.get("/companion/dependants/:userId", (req, res) => {
   const user = requireUser(req.params.userId);
   if (!user) {
     res.status(401).json({ error: "Unknown user" });
@@ -661,14 +675,106 @@ app.get("/companion/regimen/:userId", (req, res) => {
     return;
   }
   res.json({
-    regimen: db.regimens.get(user.id) ?? [],
+    profiles: listActiveDependants(db.dependants, user.id),
+    disclaimer: CAREGIVER_DISCLAIMER,
+  });
+});
+
+app.post("/companion/dependants/:userId", (req, res) => {
+  const schema = z.object({
+    displayName: z.string().min(1).max(80),
+    relation: z.enum(["self", "parent", "child", "spouse", "other"]),
+    birthYear: z.number().int().optional(),
+  });
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const created = createDependantProfile({
+    caregiverUserId: user.id,
+    displayName: parsed.data.displayName,
+    relation: parsed.data.relation,
+    birthYear: parsed.data.birthYear,
+  });
+  if (!created.ok) {
+    res.status(400).json({ error: created.error });
+    return;
+  }
+  const added = addDependantProfile(db.dependants, created.profile);
+  if (!added.ok) {
+    res.status(400).json({ error: added.error });
+    return;
+  }
+  db.dependants = added.profiles;
+  res.status(201).json({
+    profile: created.profile,
+    profiles: listActiveDependants(db.dependants, user.id),
+    disclaimer: CAREGIVER_DISCLAIMER,
+  });
+});
+
+app.delete("/companion/dependants/:userId/:dependantId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const result = deactivateDependant(db.dependants, user.id, req.params.dependantId);
+  if (!result.ok) {
+    res.status(404).json({ error: result.error });
+    return;
+  }
+  db.dependants = result.profiles;
+  res.json({
+    profiles: listActiveDependants(db.dependants, user.id),
+    disclaimer: CAREGIVER_DISCLAIMER,
+  });
+});
+
+app.get("/companion/regimen/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const scope = companionScope(user.id, String(req.query.dependantId ?? "") || null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
+  res.json({
+    dependantId: String(req.query.dependantId ?? "") || null,
+    regimen: db.regimens.get(scope) ?? [],
     disclaimer:
       "Reminders are support only. Materia never tells you to change or stop a medicine — speak to your pharmacist or doctor.",
+    caregiverNote: CAREGIVER_DISCLAIMER,
   });
 });
 
 app.put("/companion/regimen/:userId", (req, res) => {
   const schema = z.object({
+    dependantId: z.string().optional(),
     items: z.array(
       z.object({
         moleculeId: z.string(),
@@ -689,8 +795,17 @@ app.put("/companion/regimen/:userId", (req, res) => {
     res.status(400).json({ error: parsed.error.flatten() });
     return;
   }
-  db.regimens.set(user.id, parsed.data.items);
-  res.json({ regimen: parsed.data.items });
+  const scope = companionScope(user.id, parsed.data.dependantId ?? null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
+  db.regimens.set(scope, parsed.data.items);
+  res.json({
+    dependantId: parsed.data.dependantId ?? null,
+    regimen: parsed.data.items,
+    caregiverNote: CAREGIVER_DISCLAIMER,
+  });
 });
 
 /* ── Symptom & side-effect tracking (Build Spec §6) ── */
@@ -705,12 +820,18 @@ app.get("/companion/symptoms/:userId", (req, res) => {
     res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
     return;
   }
-  const entries = db.symptomLogs.get(user.id) ?? [];
-  res.json(buildSymptomSummary({ entries, regimen: db.regimens.get(user.id) ?? [] }));
+  const scope = companionScope(user.id, String(req.query.dependantId ?? "") || null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
+  const entries = db.symptomLogs.get(scope) ?? [];
+  res.json(buildSymptomSummary({ entries, regimen: db.regimens.get(scope) ?? [] }));
 });
 
 app.post("/companion/symptoms/:userId", (req, res) => {
   const schema = z.object({
+    dependantId: z.string().optional(),
     at: z.string().min(8),
     label: z.string().min(1).max(80),
     severity: z.number().int().min(1).max(5),
@@ -733,11 +854,16 @@ app.post("/companion/symptoms/:userId", (req, res) => {
     res.status(400).json({ error: parsed.error.flatten() });
     return;
   }
+  const scope = companionScope(user.id, parsed.data.dependantId ?? null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
 
   let moleculeName = parsed.data.moleculeName;
   const moleculeId = parsed.data.moleculeId;
   if (moleculeId) {
-    const onRegimen = (db.regimens.get(user.id) ?? []).find((r) => r.moleculeId === moleculeId);
+    const onRegimen = (db.regimens.get(scope) ?? []).find((r) => r.moleculeId === moleculeId);
     const mol = db.molecules.find((m) => m.id === moleculeId);
     moleculeName = onRegimen?.moleculeName ?? mol?.innName ?? moleculeName;
   }
@@ -755,14 +881,14 @@ app.post("/companion/symptoms/:userId", (req, res) => {
     res.status(400).json({ error: created.error });
     return;
   }
-  const appended = appendSymptomLog(db.symptomLogs.get(user.id) ?? [], created.entry);
+  const appended = appendSymptomLog(db.symptomLogs.get(scope) ?? [], created.entry);
   if (!appended.ok) {
     res.status(400).json({ error: appended.error });
     return;
   }
-  db.symptomLogs.set(user.id, appended.entries);
+  db.symptomLogs.set(scope, appended.entries);
   res.status(201).json(
-    buildSymptomSummary({ entries: appended.entries, regimen: db.regimens.get(user.id) ?? [] }),
+    buildSymptomSummary({ entries: appended.entries, regimen: db.regimens.get(scope) ?? [] }),
   );
 });
 
@@ -777,9 +903,14 @@ app.get("/companion/symptoms/:userId/export", (req, res) => {
     res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
     return;
   }
+  const scope = companionScope(user.id, String(req.query.dependantId ?? "") || null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
   const summary = buildSymptomSummary({
-    entries: db.symptomLogs.get(user.id) ?? [],
-    regimen: db.regimens.get(user.id) ?? [],
+    entries: db.symptomLogs.get(scope) ?? [],
+    regimen: db.regimens.get(scope) ?? [],
   });
   const format = String(req.query.format ?? "json");
   if (format === "text") {
