@@ -1,0 +1,14 @@
+---
+description: Absolute NEVER list for Materia agents
+alwaysApply: true
+---
+
+## 12. NEVER
+
+- Never invent, guess, or hard-code a clinical value
+- Never render clinical content without source + review
+- Never make the app direct treatment for a specific patient
+- Never send identifiable health data off-region / to offshore models
+- Never commit secrets; never skip plan on non-trivial work
+- Never reproduce licensed reference content (SAMF/MIMS/Lexicomp)
+- Never ship with an open S0

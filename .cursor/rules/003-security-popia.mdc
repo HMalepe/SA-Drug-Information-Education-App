@@ -1,0 +1,11 @@
+---
+description: POPIA privacy and security non-negotiables
+alwaysApply: true
+---
+
+## 4. PRIVACY & SECURITY (POPIA)
+
+- Health data is special personal information: minimise, separate, encrypt, log access.
+- Keep personal/health data IN-REGION. NEVER send identifiable patient data to offshore models.
+- AI operates on MOLECULE content, not personal data.
+- No secrets in code/repo. Validate input. Rate-limit AI endpoints.

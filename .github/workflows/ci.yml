@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install
+        run: npm install
+      - name: Build shared packages
+        run: npm run build -w @materia/design-tokens -w @materia/shared
+      - name: Seed validation
+        run: npm run seed:check
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit + clinical eval
+        run: npm test && npm run test:clinical
+      - name: S0 gate note
+        run: |
+          echo "S0 clinical-critical: any failing clinical eval blocks release."
+          echo "Open S0 = do not merge."

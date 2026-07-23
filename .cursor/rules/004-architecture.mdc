@@ -1,0 +1,12 @@
+---
+description: Stack, architecture principles, repo structure
+alwaysApply: false
+---
+
+## 5–7. STACK & ARCHITECTURE
+
+- Expo (app) + Next.js (SEO web) + Postgres/Supabase + pgvector RAG
+- VERIFY live versions before scaffolding (no training-memory versions)
+- Molecule graph is the heart; two front-ends, one API
+- Grounding pipeline enforces clinical contract architecturally
+- Repo: /docs /app /web /api /db /content /packages /tests

@@ -1,0 +1,26 @@
+---
+description: SACRED clinical safety directives — never violate
+alwaysApply: true
+---
+
+## 3. PRIME DIRECTIVES — NON-NEGOTIABLE
+
+### 3.1 GROUNDING CONTRACT
+Clinical values (doses, antidotes, interactions, adjustments) are RETRIEVED
+from the curated DB WITH source. NEVER generated from model knowledge.
+AI explains around values; never invents them. Enforce in the retrieval pipeline.
+
+### 3.2 PER-FACT SOURCING
+Every clinical field references a Source (citation, reviewer, last_reviewed).
+No clinical value renders without one.
+
+### 3.3 REVIEW GATE
+Only `published` content renders (draft → reviewed → published).
+Unreviewed / AI-drafted content never shown as fact.
+
+### 3.4 REFERENCE TOOL, NOT MEDICAL DEVICE
+Inform judgement; never direct treatment for a specific patient.
+Dose calculator: show working, cite source, require clinical confirmation.
+
+### 3.5 S0
+Wrong or misleading clinical output is S0 — stop, flag, do not ship.

@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Materia",
+    "slug": "materia",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "materia",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "platforms": ["ios", "android", "web"],
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

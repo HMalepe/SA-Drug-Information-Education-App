@@ -1,0 +1,705 @@
+{
+  "meta": {
+    "therapeuticArea": "antibiotics",
+    "note": "Clinical numeric dosing rules are intentionally ABSENT until founder pharmacist review. Published educational facts are original Materia authoring with sources. Never copied from SAMF/MIMS/Lexicomp.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification",
+      "notes": "Public guideline pointer — verify before relying clinically"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — values illustrative placeholders until live ingest"
+    }
+  ],
+  "manufacturers": [
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "marketingCompany": "GSK",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sandoz",
+      "name": "Sandoz",
+      "marketingCompany": "Sandoz SA",
+      "apiOrigin": "Various",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "marketingCompany": "Aspen",
+      "madeInSa": true,
+      "plantSite": "South Africa"
+    },
+    {
+      "id": "mfr-cipla",
+      "name": "Cipla",
+      "marketingCompany": "Cipla Medpro",
+      "apiOrigin": "India",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "marketingCompany": "Adcock Ingram",
+      "madeInSa": true
+    }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant",
+      "allergyRisk": "Very uncommon",
+      "absorptionNote": "Excess can slow dissolution",
+      "canBecomeActive": false
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler",
+      "allergyRisk": "Relevant in lactose intolerance / allergy",
+      "absorptionNote": "Usually clinically insignificant in tablet amounts",
+      "canBecomeActive": true
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-amox",
+      "slug": "amoxicillin",
+      "innName": "Amoxicillin",
+      "className": "Beta-lactam antibiotic (aminopenicillin)",
+      "atcCode": "J01CA04",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["amoxycillin", "amoxil"],
+      "publishState": "published",
+      "chemistrySummary": {
+        "value": "Amoxicillin is an aminopenicillin with a beta-lactam ring that targets bacterial cell-wall synthesis machinery.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      },
+      "moaSummary": {
+        "value": "It binds penicillin-binding proteins, blocking peptidoglycan cross-linking so growing bacteria cannot maintain a stable cell wall.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      },
+      "discoveryNote": {
+        "value": "Developed as a broader-spectrum oral penicillin derivative to improve absorption versus earlier penicillins.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-amoxclav",
+      "slug": "amoxicillin-clavulanate",
+      "innName": "Amoxicillin–clavulanate",
+      "className": "Beta-lactam + beta-lactamase inhibitor",
+      "atcCode": "J01CR02",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["co-amoxiclav", "amox-clav", "augmentin"],
+      "publishState": "published",
+      "chemistrySummary": {
+        "value": "Combination of amoxicillin with clavulanic acid, a beta-lactamase inhibitor that protects the penicillin from enzymatic breakdown.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      },
+      "moaSummary": {
+        "value": "Amoxicillin inhibits cell-wall synthesis; clavulanate inactivates many beta-lactamases so the antibiotic remains active against resistant strains.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-penv",
+      "slug": "phenoxymethylpenicillin",
+      "innName": "Phenoxymethylpenicillin",
+      "className": "Beta-lactam antibiotic (natural penicillin)",
+      "atcCode": "J01CE02",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["penicillin v", "pen v"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Inhibits bacterial cell-wall synthesis via penicillin-binding proteins; spectrum narrower than aminopenicillins.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-fluclox",
+      "slug": "flucloxacillin",
+      "innName": "Flucloxacillin",
+      "className": "Beta-lactam antibiotic (isoxazolyl penicillin)",
+      "atcCode": "J01CF05",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["floxapen"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Penicillinase-stable penicillin used primarily against staphylococci; still a cell-wall synthesis inhibitor.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-cephalexin",
+      "slug": "cefalexin",
+      "innName": "Cefalexin",
+      "className": "First-generation cephalosporin",
+      "atcCode": "J01DB01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["cephalexin", "keflex"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Beta-lactam cephalosporin that inhibits peptidoglycan cross-linking in susceptible bacteria.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-cefuroxime",
+      "slug": "cefuroxime",
+      "innName": "Cefuroxime",
+      "className": "Second-generation cephalosporin",
+      "atcCode": "J01DC02",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["zinnat"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Second-generation cephalosporin cell-wall synthesis inhibitor with broader Gram-negative coverage than first-generation agents.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-ceftriaxone",
+      "slug": "ceftriaxone",
+      "innName": "Ceftriaxone",
+      "className": "Third-generation cephalosporin",
+      "atcCode": "J01DD04",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["rocephin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Parenteral third-generation cephalosporin inhibiting bacterial cell-wall synthesis; often reserved for more serious infections.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-azithro",
+      "slug": "azithromycin",
+      "innName": "Azithromycin",
+      "className": "Macrolide antibiotic",
+      "atcCode": "J01FA10",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["zithromax"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Macrolide that binds the 50S ribosomal subunit and inhibits bacterial protein synthesis.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-clarithro",
+      "slug": "clarithromycin",
+      "innName": "Clarithromycin",
+      "className": "Macrolide antibiotic",
+      "atcCode": "J01FA09",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["klaricid"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Macrolide inhibiting protein synthesis at the 50S ribosomal subunit; notable CYP3A4 interaction potential (clinical details pending sourced publish).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-erythro",
+      "slug": "erythromycin",
+      "innName": "Erythromycin",
+      "className": "Macrolide antibiotic",
+      "atcCode": "J01FA01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": [],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Classic macrolide that blocks bacterial protein synthesis at the 50S subunit.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-doxy",
+      "slug": "doxycycline",
+      "innName": "Doxycycline",
+      "className": "Tetracycline antibiotic",
+      "atcCode": "J01AA02",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["vibramycin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Tetracycline that binds the 30S ribosomal subunit and inhibits protein synthesis. Dairy/divalent cations can chelate oral doses — counselling detail pending full sourced publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-cipro",
+      "slug": "ciprofloxacin",
+      "innName": "Ciprofloxacin",
+      "className": "Fluoroquinolone antibiotic",
+      "atcCode": "J01MA02",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["cipro"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Fluoroquinolone that inhibits bacterial DNA gyrase / topoisomerase IV, blocking DNA replication.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-metro",
+      "slug": "metronidazole",
+      "innName": "Metronidazole",
+      "className": "Nitroimidazole antimicrobial",
+      "atcCode": "J01XD01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["flagyl"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Nitroimidazole activated in anaerobic organisms to reactive products that damage microbial DNA.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-cotrim",
+      "slug": "co-trimoxazole",
+      "innName": "Co-trimoxazole",
+      "className": "Sulfonamide + dihydrofolate reductase inhibitor",
+      "atcCode": "J01EE01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["trimethoprim-sulfamethoxazole", "bactrim", "septran"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Sequential blockade of folate synthesis: sulfamethoxazole inhibits dihydropteroate synthase; trimethoprim inhibits dihydrofolate reductase.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-nitro",
+      "slug": "nitrofurantoin",
+      "innName": "Nitrofurantoin",
+      "className": "Nitrofuran antibacterial",
+      "atcCode": "J01XE01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["macrodantin", "furadantin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Urinary antiseptic activated inside bacteria to reactive intermediates that damage multiple macromolecules.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-clinda",
+      "slug": "clindamycin",
+      "innName": "Clindamycin",
+      "className": "Lincosamide antibiotic",
+      "atcCode": "J01FF01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["dalacin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Lincosamide that binds the 50S ribosomal subunit and inhibits protein synthesis.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-vanco",
+      "slug": "vancomycin",
+      "innName": "Vancomycin",
+      "className": "Glycopeptide antibiotic",
+      "atcCode": "J01XA01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": [],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Glycopeptide that binds D-Ala-D-Ala termini of peptidoglycan precursors, blocking cell-wall synthesis in Gram-positive organisms.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-genta",
+      "slug": "gentamicin",
+      "innName": "Gentamicin",
+      "className": "Aminoglycoside antibiotic",
+      "atcCode": "J01GB03",
+      "therapeuticArea": "antibiotics",
+      "synonyms": [],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Aminoglycoside that binds the 30S ribosomal subunit, causing misreading of mRNA and bactericidal effect in susceptible organisms.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-amox-draft-only",
+      "slug": "linezolid",
+      "innName": "Linezolid",
+      "className": "Oxazolidinone antibiotic",
+      "atcCode": "J01XX08",
+      "therapeuticArea": "antibiotics",
+      "synonyms": ["zyvox"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Oxazolidinone that prevents formation of the 70S initiation complex, inhibiting protein synthesis.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    },
+    {
+      "id": "mol-tmp",
+      "slug": "trimethoprim",
+      "innName": "Trimethoprim",
+      "className": "Dihydrofolate reductase inhibitor",
+      "atcCode": "J01EA01",
+      "therapeuticArea": "antibiotics",
+      "synonyms": [],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Inhibits bacterial dihydrofolate reductase, blocking tetrahydrofolate production needed for nucleic acid synthesis.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-amoxil",
+      "moleculeId": "mol-amox",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Amoxil",
+      "strength": "250 mg / 500 mg",
+      "form": "capsule",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["amoxil"],
+      "excipientIds": ["exc-mg-stearate", "exc-lactose"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-amoxicillin-asp",
+      "moleculeId": "mol-amox",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Amoxicillin Aspen",
+      "strength": "500 mg",
+      "form": "capsule",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "bioequivalentFlag": true,
+      "synonymKeys": ["amoxicillin aspen"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-augmentin",
+      "moleculeId": "mol-amoxclav",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Augmentin",
+      "strength": "625 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["augmentin", "augumentin", "augmetin"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-coamoxiclav-sandoz",
+      "moleculeId": "mol-amoxclav",
+      "manufacturerId": "mfr-sandoz",
+      "brandName": "Co-Amoxiclav Sandoz",
+      "strength": "625 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "bioequivalentFlag": true,
+      "synonymKeys": ["co-amoxiclav sandoz"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-zinnat",
+      "moleculeId": "mol-cefuroxime",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Zinnat",
+      "strength": "250 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["zinnat"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-cipro-cipla",
+      "moleculeId": "mol-cipro",
+      "manufacturerId": "mfr-cipla",
+      "brandName": "Ciprolex",
+      "strength": "500 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "synonymKeys": ["ciprolex", "ciprofloxacin"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-flagyl",
+      "moleculeId": "mol-metro",
+      "manufacturerId": "mfr-adcock",
+      "brandName": "Flagyl",
+      "strength": "400 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["flagyl"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-septran",
+      "moleculeId": "mol-cotrim",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Purbac",
+      "strength": "480 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "synonymKeys": ["purbac", "co-trimoxazole"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-amox",
+      "moleculeId": "mol-amox",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing ranges must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-01",
+        "aiDrafted": false
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-01"
+      },
+      "contraindications": [
+        {
+          "value": { "level": "red", "text": "Hypersensitivity to penicillins / beta-lactams — do not use; seek alternative class." },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Counsel on allergy history before dispensing any penicillin. Cross-reactivity with cephalosporins is not automatic — clinical judgement required.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food if stomach upset occurs; complete the prescribed course unless a clinician advises otherwise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible gastrointestinal upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for amoxicillin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Amoxicillin is often confused with macrolides in exams — remember: cell wall, not 50S ribosome.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take as directed. Tell your pharmacist if you have ever had a penicillin allergy. Finish the course unless your clinician says stop.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-01"
+        }
+      ]
+    }
+  ],
+  "interactions": [],
+  "priceRecords": [
+    {
+      "id": "price-amoxil-placeholder",
+      "productId": "prod-amoxil",
+      "sepZar": null,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "draft",
+      "notes": "SEP placeholder — populate from public DoH SEP file; do not invent prices"
+    }
+  ],
+  "doseRules": [],
+  "courses": [
+    {
+      "id": "course-amox",
+      "moleculeId": "mol-amox",
+      "title": "Amoxicillin — understand the why",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-amox-1",
+          "order": 1,
+          "title": "The Story",
+          "body": "Amoxicillin was developed to improve oral absorption versus earlier penicillins — a practical win for outpatient infection treatment.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amox-2",
+          "order": 2,
+          "title": "Chemical Structure",
+          "body": "Tap the beta-lactam ring in your mind: that four-membered ring is the business end that blocks cell-wall builders.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amox-3",
+          "order": 3,
+          "title": "Mechanism of Action",
+          "body": "Bacteria build a brick wall (peptidoglycan). Amoxicillin stops the bricklayers. Wall fails → cell bursts when it tries to grow.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amox-4",
+          "order": 4,
+          "title": "Inside the Body",
+          "body": "ADME journey scaffold: swallowed → absorbed → distributed → works at infection site → cleared (kidney-focused for many penicillins). Details pending sourced PK publish.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-amox-5",
+          "order": 5,
+          "title": "Clinical Pearls",
+          "body": "Allergy history is the first counselling question. Cell wall ≠ ribosome — that distinction wins exam marks and safer dispensing.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-amox-1",
+          "prompt": "Amoxicillin primarily works by…",
+          "choices": [
+            "Inhibiting the 50S ribosome",
+            "Blocking bacterial cell-wall synthesis",
+            "Inhibiting DNA gyrase",
+            "Blocking folate synthesis"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "You're thinking of macrolides (50S), fluoroquinolones (gyrase), or antifolates. Amoxicillin is a beta-lactam — cell wall.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}

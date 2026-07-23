@@ -1,0 +1,24 @@
+---
+description: Coding standards and Definition of Done
+globs:
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+alwaysApply: false
+---
+
+## 8. CODING STANDARDS
+
+- TypeScript strict; explicit types on public interfaces
+- Design tokens for ALL styling (/docs/10) — no magic colour values
+- Handle empty states explicitly (e.g. "no antidote — supportive")
+- Smallest change; comment WHY not what
+
+## 10. DEFINITION OF DONE
+
+- Acceptance criteria met
+- Clinical values sourced + review-gated
+- Tests passing (dosing/safety covered)
+- Low-end Android / graceful offline where relevant
+- No secrets; POPIA respected; constitution self-review

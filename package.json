@@ -1,0 +1,29 @@
+{
+  "name": "materia",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Materia — molecule-first SA medicine intelligence, companion & academy",
+  "workspaces": [
+    "web",
+    "api",
+    "packages/*",
+    "tests"
+  ],
+  "scripts": {
+    "build": "npm run build -w @materia/design-tokens -w @materia/shared -w @materia/api",
+    "dev:api": "npm run dev -w @materia/api",
+    "dev:web": "npm run dev -w @materia/web",
+    "dev:app": "npm run start --prefix app",
+    "test": "npm run test -w @materia/tests",
+    "test:clinical": "npm run test:clinical -w @materia/tests",
+    "typecheck": "npm run typecheck -w @materia/design-tokens -w @materia/shared -w @materia/api -w @materia/tests",
+    "lint": "npm run typecheck",
+    "seed:check": "node content/pipeline/validate-seed.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
