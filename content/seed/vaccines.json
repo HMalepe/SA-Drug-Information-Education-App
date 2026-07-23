@@ -1,0 +1,503 @@
+{
+  "meta": {
+    "therapeuticArea": "vaccines",
+    "note": "Mid-tail immunisation scaffold (Doc 29). Clinical schedules/doses ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. EPI and adult immunisation plans are clinician/DoH-directed — Materia teaches counselling hooks only (storage, live vs inactivated, immunosuppression). Never invent a vaccine schedule.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List / EPI guidance (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
+    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
+    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
+    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
+    { "id": "mfr-biovac", "name": "Biovac", "madeInSa": true },
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-serum", "name": "Serum Institute", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-aluminium-adjuvant",
+      "name": "Aluminium adjuvant salts",
+      "purpose": "Vaccine adjuvant in many inactivated preparations",
+      "allergyRisk": "Local reactogenicity more common than true allergy — escalate unusual reactions clinically"
+    },
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-hep-b-vaccine",
+      "slug": "hepatitis-b-vaccine",
+      "innName": "Hepatitis B vaccine",
+      "className": "Inactivated recombinant vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["engerix-b", "heplisav", "hep b vaccine", "hepatitis b vaccine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Induces immunity against HBsAg — educational framing only; confirm against labelled product and current SA EPI/adult schedules. Never invent a dose interval.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-mmr-vaccine",
+      "slug": "mmr-vaccine",
+      "innName": "Measles, mumps, rubella (MMR) vaccine",
+      "className": "Live attenuated combined vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["priorix", "mmr ii", "mmr vaccine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Live attenuated viruses induce humoral/cellular immunity — immunosuppression and pregnancy conversations are teaching hooks; schedules stay clinician/DoH-directed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-influenza-vaccine",
+      "slug": "influenza-vaccine",
+      "innName": "Influenza vaccine (inactivated)",
+      "className": "Inactivated seasonal influenza vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["fluarix", "influvac", "flu vaccine", "influenza vaccine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-td-vaccine",
+      "slug": "tetanus-diphtheria-vaccine",
+      "innName": "Tetanus–diphtheria (Td) vaccine",
+      "className": "Inactivated toxoid vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["td vaccine", "tetanus diphtheria"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-tdap-vaccine",
+      "slug": "tdap-vaccine",
+      "innName": "Tetanus–diphtheria–acellular pertussis (Tdap) vaccine",
+      "className": "Inactivated toxoid / acellular pertussis vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["adacel", "boostrix", "tdap"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-hpv-vaccine",
+      "slug": "hpv-vaccine",
+      "innName": "Human papillomavirus (HPV) vaccine",
+      "className": "Inactivated recombinant vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["gardasil", "cervarix", "hpv vaccine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-pcv-vaccine",
+      "slug": "pneumococcal-conjugate-vaccine",
+      "innName": "Pneumococcal conjugate vaccine (PCV)",
+      "className": "Inactivated conjugate vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["prevenar", "pcv13", "pcv vaccine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-ppsv-vaccine",
+      "slug": "pneumococcal-polysaccharide-vaccine",
+      "innName": "Pneumococcal polysaccharide vaccine (PPSV)",
+      "className": "Inactivated polysaccharide vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["pneumovax", "ppsv23"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-bcg-vaccine",
+      "slug": "bcg-vaccine",
+      "innName": "BCG vaccine",
+      "className": "Live attenuated mycobacterial vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["bcg", "bacille calmette-guerin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-ipv-vaccine",
+      "slug": "inactivated-polio-vaccine",
+      "innName": "Inactivated polio vaccine (IPV)",
+      "className": "Inactivated vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["ipv", "imovax polio", "polio vaccine inactivated"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-rotavirus-vaccine",
+      "slug": "rotavirus-vaccine",
+      "innName": "Rotavirus vaccine",
+      "className": "Live attenuated oral vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["rotarix", "rotateq", "rotavirus vaccine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-hep-a-vaccine",
+      "slug": "hepatitis-a-vaccine",
+      "innName": "Hepatitis A vaccine",
+      "className": "Inactivated vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["havrix", "avaxim", "hep a vaccine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-rabies-vaccine",
+      "slug": "rabies-vaccine",
+      "innName": "Rabies vaccine",
+      "className": "Inactivated vaccine",
+      "therapeuticArea": "vaccines",
+      "synonyms": ["verorab", "rabipur", "rabies vaccine"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-engerix-b",
+      "moleculeId": "mol-hep-b-vaccine",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Engerix-B",
+      "strength": "prefilled syringe / vial (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["engerix-b", "engerix"],
+      "excipientIds": ["exc-aluminium-adjuvant"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-priorix",
+      "moleculeId": "mol-mmr-vaccine",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Priorix",
+      "strength": "lyophilised vaccine (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["priorix"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-influvac",
+      "moleculeId": "mol-influenza-vaccine",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Influvac",
+      "strength": "seasonal formulation (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["influvac"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-boostrix",
+      "moleculeId": "mol-tdap-vaccine",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Boostrix",
+      "strength": "prefilled syringe (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["boostrix"],
+      "excipientIds": ["exc-aluminium-adjuvant"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-gardasil",
+      "moleculeId": "mol-hpv-vaccine",
+      "manufacturerId": "mfr-msd",
+      "brandName": "Gardasil",
+      "strength": "prefilled syringe (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["gardasil"],
+      "excipientIds": ["exc-aluminium-adjuvant"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-prevenar",
+      "moleculeId": "mol-pcv-vaccine",
+      "manufacturerId": "mfr-pfizer",
+      "brandName": "Prevenar",
+      "strength": "prefilled syringe (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["prevenar", "prevnar"],
+      "excipientIds": ["exc-aluminium-adjuvant"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-pneumovax",
+      "moleculeId": "mol-ppsv-vaccine",
+      "manufacturerId": "mfr-msd",
+      "brandName": "Pneumovax",
+      "strength": "vial / syringe (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["pneumovax"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-rotarix",
+      "moleculeId": "mol-rotavirus-vaccine",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Rotarix",
+      "strength": "oral applicator (per label)",
+      "form": "oral suspension",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["rotarix"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-havrix",
+      "moleculeId": "mol-hep-a-vaccine",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Havrix",
+      "strength": "prefilled syringe (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["havrix"],
+      "excipientIds": ["exc-aluminium-adjuvant"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-verorab",
+      "moleculeId": "mol-rabies-vaccine",
+      "manufacturerId": "mfr-sanofi",
+      "brandName": "Verorab",
+      "strength": "vial (per label)",
+      "form": "injection",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["verorab"],
+      "excipientIds": [],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-hep-b-vaccine",
+      "moleculeId": "mol-hep-b-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing / EPI schedule intervals not published in Materia yet — confirm against labelled product / current SA immunisation guidance. Do not invent a schedule.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Suspected anaphylaxis after vaccination is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [
+        {
+          "value": "Cold-chain integrity and correct product (adult vs paediatric presentations) matter at the counter — confirm the labelled pack.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Expect local soreness; report breathing difficulty or widespread rash urgently. Never invent a booster interval.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-mmr-vaccine",
+      "moleculeId": "mol-mmr-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Live vaccine — pregnancy and significant immunosuppression are core counselling themes; escalate clinically; do not invent deferral rules.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Ask about pregnancy plans and immunosuppressant medicines before counselling. Never invent a schedule.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-influenza-vaccine",
+      "moleculeId": "mol-influenza-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Seasonal formulation changes — check the labelled year. Mild fever can occur; escalate anaphylaxis signs. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-mmr-methotrexate",
+      "moleculeAId": "mol-mmr-vaccine",
+      "moleculeBId": "mol-methotrexate",
+      "severity": "major",
+      "mechanism": {
+        "value": "Live vaccines may be unsafe or less effective in significant immunosuppression — educational interaction flag only; confirm against current SA immunisation and rheumatology guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose change or immunisation schedule — escalate to the clinician before giving live vaccines to patients on methotrexate.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-engerix-b",
+      "productId": "prod-engerix-b",
+      "sepZar": 185.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-priorix",
+      "productId": "prod-priorix",
+      "sepZar": 245.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    },
+    {
+      "id": "price-gardasil",
+      "productId": "prod-gardasil",
+      "sepZar": 980.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-hep-b-vaccine",
+      "moleculeId": "mol-hep-b-vaccine",
+      "title": "Hepatitis B vaccine — schedules without inventing doses",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-hepb-1",
+          "order": 1,
+          "title": "Cold chain and the right pack",
+          "body": "Adult vs paediatric presentations and fridge discipline are counter realities. Educational only — Materia does not publish booster intervals here.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-hepb-2",
+          "order": 2,
+          "title": "Live vaccines and methotrexate",
+          "body": "MMR–methotrexate teaching is about escalating immunosuppression risk to the clinician, not inventing a deferral calendar. Confirm against current SA guidance and the labelled products.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-hepb-1",
+          "prompt": "A patient on weekly methotrexate asks for MMR catch-up. Best educational frame?",
+          "choices": [
+            "Give today — vaccines are always safe",
+            "Flag live-vaccine + immunosuppression risk and escalate clinically — do not invent a schedule",
+            "Double the methotrexate that week",
+            "Switch to oral polio instead"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Interaction counselling means escalate — Materia never invents vaccine schedules or DMARD dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}

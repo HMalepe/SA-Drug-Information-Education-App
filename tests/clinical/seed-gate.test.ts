@@ -358,4 +358,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-fentanyl");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Engerix-B → hepatitis-b-vaccine from vaccines seed", () => {
+    const hits = resolveSearch("Engerix-B", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "hepatitis-b-vaccine");
+  });
+
+  it("resolves Priorix → mmr-vaccine from vaccines seed", () => {
+    const hits = resolveSearch("Priorix", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "mmr-vaccine");
+  });
+
+  it("publishes educational mmr↔methotrexate interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-mmr-methotrexate");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.equal(ix.moleculeBId, "mol-methotrexate");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
