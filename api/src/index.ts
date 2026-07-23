@@ -65,6 +65,7 @@ import {
   buildLeaderboard,
   locatePharmacies,
   SA_CITY_CENTROIDS,
+  buildMoleculeMonograph,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -2676,6 +2677,41 @@ app.get("/tools/handout/:moleculeSlug", (req, res) => {
     return;
   }
   res.json(handout);
+});
+
+/* ── Molecule monograph export (Build Spec §12) ── */
+app.get("/tools/monograph/:moleculeSlug", (req, res) => {
+  const userId = String(req.query.userId ?? "");
+  const user = userId ? requireUser(userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "handout_export");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Monograph export gated", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const mol = getMoleculeBySlug(req.params.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const lang = (String(req.query.lang ?? "en") as CounsellingLang) || "en";
+  const safety = db.safetyProfiles.find((s) => s.moleculeId === mol.id) ?? null;
+  const mono = buildMoleculeMonograph({
+    molecule: mol,
+    safety,
+    products: db.products,
+    interactions: db.interactions,
+    counsellingLang: lang,
+  });
+  if ("error" in mono) {
+    res.status(404).json({ error: mono.error });
+    return;
+  }
+  if (String(req.query.format ?? "") === "html") {
+    res.type("html").send(mono.html);
+    return;
+  }
+  res.json(mono);
 });
 
 /* ── Shortage / availability (Build Spec §5.6 — Pro) ── */

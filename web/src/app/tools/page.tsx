@@ -327,6 +327,15 @@ export default function ToolsPage() {
         >
           Counselling handout
         </button>{" "}
+        <button
+          className="btn"
+          type="button"
+          onClick={() =>
+            void call(`/tools/monograph/${encodeURIComponent(slug)}?lang=${lang}`, "monograph_export")
+          }
+        >
+          Molecule monograph
+        </button>{" "}
         <button className="btn" type="button" onClick={() => void cacheOffline()}>
           Offline pack
         </button>{" "}
