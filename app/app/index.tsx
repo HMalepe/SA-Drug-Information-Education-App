@@ -21,16 +21,23 @@ interface MoleculeRow {
 
 export default function HomeScreen() {
   const [molecules, setMolecules] = useState<MoleculeRow[]>([]);
+  const [areas, setAreas] = useState<string[]>([]);
+  const [area, setArea] = useState<string>("");
   const [q, setQ] = useState("");
   const [hits, setHits] = useState<Array<{ moleculeSlug: string; moleculeName: string; brandName?: string }>>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API}/molecules`)
+    const qs = area ? `?area=${encodeURIComponent(area)}` : "";
+    setLoading(true);
+    fetch(`${API}/molecules${qs}`)
       .then((r) => r.json())
-      .then((d) => setMolecules(d.molecules ?? []))
+      .then((d) => {
+        setMolecules(d.molecules ?? []);
+        if (d.areas) setAreas(d.areas);
+      })
       .finally(() => setLoading(false));
-  }, []);
+  }, [area]);
 
   async function search() {
     const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
@@ -45,7 +52,7 @@ export default function HomeScreen() {
       <View style={styles.searchRow}>
         <TextInput
           style={styles.input}
-          placeholder="Augmentin, amoxicillin…"
+          placeholder="Panado, Augmentin, amoxicillin…"
           placeholderTextColor={colors.slate}
           value={q}
           onChangeText={setQ}
@@ -64,7 +71,24 @@ export default function HomeScreen() {
           </Pressable>
         </Link>
       ))}
-      <Text style={styles.section}>Antibiotics</Text>
+      <View style={styles.chips}>
+        <Pressable
+          style={[styles.chip, !area && styles.chipOn]}
+          onPress={() => setArea("")}
+        >
+          <Text style={!area ? styles.chipTextOn : styles.chipText}>All</Text>
+        </Pressable>
+        {areas.map((a) => (
+          <Pressable
+            key={a}
+            style={[styles.chip, area === a && styles.chipOn]}
+            onPress={() => setArea(a)}
+          >
+            <Text style={area === a ? styles.chipTextOn : styles.chipText}>{a}</Text>
+          </Pressable>
+        ))}
+      </View>
+      <Text style={styles.section}>{area || "All areas"}</Text>
       {loading ? (
         <ActivityIndicator color={colors.teal} />
       ) : (
@@ -115,6 +139,18 @@ const styles = StyleSheet.create({
     color: colors.ink,
     fontSize: typography.size.lg,
   },
+  chips: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: space.sm },
+  chip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: "#CBD5E1",
+  },
+  chipOn: { backgroundColor: colors.teal, borderColor: colors.teal },
+  chipText: { color: colors.ink, fontWeight: "600", fontSize: 13 },
+  chipTextOn: { color: colors.white, fontWeight: "600", fontSize: 13 },
   card: {
     backgroundColor: colors.white,
     borderRadius: 12,

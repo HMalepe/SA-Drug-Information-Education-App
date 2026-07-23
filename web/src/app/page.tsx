@@ -2,14 +2,23 @@ import { SearchBox } from "@/components/SearchBox";
 import { apiGet } from "@/lib/api";
 
 interface MoleculeList {
-  molecules: Array<{ slug: string; innName: string; className: string }>;
+  molecules: Array<{ slug: string; innName: string; className: string; therapeuticArea: string }>;
+  areas?: string[];
 }
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ area?: string }>;
+}) {
+  const { area } = await searchParams;
   let molecules: MoleculeList["molecules"] = [];
+  let areas: string[] = [];
   try {
-    const data = await apiGet<MoleculeList>("/molecules");
+    const qs = area ? `?area=${encodeURIComponent(area)}` : "";
+    const data = await apiGet<MoleculeList>(`/molecules${qs}`);
     molecules = data.molecules;
+    areas = data.areas ?? [];
   } catch {
     molecules = [];
   }
@@ -24,8 +33,23 @@ export default async function HomePage() {
         the why behind the what.
       </p>
       <SearchBox />
-      <h2>Antibiotics seed set</h2>
-      <p className="muted">First therapeutic area (depth over breadth). Public free-tier pages.</p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "16px 0" }}>
+        <a className="btn" href="/" style={{ opacity: area ? 0.7 : 1 }}>
+          All
+        </a>
+        {areas.map((a) => (
+          <a
+            key={a}
+            className="btn"
+            href={`/?area=${encodeURIComponent(a)}`}
+            style={{ opacity: area === a ? 1 : 0.7 }}
+          >
+            {a}
+          </a>
+        ))}
+      </div>
+      <h2>{area ? area : "Seed coverage"}</h2>
+      <p className="muted">Antibiotics + analgesics scaffolds. Depth over breadth; dosing stays draft.</p>
       {molecules.length === 0 ? (
         <div className="card">
           API offline. Start the API (`npm run dev:api`) then refresh.
@@ -34,7 +58,9 @@ export default async function HomePage() {
         molecules.map((m) => (
           <a key={m.slug} className="card" href={`/molecules/${m.slug}`} style={{ display: "block" }}>
             <strong>{m.innName}</strong>
-            <div className="muted">{m.className}</div>
+            <div className="muted">
+              {m.className} · {m.therapeuticArea}
+            </div>
           </a>
         ))
       )}

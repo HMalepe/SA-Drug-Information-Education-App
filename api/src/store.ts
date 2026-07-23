@@ -43,11 +43,11 @@ interface SeedFile {
   products: Product[];
   safetyProfiles: SafetyProfile[];
   priceRecords: PriceRecord[];
-  doseRules: DoseRule[];
+  doseRules?: DoseRule[];
   interactions?: Interaction[];
   formularyEntries?: FormularyEntry[];
   availabilitySignals?: AvailabilitySignal[];
-  courses: Array<
+  courses?: Array<
     Course & {
       lessons: Array<Omit<Lesson, "courseId"> & { order: number }>;
       quiz: Array<Omit<QuizQuestion, "courseId">>;
@@ -55,16 +55,36 @@ interface SeedFile {
   >;
 }
 
-const seedPath = join(
-  dirname(fileURLToPath(import.meta.url)),
-  "../../content/seed/antibiotics.json",
-);
+const seedDir = join(dirname(fileURLToPath(import.meta.url)), "../../content/seed");
 
-function loadSeed(): SeedFile {
-  return JSON.parse(readFileSync(seedPath, "utf8")) as SeedFile;
+function loadSeedFile(name: string): SeedFile {
+  return JSON.parse(readFileSync(join(seedDir, name), "utf8")) as SeedFile;
 }
 
-const seed = loadSeed();
+function byId<T extends { id: string }>(items: T[]): T[] {
+  const map = new Map<string, T>();
+  for (const item of items) map.set(item.id, item);
+  return [...map.values()];
+}
+
+function mergeSeeds(...parts: SeedFile[]): SeedFile {
+  return {
+    sources: byId(parts.flatMap((p) => p.sources)),
+    manufacturers: byId(parts.flatMap((p) => p.manufacturers)),
+    excipients: byId(parts.flatMap((p) => p.excipients)),
+    molecules: byId(parts.flatMap((p) => p.molecules)),
+    products: byId(parts.flatMap((p) => p.products)),
+    safetyProfiles: byId(parts.flatMap((p) => p.safetyProfiles)),
+    priceRecords: byId(parts.flatMap((p) => p.priceRecords)),
+    doseRules: parts.flatMap((p) => p.doseRules ?? []),
+    interactions: byId(parts.flatMap((p) => p.interactions ?? [])),
+    formularyEntries: byId(parts.flatMap((p) => p.formularyEntries ?? [])),
+    availabilitySignals: byId(parts.flatMap((p) => p.availabilitySignals ?? [])),
+    courses: byId(parts.flatMap((p) => p.courses ?? [])),
+  };
+}
+
+const seed = mergeSeeds(loadSeedFile("antibiotics.json"), loadSeedFile("analgesics.json"));
 const sourceById = new Map(seed.sources.map((s) => [s.id, s]));
 
 export interface ProgressRow {
@@ -98,7 +118,7 @@ export const db = {
   interactions: seed.interactions ?? [],
   formularyEntries: seed.formularyEntries ?? [],
   availabilitySignals: (seed.availabilitySignals ?? []) as AvailabilitySignal[],
-  courses: seed.courses.map((c) => ({
+  courses: (seed.courses ?? []).map((c) => ({
     ...c,
     lessons: c.lessons.map((l) => ({ ...l, courseId: c.id })),
     quiz: c.quiz.map((q) => ({ ...q, courseId: c.id })),

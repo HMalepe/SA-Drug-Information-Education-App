@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import cors from "cors";
 import express from "express";
 import { z } from "zod";
@@ -37,6 +40,7 @@ import {
   listColdChainNotes,
   listCounsellingLangs,
   listSchemes,
+  loadPublicFeed,
   matchFormularyAndCoPay,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
@@ -111,10 +115,12 @@ app.get("/search", (req, res) => {
   res.json({ query: q, hits });
 });
 
-app.get("/molecules", (_req, res) => {
+app.get("/molecules", (req, res) => {
+  const area = String(req.query.area ?? "").trim().toLowerCase();
   res.json({
     molecules: db.molecules
       .filter((m) => m.publishState === "published")
+      .filter((m) => !area || m.therapeuticArea.toLowerCase() === area)
       .map((m) => ({
         id: m.id,
         slug: m.slug,
@@ -123,6 +129,7 @@ app.get("/molecules", (_req, res) => {
         therapeuticArea: m.therapeuticArea,
         hasCourse: Boolean(db.courses.find((c) => c.moleculeId === m.id && c.publishState === "published")),
       })),
+    areas: [...new Set(db.molecules.map((m) => m.therapeuticArea))].sort(),
   });
 });
 
@@ -1429,6 +1436,38 @@ app.post("/ingest/preview", (req, res) => {
   res.json({
     preview,
     warning: "Draft-only. Does not mutate published seed or live prices.",
+  });
+});
+
+app.post("/ingest/fetch-preview", async (req, res) => {
+  const schema = z.object({
+    kind: z.enum(["sahpra", "sep"]),
+  });
+  const parsed = schema.safeParse(req.body ?? {});
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const fixtureName = parsed.data.kind === "sahpra" ? "sahpra-sample.csv" : "sep-sample.csv";
+  const fixturePath = join(
+    dirname(fileURLToPath(import.meta.url)),
+    "../../content/ingest/fixtures",
+    fixtureName,
+  );
+  const fixtureText = readFileSync(fixturePath, "utf8");
+  const feed = await loadPublicFeed({
+    kind: parsed.data.kind,
+    url: parsed.data.kind === "sahpra" ? process.env.SAHPRA_FEED_URL : process.env.SEP_FEED_URL,
+    fixtureText,
+  });
+  const preview =
+    parsed.data.kind === "sahpra"
+      ? validateSahpraRows(sahpraFromCsv(feed.text))
+      : validateSepRows(sepFromCsv(feed.text));
+  res.json({
+    feed: { origin: feed.origin, note: feed.note, url: feed.url },
+    preview,
+    warning: "Draft-only. Live pulls never auto-publish.",
   });
 });
 

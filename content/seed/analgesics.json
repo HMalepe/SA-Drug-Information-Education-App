@@ -1,0 +1,330 @@
+{
+  "meta": {
+    "therapeuticArea": "analgesics",
+    "note": "Second therapeutic area scaffold (Doc 29). Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler / diluent",
+      "allergyRisk": "Relevant in lactose intolerance / rare milk protein allergy contexts"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-paracetamol",
+      "slug": "paracetamol",
+      "innName": "Paracetamol",
+      "className": "Analgesic / antipyretic",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["acetaminophen", "panado", "calpol"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Reduces pain and fever mainly via central prostaglandin pathways — educational framing only; confirm against labelled product and guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-ibuprofen",
+      "slug": "ibuprofen",
+      "innName": "Ibuprofen",
+      "className": "NSAID — propionic acid",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["nurofen", "brufen"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Inhibits cyclo-oxygenase (COX) enzymes, reducing prostaglandin-mediated pain and inflammation — educational layer pending deeper founder review.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-diclofenac",
+      "slug": "diclofenac",
+      "innName": "Diclofenac",
+      "className": "NSAID — acetic acid",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["voltaren", "cataflam"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-aspirin",
+      "slug": "acetylsalicylic-acid",
+      "innName": "Acetylsalicylic acid",
+      "className": "NSAID / antiplatelet (context-dependent)",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["aspirin", "ecotrin", "disprin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-naproxen",
+      "slug": "naproxen",
+      "innName": "Naproxen",
+      "className": "NSAID — propionic acid",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["naprosyn", "aleve"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-mefenamic",
+      "slug": "mefenamic-acid",
+      "innName": "Mefenamic acid",
+      "className": "NSAID — fenamate",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["ponstan"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-celecoxib",
+      "slug": "celecoxib",
+      "innName": "Celecoxib",
+      "className": "NSAID — COX-2 selective",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["celebrex"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-tramadol",
+      "slug": "tramadol",
+      "innName": "Tramadol",
+      "className": "Opioid analgesic (atypical)",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["tramal", "tramacet"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-codeine",
+      "slug": "codeine",
+      "innName": "Codeine",
+      "className": "Opioid analgesic",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["codeine phosphate"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-morphine",
+      "slug": "morphine",
+      "innName": "Morphine",
+      "className": "Opioid analgesic",
+      "therapeuticArea": "analgesics",
+      "synonyms": ["mst", "morphine sulphate"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-panado",
+      "moleculeId": "mol-paracetamol",
+      "manufacturerId": "mfr-adcock",
+      "brandName": "Panado",
+      "strength": "500 mg",
+      "form": "tablet",
+      "schedule": "S0",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["panado", "panado tablets"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-paracetamol-asp",
+      "moleculeId": "mol-paracetamol",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Paracetamol Aspen",
+      "strength": "500 mg",
+      "form": "tablet",
+      "schedule": "S0",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "bioequivalentFlag": true,
+      "synonymKeys": ["paracetamol aspen"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-nurofen",
+      "moleculeId": "mol-ibuprofen",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Nurofen",
+      "strength": "200 mg",
+      "form": "tablet",
+      "schedule": "S2",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["nurofen"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-voltaren",
+      "moleculeId": "mol-diclofenac",
+      "manufacturerId": "mfr-gsk",
+      "brandName": "Voltaren",
+      "strength": "50 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["voltaren"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-paracetamol",
+      "moleculeId": "mol-paracetamol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines. Do not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Overdose is a medical emergency — seek emergency care / Poisons Centre. No specific antidote text published in this seed beyond supportive empty-state framing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Do not exceed the labelled maximum. Combining multiple 'cold/flu' products can double up paracetamol.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-ibuprofen",
+      "moleculeId": "mol-ibuprofen",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Ask about stomach ulcers, asthma, kidney disease, and other NSAIDs before recommending.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [],
+  "priceRecords": [
+    {
+      "id": "price-panado",
+      "productId": "prod-panado",
+      "sepZar": 28.5,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-paracetamol-asp",
+      "productId": "prod-paracetamol-asp",
+      "sepZar": 18.9,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-paracetamol",
+      "moleculeId": "mol-paracetamol",
+      "title": "Paracetamol — common, not trivial",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-para-1",
+          "order": 1,
+          "title": "Why double-ups happen",
+          "body": "Many combination cold products already contain paracetamol. Teaching patients to read the active ingredient list prevents accidental overdose — educational framing only.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-para-2",
+          "order": 2,
+          "title": "Liver risk framing",
+          "body": "Overdose can injure the liver. Materia does not publish numeric antidote protocols here — escalate to emergency care / Poisons Centre.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-para-1",
+          "prompt": "A patient is taking a combination cold syrup and wants extra Panado. What is the key counselling point?",
+          "choices": [
+            "Always double the dose for fever",
+            "Check the syrup's actives — many already contain paracetamol",
+            "Paracetamol has no maximum daily amount",
+            "Switch to tramadol without advice"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Combination products often already include paracetamol — check labels before adding more.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}
