@@ -32,6 +32,16 @@ export default function MyMedsPage() {
     Array<{ moleculeName: string; tags: string[]; publishedNote: string; reminderHint: string }>
   >([]);
   const [foodMeta, setFoodMeta] = useState("");
+  const [refillRows, setRefillRows] = useState<
+    Array<{
+      moleculeName: string;
+      status: string;
+      statusLabel: string;
+      refillDueOn: string | null;
+      sepPrompt: string | null;
+    }>
+  >([]);
+  const [refillMeta, setRefillMeta] = useState("");
   const [out, setOut] = useState("");
 
   async function start() {
@@ -53,6 +63,9 @@ export default function MyMedsPage() {
             moleculeName: "Amoxicillin",
             brandName: "Amoxil",
             reminderTimes: ["08:00", "20:00"],
+            refillDueOn: "2026-07-25",
+            lastFilledOn: "2026-06-27",
+            packDaysUser: 28,
           },
         ],
       }),
@@ -208,6 +221,21 @@ export default function MyMedsPage() {
     setFoodCues(Array.isArray(data.cues) ? data.cues : []);
   }
 
+  async function loadRefills() {
+    if (!userId) return;
+    const qsParts = ["asOf=2026-07-23"];
+    if (activeDependantId) qsParts.push(`dependantId=${encodeURIComponent(activeDependantId)}`);
+    const res = await fetch(`${API}/companion/refills/${userId}?${qsParts.join("&")}`);
+    const data = await res.json();
+    if (!res.ok) {
+      setRefillMeta(String(data.error ?? "Could not load refills"));
+      setRefillRows([]);
+      return;
+    }
+    setRefillMeta(`${data.note ?? ""} ${data.disclaimer ?? ""}`);
+    setRefillRows(Array.isArray(data.rows) ? data.rows : []);
+  }
+
   return (
     <>
       <h1>My Meds</h1>
@@ -295,6 +323,9 @@ export default function MyMedsPage() {
             <button className="btn" type="button" onClick={() => void loadFoodTiming()}>
               Food timing (§6)
             </button>
+            <button className="btn" type="button" onClick={() => void loadRefills()}>
+              Refill board (§6)
+            </button>
           </div>
           <p className="muted" style={{ marginTop: 8 }}>
             Email/SMS/WhatsApp stay stub-logged until Resend/Twilio keys.
@@ -377,6 +408,27 @@ export default function MyMedsPage() {
             </article>
           ))}
           {foodCues.length === 0 && <p className="muted">No published food notes on this regimen yet.</p>}
+        </div>
+      )}
+      {refillMeta && (
+        <div className="card" style={{ marginTop: 12 }}>
+          <h2 style={{ marginTop: 0 }}>Refill dates</h2>
+          <p className="muted">{refillMeta}</p>
+          {refillRows.map((r) => (
+            <article key={`${r.moleculeName}-${r.refillDueOn ?? "unset"}`} style={{ marginTop: 12 }}>
+              <strong>
+                {r.moleculeName} · {r.status}
+              </strong>
+              {r.refillDueOn && <div className="muted">Marked due {r.refillDueOn}</div>}
+              <p style={{ margin: "6px 0" }}>{r.statusLabel}</p>
+              {r.sepPrompt && (
+                <p className="muted" style={{ fontSize: 13 }}>
+                  {r.sepPrompt}
+                </p>
+              )}
+            </article>
+          ))}
+          {refillRows.length === 0 && <p className="muted">No regimen items yet.</p>}
         </div>
       )}
       {out && (

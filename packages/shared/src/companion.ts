@@ -8,6 +8,12 @@ export interface RegimenItem {
   brandName?: string;
   /** Reminder times as HH:mm — support feature only, not dosing advice */
   reminderTimes: string[];
+  /** User-authored ISO date (YYYY-MM-DD) — never invented from clinical data */
+  refillDueOn?: string;
+  /** User-authored last-filled date for calendar arithmetic with packDaysUser */
+  lastFilledOn?: string;
+  /** User-entered pack length in days — never sourced from labels as clinical fact */
+  packDaysUser?: number;
 }
 
 export interface ClashFlag {

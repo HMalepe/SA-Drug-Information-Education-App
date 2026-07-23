@@ -66,6 +66,7 @@ import {
   locatePharmacies,
   SA_CITY_CENTROIDS,
   buildMoleculeMonograph,
+  buildRefillBoard,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -1458,6 +1459,9 @@ app.put("/companion/regimen/:userId", (req, res) => {
         productId: z.string().optional(),
         brandName: z.string().optional(),
         reminderTimes: z.array(z.string()),
+        refillDueOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+        lastFilledOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+        packDaysUser: z.number().int().min(1).max(366).optional(),
       }),
     ),
   });
@@ -2014,6 +2018,38 @@ app.get("/companion/food-timing/:userId", (req, res) => {
   }
   const regimen = db.regimens.get(scope) ?? [];
   res.json(buildFoodTimingCues({ regimen, safetyProfiles: db.safetyProfiles }));
+});
+
+/* ── Refill dates + SEP nudge (Build Spec §6) ── */
+app.get("/companion/refills/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "companion_schedule");
+  if (!gate.allowed) {
+    res.status(402).json({ error: "Companion not available", upgradeTo: gate.upgradeTo });
+    return;
+  }
+  const scope = companionScope(user.id, String(req.query.dependantId ?? "") || null);
+  if (typeof scope === "object") {
+    res.status(404).json(scope);
+    return;
+  }
+  const asOf =
+    typeof req.query.asOf === "string" && /^\d{4}-\d{2}-\d{2}$/.test(req.query.asOf)
+      ? req.query.asOf
+      : new Date().toISOString().slice(0, 10);
+  const regimen = db.regimens.get(scope) ?? [];
+  res.json(
+    buildRefillBoard({
+      regimen,
+      asOf,
+      products: db.products,
+      prices: db.priceRecords,
+    }),
+  );
 });
 
 app.post("/companion/reminders/dispatch", async (req, res) => {
