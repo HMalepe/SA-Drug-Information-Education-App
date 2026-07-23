@@ -22,6 +22,7 @@ import type {
   UserProfile,
 } from "@materia/shared";
 import type {
+  AnalyticsEvent,
   AvailabilitySignal,
   CpdCertificate,
   CpdCreditEvent,
@@ -123,6 +124,7 @@ export const db = {
   referralCredits: [] as ReferralCredit[],
   reminderPrefs: new Map<string, ReminderPreferences>(),
   reminderDispatchLog: [] as Array<SendResult & { at: string; moleculeId: string }>,
+  analyticsEvents: [] as AnalyticsEvent[],
 };
 
 export function getSource(id: string): Source | undefined {

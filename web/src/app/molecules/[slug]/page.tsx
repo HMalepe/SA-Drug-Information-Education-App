@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MoleculeTabs } from "@/components/MoleculeTabs";
 import { AskMateria } from "@/components/AskMateria";
+import { TrackPage } from "@/components/TrackPage";
 import { apiGet, API_BASE } from "@/lib/api";
 
 interface MoleculeView {
@@ -79,10 +80,12 @@ export default async function MoleculePage({ params }: Props) {
         {view.molecule.className}
         {view.molecule.atcCode ? ` · ATC ${view.molecule.atcCode}` : ""}
       </p>
+      <TrackPage name="molecule_viewed" props={{ moleculeSlug: slug }} />
       <MoleculeTabs
         tabOrder={view.tabOrder}
         tabs={view.tabs}
         defaultTab={view.defaultTab}
+        moleculeSlug={slug}
       />
       <AskMateria moleculeSlug={slug} />
     </>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { track } from "@/lib/analytics";
 import { isBrowserOffline, loadOfflinePack, saveOfflinePack } from "@/lib/offlineCache";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
@@ -46,10 +47,15 @@ export default function ToolsPage() {
     return data.user.id as string;
   }
 
-  async function call(path: string) {
+  async function call(path: string, tool?: string) {
     const uid = await ensurePro();
     const res = await fetch(`${API}${path}${path.includes("?") ? "&" : "?"}userId=${uid}`);
     const data = await res.json();
+    if (res.status === 402) {
+      track("gated_feature_hit", { feature: tool ?? path, tier: "professional" }, { tier: "free" });
+    } else {
+      track("tool_used", { tool: tool ?? path.split("?")[0] ?? path }, { tier: "professional" });
+    }
     setOut(JSON.stringify(data, null, 2));
   }
 

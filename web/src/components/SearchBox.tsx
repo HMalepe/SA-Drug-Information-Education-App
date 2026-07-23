@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -26,6 +27,11 @@ export function SearchBox() {
       const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
       const data = (await res.json()) as { hits: Hit[] };
       setHits(data.hits);
+      track("search_performed", {
+        queryLen: q.trim().length,
+        hitCount: data.hits.length,
+        hasResults: data.hits.length > 0,
+      });
       const top = data.hits[0];
       if (top && data.hits.length === 1) {
         router.push(`/molecules/${top.moleculeSlug}`);

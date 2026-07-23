@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { track } from "@/lib/analytics";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -66,6 +67,7 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: uid, courseId, lessonId: lesson.id }),
     });
+    track("lesson_completed", { courseId, lessonId: lesson.id });
     await load(uid);
     if (activeLesson < lessons.length - 1) setActiveLesson((i) => i + 1);
   }
@@ -78,6 +80,10 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
       body: JSON.stringify({ userId: uid, courseId, questionId, selectedIndex }),
     });
     const data = await res.json();
+    track("quiz_answered", {
+      courseId,
+      correct: Boolean(data.grade?.correct),
+    });
     setGradeMsg(data.grade?.tutorMessage ?? JSON.stringify(data));
     await load(uid);
   }

@@ -8,6 +8,7 @@ import {
   DEMO_BARCODE_INDEX,
   TIER_PRICES_ZAR,
   annualCreditsTarget,
+  buildAnalyticsEvent,
   buildAvailabilityForMolecule,
   buildCertificate,
   buildCounsellingHandout,
@@ -45,6 +46,7 @@ import {
   sahpraFromCsv,
   sepFromCsv,
   sumCredits,
+  summarizeAnalytics,
   toOutboundMessage,
   validateSahpraRows,
   validateSepRows,
@@ -1364,6 +1366,49 @@ app.get("/tools/shortages", (req, res) => {
     shortages: listActiveShortages(db.products, db.availabilitySignals),
     note: "Published shortage/limited signals only. Not a wholesaler order system.",
   });
+});
+
+/* ── Product analytics (Doc 20 — POPIA-minimised) ── */
+app.post("/analytics/events", (req, res) => {
+  const schema = z.object({
+    events: z
+      .array(
+        z.object({
+          name: z.string(),
+          props: z.record(z.union([z.string(), z.number(), z.boolean()])).optional(),
+          sessionId: z.string().optional(),
+          tier: z.string().optional(),
+          mode: z.string().optional(),
+        }),
+      )
+      .min(1)
+      .max(50),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const accepted = [];
+  const rejected = [];
+  for (const raw of parsed.data.events) {
+    const built = buildAnalyticsEvent(raw);
+    if (!built.ok) {
+      rejected.push({ name: raw.name, reason: built.reason });
+      continue;
+    }
+    db.analyticsEvents.push(built.event);
+    // Cap in-memory buffer
+    if (db.analyticsEvents.length > 5000) {
+      db.analyticsEvents.splice(0, db.analyticsEvents.length - 5000);
+    }
+    accepted.push(built.event.id);
+  }
+  res.json({ accepted: accepted.length, rejected, note: "No clinical free-text stored." });
+});
+
+app.get("/analytics/summary", (_req, res) => {
+  res.json(summarizeAnalytics(db.analyticsEvents));
 });
 
 /* ── Ingest preview (Doc 16 — admin/content tooling) ── */

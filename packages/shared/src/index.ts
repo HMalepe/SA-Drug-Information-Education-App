@@ -22,4 +22,5 @@ export * from "./billing.js";
 export * from "./availability.js";
 export * from "./reminders.js";
 export * from "./messaging.js";
+export * from "./analytics.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

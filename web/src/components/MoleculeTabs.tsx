@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 
 interface TabBody {
   title: string;
@@ -12,13 +13,20 @@ export function MoleculeTabs({
   tabOrder,
   tabs,
   defaultTab,
+  moleculeSlug,
 }: {
   tabOrder: Array<{ id: string; label: string }>;
   tabs: Record<string, TabBody>;
   defaultTab: string;
+  moleculeSlug?: string;
 }) {
   const [active, setActive] = useState(defaultTab);
   const tab = tabs[active];
+
+  function openTab(id: string) {
+    setActive(id);
+    track("tab_opened", { tabId: id, moleculeSlug });
+  }
 
   return (
     <div>
@@ -30,7 +38,7 @@ export function MoleculeTabs({
             role="tab"
             aria-selected={active === t.id}
             className={`tab${active === t.id ? " active" : ""}`}
-            onClick={() => setActive(t.id)}
+            onClick={() => openTab(t.id)}
           >
             {t.label}
           </button>

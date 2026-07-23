@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { track } from "@/lib/analytics";
+import { TrackPage } from "@/components/TrackPage";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -40,6 +42,7 @@ export default function PricingPage() {
       }),
     });
     const data = await res.json();
+    track("subscription_started", { tier }, { tier });
     setMsg(JSON.stringify(data, null, 2));
     const url = data.checkout?.authorizationUrl as string | undefined;
     if (url) window.location.href = url;
@@ -47,6 +50,7 @@ export default function PricingPage() {
 
   return (
     <>
+      <TrackPage name="pricing_viewed" />
       <h1>Pricing</h1>
       <p className="tagline">
         Launch hypothesis (Doc 6) — provider: {provider}
