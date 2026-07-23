@@ -24,6 +24,11 @@ export default async function LearnPage() {
     <>
       <h1>Medicine Academy</h1>
       <p className="tagline">Stop memorising. Start understanding. — five lessons per molecule.</p>
+      <p>
+        <a className="btn" href="/learn/review">
+          Spaced review (§7.5)
+        </a>
+      </p>
       {courses.length === 0 ? (
         <div className="card">Start the API (`npm run dev:api`) to load courses.</div>
       ) : (

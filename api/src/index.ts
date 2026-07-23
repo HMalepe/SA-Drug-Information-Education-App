@@ -41,6 +41,10 @@ import {
   publishProfessionalNote,
   listPublishedNotesForMolecule,
   PROFESSIONAL_NOTES_DISCLAIMER,
+  applyReviewGrade,
+  buildReviewSession,
+  collectReviewCards,
+  initialCardState,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -658,6 +662,88 @@ app.post("/academy/quiz/answer", (req, res) => {
   const grade = gradeQuizAnswer(question, parsed.data.selectedIndex);
   const progress = recordQuizAttempt(user.id, course.id, grade.correct);
   res.json({ grade, progress });
+});
+
+/* ── Spaced repetition (Build Spec §7.5) ── */
+app.get("/academy/review/:userId", (req, res) => {
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Spaced repetition requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const preferAreas = String(req.query.weak ?? "")
+    .split(/[,;]+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const limit = Number(req.query.limit ?? 10);
+  const catalog = collectReviewCards({
+    courses: db.courses,
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+  });
+  const session = buildReviewSession({
+    catalog,
+    states: db.reviewCardStates,
+    userId: user.id,
+    preferAreas,
+    limit: Number.isFinite(limit) ? limit : 10,
+  });
+  res.json({
+    ...session,
+    poolSize: catalog.length,
+  });
+});
+
+app.post("/academy/review/:userId/grade", (req, res) => {
+  const schema = z.object({
+    cardId: z.string().min(1),
+    grade: z.enum(["again", "hard", "good", "easy"]),
+  });
+  const user = requireUser(req.params.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Spaced repetition requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const catalog = collectReviewCards({
+    courses: db.courses,
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+  });
+  if (!catalog.some((c) => c.id === parsed.data.cardId)) {
+    res.status(404).json({ error: "Unknown or unpublished review card" });
+    return;
+  }
+  const idx = db.reviewCardStates.findIndex(
+    (s) => s.userId === user.id && s.cardId === parsed.data.cardId,
+  );
+  const current =
+    idx >= 0 ? db.reviewCardStates[idx]! : initialCardState(user.id, parsed.data.cardId);
+  const next = applyReviewGrade(current, parsed.data.grade);
+  if (idx >= 0) db.reviewCardStates[idx] = next;
+  else db.reviewCardStates.push(next);
+  res.json({ state: next });
 });
 
 /* ── Companion (Build Spec §6) ── */
