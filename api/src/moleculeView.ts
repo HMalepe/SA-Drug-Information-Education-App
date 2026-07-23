@@ -4,6 +4,9 @@ import {
   buildProductVisualCard,
   emptyStateMessage,
   explainProductExcipients,
+  getModeLens,
+  modeContentDepth,
+  parseUserMode,
   renderableFact,
   type Medicine360TabId,
   type Source,
@@ -23,7 +26,9 @@ function sourcedText(
   return { text: String(rendered.value), source, empty: false };
 }
 
-export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
+export function buildMolecule360(slug: string, modeInput: UserMode | string = "pharmacist") {
+  const mode = parseUserMode(modeInput);
+  const lens = getModeLens(mode);
   const molecule = getMoleculeBySlug(slug);
   if (!molecule) return null;
 
@@ -47,13 +52,19 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
       body: {
         summary: chemistry.text,
         discovery: discovery.text,
-        depth: mode === "patient" ? "plain" : "clinical",
+        depth: modeContentDepth(mode),
+        modeFraming: lens.framing.chemistry,
+        professionalDepth: lens.professionalDepthTabs.includes("chemistry"),
       },
       sources: [chemistry.source, discovery.source].filter(Boolean) as Source[],
     },
     moa: {
       title: "Mechanism of Action",
-      body: { summary: moa.text },
+      body: {
+        summary: moa.text,
+        modeFraming: lens.framing.moa,
+        professionalDepth: lens.professionalDepthTabs.includes("moa"),
+      },
       sources: moa.source ? [moa.source] : [],
     },
     "sa-products": {
@@ -89,6 +100,8 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
         renal: sourcedText(safety?.renalAdjustment).text,
         hepatic: sourcedText(safety?.hepaticAdjustment).text,
         note: "Numeric calculator rules are not invented — unavailable until published DoseRules exist.",
+        modeFraming: lens.framing.dosing,
+        professionalDepth: lens.professionalDepthTabs.includes("dosing"),
       },
       sources: [sourcedText(safety?.dosingAdult).source].filter(Boolean) as Source[],
     },
@@ -102,6 +115,7 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
             return { ...r.value, source: getSource(r.sourceId) };
           })
           .filter(Boolean),
+        modeFraming: lens.framing.contraindications,
       },
       sources: [],
     },
@@ -114,6 +128,7 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
             return r ? { text: r.value, source: getSource(r.sourceId) } : null;
           })
           .filter(Boolean),
+        modeFraming: lens.framing.warnings,
       },
       sources: [],
     },
@@ -162,6 +177,8 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
             return r ? { text: r.value, source: getSource(r.sourceId) } : null;
           })
           .filter(Boolean),
+        modeFraming: lens.framing.pearls,
+        professionalDepth: lens.professionalDepthTabs.includes("pearls"),
       },
       sources: [],
     },
@@ -197,10 +214,8 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
             return r ? { text: r.value, source: getSource(r.sourceId) } : null;
           })
           .filter(Boolean),
-        modeNote:
-          mode === "patient"
-            ? "Patient lens: plain language counselling."
-            : "Pharmacist/student lens: counselling script for the counter.",
+        modeNote: lens.framing.counselling,
+        modeFraming: lens.framing.counselling,
       },
       sources: [],
     },
@@ -208,9 +223,15 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
 
   return {
     molecule,
+    mode,
+    modeLens: {
+      label: lens.label,
+      vocabulary: lens.vocabulary,
+      emphasizes: lens.emphasizes,
+    },
     tabOrder: MEDICINE_360_TABS,
     tabs,
-    defaultTab: mode === "student" ? "moa" : mode === "patient" ? "counselling" : "dosing",
+    defaultTab: lens.defaultTab,
     course: course
       ? {
           id: course.id,

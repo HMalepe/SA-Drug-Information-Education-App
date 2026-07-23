@@ -47,6 +47,7 @@ export function MoleculeTabs({
       {tab && (
         <section className="card" aria-live="polite">
           <h2 style={{ marginTop: 0 }}>{tab.title}</h2>
+          {modeFramingOf(tab.body) && <p className="mode-framing">{modeFramingOf(tab.body)}</p>}
           {active === "overdose" ? (
             <EmergencyPanel body={tab.body as Record<string, unknown>} />
           ) : active === "sa-products" ? (
@@ -75,6 +76,12 @@ export function MoleculeTabs({
       )}
     </div>
   );
+}
+
+function modeFramingOf(body: unknown): string | null {
+  if (!body || typeof body !== "object") return null;
+  const framing = (body as { modeFraming?: unknown }).modeFraming;
+  return typeof framing === "string" && framing.trim() ? framing : null;
 }
 
 function EmergencyPanel({ body }: { body: Record<string, unknown> }) {

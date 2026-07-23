@@ -143,7 +143,7 @@ app.get("/molecules", (req, res) => {
 });
 
 app.get("/molecules/:slug", (req, res) => {
-  const mode = (String(req.query.mode ?? "pharmacist") as UserMode) || "pharmacist";
+  const mode = String(req.query.mode ?? "pharmacist");
   const view = buildMolecule360(req.params.slug, mode);
   if (!view) {
     res.status(404).json({ error: "Molecule not found or not published" });

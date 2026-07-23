@@ -50,6 +50,49 @@ main {
   justify-content: space-between;
   gap: 16px;
   padding: 16px 0 24px;
+  flex-wrap: wrap;
+}
+
+.header-tools {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.mode-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.mode-chip {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: var(--slate);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.mode-chip.active {
+  background: var(--deep-teal);
+  border-color: var(--deep-teal);
+  color: #fff;
+}
+
+.mode-framing {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  background: var(--mint);
+  border-radius: var(--radius);
+  color: var(--slate);
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .brand {

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { MODE_STORAGE_KEY, useUserMode, WEB_USER_MODES } from "@/components/ModeProvider";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
-const modes = ["patient", "student", "pharmacist", "doctor"] as const;
 
 export default function OnboardingPage() {
+  const { mode, setMode } = useUserMode();
   const [email, setEmail] = useState("");
-  const [mode, setMode] = useState<(typeof modes)[number]>("pharmacist");
   const [userId, setUserId] = useState<string | null>(null);
   const [msg, setMsg] = useState("");
 
@@ -23,6 +23,7 @@ export default function OnboardingPage() {
       setMsg(JSON.stringify(data.error));
       return;
     }
+    window.localStorage.setItem(MODE_STORAGE_KEY, mode);
     setUserId(data.user.id);
     setMsg(`Session ready as ${mode}. Accept disclaimers below.`);
   }
@@ -40,7 +41,7 @@ export default function OnboardingPage() {
   return (
     <>
       <h1>Who are you?</h1>
-      <p className="tagline">One object, many lenses — pick your mode (Doc 8 A2 / A10).</p>
+      <p className="tagline">One object, many lenses — pick your mode (Build Spec §5.7 / Doc 8).</p>
       <form className="card" onSubmit={createSession}>
         <label className="muted">Email</label>
         <input
@@ -51,7 +52,7 @@ export default function OnboardingPage() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-          {modes.map((m) => (
+          {WEB_USER_MODES.map((m) => (
             <button
               key={m}
               type="button"
