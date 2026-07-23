@@ -49,7 +49,9 @@ export default async function HomePage({
         ))}
       </div>
       <h2>{area ? area : "Seed coverage"}</h2>
-      <p className="muted">Antibiotics + analgesics scaffolds. Depth over breadth; dosing stays draft.</p>
+      <p className="muted">
+        Antibiotics + analgesics + antihypertensives scaffolds (Doc 29 MVP set). Dosing stays draft.
+      </p>
       {molecules.length === 0 ? (
         <div className="card">
           API offline. Start the API (`npm run dev:api`) then refresh.

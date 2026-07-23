@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type {
@@ -84,7 +84,18 @@ function mergeSeeds(...parts: SeedFile[]): SeedFile {
   };
 }
 
-const seed = mergeSeeds(loadSeedFile("antibiotics.json"), loadSeedFile("analgesics.json"));
+/** Load every `content/seed/*.json` so new therapeutic areas auto-merge. */
+function loadAllSeeds(): SeedFile {
+  const files = readdirSync(seedDir)
+    .filter((f) => f.endsWith(".json"))
+    .sort();
+  if (files.length === 0) {
+    throw new Error(`No seed JSON files in ${seedDir}`);
+  }
+  return mergeSeeds(...files.map((f) => loadSeedFile(f)));
+}
+
+const seed = loadAllSeeds();
 const sourceById = new Map(seed.sources.map((s) => [s.id, s]));
 
 export interface ProgressRow {
