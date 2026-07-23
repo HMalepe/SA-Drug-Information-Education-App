@@ -248,6 +248,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-cipro": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this antibiotic exactly as directed on your labelled product.",
+        "Dairy, antacids, and mineral supplements may affect absorption — ask your pharmacist how to separate them; Materia does not invent a spacing schedule.",
+        "Fluoroquinolone counselling commonly includes sun protection and reporting unusual tendon pain — confirm against the labelled product.",
+        "If you get a severe rash, swelling, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antibiotic njengoba kubhalwe kumkhiqizo onelebula.",
+        "Ubisi, ama-antacid, kanye nezithako zamaminerali kungathinta ukumunca — buza umkhiqizi ukuthi uzihlukanise kanjani; i-Materia ayiqambi isikhathi.",
+        "Ukwelulekwa kwe-fluoroquinolone kuvame ukufaka ukuvikela ilanga nokubika ubuhlungu bethendon obungajwayelekile — qinisekisa kumkhiqizo onelebula.",
+        "Uma uthola isikhumba esibi kakhulu, ukuvuvuka, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie antibiotika soos op die geëtiketteerde produk aangedui.",
+        "Suiwel, antasuurs en mineraalaanvullings kan absorpsie beïnvloed — vra jou apteker hoe om dit te skei; Materia versin nie ’n tydskedule nie.",
+        "Fluorokinoloon-berading sluit dikwels sonbeskerming en die aanmelding van ongewone peespyn in — bevestig teen die geëtiketteerde produk.",
+        "As jy ’n ernstige uitslag, swelling of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa antibiotic ena hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Lebese, li-antacid le liminerale li ka ama absorption — botsa rakhemisi hore u li arole joang; Materia ha e iqape nako.",
+        "Keletso ea fluoroquinolone hangata e kenyelletsa tšireletso ea letsatsi le ho tlaleha bohloko ba tendon bo sa tloaelehang — netefatsa holabel.",
+        "Haeba u fumana lekhopho le tebileng, ho ruruha, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antibiotic ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Ubisi, ii-antacids kunye neziminerals zinokuchaphazela ukufunxwa — buza usokhemisti indlela yokuzahlula; i-Materia ayiyiqiqi ixesha.",
+        "Iingcebiso ze-fluoroquinolone zihlala zibandakanya ukukhusela ilanga nokuxela iintlungu ze-tendon ezingaqhelekanga — qinisekisa kwileyibhile.",
+        "Ukuba ufumana irashi eqatha, ukudumba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(

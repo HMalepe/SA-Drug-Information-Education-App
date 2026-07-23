@@ -320,7 +320,7 @@ export default function ToolsPage() {
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
           Published SA counselling: try <code>amoxicillin</code>, <code>amoxicillin-clavulanate</code>,{" "}
-          <code>doxycycline</code>, or <code>metronidazole</code> (EN/ZU/AF/ST/XH).
+          <code>doxycycline</code>, <code>ciprofloxacin</code>, or <code>metronidazole</code> (EN/ZU/AF/ST/XH).
         </p>{" "}
         <button
           className="btn"
