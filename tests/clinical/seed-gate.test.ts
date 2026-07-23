@@ -274,4 +274,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-ethinylestradiol");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Nolvadex → tamoxifen from oncology-supportive seed", () => {
+    const hits = resolveSearch("Nolvadex", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "tamoxifen");
+  });
+
+  it("resolves Arimidex → anastrozole from oncology-supportive seed", () => {
+    const hits = resolveSearch("Arimidex", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "anastrozole");
+  });
+
+  it("publishes educational tamoxifen↔fluoxetine interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-tamoxifen-fluoxetine");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.equal(ix.moleculeBId, "mol-fluoxetine");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });

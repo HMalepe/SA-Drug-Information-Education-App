@@ -1,0 +1,511 @@
+{
+  "meta": {
+    "therapeuticArea": "oncology-supportive",
+    "note": "Mid-tail supportive-care scaffold (Doc 29) — not a chemotherapy protocol library. Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. Oncology regimens are clinician-directed; Materia teaches counselling hooks only. Ondansetron/morphine live in GI/analgesics seeds — not duplicated here.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-astra", "name": "AstraZeneca", "madeInSa": false },
+    { "id": "mfr-roche", "name": "Roche", "madeInSa": false },
+    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
+    { "id": "mfr-amgen", "name": "Amgen", "madeInSa": false },
+    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
+    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
+    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler / diluent",
+      "allergyRisk": "Relevant in lactose intolerance / rare milk protein allergy contexts"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-tamoxifen",
+      "slug": "tamoxifen",
+      "innName": "Tamoxifen",
+      "className": "Selective oestrogen receptor modulator (SERM)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["nolvadex", "tamoxifen"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Blocks oestrogen receptors in breast tissue contexts — educational framing only; confirm against labelled product and oncology team. Never invent a dose or duration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-anastrozole",
+      "slug": "anastrozole",
+      "innName": "Anastrozole",
+      "className": "Aromatase inhibitor",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["arimidex", "anastrozole"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-letrozole",
+      "slug": "letrozole",
+      "innName": "Letrozole",
+      "className": "Aromatase inhibitor",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["femara", "letrozole"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-exemestane",
+      "slug": "exemestane",
+      "innName": "Exemestane",
+      "className": "Aromatase inhibitor (steroidal)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["aromasin", "exemestane"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-filgrastim",
+      "slug": "filgrastim",
+      "innName": "Filgrastim",
+      "className": "G-CSF (neutropenia support)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["neupogen", "filgrastim"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Stimulates neutrophil production — timing relative to chemo is clinician-directed; Materia never invents an injection schedule.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-pegfilgrastim",
+      "slug": "pegfilgrastim",
+      "innName": "Pegfilgrastim",
+      "className": "Pegylated G-CSF",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["neulasta", "pegfilgrastim"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-dexamethasone",
+      "slug": "dexamethasone",
+      "innName": "Dexamethasone",
+      "className": "Systemic corticosteroid (supportive / antiemetic adjunct)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["dexamethasone", "decadron"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-aprepitant",
+      "slug": "aprepitant",
+      "innName": "Aprepitant",
+      "className": "NK1 receptor antagonist (antiemetic)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["emend", "aprepitant"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-granisetron",
+      "slug": "granisetron",
+      "innName": "Granisetron",
+      "className": "5-HT3 antagonist (antiemetic)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["kytril", "granisetron"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-zoledronic-acid",
+      "slug": "zoledronic-acid",
+      "innName": "Zoledronic acid",
+      "className": "Bisphosphonate (bone metastases / hypercalcaemia contexts)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["zometa", "aclasta", "zoledronic acid"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-denosumab",
+      "slug": "denosumab",
+      "innName": "Denosumab",
+      "className": "RANKL inhibitor (bone support)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["xgeva", "prolia", "denosumab"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-capecitabine",
+      "slug": "capecitabine",
+      "innName": "Capecitabine",
+      "className": "Oral fluoropyrimidine antimetabolite",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["xeloda", "capecitabine"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-mesna",
+      "slug": "mesna",
+      "innName": "Mesna",
+      "className": "Uroprotectant (ifosfamide / cyclophosphamide support)",
+      "therapeuticArea": "oncology-supportive",
+      "synonyms": ["uromitexan", "mesna"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-nolvadex",
+      "moleculeId": "mol-tamoxifen",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Nolvadex",
+      "strength": "20 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["nolvadex"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-arimidex",
+      "moleculeId": "mol-anastrozole",
+      "manufacturerId": "mfr-astra",
+      "brandName": "Arimidex",
+      "strength": "1 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["arimidex"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-femara",
+      "moleculeId": "mol-letrozole",
+      "manufacturerId": "mfr-novartis",
+      "brandName": "Femara",
+      "strength": "2.5 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["femara"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-neupogen",
+      "moleculeId": "mol-filgrastim",
+      "manufacturerId": "mfr-amgen",
+      "brandName": "Neupogen",
+      "strength": "prefilled syringe (per label)",
+      "form": "injection",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["neupogen"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-neulasta",
+      "moleculeId": "mol-pegfilgrastim",
+      "manufacturerId": "mfr-amgen",
+      "brandName": "Neulasta",
+      "strength": "prefilled syringe (per label)",
+      "form": "injection",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["neulasta"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-emend",
+      "moleculeId": "mol-aprepitant",
+      "manufacturerId": "mfr-msd",
+      "brandName": "Emend",
+      "strength": "pack strengths per label",
+      "form": "capsule",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["emend"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-zometa",
+      "moleculeId": "mol-zoledronic-acid",
+      "manufacturerId": "mfr-novartis",
+      "brandName": "Zometa",
+      "strength": "infusion (per label)",
+      "form": "injection",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["zometa"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-xgeva",
+      "moleculeId": "mol-denosumab",
+      "manufacturerId": "mfr-amgen",
+      "brandName": "Xgeva",
+      "strength": "injection (per label)",
+      "form": "injection",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["xgeva"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-xeloda",
+      "moleculeId": "mol-capecitabine",
+      "manufacturerId": "mfr-roche",
+      "brandName": "Xeloda",
+      "strength": "150 mg / 500 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["xeloda"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-dexamethasone-asp",
+      "moleculeId": "mol-dexamethasone",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Dexamethasone Aspen",
+      "strength": "0.5 mg / 4 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "bioequivalentFlag": true,
+      "synonymKeys": ["dexamethasone aspen"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-tamoxifen",
+      "moleculeId": "mol-tamoxifen",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing / duration not published in Materia yet — confirm against labelled product / oncology team. Do not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Suspected VTE / acute oncology emergency is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "VTE risk and hot-flush counselling are common themes — CYP2D6 inhibitor combinations can reduce activation; escalate clinically.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [
+        {
+          "value": "Strong CYP2D6 inhibitors (e.g. some SSRIs) may matter for tamoxifen activation — educational flag only; never invent a switch.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take consistently; report leg swelling, chest pain, or unusual vaginal bleeding. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-filgrastim",
+      "moleculeId": "mol-filgrastim",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / oncology team.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Bone pain can occur; injection technique and timing relative to chemo stay with the oncology team. Never invent a schedule.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-capecitabine",
+      "moleculeId": "mol-capecitabine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / oncology team.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Hand–foot syndrome and diarrhoea need urgent escalation framing — do not invent dose holds.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Take as labelled with food if directed; report severe diarrhoea, fever, or painful palms/soles. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-tamoxifen-fluoxetine",
+      "moleculeAId": "mol-tamoxifen",
+      "moleculeBId": "mol-fluoxetine",
+      "severity": "major",
+      "mechanism": {
+        "value": "Fluoxetine is a strong CYP2D6 inhibitor and may reduce conversion of tamoxifen to active metabolites — educational interaction flag only; confirm against current SA / oncology guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose change or antidepressant switch — escalate to the clinician / oncology team before combining or adjusting therapy.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-nolvadex",
+      "productId": "prod-nolvadex",
+      "sepZar": 185.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-arimidex",
+      "productId": "prod-arimidex",
+      "sepZar": 420.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    },
+    {
+      "id": "price-xeloda",
+      "productId": "prod-xeloda",
+      "sepZar": 980.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-tamoxifen",
+      "moleculeId": "mol-tamoxifen",
+      "title": "Tamoxifen — CYP2D6 without inventing doses",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-tam-1",
+          "order": 1,
+          "title": "Hormone therapy is not optional counselling",
+          "body": "Adherence, hot flushes, and VTE warning signs are core educational themes. Materia does not publish duration or mg targets here.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-tam-2",
+          "order": 2,
+          "title": "SSRIs that inhibit CYP2D6",
+          "body": "Tamoxifen–fluoxetine teaching is about escalating reduced activation risk to the clinician, not inventing a switch. Confirm against current oncology guidance and the labelled products.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-tam-1",
+          "prompt": "A patient on tamoxifen starts fluoxetine. Best educational frame?",
+          "choices": [
+            "No issue — different disease areas",
+            "Flag CYP2D6 interaction risk and escalate clinically — do not invent a dose or switch",
+            "Double the tamoxifen",
+            "Stop tamoxifen for two weeks"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Interaction counselling means escalate — Materia never invents oncology or antidepressant dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}
