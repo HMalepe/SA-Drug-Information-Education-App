@@ -48,6 +48,8 @@ import {
   buildMysteryRound,
   publicMysteryRound,
   gradeMysteryGuess,
+  buildSpotErrorRound,
+  gradeSpotError,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -850,6 +852,77 @@ app.post("/academy/mystery/:roundId/guess", (req, res) => {
     ...result,
     view: publicMysteryRound(round, db.mysteryUnlocks.get(round.roundId) ?? 1),
   });
+});
+
+/* ── Spot the Error mini-game (Build Spec §7.3) ── */
+app.post("/academy/spot-error/start", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    seed: z.string().optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Spot the Error requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const seed = parsed.data.seed ?? `${new Date().toISOString().slice(0, 10)}|${user.id}|${Date.now()}`;
+  const round = buildSpotErrorRound({ seed });
+  if (!round) {
+    res.status(404).json({ error: "No published Spot the Error cards" });
+    return;
+  }
+  db.spotRounds.set(round.roundId, { roundId: round.roundId, cardId: round.card.id });
+  res.status(201).json(round);
+});
+
+app.post("/academy/spot-error/:roundId/grade", (req, res) => {
+  const schema = z.object({
+    userId: z.string(),
+    choice: z.enum(["correct_statement", "error"]),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = requireUser(parsed.data.userId);
+  if (!user) {
+    res.status(401).json({ error: "Unknown user" });
+    return;
+  }
+  const gate = gateFeature(user.tier as Tier, "academy_full");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Spot the Error requires Student or Professional",
+      upgradeTo: gate.upgradeTo,
+    });
+    return;
+  }
+  const meta = db.spotRounds.get(req.params.roundId);
+  if (!meta) {
+    res.status(404).json({ error: "Round not found" });
+    return;
+  }
+  const result = gradeSpotError({ cardId: meta.cardId, choice: parsed.data.choice });
+  if ("error" in result) {
+    res.status(400).json({ error: result.error });
+    return;
+  }
+  res.json(result);
 });
 
 /* ── Companion (Build Spec §6) ── */

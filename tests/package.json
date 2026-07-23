@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --import tsx --test search.test.ts grounding.test.ts dosing.test.ts academy.test.ts v3-moats.test.ts v3b-pro-tools.test.ts v3c-cpd-vision-institution.test.ts v2d-ambassador-ingest-handout.test.ts v4-paystack-shortage.test.ts v5-reminders-messaging.test.ts v6-analytics.test.ts v7-public-feed.test.ts v13-review-queue.test.ts v14-seed-writeback.test.ts v15-excipient-explainer.test.ts v30-visual-id.test.ts v31-modes.test.ts v32-dose-adjust-toxicity.test.ts v33-clash-board.test.ts v34-pearl-feed.test.ts v35-insert-translator.test.ts v36-symptoms.test.ts v37-caregiver.test.ts v38-pro-notes.test.ts v39-spaced-repetition.test.ts v40-mystery-molecule.test.ts",
+    "test": "node --import tsx --test search.test.ts grounding.test.ts dosing.test.ts academy.test.ts v3-moats.test.ts v3b-pro-tools.test.ts v3c-cpd-vision-institution.test.ts v2d-ambassador-ingest-handout.test.ts v4-paystack-shortage.test.ts v5-reminders-messaging.test.ts v6-analytics.test.ts v7-public-feed.test.ts v13-review-queue.test.ts v14-seed-writeback.test.ts v15-excipient-explainer.test.ts v30-visual-id.test.ts v31-modes.test.ts v32-dose-adjust-toxicity.test.ts v33-clash-board.test.ts v34-pearl-feed.test.ts v35-insert-translator.test.ts v36-symptoms.test.ts v37-caregiver.test.ts v38-pro-notes.test.ts v39-spaced-repetition.test.ts v40-mystery-molecule.test.ts v41-spot-error.test.ts",
     "test:clinical": "node --import tsx --test clinical/eval.test.ts clinical/seed-gate.test.ts",
     "typecheck": "node ../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
   },

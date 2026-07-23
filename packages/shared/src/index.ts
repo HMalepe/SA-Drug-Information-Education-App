@@ -39,4 +39,5 @@ export * from "./caregiver.js";
 export * from "./proNotes.js";
 export * from "./spacedRepetition.js";
 export * from "./mysteryMolecule.js";
+export * from "./spotError.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

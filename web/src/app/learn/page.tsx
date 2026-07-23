@@ -30,6 +30,9 @@ export default async function LearnPage() {
         </a>{" "}
         <a className="btn" href="/learn/mystery" style={{ background: "var(--ink)" }}>
           Mystery Molecule (§7.3)
+        </a>{" "}
+        <a className="btn" href="/learn/spot-error">
+          Spot the Error (§7.3)
         </a>
       </p>
       {courses.length === 0 ? (
