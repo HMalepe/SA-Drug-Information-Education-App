@@ -1,0 +1,512 @@
+{
+  "meta": {
+    "therapeuticArea": "endocrine",
+    "note": "Mid-tail routine dispensing scaffold (Doc 29). Diabetes lives in its own seed — this file covers thyroid and other endocrine staples. Clinical numeric dosing ABSENT until founder review. Educational facts are original Materia authoring. Never copied from SAMF/MIMS/Lexicomp. Levothyroxine timing and absorption interactions are counselling hooks — Materia never invents a dose or TSH target.",
+    "seedVersion": "0.1.0"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public)",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Pending founder pharmacist verification"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sep",
+      "citation": "DoH Single Exit Price publications (public)",
+      "sourceType": "sep",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Public SEP feed — illustrative until live ingest"
+    }
+  ],
+  "manufacturers": [
+    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
+    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
+    { "id": "mfr-merck", "name": "Merck", "madeInSa": false },
+    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
+    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
+    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
+    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
+    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
+    { "id": "mfr-ferring", "name": "Ferring", "madeInSa": false }
+  ],
+  "excipients": [
+    {
+      "id": "exc-mg-stearate",
+      "name": "Magnesium stearate",
+      "purpose": "Lubricant in tablet manufacture",
+      "allergyRisk": "Rare"
+    },
+    {
+      "id": "exc-lactose",
+      "name": "Lactose",
+      "purpose": "Filler / diluent",
+      "allergyRisk": "Relevant in lactose intolerance / rare milk protein allergy contexts"
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-levothyroxine",
+      "slug": "levothyroxine",
+      "innName": "Levothyroxine",
+      "className": "Thyroid hormone (T4)",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["eltroxin", "euthyrox", "synthroid", "levothyroxine", "t4"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Synthetic T4 replaced for hypothyroidism — educational framing only; confirm against labelled product and SA guidelines. Never invent a dose or TSH target.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-liothyronine",
+      "slug": "liothyronine",
+      "innName": "Liothyronine",
+      "className": "Thyroid hormone (T3)",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["tertroxin", "cytomel", "liothyronine", "t3"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-carbimazole",
+      "slug": "carbimazole",
+      "innName": "Carbimazole",
+      "className": "Thionamide antithyroid",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["neomercazole", "carbimazole"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Blocks thyroid hormone synthesis — agranulocytosis counselling is the teaching hook; regimens stay clinician-directed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      }
+    },
+    {
+      "id": "mol-propylthiouracil",
+      "slug": "propylthiouracil",
+      "innName": "Propylthiouracil",
+      "className": "Thionamide antithyroid",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["ptu", "propylthiouracil"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-prednisone",
+      "slug": "prednisone",
+      "innName": "Prednisone",
+      "className": "Systemic corticosteroid",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["prednisone", "deltasone"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-prednisolone-oral",
+      "slug": "prednisolone",
+      "innName": "Prednisolone",
+      "className": "Systemic corticosteroid",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["prednisolone", "prelone"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-hydrocortisone-systemic",
+      "slug": "hydrocortisone-systemic",
+      "innName": "Hydrocortisone (systemic)",
+      "className": "Systemic corticosteroid / glucocorticoid replacement",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["cortef", "solu-cortef", "hydrocortisone tablets"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-fludrocortisone",
+      "slug": "fludrocortisone",
+      "innName": "Fludrocortisone",
+      "className": "Mineralocorticoid",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["florinef", "fludrocortisone"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-desmopressin",
+      "slug": "desmopressin",
+      "innName": "Desmopressin",
+      "className": "Vasopressin analogue",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["minirin", "ddavp", "desmopressin"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-cabergoline",
+      "slug": "cabergoline",
+      "innName": "Cabergoline",
+      "className": "Dopamine agonist (endocrine)",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["dostinex", "cabergoline"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-alendronate",
+      "slug": "alendronate",
+      "innName": "Alendronate",
+      "className": "Bisphosphonate",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["fosamax", "alendronic acid", "alendronate"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-colecalciferol",
+      "slug": "colecalciferol",
+      "innName": "Colecalciferol",
+      "className": "Vitamin D3",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["vitamin d3", "cholecalciferol", "osteo vitamin d"],
+      "publishState": "published"
+    },
+    {
+      "id": "mol-calcium-carbonate",
+      "slug": "calcium-carbonate",
+      "innName": "Calcium carbonate",
+      "className": "Calcium salt (supplement)",
+      "therapeuticArea": "endocrine",
+      "synonyms": ["caltrate", "calcium carbonate"],
+      "publishState": "published"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-eltroxin",
+      "moleculeId": "mol-levothyroxine",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Eltroxin",
+      "strength": "25 mcg / 50 mcg / 100 mcg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["eltroxin"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published",
+      "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
+    },
+    {
+      "id": "prod-euthyrox",
+      "moleculeId": "mol-levothyroxine",
+      "manufacturerId": "mfr-merck",
+      "brandName": "Euthyrox",
+      "strength": "25 mcg / 50 mcg / 75 mcg / 100 mcg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["euthyrox"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-neomercazole",
+      "moleculeId": "mol-carbimazole",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Neo-Mercazole",
+      "strength": "5 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["neomercazole", "neo-mercazole"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-prednisone-asp",
+      "moleculeId": "mol-prednisone",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Prednisone Aspen",
+      "strength": "5 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "bioequivalentFlag": true,
+      "synonymKeys": ["prednisone aspen"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-florinef",
+      "moleculeId": "mol-fludrocortisone",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Florinef",
+      "strength": "0.1 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["florinef"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-minirin",
+      "moleculeId": "mol-desmopressin",
+      "manufacturerId": "mfr-ferring",
+      "brandName": "Minirin",
+      "strength": "nasal / oral (per label)",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["minirin"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-dostinex",
+      "moleculeId": "mol-cabergoline",
+      "manufacturerId": "mfr-pfizer",
+      "brandName": "Dostinex",
+      "strength": "0.5 mg",
+      "form": "tablet",
+      "schedule": "S4",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["dostinex"],
+      "excipientIds": ["exc-lactose"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-fosamax",
+      "moleculeId": "mol-alendronate",
+      "manufacturerId": "mfr-msd",
+      "brandName": "Fosamax",
+      "strength": "70 mg",
+      "form": "tablet",
+      "schedule": "S3",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["fosamax"],
+      "excipientIds": ["exc-mg-stearate"],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-caltrate",
+      "moleculeId": "mol-calcium-carbonate",
+      "manufacturerId": "mfr-adcock",
+      "brandName": "Caltrate",
+      "strength": "600 mg elemental calcium (per label)",
+      "form": "tablet",
+      "schedule": "S0",
+      "isOriginator": true,
+      "isDiscontinued": false,
+      "synonymKeys": ["caltrate"],
+      "excipientIds": [],
+      "publishState": "published"
+    },
+    {
+      "id": "prod-osteo-d",
+      "moleculeId": "mol-colecalciferol",
+      "manufacturerId": "mfr-asp",
+      "brandName": "Osteo Vitamin D",
+      "strength": "pack strengths per label",
+      "form": "capsule",
+      "schedule": "S0",
+      "isOriginator": false,
+      "isDiscontinued": false,
+      "synonymKeys": ["osteo vitamin d", "vitamin d3"],
+      "excipientIds": [],
+      "publishState": "published"
+    }
+  ],
+  "safetyProfiles": [
+    {
+      "id": "safe-levothyroxine",
+      "moleculeId": "mol-levothyroxine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing / TSH targets not published in Materia yet — confirm against labelled product / SA guidelines. Do not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "antidoteOrSupportive": {
+        "value": "Suspected thyroid storm / myxoedema emergency is a medical emergency — seek emergency care. Supportive management only in this seed; no specific antidote protocol published here.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Consistency of brand and timing matters — absorption is reduced by iron, calcium, and some foods; escalate clinically; never invent spacing rules as prescriptions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [
+        {
+          "value": "Empty-stomach morning counselling is common teaching — confirm against the labelled product; lab follow-up stays clinician-directed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take consistently; ask about iron/calcium supplements and antacids. Never invent a dose change.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-carbimazole",
+      "moleculeId": "mol-carbimazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Fever/sore throat may signal agranulocytosis — stop and seek urgent care framing is educational; do not invent lab schedules.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Report fever, sore throat, or mouth ulcers urgently. Never invent a dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    },
+    {
+      "id": "safe-alendronate",
+      "moleculeId": "mol-alendronate",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia yet — confirm against labelled product / SA guidelines.",
+        "sourceId": "src-materia-edu",
+        "publishState": "draft"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [
+        {
+          "value": "Take upright with water; remain upright as labelled — never invent timing. Escalate chest pain or swallowing difficulty.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ix-levothyroxine-ferrous",
+      "moleculeAId": "mol-levothyroxine",
+      "moleculeBId": "mol-ferrous-sulfate",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Oral iron can reduce levothyroxine absorption — educational interaction flag only; confirm against current SA guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "action": {
+        "value": "Do not invent a dose change or exact spacing schedule — escalate to the clinician for timing advice when iron and levothyroxine are both used.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published"
+      },
+      "publishState": "published"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-eltroxin",
+      "productId": "prod-eltroxin",
+      "sepZar": 68.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP — replace with live DoH SEP ingest"
+    },
+    {
+      "id": "price-euthyrox",
+      "productId": "prod-euthyrox",
+      "sepZar": 95.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    },
+    {
+      "id": "price-neomercazole",
+      "productId": "prod-neomercazole",
+      "sepZar": 112.0,
+      "effectiveDate": "2026-07-01",
+      "sourceId": "src-sep",
+      "publishState": "published",
+      "notes": "ILLUSTRATIVE seed SEP"
+    }
+  ],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": [
+    {
+      "id": "course-levothyroxine",
+      "moleculeId": "mol-levothyroxine",
+      "title": "Levothyroxine — timing without inventing doses",
+      "publishState": "published",
+      "lessons": [
+        {
+          "id": "lesson-lt4-1",
+          "order": 1,
+          "title": "Consistency beats cleverness",
+          "body": "Same brand, same timing, empty stomach when labelled. Educational counselling: absorption partners matter — Materia does not publish mcg targets here.",
+          "publishState": "published"
+        },
+        {
+          "id": "lesson-lt4-2",
+          "order": 2,
+          "title": "Iron and the thyroid tablet",
+          "body": "Levothyroxine–ferrous sulfate teaching is about escalating reduced absorption to the clinician, not inventing a spacing schedule. Confirm against current SA guidance and the labelled products.",
+          "publishState": "published"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "quiz-lt4-1",
+          "prompt": "A patient takes Eltroxin with ferrous sulfate at breakfast. Best educational frame?",
+          "choices": [
+            "Fine — both are morning medicines",
+            "Flag reduced absorption and escalate clinically — do not invent a dose or exact spacing rule",
+            "Double the levothyroxine",
+            "Stop iron forever without advice"
+          ],
+          "correctIndex": 1,
+          "teachFromMiss": "Interaction counselling means escalate — Materia never invents thyroid or iron dose changes.",
+          "publishState": "published"
+        }
+      ]
+    }
+  ]
+}

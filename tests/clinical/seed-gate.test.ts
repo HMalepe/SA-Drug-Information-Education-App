@@ -211,4 +211,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-atenolol");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Eltroxin → levothyroxine from endocrine seed", () => {
+    const hits = resolveSearch("Eltroxin", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "levothyroxine");
+  });
+
+  it("resolves Neo-Mercazole → carbimazole from endocrine seed", () => {
+    const hits = resolveSearch("Neo-Mercazole", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "carbimazole");
+  });
+
+  it("publishes educational levothyroxine↔ferrous sulfate interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-levothyroxine-ferrous");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "moderate");
+    assert.equal(ix.moleculeBId, "mol-ferrous-sulfate");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
