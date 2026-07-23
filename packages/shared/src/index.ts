@@ -40,4 +40,5 @@ export * from "./proNotes.js";
 export * from "./spacedRepetition.js";
 export * from "./mysteryMolecule.js";
 export * from "./spotError.js";
+export * from "./matchGame.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

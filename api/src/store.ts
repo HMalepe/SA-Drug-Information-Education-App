@@ -43,6 +43,16 @@ import type { MysteryRound } from "@materia/shared";
 
 type SpotRoundMeta = { roundId: string; cardId: string };
 
+export interface MatchRoundRecord {
+  roundId: string;
+  mechanisms: Array<{ id: string; text: string }>;
+  medicines: Array<{ id: string; name: string; slug: string }>;
+  pairCount: number;
+  note: string;
+  disclaimer: string;
+  answerKey: Record<string, string>;
+}
+
 interface SeedFile {
   sources: Source[];
   manufacturers: Manufacturer[];
@@ -159,6 +169,7 @@ export const db = {
   mysteryRounds: new Map<string, MysteryRound>(),
   mysteryUnlocks: new Map<string, number>(),
   spotRounds: new Map<string, SpotRoundMeta>(),
+  matchRounds: new Map<string, MatchRoundRecord>(),
   subscriptions: [] as SubscriptionStub[],
   organisations: [] as Organization[],
   seats: [] as Seat[],
