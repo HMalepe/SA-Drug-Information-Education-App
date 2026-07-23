@@ -1,6 +1,7 @@
 import {
   MEDICINE_360_TABS,
   emptyStateMessage,
+  explainProductExcipients,
   renderableFact,
   type Medicine360TabId,
   type Source,
@@ -56,13 +57,21 @@ export function buildMolecule360(slug: string, mode: UserMode = "pharmacist") {
     "sa-products": {
       title: "SA Products & Strengths",
       body: {
-        lineage: products.map((p) => ({
-          ...p,
-          manufacturer: manufacturers.find((m) => m.id === p.manufacturerId) ?? null,
-          excipients: p.excipientIds
-            .map((id) => db.excipients.find((e) => e.id === id))
-            .filter(Boolean),
-        })),
+        lineage: products.map((p) => {
+          const explainer = explainProductExcipients({
+            product: p,
+            excipients: db.excipients,
+            mode,
+          });
+          return {
+            ...p,
+            manufacturer: manufacturers.find((m) => m.id === p.manufacturerId) ?? null,
+            excipients: explainer.explanations,
+            excipientEmptyNote: explainer.emptyNote,
+          };
+        }),
+        explainerNote:
+          "Excipients explained (Build Spec §5.4) — inactive until the wrong patient context. Confirm against the labelled pack.",
       },
       sources: [getSource("src-sahpra")].filter(Boolean) as Source[],
     },

@@ -29,6 +29,9 @@ import {
   createOrganisation,
   dueRemindersAt,
   expertLevelFromPercent,
+  explainExcipient,
+  explainProductExcipients,
+  EXCIPIENT_LIBRARY,
   gateFeature,
   generateReferralCode,
   getColdChainNote,
@@ -147,6 +150,36 @@ app.get("/molecules/:slug", (req, res) => {
     return;
   }
   res.json(view);
+});
+
+app.get("/molecules/:slug/excipients", (req, res) => {
+  const mode = (String(req.query.mode ?? "pharmacist") as UserMode) || "pharmacist";
+  const mol = getMoleculeBySlug(req.params.slug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const products = db.products.filter((p) => p.moleculeId === mol.id && p.publishState === "published");
+  res.json({
+    moleculeSlug: mol.slug,
+    mode,
+    products: products.map((p) =>
+      explainProductExcipients({ product: p, excipients: db.excipients, mode }),
+    ),
+    note: "Build Spec §5.4 — excipients explained; inactive until the wrong patient context.",
+  });
+});
+
+app.get("/excipients", (_req, res) => {
+  const mode = "pharmacist" as UserMode;
+  const fromSeed = db.excipients.map((e) => explainExcipient(e, mode));
+  const libraryOnly = Object.entries(EXCIPIENT_LIBRARY)
+    .filter(([id]) => !db.excipients.some((e) => e.id === id))
+    .map(([id, meta]) => explainExcipient({ id, ...meta }, mode));
+  res.json({
+    excipients: [...fromSeed, ...libraryOnly],
+    note: "Educational library + seed rows. Confirm against the labelled pack.",
+  });
 });
 
 app.post("/ai/ask", (req, res) => {

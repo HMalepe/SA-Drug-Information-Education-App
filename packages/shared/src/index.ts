@@ -26,4 +26,5 @@ export * from "./analytics.js";
 export * from "./publicFeed.js";
 export * from "./reviewQueue.js";
 export * from "./seedMutate.js";
+export * from "./excipients.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";
