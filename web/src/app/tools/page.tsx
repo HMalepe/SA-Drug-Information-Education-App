@@ -319,9 +319,9 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling (v80–v89): try <code>furosemide</code>, <code>atenolol</code>,{" "}
-          <code>rifampicin</code>, <code>isoniazid</code>, <code>budesonide</code>, or{" "}
-          <code>sulfamethoxazole-trimethoprim</code> (EN/ZU/AF/ST/XH). Locum accepts{" "}
+          Published SA counselling (v90–v99): try <code>prednisone</code>, <code>diclofenac</code>,{" "}
+          <code>gliclazide</code>, <code>dolutegravir</code>, <code>efavirenz</code>,{" "}
+          <code>allopurinol</code>, or <code>codeine</code> (EN/ZU/AF/ST/XH). Locum accepts{" "}
           <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button

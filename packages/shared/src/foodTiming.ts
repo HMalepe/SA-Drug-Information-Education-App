@@ -221,6 +221,86 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-23",
     },
   },
+  {
+    moleculeId: "mol-diclofenac",
+    fact: {
+      value:
+        "NSAID teaching: take with food if stomach upset occurs — confirm against the labelled product. Materia does not invent a dose or meal clock.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-cetirizine",
+    fact: {
+      value:
+        "Antihistamine teaching: alcohol may worsen drowsiness — confirm against the labelled product. Materia does not invent a dose or sedation score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-dolutegravir",
+    fact: {
+      value:
+        "INSTI teaching: some calcium, iron, or antacid products may need separation as the labelled product describes. Materia does not invent hours or a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-efavirenz",
+    fact: {
+      value:
+        "NNRTI teaching: bedtime dosing is often discussed on the labelled product — confirm product-specific advice. Materia does not invent a clock time or dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-allopurinol",
+    fact: {
+      value:
+        "Allopurinol teaching: often taken with food and water as the labelled product advises. Materia does not invent a dose or uric-acid target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-pantoprazole",
+    fact: {
+      value:
+        "PPI teaching: often before food — confirm against the labelled product. Materia does not invent a clock time, dose, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-clopidogrel",
+    fact: {
+      value:
+        "Antiplatelet teaching: take consistently as on the labelled product — food timing is product-specific. Materia does not invent a dose or platelet target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-codeine",
+    fact: {
+      value:
+        "Opioid teaching: alcohol caution is common counselling — confirm against the labelled product. Materia does not invent a dose or maximum daily amount.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
