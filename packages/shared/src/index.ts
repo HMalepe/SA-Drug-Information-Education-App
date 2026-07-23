@@ -29,4 +29,6 @@ export * from "./reviewQueue.js";
 export * from "./seedMutate.js";
 export * from "./excipients.js";
 export * from "./modes.js";
+export * from "./doseAdjust.js";
+export * from "./toxicityTimeline.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

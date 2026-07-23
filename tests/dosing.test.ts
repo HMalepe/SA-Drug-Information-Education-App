@@ -82,5 +82,7 @@ describe("overdose emergency template", () => {
     assert.match(view.callEmergency, /emergency/i);
     assert.match(view.whatToDo[0] ?? "", /poison|emergency/i);
     assert.match(view.antidoteOrSupportive, /supportive/i);
+    assert.equal(view.toxicityTimeline.educationalOnly, true);
+    assert.ok(view.toxicityTimeline.milestones.length >= 6);
   });
 });

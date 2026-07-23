@@ -85,6 +85,18 @@ function modeFramingOf(body: unknown): string | null {
 }
 
 function EmergencyPanel({ body }: { body: Record<string, unknown> }) {
+  const timeline = body.toxicityTimeline as
+    | {
+        headline?: string;
+        note?: string;
+        milestones?: Array<{
+          offsetLabel: string;
+          title: string;
+          teachingPoint: string;
+        }>;
+      }
+    | undefined;
+
   return (
     <div className="emergency">
       <h3>Call emergency services / Poisons Centre</h3>
@@ -104,6 +116,27 @@ function EmergencyPanel({ body }: { body: Record<string, unknown> }) {
         {Array.isArray(body.whatToDo) &&
           body.whatToDo.map((step) => <li key={String(step)}>{String(step)}</li>)}
       </ol>
+      {timeline?.milestones && timeline.milestones.length > 0 && (
+        <div className="toxicity-timeline" aria-label="Educational toxicity timeline">
+          <h3 style={{ marginBottom: 4 }}>{String(timeline.headline ?? "Toxicity timeline")}</h3>
+          <p className="muted" style={{ marginTop: 0 }}>
+            {String(timeline.note ?? "")}
+          </p>
+          <ol className="toxicity-track">
+            {timeline.milestones.map((m, i) => (
+              <li
+                key={`${m.offsetLabel}-${m.title}`}
+                className="toxicity-step"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <span className="toxicity-offset">{m.offsetLabel}</span>
+                <strong>{m.title}</strong>
+                <span className="muted">{m.teachingPoint}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
       <p className="muted">{String(body.disclaimer ?? "")}</p>
     </div>
   );

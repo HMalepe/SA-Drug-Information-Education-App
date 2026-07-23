@@ -12,6 +12,8 @@ export default function ToolsPage() {
   const [lang, setLang] = useState("en");
   const [scheme, setScheme] = useState("Discovery Health");
   const [scanInput, setScanInput] = useState("6001234567890");
+  const [egfr, setEgfr] = useState("45");
+  const [adjustContext, setAdjustContext] = useState("renal");
   const [out, setOut] = useState("");
   const [offlineBadge, setOfflineBadge] = useState(false);
 
@@ -74,6 +76,23 @@ export default function ToolsPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: uid, input: scanInput }),
     });
+    setOut(JSON.stringify(await res.json(), null, 2));
+  }
+
+  async function runDoseAdjustment(confirmed: boolean) {
+    const uid = await ensurePro();
+    const res = await fetch(`${API}/tools/dose-adjustment`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: uid,
+        moleculeSlug: slug,
+        context: adjustContext,
+        egfrMlMin: egfr.trim() ? Number(egfr) : undefined,
+        clinicallyConfirmed: confirmed,
+      }),
+    });
+    track("tool_used", { tool: "dose_adjustment" }, { tier: "professional" });
     setOut(JSON.stringify(await res.json(), null, 2));
   }
 
@@ -164,6 +183,44 @@ export default function ToolsPage() {
             Active shortages
           </button>
         </div>
+      </div>
+
+      <div className="card">
+        <label className="muted">Dose-adjustment assistant (§8.5) — published notes only</label>
+        <select
+          value={adjustContext}
+          onChange={(e) => setAdjustContext(e.target.value)}
+          style={{ display: "block", width: "100%", margin: "8px 0", padding: 10 }}
+        >
+          <option value="renal">Renal</option>
+          <option value="hepatic">Hepatic</option>
+          <option value="geriatric">Older adults</option>
+          <option value="pregnancy">Pregnancy</option>
+          <option value="dialysis">Dialysis</option>
+          <option value="obesity">Obesity</option>
+          <option value="underweight">Underweight</option>
+        </select>
+        <label className="muted">eGFR / CrCl-style (optional, renal/dialysis)</label>
+        <input
+          style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
+          value={egfr}
+          onChange={(e) => setEgfr(e.target.value)}
+          placeholder="e.g. 45"
+        />
+        <button className="btn" type="button" onClick={() => void runDoseAdjustment(false)}>
+          Preview (needs confirmation)
+        </button>{" "}
+        <button
+          className="btn"
+          type="button"
+          style={{ background: "var(--ink)" }}
+          onClick={() => void runDoseAdjustment(true)}
+        >
+          Confirm clinically + show
+        </button>
+        <p className="muted" style={{ marginTop: 8 }}>
+          Never invents an adjusted mg/schedule — surfaces published renal/hepatic notes only.
+        </p>
       </div>
 
       <div className="card">

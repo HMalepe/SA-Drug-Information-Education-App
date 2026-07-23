@@ -165,6 +165,7 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
         antidoteOrSupportive: sourcedText(safety?.antidoteOrSupportive).empty
           ? undefined
           : sourcedText(safety?.antidoteOrSupportive).text,
+        moleculeLabel: molecule.innName,
       }),
       sources: [sourcedText(safety?.antidoteOrSupportive).source].filter(Boolean) as Source[],
     },

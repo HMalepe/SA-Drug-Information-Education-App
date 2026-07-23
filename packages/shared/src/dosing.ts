@@ -1,5 +1,6 @@
 import type { DoseCalcRequest, DoseCalcResult, Source, SourcedFact } from "./types.js";
 import { renderableFact } from "./publish.js";
+import { buildToxicityTimeline, type ToxicityTimelineView } from "./toxicityTimeline.js";
 
 const DISCLAIMER =
   "Materia is a reference and education tool, not a medical device. " +
@@ -89,12 +90,15 @@ export interface OverdoseEmergencyView {
   whatToDo: string[];
   callEmergency: string;
   disclaimer: string;
+  /** Build Spec §8.7 educational arc */
+  toxicityTimeline: ToxicityTimelineView;
 }
 
 export function buildOverdoseEmergencyTemplate(parts: {
   earlySigns?: string;
   severeSigns?: string;
   antidoteOrSupportive?: string;
+  moleculeLabel?: string;
 }): OverdoseEmergencyView {
   return {
     earlySigns: parts.earlySigns ?? "Not yet published — do not guess early signs.",
@@ -110,5 +114,6 @@ export function buildOverdoseEmergencyTemplate(parts: {
     ],
     callEmergency: "Emergency: dial your local emergency number now if the person is unwell.",
     disclaimer: DISCLAIMER,
+    toxicityTimeline: buildToxicityTimeline({ moleculeLabel: parts.moleculeLabel }),
   };
 }

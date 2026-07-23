@@ -191,6 +191,60 @@ main {
   color: var(--danger);
 }
 
+.toxicity-timeline {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #fecaca;
+}
+
+.toxicity-track {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.toxicity-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  row-gap: 2px;
+  padding: 10px 12px;
+  background: #fff;
+  border-left: 3px solid var(--danger);
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: toxicity-in 420ms ease forwards;
+}
+
+.toxicity-step .toxicity-offset {
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--danger);
+}
+
+.toxicity-step strong {
+  grid-column: 2;
+}
+
+.toxicity-step .muted {
+  grid-column: 2;
+  margin: 0;
+  font-size: 13px;
+}
+
+@keyframes toxicity-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .chip-red {
   color: #fff;
   background: var(--danger);

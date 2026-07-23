@@ -20,6 +20,7 @@ import {
   buildReferralCredits,
   buildSubstitutionOptions,
   calculateDose,
+  assistDoseAdjustment,
   canAddSeat,
   canAwardCpd,
   canRedeemReferral,
@@ -82,6 +83,7 @@ import {
   getMoleculeBySlug,
   getOrCreateProgress,
   getSafety,
+  getSource,
   logConsent,
   recordQuizAttempt,
   setUserTier,
@@ -227,6 +229,81 @@ app.post("/tools/dose-calculator", (req, res) => {
     return;
   }
   const result = calculateDose(parsed.data, db.doseRules);
+  res.json(result);
+});
+
+/* ── Dose-adjustment assistant (Build Spec §8.5 — Pro) ── */
+app.post("/tools/dose-adjustment", (req, res) => {
+  const schema = z.object({
+    moleculeSlug: z.string().min(1),
+    context: z.enum([
+      "renal",
+      "hepatic",
+      "geriatric",
+      "pregnancy",
+      "dialysis",
+      "obesity",
+      "underweight",
+    ]),
+    egfrMlMin: z.number().optional(),
+    clinicallyConfirmed: z.boolean(),
+    userId: z.string().optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const user = parsed.data.userId ? requireUser(parsed.data.userId) : null;
+  const tier = (user?.tier ?? "free") as Tier;
+  const gate = gateFeature(tier, "dose_calculator");
+  if (!gate.allowed) {
+    res.status(402).json({
+      error: "Dose-adjustment assistant is a Professional feature",
+      upgradeTo: gate.upgradeTo,
+      prices: TIER_PRICES_ZAR,
+    });
+    return;
+  }
+  const mol = getMoleculeBySlug(parsed.data.moleculeSlug);
+  if (!mol) {
+    res.status(404).json({ error: "Molecule not found" });
+    return;
+  }
+  const safety = getSafety(mol.id);
+  const renal = safety?.renalAdjustment;
+  const hepatic = safety?.hepaticAdjustment;
+  const geriatric = safety?.dosingGeriatric;
+  const pregnancy = safety?.pregnancy;
+  const pick = (fact: typeof renal) => {
+    if (!fact || fact.publishState !== "published") return null;
+    return { text: String(fact.value), sourceId: fact.sourceId, lastReviewed: fact.lastReviewed };
+  };
+  const renalPub = pick(renal);
+  const hepaticPub = pick(hepatic);
+  const geriatricPub = pick(geriatric);
+  const pregnancyPub = pick(pregnancy);
+  const sourceId =
+    renalPub?.sourceId ??
+    hepaticPub?.sourceId ??
+    geriatricPub?.sourceId ??
+    pregnancyPub?.sourceId;
+  const source = sourceId ? getSource(sourceId) : null;
+
+  const result = assistDoseAdjustment({
+    moleculeId: mol.id,
+    moleculeName: mol.innName,
+    context: parsed.data.context,
+    egfrMlMin: parsed.data.egfrMlMin,
+    clinicallyConfirmed: parsed.data.clinicallyConfirmed,
+    published: {
+      renal: renalPub?.text,
+      hepatic: hepaticPub?.text,
+      geriatric: geriatricPub?.text,
+      pregnancy: pregnancyPub?.text,
+      source: source ?? undefined,
+    },
+  });
   res.json(result);
 });
 
