@@ -191,6 +191,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-amoxclav": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this combination antibiotic exactly as directed on your labelled product.",
+        "Tell your pharmacist if you have ever had a penicillin or beta-lactam allergy.",
+        "Food may help if stomach upset occurs — still follow the labelled product; Materia does not invent a meal schedule.",
+        "If you get a rash, swelling, or trouble breathing — seek emergency care.",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antibiotic ehlanganisiwe njengoba kubhalwe kumkhiqizo onelebula.",
+        "Tshela umkhiqizi wamaphilisi uma wake waba ne-allergy ye-penicillin noma ye-beta-lactam.",
+        "Ukudla kungasiza uma isisu sikhathaza — landela namanje umkhiqizo onelebula; i-Materia ayiqambi uhlelo lokudla.",
+        "Uma uqala ukuba nesikhumba esibomvu, ukuvuvuka, noma ukuphefumula kanzima — funa usizo oluphuthumayo.",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie kombinasie-antibiotika soos op die geëtiketteerde produk aangedui.",
+        "Sê vir jou apteker as jy al ooit ’n penisillien- of beta-laktamienallergie gehad het.",
+        "Kos kan help as jy maagongemak kry — volg steeds die geëtiketteerde produk; Materia versin nie ’n maaltydskedule nie.",
+        "As jy ’n uitslag, swelling of asemhalingsprobleme kry — soek noodhulp.",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa antibiotic ena e kopantsoeng hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Bolella rakhemisi haeba u kile ua ba le allergy ea penicillin kapa beta-lactam.",
+        "Lijo li ka thusa haeba mpeng e o hloba — ntse u latele sehlahiswa se nang le leibole; Materia ha e iqape kemiso ea lijo.",
+        "Haeba u fumana lekhopho, ho ruruha, kapa ho hema thata — batla thuso ea tšohanyetso.",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa le antibiotic edibeneyo ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Xelela usokhemisti ukuba wakhe waba ne-allergy ye-penicillin okanye ye-beta-lactam.",
+        "Ukutya kunokunceda ukuba isisu sikuxhalabisa — landela umkhiqizo oneleyibhile; i-Materia ayiyiqiqi ishedyuli yokutya.",
+        "Ukuba ufumana irashi, ukudumba, okanye uxinzelelo lokuphefumla — funa uncedo olungxamisekileyo.",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(
