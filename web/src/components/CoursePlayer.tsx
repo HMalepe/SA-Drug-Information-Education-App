@@ -18,11 +18,27 @@ interface QuizQ {
   choices: string[];
 }
 
+interface SaFocus {
+  moleculeName: string;
+  className: string;
+  therapeuticArea: string;
+  originator: { brandName: string; formLabel: string; schedule: string } | null;
+  generics: Array<{ brandName: string; formLabel: string; schedule: string }>;
+  schedulesInUse: string[];
+  packForms: string[];
+  counsellingLangs: Array<{ code?: string; lang?: string; label: string; lineCount: number }>;
+  counsellingTeaserEn: string | null;
+  packagingExercisePath: string;
+  note: string;
+  disclaimer: string;
+}
+
 export function CoursePlayer({ courseId }: { courseId: string }) {
   const [userId, setUserId] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [quiz, setQuiz] = useState<QuizQ[]>([]);
+  const [saFocus, setSaFocus] = useState<SaFocus | null>(null);
   const [activeLesson, setActiveLesson] = useState(0);
   const [progress, setProgress] = useState<{
     completionPercent: number;
@@ -52,6 +68,7 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
     setLessons(data.course.lessons);
     setQuiz(data.course.quiz);
     setProgress(data.progress);
+    setSaFocus(data.saFocus ?? null);
   }
 
   useEffect(() => {
@@ -62,11 +79,13 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
     const uid = await ensureUser();
     const lesson = lessons[activeLesson];
     if (!lesson) return;
-    await fetch(`${API}/academy/lessons/complete`, {
+    const res = await fetch(`${API}/academy/lessons/complete`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: uid, courseId, lessonId: lesson.id }),
     });
+    const data = await res.json();
+    if (data.saFocus) setSaFocus(data.saFocus);
     track("lesson_completed", { courseId, lessonId: lesson.id });
     await load(uid);
     if (activeLesson < lessons.length - 1) setActiveLesson((i) => i + 1);
@@ -117,6 +136,54 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
           <button className="btn" type="button" onClick={() => void completeLesson()}>
             Mark complete & continue
           </button>
+        </section>
+      )}
+      {saFocus && (
+        <section className="card" style={{ marginTop: 16 }}>
+          <h2 style={{ marginTop: 0 }}>SA focus (§7.6)</h2>
+          <p className="muted">
+            {saFocus.moleculeName} · {saFocus.className} · {saFocus.therapeuticArea}
+          </p>
+          <p style={{ marginTop: 8 }}>{saFocus.note}</p>
+          {saFocus.originator && (
+            <p>
+              <strong>Originator:</strong> {saFocus.originator.brandName} ·{" "}
+              {saFocus.originator.formLabel} · {saFocus.originator.schedule}
+            </p>
+          )}
+          {saFocus.generics.length > 0 && (
+            <div style={{ marginTop: 8 }}>
+              <strong>Published SA generics</strong>
+              <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>
+                {saFocus.generics.map((g) => (
+                  <li key={g.brandName}>
+                    {g.brandName} · {g.formLabel} · {g.schedule}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <p className="muted" style={{ marginTop: 8 }}>
+            Schedules: {saFocus.schedulesInUse.join(", ") || "—"} · Forms:{" "}
+            {saFocus.packForms.join(", ") || "—"}
+          </p>
+          {saFocus.counsellingTeaserEn && (
+            <p style={{ marginTop: 8, lineHeight: 1.45 }}>
+              Counselling teaser (EN): {saFocus.counsellingTeaserEn}
+            </p>
+          )}
+          <p className="muted" style={{ marginTop: 8 }}>
+            Languages:{" "}
+            {saFocus.counsellingLangs.map((l) => l.label).join(", ") || "none published yet"}
+          </p>
+          <p style={{ marginTop: 12 }}>
+            <a className="btn" href={saFocus.packagingExercisePath}>
+              Packaging recognition
+            </a>
+          </p>
+          <p className="muted" style={{ marginTop: 12, fontSize: 13 }}>
+            {saFocus.disclaimer}
+          </p>
         </section>
       )}
       <section className="card" style={{ marginTop: 16 }}>

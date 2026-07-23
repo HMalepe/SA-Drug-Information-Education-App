@@ -56,6 +56,7 @@ import {
   buildPackagingRound,
   publicPackagingRound,
   gradePackaging,
+  buildSaFocusCard,
   buildDragDropRound,
   publicDragDropRound,
   gradeDragDrop,
@@ -648,6 +649,7 @@ app.get("/academy/courses/:courseId", (req, res) => {
   const pct = progress
     ? courseCompletionPercent(progress.completedLessonIds, lessons.length)
     : 0;
+  const saFocus = mol ? buildSaFocusCard({ molecule: mol, products: db.products }) : null;
 
   res.json({
     course: {
@@ -665,6 +667,7 @@ app.get("/academy/courses/:courseId", (req, res) => {
           // correctIndex + teachFromMiss withheld until answer POST
         })),
     },
+    saFocus,
     progress: progress
       ? {
           ...progress,
@@ -711,8 +714,11 @@ app.post("/academy/lessons/complete", (req, res) => {
   const progress = completeLesson(user.id, course.id, lesson.id);
   const lessons = course.lessons.filter((l) => l.publishState === "published");
   const pct = courseCompletionPercent(progress.completedLessonIds, lessons.length);
+  const mol = db.molecules.find((m) => m.id === course.moleculeId);
+  const saFocus = mol ? buildSaFocusCard({ molecule: mol, products: db.products }) : null;
   res.json({
     progress: { ...progress, completionPercent: pct, expertLevel: expertLevelFromPercent(pct) },
+    saFocus,
   });
 });
 
