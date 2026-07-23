@@ -533,6 +533,63 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
       ],
     },
   },
+  "mol-paracetamol": {
+    en: {
+      lang: "en",
+      publishState: "published",
+      sourceNote: "Materia original counselling — founder-reviewed educational layer",
+      lines: [
+        "Take this pain/fever medicine exactly as directed on your labelled product.",
+        "Check other cold, flu, and pain products for paracetamol (acetaminophen) so you do not double up — Materia does not invent a daily maximum.",
+        "Tell your pharmacist about liver disease or heavy alcohol use before using this medicine.",
+        "If too much may have been taken, or you get severe abdominal pain, vomiting, or yellowing of the skin/eyes — seek emergency care immediately (do not wait for symptoms).",
+      ],
+    },
+    zu: {
+      lang: "zu",
+      publishState: "published",
+      sourceNote: "Materia original isiZulu counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa lo muthi wobuhlungu/umkhuhlane njengoba kubhalwe kumkhiqizo onelebula.",
+        "Hlola eminye imikhiqizo yomkhuhlane nobuhlungu ukuthi ine-paracetamol yini ukuze ungaphindi — i-Materia ayiqambi umkhawulo wansuku zonke.",
+        "Tshela umkhiqizi ngesifo sesibindi noma ukuphuza kakhulu ngaphambi kokusebenzisa lo muthi.",
+        "Uma kungenzeka uthathe okuningi kakhulu, noma uthola ubuhlungu besisu obukhulu, ukuhlanza, noma ukuphaphatheka kwesikhumba/amehlo — funa usizo oluphuthumayo ngokushesha (ungalindi izimpawu).",
+      ],
+    },
+    af: {
+      lang: "af",
+      publishState: "published",
+      sourceNote: "Materia original Afrikaans counselling — founder-reviewed educational layer",
+      lines: [
+        "Neem hierdie pyn-/koorsmiddel soos op die geëtiketteerde produk aangedui.",
+        "Kontroleer ander verkoue-, griep- en pynmiddels vir parasetamol sodat jy nie verdubbel nie — Materia versin nie ’n daaglikse maksimum nie.",
+        "Sê vir jou apteker van lewersiekte of swaar alkoholgebruik voordat jy hierdie middel gebruik.",
+        "As te veel moontlik geneem is, of jy ernstige buikpyn, braking of vergeling van vel/oë kry — soek onmiddellik noodhulp (moenie vir simptome wag nie).",
+      ],
+    },
+    st: {
+      lang: "st",
+      publishState: "published",
+      sourceNote: "Materia original Sesotho counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebelisa moriana ona oa bohloko/feberu hantle kamoo e hlalositsoeng holabel ea sehlahiswa.",
+        "Hlahloba lihlahiswa tse ling tsa sefuba, flu le bohloko bakeng sa paracetamol hore u se ke ua pheta — Materia ha e iqape moeli oa letsatsi le letsatsi.",
+        "Bolella rakhemisi ka boloetse ba sebete kapa ho noa haholo pele u sebelisa moriana ona.",
+        "Haeba ho ka etsahala hore u nkile ho hongata haholo, kapa u fumana bohloko ba mpa bo tebileng, ho hlatsa, kapa ho mosehla ha letlalo/mahlo — batla thuso ea tšohanyetso hang-hang (u se ke ua emela matšoao).",
+      ],
+    },
+    xh: {
+      lang: "xh",
+      publishState: "published",
+      sourceNote: "Materia original isiXhosa counselling — founder-reviewed educational layer",
+      lines: [
+        "Sebenzisa eli yeza leentlungu/umkhuhlane ngokuchanekileyo njengoko kubhaliwe kwileyibhile yemveliso.",
+        "Jonga ezinye iimveliso zomkhuhlane neentlungu ukuba zine-paracetamol na ukuze ungaphindi — i-Materia ayiyiqiqi umda wemihla ngemihla.",
+        "Xelela usokhemisti ngesifo sesibindi okanye ukusela kakhulu phambi kokusebenzisa eli yeza.",
+        "Ukuba kusenokwenzeka uthathe okuninzi kakhulu, okanye ufumana iintlungu zesisu eziqatha, ukugabha, okanye ukutyheliwa kwesikhumba/amehlo — funa uncedo olungxamisekileyo ngokukhawuleza (ungalindi iimpawu).",
+      ],
+    },
+  },
 };
 
 export function getCounsellingScript(

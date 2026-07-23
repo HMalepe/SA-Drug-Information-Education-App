@@ -319,8 +319,8 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: try <code>amoxicillin</code>, <code>ibuprofen</code>,{" "}
-          <code>levothyroxine</code>, <code>warfarin</code>, <code>azithromycin</code>, or{" "}
+          Published SA counselling: try <code>amoxicillin</code>, <code>paracetamol</code>,{" "}
+          <code>levothyroxine</code>, <code>warfarin</code>, <code>ibuprofen</code>, or{" "}
           <code>metronidazole</code> (EN/ZU/AF/ST/XH).
         </p>{" "}
         <button
