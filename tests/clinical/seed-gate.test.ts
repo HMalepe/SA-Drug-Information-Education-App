@@ -316,4 +316,25 @@ describe("seed S0 gate", () => {
     assert.equal(ix.moleculeBId, "mol-isosorbide-mn");
     assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
   });
+
+  it("resolves Clexane → enoxaparin from haematology seed", () => {
+    const hits = resolveSearch("Clexane", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "enoxaparin");
+  });
+
+  it("resolves Konakion → phytomenadione from haematology seed", () => {
+    const hits = resolveSearch("Konakion", molecules, products);
+    assert.equal(hits[0]?.moleculeSlug, "phytomenadione");
+  });
+
+  it("publishes educational enoxaparin↔ibuprofen interaction without inventing a dose", () => {
+    const ix = seeds
+      .flatMap((s) => s.interactions ?? [])
+      .find((i) => i.id === "ix-enoxaparin-ibuprofen");
+    assert.ok(ix);
+    assert.equal(ix.publishState, "published");
+    assert.equal(ix.severity, "major");
+    assert.equal(ix.moleculeBId, "mol-ibuprofen");
+    assert.match(String(ix.action?.value ?? ""), /Do not invent/i);
+  });
 });
