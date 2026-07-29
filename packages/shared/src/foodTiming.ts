@@ -601,6 +601,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-perindopril",
+    fact: {
+      value:
+        "ACE-inhibitor teaching: take as on the labelled product — salt-substitute and potassium discussions belong with the pharmacist. Materia does not invent a dose or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-sitagliptin",
+    fact: {
+      value:
+        "DPP-4 teaching: take as on the labelled product — meal timing follows your diabetes plan. Materia does not invent a dose or glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-dapagliflozin",
+    fact: {
+      value:
+        "SGLT2 teaching: illness with reduced eating or drinking raises dehydration and sick-day discussions — confirm against the labelled product. Materia does not invent a dose or glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-gabapentin",
+    fact: {
+      value:
+        "Gabapentin teaching: alcohol and other sedatives may worsen drowsiness — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-pregabalin",
+    fact: {
+      value:
+        "Pregabalin teaching: alcohol and other sedatives may worsen breathing-risk discussions — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-colchicine",
+    fact: {
+      value:
+        "Colchicine teaching: take exactly as on the labelled product — do not invent an attack schedule. Materia does not invent a dose either.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-hydroxychloroquine",
+    fact: {
+      value:
+        "Hydroxychloroquine teaching: often with food if stomach upset occurs — confirm against the labelled product. Materia does not invent a dose or eye-exam interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-clinda",
+    fact: {
+      value:
+        "Clindamycin teaching: take as on the labelled product — diarrhoea watch is counselling, not a food schedule. Materia does not invent a dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-tiotropium",
+    fact: {
+      value:
+        "LAMA inhaler teaching: take as on the labelled product — not a sudden-relief reliever substitute. Materia does not invent a puff count or dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-mirtazapine",
+    fact: {
+      value:
+        "NaSSA teaching: alcohol may worsen sedation — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
