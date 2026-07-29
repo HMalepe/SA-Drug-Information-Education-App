@@ -801,6 +801,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-levetiracetam",
+    fact: {
+      value:
+        "Antiepileptic teaching: take as on the labelled product — alcohol may worsen sedation. Materia does not invent a dose or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-phenytoin",
+    fact: {
+      value:
+        "Phenytoin teaching: keep brand and timing reasonably consistent — confirm against the labelled product. Materia does not invent a dose or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-celecoxib",
+    fact: {
+      value:
+        "COX-2 NSAID teaching: take with food if stomach upset occurs — confirm against the labelled product. Materia does not invent a dose or pain target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-enoxaparin",
+    fact: {
+      value:
+        "LMWH teaching: injection timing follows the labelled product and clinician plan. Materia does not invent a dose, units, or clotting target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-quetiapine",
+    fact: {
+      value:
+        "Atypical antipsychotic teaching: alcohol may worsen sedation — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-carbimazole",
+    fact: {
+      value:
+        "Antithyroid teaching: take as on the labelled product — infection watch is counselling, not a schedule. Materia does not invent a dose or thyroid-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-semaglutide",
+    fact: {
+      value:
+        "GLP-1 teaching: illness with reduced eating raises hydration discussions — confirm against the labelled product. Materia does not invent a dose, units, or weight target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-azathioprine",
+    fact: {
+      value:
+        "Immunosuppressant teaching: often with food if stomach upset occurs — confirm against the labelled product. Materia does not invent a dose or lab target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-sumatriptan",
+    fact: {
+      value:
+        "Triptan teaching: take as on the labelled product — do not invent spacing hours for a second dose. Materia does not invent a dose or maximum daily amount.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-chlorphenamine",
+    fact: {
+      value:
+        "First-generation antihistamine teaching: alcohol may worsen drowsiness — confirm against the labelled product. Materia does not invent a dose or sedation score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
