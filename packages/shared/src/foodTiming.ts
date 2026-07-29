@@ -701,6 +701,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-ramipril",
+    fact: {
+      value:
+        "ACE-inhibitor teaching: take as on the labelled product — salt-substitute and potassium discussions belong with the pharmacist. Materia does not invent a dose or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-penv",
+    fact: {
+      value:
+        "Phenoxymethylpenicillin teaching: empty-stomach timing is often discussed on some labelled products — confirm product advice. Materia does not invent a clock time or dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-citalopram",
+    fact: {
+      value:
+        "SSRI teaching: alcohol may worsen sedation or mood effects — confirm against the labelled product. Materia does not invent a dose or taper schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-venlafaxine",
+    fact: {
+      value:
+        "SNRI teaching: alcohol may worsen sedation — confirm against the labelled product. Materia does not invent a dose, BP target, or taper schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-diazepam",
+    fact: {
+      value:
+        "Benzodiazepine teaching: alcohol caution is common counselling — confirm against the labelled product. Materia does not invent a dose or duration.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-lithium",
+    fact: {
+      value:
+        "Lithium teaching: keep fluid intake reasonably consistent as the clinician advises — confirm against the labelled product. Materia does not invent a dose, fluid schedule, or lithium level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-lamotrigine",
+    fact: {
+      value:
+        "Lamotrigine teaching: take as on the labelled product — do not invent spacing hours or a catch-up plan. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-isotretinoin",
+    fact: {
+      value:
+        "Oral retinoid teaching: take as on the labelled product — pregnancy-prevention counselling is label-directed. Materia does not invent a dose or pregnancy-test schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-fluticasone",
+    fact: {
+      value:
+        "ICS teaching: rinse mouth after inhalation as the labelled product advises — not a sudden-relief reliever. Materia does not invent a puff count or dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-metoclopramide",
+    fact: {
+      value:
+        "Antiemetic teaching: alcohol caution is common counselling — confirm against the labelled product. Materia does not invent a dose or maximum duration.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

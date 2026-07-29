@@ -319,11 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v130–v139 (<code>perindopril</code>,{" "}
-          <code>dapagliflozin</code>, <code>gabapentin</code>, <code>pregabalin</code>,{" "}
-          <code>colchicine</code>, <code>clindamycin</code>, <code>tiotropium</code>,{" "}
-          <code>mirtazapine</code>…) — 6-line scripts. Locum accepts <code>?lang=zu</code>{" "}
-          (af/st/xh too).
+          Published SA counselling: deepened v140–v149 (<code>ramipril</code>,{" "}
+          <code>phenoxymethylpenicillin</code>, <code>lithium</code>, <code>lamotrigine</code>,{" "}
+          <code>isotretinoin</code>, <code>fluticasone</code>, <code>diazepam</code>…) — 6-line
+          scripts. Locum accepts <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"
