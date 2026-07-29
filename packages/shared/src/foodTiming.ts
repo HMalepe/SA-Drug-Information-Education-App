@@ -1101,6 +1101,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-cefuroxime",
+    fact: {
+      value:
+        "Cephalosporin teaching: food timing can differ for tablets vs suspensions — confirm against the labelled product. Materia does not invent a dose, meal clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-lansoprazole",
+    fact: {
+      value:
+        "PPI teaching: many products are best before food — confirm against the labelled product. Materia does not invent a dose or meal clock.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-dexamethasone",
+    fact: {
+      value:
+        "Corticosteroid teaching: take with food if the labelled product advises — do not invent a taper or sick-day schedule. Materia does not invent a dose or glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-donepezil",
+    fact: {
+      value:
+        "Cholinesterase-inhibitor teaching: evening dosing is common counselling — confirm against the labelled product. Materia does not invent a dose or cognition score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-tamsulosin",
+    fact: {
+      value:
+        "Alpha-blocker teaching: often after the same meal each day — confirm against the labelled product. Materia does not invent a dose or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-finasteride",
+    fact: {
+      value:
+        "5-ARI teaching: take as on the labelled product — crushed-tablet handling caution if pregnancy is a household concern. Materia does not invent a dose or PSA target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-desloratadine",
+    fact: {
+      value:
+        "Non-sedating antihistamine teaching: alcohol may still add sedation — confirm against the labelled product. Materia does not invent a dose or sedation score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-febuxostat",
+    fact: {
+      value:
+        "Xanthine-oxidase inhibitor teaching: not a sudden gout-pain rescue unless the clinician says otherwise. Materia does not invent a dose, uric-acid target, or flare schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-isosorbide-mn",
+    fact: {
+      value:
+        "Nitrate teaching: timing gaps matter for some regimens — confirm against the labelled product. Materia does not invent a dose, nitrate-free interval, or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-leflunomide",
+    fact: {
+      value:
+        "DMARD teaching: take as on the labelled product — pregnancy-avoidance and washout discussions belong with the clinician. Materia does not invent a dose or lab target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
