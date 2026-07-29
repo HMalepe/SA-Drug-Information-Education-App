@@ -901,6 +901,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-glimepiride",
+    fact: {
+      value:
+        "Sulfonylurea teaching: take with meals as on the labelled product — skipping meals raises hypoglycaemia risk discussions. Materia does not invent a dose or glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-haloperidol",
+    fact: {
+      value:
+        "Typical antipsychotic teaching: alcohol may worsen sedation — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-lorazepam",
+    fact: {
+      value:
+        "Benzodiazepine teaching: alcohol caution is common counselling — confirm against the labelled product. Materia does not invent a dose or duration.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-risperidone",
+    fact: {
+      value:
+        "Atypical antipsychotic teaching: alcohol may worsen sedation — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-terbinafine",
+    fact: {
+      value:
+        "Allylamine antifungal teaching: take as on the labelled product — liver watch is counselling, not a schedule. Materia does not invent a dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-lactulose",
+    fact: {
+      value:
+        "Osmotic laxative teaching: drink fluids as the clinician or labelled product advises. Materia does not invent a dose, fluid schedule, or bowel target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-sulfasalazine",
+    fact: {
+      value:
+        "DMARD teaching: often with food and water as the labelled product advises. Materia does not invent a dose or lab target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-domperidone",
+    fact: {
+      value:
+        "Antiemetic teaching: take as on the labelled product — heart-rhythm discussions belong with the pharmacist. Materia does not invent a dose or maximum duration.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-theophylline",
+    fact: {
+      value:
+        "Methylxanthine teaching: keep brand and timing reasonably consistent — caffeine and smoking changes matter. Materia does not invent a dose or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-erythro",
+    fact: {
+      value:
+        "Macrolide teaching: food timing is product-specific — confirm against the labelled product. Materia does not invent a dose, meal clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
