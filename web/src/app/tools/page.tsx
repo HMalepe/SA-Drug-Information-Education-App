@@ -319,9 +319,9 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: v100–v109 (<code>lamivudine</code>,{" "}
-          <code>tenofovir-disoproxil</code>, <code>ethambutol</code>, <code>sertraline</code>,{" "}
-          <code>insulin-glargine</code>, <code>rivaroxaban</code>, <code>montelukast</code>…) plus
+          Published SA counselling: v110–v119 (<code>flucloxacillin</code>, <code>cefalexin</code>,{" "}
+          <code>nitrofurantoin</code>, <code>empagliflozin</code>, <code>apixaban</code>,{" "}
+          <code>amitriptyline</code>, <code>fluconazole</code>, <code>carvedilol</code>…) plus
           earlier batches. Locum accepts <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button

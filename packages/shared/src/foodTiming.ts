@@ -401,6 +401,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-24",
     },
   },
+  {
+    moleculeId: "mol-fluclox",
+    fact: {
+      value:
+        "Flucloxacillin teaching: empty-stomach timing is often discussed on the labelled product — confirm product advice. Materia does not invent a clock time or dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-cephalexin",
+    fact: {
+      value:
+        "Cephalosporin teaching: take as on the labelled product — food timing is product-specific. Materia does not invent a dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-nitro",
+    fact: {
+      value:
+        "Nitrofurantoin teaching: often with food if stomach upset occurs — confirm against the labelled product. Materia does not invent a dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-loratadine",
+    fact: {
+      value:
+        "Antihistamine teaching: alcohol may worsen drowsiness — confirm against the labelled product. Materia does not invent a dose or sedation score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-empagliflozin",
+    fact: {
+      value:
+        "SGLT2 teaching: illness with reduced eating or drinking raises dehydration discussions — confirm against the labelled product. Materia does not invent a dose or glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-apixaban",
+    fact: {
+      value:
+        "DOAC teaching: take consistently as on the labelled product — food timing is product-specific. Materia does not invent a dose, INR, or clotting target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-amitriptyline",
+    fact: {
+      value:
+        "TCA teaching: alcohol and other sedatives may worsen drowsiness — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-loperamide",
+    fact: {
+      value:
+        "Antimotility teaching: take as on the labelled product — do not invent a daily maximum. Materia does not invent a dose either.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-fluconazole",
+    fact: {
+      value:
+        "Azole antifungal teaching: take as on the labelled product — interaction checks belong with the pharmacist. Materia does not invent a dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-carvedilol",
+    fact: {
+      value:
+        "Beta-blocker teaching: often with food — confirm against the labelled product. Materia does not invent a dose or heart-rate target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
