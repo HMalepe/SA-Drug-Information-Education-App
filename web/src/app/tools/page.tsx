@@ -319,10 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: v110–v119 (<code>flucloxacillin</code>, <code>cefalexin</code>,{" "}
-          <code>nitrofurantoin</code>, <code>empagliflozin</code>, <code>apixaban</code>,{" "}
-          <code>amitriptyline</code>, <code>fluconazole</code>, <code>carvedilol</code>…) plus
-          earlier batches. Locum accepts <code>?lang=zu</code> (af/st/xh too).
+          Published SA counselling: v120–v129 (<code>naproxen</code>, <code>rosuvastatin</code>,{" "}
+          <code>escitalopram</code>, <code>methotrexate</code>, <code>alendronate</code>,{" "}
+          <code>ferrous-sulfate</code>, <code>clarithromycin</code>…) plus earlier batches. Locum
+          accepts <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"

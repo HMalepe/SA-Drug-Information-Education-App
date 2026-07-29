@@ -501,6 +501,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-naproxen",
+    fact: {
+      value:
+        "NSAID teaching: take with food if stomach upset occurs — confirm against the labelled product. Materia does not invent a dose or meal clock.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-rosuvastatin",
+    fact: {
+      value:
+        "Statin teaching: take as on the labelled product — food timing is product-specific. Materia does not invent a dose or cholesterol target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-escitalopram",
+    fact: {
+      value:
+        "SSRI teaching: alcohol may worsen sedation or mood effects — confirm against the labelled product. Materia does not invent a dose or taper schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-insulin-aspart",
+    fact: {
+      value:
+        "Rapid-acting insulin teaching: meal timing follows the labelled product and clinician plan. Materia does not invent units or a glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-methotrexate",
+    fact: {
+      value:
+        "DMARD teaching: alcohol caution is common counselling — confirm against the labelled product. Materia does not invent a dose, day-of-week, or lab target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-alendronate",
+    fact: {
+      value:
+        "Bisphosphonate teaching: often first thing with plain water, remaining upright as the labelled product describes. Materia does not invent a clock time or spacing hours.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-ferrous-sulfate",
+    fact: {
+      value:
+        "Iron teaching: tea/coffee and some foods may affect absorption — confirm against the labelled product. Materia does not invent a dose or haemoglobin target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-clotrimazole",
+    fact: {
+      value:
+        "Azole antifungal teaching: complete the labelled course — food timing is usually not the main counselling point. Materia does not invent a dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-ondansetron",
+    fact: {
+      value:
+        "Antiemetic teaching: take as on the labelled product. Materia does not invent a dose or maximum daily amount.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-clarithro",
+    fact: {
+      value:
+        "Macrolide teaching: take as on the labelled product — food timing is product-specific. Materia does not invent a dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
