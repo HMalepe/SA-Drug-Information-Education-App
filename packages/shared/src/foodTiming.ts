@@ -1001,6 +1001,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-esomeprazole",
+    fact: {
+      value:
+        "PPI teaching: many products are best before food — confirm against the labelled product. Materia does not invent a dose or meal clock.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-bisacodyl",
+    fact: {
+      value:
+        "Stimulant laxative teaching: drink fluids as the clinician or labelled product advises. Materia does not invent a dose, fluid schedule, or bowel target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-hyoscine-butylbromide",
+    fact: {
+      value:
+        "Antispasmodic teaching: take as on the labelled product — dry mouth and vision blur are common counselling. Materia does not invent a dose or pain score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-mesalazine",
+    fact: {
+      value:
+        "5-ASA teaching: tablets, granules, and enemas are not interchangeable without advice — confirm against the labelled product. Materia does not invent a dose or flare schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-beclometasone",
+    fact: {
+      value:
+        "Inhaled corticosteroid teaching: rinse mouth after inhaled doses if the product advises. Materia does not invent a puff count or step-up plan.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-formoterol",
+    fact: {
+      value:
+        "LABA teaching: not a solo asthma controller unless the clinician’s plan says so — confirm against the labelled product. Materia does not invent a puff count or step-up plan.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-meloxicam",
+    fact: {
+      value:
+        "NSAID teaching: often with food for stomach comfort — confirm against the labelled product. Materia does not invent a dose or pain score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-baclofen",
+    fact: {
+      value:
+        "Muscle-relaxant teaching: alcohol may worsen drowsiness — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-levodopa-carbidopa",
+    fact: {
+      value:
+        "Parkinson’s combination teaching: timing consistency matters — protein-timing questions belong with the clinician. Materia does not invent a dose, meal clock, or ON/OFF schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
+  {
+    moleculeId: "mol-topiramate",
+    fact: {
+      value:
+        "Antiepileptic / migraine-preventer teaching: hydration discussions belong with the clinician — do not invent a litre target. Materia does not invent a dose or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-29",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
