@@ -301,6 +301,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-24",
     },
   },
+  {
+    moleculeId: "mol-lamivudine",
+    fact: {
+      value:
+        "NRTI teaching: take consistently as on the labelled product — food timing is product-specific. Materia does not invent a dose or viral-load target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-tdf",
+    fact: {
+      value:
+        "Tenofovir teaching: take as on the labelled product; kidney and bone discussions stay clinician-directed. Materia does not invent a dose or eGFR target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-pyrazinamide",
+    fact: {
+      value:
+        "TB antimycobacterial teaching: alcohol caution is common counselling — confirm against the labelled product. Materia does not invent a dose or liver-enzyme target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-ethambutol",
+    fact: {
+      value:
+        "Ethambutol teaching: take as on the labelled product — vision watch is counselling, not a schedule. Materia does not invent a dose or visual-acuity target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-sertraline",
+    fact: {
+      value:
+        "SSRI teaching: alcohol may worsen sedation or mood effects — confirm against the labelled product. Materia does not invent a dose or taper schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-insulin-glargine",
+    fact: {
+      value:
+        "Basal insulin teaching: meal pattern changes affect hypo risk discussions — confirm against the labelled product and clinician plan. Materia does not invent units or a glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-rivaroxaban",
+    fact: {
+      value:
+        "DOAC teaching: some strengths are taken with food — confirm against the labelled product. Materia does not invent a dose, INR, or clotting target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-carbamazepine",
+    fact: {
+      value:
+        "Antiepileptic teaching: alcohol caution and interaction checks are common — confirm against the labelled product. Materia does not invent a dose or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-valproate",
+    fact: {
+      value:
+        "Valproate teaching: take as on the labelled product — food timing is product-specific. Materia does not invent a dose or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
+  {
+    moleculeId: "mol-montelukast",
+    fact: {
+      value:
+        "Leukotriene antagonist teaching: take as on the labelled product — not a sudden-relief inhaler substitute. Materia does not invent a dose or asthma-control score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-24",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

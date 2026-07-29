@@ -319,10 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling (v90–v99): try <code>prednisone</code>, <code>diclofenac</code>,{" "}
-          <code>gliclazide</code>, <code>dolutegravir</code>, <code>efavirenz</code>,{" "}
-          <code>allopurinol</code>, or <code>codeine</code> (EN/ZU/AF/ST/XH). Locum accepts{" "}
-          <code>?lang=zu</code> (af/st/xh too).
+          Published SA counselling: v100–v109 (<code>lamivudine</code>,{" "}
+          <code>tenofovir-disoproxil</code>, <code>ethambutol</code>, <code>sertraline</code>,{" "}
+          <code>insulin-glargine</code>, <code>rivaroxaban</code>, <code>montelukast</code>…) plus
+          earlier batches. Locum accepts <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"
