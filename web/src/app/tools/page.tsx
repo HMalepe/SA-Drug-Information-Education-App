@@ -319,10 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v315–v321 STG Batch A (<code>adrenaline</code>,{" "}
-          <code>atropine</code>, <code>naloxone</code>, <code>acetylcysteine</code>,{" "}
-          <code>activated-charcoal</code>, <code>calcium-gluconate</code>,{" "}
-          <code>magnesium-sulfate</code>). Locum accepts <code>?lang=zu</code> (af/st/xh too).
+          Published SA counselling: deepened v322–v329 STG Batch B (<code>artesunate</code>,{" "}
+          <code>artemether-lumefantrine</code>, <code>albendazole</code>, <code>praziquantel</code>,{" "}
+          <code>amphotericin-b</code>, <code>ampicillin</code>, <code>cefazolin</code>,{" "}
+          <code>benzylpenicillin</code>). Locum accepts <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"

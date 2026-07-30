@@ -2521,6 +2521,86 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-artesunate",
+    fact: {
+      value:
+        "Artesunate teaching: severe malaria is a hospital emergency. Materia does not invent a dose, route sequence, or oral step-down schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-artemether-lumefantrine",
+    fact: {
+      value:
+        "ACT teaching: take exactly as labelled — food timing follows the pack. Materia does not invent weight bands, food-timing hours, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-albendazole",
+    fact: {
+      value:
+        "Albendazole teaching: confirm pregnancy status with the pharmacist. Materia does not invent a dose, duration, or pregnancy rule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-praziquantel",
+    fact: {
+      value:
+        "Praziquantel teaching: dizziness watch — ask about food on your pack. Materia does not invent a mg/kg dose or food-timing rule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-amphotericin-b",
+    fact: {
+      value:
+        "Amphotericin B teaching: formulation matters — electrolyte monitoring belongs with the clinician. Materia does not invent a dose or monitoring schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ampicillin",
+    fact: {
+      value:
+        "Ampicillin teaching: confirm penicillin allergy before supply. Materia does not invent a dose, interval, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-cefazolin",
+    fact: {
+      value:
+        "Cefazolin teaching: allergy check before surgical prophylaxis. Materia does not invent a dose or redosing interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-benzylpenicillin",
+    fact: {
+      value:
+        "Benzylpenicillin teaching: confirm penicillin allergy before starting. Materia does not invent a unit dose or infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
