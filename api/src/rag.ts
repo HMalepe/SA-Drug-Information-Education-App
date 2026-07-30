@@ -1,4 +1,6 @@
 import {
+  chunksFromPublishedInteractions,
+  chunksFromStgExtracts,
   getCounsellingScript,
   groundedAskFromCorpus,
   renderableFact,
@@ -6,8 +8,30 @@ import {
   type RetrievableChunk,
   type Source,
   type SourcedFact,
+  type StgExtract,
 } from "@materia/shared";
-import { getMoleculeBySlug, getSafety, getSource } from "./store.js";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import {
+  getMoleculeBySlug,
+  getMoleculeName,
+  getSafety,
+  getSource,
+  listPublishedInteractionsForMolecule,
+} from "./store.js";
+
+function loadStgExtracts(): StgExtract[] {
+  const path = join(dirname(fileURLToPath(import.meta.url)), "../../content/rag/stg-extracts.json");
+  try {
+    const doc = JSON.parse(readFileSync(path, "utf8")) as { extracts?: StgExtract[] };
+    return doc.extracts ?? [];
+  } catch {
+    return [];
+  }
+}
+
+const stgExtracts = loadStgExtracts();
 
 function pushFact(
   chunks: RetrievableChunk[],
@@ -45,7 +69,7 @@ function pushPublishedStringFact(
 
 /**
  * Molecule Q&A — hybrid RAG over published, sourced, license-allowed chunks only.
- * No LLM composition yet: retrieve + cite (constitution 3.1). POPIA: strip IDs first.
+ * Includes curated interactions + founder-approved STG extracts. No LLM composition.
  */
 export function askMolecule(moleculeSlug: string, question: string) {
   const safeQuestion = stripIdentifiers(question);
@@ -127,6 +151,19 @@ export function askMolecule(moleculeSlug: string, question: string) {
       );
     }
   }
+
+  // Published curated interactions (constitution 3.1 — retrieve only).
+  chunks.push(
+    ...chunksFromPublishedInteractions(
+      molecule.id,
+      listPublishedInteractionsForMolecule(molecule.id),
+      getSource,
+      getMoleculeName,
+    ),
+  );
+
+  // Founder-approved STG/EML extracts (draft never indexes).
+  chunks.push(...chunksFromStgExtracts(molecule.id, stgExtracts, getSource));
 
   return groundedAskFromCorpus(safeQuestion, chunks, {
     topK: 8,

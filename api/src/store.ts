@@ -230,6 +230,18 @@ export function getSafety(moleculeId: string): SafetyProfile | undefined {
   return db.safetyProfiles.find((s) => s.moleculeId === moleculeId);
 }
 
+export function listPublishedInteractionsForMolecule(moleculeId: string): Interaction[] {
+  return db.interactions.filter(
+    (ix) =>
+      ix.publishState === "published" &&
+      (ix.moleculeAId === moleculeId || ix.moleculeBId === moleculeId),
+  );
+}
+
+export function getMoleculeName(moleculeId: string): string | undefined {
+  return db.molecules.find((m) => m.id === moleculeId)?.innName;
+}
+
 export function getCourseById(id: string) {
   return db.courses.find((c) => c.id === id && c.publishState === "published");
 }

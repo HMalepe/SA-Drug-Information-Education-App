@@ -31,10 +31,15 @@
       "reason": "Licensed commercial content — never copy into Materia (docs/15, Build Spec §14)"
     }
   ],
+  "pipelineDone": [
+    "Hybrid retrieve + license gate + groundedAskFromCorpus",
+    "Published Interaction table rows → RAG chunks",
+    "Founder-approved STG/EML extract file (content/rag/stg-extracts.json) with draft gate"
+  ],
   "pipelineNext": [
-    "Chunk founder-approved STG/EML extracts with edition + last_reviewed",
+    "Expand STG/EML extracts molecule-by-molecule after founder review (still no invented mg)",
     "Package-insert owned paraphrases as sourceType=insert after review gate",
-    "Interaction facts only from curated Interaction table rows (published)",
-    "Hosted in-region embedder behind Embedder interface when scale requires"
+    "Hosted in-region embedder behind Embedder interface when scale requires",
+    "Optional in-region LLM compose that receives ONLY retrieved chunks"
   ]
 }

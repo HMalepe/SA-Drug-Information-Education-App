@@ -16,3 +16,6 @@ Hybrid RAG retrieve runs in-process (`@materia/shared` local embedder) until Pos
 pgvector is wired for production scale.
 
 **License:** never load SAMF/MIMS/Lexicomp into `rag_chunks` (CHECK constraint + app gate).
+
+**Corpus (in-process):** molecule facts + EN counselling + published interactions +
+`content/rag/stg-extracts.json` (draft extracts never index). See `content/rag/authority-registry.json`.

@@ -2,14 +2,18 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
   assertIndexableLicense,
+  chunksFromPublishedInteractions,
+  chunksFromStgExtracts,
   cosineSimilarity,
   groundedAskFromCorpus,
   indexRagChunks,
   licenseClassForSourceId,
   localBagOfWordsEmbedder,
   retrieveRagChunks,
+  type Interaction,
   type RetrievableChunk,
   type Source,
+  type StgExtract,
 } from "@materia/shared";
 
 const edu: Source = {
@@ -109,5 +113,85 @@ describe("RAG hybrid retrieve", () => {
     const b = localBagOfWordsEmbedder.embed("amoxicillin cell wall");
     assert.deepEqual(a, b);
     assert.ok(cosineSimilarity(a, a) > 0.99);
+  });
+});
+
+describe("RAG corpus — interactions + STG extracts", () => {
+  const sources: Record<string, Source> = { "src-materia-edu": edu, "src-doh-stg": stg };
+  const byId = (id: string) => sources[id];
+
+  const ix: Interaction = {
+    id: "ix-warfarin-aspirin",
+    moleculeAId: "mol-warfarin",
+    moleculeBId: "mol-aspirin",
+    severity: "major",
+    mechanism: {
+      value: "Additive bleeding risk — educational flag only.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+    action: {
+      value: "Do not invent a dose change — confirm clinically.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+    publishState: "published",
+  };
+
+  it("indexes published interaction mechanism and action for a molecule", () => {
+    const chunks = chunksFromPublishedInteractions("mol-warfarin", [ix], byId, (id) =>
+      id === "mol-warfarin" ? "warfarin" : "aspirin",
+    );
+    assert.equal(chunks.length, 2);
+    assert.match(chunks[0]!.text, /warfarin ↔ aspirin/i);
+    assert.match(chunks.map((c) => c.fieldPath).join(" "), /interaction\.ix-warfarin-aspirin/);
+  });
+
+  it("skips draft interactions and wrong molecule", () => {
+    const draft: Interaction = { ...ix, publishState: "draft" };
+    assert.equal(chunksFromPublishedInteractions("mol-warfarin", [draft], byId).length, 0);
+    assert.equal(chunksFromPublishedInteractions("mol-amox", [ix], byId).length, 0);
+  });
+
+  it("indexes published STG extracts and skips draft", () => {
+    const extracts: StgExtract[] = [
+      {
+        id: "stg-amox-eml-pointer",
+        moleculeId: "mol-amox",
+        moleculeSlug: "amoxicillin",
+        edition: "DoH STG/EML — verify current public edition",
+        topic: "essential-list-pointer",
+        text: "Amoxicillin is an EML workhorse — Materia does not publish a numeric dose here.",
+        sourceId: "src-doh-stg",
+        publishState: "published",
+        lastReviewed: "2026-07-30",
+      },
+      {
+        id: "stg-metformin-draft",
+        moleculeId: "mol-metformin",
+        moleculeSlug: "metformin",
+        edition: "draft",
+        text: "Should not index",
+        sourceId: "src-doh-stg",
+        publishState: "draft",
+        lastReviewed: "2026-07-30",
+      },
+    ];
+    const published = chunksFromStgExtracts("mol-amox", extracts, byId);
+    assert.equal(published.length, 1);
+    assert.match(published[0]!.text, /STG\/EML/);
+    assert.equal(chunksFromStgExtracts("mol-metformin", extracts, byId).length, 0);
+  });
+
+  it("answers interaction questions from curated rows without inventing doses", () => {
+    const chunks = chunksFromPublishedInteractions("mol-warfarin", [ix], byId, () => "drug");
+    const ans = groundedAskFromCorpus("warfarin aspirin bleeding interaction risk?", chunks, {
+      minScore: 0.05,
+    });
+    assert.equal(ans.status, "answered");
+    assert.match(ans.answer ?? "", /bleeding|dose change/i);
+    assert.ok(!(ans.answer ?? "").match(/\d+\s*mg/i));
   });
 });

@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "note": "Founder-approved DoH STG/EML educational extracts for RAG. No numeric doses invented. Never copy SAMF/MIMS/Lexicomp. Draft extracts must not index until publishState=published.",
+    "updated": "2026-07-30"
+  },
+  "extracts": [
+    {
+      "id": "stg-amox-eml-pointer",
+      "moleculeId": "mol-amox",
+      "moleculeSlug": "amoxicillin",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "essential-list-pointer",
+      "text": "Amoxicillin is an Essential Medicines List workhorse antibiotic in South African public guidance. Materia does not publish a numeric adult or paediatric dose here — confirm indication, dose, and duration against the current DoH STG/EML edition and the labelled product before clinical use.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-rifampicin-tb-pointer",
+      "moleculeId": "mol-rifampicin",
+      "moleculeSlug": "rifampicin",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "tb-programme-pointer",
+      "text": "Rifampicin is central to South African TB treatment pathways in public STG/EML guidance. Materia does not invent weight-band doses, course length, or interaction dose-adjustments — confirm against the current DoH TB/STG edition, programme materials, and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-warfarin-anticoag-pointer",
+      "moleculeId": "mol-warfarin",
+      "moleculeSlug": "warfarin",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "anticoagulation-pointer",
+      "text": "Warfarin anticoagulation in South African public guidance requires clinical monitoring — Materia does not invent INR targets, loading schedules, or bridging doses. Confirm against the current DoH STG/EML edition, local protocol, and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented INR/mg"
+    },
+    {
+      "id": "stg-metformin-draft-only",
+      "moleculeId": "mol-metformin",
+      "moleculeSlug": "metformin",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "diabetes-pointer",
+      "text": "DRAFT ONLY — do not index: placeholder for a future founder-reviewed metformin STG pointer.",
+      "sourceId": "src-doh-stg",
+      "publishState": "draft",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder review"
+    }
+  ]
+}

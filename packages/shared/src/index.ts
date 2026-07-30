@@ -6,6 +6,7 @@ export * from "./ragEmbeddings.js";
 export * from "./ragLicense.js";
 export * from "./ragRetrieve.js";
 export * from "./ragAsk.js";
+export * from "./ragCorpus.js";
 export * from "./dosing.js";
 export * from "./academy.js";
 export * from "./companion.js";
