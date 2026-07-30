@@ -2201,6 +2201,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-hep-b-vaccine",
+    fact: {
+      value:
+        "Hepatitis B vaccine teaching: series timing belongs with the vaccinator / EPI plan. Materia does not invent a dose, series interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-hep-a-vaccine",
+    fact: {
+      value:
+        "Hepatitis A vaccine teaching: booster and travel timing belong with the clinic. Materia does not invent a dose, booster interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-hpv-vaccine",
+    fact: {
+      value:
+        "HPV vaccine teaching: series timing belongs with the clinic / school plan. Materia does not invent a dose, series interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-influenza-vaccine",
+    fact: {
+      value:
+        "Seasonal influenza vaccine teaching: formulation years differ — confirm this season’s product. Materia does not invent a dose, season clock, or protection score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mmr-vaccine",
+    fact: {
+      value:
+        "Live MMR vaccine teaching: pregnancy and immune-suppression questions belong with the vaccinator. Materia does not invent a dose, series interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tdap-vaccine",
+    fact: {
+      value:
+        "Tdap vaccine teaching: booster timing belongs with the clinic / pregnancy plan. Materia does not invent a dose, booster interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-td-vaccine",
+    fact: {
+      value:
+        "Td vaccine teaching: wound and travel booster context belongs with the vaccinator. Materia does not invent a dose, booster interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-pcv-vaccine",
+    fact: {
+      value:
+        "PCV teaching: infant and adult schedules differ — confirm which pneumococcal product was given. Materia does not invent a dose, series interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-rotavirus-vaccine",
+    fact: {
+      value:
+        "Live oral rotavirus vaccine teaching: age-window rules belong with the EPI / clinic plan. Materia does not invent a dose, age window, or series interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ipv-vaccine",
+    fact: {
+      value:
+        "IPV teaching: not the same as oral polio drops — confirm the labelled form and EPI series. Materia does not invent a dose, series interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
