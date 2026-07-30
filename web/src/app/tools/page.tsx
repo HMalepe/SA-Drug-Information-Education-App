@@ -319,11 +319,11 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v230–v239 (<code>levonorgestrel</code>,{" "}
-          <code>medroxyprogesterone</code>, <code>ethinylestradiol</code>,{" "}
-          <code>brimonidine</code>, <code>liothyronine</code>, <code>midazolam</code>,{" "}
-          <code>fentanyl</code>, <code>granisetron</code>…) — 6-line scripts. Locum accepts{" "}
-          <code>?lang=zu</code> (af/st/xh too).
+          Published SA counselling: deepened v240–v249 (<code>desogestrel</code>,{" "}
+          <code>drospirenone</code>, <code>cabergoline</code>, <code>tamoxifen</code>,{" "}
+          <code>anastrozole</code>, <code>filgrastim</code>, <code>aprepitant</code>,{" "}
+          <code>olopatadine</code>…) — 6-line scripts. Locum accepts <code>?lang=zu</code>{" "}
+          (af/st/xh too).
         </p>{" "}
         <button
           className="btn"

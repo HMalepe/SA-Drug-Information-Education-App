@@ -1701,6 +1701,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-desogestrel",
+    fact: {
+      value:
+        "POP teaching: same-time habit is common counselling — confirm late-pill rules against the labelled pack. Materia does not invent a dose, late-pill clock, or fertility score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-drospirenone",
+    fact: {
+      value:
+        "COC progestogen teaching: usually part of a combined pack — potassium and clot discussions belong with the pharmacist. Materia does not invent a dose, pill clock, potassium target, or clot score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-cabergoline",
+    fact: {
+      value:
+        "Dopamine-agonist teaching: take as on the labelled product — prolactin and Parkinson’s uses differ. Materia does not invent a dose or prolactin target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-anastrozole",
+    fact: {
+      value:
+        "Aromatase-inhibitor teaching: take as on the labelled product — bone-health discussions belong with the clinician. Materia does not invent a dose or oestradiol / bone target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tamoxifen",
+    fact: {
+      value:
+        "SERM teaching: take as on the labelled product — clot-risk and bleeding watch belong with the clinician. Materia does not invent a dose or clot score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-letrozole",
+    fact: {
+      value:
+        "Aromatase-inhibitor teaching: take as on the labelled product — bone-health discussions belong with the clinician. Materia does not invent a dose or oestradiol / bone target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-filgrastim",
+    fact: {
+      value:
+        "G-CSF teaching: injection technique belongs with the care team. Materia does not invent a dose, injection schedule, or neutrophil target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-aprepitant",
+    fact: {
+      value:
+        "NK1 antiemetic teaching: interaction checks with many medicines and contraceptives are essential. Materia does not invent a dose, schedule hours, or nausea score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-olopatadine",
+    fact: {
+      value:
+        "Ocular antihistamine teaching: remove contact lenses before drops if the labelled product advises. Materia does not invent a drop count, spacing minutes, or allergy score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-chloramphenicol-eye",
+    fact: {
+      value:
+        "Ophthalmic antibiotic teaching: drops and ointment differ — confirm against the labelled product. Materia does not invent a dose, drop clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
