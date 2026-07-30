@@ -110,6 +110,10 @@ import {
   buildStgExtractReviewQueue,
   filterReviewQueueByMoleculeIds,
   summarizeBatchAiBacklog,
+  planStgBatchPublish,
+  planStgAllBatches,
+  planDosingBatch,
+  planDosingAllBatches,
   validateStgExtractDecision,
   applyStgExtractDecisionState,
   normalizeReferralCode,
@@ -3253,7 +3257,61 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/queue?batch=A — dosing/safety drafts. GET /review/stg-queue?batch=A — STG extract drafts. POST /review/decide or /review/stg-decide with attestation containing sourced|confirm. Never invents mg.",
+      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · GET /review/queue?batch=A · GET /review/stg-queue?batch=A · POST /review/decide or /review/stg-decide (attestation: sourced|confirm). Never invents mg. No dosing batch auto-publish.",
+  });
+});
+
+app.get("/review/plan-stg", (req, res) => {
+  const batch = String(req.query.batch ?? "all").trim().toUpperCase() || "ALL";
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgExtractsFromDisk();
+  if (batch === "ALL") {
+    res.json(
+      planStgAllBatches({
+        batchMoleculeIds,
+        extracts,
+      }),
+    );
+    return;
+  }
+  const ids = batchMoleculeIds.get(batch);
+  if (!ids) {
+    res.status(400).json({ error: `Unknown batch ${batch}. Use A–I or all.` });
+    return;
+  }
+  const ref = STG_BATCH_A_I_SEEDS.find((b) => b.batch === batch);
+  res.json({
+    ...planStgBatchPublish({ batch, extracts, moleculeIds: ids }),
+    label: ref?.label,
+  });
+});
+
+app.get("/review/plan-dosing", (req, res) => {
+  const batch = String(req.query.batch ?? "all").trim().toUpperCase() || "ALL";
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const dosingItems = buildReviewQueue({
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+  if (batch === "ALL") {
+    res.json(
+      planDosingAllBatches({
+        batchMoleculeIds,
+        dosingItems,
+      }),
+    );
+    return;
+  }
+  const ids = batchMoleculeIds.get(batch);
+  if (!ids) {
+    res.status(400).json({ error: `Unknown batch ${batch}. Use A–I or all.` });
+    return;
+  }
+  const ref = STG_BATCH_A_I_SEEDS.find((b) => b.batch === batch);
+  res.json({
+    ...planDosingBatch({ batch, dosingItems, moleculeIds: ids }),
+    label: ref?.label,
   });
 });
 

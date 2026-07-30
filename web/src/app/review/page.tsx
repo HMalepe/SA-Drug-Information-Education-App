@@ -30,10 +30,69 @@ type QueueItem = {
   sourceId?: string;
 };
 
+type StgQueueItem = {
+  id: string;
+  extractId: string;
+  moleculeSlug: string;
+  batch?: string;
+  publishState: string;
+  preview: string;
+  priority: string;
+};
+
+type BatchBacklog = {
+  batches: Array<{
+    batch: string;
+    label: string;
+    moleculeCount: number;
+    dosingDraftCritical: number;
+    stgExtractDraft: number;
+    stgExtractPublished: number;
+  }>;
+  totals: {
+    molecules: number;
+    dosingDraftCritical: number;
+    stgExtractDraft: number;
+    stgExtractPublished: number;
+  };
+  note: string;
+};
+
+type StgPlanAll = {
+  batches: Array<{
+    batch: string;
+    label: string;
+    alreadyPublished: number;
+    eligible: unknown[];
+    blocked: unknown[];
+  }>;
+  totals: { alreadyPublished: number; eligible: number; blocked: number };
+  note: string;
+};
+
+type DosingPlanAll = {
+  batches: Array<{
+    batch: string;
+    label: string;
+    placeholderAbsent: unknown[];
+    numericSuspect: unknown[];
+    otherDraft: unknown[];
+  }>;
+  totals: { placeholderAbsent: number; numericSuspect: number; otherDraft: number };
+  note: string;
+};
+
+const BATCHES = ["A", "B", "C", "D", "E", "F", "G", "H", "I"] as const;
+
 export default function ReviewPage() {
   const [coverage, setCoverage] = useState<Coverage | null>(null);
   const [items, setItems] = useState<QueueItem[]>([]);
+  const [stgItems, setStgItems] = useState<StgQueueItem[]>([]);
+  const [backlog, setBacklog] = useState<BatchBacklog | null>(null);
+  const [stgPlan, setStgPlan] = useState<StgPlanAll | null>(null);
+  const [dosingPlan, setDosingPlan] = useState<DosingPlanAll | null>(null);
   const [area, setArea] = useState("");
+  const [batch, setBatch] = useState("");
   const [reviewer, setReviewer] = useState("Founder pharmacist");
   const [attestation, setAttestation] = useState(
     "I confirm this is sourced from labelled product / SA guideline — not invented.",
@@ -41,21 +100,53 @@ export default function ReviewPage() {
   const [msg, setMsg] = useState("");
 
   async function load() {
-    const qs = area ? `?area=${encodeURIComponent(area)}` : "";
-    const [c, q] = await Promise.all([
+    const params = new URLSearchParams();
+    if (area) params.set("area", area);
+    if (batch) params.set("batch", batch);
+    const qs = params.toString() ? `?${params}` : "";
+    const stgQs = batch ? `?batch=${encodeURIComponent(batch)}` : "";
+
+    const [c, q, b, sp, dp, stg] = await Promise.all([
       fetch(`${API}/review/coverage`).then((r) => r.json()),
       fetch(`${API}/review/queue${qs}`).then((r) => r.json()),
+      fetch(`${API}/review/batches-ai`).then((r) => r.json()),
+      fetch(`${API}/review/plan-stg?batch=all`).then((r) => r.json()),
+      fetch(`${API}/review/plan-dosing?batch=all`).then((r) => r.json()),
+      fetch(`${API}/review/stg-queue${stgQs}`).then((r) => r.json()),
     ]);
     setCoverage(c);
     setItems(q.items ?? []);
+    setBacklog(b);
+    setStgPlan(sp);
+    setDosingPlan(dp);
+    setStgItems(stg.items ?? []);
   }
 
   useEffect(() => {
     void load();
-  }, [area]);
+  }, [area, batch]);
 
   async function decide(queueItemId: string, decision: "keep_draft" | "mark_reviewed" | "publish") {
     const res = await fetch(`${API}/review/decide`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        queueItemId,
+        decision,
+        reviewerLabel: reviewer,
+        attestation: decision === "publish" ? attestation : undefined,
+      }),
+    });
+    const data = await res.json();
+    setMsg(JSON.stringify(data, null, 2));
+    await load();
+  }
+
+  async function decideStg(
+    queueItemId: string,
+    decision: "keep_draft" | "mark_reviewed" | "publish",
+  ) {
+    const res = await fetch(`${API}/review/stg-decide`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -74,12 +165,53 @@ export default function ReviewPage() {
     <>
       <h1>Clinical review</h1>
       <p className="tagline">
-        Founder publish gate — surfaces draft facts. Never invents doses. Decisions persist to
-        content/seed + content/review/decisions.jsonl.
+        Founder publish gate — surfaces draft facts and STG/RAG pointers. Never invents doses.
+        Decisions persist to content/seed, stg-extracts.json, and content/review/decisions.jsonl.
       </p>
 
+      {backlog && stgPlan && dosingPlan && (
+        <section style={{ marginTop: 16 }}>
+          <h2>Batches A–I</h2>
+          <p className="muted">
+            STG eligible {stgPlan.totals.eligible} · blocked {stgPlan.totals.blocked} · dosing
+            placeholders {dosingPlan.totals.placeholderAbsent} · numeric suspects{" "}
+            {dosingPlan.totals.numericSuspect} (must stay unpublished)
+          </p>
+          <p className="muted">{backlog.note}</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+            <button className="btn" type="button" onClick={() => setBatch("")}>
+              All batches
+            </button>
+            {BATCHES.map((letter) => {
+              const row = backlog.batches.find((b) => b.batch === letter);
+              return (
+                <button
+                  key={letter}
+                  className="btn"
+                  type="button"
+                  style={{ opacity: batch === letter ? 1 : 0.75 }}
+                  onClick={() => {
+                    setBatch(letter);
+                    setArea("");
+                  }}
+                >
+                  {letter}
+                  {row
+                    ? ` · ${row.stgExtractDraft} STG · ${row.dosingDraftCritical} dose`
+                    : ""}
+                </button>
+              );
+            })}
+          </div>
+          <p className="muted" style={{ marginTop: 12 }}>
+            CLI: <code>npm run review:batches -- plan-stg all</code> ·{" "}
+            <code>npm run review:batches -- plan-dosing all</code>
+          </p>
+        </section>
+      )}
+
       {coverage && (
-        <div className="card">
+        <section style={{ marginTop: 24 }}>
           <strong>
             {coverage.totals.molecules} molecules · {coverage.totals.factsPublished} published ·{" "}
             {coverage.totals.factsDraft} draft · {coverage.totals.publishPercent}% published
@@ -95,36 +227,42 @@ export default function ReviewPage() {
                 className="btn"
                 type="button"
                 style={{ opacity: area === a.therapeuticArea ? 1 : 0.7 }}
-                onClick={() => setArea(a.therapeuticArea)}
+                onClick={() => {
+                  setArea(a.therapeuticArea);
+                  setBatch("");
+                }}
               >
                 {a.therapeuticArea} ({a.publishPercent}%)
               </button>
             ))}
           </div>
-        </div>
+        </section>
       )}
 
-      <div className="card" style={{ marginTop: 12 }}>
+      <section style={{ marginTop: 24 }}>
         <label className="muted">Reviewer label</label>
         <input
           style={{ display: "block", width: "100%", margin: "8px 0", padding: 10 }}
           value={reviewer}
           onChange={(e) => setReviewer(e.target.value)}
         />
-        <label className="muted">Publish attestation (required for high-stakes)</label>
+        <label className="muted">Publish attestation (required for high-stakes / STG)</label>
         <input
           style={{ display: "block", width: "100%", margin: "8px 0 0", padding: 10 }}
           value={attestation}
           onChange={(e) => setAttestation(e.target.value)}
         />
-      </div>
+      </section>
 
-      <h2 style={{ marginTop: 24 }}>Queue ({items.length})</h2>
+      <h2 style={{ marginTop: 24 }}>
+        Dosing / safety queue ({items.length})
+        {batch ? ` · batch ${batch}` : ""}
+      </h2>
       {items.length === 0 ? (
         <p className="muted">No draft/reviewed facts in this filter.</p>
       ) : (
         items.map((item) => (
-          <div key={item.id} className="card" style={{ marginBottom: 12 }}>
+          <article key={item.id} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #ddd" }}>
             <strong>
               {item.moleculeName} · {item.fieldPath}
             </strong>
@@ -151,12 +289,55 @@ export default function ReviewPage() {
                 Open 360°
               </a>
             </div>
-          </div>
+          </article>
+        ))
+      )}
+
+      <h2 style={{ marginTop: 32 }}>
+        STG extract queue ({stgItems.length})
+        {batch ? ` · batch ${batch}` : ""}
+      </h2>
+      <p className="muted">
+        Draft pointers do not index in RAG until published. Publish changes state only — no invented
+        mg.
+      </p>
+      {stgItems.length === 0 ? (
+        <p className="muted">No draft/reviewed STG extracts in this filter.</p>
+      ) : (
+        stgItems.map((item) => (
+          <article key={item.id} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #ddd" }}>
+            <strong>
+              {item.extractId} · {item.moleculeSlug}
+            </strong>
+            <div className="muted">
+              batch {item.batch ?? "—"} · {item.publishState} · {item.priority}
+            </div>
+            <p style={{ margin: "8px 0" }}>{item.preview}</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              <button
+                className="btn"
+                type="button"
+                onClick={() => void decideStg(item.id, "keep_draft")}
+              >
+                Keep draft
+              </button>
+              <button
+                className="btn"
+                type="button"
+                onClick={() => void decideStg(item.id, "mark_reviewed")}
+              >
+                Mark reviewed
+              </button>
+              <button className="btn" type="button" onClick={() => void decideStg(item.id, "publish")}>
+                Publish STG pointer
+              </button>
+            </div>
+          </article>
         ))
       )}
 
       {msg && (
-        <pre className="card" style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: 13 }}>
+        <pre style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: 13 }}>
           {msg}
         </pre>
       )}
