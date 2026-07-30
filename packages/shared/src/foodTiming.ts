@@ -1901,6 +1901,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-darbepoetin",
+    fact: {
+      value:
+        "Long-acting ESA teaching: injection technique belongs with the care team — blood-pressure and clot discussions are clinician-led. Materia does not invent a dose, injection schedule, or haemoglobin target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-eltrombopag",
+    fact: {
+      value:
+        "TPO-agonist teaching: food and mineral spacing belong on the labelled product. Materia does not invent a dose, meal clock, or platelet target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-deferasirox",
+    fact: {
+      value:
+        "Oral iron-chelator teaching: dispersible and film-coated forms differ — confirm food timing against the labelled product. Materia does not invent a dose, fasting clock, or ferritin target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-folinic-acid",
+    fact: {
+      value:
+        "Reduced-folate teaching: rescue and support uses differ — timing with chemo or methotrexate belongs with the clinician. Materia does not invent a dose, rescue clock, or folate target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-fondaparinux",
+    fact: {
+      value:
+        "Anti-Xa teaching: injection technique belongs with the care team — bleeding watch is essential. Materia does not invent a dose, injection schedule, or anti-Xa target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-aciclovir-eye",
+    fact: {
+      value:
+        "Ophthalmic antiviral teaching: ointment technique belongs with eye-care advice. Materia does not invent a dose, application clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ciprofloxacin-eye",
+    fact: {
+      value:
+        "Ophthalmic fluoroquinolone teaching: drops and ointment differ — confirm against the labelled product. Materia does not invent a dose, drop clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-prednisolone-eye",
+    fact: {
+      value:
+        "Ophthalmic corticosteroid teaching: do not prolong courses without clinician review. Materia does not invent a dose, drop clock, or eye-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mometasone-nasal",
+    fact: {
+      value:
+        "Intranasal corticosteroid teaching: technique and priming belong on the labelled product. Materia does not invent a dose, spray clock, or allergy score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-diphenhydramine",
+    fact: {
+      value:
+        "Sedating antihistamine teaching: drowsiness is common — avoid driving if affected; check alcohol and other sedatives. Materia does not invent a dose, spacing hours, or allergy score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
