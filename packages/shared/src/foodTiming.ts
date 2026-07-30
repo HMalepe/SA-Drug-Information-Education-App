@@ -3031,6 +3031,126 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-caffeine",
+    fact: {
+      value:
+        "Neonatal caffeine teaching: hospital monitoring only — not a home stimulant. Materia does not invent a loading dose or serum target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-cefotaxime",
+    fact: {
+      value:
+        "Cefotaxime teaching: finish the clinician-set antibiotic course. Materia does not invent a mg/kg dose or meningitis regimen.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ceftazidime",
+    fact: {
+      value:
+        "Ceftazidime teaching: hospital IV oversight — do not invent home infusion schedules. Materia does not invent a mg/kg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-amikacin",
+    fact: {
+      value:
+        "Amikacin teaching: kidney and hearing monitoring are clinician-led. Materia does not invent a mg/kg dose or level interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-piperacillin-tazobactam",
+    fact: {
+      value:
+        "Piperacillin/tazobactam teaching: stay for post-dose observation if advised. Materia does not invent a mg/kg dose or infusion schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-flucytosine",
+    fact: {
+      value:
+        "Flucytosine teaching: combination antifungal courses need infectious-disease oversight. Materia does not invent a TDM target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-primaquine",
+    fact: {
+      value:
+        "Primaquine teaching: G6PD status matters — dark urine needs urgent review. Materia does not invent a mg/kg dose or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-miconazole",
+    fact: {
+      value:
+        "Miconazole teaching: keep oral gel in contact as labelled. Materia does not invent an application schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-levofloxacin",
+    fact: {
+      value:
+        "Levofloxacin teaching: report tendon or joint pain early. Materia does not invent a mg/kg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-dapsone",
+    fact: {
+      value:
+        "Dapsone teaching: haemolysis risk rises with G6PD deficiency. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ethionamide",
+    fact: {
+      value:
+        "Ethionamide teaching: take with food if labelled and clinician advise. Materia does not invent a mg/kg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ganciclovir",
+    fact: {
+      value:
+        "Ganciclovir teaching: myelosuppression monitoring is clinician-led. Materia does not invent an induction/maintenance schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
