@@ -2101,6 +2101,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-mefenamic",
+    fact: {
+      value:
+        "NSAID teaching: usually with food if the label advises — stomach and bleeding watch are common. Materia does not invent a dose, spacing hours, or pain score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-hydrocortisone-systemic",
+    fact: {
+      value:
+        "Systemic corticosteroid teaching: sick-day rules belong with the clinician — do not stop suddenly without a plan. Materia does not invent a dose, sick-day clock, or cortisol target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-folic-acid-rheum",
+    fact: {
+      value:
+        "Folate (MTX support) teaching: which day fits methotrexate belongs with the rheumatology plan. Materia does not invent a dose, MTX clock, or folate target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-phytomenadione",
+    fact: {
+      value:
+        "Vitamin K teaching: oral and injection forms differ — warfarin context belongs with the clinician. Materia does not invent a dose, INR target, or clotting score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-potassium-citrate",
+    fact: {
+      value:
+        "Urinary alkaliniser teaching: diluted liquids often need mixing as labelled — potassium and kidney discussions are common. Materia does not invent a dose, urine pH target, or potassium target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tranexamic-haem",
+    fact: {
+      value:
+        "Antifibrinolytic teaching: haematology and heavy-bleeding contexts differ — clot-risk teaching is common. Materia does not invent a dose, bleed clock, or clot score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-cotrim",
+    fact: {
+      value:
+        "Co-trimoxazole teaching: finish the labelled course — sulfa-allergy and sun-sensitivity checks are common. Materia does not invent a dose, course length, or infection score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tmp",
+    fact: {
+      value:
+        "Trimethoprim teaching: finish the labelled course — rash and folate discussions when relevant. Materia does not invent a dose, course length, or infection score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tropicamide",
+    fact: {
+      value:
+        "Mydriatic teaching: temporary blurred vision and light sensitivity are common — confirm driving advice against the label. Materia does not invent a drop count, dilation clock, or vision score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-lidocaine",
+    fact: {
+      value:
+        "Local anaesthetic teaching: gels, sprays, injections, and patches differ — do not apply more than labelled. Materia does not invent a dose, application clock, or numbness score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
