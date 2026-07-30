@@ -139,3 +139,68 @@ export function parseInRegionRagEnv(
 
   return { embedderUrl, llmUrl, allowHosts, authToken };
 }
+
+export interface InRegionRagPublicStatus {
+  ok: boolean;
+  mode: {
+    embedder: "local-bow" | "hosted-in-region";
+    composer: "template" | "hosted-in-region-llm";
+  };
+  embedderConfigured: boolean;
+  llmConfigured: boolean;
+  /** Hostname only — never full URL with credentials. */
+  embedderHost: string | null;
+  llmHost: string | null;
+  allowHostsCount: number;
+  authTokenConfigured: boolean;
+  errors: string[];
+  note: string;
+}
+
+/**
+ * Safe deploy/health summary for in-region RAG env.
+ * Never returns auth tokens or patient data.
+ */
+export function describeInRegionRagEnv(
+  env: Record<string, string | undefined> = {},
+): InRegionRagPublicStatus {
+  const note =
+    "Blank URLs = local bag-of-words + template composer. Hosted adapters must be founder-approved in-region hosts — never openai.com/anthropic.com (POPIA / docs/17).";
+  try {
+    const cfg = parseInRegionRagEnv(env);
+    const embedderHost = cfg.embedderUrl ? new URL(cfg.embedderUrl).hostname : null;
+    const llmHost = cfg.llmUrl ? new URL(cfg.llmUrl).hostname : null;
+    return {
+      ok: true,
+      mode: {
+        embedder: cfg.embedderUrl ? "hosted-in-region" : "local-bow",
+        composer: cfg.llmUrl ? "hosted-in-region-llm" : "template",
+      },
+      embedderConfigured: Boolean(cfg.embedderUrl),
+      llmConfigured: Boolean(cfg.llmUrl),
+      embedderHost,
+      llmHost,
+      allowHostsCount: cfg.allowHosts.length,
+      authTokenConfigured: Boolean(cfg.authToken),
+      errors: [],
+      note,
+    };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Invalid in-region RAG env";
+    return {
+      ok: false,
+      mode: { embedder: "local-bow", composer: "template" },
+      embedderConfigured: Boolean(env[IN_REGION_EMBEDDER_URL_ENV]?.trim()),
+      llmConfigured: Boolean(env[IN_REGION_LLM_URL_ENV]?.trim()),
+      embedderHost: null,
+      llmHost: null,
+      allowHostsCount: (env[IN_REGION_ALLOW_HOSTS_ENV] ?? "")
+        .split(",")
+        .map((h) => h.trim())
+        .filter(Boolean).length,
+      authTokenConfigured: Boolean(env[IN_REGION_AUTH_TOKEN_ENV]?.trim()),
+      errors: [message],
+      note,
+    };
+  }
+}

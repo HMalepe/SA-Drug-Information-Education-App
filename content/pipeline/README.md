@@ -24,6 +24,7 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    Decisions persist to seed / `stg-extracts.json` + `content/review/decisions.jsonl` (dry-run without `--write`).
    No batch auto-publish for dosing.
 7. CI clinical-eval must pass (no published draft dosing).
+8. Deploy RAG: `npm run rag:check-env` (blank = local default; refuses offshore hosts). Runtime: `GET /health/rag`.
 
 ## Forbidden
 

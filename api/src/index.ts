@@ -143,6 +143,7 @@ import {
   persistStgExtractDecision,
   reviewPersistEnabled,
 } from "./reviewPersist.js";
+import { getInRegionRagPublicStatus } from "./ragInRegionRuntime.js";
 import { buildMolecule360 } from "./moleculeView.js";
 import { askMolecule } from "./rag.js";
 import {
@@ -200,12 +201,22 @@ function requireUser(userId: string | undefined) {
 }
 
 app.get("/health", (_req, res) => {
+  const rag = getInRegionRagPublicStatus();
   res.json({
     ok: true,
     service: "materia-api",
     molecules: db.molecules.length,
     courses: db.courses.filter((c) => c.publishState === "published").length,
+    rag: {
+      ok: rag.ok,
+      mode: rag.mode,
+    },
   });
+});
+
+app.get("/health/rag", (_req, res) => {
+  const rag = getInRegionRagPublicStatus();
+  res.status(rag.ok ? 200 : 503).json(rag);
 });
 
 app.get("/search", (req, res) => {

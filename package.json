@@ -21,7 +21,8 @@
     "seed:check": "node content/pipeline/validate-seed.mjs",
     "ingest:preview": "node content/pipeline/ingest-public.mjs",
     "review:report": "node content/pipeline/review-report.mjs",
-    "review:batches": "node content/pipeline/founder-batch-review.mjs"
+    "review:batches": "node content/pipeline/founder-batch-review.mjs",
+    "rag:check-env": "node content/pipeline/check-in-region-env.mjs"
   },
   "devDependencies": {
     "typescript": "^5.8.3"

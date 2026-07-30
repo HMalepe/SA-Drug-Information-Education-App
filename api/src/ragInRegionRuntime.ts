@@ -6,12 +6,14 @@
 import {
   createHostedInRegionEmbedder,
   createHostedInRegionLlmComposer,
+  describeInRegionRagEnv,
   parseInRegionRagEnv,
   type AsyncEmbedder,
   type ComposeInput,
   type ComposeOutput,
   type FetchLike,
   type InRegionRagEnvConfig,
+  type InRegionRagPublicStatus,
 } from "@materia/shared";
 
 export interface InRegionRagRuntime {
@@ -90,4 +92,11 @@ export function resetInRegionRagRuntime(): void {
 
 export function setInRegionRagRuntimeForTests(next: InRegionRagRuntime | null): void {
   runtime = next;
+}
+
+/** Public health/deploy status — never includes auth tokens. */
+export function getInRegionRagPublicStatus(
+  env: Record<string, string | undefined> = process.env,
+): InRegionRagPublicStatus {
+  return describeInRegionRagEnv(env);
 }

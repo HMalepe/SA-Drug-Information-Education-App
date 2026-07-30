@@ -17,6 +17,7 @@ import {
   licenseClassForSourceId,
   localBagOfWordsEmbedder,
   parseInRegionRagEnv,
+  describeInRegionRagEnv,
   retrieveRagChunks,
   strictQuoteComposer,
   templateGroundedComposer,
@@ -509,5 +510,40 @@ describe("RAG in-region env + async ask", () => {
     );
     assert.equal(ans.status, "refused");
     assert.match(ans.refusalReason ?? "", /grounding|will not invent|offshore/i);
+  });
+});
+
+describe("RAG in-region env status (deploy/health)", () => {
+  it("describeInRegionRagEnv reports local mode when blank", () => {
+    const s = describeInRegionRagEnv({});
+    assert.equal(s.ok, true);
+    assert.equal(s.mode.embedder, "local-bow");
+    assert.equal(s.mode.composer, "template");
+    assert.equal(s.authTokenConfigured, false);
+    assert.equal(s.embedderHost, null);
+  });
+
+  it("describeInRegionRagEnv reports hosts without leaking token", () => {
+    const s = describeInRegionRagEnv({
+      MATERIA_IN_REGION_EMBEDDER_URL: "https://embed.materia.za/v1",
+      MATERIA_IN_REGION_LLM_URL: "https://llm.materia.za/compose",
+      MATERIA_IN_REGION_AUTH_TOKEN: "super-secret-token-value",
+    });
+    assert.equal(s.ok, true);
+    assert.equal(s.mode.embedder, "hosted-in-region");
+    assert.equal(s.mode.composer, "hosted-in-region-llm");
+    assert.equal(s.embedderHost, "embed.materia.za");
+    assert.equal(s.llmHost, "llm.materia.za");
+    assert.equal(s.authTokenConfigured, true);
+    assert.ok(!JSON.stringify(s).includes("super-secret-token-value"));
+  });
+
+  it("describeInRegionRagEnv fails closed on offshore URL", () => {
+    const s = describeInRegionRagEnv({
+      MATERIA_IN_REGION_LLM_URL: "https://api.openai.com/v1/chat",
+    });
+    assert.equal(s.ok, false);
+    assert.ok(s.errors.length >= 1);
+    assert.match(s.errors[0] ?? "", /offshore|openai/i);
   });
 });

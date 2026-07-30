@@ -19,7 +19,8 @@ default). Hosted in-region HTTP adapters (`createHostedInRegionEmbedder`,
 endpoints (localhost / private / `.za` / explicit allowHosts) — never silent offshore
 fallback. API reads `MATERIA_IN_REGION_EMBEDDER_URL` / `MATERIA_IN_REGION_LLM_URL` /
 `MATERIA_IN_REGION_ALLOW_HOSTS` / `MATERIA_IN_REGION_AUTH_TOKEN` from env only; blank =
-local BOW + template. `/ai/ask` is rate-limited (30/min/IP).
+local BOW + template. Deploy: `npm run rag:check-env` then `GET /health/rag`.
+`/ai/ask` is rate-limited (30/min/IP).
 
 **License:** never load SAMF/MIMS/Lexicomp into `rag_chunks` (CHECK constraint + app gate).
 

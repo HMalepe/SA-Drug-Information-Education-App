@@ -61,11 +61,12 @@
     "Founder Batch A–I offline review CLI (npm run review:batches; dry-run default)",
     "STG batch plan/publish-stg-batch CLI (dry-run report; dosing excluded)",
     "plan-stg all + plan-dosing classifiers (placeholder vs numeric_suspect; no dosing batch publish)",
-    "API GET /review/plan-stg + /review/plan-dosing; web /review Batches A–I panel"
+    "API GET /review/plan-stg + /review/plan-dosing; web /review Batches A–I panel",
+    "Deploy RAG env check (npm run rag:check-env) + GET /health/rag mode (no secrets)"
   ],
   "pipelineNext": [
-    "Founder: npm run review:batches -- plan-stg all then publish-stg-batch all --write after review",
-    "Founder: use web /review or plan-dosing all then individual publish-dosing for placeholders",
-    "Provision founder-approved in-region embedder/LLM endpoints and set env in deploy"
+    "Founder: publish STG pointers (plan-stg all → publish-stg-batch all --write)",
+    "Founder: plan-dosing all → individual publish-dosing for honest placeholders",
+    "Provision real in-region embedder/LLM URLs; verify with npm run rag:check-env"
   ]
 }
