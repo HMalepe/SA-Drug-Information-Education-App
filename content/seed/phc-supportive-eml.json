@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "therapeuticArea": "phc-supportive-eml",
+    "note": "Batch F scaffold from PHC STG/EML 2024 gap analysis (supportive / dermatology / psych misc). Numeric dosing ABSENT until founder review. Educational MOA only — never copied from commercial references. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2024-phc-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Primary Healthcare Level 2024 used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/wp-content/uploads/2025/07/Primary-Healthcare-Standard-Treatment-Guidelines-and-Essential-Medicines-List-8th-Edition-2024.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-retinol",
+      "slug": "retinol",
+      "innName": "Retinol (vitamin A)",
+      "className": "Fat-soluble vitamin",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["vitamin A", "retinol", "retinyl palmitate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Fat-soluble vitamin A used in selected deficiency and public-health supplementation contexts — educational framing only. Materia does not invent an IU dose, age band, or measles-pathway schedule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-sennosides",
+      "slug": "sennosides",
+      "innName": "Sennosides A and B",
+      "className": "Stimulant laxative",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["senna", "sennosides", "sennoside"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Anthraquinone stimulant laxative used in selected constipation pathways — educational framing only. Materia does not invent a dose or overnight timing rule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-orphenadrine",
+      "slug": "orphenadrine",
+      "innName": "Orphenadrine",
+      "className": "Anticholinergic / muscle relaxant adjunct",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["orphenadrine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Anticholinergic agent used in selected extrapyramidal and muscle-spasm contexts — educational framing only. Materia does not invent a dose or Parkinsonism algorithm; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-biperiden",
+      "slug": "biperiden",
+      "innName": "Biperiden",
+      "className": "Anticholinergic — antiparkinson adjunct",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["biperiden"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Anticholinergic used in selected drug-induced extrapyramidal pathways — educational framing only. Materia does not invent a dose or acute dystonia protocol; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-zuclopenthixol",
+      "slug": "zuclopenthixol",
+      "innName": "Zuclopenthixol",
+      "className": "Typical antipsychotic (thioxanthene)",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["zuclopenthixol", "zuclopenthixol decanoate", "zuclopenthixol acetate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Thioxanthene antipsychotic available in oral and depot formulations — educational framing only. Formulation choice is clinician-led. Materia does not invent a dose, depot interval, or acute-tranquilisation algorithm; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-selenium-sulfide",
+      "slug": "selenium-sulfide",
+      "innName": "Selenium sulfide",
+      "className": "Antifungal / antiseborrheic topical",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["selenium sulphide", "selenium sulfide", "SeS2"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Topical selenium sulfide used in selected seborrhoeic dermatitis and tinea versicolor pathways — educational framing only. Materia does not invent a concentration, contact time, or wash-off schedule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-benzyl-benzoate",
+      "slug": "benzyl-benzoate",
+      "innName": "Benzyl benzoate",
+      "className": "Scabicide / ectoparasiticide",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["benzyl benzoate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Topical ectoparasiticide used in selected scabies pathways — educational framing only. Materia does not invent a dilution, application schedule, or paediatric rule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-povidone-iodine",
+      "slug": "povidone-iodine",
+      "innName": "Povidone-iodine",
+      "className": "Iodophor antiseptic",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["povidone iodine", "PVP-I", "betadine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Iodophor antiseptic used for selected wound and mucosal antisepsis — educational framing only. Materia does not invent a concentration or soak duration; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-nicotinamide",
+      "slug": "nicotinamide",
+      "innName": "Nicotinamide",
+      "className": "Vitamin B3 amide",
+      "therapeuticArea": "phc-supportive-eml",
+      "synonyms": ["niacinamide", "nicotinamide", "vitamin B3 amide"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Amide form of vitamin B3 used in selected deficiency and dermatology contexts — educational framing only. Distinct from nicotinic acid flushing profiles. Materia does not invent a dose; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-retinol",
+      "moleculeId": "mol-retinol",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent an IU dose or age-band schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Vitamin A excess is teratogenic in high doses — pregnancy counselling is clinician-led. Materia does not invent an IU limit.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-sennosides",
+      "moleculeId": "mol-sennosides",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or overnight timing rule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-orphenadrine",
+      "moleculeId": "mol-orphenadrine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-biperiden",
+      "moleculeId": "mol-biperiden",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or dystonia protocol.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-zuclopenthixol",
+      "moleculeId": "mol-zuclopenthixol",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or depot interval.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Antipsychotics require specialist-aware prescribing for indication and monitoring — Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-selenium-sulfide",
+      "moleculeId": "mol-selenium-sulfide",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a concentration or contact time.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-benzyl-benzoate",
+      "moleculeId": "mol-benzyl-benzoate",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dilution or application schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-povidone-iodine",
+      "moleculeId": "mol-povidone-iodine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a concentration or soak duration.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-nicotinamide",
+      "moleculeId": "mol-nicotinamide",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ]
+}

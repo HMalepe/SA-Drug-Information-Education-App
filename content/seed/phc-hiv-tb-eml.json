@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "therapeuticArea": "phc-hiv-tb-eml",
+    "note": "Batch E scaffold from PHC STG/EML 2024 gap analysis (HIV/TB follow-on + quinine). Numeric dosing ABSENT until founder review. Educational MOA only — never copied from commercial references. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2024-phc-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Primary Healthcare Level 2024 used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/wp-content/uploads/2025/07/Primary-Healthcare-Standard-Treatment-Guidelines-and-Essential-Medicines-List-8th-Edition-2024.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-emtricitabine",
+      "slug": "emtricitabine",
+      "innName": "Emtricitabine",
+      "className": "Nucleoside reverse transcriptase inhibitor (NRTI)",
+      "therapeuticArea": "phc-hiv-tb-eml",
+      "synonyms": ["FTC", "emtricitabine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Cytidine-analogue NRTI used in HIV regimens and selected PrEP combinations — educational framing only. Materia does not invent a dose, fixed-dose pairing, or renal cut-off; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-abacavir",
+      "slug": "abacavir",
+      "innName": "Abacavir",
+      "className": "Nucleoside reverse transcriptase inhibitor (NRTI)",
+      "therapeuticArea": "phc-hiv-tb-eml",
+      "synonyms": ["ABC", "abacavir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Guanosine-analogue NRTI used in selected HIV regimens — educational framing only. Hypersensitivity risk is clinically important. Materia does not invent a dose, HLA screening rule, or combination table; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-zidovudine",
+      "slug": "zidovudine",
+      "innName": "Zidovudine",
+      "className": "Nucleoside reverse transcriptase inhibitor (NRTI)",
+      "therapeuticArea": "phc-hiv-tb-eml",
+      "synonyms": ["AZT", "ZDV", "zidovudine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Thymidine-analogue NRTI used in selected HIV and perinatal pathways — educational framing only. Materia does not invent a dose, anaemia monitoring interval, or PMTCT schedule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-lopinavir",
+      "slug": "lopinavir",
+      "innName": "Lopinavir",
+      "className": "HIV protease inhibitor",
+      "therapeuticArea": "phc-hiv-tb-eml",
+      "synonyms": ["LPV", "lopinavir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "HIV protease inhibitor usually co-formulated with ritonavir boosting — educational framing only. Materia does not invent a dose, booster ratio, or interaction list; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-darunavir",
+      "slug": "darunavir",
+      "innName": "Darunavir",
+      "className": "HIV protease inhibitor",
+      "therapeuticArea": "phc-hiv-tb-eml",
+      "synonyms": ["DRV", "darunavir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "HIV protease inhibitor used in selected boosted regimens — educational framing only. Materia does not invent a dose, booster pairing, or resistance algorithm; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-bedaquiline",
+      "slug": "bedaquiline",
+      "innName": "Bedaquiline",
+      "className": "Diarylquinoline antimycobacterial",
+      "therapeuticArea": "phc-hiv-tb-eml",
+      "synonyms": ["BDQ", "bedaquiline"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Diarylquinoline antimycobacterial used in selected drug-resistant TB regimens — educational framing only. Materia does not invent a dose, ECG monitoring interval, or regimen composition; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-quinine",
+      "slug": "quinine",
+      "innName": "Quinine",
+      "className": "Antimalarial — cinchona alkaloid",
+      "therapeuticArea": "phc-hiv-tb-eml",
+      "synonyms": ["quinine", "quinine sulfate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Cinchona-alkaloid antimalarial used in selected malaria pathways — educational framing only. Materia does not invent a dose, infusion rate, or combination partner; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-emtricitabine",
+      "moleculeId": "mol-emtricitabine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose, fixed-dose pairing, or renal cut-off.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-abacavir",
+      "moleculeId": "mol-abacavir",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or HLA screening algorithm.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Abacavir hypersensitivity can be severe — stop and seek urgent care if a labelled hypersensitivity syndrome is suspected; do not rechallenge. Materia does not invent screening rules.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-zidovudine",
+      "moleculeId": "mol-zidovudine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or PMTCT schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-lopinavir",
+      "moleculeId": "mol-lopinavir",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose, booster ratio, or interaction list.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-darunavir",
+      "moleculeId": "mol-darunavir",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or booster pairing.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-bedaquiline",
+      "moleculeId": "mol-bedaquiline",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or ECG monitoring interval.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Drug-resistant TB regimens require programme oversight — QT and drug-interaction counselling are clinician-led. Materia does not invent monitoring schedules.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-quinine",
+      "moleculeId": "mol-quinine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or infusion rate.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ]
+}

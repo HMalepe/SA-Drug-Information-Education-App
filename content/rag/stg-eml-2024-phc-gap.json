@@ -75,6 +75,26 @@
       "mol-ergometrine",
       "mol-promethazine",
       "mol-fosfomycin"
+    ],
+    "E_phc_hiv_tb_followon": [
+      "mol-emtricitabine",
+      "mol-abacavir",
+      "mol-zidovudine",
+      "mol-lopinavir",
+      "mol-darunavir",
+      "mol-bedaquiline",
+      "mol-quinine"
+    ],
+    "F_phc_supportive_misc": [
+      "mol-retinol",
+      "mol-sennosides",
+      "mol-orphenadrine",
+      "mol-biperiden",
+      "mol-zuclopenthixol",
+      "mol-selenium-sulfide",
+      "mol-benzyl-benzoate",
+      "mol-povidone-iodine",
+      "mol-nicotinamide"
     ]
   }
 }
