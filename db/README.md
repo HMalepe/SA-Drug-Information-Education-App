@@ -13,7 +13,9 @@ psql "$DATABASE_URL" -f db/migrations/002_rag_chunks.sql
 
 Local development uses the JSON seed via the API in-memory store (no DB required).
 Hybrid RAG retrieve runs in-process (`@materia/shared` local embedder) until Postgres
-pgvector is wired for production scale.
+pgvector is wired for production scale. Composition uses `GroundedComposer` (template
+default); any future LLM must receive retrieved chunks only. Hosted in-region embedder
+stub refuses unconfigured / unwired calls — never silent offshore fallback.
 
 **License:** never load SAMF/MIMS/Lexicomp into `rag_chunks` (CHECK constraint + app gate).
 

@@ -1,22 +1,27 @@
 /**
  * Grounded ask pipeline — retrieve then compose (docs/17).
- * Composition is template-only until an in-region LLM is wired behind an interface
- * that receives ONLY retrieved chunks (never free-form clinical invention).
+ * Composition uses GroundedComposer (default: template). Any future in-region LLM
+ * must receive ONLY retrieved chunks — never free-form clinical invention.
  */
 
 import type { GroundedAnswer, GroundedCitation } from "./types.js";
 import type { RetrievableChunk } from "./grounding.js";
 import { indexRagChunks, retrieveRagChunks, type RetrieveOptions } from "./ragRetrieve.js";
+import {
+  getGroundedComposer,
+  type GroundedComposer,
+} from "./ragCompose.js";
 import { renderableFact } from "./publish.js";
 
 export interface GroundedAskOptions extends RetrieveOptions {
   /** Max chunks to quote in the composed answer. */
   answerTopK?: number;
+  /** Override composer (tests / in-region LLM adapter). */
+  composer?: GroundedComposer;
 }
 
 /**
- * Full RAG path: index → hybrid retrieve → cite-or-refuse.
- * Does not call an LLM. Does not invent values outside retrieved text.
+ * Full RAG path: index → hybrid retrieve → cite-or-refuse → compose from chunks only.
  */
 export function groundedAskFromCorpus(
   question: string,
@@ -55,6 +60,7 @@ export function groundedAskFromCorpus(
   }
 
   const top = chunks.slice(0, answerTopK);
+  const topScores = scores.slice(0, answerTopK);
   const citations: GroundedCitation[] = top.map((c) => ({
     sourceId: c.source.id,
     citation: c.source.citation,
@@ -62,17 +68,16 @@ export function groundedAskFromCorpus(
     fieldPath: c.fieldPath,
   }));
 
-  const answer = [
-    "Based only on Materia's curated, published records (hybrid RAG retrieve):",
-    ...top.map((c, i) => {
-      const score = scores[i];
-      const scoreNote = typeof score === "number" ? ` [score ${score.toFixed(2)}]` : "";
-      return `${i + 1}. (${c.fieldPath}${scoreNote}) ${c.text}`;
-    }),
-    "",
-    "This is a reference tool — confirm clinically before acting. Sources cited below.",
-    "Licensed references (SAMF/MIMS/Lexicomp) are never ingested or reproduced.",
-  ].join("\n");
-
-  return { status: "answered", answer, citations };
+  const composer = opts.composer ?? getGroundedComposer();
+  try {
+    const { answer } = composer.compose({ question: q, chunks: top, scores: topScores });
+    return { status: "answered", answer, citations };
+  } catch {
+    return {
+      status: "refused",
+      citations: [],
+      refusalReason:
+        "Composer refused — no retrieved chunks available to ground an answer. Materia will not invent.",
+    };
+  }
 }

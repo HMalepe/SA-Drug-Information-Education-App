@@ -242,6 +242,102 @@ export const INSERT_LIBRARY: InsertDocument[] = [
       },
     ],
   },
+  {
+    id: "insert-salbutamol",
+    moleculeId: "mol-salbutamol",
+    moleculeSlug: "salbutamol",
+    brandName: "Salbutamol (educational)",
+    passages: [
+      {
+        level: "professional",
+        title: "Professional insert excerpt (educational)",
+        body: [
+          "Salbutamol is a short-acting beta2-agonist used as a reliever within labelled indications.",
+          "Counsel on inhaler technique, spacer use where appropriate, and that frequent reliever need warrants controller review.",
+          "Materia does not invent puff counts or nebuliser doses — confirm against the labelled product and current SA guidance.",
+        ].join(" "),
+        publishState: "published",
+        sourceId: INSERT_SOURCE,
+        lastReviewed: "2026-07-30",
+      },
+      {
+        level: "grade5",
+        title: "Plain-language insert summary (Grade ~5)",
+        body: [
+          "Salbutamol is a quick-relief inhaler for wheeze and breathlessness when your clinician chooses it.",
+          "Shake and use as the label shows. If you need it very often, tell your clinician.",
+          "Materia does not invent how many puffs you should take.",
+        ].join(" "),
+        publishState: "published",
+        sourceId: INSERT_SOURCE,
+        lastReviewed: "2026-07-30",
+      },
+    ],
+  },
+  {
+    id: "insert-insulin-glargine",
+    moleculeId: "mol-insulin-glargine",
+    moleculeSlug: "insulin-glargine",
+    brandName: "Insulin glargine (educational)",
+    passages: [
+      {
+        level: "professional",
+        title: "Professional insert excerpt (educational)",
+        body: [
+          "Insulin glargine is a long-acting basal insulin used within labelled diabetes indications.",
+          "Counsel on hypoglycaemia recognition, injection technique, and never sharing pens/needles.",
+          "Materia does not invent unit doses or titration steps — confirm against the labelled product and clinic protocol.",
+        ].join(" "),
+        publishState: "published",
+        sourceId: INSERT_SOURCE,
+        lastReviewed: "2026-07-30",
+      },
+      {
+        level: "grade5",
+        title: "Plain-language insert summary (Grade ~5)",
+        body: [
+          "This long-acting insulin helps steady blood sugar between meals when your clinician chooses it.",
+          "Learn the signs of low blood sugar and what to do. Never share your pen or needles.",
+          "Materia does not invent how many units you should inject.",
+        ].join(" "),
+        publishState: "published",
+        sourceId: INSERT_SOURCE,
+        lastReviewed: "2026-07-30",
+      },
+    ],
+  },
+  {
+    id: "insert-doxycycline",
+    moleculeId: "mol-doxy",
+    moleculeSlug: "doxycycline",
+    brandName: "Doxycycline (educational)",
+    passages: [
+      {
+        level: "professional",
+        title: "Professional insert excerpt (educational)",
+        body: [
+          "Doxycycline is a tetracycline-class antibiotic used for labelled susceptible infections.",
+          "Counsel on photosensitivity, oesophagitis risk (adequate fluid; remain upright), and pregnancy/child age cautions per label.",
+          "Materia does not invent a dose or course length — confirm against the labelled product and current SA guidance.",
+        ].join(" "),
+        publishState: "published",
+        sourceId: INSERT_SOURCE,
+        lastReviewed: "2026-07-30",
+      },
+      {
+        level: "grade5",
+        title: "Plain-language insert summary (Grade ~5)",
+        body: [
+          "Doxycycline is an antibiotic. Take it with a full glass of water and stay upright as the label says.",
+          "It can make sunburn worse — use sun protection.",
+          "Finish the course unless your clinician says stop. Materia does not invent a dose.",
+        ].join(" "),
+        publishState: "published",
+        sourceId: INSERT_SOURCE,
+        lastReviewed: "2026-07-30",
+      },
+    ],
+  },
 ];
 
 export function listInsertDocuments(docs: InsertDocument[] = INSERT_LIBRARY): InsertDocument[] {

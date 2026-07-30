@@ -1,16 +1,20 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
+  answerUsesOnlyRetrievedText,
   assertIndexableLicense,
   chunksFromInsertDocuments,
   chunksFromPublishedInteractions,
   chunksFromStgExtracts,
   cosineSimilarity,
+  createHostedInRegionEmbedderStub,
   groundedAskFromCorpus,
   indexRagChunks,
   licenseClassForSourceId,
   localBagOfWordsEmbedder,
   retrieveRagChunks,
+  strictQuoteComposer,
+  templateGroundedComposer,
   type InsertDocument,
   type Interaction,
   type RetrievableChunk,
@@ -236,5 +240,41 @@ describe("RAG corpus — interactions + STG extracts", () => {
     assert.equal(chunks.length, 1);
     assert.match(chunks[0]!.fieldPath, /insert\.insert-amox-demo\.professional/);
     assert.match(chunks[0]!.text, /Beta-lactam|does not invent/i);
+  });
+});
+
+describe("RAG grounded composer", () => {
+  const composeCorpus = [
+    chunk("moa", "Amoxicillin blocks bacterial cell-wall synthesis.", edu),
+    chunk(
+      "counselling",
+      "Take this antibiotic exactly as directed. Finish the course unless your clinician says stop.",
+      edu,
+    ),
+  ];
+
+  it("template composer refuses empty chunks", () => {
+    assert.throws(() => templateGroundedComposer.compose({ question: "x", chunks: [], scores: [] }));
+  });
+
+  it("strict quote answer stays within retrieved text", () => {
+    const ans = groundedAskFromCorpus("cell wall synthesis antibiotic", composeCorpus, {
+      minScore: 0.05,
+      composer: strictQuoteComposer,
+    });
+    assert.equal(ans.status, "answered");
+    assert.ok(
+      answerUsesOnlyRetrievedText(ans.answer ?? "", [
+        "Amoxicillin blocks bacterial cell-wall synthesis.",
+        "Take this antibiotic exactly as directed. Finish the course unless your clinician says stop.",
+      ]),
+    );
+  });
+
+  it("hosted in-region embedder stub never silently calls offshore", () => {
+    const stub = createHostedInRegionEmbedderStub();
+    assert.throws(() => stub.embed("amoxicillin"), /not configured|in-region/i);
+    const withUrl = createHostedInRegionEmbedderStub({ endpointUrl: "https://embed.local.za" });
+    assert.throws(() => withUrl.embed("amoxicillin"), /not wired|offshore/i);
   });
 });

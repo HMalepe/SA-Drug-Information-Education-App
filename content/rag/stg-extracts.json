@@ -41,16 +41,88 @@
       "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented INR/mg"
     },
     {
-      "id": "stg-metformin-draft-only",
+      "id": "stg-metformin-diabetes-pointer",
       "moleculeId": "mol-metformin",
       "moleculeSlug": "metformin",
       "edition": "DoH STG/EML — verify current public edition",
       "topic": "diabetes-pointer",
-      "text": "DRAFT ONLY — do not index: placeholder for a future founder-reviewed metformin STG pointer.",
+      "text": "Metformin is a first-line oral agent in South African type 2 diabetes public guidance pathways. Materia does not invent a starting dose, titration schedule, or eGFR cut-off — confirm against the current DoH STG/EML edition and the labelled product.",
       "sourceId": "src-doh-stg",
-      "publishState": "draft",
+      "publishState": "published",
       "lastReviewed": "2026-07-30",
-      "reviewerCredential": "Pending founder review"
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-insulin-glargine-pointer",
+      "moleculeId": "mol-insulin-glargine",
+      "moleculeSlug": "insulin-glargine",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "insulin-pointer",
+      "text": "Basal insulin (including glargine products) appears in South African diabetes guidance for selected patients. Materia does not invent unit doses, titration algorithms, or hypoglycaemia rescue schedules — confirm against the current DoH STG/EML edition, clinic protocol, and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented units"
+    },
+    {
+      "id": "stg-salbutamol-asthma-pointer",
+      "moleculeId": "mol-salbutamol",
+      "moleculeSlug": "salbutamol",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "asthma-reliever-pointer",
+      "text": "Salbutamol is a short-acting beta-agonist reliever in South African asthma/COPD public guidance. Materia does not invent puff counts, nebuliser doses, or spacer schedules — confirm against the current DoH STG/EML edition and the labelled product. Reliever overuse warrants clinical review.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented puff counts"
+    },
+    {
+      "id": "stg-tdf-hiv-pointer",
+      "moleculeId": "mol-tdf",
+      "moleculeSlug": "tenofovir-disoproxil",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "hiv-art-pointer",
+      "text": "Tenofovir disoproxil fumarate (TDF) is used in South African HIV ART and PrEP pathways under public guidance. Materia does not invent ART regimens, renal monitoring intervals, or dose adjustments — confirm against the current DoH HIV STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented regimens"
+    },
+    {
+      "id": "stg-amlodipine-htn-pointer",
+      "moleculeId": "mol-amlodipine",
+      "moleculeSlug": "amlodipine",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "hypertension-pointer",
+      "text": "Amlodipine is a dihydropyridine calcium-channel blocker used in South African hypertension pathways. Materia does not invent a starting dose or combination schedule — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-cotrim-eml-pointer",
+      "moleculeId": "mol-cotrim",
+      "moleculeSlug": "co-trimoxazole",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "essential-list-pointer",
+      "text": "Co-trimoxazole (sulfamethoxazole/trimethoprim) is an Essential Medicines List agent used in infection and HIV-related prophylaxis pathways in South African public guidance. Materia does not invent a dose, duration, or prophylaxis schedule — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-ethambutol-tb-pointer",
+      "moleculeId": "mol-ethambutol",
+      "moleculeSlug": "ethambutol",
+      "edition": "DoH STG/EML — verify current public edition",
+      "topic": "tb-programme-pointer",
+      "text": "Ethambutol is part of South African TB regimens in public STG/EML guidance. Materia does not invent weight-band doses or visual-monitoring intervals — confirm against the current DoH TB/STG edition and the labelled product; report vision changes urgently.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
     }
   ]
 }

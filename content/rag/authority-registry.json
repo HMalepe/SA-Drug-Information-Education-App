@@ -39,13 +39,14 @@
   "pipelineDone": [
     "Hybrid retrieve + license gate + groundedAskFromCorpus",
     "Published Interaction table rows → RAG chunks",
-    "Founder-approved STG/EML extract file (content/rag/stg-extracts.json) with draft gate",
-    "Owned insert paraphrases (INSERT_LIBRARY) → RAG chunks via src-insert-owned"
+    "Founder-approved STG/EML extract file with draft gate",
+    "Owned insert paraphrases (INSERT_LIBRARY) → RAG chunks via src-insert-owned",
+    "GroundedComposer interface (template default; LLM must receive chunks only)",
+    "Hosted in-region embedder stub (refuses offshore silent fallback)"
   ],
   "pipelineNext": [
-    "Expand STG/EML extracts molecule-by-molecule after founder review (still no invented mg)",
-    "Expand INSERT_LIBRARY beyond flagships (still owned paraphrases only)",
-    "Hosted in-region embedder behind Embedder interface when scale requires",
-    "Optional in-region LLM compose that receives ONLY retrieved chunks"
+    "Wire real in-region embedder HTTP adapter when endpoint exists",
+    "Wire in-region LLM adapter implementing GroundedComposer (chunks-only prompt)",
+    "Continue STG/insert expansion after founder review (still no invented mg)"
   ]
 }

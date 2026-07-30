@@ -71,3 +71,27 @@ export function keywordOverlapScore(question: string, haystack: string): number 
   const hay = haystack.toLowerCase();
   return terms.reduce((acc, t) => (hay.includes(t) ? acc + 1 : acc), 0) / terms.length;
 }
+
+/**
+ * Placeholder for a hosted in-region embedder (docs/17).
+ * Refuses until MATERIA_IN_REGION_EMBEDDER_URL is set AND an adapter is registered —
+ * never silently falls through to an offshore API.
+ */
+export function createHostedInRegionEmbedderStub(opts?: {
+  endpointUrl?: string;
+}): Embedder {
+  const url = opts?.endpointUrl?.trim() ?? "";
+  return {
+    id: "hosted-in-region-stub",
+    embed(_text: string): number[] {
+      if (!url) {
+        throw new Error(
+          "In-region embedder not configured. Use localBagOfWordsEmbedder, or set a founder-approved in-region endpoint — never send health text offshore.",
+        );
+      }
+      throw new Error(
+        `In-region embedder endpoint registered (${url}) but HTTP adapter not wired yet. Falling open to offshore models is forbidden.`,
+      );
+    },
+  };
+}
