@@ -54,11 +54,12 @@
     "Deepened counselling v357–v372 for PHC Batches E–F",
     "Deepened counselling v373–v384 for Paediatric Batch G",
     "Deepened counselling v385–v403 for Paediatric Batches H–I",
-    "In-region HTTP embedder + LLM composer adapters (chunks-only; offshore refuse)"
+    "In-region HTTP embedder + LLM composer adapters (chunks-only; offshore refuse)",
+    "STG/RAG draft extract pointers for Batches A–I scaffolds (77 draft; draft gate)"
   ],
   "pipelineNext": [
     "Founder clinical review to publish draft dosing for Batches A–I",
-    "STG/RAG extract refresh for newly scaffolded molecules (draft gate)",
+    "Founder review to publish draft STG/RAG extract pointers (Batches A–I)",
     "Point API at founder-approved in-region embedder/LLM URLs (env only)"
   ]
 }
