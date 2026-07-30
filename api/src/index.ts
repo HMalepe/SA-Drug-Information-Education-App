@@ -106,6 +106,12 @@ import {
   nextPublishState,
   summarizeCoverage,
   validateReviewDecision,
+  STG_BATCH_A_I_SEEDS,
+  buildStgExtractReviewQueue,
+  filterReviewQueueByMoleculeIds,
+  summarizeBatchAiBacklog,
+  validateStgExtractDecision,
+  applyStgExtractDecisionState,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
   previewUpcoming,
@@ -127,7 +133,12 @@ import {
 } from "@materia/shared";
 import { createCheckoutSession, hmacSha512Hex, paystackConfigured } from "./billing/paystack.js";
 import { messagingProvidersStatus, sendOutbound } from "./messaging/dispatch.js";
-import { persistReviewDecision, reviewPersistEnabled } from "./reviewPersist.js";
+import {
+  loadStgExtractsFromDisk,
+  persistReviewDecision,
+  persistStgExtractDecision,
+  reviewPersistEnabled,
+} from "./reviewPersist.js";
 import { buildMolecule360 } from "./moleculeView.js";
 import { askMolecule } from "./rag.js";
 import {
@@ -3163,6 +3174,32 @@ app.get("/analytics/personal/:userId", (req, res) => {
 });
 
 /* ── Founder clinical review console (constitution 3.2–3.3) ── */
+
+const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "../..");
+
+function loadBatchMoleculeIds(): Map<string, string[]> {
+  const map = new Map<string, string[]>();
+  for (const ref of STG_BATCH_A_I_SEEDS) {
+    try {
+      const doc = JSON.parse(
+        readFileSync(join(repoRoot, "content/seed", ref.seedFile), "utf8"),
+      ) as { molecules?: Array<{ id: string }> };
+      map.set(
+        ref.batch,
+        (doc.molecules ?? []).map((m) => m.id),
+      );
+    } catch {
+      map.set(ref.batch, []);
+    }
+  }
+  return map;
+}
+
+function moleculeIdsForBatch(batch: string): string[] | null {
+  const ids = loadBatchMoleculeIds().get(batch.toUpperCase());
+  return ids ?? null;
+}
+
 app.get("/review/coverage", (_req, res) => {
   res.json(
     summarizeCoverage({
@@ -3174,6 +3211,7 @@ app.get("/review/coverage", (_req, res) => {
 
 app.get("/review/queue", (req, res) => {
   const area = String(req.query.area ?? "").trim();
+  const batch = String(req.query.batch ?? "").trim().toUpperCase();
   const statesRaw = String(req.query.states ?? "draft,reviewed");
   const states = statesRaw
     .split(",")
@@ -3187,10 +3225,147 @@ app.get("/review/queue", (req, res) => {
     states: states.length ? states : ["draft", "reviewed"],
   });
   if (area) items = items.filter((i) => i.therapeuticArea === area);
+  if (batch) {
+    const molIds = moleculeIdsForBatch(batch);
+    if (molIds) items = filterReviewQueueByMoleculeIds(items, molIds);
+  }
   res.json({
     count: items.length,
     items,
+    batch: batch || null,
     note: "Founder gate only. Publishing never invents clinical text — it only changes publishState.",
+  });
+});
+
+app.get("/review/batches-ai", (_req, res) => {
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const dosingItems = buildReviewQueue({
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+  const extracts = loadStgExtractsFromDisk();
+  const summary = summarizeBatchAiBacklog({
+    batchMoleculeIds,
+    dosingItems,
+    extracts,
+  });
+  res.json({
+    ...summary,
+    howTo:
+      "GET /review/queue?batch=A — dosing/safety drafts. GET /review/stg-queue?batch=A — STG extract drafts. POST /review/decide or /review/stg-decide with attestation containing sourced|confirm. Never invents mg.",
+  });
+});
+
+app.get("/review/stg-queue", (req, res) => {
+  const batch = String(req.query.batch ?? "").trim().toUpperCase();
+  const statesRaw = String(req.query.states ?? "draft,reviewed");
+  const states = statesRaw
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s): s is "draft" | "reviewed" | "published" =>
+      s === "draft" || s === "reviewed" || s === "published",
+    );
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const batchByMoleculeId = new Map<string, string>();
+  for (const [b, ids] of batchMoleculeIds) {
+    for (const id of ids) batchByMoleculeId.set(id, b);
+  }
+  let moleculeIds: string[] | undefined;
+  if (batch) {
+    moleculeIds = batchMoleculeIds.get(batch);
+    if (!moleculeIds) {
+      res.status(400).json({ error: `Unknown batch ${batch}. Use A–I.` });
+      return;
+    }
+  }
+  const items = buildStgExtractReviewQueue({
+    extracts: loadStgExtractsFromDisk(),
+    states: states.length ? states : ["draft", "reviewed"],
+    moleculeIds,
+    batchByMoleculeId,
+  });
+  res.json({
+    count: items.length,
+    items,
+    batch: batch || null,
+    note: "Draft STG extracts do not index in RAG until published. PublishState only — text unchanged.",
+  });
+});
+
+app.post("/review/stg-decide", (req, res) => {
+  const schema = z.object({
+    queueItemId: z.string(),
+    decision: z.enum(["keep_draft", "mark_reviewed", "publish"]),
+    reviewerLabel: z.string().min(2),
+    attestation: z.string().optional(),
+    note: z.string().optional(),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const batchByMoleculeId = new Map<string, string>();
+  for (const [b, ids] of batchMoleculeIds) {
+    for (const id of ids) batchByMoleculeId.set(id, b);
+  }
+  const queue = buildStgExtractReviewQueue({
+    extracts: loadStgExtractsFromDisk(),
+    states: ["draft", "reviewed", "published"],
+    batchByMoleculeId,
+  });
+  const item = queue.find((i) => i.id === parsed.data.queueItemId);
+  if (!item) {
+    res.status(404).json({ error: "STG queue item not found" });
+    return;
+  }
+  const gate = validateStgExtractDecision({
+    item,
+    decision: parsed.data.decision,
+    attestation: parsed.data.attestation,
+  });
+  if (!gate.ok) {
+    res.status(400).json({ error: gate.reason });
+    return;
+  }
+  const next = applyStgExtractDecisionState(item.publishState, parsed.data.decision);
+  const decision = {
+    id: `stg-rev-${db.reviewDecisions.length + 1}`,
+    queueItemId: item.id,
+    decision: parsed.data.decision,
+    reviewerLabel: parsed.data.reviewerLabel,
+    attestation: parsed.data.attestation,
+    at: new Date().toISOString(),
+    note: parsed.data.note,
+  };
+  db.reviewDecisions.push(decision);
+
+  let persisted: { ok: true; path: string } | { ok: false; reason: string } | null = null;
+  if (reviewPersistEnabled()) {
+    persisted = persistStgExtractDecision({
+      decision,
+      extractId: item.extractId,
+      publishState: next,
+    });
+    if (!persisted.ok) {
+      res.status(500).json({
+        error: "STG extract write-back failed",
+        reason: persisted.reason,
+        decision,
+      });
+      return;
+    }
+  }
+
+  res.json({
+    decision,
+    item: { ...item, publishState: next },
+    persisted: persisted?.ok ? { path: persisted.path } : null,
+    note: reviewPersistEnabled()
+      ? "publishState written to content/rag/stg-extracts.json (text unchanged)."
+      : "In-memory decision only (REVIEW_PERSIST=false) — reload extracts from disk on next request.",
   });
 });
 
