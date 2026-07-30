@@ -1201,6 +1201,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-29",
     },
   },
+  {
+    moleculeId: "mol-eplerenone",
+    fact: {
+      value:
+        "MRA teaching: potassium monitoring is common counselling — salt substitutes matter. Materia does not invent a dose or potassium target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mefenamic-acid",
+    fact: {
+      value:
+        "NSAID teaching: often with food for stomach comfort — confirm against the labelled product. Materia does not invent a dose, day-count, or pain score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-sildenafil",
+    fact: {
+      value:
+        "PDE5 teaching: never combine with nitrates — confirm timing against the labelled product. Materia does not invent a dose, timing hours, or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-oxybutynin",
+    fact: {
+      value:
+        "Antimuscarinic teaching: tablets and patches differ — confirm the labelled product. Materia does not invent a dose or bladder score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-insulin-human",
+    fact: {
+      value:
+        "Human insulin teaching: pens, vials, and mixes differ — confirm the labelled product and device. Materia does not invent a dose, carb ratio, or glucose target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mometasone",
+    fact: {
+      value:
+        "Potent topical corticosteroid teaching: thin layer to affected skin only — confirm against the labelled product. Materia does not invent a finger-tip unit count or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-fexofenadine",
+    fact: {
+      value:
+        "Non-sedating antihistamine teaching: fruit juice may reduce absorption for some products — confirm against the labelled product. Materia does not invent a dose or sedation score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ketoconazole",
+    fact: {
+      value:
+        "Topical azole teaching: cream vs shampoo leave-on/rinse-off differs — confirm against the labelled product. Materia does not invent a dose, application clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-salmeterol",
+    fact: {
+      value:
+        "LABA teaching: not a solo asthma controller unless the clinician’s plan says so — confirm against the labelled product. Materia does not invent a puff count or step-up plan.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-propylthiouracil",
+    fact: {
+      value:
+        "Thionamide teaching: take as on the labelled product — infection and liver watch belong with the clinician. Materia does not invent a dose or thyroid lab target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
