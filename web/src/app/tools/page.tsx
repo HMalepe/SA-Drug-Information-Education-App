@@ -319,11 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v300–v309 (<code>bcg-vaccine</code>,{" "}
-          <code>ppsv-vaccine</code>, <code>rabies-vaccine</code>, <code>oxytocin</code>,{" "}
-          <code>protamine</code>, <code>bupivacaine</code>, <code>ketamine</code>,{" "}
-          <code>propofol</code>…) — 6-line scripts. Locum accepts <code>?lang=zu</code>{" "}
-          (af/st/xh too).
+          Published SA counselling: deepened v310–v314 (<code>atracurium</code>,{" "}
+          <code>rocuronium</code>, <code>neostigmine</code>, <code>remifentanil</code>,{" "}
+          <code>sevoflurane</code>) — seed counselling coverage complete. Locum accepts{" "}
+          <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"

@@ -2401,6 +2401,56 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-atracurium",
+    fact: {
+      value:
+        "Non-depolarising NMB teaching: theatre only — residual weakness watch belongs with the anaesthetic team. Materia does not invent an intubation dose, infusion target, or reversal timing.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-rocuronium",
+    fact: {
+      value:
+        "Non-depolarising NMB teaching: theatre only — reversal questions belong with the anaesthetist. Materia does not invent an intubation dose or infusion protocol.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-neostigmine",
+    fact: {
+      value:
+        "Cholinesterase-inhibitor teaching: hospital use — cholinergic excess watch belongs with the clinician. Materia does not invent a reversal dose or titration target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-remifentanil",
+    fact: {
+      value:
+        "Ultra-short opioid teaching: theatre/ICU only — never self-administered. Materia does not invent an infusion target or opioid-switching protocol.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-sevoflurane",
+    fact: {
+      value:
+        "Volatile anaesthetic teaching: theatre only — malignant hyperthermia family history belongs with the anaesthetist. Materia does not invent a MAC target or vaporiser setting.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
