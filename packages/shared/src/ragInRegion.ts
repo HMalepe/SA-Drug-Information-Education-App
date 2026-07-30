@@ -100,3 +100,42 @@ export type FetchLike = (
   text(): Promise<string>;
   json(): Promise<unknown>;
 }>;
+
+/** Env keys for founder-approved in-region RAG HTTP adapters (API boundary only). */
+export const IN_REGION_EMBEDDER_URL_ENV = "MATERIA_IN_REGION_EMBEDDER_URL";
+export const IN_REGION_LLM_URL_ENV = "MATERIA_IN_REGION_LLM_URL";
+export const IN_REGION_ALLOW_HOSTS_ENV = "MATERIA_IN_REGION_ALLOW_HOSTS";
+export const IN_REGION_AUTH_TOKEN_ENV = "MATERIA_IN_REGION_AUTH_TOKEN";
+
+export interface InRegionRagEnvConfig {
+  embedderUrl?: string;
+  llmUrl?: string;
+  allowHosts: string[];
+  authToken?: string;
+}
+
+/**
+ * Parse optional in-region RAG URLs from env.
+ * Empty = local bag-of-words embedder + template composer (offline-safe default).
+ * Non-empty URLs are validated immediately (refuse known offshore hosts).
+ */
+export function parseInRegionRagEnv(
+  env: Record<string, string | undefined> = {},
+): InRegionRagEnvConfig {
+  const allowHosts = (env[IN_REGION_ALLOW_HOSTS_ENV] ?? "")
+    .split(",")
+    .map((h) => h.trim())
+    .filter(Boolean);
+  const embedderRaw = env[IN_REGION_EMBEDDER_URL_ENV]?.trim() ?? "";
+  const llmRaw = env[IN_REGION_LLM_URL_ENV]?.trim() ?? "";
+  const authToken = env[IN_REGION_AUTH_TOKEN_ENV]?.trim() || undefined;
+
+  const embedderUrl = embedderRaw
+    ? assertInRegionEndpoint(embedderRaw, { allowHosts }).toString()
+    : undefined;
+  const llmUrl = llmRaw
+    ? assertInRegionEndpoint(llmRaw, { allowHosts }).toString()
+    : undefined;
+
+  return { embedderUrl, llmUrl, allowHosts, authToken };
+}

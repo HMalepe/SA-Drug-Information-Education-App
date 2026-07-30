@@ -17,7 +17,9 @@ pgvector is wired for production scale. Composition uses `GroundedComposer` (tem
 default). Hosted in-region HTTP adapters (`createHostedInRegionEmbedder`,
 `createHostedInRegionLlmComposer`) POST chunks-only payloads to founder-approved
 endpoints (localhost / private / `.za` / explicit allowHosts) — never silent offshore
-fallback. Wire `fetchImpl` + env token at the API boundary only; never commit secrets.
+fallback. API reads `MATERIA_IN_REGION_EMBEDDER_URL` / `MATERIA_IN_REGION_LLM_URL` /
+`MATERIA_IN_REGION_ALLOW_HOSTS` / `MATERIA_IN_REGION_AUTH_TOKEN` from env only; blank =
+local BOW + template. `/ai/ask` is rate-limited (30/min/IP).
 
 **License:** never load SAMF/MIMS/Lexicomp into `rag_chunks` (CHECK constraint + app gate).
 

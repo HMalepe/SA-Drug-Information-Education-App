@@ -149,6 +149,23 @@ import {
 const app = express();
 const PORT = Number(process.env.PORT ?? 4000);
 
+/** Simple per-IP rate limit for /ai/ask (docs/17) — in-memory, process-local. */
+const AI_ASK_WINDOW_MS = 60_000;
+const AI_ASK_MAX_PER_WINDOW = 30;
+const aiAskHits = new Map<string, number[]>();
+
+function allowAiAsk(clientKey: string): boolean {
+  const now = Date.now();
+  const prev = (aiAskHits.get(clientKey) ?? []).filter((t) => now - t < AI_ASK_WINDOW_MS);
+  if (prev.length >= AI_ASK_MAX_PER_WINDOW) {
+    aiAskHits.set(clientKey, prev);
+    return false;
+  }
+  prev.push(now);
+  aiAskHits.set(clientKey, prev);
+  return true;
+}
+
 app.use(cors());
 app.use(
   express.json({
@@ -246,7 +263,7 @@ app.get("/excipients", (_req, res) => {
   });
 });
 
-app.post("/ai/ask", (req, res) => {
+app.post("/ai/ask", async (req, res) => {
   const schema = z.object({
     moleculeSlug: z.string().min(1),
     question: z.string().min(1).max(2000),
@@ -262,8 +279,24 @@ app.post("/ai/ask", (req, res) => {
     });
     return;
   }
-  const answer = askMolecule(parsed.data.moleculeSlug, parsed.data.question);
-  res.json(answer);
+  const clientKey = String(req.ip || req.socket.remoteAddress || "unknown");
+  if (!allowAiAsk(clientKey)) {
+    res.status(429).json({
+      error: "AI ask rate limit exceeded. Try again shortly.",
+    });
+    return;
+  }
+  try {
+    const answer = await askMolecule(parsed.data.moleculeSlug, parsed.data.question);
+    res.json(answer);
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : "ask failed";
+    res.status(500).json({
+      status: "refused",
+      citations: [],
+      refusalReason: `AI ask failed — ${detail}. Materia will not invent or call offshore models.`,
+    });
+  }
 });
 
 app.post("/tools/dose-calculator", (req, res) => {

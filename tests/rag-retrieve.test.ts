@@ -12,9 +12,11 @@ import {
   createHostedInRegionEmbedderStub,
   createHostedInRegionLlmComposer,
   groundedAskFromCorpus,
+  groundedAskFromCorpusAsync,
   indexRagChunks,
   licenseClassForSourceId,
   localBagOfWordsEmbedder,
+  parseInRegionRagEnv,
   retrieveRagChunks,
   strictQuoteComposer,
   templateGroundedComposer,
@@ -424,5 +426,88 @@ describe("RAG in-region HTTP adapters", () => {
         }),
       /grounding check/i,
     );
+  });
+});
+
+describe("RAG in-region env + async ask", () => {
+  it("parseInRegionRagEnv defaults to blank (local/template)", () => {
+    const cfg = parseInRegionRagEnv({});
+    assert.equal(cfg.embedderUrl, undefined);
+    assert.equal(cfg.llmUrl, undefined);
+    assert.deepEqual(cfg.allowHosts, []);
+  });
+
+  it("parseInRegionRagEnv refuses offshore LLM URL", () => {
+    assert.throws(
+      () =>
+        parseInRegionRagEnv({
+          MATERIA_IN_REGION_LLM_URL: "https://api.openai.com/v1/chat",
+        }),
+      /offshore|openai/i,
+    );
+  });
+
+  it("parseInRegionRagEnv accepts .za URLs and allowHosts", () => {
+    const cfg = parseInRegionRagEnv({
+      MATERIA_IN_REGION_EMBEDDER_URL: "https://embed.materia.za/v1",
+      MATERIA_IN_REGION_LLM_URL: "https://llm.vendor.example/compose",
+      MATERIA_IN_REGION_ALLOW_HOSTS: "llm.vendor.example",
+      MATERIA_IN_REGION_AUTH_TOKEN: "test-token-not-a-secret",
+    });
+    assert.match(cfg.embedderUrl ?? "", /embed\.materia\.za/);
+    assert.match(cfg.llmUrl ?? "", /llm\.vendor\.example/);
+    assert.equal(cfg.authToken, "test-token-not-a-secret");
+  });
+
+  it("groundedAskFromCorpusAsync uses hosted LLM compose when provided", async () => {
+    const chunkText = "Amoxicillin blocks bacterial cell-wall synthesis.";
+    const corpus = [
+      {
+        fieldPath: "moa",
+        text: chunkText,
+        fact: {
+          value: chunkText,
+          sourceId: "src-materia-edu",
+          publishState: "published" as const,
+          lastReviewed: "2026-07-30",
+        },
+        source: edu,
+      },
+    ];
+    const ans = await groundedAskFromCorpusAsync("cell wall mechanism", corpus, {
+      minScore: 0.05,
+      composeAsync: async () => ({ answer: chunkText, composerId: "test-llm" }),
+    });
+    assert.equal(ans.status, "answered");
+    assert.equal(ans.answer, chunkText);
+  });
+
+  it("groundedAskFromCorpusAsync refuses when hosted LLM invents", async () => {
+    const chunkText = "Adult dosing not published in Materia yet.";
+    const corpus = [
+      {
+        fieldPath: "dosing.adult",
+        text: chunkText,
+        fact: {
+          value: chunkText,
+          sourceId: "src-doh-stg",
+          publishState: "published" as const,
+          lastReviewed: "2026-07-01",
+        },
+        source: stg,
+      },
+    ];
+    const ans = await groundedAskFromCorpusAsync(
+      "adult dosing published Materia yet?",
+      corpus,
+      {
+        minScore: 0.05,
+        composeAsync: async () => {
+          throw new Error("In-region LLM answer failed grounding check — refuse.");
+        },
+      },
+    );
+    assert.equal(ans.status, "refused");
+    assert.match(ans.refusalReason ?? "", /grounding|will not invent|offshore/i);
   });
 });

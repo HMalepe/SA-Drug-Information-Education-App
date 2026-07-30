@@ -3,7 +3,7 @@ import {
   chunksFromPublishedInteractions,
   chunksFromStgExtracts,
   getCounsellingScript,
-  groundedAskFromCorpus,
+  groundedAskFromCorpusAsync,
   INSERT_LIBRARY,
   renderableFact,
   stripIdentifiers,
@@ -22,6 +22,7 @@ import {
   getSource,
   listPublishedInteractionsForMolecule,
 } from "./store.js";
+import { getInRegionRagRuntime } from "./ragInRegionRuntime.js";
 
 function loadStgExtracts(): StgExtract[] {
   const path = join(dirname(fileURLToPath(import.meta.url)), "../../content/rag/stg-extracts.json");
@@ -71,9 +72,10 @@ function pushPublishedStringFact(
 
 /**
  * Molecule Q&A — hybrid RAG over published, sourced, license-allowed chunks only.
- * Includes interactions, STG extracts, and owned insert paraphrases. No LLM composition.
+ * Includes interactions, STG extracts, and owned insert paraphrases.
+ * Optional in-region HTTP embedder/LLM via MATERIA_IN_REGION_* env (chunks-only).
  */
-export function askMolecule(moleculeSlug: string, question: string) {
+export async function askMolecule(moleculeSlug: string, question: string) {
   const safeQuestion = stripIdentifiers(question);
   const molecule = getMoleculeBySlug(moleculeSlug);
   if (!molecule) {
@@ -166,9 +168,12 @@ export function askMolecule(moleculeSlug: string, question: string) {
 
   chunks.push(...chunksFromInsertDocuments(molecule.id, INSERT_LIBRARY, getSource));
 
-  return groundedAskFromCorpus(safeQuestion, chunks, {
+  const runtime = getInRegionRagRuntime();
+  return groundedAskFromCorpusAsync(safeQuestion, chunks, {
     topK: 8,
     answerTopK: 3,
     minScore: 0.1,
+    asyncEmbedder: runtime.asyncEmbedder,
+    composeAsync: runtime.composeAsync,
   });
 }
