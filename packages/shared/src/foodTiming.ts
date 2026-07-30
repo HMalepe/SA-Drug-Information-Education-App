@@ -2301,6 +2301,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-bcg-vaccine",
+    fact: {
+      value:
+        "Live BCG vaccine teaching: expected local scar reaction is common counselling — immune and pregnancy questions belong with the vaccinator. Materia does not invent a conversion schedule, reaction timeline, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ppsv-vaccine",
+    fact: {
+      value:
+        "PPSV teaching: different from PCV — adult and risk-group timing belongs with the clinic. Materia does not invent a dose, re-vaccination interval, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-rabies-vaccine",
+    fact: {
+      value:
+        "Rabies vaccine teaching: pre- and post-exposure plans differ — wound care and immunoglobulin questions belong with the clinic. Materia does not invent a series schedule, immunoglobulin dose, or antibody titre.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-oxytocin",
+    fact: {
+      value:
+        "Uterotonic teaching: hospital / labour / postpartum use only — never self-administered. Materia does not invent an infusion rate or contraction target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-protamine",
+    fact: {
+      value:
+        "Heparin-antidote teaching: hospital use only — fish / prior protamine allergy history belongs with the care team. Materia does not invent a reversal dose ratio or infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-bupivacaine",
+    fact: {
+      value:
+        "Long-acting local anaesthetic teaching: forms differ — systemic toxicity watch belongs with the anaesthetic team. Materia does not invent a maximum dose, concentration, or infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ropivacaine",
+    fact: {
+      value:
+        "Amide local anaesthetic teaching: forms differ — toxicity watch belongs with the anaesthetic team. Materia does not invent a maximum dose, concentration, or infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ketamine",
+    fact: {
+      value:
+        "Dissociative anaesthetic teaching: hospital / emergency use only — emergence reactions belong with the clinician. Materia does not invent an induction dose or maintenance rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-propofol",
+    fact: {
+      value:
+        "IV anaesthetic teaching: hospital only — asepsis and lipid-emulsion handling belong with the anaesthetic team. Materia does not invent an induction dose or infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-suxamethonium",
+    fact: {
+      value:
+        "Depolarising neuromuscular blocker teaching: theatre only — malignant hyperthermia family history belongs with the anaesthetist. Materia does not invent an intubation dose or MH treatment protocol.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
