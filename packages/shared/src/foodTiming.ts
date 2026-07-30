@@ -3151,6 +3151,196 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-propranolol",
+    fact: {
+      value:
+        "Propranolol teaching: report wheeze or unusual tiredness early. Materia does not invent a mg/kg dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-captopril",
+    fact: {
+      value:
+        "Captopril teaching: kidney monitoring is clinician-led in paediatric pathways. Materia does not invent a mg/kg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-clonazepam",
+    fact: {
+      value:
+        "Clonazepam teaching: sedation and taper counselling matter — do not invent a stop plan. Materia does not invent a mg/kg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-methylphenidate",
+    fact: {
+      value:
+        "Methylphenidate teaching: ADHD stimulant — specialist-aware prescribing. Materia does not invent a dose or formulation switch rule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-olanzapine",
+    fact: {
+      value:
+        "Olanzapine teaching: metabolic monitoring is clinician-led. Materia does not invent a dose or monitoring schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-glucagon",
+    fact: {
+      value:
+        "Glucagon teaching: severe hypo rescue — follow clinician kit training. Materia does not invent a dose or age-band kit rule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mannitol",
+    fact: {
+      value:
+        "Mannitol teaching: hospital osmotic therapy — not home use. Materia does not invent a gram dose or osmolarity threshold.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-calcitriol",
+    fact: {
+      value:
+        "Calcitriol teaching: calcium monitoring is clinician-led. Materia does not invent a microgram dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-aminophylline",
+    fact: {
+      value:
+        "Aminophylline teaching: narrow therapeutic index — levels are clinician-led. Materia does not invent a loading dose or serum target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-dopamine",
+    fact: {
+      value:
+        "Dopamine teaching: critical-care infusion only. Materia does not invent a mcg/kg/min infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-dobutamine",
+    fact: {
+      value:
+        "Dobutamine teaching: critical-care inotrope infusion. Materia does not invent a mcg/kg/min infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-octreotide",
+    fact: {
+      value:
+        "Octreotide teaching: specialist secretory/endocrine pathways. Materia does not invent a dose or infusion schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-zinc-sulfate",
+    fact: {
+      value:
+        "Zinc sulfate teaching: diarrhoea/deficiency pathways — confirm elemental amount on the label. Materia does not invent an elemental-mg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-sodium-bicarbonate",
+    fact: {
+      value:
+        "Sodium bicarbonate teaching: alkalinising therapy is clinician-directed. Materia does not invent a mmol/kg dose or infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-silver-sulfadiazine",
+    fact: {
+      value:
+        "Silver sulfadiazine teaching: burn-wound topical — follow dressing advice. Materia does not invent an application thickness.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-valganciclovir",
+    fact: {
+      value:
+        "Valganciclovir teaching: CMV oral prodrug — myelosuppression monitoring matters. Materia does not invent a mg/kg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-rifabutin",
+    fact: {
+      value:
+        "Rifabutin teaching: interaction burden is high — review all medicines. Materia does not invent a dose or interaction list.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-macrogol",
+    fact: {
+      value:
+        "Macrogol teaching: dissolve/mix exactly as labelled for constipation pathways. Materia does not invent a sachet dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-sulfadiazine",
+    fact: {
+      value:
+        "Sulfadiazine teaching: toxoplasmosis combination pathways are clinician-led. Materia does not invent a pyrimethamine pairing rule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

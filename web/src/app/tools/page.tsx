@@ -319,8 +319,8 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v373–v384 Paediatric Batch G (12 ID/neonatal
-          molecules — caffeine through ganciclovir). Locum accepts <code>?lang=zu</code>{" "}
+          Published SA counselling: deepened v385–v403 Paediatric Batches H–I (19 molecules —
+          cardio/neuro/endocrine + supportive). Locum accepts <code>?lang=zu</code>{" "}
           (af/st/xh too).
         </p>{" "}
         <button

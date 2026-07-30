@@ -52,11 +52,12 @@
     "Paediatric Batches H–I scaffolds (cardio/neuro/endocrine + supportive)",
     "Deepened counselling v345–v356 for PHC Batch D clinic-core",
     "Deepened counselling v357–v372 for PHC Batches E–F",
-    "Deepened counselling v373–v384 for Paediatric Batch G"
+    "Deepened counselling v373–v384 for Paediatric Batch G",
+    "Deepened counselling v385–v403 for Paediatric Batches H–I"
   ],
   "pipelineNext": [
-    "Deepened counselling for Paediatric Batches H–I",
     "Wire real in-region embedder/LLM adapters (chunks-only)",
-    "Founder clinical review to publish draft dosing for Batches A–I"
+    "Founder clinical review to publish draft dosing for Batches A–I",
+    "STG/RAG extract refresh for newly scaffolded molecules (draft gate)"
   ]
 }
