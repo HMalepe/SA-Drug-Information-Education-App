@@ -219,6 +219,54 @@
       "publishState": "published",
       "lastReviewed": "2026-07-30",
       "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-clozapine-psych-pointer",
+      "moleculeId": "mol-clozapine",
+      "moleculeSlug": "clozapine",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "psychiatry-pointer",
+      "text": "Clozapine appears in South African adult hospital pathways for treatment-resistant psychosis. Haematological monitoring is essential; Materia does not invent a titration or FBC schedule — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-misoprostol-pointer",
+      "moleculeId": "mol-misoprostol",
+      "moleculeSlug": "misoprostol",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "obstetric-gi-pointer",
+      "text": "Misoprostol appears in South African adult hospital obstetric and selected GI-protection pathways. Indication and route matter; Materia does not invent a dose or regimen — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-potassium-chloride-pointer",
+      "moleculeId": "mol-potassium-chloride",
+      "moleculeSlug": "potassium-chloride",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "electrolyte-pointer",
+      "text": "Potassium chloride appears in South African adult hospital electrolyte-replacement pathways. Concentration and rate errors can be fatal; Materia does not invent an infusion rate or mmol dose — confirm against the current DoH STG/EML edition and institutional protocols.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mmol"
+    },
+    {
+      "id": "stg-beclomethasone-pointer",
+      "moleculeId": "mol-beclomethasone",
+      "moleculeSlug": "beclomethasone",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "respiratory-pointer",
+      "text": "Beclomethasone (inhaled) appears in South African adult hospital asthma/COPD controller pathways. Materia does not invent puff counts or spacer schedules — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented puff counts"
     }
   ]
 }

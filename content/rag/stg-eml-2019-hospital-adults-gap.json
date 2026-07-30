@@ -82,6 +82,23 @@
       "mol-ampicillin",
       "mol-cefazolin",
       "mol-benzylpenicillin"
+    ],
+    "C_hospital_chronic_gaps": [
+      "mol-beclomethasone",
+      "mol-ipratropium",
+      "mol-glibenclamide",
+      "mol-amiodarone",
+      "mol-adenosine",
+      "mol-nevirapine",
+      "mol-atazanavir",
+      "mol-chlorpromazine",
+      "mol-clozapine",
+      "mol-phenobarbital",
+      "mol-potassium-chloride",
+      "mol-thiamine",
+      "mol-pyridoxine",
+      "mol-oseltamivir",
+      "mol-misoprostol"
     ]
   }
 }

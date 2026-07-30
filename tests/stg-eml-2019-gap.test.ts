@@ -16,6 +16,7 @@ describe("STG/EML 2019 hospital adults gap triage", () => {
     assert.ok(gap.priorityMissingBatches.B_id_malaria_parasites_abx.includes("artesunate"));
     assert.equal(gap.scaffoldedBatches.A_emergency_antidotes.length, 7);
     assert.equal(gap.scaffoldedBatches.B_id_malaria_parasites_abx.length, 8);
+    assert.equal(gap.scaffoldedBatches.C_hospital_chronic_gaps.length, 15);
     const blob = JSON.stringify(gap);
     assert.ok(!/\d+\s*mg\b/i.test(blob));
   });
@@ -59,6 +60,37 @@ describe("STG/EML 2019 hospital adults gap triage", () => {
     ]) {
       assert.ok(ids.includes(id), `missing ${id}`);
     }
+    for (const s of seed.safetyProfiles) {
+      assert.equal(s.dosingAdult.publishState, "draft");
+      assert.match(s.dosingAdult.value, /not publish|will not invent/i);
+    }
+  });
+
+  it("scaffolds Batch C hospital-chronic EML molecules with draft dosing only", () => {
+    const seed = JSON.parse(
+      readFileSync(join(root, "content/seed/hospital-chronic-eml.json"), "utf8"),
+    );
+    const ids = seed.molecules.map((m: { id: string }) => m.id);
+    for (const id of [
+      "mol-beclomethasone",
+      "mol-ipratropium",
+      "mol-glibenclamide",
+      "mol-amiodarone",
+      "mol-adenosine",
+      "mol-nevirapine",
+      "mol-atazanavir",
+      "mol-chlorpromazine",
+      "mol-clozapine",
+      "mol-phenobarbital",
+      "mol-potassium-chloride",
+      "mol-thiamine",
+      "mol-pyridoxine",
+      "mol-oseltamivir",
+      "mol-misoprostol",
+    ]) {
+      assert.ok(ids.includes(id), `missing ${id}`);
+    }
+    assert.equal(ids.length, 15);
     for (const s of seed.safetyProfiles) {
       assert.equal(s.dosingAdult.publishState, "draft");
       assert.match(s.dosingAdult.value, /not publish|will not invent/i);

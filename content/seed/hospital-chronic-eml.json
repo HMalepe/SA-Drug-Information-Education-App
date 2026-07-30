@@ -1,0 +1,531 @@
+{
+  "meta": {
+    "therapeuticArea": "hospital-chronic-eml",
+    "note": "Batch C scaffold from Hospital Adults STG/EML 2019 index gap analysis (respiratory, diabetes, cardio, psych, neuro, ART, supportive, obstetric). Numeric dosing ABSENT until founder review. Educational MOA only — never copied from commercial references. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2019-hospital-adults-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Hospital Level Adults 2019 index used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://pmhp.za.org/wp-content/uploads/standard-treatment-guidelines-and-essential-medicines-list-for-south-africa.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-beclomethasone",
+      "slug": "beclomethasone",
+      "innName": "Beclomethasone",
+      "className": "Inhaled corticosteroid (ICS)",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["beclometasone", "beclomethasone dipropionate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Inhaled corticosteroid reducing airway inflammation — educational framing for asthma/COPD controller contexts. Materia does not invent puff counts or spacer schedules; confirm against current SA STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-ipratropium",
+      "slug": "ipratropium",
+      "innName": "Ipratropium bromide",
+      "className": "Short-acting muscarinic antagonist (SAMA)",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["ipratropium", "atrovent"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Antimuscarinic bronchodilator used in selected asthma/COPD pathways (including nebulised contexts) — educational framing only. Materia does not invent puff or nebuliser doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-glibenclamide",
+      "slug": "glibenclamide",
+      "innName": "Glibenclamide",
+      "className": "Sulfonylurea antidiabetic",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["glyburide", "glibenclamide"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Sulfonylurea stimulating insulin release — educational framing only. Hypoglycaemia risk is central counselling; Materia does not invent a dose or renal cut-off.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-amiodarone",
+      "slug": "amiodarone",
+      "innName": "Amiodarone",
+      "className": "Class III antiarrhythmic",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["amiodarone"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Multi-channel antiarrhythmic used in selected tachyarrhythmia pathways — educational framing only. Materia does not invent loading/maintenance doses or monitoring intervals.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-adenosine",
+      "slug": "adenosine",
+      "innName": "Adenosine",
+      "className": "Nucleoside — acute SVT agent",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["adenosine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Transient AV-nodal blocker used in selected SVT diagnostic/therapeutic contexts — educational framing only. Materia does not invent a dose or flush technique.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-nevirapine",
+      "slug": "nevirapine",
+      "innName": "Nevirapine",
+      "className": "Non-nucleoside reverse transcriptase inhibitor (NNRTI)",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["NVP", "nevirapine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "NNRTI antiretroviral — educational framing for legacy/selected ART contexts still reflected in public guidance indexes. Materia does not invent a regimen or lead-in schedule.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-atazanavir",
+      "slug": "atazanavir",
+      "innName": "Atazanavir",
+      "className": "HIV protease inhibitor",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["ATV", "atazanavir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "HIV protease inhibitor used in selected ART regimens (often boosted) — educational framing only. Materia does not invent a dose, booster pairing, or interaction list.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-chlorpromazine",
+      "slug": "chlorpromazine",
+      "innName": "Chlorpromazine",
+      "className": "Typical antipsychotic (phenothiazine)",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["chlorpromazine", "largactil"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Dopamine D2 antagonist antipsychotic — educational framing for selected acute and chronic psychiatry pathways. Materia does not invent a dose or titration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-clozapine",
+      "slug": "clozapine",
+      "innName": "Clozapine",
+      "className": "Atypical antipsychotic — treatment-resistant",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["clozapine", "clozaril"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Atypical antipsychotic reserved for treatment-resistant schizophrenia pathways — educational framing only. Haematological monitoring is essential; Materia does not invent a dose or FBC schedule.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-phenobarbital",
+      "slug": "phenobarbital",
+      "innName": "Phenobarbital",
+      "className": "Barbiturate antiepileptic",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["phenobarbitone", "phenobarbital"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Barbiturate antiepileptic used in selected seizure pathways — educational framing only. Materia does not invent a dose, level target, or interaction adjustment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-potassium-chloride",
+      "slug": "potassium-chloride",
+      "innName": "Potassium chloride",
+      "className": "Electrolyte — potassium salt",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["KCl", "potassium chloride"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Potassium replacement salt — educational framing only. Concentration and rate errors can be fatal; Materia does not invent an infusion rate or mmol dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-thiamine",
+      "slug": "thiamine",
+      "innName": "Thiamine",
+      "className": "Vitamin B1",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["vitamin B1", "thiamine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Vitamin B1 used in deficiency and Wernicke-risk pathways — educational framing only. Materia does not invent a dose or infusion sequence.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-pyridoxine",
+      "slug": "pyridoxine",
+      "innName": "Pyridoxine",
+      "className": "Vitamin B6",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["vitamin B6", "pyridoxine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Vitamin B6 used in deficiency and as an isoniazid adjunct in selected TB pathways — educational framing only. Materia does not invent a dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-oseltamivir",
+      "slug": "oseltamivir",
+      "innName": "Oseltamivir",
+      "className": "Neuraminidase inhibitor antiviral",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["tamiflu", "oseltamivir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Neuraminidase inhibitor used in selected influenza treatment/prophylaxis pathways — educational framing only. Materia does not invent a dose, start-window hours, or renal adjustment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-misoprostol",
+      "slug": "misoprostol",
+      "innName": "Misoprostol",
+      "className": "Prostaglandin E1 analogue",
+      "therapeuticArea": "hospital-chronic-eml",
+      "synonyms": ["misoprostol", "cytotec"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Prostaglandin analogue used in obstetric and selected GI-protection contexts — educational framing only. Indication and route matter; Materia does not invent a dose or regimen.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-beclomethasone",
+      "moleculeId": "mol-beclomethasone",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent puff counts.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-ipratropium",
+      "moleculeId": "mol-ipratropium",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent nebuliser doses.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-glibenclamide",
+      "moleculeId": "mol-glibenclamide",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose or renal cut-off.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Sulfonylureas can cause hypoglycaemia — counsel on recognition and sick-day rules per clinician advice. Materia does not invent a rescue protocol.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-amiodarone",
+      "moleculeId": "mol-amiodarone",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent loading doses or monitoring intervals.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-adenosine",
+      "moleculeId": "mol-adenosine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose or flush technique.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Acute arrhythmia medicine — use only with cardiac monitoring capability as clinically appropriate. Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-nevirapine",
+      "moleculeId": "mol-nevirapine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH HIV STG/EML and the labelled product. Materia will not invent a regimen or lead-in schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-atazanavir",
+      "moleculeId": "mol-atazanavir",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH HIV STG/EML and the labelled product. Materia will not invent a booster pairing or dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-chlorpromazine",
+      "moleculeId": "mol-chlorpromazine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-clozapine",
+      "moleculeId": "mol-clozapine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a titration or FBC monitoring schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Clozapine requires structured haematological monitoring — escalate to specialist pathways. Materia does not invent lab schedules.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-phenobarbital",
+      "moleculeId": "mol-phenobarbital",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose or blood-level target.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-potassium-chloride",
+      "moleculeId": "mol-potassium-chloride",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and local electrolyte protocols. Materia will not invent an infusion rate or mmol dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Concentrated potassium can be fatal if mishandled — follow institutional safety rules. Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-thiamine",
+      "moleculeId": "mol-thiamine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-pyridoxine",
+      "moleculeId": "mol-pyridoxine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-oseltamivir",
+      "moleculeId": "mol-oseltamivir",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a start-window or renal adjustment.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-misoprostol",
+      "moleculeId": "mol-misoprostol",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML for the specific indication and the labelled product. Materia will not invent a dose or route regimen.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Indication-specific medicine (obstetric vs GI) — confirm the clinical pathway before counselling. Materia does not invent regimens.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ],
+  "interactions": [],
+  "priceRecords": [],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": []
+}
