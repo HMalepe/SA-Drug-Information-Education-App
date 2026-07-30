@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
   assertIndexableLicense,
+  chunksFromInsertDocuments,
   chunksFromPublishedInteractions,
   chunksFromStgExtracts,
   cosineSimilarity,
@@ -10,6 +11,7 @@ import {
   licenseClassForSourceId,
   localBagOfWordsEmbedder,
   retrieveRagChunks,
+  type InsertDocument,
   type Interaction,
   type RetrievableChunk,
   type Source,
@@ -193,5 +195,46 @@ describe("RAG corpus — interactions + STG extracts", () => {
     assert.equal(ans.status, "answered");
     assert.match(ans.answer ?? "", /bleeding|dose change/i);
     assert.ok(!(ans.answer ?? "").match(/\d+\s*mg/i));
+  });
+
+  it("indexes published insert paraphrases and skips draft grade5", () => {
+    const insertSrc: Source = {
+      id: "src-insert-owned",
+      citation: "Owned insert paraphrases",
+      sourceType: "insert",
+      lastReviewed: "2026-07-30",
+    };
+    sources["src-insert-owned"] = insertSrc;
+    assert.equal(licenseClassForSourceId("src-insert-owned"), "insert_owned");
+
+    const docs: InsertDocument[] = [
+      {
+        id: "insert-amox-demo",
+        moleculeId: "mol-amox",
+        moleculeSlug: "amoxicillin",
+        passages: [
+          {
+            level: "professional",
+            title: "Pro",
+            body: "Beta-lactam counselling — Materia does not invent a dose.",
+            publishState: "published",
+            sourceId: "src-insert-owned",
+            lastReviewed: "2026-07-30",
+          },
+          {
+            level: "grade5",
+            title: "Plain",
+            body: "Draft plain rewrite should not index.",
+            publishState: "draft",
+            sourceId: "src-insert-owned",
+            lastReviewed: "2026-07-30",
+          },
+        ],
+      },
+    ];
+    const chunks = chunksFromInsertDocuments("mol-amox", docs, byId);
+    assert.equal(chunks.length, 1);
+    assert.match(chunks[0]!.fieldPath, /insert\.insert-amox-demo\.professional/);
+    assert.match(chunks[0]!.text, /Beta-lactam|does not invent/i);
   });
 });

@@ -1,8 +1,10 @@
 import {
+  chunksFromInsertDocuments,
   chunksFromPublishedInteractions,
   chunksFromStgExtracts,
   getCounsellingScript,
   groundedAskFromCorpus,
+  INSERT_LIBRARY,
   renderableFact,
   stripIdentifiers,
   type RetrievableChunk,
@@ -69,7 +71,7 @@ function pushPublishedStringFact(
 
 /**
  * Molecule Q&A — hybrid RAG over published, sourced, license-allowed chunks only.
- * Includes curated interactions + founder-approved STG extracts. No LLM composition.
+ * Includes interactions, STG extracts, and owned insert paraphrases. No LLM composition.
  */
 export function askMolecule(moleculeSlug: string, question: string) {
   const safeQuestion = stripIdentifiers(question);
@@ -137,7 +139,6 @@ export function askMolecule(moleculeSlug: string, question: string) {
     }
   }
 
-  // Multilingual counselling scripts (owned authoring) — EN lines as RAG chunks.
   const counselling = getCounsellingScript(molecule.id, "en");
   const eduSource = getSource("src-materia-edu");
   if (counselling && eduSource) {
@@ -152,7 +153,6 @@ export function askMolecule(moleculeSlug: string, question: string) {
     }
   }
 
-  // Published curated interactions (constitution 3.1 — retrieve only).
   chunks.push(
     ...chunksFromPublishedInteractions(
       molecule.id,
@@ -162,8 +162,9 @@ export function askMolecule(moleculeSlug: string, question: string) {
     ),
   );
 
-  // Founder-approved STG/EML extracts (draft never indexes).
   chunks.push(...chunksFromStgExtracts(molecule.id, stgExtracts, getSource));
+
+  chunks.push(...chunksFromInsertDocuments(molecule.id, INSERT_LIBRARY, getSource));
 
   return groundedAskFromCorpus(safeQuestion, chunks, {
     topK: 8,

@@ -25,6 +25,8 @@ export function licenseClassForSourceId(sourceId: string): RagLicenseClass | nul
     case "src-sep":
     case "src-sep-doh":
       return "sep_public";
+    case "src-insert-owned":
+      return "insert_owned";
     default:
       if (sourceId.startsWith("src-insert-")) return "insert_owned";
       if (

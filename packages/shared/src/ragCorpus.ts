@@ -5,6 +5,7 @@
 
 import type { Interaction, PublishState, Source, SourcedFact } from "./types.js";
 import type { RetrievableChunk } from "./grounding.js";
+import type { InsertDocument } from "./insertTranslator.js";
 import { renderableFact } from "./publish.js";
 import { licenseClassForSourceId, isIndexableLicense } from "./ragLicense.js";
 
@@ -118,6 +119,46 @@ export function chunksFromStgExtracts(
       fact: rendered,
       source,
     });
+  }
+  return chunks;
+}
+
+/**
+ * Published owned insert paraphrases (§9) → RAG chunks.
+ * Draft passages never index. Never invents a plain rewrite or dose.
+ */
+export function chunksFromInsertDocuments(
+  moleculeId: string,
+  documents: InsertDocument[],
+  sourceById: (id: string) => Source | undefined,
+): RetrievableChunk[] {
+  const chunks: RetrievableChunk[] = [];
+  for (const doc of documents) {
+    if (doc.moleculeId !== moleculeId) continue;
+    for (const passage of doc.passages) {
+      if (passage.publishState !== "published") continue;
+      const source = sourceById(passage.sourceId);
+      if (!source) continue;
+      const license = licenseClassForSourceId(source.id);
+      if (!license || !isIndexableLicense(license)) continue;
+
+      const brand = doc.brandName ? ` (${doc.brandName})` : "";
+      const fact: SourcedFact<string> = {
+        value: `[Insert ${passage.level}${brand}] ${passage.title}: ${passage.body}`,
+        sourceId: passage.sourceId,
+        publishState: "published",
+        lastReviewed: passage.lastReviewed,
+      };
+      const rendered = renderableFact(fact);
+      if (!rendered) continue;
+
+      chunks.push({
+        fieldPath: `insert.${doc.id}.${passage.level}`,
+        text: String(rendered.value),
+        fact: rendered,
+        source,
+      });
+    }
   }
   return chunks;
 }

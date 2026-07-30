@@ -23,6 +23,11 @@
       "id": "src-sep",
       "licenseClass": "sep_public",
       "label": "DoH Single Exit Price publications"
+    },
+    {
+      "id": "src-insert-owned",
+      "licenseClass": "insert_owned",
+      "label": "Materia owned educational package-insert paraphrases (never commercial PILs)"
     }
   ],
   "forbidden": [
@@ -34,11 +39,12 @@
   "pipelineDone": [
     "Hybrid retrieve + license gate + groundedAskFromCorpus",
     "Published Interaction table rows → RAG chunks",
-    "Founder-approved STG/EML extract file (content/rag/stg-extracts.json) with draft gate"
+    "Founder-approved STG/EML extract file (content/rag/stg-extracts.json) with draft gate",
+    "Owned insert paraphrases (INSERT_LIBRARY) → RAG chunks via src-insert-owned"
   ],
   "pipelineNext": [
     "Expand STG/EML extracts molecule-by-molecule after founder review (still no invented mg)",
-    "Package-insert owned paraphrases as sourceType=insert after review gate",
+    "Expand INSERT_LIBRARY beyond flagships (still owned paraphrases only)",
     "Hosted in-region embedder behind Embedder interface when scale requires",
     "Optional in-region LLM compose that receives ONLY retrieved chunks"
   ]

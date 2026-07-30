@@ -18,4 +18,5 @@ pgvector is wired for production scale.
 **License:** never load SAMF/MIMS/Lexicomp into `rag_chunks` (CHECK constraint + app gate).
 
 **Corpus (in-process):** molecule facts + EN counselling + published interactions +
-`content/rag/stg-extracts.json` (draft extracts never index). See `content/rag/authority-registry.json`.
+`content/rag/stg-extracts.json` + owned insert paraphrases (`INSERT_LIBRARY` / `src-insert-owned`).
+Draft extracts/passages never index. See `content/rag/authority-registry.json`.

@@ -23,6 +23,14 @@
       "reviewerCredential": "Register metadata — product existence only"
     },
     {
+      "id": "src-insert-owned",
+      "citation": "Materia owned educational package-insert paraphrases (not commercial PILs; not SAMF/MIMS)",
+      "sourceType": "insert",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline",
+      "notes": "Original paraphrases only — never reproduce licensed inserts or commercial references"
+    },
+    {
       "id": "src-materia-edu",
       "citation": "Materia original educational authoring (founder-reviewed educational layer)",
       "sourceType": "original_authoring",
