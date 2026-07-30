@@ -1601,6 +1601,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-levonorgestrel",
+    fact: {
+      value:
+        "Progestogen teaching: tablets, implants, and IUSs differ — confirm the labelled product. Materia does not invent a dose, fertility score, or emergency-contraception clock.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-medroxyprogesterone",
+    fact: {
+      value:
+        "Injectable / oral progestogen teaching: Depo and tablets differ — confirm the labelled product. Materia does not invent a dose, injection interval, or bone target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ethinylestradiol",
+    fact: {
+      value:
+        "Synthetic oestrogen teaching: usually part of a combined contraceptive pack — confirm against the labelled product. Materia does not invent a dose, pill clock, or clot score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-norethisterone",
+    fact: {
+      value:
+        "Progestogen teaching: period-delay and contraception uses differ — confirm against the labelled product. Materia does not invent a dose, day-count, or clot score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-brimonidine",
+    fact: {
+      value:
+        "Alpha-2 agonist eye-drop teaching: wait between different eye drops as the labelled product advises. Materia does not invent a drop count, spacing minutes, or intraocular-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-dorzolamide",
+    fact: {
+      value:
+        "Carbonic anhydrase inhibitor eye-drop teaching: sulfa-allergy discussions belong with the pharmacist. Materia does not invent a drop count, spacing minutes, or intraocular-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-liothyronine",
+    fact: {
+      value:
+        "T3 teaching: do not change brand or timing without the clinician — iron/calcium may need separation. Materia does not invent a dose or TSH / free-T3 target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-midazolam",
+    fact: {
+      value:
+        "Benzodiazepine teaching: procedural and home uses differ — alcohol caution is common counselling. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-fentanyl",
+    fact: {
+      value:
+        "Opioid teaching: patches, lozenges, and injections are not interchangeable without advice. Materia does not invent a dose, patch clock, or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-granisetron",
+    fact: {
+      value:
+        "5-HT3 antiemetic teaching: tablets and injections differ — confirm against the labelled product. Materia does not invent a dose, schedule hours, or nausea score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
