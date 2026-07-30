@@ -49,10 +49,11 @@
     "PHC STG/EML 2024 gap triage + Batch D clinic-core scaffolds",
     "PHC Batch E HIV/TB follow-on + Batch F supportive misc scaffolds",
     "Paediatric Hospital STG 2023 gap triage + Batch G ID/neonatal scaffolds",
-    "Paediatric Batches H–I scaffolds (cardio/neuro/endocrine + supportive)"
+    "Paediatric Batches H–I scaffolds (cardio/neuro/endocrine + supportive)",
+    "Deepened counselling v345–v356 for PHC Batch D clinic-core"
   ],
   "pipelineNext": [
-    "Deepened counselling for PHC Batches D–F (then Paeds G–I)",
+    "Deepened counselling for PHC Batches E–F (then Paeds G–I)",
     "Wire real in-region embedder/LLM adapters (chunks-only)",
     "Founder clinical review to publish draft dosing for Batches A–I"
   ]

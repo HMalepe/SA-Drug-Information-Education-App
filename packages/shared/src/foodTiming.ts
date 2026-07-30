@@ -2751,6 +2751,126 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-mebendazole",
+    fact: {
+      value:
+        "Mebendazole teaching: hygiene and household reinfection counselling matter. Materia does not invent a dose, age band, or repeat interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ivermectin",
+    fact: {
+      value:
+        "Ivermectin teaching: follow labelled food guidance — do not invent a meal rule. Materia does not invent a mg/kg dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-nystatin",
+    fact: {
+      value:
+        "Nystatin teaching: keep oral suspension in contact with affected mucosa if the label advises. Materia does not invent a volume or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-benzathine-benzylpenicillin",
+    fact: {
+      value:
+        "Benzathine benzylpenicillin teaching: depot IM clinic medicine — not aqueous penicillin. Materia does not invent an IU dose or interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-griseofulvin",
+    fact: {
+      value:
+        "Griseofulvin teaching: some labels advise fatty food for absorption — follow the product. Materia does not invent a dose or duration.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-chlorhexidine",
+    fact: {
+      value:
+        "Chlorhexidine teaching: do not swallow mouthwash unless the label says otherwise. Materia does not invent a rinse volume.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-nifedipine",
+    fact: {
+      value:
+        "Nifedipine teaching: formulation matters (immediate vs modified release). Materia does not invent a dose or BP threshold.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-methyldopa",
+    fact: {
+      value:
+        "Methyldopa teaching: sedation and dizziness counselling matter in pregnancy hypertension pathways. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mifepristone",
+    fact: {
+      value:
+        "Mifepristone teaching: regulated pathways only — bleeding expectations need clinician briefing. Materia does not invent a dose or gestational cut-off.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ergometrine",
+    fact: {
+      value:
+        "Ergometrine teaching: maternity-facility uterotonic — not home use. Materia does not invent a dose or oxytocin combination.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-promethazine",
+    fact: {
+      value:
+        "Promethazine teaching: sedating antihistamine — avoid alcohol and driving until response is known. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-fosfomycin",
+    fact: {
+      value:
+        "Fosfomycin teaching: dissolve the sachet exactly as labelled. Materia does not invent a sachet dose or course rule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
