@@ -50,18 +50,6 @@ const BATCH = [
   },
 ] as const;
 
-/** Molecules deepened in later batches (6-line scripts override these entries). */
-const DEEPENED_LATER = new Set([
-  "mol-cetirizine",
-  "mol-dolutegravir",
-  "mol-efavirenz",
-  "mol-clopidogrel",
-  "mol-prednisone",
-  "mol-diclofenac",
-  "mol-gliclazide",
-  "mol-allopurinol",
-]);
-
 describe("v90–v99 counselling batch §9", () => {
   for (const { id, enCue } of BATCH) {
     it(`publishes five langs with safety gates for ${id}`, () => {
@@ -69,8 +57,7 @@ describe("v90–v99 counselling batch §9", () => {
       assert.deepEqual(langs.sort(), ["af", "en", "st", "xh", "zu"]);
       const cov = counsellingCoverage(id);
       assert.equal(cov.length, 5);
-      const expectLines = DEEPENED_LATER.has(id) ? 6 : 4;
-      assert.ok(cov.every((c) => c.lineCount === expectLines));
+      assert.ok(cov.every((c) => c.lineCount === 6));
 
       for (const lang of ["en", "zu", "af", "st", "xh"] as const) {
         const script = getCounsellingScript(id, lang);

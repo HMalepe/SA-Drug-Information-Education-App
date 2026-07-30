@@ -27,7 +27,7 @@ describe("v120–v129 counselling batch §9", () => {
       assert.deepEqual(langs.sort(), ["af", "en", "st", "xh", "zu"]);
       const cov = counsellingCoverage(id);
       assert.equal(cov.length, 5);
-      assert.ok(cov.every((c) => c.lineCount === 4));
+      assert.ok(cov.every((c) => c.lineCount === 6));
 
       for (const lang of ["en", "zu", "af", "st", "xh"] as const) {
         const script = getCounsellingScript(id, lang);
