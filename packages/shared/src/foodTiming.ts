@@ -1501,6 +1501,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-tadalafil",
+    fact: {
+      value:
+        "PDE5 teaching: daily and as-needed products differ — never combine with nitrates. Materia does not invent a dose, timing hours, or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-solifenacin",
+    fact: {
+      value:
+        "Antimuscarinic teaching: take as on the labelled product for overactive bladder. Materia does not invent a dose or bladder score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-alfuzosin",
+    fact: {
+      value:
+        "Alpha-blocker teaching: often after the same meal each day — confirm against the labelled product. Materia does not invent a dose or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-benzoyl-peroxide",
+    fact: {
+      value:
+        "Topical acne antibacterial teaching: bleaching of fabrics is common counselling — confirm against the labelled product. Materia does not invent a dose, application clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-adapalene",
+    fact: {
+      value:
+        "Topical retinoid teaching: night use and sun protection are common counselling — confirm against the labelled product. Materia does not invent a dose, application clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tretinoin",
+    fact: {
+      value:
+        "Topical retinoid teaching: pregnancy-avoidance teaching is common for many products — confirm against the labelled product. Materia does not invent a dose, application clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ceftriaxone",
+    fact: {
+      value:
+        "Third-generation cephalosporin teaching: injection technique belongs with the care team. Materia does not invent a dose, infusion clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-vanco",
+    fact: {
+      value:
+        "Glycopeptide teaching: infusion rate and monitoring belong with the care team. Materia does not invent a dose, level target, or infusion clock.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ritonavir",
+    fact: {
+      value:
+        "HIV PK-booster teaching: interaction checks with ALL medicines and herbals are essential. Materia does not invent a dose, interaction list, or viral-load target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-timolol-eye",
+    fact: {
+      value:
+        "Topical beta-blocker eye-drop teaching: wait between different eye drops as the labelled product advises. Materia does not invent a drop count, spacing minutes, or intraocular-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
