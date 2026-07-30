@@ -47,12 +47,13 @@
     "Batch B infectious-disease EML scaffolds (malaria/parasites/hospital antibiotics)",
     "Batch C hospital-chronic EML scaffolds (respiratory/psych/cardio/supportive)",
     "PHC STG/EML 2024 gap triage + Batch D clinic-core scaffolds",
-    "PHC Batch E HIV/TB follow-on + Batch F supportive misc scaffolds"
+    "PHC Batch E HIV/TB follow-on + Batch F supportive misc scaffolds",
+    "Paediatric Hospital STG 2023 gap triage + Batch G ID/neonatal scaffolds"
   ],
   "pipelineNext": [
-    "Paediatric Hospital STG 2023 gap pass",
-    "Deepened counselling for PHC Batches D–F",
+    "Paediatric Batches H–I scaffolds (cardio/neuro/endocrine + supportive)",
+    "Deepened counselling for PHC Batches D–F and Paeds G+",
     "Wire real in-region embedder/LLM adapters (chunks-only)",
-    "Founder clinical review to publish draft dosing for Batches A–F"
+    "Founder clinical review to publish draft dosing for Batches A–G"
   ]
 }

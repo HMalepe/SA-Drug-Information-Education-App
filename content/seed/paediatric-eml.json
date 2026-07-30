@@ -1,0 +1,428 @@
+{
+  "meta": {
+    "therapeuticArea": "paediatric-eml",
+    "note": "Batch G scaffold from Paediatric Hospital STG/EML 2023 gap analysis (ID/neonatal priority). Numeric dosing ABSENT until founder review — paediatric weight-based regimens are high-risk. Educational MOA only. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2023-paediatric-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Hospital Level Paediatric 2023 used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/wp-content/uploads/2023/08/Paediatric-STGs-and-EML-2023-Edition_Final-July-2023-compressed.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-caffeine",
+      "slug": "caffeine",
+      "innName": "Caffeine (citrate)",
+      "className": "Methylxanthine — neonatal respiratory stimulant",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["caffeine citrate", "caffeine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Methylxanthine used in selected neonatal apnoea pathways — educational framing only. Materia does not invent a loading dose, maintenance regimen, or serum-level target; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-cefotaxime",
+      "slug": "cefotaxime",
+      "innName": "Cefotaxime",
+      "className": "Third-generation cephalosporin",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["cefotaxime"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Third-generation cephalosporin used in selected neonatal and paediatric infection pathways — educational framing only. Materia does not invent a mg/kg dose or meningitis regimen; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-ceftazidime",
+      "slug": "ceftazidime",
+      "innName": "Ceftazidime",
+      "className": "Third-generation cephalosporin (antipseudomonal)",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["ceftazidime"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Antipseudomonal cephalosporin used in selected paediatric infection pathways — educational framing only. Materia does not invent a mg/kg dose or combination rule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-amikacin",
+      "slug": "amikacin",
+      "innName": "Amikacin",
+      "className": "Aminoglycoside antibiotic",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["amikacin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Aminoglycoside used in selected neonatal/paediatric and mycobacterial pathways — educational framing only. Nephrotoxicity and ototoxicity risk apply. Materia does not invent a mg/kg dose or level-monitoring interval; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-piperacillin-tazobactam",
+      "slug": "piperacillin-tazobactam",
+      "innName": "Piperacillin/tazobactam",
+      "className": "Antipseudomonal penicillin + beta-lactamase inhibitor",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["pip-tazo", "piperacillin-tazobactam", "Tazocin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Extended-spectrum penicillin with beta-lactamase inhibitor used in selected severe paediatric infection pathways — educational framing only. Materia does not invent a mg/kg dose or infusion schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-flucytosine",
+      "slug": "flucytosine",
+      "innName": "Flucytosine",
+      "className": "Antifungal — pyrimidine analogue",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["5-FC", "flucytosine", "5-fluorocytosine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Pyrimidine-analogue antifungal used in selected cryptococcal and candidal pathways, often in combination — educational framing only. Materia does not invent a dose or therapeutic-drug-monitoring target; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-primaquine",
+      "slug": "primaquine",
+      "innName": "Primaquine",
+      "className": "8-aminoquinoline antimalarial",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["primaquine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "8-aminoquinoline antimalarial used for selected radical-cure and gametocyte pathways — educational framing only. G6PD status matters clinically. Materia does not invent a mg/kg dose or course length; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-miconazole",
+      "slug": "miconazole",
+      "innName": "Miconazole",
+      "className": "Imidazole antifungal",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["miconazole"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Imidazole antifungal used in selected topical and mucosal Candida pathways — educational framing only. Materia does not invent an application schedule or oral-gel regimen; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-levofloxacin",
+      "slug": "levofloxacin",
+      "innName": "Levofloxacin",
+      "className": "Fluoroquinolone antibiotic",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["levofloxacin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Fluoroquinolone used in selected paediatric infection and DR-TB pathways under specialist guidance — educational framing only. Materia does not invent a mg/kg dose or arthropathy-risk rule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-dapsone",
+      "slug": "dapsone",
+      "innName": "Dapsone",
+      "className": "Sulfone antimicrobial / anti-inflammatory",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["dapsone"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Sulfone used in selected leprosy, dermatitis herpetiformis, and PCP-prophylaxis contexts — educational framing only. Haemolysis risk in G6PD deficiency applies. Materia does not invent a dose; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-ethionamide",
+      "slug": "ethionamide",
+      "innName": "Ethionamide",
+      "className": "Second-line antimycobacterial",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["ethionamide", "ETH"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Second-line antimycobacterial used in selected drug-resistant TB regimens — educational framing only. Materia does not invent a mg/kg dose or hepatotoxicity-monitoring interval; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-ganciclovir",
+      "slug": "ganciclovir",
+      "innName": "Ganciclovir",
+      "className": "Antiviral — CMV nucleoside analogue",
+      "therapeuticArea": "paediatric-eml",
+      "synonyms": ["ganciclovir"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Nucleoside-analogue antiviral used in selected cytomegalovirus pathways — educational framing only. Myelosuppression risk applies. Materia does not invent a dose or induction/maintenance schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-caffeine",
+      "moleculeId": "mol-caffeine",
+      "dosingAdult": {
+        "value": "Neonatal/paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a loading dose or serum-level target.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Neonatal caffeine use requires hospital-level monitoring capability — Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-cefotaxime",
+      "moleculeId": "mol-cefotaxime",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or meningitis regimen.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-ceftazidime",
+      "moleculeId": "mol-ceftazidime",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-amikacin",
+      "moleculeId": "mol-amikacin",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or level-monitoring interval.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Aminoglycosides carry nephrotoxicity and ototoxicity risk — monitoring is clinician-led. Materia does not invent level targets.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-piperacillin-tazobactam",
+      "moleculeId": "mol-piperacillin-tazobactam",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or infusion schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-flucytosine",
+      "moleculeId": "mol-flucytosine",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a dose or TDM target.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-primaquine",
+      "moleculeId": "mol-primaquine",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or course length.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "G6PD status affects primaquine safety — screening and counselling are clinician-led. Materia does not invent a testing algorithm.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-miconazole",
+      "moleculeId": "mol-miconazole",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent an application schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-levofloxacin",
+      "moleculeId": "mol-levofloxacin",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-dapsone",
+      "moleculeId": "mol-dapsone",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-ethionamide",
+      "moleculeId": "mol-ethionamide",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-ganciclovir",
+      "moleculeId": "mol-ganciclovir",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent an induction or maintenance schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Ganciclovir can cause myelosuppression — monitoring is clinician-led. Materia does not invent lab thresholds.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ]
+}

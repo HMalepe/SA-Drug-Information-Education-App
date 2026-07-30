@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "STG/EML Paediatric Hospital 2023 — Materia seed gap triage",
+    "edition": "Hospital Level (Paediatric) — 2023 Edition (5th)",
+    "sourceUrl": "https://www.health.gov.za/wp-content/uploads/2023/08/Paediatric-STGs-and-EML-2023-Edition_Final-July-2023-compressed.pdf",
+    "comparedAt": "2026-07-30",
+    "note": "Coverage triage only. Do NOT copy numeric doses from the PDF into Materia. Publish clinical values only after founder review with source + review gate. Paediatric dosing is especially high-risk — draft gate mandatory.",
+    "seedMoleculeCountAtCompare": 319,
+    "limitations": [
+      "Paediatric Hospital 2023 PDF used as coverage pointer — PHC and Adult Hospital are separate gap sources",
+      "Name extraction can include class headings and blood products; priority list is curated",
+      "Neonatal and weight-based regimens must never be invented from model knowledge",
+      "Some medicines already scaffolded via Hospital Adults / PHC batches (e.g. artesunate, mebendazole)"
+    ]
+  },
+  "alreadyCoveredAliases": [
+    { "indexName": "Benzylpenicillin", "materiaId": "mol-benzylpenicillin", "materiaInn": "Benzylpenicillin" },
+    { "indexName": "Ceftriaxone", "materiaId": "mol-ceftriaxone", "materiaInn": "Ceftriaxone" },
+    { "indexName": "Gentamicin", "materiaId": "mol-genta", "materiaInn": "Gentamicin" },
+    { "indexName": "Aciclovir (eye)", "materiaId": "mol-aciclovir-eye", "materiaInn": "Aciclovir (ophthalmic)" },
+    { "indexName": "Vitamin K", "materiaId": "mol-phytomenadione", "materiaInn": "Phytomenadione" }
+  ],
+  "outOfMoleculeScope": [
+    "Blood products (packed red cells, FFP, albumin, factor concentrates)",
+    "Surfactant as a class without a single INN page decision",
+    "Oral rehydration solution / homemade SSS as a product page",
+    "Therapeutic class headings without a single INN"
+  ],
+  "priorityMissingBatches": {
+    "G_paeds_id_neonatal": [
+      "caffeine",
+      "cefotaxime",
+      "ceftazidime",
+      "amikacin",
+      "piperacillin-tazobactam",
+      "flucytosine",
+      "primaquine",
+      "miconazole",
+      "levofloxacin",
+      "dapsone",
+      "ethionamide",
+      "ganciclovir"
+    ],
+    "H_paeds_cardio_neuro_endocrine": [
+      "propranolol",
+      "captopril",
+      "clonazepam",
+      "methylphenidate",
+      "olanzapine",
+      "glucagon",
+      "mannitol",
+      "calcitriol",
+      "aminophylline",
+      "dopamine",
+      "dobutamine",
+      "octreotide"
+    ],
+    "I_paeds_supportive_misc": [
+      "zinc-sulfate",
+      "sodium-bicarbonate",
+      "silver-sulfadiazine",
+      "valganciclovir",
+      "rifabutin",
+      "macrogol",
+      "sulfadiazine"
+    ]
+  },
+  "scaffoldedBatches": {
+    "G_paeds_id_neonatal": [
+      "mol-caffeine",
+      "mol-cefotaxime",
+      "mol-ceftazidime",
+      "mol-amikacin",
+      "mol-piperacillin-tazobactam",
+      "mol-flucytosine",
+      "mol-primaquine",
+      "mol-miconazole",
+      "mol-levofloxacin",
+      "mol-dapsone",
+      "mol-ethionamide",
+      "mol-ganciclovir"
+    ]
+  }
+}
