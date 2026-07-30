@@ -43,11 +43,12 @@
     "Owned insert paraphrases (INSERT_LIBRARY) → RAG chunks via src-insert-owned",
     "GroundedComposer interface (template default; LLM must receive chunks only)",
     "Hosted in-region embedder stub (refuses offshore silent fallback)",
-    "Hospital Adults STG/EML 2019 index gap triage + Batch A emergency scaffolds"
+    "Hospital Adults STG/EML 2019 index gap triage + Batch A emergency scaffolds",
+    "Batch B infectious-disease EML scaffolds (malaria/parasites/hospital antibiotics)"
   ],
   "pipelineNext": [
-    "Batch B scaffolds (malaria/parasites/hospital antibiotics) from gap file",
-    "Multilingual counselling for emergency-supportive Batch A",
+    "Batch C scaffolds (hospital chronic/psych/respiratory/supportive gaps)",
+    "Multilingual counselling for Batches A–B",
     "PHC + Paediatric STG gap passes (separate PDFs)",
     "Wire real in-region embedder/LLM adapters (chunks-only)"
   ]

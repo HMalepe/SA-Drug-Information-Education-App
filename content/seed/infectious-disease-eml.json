@@ -1,0 +1,314 @@
+{
+  "meta": {
+    "therapeuticArea": "infectious-disease-eml",
+    "note": "Batch B scaffold from Hospital Adults STG/EML 2019 index gap analysis (malaria, parasites, hospital antibiotics). Numeric dosing ABSENT until founder review. Educational MOA only — never copied from commercial references. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2019-hospital-adults-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Hospital Level Adults 2019 index used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://pmhp.za.org/wp-content/uploads/standard-treatment-guidelines-and-essential-medicines-list-for-south-africa.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-artesunate",
+      "slug": "artesunate",
+      "innName": "Artesunate",
+      "className": "Artemisinin derivative — antimalarial",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["artesunate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Artemisinin-class antimalarial used in severe malaria pathways — educational framing only. Materia does not invent a dose, route sequence, or step-down schedule; confirm against current SA STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-artemether-lumefantrine",
+      "slug": "artemether-lumefantrine",
+      "innName": "Artemether/lumefantrine",
+      "className": "Artemisinin combination therapy (ACT)",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["coartem", "AL", "artemether-lumefantrine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Fixed-dose ACT used in uncomplicated falciparum malaria pathways — educational framing only. Materia does not invent weight-band doses, food timing hours, or course length; confirm against current SA STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-albendazole",
+      "slug": "albendazole",
+      "innName": "Albendazole",
+      "className": "Benzimidazole anthelmintic",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["albendazole"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Benzimidazole anthelmintic used against selected helminth infections — educational framing only. Materia does not invent a dose, duration, or pregnancy rule; confirm against current SA STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-praziquantel",
+      "slug": "praziquantel",
+      "innName": "Praziquantel",
+      "className": "Anthelmintic — pyrazinoisoquinoline",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["praziquantel", "biltricide"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Anthelmintic used in schistosomiasis and selected cestode pathways — educational framing only. Materia does not invent a mg/kg dose or food-timing rule; confirm against current SA STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-amphotericin-b",
+      "slug": "amphotericin-b",
+      "innName": "Amphotericin B",
+      "className": "Polyene antifungal",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["amphotericin", "amphotericin B"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Polyene antifungal used in serious fungal and selected opportunistic infection pathways — educational framing only. Formulation matters (conventional vs lipid); Materia does not invent a dose, premedication, or monitoring schedule.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-ampicillin",
+      "slug": "ampicillin",
+      "innName": "Ampicillin",
+      "className": "Aminopenicillin antibiotic",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["ampicillin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Beta-lactam antibiotic that inhibits bacterial cell-wall synthesis — hospital EML workhorse for selected infections. Educational framing only; Materia does not invent a dose, interval, or duration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-cefazolin",
+      "slug": "cefazolin",
+      "innName": "Cefazolin",
+      "className": "First-generation cephalosporin",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["cefazolin", "cephazolin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "First-generation cephalosporin used in selected infections and surgical-prophylaxis contexts — educational framing only. Materia does not invent a dose, redosing interval, or allergy algorithm.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-benzylpenicillin",
+      "slug": "benzylpenicillin",
+      "innName": "Benzylpenicillin",
+      "className": "Natural penicillin",
+      "therapeuticArea": "infectious-disease-eml",
+      "synonyms": ["penicillin G", "benzylpenicillin", "pen G"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Natural penicillin inhibiting bacterial cell-wall synthesis — classic EML agent for selected susceptible infections. Educational framing only; Materia does not invent a dose, unit schedule, or infusion rate.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-artesunate",
+      "moleculeId": "mol-artesunate",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML (malaria pathways) and the labelled product. Materia will not invent a dose or step-down schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Severe malaria is a medical emergency — escalate to capable clinical care. Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-artemether-lumefantrine",
+      "moleculeId": "mol-artemether-lumefantrine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent weight bands, food-timing hours, or course length.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-albendazole",
+      "moleculeId": "mol-albendazole",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose or duration.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-praziquantel",
+      "moleculeId": "mol-praziquantel",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a mg/kg dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-amphotericin-b",
+      "moleculeId": "mol-amphotericin-b",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product for the specific formulation. Materia will not invent a dose, premedication, or potassium/magnesium monitoring schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Formulation (conventional vs lipid) changes risk profile — confirm the product in hand. Materia does not invent infusion rates.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-ampicillin",
+      "moleculeId": "mol-ampicillin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose, interval, or duration.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Confirm penicillin allergy history before supply. Materia does not invent desensitisation protocols.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-cefazolin",
+      "moleculeId": "mol-cefazolin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a prophylaxis redosing interval.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-benzylpenicillin",
+      "moleculeId": "mol-benzylpenicillin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent unit doses or infusion rates.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Confirm penicillin allergy history before supply. Materia does not invent desensitisation protocols.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ],
+  "interactions": [],
+  "priceRecords": [],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": []
+}

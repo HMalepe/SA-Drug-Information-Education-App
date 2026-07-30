@@ -14,6 +14,8 @@ describe("STG/EML 2019 hospital adults gap triage", () => {
     assert.match(gap.meta.edition, /2019/i);
     assert.ok(gap.priorityMissingBatches.A_emergency_antidotes.includes("naloxone"));
     assert.ok(gap.priorityMissingBatches.B_id_malaria_parasites_abx.includes("artesunate"));
+    assert.equal(gap.scaffoldedBatches.A_emergency_antidotes.length, 7);
+    assert.equal(gap.scaffoldedBatches.B_id_malaria_parasites_abx.length, 8);
     const blob = JSON.stringify(gap);
     assert.ok(!/\d+\s*mg\b/i.test(blob));
   });
@@ -31,6 +33,29 @@ describe("STG/EML 2019 hospital adults gap triage", () => {
       "mol-activated-charcoal",
       "mol-calcium-gluconate",
       "mol-magnesium-sulfate",
+    ]) {
+      assert.ok(ids.includes(id), `missing ${id}`);
+    }
+    for (const s of seed.safetyProfiles) {
+      assert.equal(s.dosingAdult.publishState, "draft");
+      assert.match(s.dosingAdult.value, /not publish|will not invent/i);
+    }
+  });
+
+  it("scaffolds Batch B infectious-disease EML molecules with draft dosing only", () => {
+    const seed = JSON.parse(
+      readFileSync(join(root, "content/seed/infectious-disease-eml.json"), "utf8"),
+    );
+    const ids = seed.molecules.map((m: { id: string }) => m.id);
+    for (const id of [
+      "mol-artesunate",
+      "mol-artemether-lumefantrine",
+      "mol-albendazole",
+      "mol-praziquantel",
+      "mol-amphotericin-b",
+      "mol-ampicillin",
+      "mol-cefazolin",
+      "mol-benzylpenicillin",
     ]) {
       assert.ok(ids.includes(id), `missing ${id}`);
     }

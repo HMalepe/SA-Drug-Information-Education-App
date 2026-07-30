@@ -62,5 +62,26 @@
       "oseltamivir",
       "misoprostol"
     ]
+  },
+  "scaffoldedBatches": {
+    "A_emergency_antidotes": [
+      "mol-adrenaline",
+      "mol-atropine",
+      "mol-naloxone",
+      "mol-acetylcysteine",
+      "mol-activated-charcoal",
+      "mol-calcium-gluconate",
+      "mol-magnesium-sulfate"
+    ],
+    "B_id_malaria_parasites_abx": [
+      "mol-artesunate",
+      "mol-artemether-lumefantrine",
+      "mol-albendazole",
+      "mol-praziquantel",
+      "mol-amphotericin-b",
+      "mol-ampicillin",
+      "mol-cefazolin",
+      "mol-benzylpenicillin"
+    ]
   }
 }

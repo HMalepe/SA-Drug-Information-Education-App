@@ -171,6 +171,54 @@
       "publishState": "published",
       "lastReviewed": "2026-07-30",
       "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-artesunate-malaria-pointer",
+      "moleculeId": "mol-artesunate",
+      "moleculeSlug": "artesunate",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "malaria-pointer",
+      "text": "Artesunate appears in South African adult hospital severe-malaria pathways. Materia does not invent a dose, route sequence, or oral step-down schedule — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-artemether-lumefantrine-pointer",
+      "moleculeId": "mol-artemether-lumefantrine",
+      "moleculeSlug": "artemether-lumefantrine",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "malaria-pointer",
+      "text": "Artemether/lumefantrine appears in South African uncomplicated malaria pathways. Materia does not invent weight-band doses, food-timing hours, or course length — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-ampicillin-hospital-pointer",
+      "moleculeId": "mol-ampicillin",
+      "moleculeSlug": "ampicillin",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "antibiotic-pointer",
+      "text": "Ampicillin appears in South African adult hospital antibiotic pathways for selected infections. Materia does not invent a dose, interval, or duration — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-amphotericin-b-pointer",
+      "moleculeId": "mol-amphotericin-b",
+      "moleculeSlug": "amphotericin-b",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "antifungal-pointer",
+      "text": "Amphotericin B appears in South African adult hospital pathways for serious fungal and selected opportunistic infections. Formulation matters; Materia does not invent a dose, premedication, or monitoring schedule — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
     }
   ]
 }
