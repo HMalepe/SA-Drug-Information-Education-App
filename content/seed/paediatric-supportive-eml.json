@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "therapeuticArea": "paediatric-supportive-eml",
+    "note": "Batch I scaffold from Paediatric Hospital STG/EML 2023 gap analysis (supportive misc). Numeric dosing ABSENT until founder review — paediatric weight-based regimens are high-risk. Educational MOA only. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2023-paediatric-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Hospital Level Paediatric 2023 used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/wp-content/uploads/2023/08/Paediatric-STGs-and-EML-2023-Edition_Final-July-2023-compressed.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-zinc-sulfate",
+      "slug": "zinc-sulfate",
+      "innName": "Zinc sulfate (elemental zinc)",
+      "className": "Trace element / mineral",
+      "therapeuticArea": "paediatric-supportive-eml",
+      "synonyms": ["zinc sulphate", "zinc sulfate", "elemental zinc"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Elemental zinc used in selected paediatric diarrhoea and deficiency pathways — educational framing only. Materia does not invent an elemental-mg dose or course length; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-sodium-bicarbonate",
+      "slug": "sodium-bicarbonate",
+      "innName": "Sodium bicarbonate",
+      "className": "Alkalinising agent / electrolyte",
+      "therapeuticArea": "paediatric-supportive-eml",
+      "synonyms": ["NaHCO3", "sodium bicarbonate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Alkalinising salt used in selected metabolic acidosis and urinary-alkalinisation contexts — educational framing only. Materia does not invent a mmol/kg dose or infusion rate; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-silver-sulfadiazine",
+      "slug": "silver-sulfadiazine",
+      "innName": "Silver sulfadiazine",
+      "className": "Topical sulfonamide antiseptic",
+      "therapeuticArea": "paediatric-supportive-eml",
+      "synonyms": ["silver sulphadiazine", "SSD", "silver sulfadiazine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Topical sulfonamide antiseptic used in selected burn-wound pathways — educational framing only. Materia does not invent an application thickness or dressing schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-valganciclovir",
+      "slug": "valganciclovir",
+      "innName": "Valganciclovir",
+      "className": "Antiviral — CMV (oral prodrug of ganciclovir)",
+      "therapeuticArea": "paediatric-supportive-eml",
+      "synonyms": ["valganciclovir", "VGCV"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Oral prodrug of ganciclovir used in selected paediatric CMV pathways — educational framing only. Myelosuppression risk applies. Materia does not invent a mg/kg dose or induction/maintenance switch; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-rifabutin",
+      "slug": "rifabutin",
+      "innName": "Rifabutin",
+      "className": "Rifamycin antimycobacterial",
+      "therapeuticArea": "paediatric-supportive-eml",
+      "synonyms": ["rifabutin"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Rifamycin antimycobacterial used in selected MAC and TB-adjacent pathways — educational framing only. Drug-interaction burden is high. Materia does not invent a dose or interaction list; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-macrogol",
+      "slug": "macrogol",
+      "innName": "Macrogol (polyethylene glycol)",
+      "className": "Osmotic laxative",
+      "therapeuticArea": "paediatric-supportive-eml",
+      "synonyms": ["polyethylene glycol", "PEG", "macrogol", "PEG 3350"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Osmotic laxative used in selected paediatric constipation pathways — educational framing only. Materia does not invent a sachet dose or disimpaction schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-sulfadiazine",
+      "slug": "sulfadiazine",
+      "innName": "Sulfadiazine",
+      "className": "Sulfonamide antimicrobial",
+      "therapeuticArea": "paediatric-supportive-eml",
+      "synonyms": ["sulphadiazine", "sulfadiazine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Sulfonamide used in selected toxoplasmosis combination pathways — educational framing only. Materia does not invent a mg/kg dose or pyrimethamine pairing rule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-zinc-sulfate",
+      "moleculeId": "mol-zinc-sulfate",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent an elemental-mg dose or course length.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-sodium-bicarbonate",
+      "moleculeId": "mol-sodium-bicarbonate",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mmol/kg dose or infusion rate.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-silver-sulfadiazine",
+      "moleculeId": "mol-silver-sulfadiazine",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent an application thickness or dressing schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-valganciclovir",
+      "moleculeId": "mol-valganciclovir",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or induction/maintenance switch.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Valganciclovir can cause myelosuppression — monitoring is clinician-led. Materia does not invent lab thresholds.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-rifabutin",
+      "moleculeId": "mol-rifabutin",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a dose or interaction list.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-macrogol",
+      "moleculeId": "mol-macrogol",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a sachet dose or disimpaction schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-sulfadiazine",
+      "moleculeId": "mol-sulfadiazine",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or pyrimethamine pairing rule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ]
+}

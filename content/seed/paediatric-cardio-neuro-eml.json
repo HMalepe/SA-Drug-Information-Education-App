@@ -1,0 +1,428 @@
+{
+  "meta": {
+    "therapeuticArea": "paediatric-cardio-neuro-eml",
+    "note": "Batch H scaffold from Paediatric Hospital STG/EML 2023 gap analysis (cardio/neuro/endocrine). Numeric dosing ABSENT until founder review — paediatric weight-based regimens are high-risk. Educational MOA only. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2023-paediatric-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Hospital Level Paediatric 2023 used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/wp-content/uploads/2023/08/Paediatric-STGs-and-EML-2023-Edition_Final-July-2023-compressed.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-propranolol",
+      "slug": "propranolol",
+      "innName": "Propranolol",
+      "className": "Non-selective beta-blocker",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["propranolol"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Non-selective beta-blocker used in selected paediatric hypertension, arrhythmia, migraine, and infantile haemangioma contexts — educational framing only. Materia does not invent a mg/kg dose or titration schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-captopril",
+      "slug": "captopril",
+      "innName": "Captopril",
+      "className": "ACE inhibitor",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["captopril"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "ACE inhibitor used in selected paediatric hypertension and heart-failure pathways — educational framing only. Materia does not invent a mg/kg dose or renal monitoring interval; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-clonazepam",
+      "slug": "clonazepam",
+      "innName": "Clonazepam",
+      "className": "Benzodiazepine anticonvulsant",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["clonazepam"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Benzodiazepine used in selected paediatric epilepsy and anxiety pathways — educational framing only. Sedation and dependence risk apply. Materia does not invent a mg/kg dose or taper schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-methylphenidate",
+      "slug": "methylphenidate",
+      "innName": "Methylphenidate",
+      "className": "CNS stimulant — ADHD",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["methylphenidate", "MPH"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "CNS stimulant used in selected ADHD pathways under specialist-aware prescribing — educational framing only. Materia does not invent a dose, formulation switch rule, or growth-monitoring interval; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-olanzapine",
+      "slug": "olanzapine",
+      "innName": "Olanzapine",
+      "className": "Atypical antipsychotic",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["olanzapine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Atypical antipsychotic used in selected adolescent mental-health pathways — educational framing only. Metabolic adverse effects apply. Materia does not invent a dose or metabolic-monitoring schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-glucagon",
+      "slug": "glucagon",
+      "innName": "Glucagon",
+      "className": "Hyperglycaemic hormone / antidote adjunct",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["glucagon"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Peptide hormone used in selected severe hypoglycaemia pathways — educational framing only. Materia does not invent a dose, route, or age-band kit rule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-mannitol",
+      "slug": "mannitol",
+      "innName": "Mannitol",
+      "className": "Osmotic diuretic",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["mannitol"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Osmotic diuretic used in selected raised-ICP and renal contexts — educational framing only. Materia does not invent a gram dose, infusion rate, or osmolarity threshold; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-calcitriol",
+      "slug": "calcitriol",
+      "innName": "Calcitriol",
+      "className": "Active vitamin D analogue",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["1,25-dihydroxyvitamin D3", "calcitriol"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Active vitamin D analogue used in selected hypocalcaemia and renal-bone pathways — educational framing only. Materia does not invent a microgram dose or calcium-monitoring interval; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-aminophylline",
+      "slug": "aminophylline",
+      "innName": "Aminophylline",
+      "className": "Methylxanthine bronchodilator",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["aminophylline", "theophylline ethylenediamine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Methylxanthine used in selected paediatric asthma/bronchospasm pathways — educational framing only. Narrow therapeutic index. Materia does not invent a loading dose or serum-level target; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-dopamine",
+      "slug": "dopamine",
+      "innName": "Dopamine",
+      "className": "Catecholamine inotrope / vasopressor",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["dopamine", "dopamine hydrochloride"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Catecholamine used in selected paediatric shock pathways — educational framing only. Materia does not invent a mcg/kg/min infusion rate or titration algorithm; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-dobutamine",
+      "slug": "dobutamine",
+      "innName": "Dobutamine",
+      "className": "Inotropic catecholamine",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["dobutamine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Inotropic catecholamine used in selected paediatric cardiogenic-support pathways — educational framing only. Materia does not invent a mcg/kg/min infusion rate; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-octreotide",
+      "slug": "octreotide",
+      "innName": "Octreotide",
+      "className": "Somatostatin analogue",
+      "therapeuticArea": "paediatric-cardio-neuro-eml",
+      "synonyms": ["octreotide"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Somatostatin analogue used in selected paediatric secretory-diarrhoea and endocrine pathways — educational framing only. Materia does not invent a dose or infusion schedule; confirm against current SA Paediatric STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-propranolol",
+      "moleculeId": "mol-propranolol",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or titration schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-captopril",
+      "moleculeId": "mol-captopril",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-clonazepam",
+      "moleculeId": "mol-clonazepam",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mg/kg dose or taper schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Benzodiazepines cause sedation and dependence risk — counselling is clinician-led. Materia does not invent a stop/taper protocol.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-methylphenidate",
+      "moleculeId": "mol-methylphenidate",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a dose or formulation switch rule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "ADHD stimulants require specialist-aware prescribing and monitoring — Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-olanzapine",
+      "moleculeId": "mol-olanzapine",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a dose or metabolic-monitoring schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-glucagon",
+      "moleculeId": "mol-glucagon",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a dose or age-band kit rule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-mannitol",
+      "moleculeId": "mol-mannitol",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a gram dose or osmolarity threshold.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-calcitriol",
+      "moleculeId": "mol-calcitriol",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a microgram dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-aminophylline",
+      "moleculeId": "mol-aminophylline",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a loading dose or serum-level target.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Methylxanthines have a narrow therapeutic index — level interpretation is clinician-led. Materia does not invent targets.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-dopamine",
+      "moleculeId": "mol-dopamine",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mcg/kg/min infusion rate.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Vasopressor/inotrope infusions require critical-care capability — Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-dobutamine",
+      "moleculeId": "mol-dobutamine",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a mcg/kg/min infusion rate.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-octreotide",
+      "moleculeId": "mol-octreotide",
+      "dosingAdult": {
+        "value": "Paediatric dosing not published in Materia — confirm against current DoH Paediatric STG/EML and the labelled product. Materia will not invent a dose or infusion schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ]
+}

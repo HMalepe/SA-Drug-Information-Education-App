@@ -79,6 +79,29 @@
       "mol-dapsone",
       "mol-ethionamide",
       "mol-ganciclovir"
+    ],
+    "H_paeds_cardio_neuro_endocrine": [
+      "mol-propranolol",
+      "mol-captopril",
+      "mol-clonazepam",
+      "mol-methylphenidate",
+      "mol-olanzapine",
+      "mol-glucagon",
+      "mol-mannitol",
+      "mol-calcitriol",
+      "mol-aminophylline",
+      "mol-dopamine",
+      "mol-dobutamine",
+      "mol-octreotide"
+    ],
+    "I_paeds_supportive_misc": [
+      "mol-zinc-sulfate",
+      "mol-sodium-bicarbonate",
+      "mol-silver-sulfadiazine",
+      "mol-valganciclovir",
+      "mol-rifabutin",
+      "mol-macrogol",
+      "mol-sulfadiazine"
     ]
   }
 }
