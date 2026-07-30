@@ -319,10 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v190–v199 (<code>eplerenone</code>,{" "}
-          <code>mefenamic acid</code>, <code>sildenafil</code>, <code>oxybutynin</code>,{" "}
-          <code>insulin human</code>, <code>mometasone</code>, <code>salmeterol</code>,{" "}
-          <code>propylthiouracil</code>…) — 6-line scripts. Locum accepts <code>?lang=zu</code>{" "}
+          Published SA counselling: deepened v200–v209 (<code>heparin</code>,{" "}
+          <code>morphine</code>, <code>tranexamic acid</code>, <code>doxazosin</code>,{" "}
+          <code>colecalciferol</code>, <code>latanoprost</code>, <code>gentamicin</code>,{" "}
+          <code>mupirocin</code>…) — 6-line scripts. Locum accepts <code>?lang=zu</code>{" "}
           (af/st/xh too).
         </p>{" "}
         <button

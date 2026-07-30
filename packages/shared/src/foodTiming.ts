@@ -1301,6 +1301,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-heparin",
+    fact: {
+      value:
+        "UFH teaching: injection technique and monitoring belong with the care team. Materia does not invent a dose, aPTT target, or injection schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-morphine",
+    fact: {
+      value:
+        "Opioid teaching: alcohol and other sedatives may worsen breathing risk — confirm against the labelled product. Materia does not invent a dose or titration schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tranexamic-acid",
+    fact: {
+      value:
+        "Antifibrinolytic teaching: heavy-period courses are common counselling — confirm the labelled window. Materia does not invent a dose, day-count, or bleed score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-doxazosin",
+    fact: {
+      value:
+        "Alpha-blocker teaching: first-dose dizziness is common counselling — confirm against the labelled product. Materia does not invent a dose or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-colecalciferol",
+    fact: {
+      value:
+        "Vitamin D3 teaching: daily and weekly products differ — confirm against the labelled product. Materia does not invent a dose, IU count, or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-calcium-carbonate",
+    fact: {
+      value:
+        "Calcium salt teaching: with food is common counselling for many products — confirm against the labelled product. Materia does not invent a dose, elemental-calcium target, or spacing hours.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-hydrocortisone",
+    fact: {
+      value:
+        "Mild topical corticosteroid teaching: thin layer to affected skin only — confirm against the labelled product. Materia does not invent a finger-tip unit count or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-latanoprost",
+    fact: {
+      value:
+        "Prostaglandin eye-drop teaching: wait between different eye drops as the labelled product advises. Materia does not invent a drop count, spacing minutes, or intraocular-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-genta",
+    fact: {
+      value:
+        "Aminoglycoside teaching: injection and topical/eye forms differ — confirm the labelled product. Materia does not invent a dose, level target, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mupirocin",
+    fact: {
+      value:
+        "Topical antibiotic teaching: thin layer to the affected area — confirm against the labelled product. Materia does not invent a dose, application clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

@@ -10,6 +10,7 @@ import { COUNSELLING_V160_TO_V169 } from "./counsellingV160V169.js";
 import { COUNSELLING_V170_TO_V179 } from "./counsellingV170V179.js";
 import { COUNSELLING_V180_TO_V189 } from "./counsellingV180V189.js";
 import { COUNSELLING_V190_TO_V199 } from "./counsellingV190V199.js";
+import { COUNSELLING_V200_TO_V209 } from "./counsellingV200V209.js";
 
 export type CounsellingLang = "en" | "zu" | "af" | "st" | "xh";
 
@@ -1185,6 +1186,7 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
   ...COUNSELLING_V170_TO_V179,
   ...COUNSELLING_V180_TO_V189,
   ...COUNSELLING_V190_TO_V199,
+  ...COUNSELLING_V200_TO_V209,
 };
 
 export function getCounsellingScript(
