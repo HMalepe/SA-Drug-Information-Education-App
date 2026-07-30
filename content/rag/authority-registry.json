@@ -42,11 +42,13 @@
     "Founder-approved STG/EML extract file with draft gate",
     "Owned insert paraphrases (INSERT_LIBRARY) → RAG chunks via src-insert-owned",
     "GroundedComposer interface (template default; LLM must receive chunks only)",
-    "Hosted in-region embedder stub (refuses offshore silent fallback)"
+    "Hosted in-region embedder stub (refuses offshore silent fallback)",
+    "Hospital Adults STG/EML 2019 index gap triage + Batch A emergency scaffolds"
   ],
   "pipelineNext": [
-    "Wire real in-region embedder HTTP adapter when endpoint exists",
-    "Wire in-region LLM adapter implementing GroundedComposer (chunks-only prompt)",
-    "Continue STG/insert expansion after founder review (still no invented mg)"
+    "Batch B scaffolds (malaria/parasites/hospital antibiotics) from gap file",
+    "Multilingual counselling for emergency-supportive Batch A",
+    "PHC + Paediatric STG gap passes (separate PDFs)",
+    "Wire real in-region embedder/LLM adapters (chunks-only)"
   ]
 }

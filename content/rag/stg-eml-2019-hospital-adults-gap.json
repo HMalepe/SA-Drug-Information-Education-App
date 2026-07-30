@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "title": "STG/EML Hospital Adults 2019 — Materia seed gap triage",
+    "edition": "Hospital Level, Adults — 2019 Edition",
+    "sourceUrl": "https://pmhp.za.org/wp-content/uploads/standard-treatment-guidelines-and-essential-medicines-list-for-south-africa.pdf",
+    "comparedAt": "2026-07-30",
+    "note": "Coverage triage only. Do NOT copy numeric doses from the PDF into Materia. Publish clinical values only after founder review with source + review gate.",
+    "seedMoleculeCount": 261,
+    "indexEntryCountApprox": 419,
+    "matchedApprox": 149,
+    "missingApprox": 212,
+    "limitations": [
+      "This PDF is Hospital Adults 2019 only — PHC and Paediatric STGs are separate gap sources",
+      "Index OCR/line-wrap creates some false entries; priority list is curated",
+      "Class headings (ACE-inhibitors, β-blockers) are not molecule pages"
+    ]
+  },
+  "alreadyCoveredAliases": [
+    { "indexName": "Aspirin", "materiaId": "mol-aspirin", "materiaInn": "Acetylsalicylic acid" },
+    { "indexName": "Unfractionated heparin", "materiaId": "mol-heparin", "materiaInn": "Heparin (unfractionated)" },
+    { "indexName": "Alendronic acid", "materiaId": "mol-alendronate", "materiaInn": "Alendronate" }
+  ],
+  "outOfMoleculeScope": [
+    "Blood products and crystalloids (RBC, Ringer Lactate, sodium chloride irrigation)",
+    "Immunoglobulins (Anti-D, hepatitis B, tetanus, varicella-zoster)",
+    "Therapeutic class headings without a single INN"
+  ],
+  "priorityMissingBatches": {
+    "A_emergency_antidotes": [
+      "adrenaline",
+      "atropine",
+      "naloxone",
+      "acetylcysteine",
+      "activated-charcoal",
+      "calcium-gluconate",
+      "magnesium-sulfate"
+    ],
+    "B_id_malaria_parasites_abx": [
+      "artesunate",
+      "artemether-lumefantrine",
+      "albendazole",
+      "praziquantel",
+      "amphotericin-b",
+      "ampicillin",
+      "cefazolin",
+      "benzylpenicillin"
+    ],
+    "C_hospital_chronic_gaps": [
+      "beclomethasone",
+      "ipratropium",
+      "glibenclamide",
+      "amiodarone",
+      "adenosine",
+      "nevirapine",
+      "atazanavir",
+      "chlorpromazine",
+      "clozapine",
+      "phenobarbital",
+      "potassium-chloride",
+      "thiamine",
+      "pyridoxine",
+      "oseltamivir",
+      "misoprostol"
+    ]
+  }
+}

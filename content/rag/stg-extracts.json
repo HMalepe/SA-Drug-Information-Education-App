@@ -123,6 +123,54 @@
       "publishState": "published",
       "lastReviewed": "2026-07-30",
       "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-adrenaline-emergency-pointer",
+      "moleculeId": "mol-adrenaline",
+      "moleculeSlug": "adrenaline",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "emergency-pointer",
+      "text": "Adrenaline (epinephrine) appears in South African adult hospital emergency pathways (including anaphylaxis contexts). Materia does not invent a dose, dilution, or route algorithm — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-naloxone-emergency-pointer",
+      "moleculeId": "mol-naloxone",
+      "moleculeSlug": "naloxone",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "emergency-pointer",
+      "text": "Naloxone appears in South African adult hospital opioid-toxicity pathways. Materia does not invent a dose, titration, or observation interval — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-acetylcysteine-emergency-pointer",
+      "moleculeId": "mol-acetylcysteine",
+      "moleculeSlug": "acetylcysteine",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "antidote-pointer",
+      "text": "N-acetylcysteine appears in South African adult hospital paracetamol-poisoning pathways. Materia does not invent a weight-based regimen or nomogram threshold — confirm against the current DoH STG/EML edition, Poisons Centre, and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
+    },
+    {
+      "id": "stg-magnesium-sulfate-pointer",
+      "moleculeId": "mol-magnesium-sulfate",
+      "moleculeSlug": "magnesium-sulfate",
+      "edition": "Hospital Level Adults STG/EML 2019 — verify current public edition",
+      "topic": "obstetric-emergency-pointer",
+      "text": "Magnesium sulfate appears in South African adult hospital obstetric (eclampsia) and selected other pathways. Materia does not invent a loading dose, maintenance rate, or monitoring target — confirm against the current DoH STG/EML edition and the labelled product.",
+      "sourceId": "src-doh-stg",
+      "publishState": "published",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Founder pharmacist educational attestation — pointer only, no invented mg"
     }
   ]
 }

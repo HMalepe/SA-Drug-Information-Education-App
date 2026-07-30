@@ -1,0 +1,270 @@
+{
+  "meta": {
+    "therapeuticArea": "emergency-supportive",
+    "note": "Batch A scaffold from Hospital Adults STG/EML 2019 index gap analysis. Numeric dosing ABSENT until founder review. Educational MOA only — never copied from commercial references. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2019-hospital-adults-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Hospital Level Adults 2019 index used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://pmhp.za.org/wp-content/uploads/standard-treatment-guidelines-and-essential-medicines-list-for-south-africa.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-adrenaline",
+      "slug": "adrenaline",
+      "innName": "Adrenaline (epinephrine)",
+      "className": "Catecholamine / adrenergic agonist",
+      "therapeuticArea": "emergency-supportive",
+      "synonyms": ["epinephrine", "adrenaline"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Stimulates alpha and beta adrenergic receptors — used in anaphylaxis and selected resuscitation contexts. Educational framing only; confirm against current SA STG/EML and labelled product. Materia does not invent a dose or dilution.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-atropine",
+      "slug": "atropine",
+      "innName": "Atropine",
+      "className": "Antimuscarinic / anticholinergic",
+      "therapeuticArea": "emergency-supportive",
+      "synonyms": ["atropine sulfate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Competitive muscarinic receptor antagonist — educational framing for bradycardia and cholinergic contexts. Materia does not invent a dose or indication algorithm.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-naloxone",
+      "slug": "naloxone",
+      "innName": "Naloxone",
+      "className": "Opioid antagonist",
+      "therapeuticArea": "emergency-supportive",
+      "synonyms": ["narcan"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Competitive opioid receptor antagonist used to reverse opioid-induced respiratory depression — educational framing only. Materia does not invent a dose, route ladder, or observation interval.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-acetylcysteine",
+      "slug": "acetylcysteine",
+      "innName": "N-acetylcysteine",
+      "className": "Antidote / mucolytic (context-dependent)",
+      "therapeuticArea": "emergency-supportive",
+      "synonyms": ["NAC", "acetylcysteine", "n-acetylcysteine"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Replenishes glutathione pathways relevant to paracetamol poisoning management — educational framing only. Materia does not invent a weight-based regimen or nomogram threshold.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-activated-charcoal",
+      "slug": "activated-charcoal",
+      "innName": "Activated charcoal",
+      "className": "GI decontaminant",
+      "therapeuticArea": "emergency-supportive",
+      "synonyms": ["charcoal"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Adsorbent used in selected overdose contexts to reduce absorption of some toxins — educational framing only. Not for all poisons; Materia does not invent timing windows or gram doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-calcium-gluconate",
+      "slug": "calcium-gluconate",
+      "innName": "Calcium gluconate",
+      "className": "Electrolyte / mineral",
+      "therapeuticArea": "emergency-supportive",
+      "synonyms": ["calcium gluconate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Parenteral calcium salt used in selected electrolyte and toxicity contexts — educational framing only. Materia does not invent a dose, infusion rate, or ECG-triggered algorithm.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-magnesium-sulfate",
+      "slug": "magnesium-sulfate",
+      "innName": "Magnesium sulfate",
+      "className": "Electrolyte / anticonvulsant adjunct (context-dependent)",
+      "therapeuticArea": "emergency-supportive",
+      "synonyms": ["MgSO4", "magnesium sulphate"],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Magnesium salt used in obstetric eclampsia pathways and selected other labelled contexts — educational framing only. Materia does not invent a loading dose, maintenance rate, or monitoring target.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-adrenaline",
+      "moleculeId": "mol-adrenaline",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML (Hospital Adults) and the labelled product. Materia will not invent a dilution or mg dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Emergency medicine — use only in settings with airway and monitoring capability as clinically appropriate. Materia is a reference tool, not a treatment director.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-atropine",
+      "moleculeId": "mol-atropine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-naloxone",
+      "moleculeId": "mol-naloxone",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent a dose or observation interval.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Opioid reversal may precipitate withdrawal; short-acting opioids may renarcotise — escalate to emergency care pathways. Materia does not invent monitoring duration.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-07-30"
+        }
+      ],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-acetylcysteine",
+      "moleculeId": "mol-acetylcysteine",
+      "dosingAdult": {
+        "value": "Adult dosing / paracetamol-poisoning regimens not published in Materia — confirm against current DoH STG/EML, Poisons Centre, and the labelled product. Materia will not invent a nomogram cut-off or infusion schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-activated-charcoal",
+      "moleculeId": "mol-activated-charcoal",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and Poisons guidance. Not appropriate for all ingestions; Materia will not invent a gram dose or timing window.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-calcium-gluconate",
+      "moleculeId": "mol-calcium-gluconate",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML and the labelled product. Materia will not invent an infusion rate.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-magnesium-sulfate",
+      "moleculeId": "mol-magnesium-sulfate",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH STG/EML (including obstetric pathways) and the labelled product. Materia will not invent a loading or maintenance dose.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ],
+  "interactions": [],
+  "priceRecords": [],
+  "doseRules": [],
+  "availabilitySignals": [],
+  "formularyEntries": [],
+  "courses": []
+}
