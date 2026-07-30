@@ -2871,6 +2871,166 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-emtricitabine",
+    fact: {
+      value:
+        "Emtricitabine teaching: daily ART/PrEP adherence counselling. Materia does not invent a dose, pairing, or renal cut-off.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-abacavir",
+    fact: {
+      value:
+        "Abacavir teaching: never rechallenge after labelled hypersensitivity. Materia does not invent a dose or HLA algorithm.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-zidovudine",
+    fact: {
+      value:
+        "Zidovudine teaching: anaemia monitoring is clinician-led. Materia does not invent a dose or PMTCT schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-lopinavir",
+    fact: {
+      value:
+        "Lopinavir teaching: usually boosted with ritonavir — follow labelled food guidance. Materia does not invent a booster ratio.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-darunavir",
+    fact: {
+      value:
+        "Darunavir teaching: take with the clinician-paired booster and labelled food guidance. Materia does not invent a pairing.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-bedaquiline",
+    fact: {
+      value:
+        "Bedaquiline teaching: DR-TB programme medicine — do not invent ECG intervals. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-quinine",
+    fact: {
+      value:
+        "Quinine teaching: cinchonism symptoms need early reporting. Materia does not invent a dose or infusion rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-retinol",
+    fact: {
+      value:
+        "Retinol teaching: excess is teratogenic — do not stack vitamin A products. Materia does not invent an IU dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-sennosides",
+    fact: {
+      value:
+        "Sennosides teaching: short-course stimulant laxative counselling. Materia does not invent a dose or overnight rule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-orphenadrine",
+    fact: {
+      value:
+        "Orphenadrine teaching: anticholinergic sedation and dry-mouth counselling. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-biperiden",
+    fact: {
+      value:
+        "Biperiden teaching: acute dystonia needs urgent care — do not invent a protocol. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-zuclopenthixol",
+    fact: {
+      value:
+        "Zuclopenthixol teaching: oral vs depot choice is clinician-led. Materia does not invent a dose or depot interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-selenium-sulfide",
+    fact: {
+      value:
+        "Selenium sulfide teaching: follow labelled wash-off timing. Materia does not invent a concentration or contact time.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-benzyl-benzoate",
+    fact: {
+      value:
+        "Benzyl benzoate teaching: household-contact and laundry counselling often applies. Materia does not invent a dilution.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-povidone-iodine",
+    fact: {
+      value:
+        "Povidone-iodine teaching: site and strength matter — avoid swallowing. Materia does not invent a soak duration.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-nicotinamide",
+    fact: {
+      value:
+        "Nicotinamide teaching: distinct from nicotinic acid flushing. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

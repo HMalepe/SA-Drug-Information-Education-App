@@ -319,9 +319,9 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v345–v356 PHC Batch D (12 clinic-core gap
-          molecules — mebendazole through fosfomycin). Locum accepts{" "}
-          <code>?lang=zu</code> (af/st/xh too).
+          Published SA counselling: deepened v357–v372 PHC Batches E–F (16 molecules —
+          HIV/TB follow-on + supportive misc). Locum accepts <code>?lang=zu</code>{" "}
+          (af/st/xh too).
         </p>{" "}
         <button
           className="btn"
