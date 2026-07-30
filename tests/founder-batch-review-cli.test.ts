@@ -64,4 +64,28 @@ describe("founder-batch-review CLI", () => {
     assert.notEqual(r.status, 0);
     assert.match(r.stderr, /Refuse|attestation|sourced|confirm/i);
   });
+
+  it("plan-stg A reports eligible draft pointers", () => {
+    const r = run(["plan-stg", "A", "--json"]);
+    assert.equal(r.status, 0, r.stderr);
+    const doc = JSON.parse(r.stdout);
+    assert.equal(doc.batch, "A");
+    assert.ok(doc.eligible.length >= 3);
+    assert.equal(doc.blocked.length, 0);
+    assert.match(doc.note, /Dosing scaffolds are NOT included/i);
+  });
+
+  it("publish-stg-batch A dry-run lists results without writing", () => {
+    const r = run([
+      "publish-stg-batch",
+      "A",
+      "--attestation",
+      "I confirm sourced from DoH STG pointer only",
+    ]);
+    assert.equal(r.status, 0, r.stderr);
+    const doc = JSON.parse(r.stdout);
+    assert.equal(doc.dryRun, true);
+    assert.ok(doc.count >= 3);
+    assert.match(r.stderr, /Dry-run only/i);
+  });
 });

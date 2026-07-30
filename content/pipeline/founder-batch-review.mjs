@@ -7,6 +7,8 @@
  *   npm run review:batches
  *   npm run review:batches -- show A
  *   npm run review:batches -- show A --stg
+ *   npm run review:batches -- plan-stg A [--json]
+ *   npm run review:batches -- publish-stg-batch A --attestation "I confirm sourced …" [--write]
  *   npm run review:batches -- publish-stg <extractId> --attestation "I confirm sourced …"
  *   npm run review:batches -- publish-stg <extractId> --attestation "…" --write
  *   npm run review:batches -- publish-dosing <moleculeId> <fieldPath> --attestation "…" --write
@@ -28,6 +30,7 @@ import {
   setFactPublishStateInSeedDoc,
   setStgExtractPublishStateInDoc,
   summarizeBatchAiBacklog,
+  planStgBatchPublish,
   validateReviewDecision,
   validateStgExtractDecision,
 } from "@materia/shared";
@@ -357,16 +360,175 @@ function cmdPublishDosing(moleculeId, fieldPath, attestation, write) {
   console.error(`Wrote content/seed/${seedFile} + ${decisionsPath}`);
 }
 
+function cmdPlanStg(batchRaw, json) {
+  const batch = batchRaw.toUpperCase();
+  const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === batch);
+  if (!ref) {
+    console.error(`Unknown batch ${batchRaw}. Use A–I.`);
+    process.exit(2);
+  }
+  const ids = loadBatchMoleculeIds().get(batch) ?? [];
+  const plan = planStgBatchPublish({
+    batch,
+    extracts: loadStgDoc().extracts ?? [],
+    moleculeIds: ids,
+  });
+  if (json) {
+    console.log(
+      JSON.stringify(
+        {
+          ...plan,
+          label: ref.label,
+          eligibleIds: plan.eligible.map((e) => e.extractId),
+          eligible: plan.eligible.map((e) => ({
+            extractId: e.extractId,
+            moleculeSlug: e.moleculeSlug,
+            publishState: e.publishState,
+            preview: e.preview.slice(0, 120),
+          })),
+        },
+        null,
+        2,
+      ),
+    );
+    return;
+  }
+  console.log(`STG publish plan — Batch ${batch} (${ref.label})`);
+  console.log(`Already published: ${plan.alreadyPublished}`);
+  console.log(`Eligible to publish: ${plan.eligible.length}`);
+  console.log(`Blocked: ${plan.blocked.length}\n`);
+  for (const e of plan.eligible) {
+    console.log(`  ✓ ${e.extractId}  (${e.moleculeSlug}, ${e.publishState})`);
+  }
+  if (plan.blocked.length) {
+    console.log("\nBlocked:");
+    for (const b of plan.blocked) {
+      console.log(`  ✗ ${b.extractId}: ${b.reason}`);
+    }
+  }
+  console.log(`\n${plan.note}`);
+  console.log(
+    `\nDry-run publish: npm run review:batches -- publish-stg-batch ${batch} --attestation "I confirm sourced from DoH STG pointer only"`,
+  );
+  console.log("Persist: add --write");
+}
+
+function cmdPublishStgBatch(batchRaw, attestation, write) {
+  const batch = batchRaw.toUpperCase();
+  const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === batch);
+  if (!ref) {
+    console.error(`Unknown batch ${batchRaw}. Use A–I.`);
+    process.exit(2);
+  }
+  const ids = loadBatchMoleculeIds().get(batch) ?? [];
+  const doc = loadStgDoc();
+  const plan = planStgBatchPublish({
+    batch,
+    extracts: doc.extracts ?? [],
+    moleculeIds: ids,
+    attestation,
+  });
+  if (plan.blocked.length) {
+    console.error(
+      JSON.stringify(
+        {
+          error: "Refuse batch publish — one or more extracts blocked",
+          blocked: plan.blocked,
+        },
+        null,
+        2,
+      ),
+    );
+    process.exit(1);
+  }
+  if (plan.eligible.length === 0) {
+    console.log(
+      JSON.stringify(
+        {
+          dryRun: !write,
+          batch,
+          published: 0,
+          message: "Nothing to publish (no draft/reviewed eligible extracts).",
+          alreadyPublished: plan.alreadyPublished,
+        },
+        null,
+        2,
+      ),
+    );
+    return;
+  }
+
+  const results = [];
+  const decisionBase = {
+    reviewerLabel: "founder-cli",
+    attestation,
+    at: new Date().toISOString(),
+    note: write
+      ? `batch ${batch} persist via founder-batch-review.mjs`
+      : `batch ${batch} dry-run`,
+  };
+
+  for (const item of plan.eligible) {
+    const next = applyStgExtractDecisionState(item.publishState, "publish");
+    const decision = {
+      id: `cli-stg-batch-${batch}-${item.extractId}-${Date.now()}`,
+      queueItemId: item.id,
+      decision: "publish",
+      ...decisionBase,
+    };
+    results.push({
+      extractId: item.extractId,
+      moleculeSlug: item.moleculeSlug,
+      from: item.publishState,
+      to: next,
+    });
+    if (write) {
+      if (!setStgExtractPublishStateInDoc(doc, item.extractId, next)) {
+        console.error(`Failed to mutate ${item.extractId}`);
+        process.exit(1);
+      }
+      appendDecision(decision);
+    }
+  }
+
+  console.log(
+    JSON.stringify(
+      {
+        dryRun: !write,
+        batch,
+        label: ref.label,
+        count: results.length,
+        alreadyPublished: plan.alreadyPublished,
+        results,
+        note: plan.note,
+      },
+      null,
+      2,
+    ),
+  );
+
+  if (!write) {
+    console.error("\nDry-run only. Re-run with --write to persist.");
+    return;
+  }
+  if (doc.meta) doc.meta.updated = new Date().toISOString().slice(0, 10);
+  writeFileSync(stgPath, `${JSON.stringify(doc, null, 2)}\n`, "utf8");
+  console.error(`Wrote ${stgPath} (${results.length} extracts) + ${decisionsPath}`);
+}
+
 function usage() {
   console.log(`Founder Batch A–I review CLI
 
   npm run review:batches
   npm run review:batches -- show A [--stg|--dosing] [--json]
+  npm run review:batches -- plan-stg A [--json]
+  npm run review:batches -- publish-stg-batch A --attestation "I confirm sourced…" [--write]
   npm run review:batches -- publish-stg <extractId> --attestation "I confirm sourced…" [--write]
   npm run review:batches -- mark-reviewed-stg <extractId> [--write]
   npm run review:batches -- publish-dosing <moleculeId> <fieldPath> --attestation "…" [--write]
 
-Default is dry-run. --write persists publishState only (never invents clinical text).`);
+Default is dry-run. --write persists publishState only (never invents clinical text).
+publish-stg-batch does NOT publish dosing scaffolds.`);
 }
 
 const { positional, flags, attestation } = parseArgs(process.argv);
@@ -386,6 +548,20 @@ if (cmd === "summary") {
     process.exit(2);
   }
   printShow(batch, flags);
+} else if (cmd === "plan-stg") {
+  const batch = positional[1];
+  if (!batch) {
+    console.error("Need: plan-stg <A–I>");
+    process.exit(2);
+  }
+  cmdPlanStg(batch, flags.has("json"));
+} else if (cmd === "publish-stg-batch") {
+  const batch = positional[1];
+  if (!batch || !attestation) {
+    console.error("Need: publish-stg-batch <A–I> --attestation \"…\"");
+    process.exit(2);
+  }
+  cmdPublishStgBatch(batch, attestation, flags.has("write"));
 } else if (cmd === "publish-stg") {
   const id = positional[1];
   if (!id || !attestation) {

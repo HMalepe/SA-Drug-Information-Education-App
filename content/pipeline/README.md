@@ -17,6 +17,8 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    - `npm run review:report` — coverage by therapeutic area
    - `npm run review:batches` — Batch A–I dosing + STG extract backlog
    - `npm run review:batches -- show A` — detail for one batch
+   - `npm run review:batches -- plan-stg A` — dry-run report of STG drafts eligible to publish
+   - `npm run review:batches -- publish-stg-batch A --attestation "I confirm sourced…" [--write]`
    - `npm run review:batches -- publish-stg <id> --attestation "I confirm sourced…" --write`
    Decisions persist to seed / `stg-extracts.json` + `content/review/decisions.jsonl` (dry-run without `--write`).
 7. CI clinical-eval must pass (no published draft dosing).

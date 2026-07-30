@@ -271,3 +271,84 @@ export function summarizeBatchAiBacklog(input: {
       "Founder gate: publishState only — never invents mg/hours. Draft STG extracts do not index until published.",
   };
 }
+
+export interface StgBatchPublishPlan {
+  batch: string;
+  alreadyPublished: number;
+  /** Draft/reviewed extracts that pass numeric + source gates (attestation checked if provided). */
+  eligible: StgExtractReviewItem[];
+  blocked: Array<{ extractId: string; reason: string; preview: string }>;
+  note: string;
+}
+
+/**
+ * Plan publishing all non-published STG extract pointers for a batch.
+ * Does not invent text. Optional attestation pre-checks the publish gate.
+ */
+export function planStgBatchPublish(input: {
+  batch: string;
+  extracts: StgExtract[];
+  moleculeIds: string[];
+  attestation?: string;
+}): StgBatchPublishPlan {
+  const idSet = new Set(input.moleculeIds);
+  const batchByMoleculeId = new Map(input.moleculeIds.map((id) => [id, input.batch]));
+  const inBatch = input.extracts.filter((e) => idSet.has(e.moleculeId));
+  const alreadyPublished = inBatch.filter((e) => e.publishState === "published").length;
+
+  const candidates = buildStgExtractReviewQueue({
+    extracts: inBatch,
+    states: ["draft", "reviewed"],
+    moleculeIds: input.moleculeIds,
+    batchByMoleculeId,
+  });
+
+  const eligible: StgExtractReviewItem[] = [];
+  const blocked: StgBatchPublishPlan["blocked"] = [];
+
+  for (const item of candidates) {
+    if (item.sourceId !== "src-doh-stg") {
+      blocked.push({
+        extractId: item.extractId,
+        reason: "STG extracts must use sourceId src-doh-stg.",
+        preview: item.preview.slice(0, 120),
+      });
+      continue;
+    }
+    if (/\d+\s*mg\b|\d+\s*mmol\b/i.test(item.preview)) {
+      blocked.push({
+        extractId: item.extractId,
+        reason:
+          "Extract preview contains numeric dose units — refuse until founder removes invented values (constitution 3.1).",
+        preview: item.preview.slice(0, 120),
+      });
+      continue;
+    }
+    if (input.attestation) {
+      const gate = validateStgExtractDecision({
+        item,
+        decision: "publish",
+        attestation: input.attestation,
+      });
+      if (!gate.ok) {
+        blocked.push({
+          extractId: item.extractId,
+          reason: gate.reason,
+          preview: item.preview.slice(0, 120),
+        });
+        continue;
+      }
+    }
+    eligible.push(item);
+  }
+
+  return {
+    batch: input.batch,
+    alreadyPublished,
+    eligible,
+    blocked,
+    note:
+      "STG batch publish changes publishState only. Draft pointers with no invented mg may enter RAG after founder attestation. Dosing scaffolds are NOT included.",
+  };
+}
+

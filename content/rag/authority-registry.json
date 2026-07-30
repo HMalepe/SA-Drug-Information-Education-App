@@ -58,11 +58,12 @@
     "STG/RAG draft extract pointers for Batches A–I scaffolds (77 draft; draft gate)",
     "API env wiring for in-region embedder/LLM (MATERIA_IN_REGION_*; async ask + rate limit)",
     "Founder Batch A–I review pack (dosing backlog + STG extract decide/persist)",
-    "Founder Batch A–I offline review CLI (npm run review:batches; dry-run default)"
+    "Founder Batch A–I offline review CLI (npm run review:batches; dry-run default)",
+    "STG batch plan/publish-stg-batch CLI (dry-run report; dosing excluded)"
   ],
   "pipelineNext": [
     "Founder clinical review to publish draft dosing for Batches A–I (npm run review:batches)",
-    "Founder review to publish draft STG/RAG extract pointers (--write after dry-run)",
+    "Founder: npm run review:batches -- plan-stg A then publish-stg-batch A --write after review",
     "Provision founder-approved in-region embedder/LLM endpoints and set env in deploy"
   ]
 }

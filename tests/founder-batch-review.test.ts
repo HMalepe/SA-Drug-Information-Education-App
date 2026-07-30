@@ -8,6 +8,7 @@ import {
   applyStgExtractDecisionState,
   buildStgExtractReviewQueue,
   dosingBacklogForBatch,
+  planStgBatchPublish,
   setStgExtractPublishStateInDoc,
   summarizeBatchAiBacklog,
   validateStgExtractDecision,
@@ -161,5 +162,27 @@ describe("founder Batch A–I review pack", () => {
     assert.equal(doc.extracts[0]!.publishState, "published");
     assert.equal(doc.extracts[0]!.text, textBefore);
     assert.match(doc.extracts[0]!.reviewerCredential ?? "", /Founder pharmacist/i);
+  });
+
+  it("plans Batch A STG publish with eligible drafts and no dosing", () => {
+    const ref = STG_BATCH_A_I_SEEDS.find((b) => b.batch === "A")!;
+    const seed = JSON.parse(
+      readFileSync(join(root, "content/seed", ref.seedFile), "utf8"),
+    ) as { molecules: Array<{ id: string }> };
+    const extracts = (
+      JSON.parse(readFileSync(join(root, "content/rag/stg-extracts.json"), "utf8")) as {
+        extracts: StgExtract[];
+      }
+    ).extracts;
+    const plan = planStgBatchPublish({
+      batch: "A",
+      extracts,
+      moleculeIds: seed.molecules.map((m) => m.id),
+    });
+    assert.ok(plan.eligible.length >= 3);
+    assert.equal(plan.blocked.length, 0);
+    assert.ok(plan.alreadyPublished >= 4);
+    assert.match(plan.note, /Dosing scaffolds are NOT included/i);
+    assert.ok(plan.eligible.every((e) => !/\d+\s*mg\b/i.test(e.preview)));
   });
 });
