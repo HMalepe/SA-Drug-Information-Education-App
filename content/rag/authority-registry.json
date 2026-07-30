@@ -66,12 +66,12 @@
     "Deepened counselling v404–v415 for thin high-volume core molecules (ART/CV/neuro/OTC/abx)",
     "Deepened counselling v416–v427 for thin high-volume core (metformin/amox/OTC/CV/inhaler)",
     "Deepened counselling v428–v439 for thin high-volume core (warfarin/ARB/statin/abx/steroid)",
-    "Deepened counselling v440–v451 for thin core (v120 batch + pantoprazole/codeine)"
+    "Deepened counselling v440–v451 for thin core (v120 batch + pantoprazole/codeine)",
+    "Deepened counselling v452–v463 — cleared remaining thin 4-line published counselling"
   ],
   "pipelineNext": [
     "Founder: publish STG pointers (plan-stg all → publish-stg-batch all --write)",
     "Founder: plan-dosing all → individual publish-dosing for honest placeholders",
-    "Continue deepening remaining thin 4-line counselling molecules (~12 left after v451)",
     "Provision real in-region embedder/LLM URLs; verify with npm run rag:check-env"
   ]
 }

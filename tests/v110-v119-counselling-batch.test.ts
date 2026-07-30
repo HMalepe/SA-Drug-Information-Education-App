@@ -20,9 +20,6 @@ const BATCH = [
   { id: "mol-carvedilol", enCue: /beta-blocker|stop suddenly/i },
 ] as const;
 
-/** Molecules deepened in v404–v415 (6-line scripts override these batch entries). */
-const DEEPENED_V404 = new Set(["mol-fluclox", "mol-cephalexin", "mol-loratadine"]);
-
 describe("v110–v119 counselling batch §9", () => {
   for (const { id, enCue } of BATCH) {
     it(`publishes five langs with safety gates for ${id}`, () => {
@@ -30,8 +27,7 @@ describe("v110–v119 counselling batch §9", () => {
       assert.deepEqual(langs.sort(), ["af", "en", "st", "xh", "zu"]);
       const cov = counsellingCoverage(id);
       assert.equal(cov.length, 5);
-      const expectLines = DEEPENED_V404.has(id) ? 6 : 4;
-      assert.ok(cov.every((c) => c.lineCount === expectLines));
+      assert.ok(cov.every((c) => c.lineCount === 6));
 
       for (const lang of ["en", "zu", "af", "st", "xh"] as const) {
         const script = getCounsellingScript(id, lang);
