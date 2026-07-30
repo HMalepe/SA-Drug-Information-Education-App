@@ -8,10 +8,10 @@ import {
 } from "@materia/shared";
 
 const BATCH = [
-  { id: "mol-fluclox", enCue: /penicillin|empty-stomach/i },
+  { id: "mol-fluclox", enCue: /penicillin|skin|soft-tissue/i },
   { id: "mol-cephalexin", enCue: /cephalosporin|diarrhoea/i },
   { id: "mol-nitro", enCue: /nitrofuran|UTI|urine/i },
-  { id: "mol-loratadine", enCue: /antihistamine|drowsiness/i },
+  { id: "mol-loratadine", enCue: /antihistamine|drowsiness|allergy/i },
   { id: "mol-empagliflozin", enCue: /SGLT2|dehydration|genital/i },
   { id: "mol-apixaban", enCue: /DOAC|bleeding/i },
   { id: "mol-amitriptyline", enCue: /tricyclic|TCA/i },
@@ -20,6 +20,9 @@ const BATCH = [
   { id: "mol-carvedilol", enCue: /beta-blocker|stop suddenly/i },
 ] as const;
 
+/** Molecules deepened in v404–v415 (6-line scripts override these batch entries). */
+const DEEPENED_V404 = new Set(["mol-fluclox", "mol-cephalexin", "mol-loratadine"]);
+
 describe("v110–v119 counselling batch §9", () => {
   for (const { id, enCue } of BATCH) {
     it(`publishes five langs with safety gates for ${id}`, () => {
@@ -27,7 +30,8 @@ describe("v110–v119 counselling batch §9", () => {
       assert.deepEqual(langs.sort(), ["af", "en", "st", "xh", "zu"]);
       const cov = counsellingCoverage(id);
       assert.equal(cov.length, 5);
-      assert.ok(cov.every((c) => c.lineCount === 4));
+      const expectLines = DEEPENED_V404.has(id) ? 6 : 4;
+      assert.ok(cov.every((c) => c.lineCount === expectLines));
 
       for (const lang of ["en", "zu", "af", "st", "xh"] as const) {
         const script = getCounsellingScript(id, lang);

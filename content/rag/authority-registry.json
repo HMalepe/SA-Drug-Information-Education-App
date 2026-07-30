@@ -62,11 +62,13 @@
     "STG batch plan/publish-stg-batch CLI (dry-run report; dosing excluded)",
     "plan-stg all + plan-dosing classifiers (placeholder vs numeric_suspect; no dosing batch publish)",
     "API GET /review/plan-stg + /review/plan-dosing; web /review Batches A–I panel",
-    "Deploy RAG env check (npm run rag:check-env) + GET /health/rag mode (no secrets)"
+    "Deploy RAG env check (npm run rag:check-env) + GET /health/rag mode (no secrets)",
+    "Deepened counselling v404–v415 for thin high-volume core molecules (ART/CV/neuro/OTC/abx)"
   ],
   "pipelineNext": [
     "Founder: publish STG pointers (plan-stg all → publish-stg-batch all --write)",
     "Founder: plan-dosing all → individual publish-dosing for honest placeholders",
+    "Continue deepening remaining thin 4-line counselling molecules (next slice after v415)",
     "Provision real in-region embedder/LLM URLs; verify with npm run rag:check-env"
   ]
 }
