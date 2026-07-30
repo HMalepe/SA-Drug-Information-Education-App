@@ -88,4 +88,19 @@ describe("founder-batch-review CLI", () => {
     assert.ok(doc.count >= 3);
     assert.match(r.stderr, /Dry-run only/i);
   });
+
+  it("plan-stg all and plan-dosing all return roll-ups", () => {
+    const stg = run(["plan-stg", "all", "--json"]);
+    assert.equal(stg.status, 0, stg.stderr);
+    const stgDoc = JSON.parse(stg.stdout);
+    assert.equal(stgDoc.batches.length, 9);
+    assert.ok(stgDoc.totals.eligible >= 70);
+
+    const dose = run(["plan-dosing", "all", "--json"]);
+    assert.equal(dose.status, 0, dose.stderr);
+    const doseDoc = JSON.parse(dose.stdout);
+    assert.equal(doseDoc.batches.length, 9);
+    assert.ok(doseDoc.totals.placeholderAbsent >= 70);
+    assert.equal(doseDoc.totals.numericSuspect, 0);
+  });
 });

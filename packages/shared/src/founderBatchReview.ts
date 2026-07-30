@@ -352,3 +352,149 @@ export function planStgBatchPublish(input: {
   };
 }
 
+export function planStgAllBatches(input: {
+  batchMoleculeIds: Map<string, string[]>;
+  extracts: StgExtract[];
+  attestation?: string;
+}): {
+  batches: Array<StgBatchPublishPlan & { label: string }>;
+  totals: {
+    alreadyPublished: number;
+    eligible: number;
+    blocked: number;
+  };
+  note: string;
+} {
+  const batches: Array<StgBatchPublishPlan & { label: string }> = [];
+  let alreadyPublished = 0;
+  let eligible = 0;
+  let blocked = 0;
+  for (const ref of STG_BATCH_A_I_SEEDS) {
+    const plan = planStgBatchPublish({
+      batch: ref.batch,
+      extracts: input.extracts,
+      moleculeIds: input.batchMoleculeIds.get(ref.batch) ?? [],
+      attestation: input.attestation,
+    });
+    batches.push({ ...plan, label: ref.label });
+    alreadyPublished += plan.alreadyPublished;
+    eligible += plan.eligible.length;
+    blocked += plan.blocked.length;
+  }
+  return {
+    batches,
+    totals: { alreadyPublished, eligible, blocked },
+    note:
+      "Roll-up of plan-stg A–I. Use publish-stg-batch <letter> --write after review. Does not touch dosing.",
+  };
+}
+
+export type DosingDraftClass = "placeholder_absent" | "numeric_suspect" | "other_draft";
+
+/** Classify a dosing draft preview — never invents; flags numeric text as suspect. */
+export function classifyDosingPreview(preview: string): DosingDraftClass {
+  if (/\d+\s*mg\b|\d+\s*mmol\b|\d+\s*mcg\b|\d+\s*units?\b/i.test(preview)) {
+    return "numeric_suspect";
+  }
+  if (/not publish|will not invent|ABSENT|not yet in Materia/i.test(preview)) {
+    return "placeholder_absent";
+  }
+  return "other_draft";
+}
+
+export interface DosingPlanItem {
+  id: string;
+  moleculeId: string;
+  moleculeSlug: string;
+  fieldPath: string;
+  publishState: PublishState;
+  classification: DosingDraftClass;
+  preview: string;
+}
+
+export interface DosingBatchPlan {
+  batch: string;
+  placeholderAbsent: DosingPlanItem[];
+  numericSuspect: DosingPlanItem[];
+  otherDraft: DosingPlanItem[];
+  note: string;
+}
+
+/**
+ * Plan dosing review for a batch. Does NOT recommend inventing doses.
+ * numeric_suspect must not be published until founder rewrites without invented values
+ * OR replaces with sourced text. placeholder_absent may be published as honest "no dose in Materia".
+ */
+export function planDosingBatch(input: {
+  batch: string;
+  dosingItems: ReviewQueueItem[];
+  moleculeIds: string[];
+}): DosingBatchPlan {
+  const dosing = dosingBacklogForBatch(input.dosingItems, input.moleculeIds).filter((i) =>
+    /dosing/i.test(i.fieldPath),
+  );
+  const placeholderAbsent: DosingPlanItem[] = [];
+  const numericSuspect: DosingPlanItem[] = [];
+  const otherDraft: DosingPlanItem[] = [];
+
+  for (const item of dosing) {
+    const classification = classifyDosingPreview(item.preview);
+    const row: DosingPlanItem = {
+      id: item.id,
+      moleculeId: item.moleculeId,
+      moleculeSlug: item.moleculeSlug,
+      fieldPath: item.fieldPath,
+      publishState: item.publishState,
+      classification,
+      preview: item.preview.slice(0, 160),
+    };
+    if (classification === "placeholder_absent") placeholderAbsent.push(row);
+    else if (classification === "numeric_suspect") numericSuspect.push(row);
+    else otherDraft.push(row);
+  }
+
+  return {
+    batch: input.batch,
+    placeholderAbsent,
+    numericSuspect,
+    otherDraft,
+    note:
+      "Dosing plan only — Materia will not invent mg. numeric_suspect: do not publish. placeholder_absent: optional publish as honest absence after founder confirm. No batch auto-publish for dosing.",
+  };
+}
+
+export function planDosingAllBatches(input: {
+  batchMoleculeIds: Map<string, string[]>;
+  dosingItems: ReviewQueueItem[];
+}): {
+  batches: Array<DosingBatchPlan & { label: string }>;
+  totals: {
+    placeholderAbsent: number;
+    numericSuspect: number;
+    otherDraft: number;
+  };
+  note: string;
+} {
+  const batches: Array<DosingBatchPlan & { label: string }> = [];
+  let placeholderAbsent = 0;
+  let numericSuspect = 0;
+  let otherDraft = 0;
+  for (const ref of STG_BATCH_A_I_SEEDS) {
+    const plan = planDosingBatch({
+      batch: ref.batch,
+      dosingItems: input.dosingItems,
+      moleculeIds: input.batchMoleculeIds.get(ref.batch) ?? [],
+    });
+    batches.push({ ...plan, label: ref.label });
+    placeholderAbsent += plan.placeholderAbsent.length;
+    numericSuspect += plan.numericSuspect.length;
+    otherDraft += plan.otherDraft.length;
+  }
+  return {
+    batches,
+    totals: { placeholderAbsent, numericSuspect, otherDraft },
+    note:
+      "Roll-up dosing plan A–I. Prefer publishing honest placeholders only after clinical confirm; never publish numeric_suspect without sourced rewrite.",
+  };
+}
+

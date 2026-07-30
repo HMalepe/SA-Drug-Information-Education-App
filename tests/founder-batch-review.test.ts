@@ -7,7 +7,11 @@ import {
   STG_BATCH_A_I_SEEDS,
   applyStgExtractDecisionState,
   buildStgExtractReviewQueue,
+  classifyDosingPreview,
   dosingBacklogForBatch,
+  planDosingAllBatches,
+  planDosingBatch,
+  planStgAllBatches,
   planStgBatchPublish,
   setStgExtractPublishStateInDoc,
   summarizeBatchAiBacklog,
@@ -184,5 +188,69 @@ describe("founder Batch A–I review pack", () => {
     assert.ok(plan.alreadyPublished >= 4);
     assert.match(plan.note, /Dosing scaffolds are NOT included/i);
     assert.ok(plan.eligible.every((e) => !/\d+\s*mg\b/i.test(e.preview)));
+  });
+
+  it("plans STG all batches with roll-up totals", () => {
+    const batchMoleculeIds = new Map<string, string[]>();
+    for (const ref of STG_BATCH_A_I_SEEDS) {
+      const doc = JSON.parse(
+        readFileSync(join(root, "content/seed", ref.seedFile), "utf8"),
+      ) as { molecules: Array<{ id: string }> };
+      batchMoleculeIds.set(
+        ref.batch,
+        doc.molecules.map((m) => m.id),
+      );
+    }
+    const extracts = (
+      JSON.parse(readFileSync(join(root, "content/rag/stg-extracts.json"), "utf8")) as {
+        extracts: StgExtract[];
+      }
+    ).extracts;
+    const plan = planStgAllBatches({ batchMoleculeIds, extracts });
+    assert.equal(plan.batches.length, 9);
+    assert.ok(plan.totals.eligible >= 70);
+    assert.equal(plan.totals.blocked, 0);
+  });
+
+  it("classifies dosing drafts and plans Batch A without numeric suspects", () => {
+    assert.equal(
+      classifyDosingPreview("Adult dosing not published — Materia will not invent a dose."),
+      "placeholder_absent",
+    );
+    assert.equal(classifyDosingPreview("Give 500 mg TDS"), "numeric_suspect");
+    assert.equal(classifyDosingPreview("Take with food as directed."), "other_draft");
+
+    const ref = STG_BATCH_A_I_SEEDS.find((b) => b.batch === "A")!;
+    const seed = JSON.parse(
+      readFileSync(join(root, "content/seed", ref.seedFile), "utf8"),
+    ) as { molecules: Array<{ id: string; slug: string }> };
+    const dosingItems: ReviewQueueItem[] = seed.molecules.map((m) => ({
+      id: `${m.id}:dosingAdult`,
+      moleculeId: m.id,
+      moleculeSlug: m.slug,
+      moleculeName: m.slug,
+      therapeuticArea: "emergency-supportive",
+      fieldPath: "dosingAdult",
+      publishState: "draft",
+      sourceId: "src-doh-stg",
+      preview:
+        "Adult dosing not published in Materia — confirm against current DoH STG/EML. Materia will not invent a dose.",
+      priority: "critical",
+      highStakes: true,
+    }));
+    const plan = planDosingBatch({
+      batch: "A",
+      dosingItems,
+      moleculeIds: seed.molecules.map((m) => m.id),
+    });
+    assert.equal(plan.placeholderAbsent.length, 7);
+    assert.equal(plan.numericSuspect.length, 0);
+    assert.match(plan.note, /No batch auto-publish for dosing/i);
+
+    const all = planDosingAllBatches({
+      batchMoleculeIds: new Map([["A", seed.molecules.map((m) => m.id)]]),
+      dosingItems,
+    });
+    assert.ok(all.totals.placeholderAbsent >= 7);
   });
 });
