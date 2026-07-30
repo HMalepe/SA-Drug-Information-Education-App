@@ -1,10 +1,13 @@
 import {
-  groundedAnswerFromChunks,
+  getCounsellingScript,
+  groundedAskFromCorpus,
   renderableFact,
   stripIdentifiers,
   type RetrievableChunk,
+  type Source,
+  type SourcedFact,
 } from "@materia/shared";
-import { db, getMoleculeBySlug, getSafety, getSource } from "./store.js";
+import { getMoleculeBySlug, getSafety, getSource } from "./store.js";
 
 function pushFact(
   chunks: RetrievableChunk[],
@@ -24,6 +27,26 @@ function pushFact(
   });
 }
 
+function pushPublishedStringFact(
+  chunks: RetrievableChunk[],
+  fieldPath: string,
+  text: string,
+  source: Source,
+  lastReviewed: string,
+) {
+  const fact: SourcedFact<string> = {
+    value: text,
+    sourceId: source.id,
+    publishState: "published",
+    lastReviewed,
+  };
+  chunks.push({ fieldPath, text, fact, source });
+}
+
+/**
+ * Molecule Q&A — hybrid RAG over published, sourced, license-allowed chunks only.
+ * No LLM composition yet: retrieve + cite (constitution 3.1). POPIA: strip IDs first.
+ */
 export function askMolecule(moleculeSlug: string, question: string) {
   const safeQuestion = stripIdentifiers(question);
   const molecule = getMoleculeBySlug(moleculeSlug);
@@ -90,7 +113,24 @@ export function askMolecule(moleculeSlug: string, question: string) {
     }
   }
 
-  // Rate-limit friendly: no LLM call in stub — compose from chunks only (constitution 3.1).
-  void db;
-  return groundedAnswerFromChunks(safeQuestion, chunks);
+  // Multilingual counselling scripts (owned authoring) — EN lines as RAG chunks.
+  const counselling = getCounsellingScript(molecule.id, "en");
+  const eduSource = getSource("src-materia-edu");
+  if (counselling && eduSource) {
+    for (const [i, line] of counselling.lines.entries()) {
+      pushPublishedStringFact(
+        chunks,
+        `counselling.script.en[${i}]`,
+        line,
+        eduSource,
+        counselling.sourceNote.includes("founder") ? "2026-07-30" : "2026-07-01",
+      );
+    }
+  }
+
+  return groundedAskFromCorpus(safeQuestion, chunks, {
+    topK: 8,
+    answerTopK: 3,
+    minScore: 0.1,
+  });
 }

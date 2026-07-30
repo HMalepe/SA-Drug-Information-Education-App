@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "note": "Authority registry for Materia RAG ingest. Licensed commercial references are forbidden. Public DoH/SAHPRA feeds and owned authoring are allowed after founder review.",
+    "updated": "2026-07-30"
+  },
+  "allowed": [
+    {
+      "id": "src-materia-edu",
+      "licenseClass": "owned_authoring",
+      "label": "Materia original educational authoring"
+    },
+    {
+      "id": "src-doh-stg",
+      "licenseClass": "public_guideline",
+      "label": "DoH STGs & EML (public) — ingest only approved extracts, never invent doses"
+    },
+    {
+      "id": "src-sahpra",
+      "licenseClass": "register_metadata",
+      "label": "SAHPRA medicine register metadata"
+    },
+    {
+      "id": "src-sep",
+      "licenseClass": "sep_public",
+      "label": "DoH Single Exit Price publications"
+    }
+  ],
+  "forbidden": [
+    {
+      "pattern": "SAMF|MIMS|Lexicomp|UpToDate|BNF",
+      "reason": "Licensed commercial content — never copy into Materia (docs/15, Build Spec §14)"
+    }
+  ],
+  "pipelineNext": [
+    "Chunk founder-approved STG/EML extracts with edition + last_reviewed",
+    "Package-insert owned paraphrases as sourceType=insert after review gate",
+    "Interaction facts only from curated Interaction table rows (published)",
+    "Hosted in-region embedder behind Embedder interface when scale requires"
+  ]
+}
