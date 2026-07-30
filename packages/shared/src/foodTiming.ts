@@ -1801,6 +1801,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-exemestane",
+    fact: {
+      value:
+        "Aromatase-inhibitor teaching: take as on the labelled product — bone-health discussions belong with the clinician. Materia does not invent a dose or oestradiol / bone target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-pegfilgrastim",
+    fact: {
+      value:
+        "Pegylated G-CSF teaching: injection timing usually follows chemotherapy plans — confirm with the care team. Materia does not invent a dose, injection schedule, or neutrophil target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-denosumab",
+    fact: {
+      value:
+        "RANKL-inhibitor teaching: oncology and osteoporosis uses differ — calcium and dental discussions belong with the clinician. Materia does not invent a dose, injection interval, or calcium / bone target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-zoledronic-acid",
+    fact: {
+      value:
+        "Bisphosphonate infusion teaching: hydration and lab checks belong with the clinician. Materia does not invent a dose, infusion clock, or calcium / creatinine target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-capecitabine",
+    fact: {
+      value:
+        "Oral fluoropyrimidine teaching: hand-foot care and diarrhoea watch are common counselling — confirm food timing against the labelled product. Materia does not invent a dose, cycle clock, or DPD / lab target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mesna",
+    fact: {
+      value:
+        "Uroprotectant teaching: timing usually follows ifosfamide or cyclophosphamide plans — confirm with the care team. Materia does not invent a dose, schedule hours, or bladder score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-epoetin-alfa",
+    fact: {
+      value:
+        "ESA teaching: injection technique belongs with the care team — blood-pressure and clot discussions are clinician-led. Materia does not invent a dose, injection schedule, or haemoglobin target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-hydroxycarbamide",
+    fact: {
+      value:
+        "Antimetabolite teaching: sickle-cell and myeloproliferative uses differ — blood-count monitoring belongs with the clinician. Materia does not invent a dose, lab interval, or blood-count target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ketotifen-eye",
+    fact: {
+      value:
+        "Ocular antihistamine teaching: remove contact lenses before drops if the labelled product advises. Materia does not invent a drop count, spacing minutes, or allergy score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tobramycin-eye",
+    fact: {
+      value:
+        "Ophthalmic aminoglycoside teaching: drops and ointment differ — confirm against the labelled product. Materia does not invent a dose, drop clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
