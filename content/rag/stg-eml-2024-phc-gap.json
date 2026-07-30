@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "STG/EML Primary Healthcare 2024 — Materia seed gap triage",
+    "edition": "Primary Healthcare Level — 2024 Edition (8th)",
+    "sourceUrl": "https://www.health.gov.za/wp-content/uploads/2025/07/Primary-Healthcare-Standard-Treatment-Guidelines-and-Essential-Medicines-List-8th-Edition-2024.pdf",
+    "comparedAt": "2026-07-30",
+    "note": "Coverage triage only. Do NOT copy numeric doses from the PDF into Materia. Publish clinical values only after founder review with source + review gate.",
+    "seedMoleculeCountAtCompare": 291,
+    "limitations": [
+      "PHC 2024 PDF used as coverage pointer — Paediatric Hospital STG is a separate gap source",
+      "Name extraction from public PDF text can include class headings and non-INN phrases; priority list is curated",
+      "Blood products, devices, vaccines-as-programmes, and ORS sachets may be out of molecule-page scope",
+      "Some PHC medicines already exist under short seed IDs (e.g. mol-nitro = nitrofurantoin)"
+    ]
+  },
+  "alreadyCoveredAliases": [
+    { "indexName": "Nitrofurantoin", "materiaId": "mol-nitro", "materiaInn": "Nitrofurantoin" },
+    { "indexName": "Phenoxymethylpenicillin", "materiaId": "mol-penv", "materiaInn": "Phenoxymethylpenicillin" },
+    { "indexName": "Amoxicillin/clavulanic acid", "materiaId": "mol-amoxclav", "materiaInn": "Amoxicillin–clavulanate" },
+    { "indexName": "Co-trimoxazole", "materiaId": "mol-cotrim", "materiaInn": "Co-trimoxazole" }
+  ],
+  "outOfMoleculeScope": [
+    "Oral rehydration solution / homemade SSS as a product page (supportive care, not a single INN)",
+    "Anti-D immunoglobulin and other blood products / immunoglobulins",
+    "Class headings (ACE-inhibitors, SSRIs, benzodiazepines, potent corticosteroids)",
+    "Placebo and non-medicine general measures"
+  ],
+  "priorityMissingBatches": {
+    "D_phc_clinic_core": [
+      "mebendazole",
+      "ivermectin",
+      "nystatin",
+      "benzathine-benzylpenicillin",
+      "griseofulvin",
+      "chlorhexidine",
+      "nifedipine",
+      "methyldopa",
+      "mifepristone",
+      "ergometrine",
+      "promethazine",
+      "fosfomycin"
+    ],
+    "E_phc_hiv_tb_followon": [
+      "emtricitabine",
+      "abacavir",
+      "zidovudine",
+      "lopinavir",
+      "darunavir",
+      "bedaquiline",
+      "quinine"
+    ],
+    "F_phc_supportive_misc": [
+      "retinol",
+      "sennosides",
+      "orphenadrine",
+      "biperiden",
+      "zuclopenthixol",
+      "selenium-sulfide",
+      "benzyl-benzoate",
+      "povidone-iodine",
+      "nicotinamide"
+    ]
+  },
+  "scaffoldedBatches": {
+    "D_phc_clinic_core": [
+      "mol-mebendazole",
+      "mol-ivermectin",
+      "mol-nystatin",
+      "mol-benzathine-benzylpenicillin",
+      "mol-griseofulvin",
+      "mol-chlorhexidine",
+      "mol-nifedipine",
+      "mol-methyldopa",
+      "mol-mifepristone",
+      "mol-ergometrine",
+      "mol-promethazine",
+      "mol-fosfomycin"
+    ]
+  }
+}

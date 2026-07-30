@@ -1,0 +1,432 @@
+{
+  "meta": {
+    "therapeuticArea": "phc-eml",
+    "note": "Batch D scaffold from PHC STG/EML 2024 gap analysis (clinic-core). Numeric dosing ABSENT until founder review. Educational MOA only — never copied from commercial references. STG used as coverage pointer only (docs/15, constitution 3.1).",
+    "seedVersion": "0.1.0",
+    "gapSource": "content/rag/stg-eml-2024-phc-gap.json"
+  },
+  "sources": [
+    {
+      "id": "src-doh-stg",
+      "citation": "South African National Department of Health — Standard Treatment Guidelines & Essential Medicines List (public) — Primary Healthcare Level 2024 used for coverage triage only",
+      "sourceType": "guideline",
+      "url": "https://www.health.gov.za/wp-content/uploads/2025/07/Primary-Healthcare-Standard-Treatment-Guidelines-and-Essential-Medicines-List-8th-Edition-2024.pdf",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "Pending founder pharmacist verification — no numeric doses ingested from PDF"
+    },
+    {
+      "id": "src-materia-edu",
+      "citation": "Materia original educational authoring (founder-reviewed educational layer)",
+      "sourceType": "original_authoring",
+      "lastReviewed": "2026-07-30",
+      "reviewerCredential": "BPharm — founder authoring pipeline"
+    },
+    {
+      "id": "src-sahpra",
+      "citation": "SAHPRA medicine register (public register metadata)",
+      "sourceType": "register",
+      "url": "https://www.sahpra.org.za/",
+      "lastReviewed": "2026-07-01",
+      "reviewerCredential": "Register metadata — product existence only"
+    }
+  ],
+  "manufacturers": [],
+  "excipients": [],
+  "molecules": [
+    {
+      "id": "mol-mebendazole",
+      "slug": "mebendazole",
+      "innName": "Mebendazole",
+      "className": "Benzimidazole anthelmintic",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "mebendazole"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Benzimidazole anthelmintic used against selected intestinal helminths — educational framing only. Materia does not invent a dose, age band, or repeat interval; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-ivermectin",
+      "slug": "ivermectin",
+      "innName": "Ivermectin",
+      "className": "Avermectin antiparasitic",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "ivermectin"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Avermectin antiparasitic used in selected ectoparasite and helminth pathways — educational framing only. Materia does not invent a mg/kg dose or food-timing rule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-nystatin",
+      "slug": "nystatin",
+      "innName": "Nystatin",
+      "className": "Polyene antifungal (topical/oral mucosal)",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "nystatin"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Polyene antifungal used for selected mucosal Candida infections — educational framing only. Materia does not invent a suspension volume, IU strength regimen, or course length; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-benzathine-benzylpenicillin",
+      "slug": "benzathine-benzylpenicillin",
+      "innName": "Benzathine benzylpenicillin",
+      "className": "Long-acting penicillin (depot)",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "benzathine penicillin",
+        "BPG",
+        "benzathine benzylpenicillin"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Depot penicillin formulation used in selected streptococcal and syphilis pathways — educational framing only. Never confuse with aqueous benzylpenicillin. Materia does not invent an IU dose, reconstitution volume, or dosing interval; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-griseofulvin",
+      "slug": "griseofulvin",
+      "innName": "Griseofulvin",
+      "className": "Antifungal — dermatophyte",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "griseofulvin"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Oral antifungal used in selected dermatophyte infections — educational framing only. Materia does not invent a dose, duration, or food-timing rule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-chlorhexidine",
+      "slug": "chlorhexidine",
+      "innName": "Chlorhexidine",
+      "className": "Antiseptic / mouthwash (context-dependent)",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "chlorhexidine gluconate",
+        "CHG"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Biguanide antiseptic used in selected oral-care and skin-antisepsis contexts — educational framing only. Materia does not invent a concentration, rinse volume, or course length; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-nifedipine",
+      "slug": "nifedipine",
+      "innName": "Nifedipine",
+      "className": "Dihydropyridine calcium-channel blocker",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "nifedipine"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Dihydropyridine calcium-channel blocker used in selected hypertension and obstetric pathways — educational framing only. Formulation matters (immediate vs modified release). Materia does not invent a dose or BP threshold algorithm; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-methyldopa",
+      "slug": "methyldopa",
+      "innName": "Methyldopa",
+      "className": "Centrally acting antihypertensive",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "alpha-methyldopa",
+        "methyldopa"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Centrally acting antihypertensive historically used in selected pregnancy hypertension pathways — educational framing only. Materia does not invent a dose or titration schedule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-mifepristone",
+      "slug": "mifepristone",
+      "innName": "Mifepristone",
+      "className": "Antiprogestogen",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "mifepristone",
+        "RU-486"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Antiprogestogen used in regulated medical abortion and selected obstetric pathways — educational framing only. Legal and clinical pathways apply. Materia does not invent a dose, combination regimen, or gestational-age cut-off; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-ergometrine",
+      "slug": "ergometrine",
+      "innName": "Ergometrine",
+      "className": "Ergot alkaloid — uterotonic",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "ergometrine",
+        "ergonovine",
+        "methylergometrine"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Ergot uterotonic used in selected postpartum haemorrhage pathways — educational framing only. Materia does not invent a dose, route, or combination with oxytocin; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-promethazine",
+      "slug": "promethazine",
+      "innName": "Promethazine",
+      "className": "Phenothiazine antihistamine / antiemetic",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "promethazine"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Phenothiazine antihistamine used in selected allergy, nausea, and sedation contexts — educational framing only. Sedation risk applies. Materia does not invent a dose or paediatric rule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    },
+    {
+      "id": "mol-fosfomycin",
+      "slug": "fosfomycin",
+      "innName": "Fosfomycin",
+      "className": "Phosphonic acid antibiotic",
+      "therapeuticArea": "phc-eml",
+      "synonyms": [
+        "fosfomycin trometamol",
+        "fosfomycin"
+      ],
+      "publishState": "published",
+      "moaSummary": {
+        "value": "Phosphonic acid antibiotic used in selected uncomplicated UTI pathways — educational framing only. Materia does not invent a sachet dose or resistance-driven choice rule; confirm against current SA PHC STG/EML and the labelled product.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-07-30"
+      }
+    }
+  ],
+  "products": [],
+  "safetyProfiles": [
+    {
+      "id": "safety-mebendazole",
+      "moleculeId": "mol-mebendazole",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose, age band, or repeat interval.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-ivermectin",
+      "moleculeId": "mol-ivermectin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a mg/kg dose or food-timing rule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-nystatin",
+      "moleculeId": "mol-nystatin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a suspension volume or course length.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-benzathine-benzylpenicillin",
+      "moleculeId": "mol-benzathine-benzylpenicillin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent an IU dose or dosing interval.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-griseofulvin",
+      "moleculeId": "mol-griseofulvin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or duration.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-chlorhexidine",
+      "moleculeId": "mol-chlorhexidine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a concentration or rinse volume.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-nifedipine",
+      "moleculeId": "mol-nifedipine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or BP threshold algorithm.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-methyldopa",
+      "moleculeId": "mol-methyldopa",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or titration schedule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-mifepristone",
+      "moleculeId": "mol-mifepristone",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or gestational-age cut-off.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-ergometrine",
+      "moleculeId": "mol-ergometrine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or route regimen.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-promethazine",
+      "moleculeId": "mol-promethazine",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a dose or paediatric rule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    },
+    {
+      "id": "safety-fosfomycin",
+      "moleculeId": "mol-fosfomycin",
+      "dosingAdult": {
+        "value": "Adult dosing not published in Materia — confirm against current DoH PHC STG/EML and the labelled product. Materia will not invent a sachet dose or course rule.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-07-30"
+      },
+      "contraindications": [],
+      "warnings": [],
+      "clinicalPearls": [],
+      "counsellingPoints": [],
+      "publishState": "published"
+    }
+  ]
+}
