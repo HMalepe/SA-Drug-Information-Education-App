@@ -2451,6 +2451,76 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-adrenaline",
+    fact: {
+      value:
+        "Emergency catecholamine teaching: anaphylaxis/resuscitation pathways — clinician-directed. Materia does not invent a dilution, dose, or route algorithm.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-atropine",
+    fact: {
+      value:
+        "Antimuscarinic teaching: hospital pathways — clinician-directed. Materia does not invent a dose or titration step.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-naloxone",
+    fact: {
+      value:
+        "Opioid-antagonist teaching: emergency reversal — renarcotisation watch belongs with the care team. Materia does not invent a dose or observation interval.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-acetylcysteine",
+    fact: {
+      value:
+        "NAC teaching: paracetamol-poisoning pathways — Poisons/clinical team decides. Materia does not invent a nomogram cut-off or infusion schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-activated-charcoal",
+    fact: {
+      value:
+        "Activated charcoal teaching: selected overdose only — not for every ingestion. Materia does not invent a gram dose or timing window.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-calcium-gluconate",
+    fact: {
+      value:
+        "Calcium gluconate teaching: urgent electrolyte pathways — clinician-directed. Materia does not invent an infusion rate or mmol dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-magnesium-sulfate",
+    fact: {
+      value:
+        "Magnesium sulfate teaching: eclampsia and selected pathways — monitoring belongs with the clinician. Materia does not invent a loading dose or maintenance rate.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

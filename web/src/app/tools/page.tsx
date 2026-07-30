@@ -319,10 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v310–v314 (<code>atracurium</code>,{" "}
-          <code>rocuronium</code>, <code>neostigmine</code>, <code>remifentanil</code>,{" "}
-          <code>sevoflurane</code>) — seed counselling coverage complete. Locum accepts{" "}
-          <code>?lang=zu</code> (af/st/xh too).
+          Published SA counselling: deepened v315–v321 STG Batch A (<code>adrenaline</code>,{" "}
+          <code>atropine</code>, <code>naloxone</code>, <code>acetylcysteine</code>,{" "}
+          <code>activated-charcoal</code>, <code>calcium-gluconate</code>,{" "}
+          <code>magnesium-sulfate</code>). Locum accepts <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"
