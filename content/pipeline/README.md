@@ -13,7 +13,12 @@ Only **published** clinical facts render in app/web (constitution 3.3).
 3. Founder/clinician marks `reviewed`, then `published`.
 4. Run `node content/pipeline/generate-seed.mjs` and `npm run seed:check`.
 5. Optional public-data preview: `npm run ingest:preview` (SAHPRA/SEP fixtures → draft only; see `/content/ingest`).
-6. Founder review: use web `/review` or `npm run review:report`. Decisions persist to seed JSON + `content/review/decisions.jsonl`.
+6. Founder review: use API `/review/batches-ai` or offline CLI:
+   - `npm run review:report` — coverage by therapeutic area
+   - `npm run review:batches` — Batch A–I dosing + STG extract backlog
+   - `npm run review:batches -- show A` — detail for one batch
+   - `npm run review:batches -- publish-stg <id> --attestation "I confirm sourced…" --write`
+   Decisions persist to seed / `stg-extracts.json` + `content/review/decisions.jsonl` (dry-run without `--write`).
 7. CI clinical-eval must pass (no published draft dosing).
 
 ## Forbidden
