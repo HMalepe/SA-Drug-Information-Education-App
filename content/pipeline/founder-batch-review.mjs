@@ -36,6 +36,7 @@ import {
   planStgAllBatches,
   planDosingBatch,
   planDosingAllBatches,
+  applyStgBatchPublish,
   validateReviewDecision,
   validateStgExtractDecision,
 } from "@materia/shared";
@@ -543,118 +544,56 @@ function cmdPlanDosing(batchRaw, json) {
 
 function cmdPublishStgBatch(batchRaw, attestation, write) {
   const key = String(batchRaw).toUpperCase();
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const doc = loadStgDoc();
+  const extracts = doc.extracts ?? [];
+
+  let plans;
+  let scope;
   if (key === "ALL") {
-    const batchMoleculeIds = loadBatchMoleculeIds();
-    const doc = loadStgDoc();
-    const rollup = planStgAllBatches({
-      batchMoleculeIds,
-      extracts: doc.extracts ?? [],
+    const rollup = planStgAllBatches({ batchMoleculeIds, extracts, attestation });
+    plans = rollup.batches;
+    scope = "all";
+  } else {
+    const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === key);
+    if (!ref) {
+      console.error(`Unknown batch ${batchRaw}. Use A–I or all.`);
+      process.exit(2);
+    }
+    const plan = planStgBatchPublish({
+      batch: key,
+      extracts,
+      moleculeIds: batchMoleculeIds.get(key) ?? [],
       attestation,
     });
-    if (rollup.totals.blocked > 0) {
-      console.error(
-        JSON.stringify(
-          {
-            error: "Refuse all-batch publish — blocked extracts present",
-            blocked: rollup.batches.flatMap((b) =>
-              b.blocked.map((x) => ({ batch: b.batch, ...x })),
-            ),
-          },
-          null,
-          2,
-        ),
-      );
-      process.exit(1);
-    }
-    const allEligible = rollup.batches.flatMap((b) =>
-      b.eligible.map((e) => ({ batch: b.batch, item: e })),
-    );
-    const results = [];
-    for (const { batch, item } of allEligible) {
-      const next = applyStgExtractDecisionState(item.publishState, "publish");
-      results.push({
-        batch,
-        extractId: item.extractId,
-        moleculeSlug: item.moleculeSlug,
-        from: item.publishState,
-        to: next,
-      });
-      if (write) {
-        if (!setStgExtractPublishStateInDoc(doc, item.extractId, next)) {
-          console.error(`Failed to mutate ${item.extractId}`);
-          process.exit(1);
-        }
-        appendDecision({
-          id: `cli-stg-all-${item.extractId}-${Date.now()}`,
-          queueItemId: item.id,
-          decision: "publish",
-          reviewerLabel: "founder-cli",
-          attestation,
-          at: new Date().toISOString(),
-          note: write ? "publish-stg-batch all persist" : "dry-run",
-        });
-      }
-    }
-    console.log(
-      JSON.stringify(
-        {
-          dryRun: !write,
-          batch: "all",
-          count: results.length,
-          alreadyPublished: rollup.totals.alreadyPublished,
-          results,
-          note: rollup.note,
-        },
-        null,
-        2,
-      ),
-    );
-    if (!write) {
-      console.error("\nDry-run only. Re-run with --write to persist.");
-      return;
-    }
-    if (doc.meta) doc.meta.updated = new Date().toISOString().slice(0, 10);
-    writeFileSync(stgPath, `${JSON.stringify(doc, null, 2)}\n`, "utf8");
-    console.error(`Wrote ${stgPath} (${results.length} extracts) + ${decisionsPath}`);
-    return;
+    plans = [{ ...plan, label: ref.label }];
+    scope = key;
   }
 
-  const batch = key;
-  const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === batch);
-  if (!ref) {
-    console.error(`Unknown batch ${batchRaw}. Use A–I or all.`);
-    process.exit(2);
-  }
-  const ids = loadBatchMoleculeIds().get(batch) ?? [];
-  const doc = loadStgDoc();
-  const plan = planStgBatchPublish({
-    batch,
-    extracts: doc.extracts ?? [],
-    moleculeIds: ids,
+  const applied = applyStgBatchPublish({
+    scope,
+    plans,
+    reviewerLabel: "founder-cli",
     attestation,
+    decisionIdPrefix: write ? `cli-stg-batch-${scope}` : `cli-stg-dry-${scope}`,
   });
-  if (plan.blocked.length) {
+
+  if (!applied.ok) {
     console.error(
-      JSON.stringify(
-        {
-          error: "Refuse batch publish — one or more extracts blocked",
-          blocked: plan.blocked,
-        },
-        null,
-        2,
-      ),
+      JSON.stringify({ error: applied.reason, blocked: applied.blocked }, null, 2),
     );
     process.exit(1);
   }
-  if (plan.eligible.length === 0) {
+
+  if (applied.mutations.length === 0) {
     console.log(
       JSON.stringify(
         {
           dryRun: !write,
-          batch,
+          batch: scope,
           published: 0,
           message: "Nothing to publish (no draft/reviewed eligible extracts).",
-          alreadyPublished: plan.alreadyPublished,
+          alreadyPublished: applied.alreadyPublished,
         },
         null,
         2,
@@ -663,49 +602,41 @@ function cmdPublishStgBatch(batchRaw, attestation, write) {
     return;
   }
 
-  const results = [];
-  const decisionBase = {
-    reviewerLabel: "founder-cli",
-    attestation,
-    at: new Date().toISOString(),
-    note: write
-      ? `batch ${batch} persist via founder-batch-review.mjs`
-      : `batch ${batch} dry-run`,
-  };
+  const results = applied.mutations.map((m) => ({
+    batch: m.batch,
+    extractId: m.extractId,
+    moleculeSlug: m.moleculeSlug,
+    from: m.from,
+    to: m.to,
+  }));
 
-  for (const item of plan.eligible) {
-    const next = applyStgExtractDecisionState(item.publishState, "publish");
-    const decision = {
-      id: `cli-stg-batch-${batch}-${item.extractId}-${Date.now()}`,
-      queueItemId: item.id,
-      decision: "publish",
-      ...decisionBase,
-    };
-    results.push({
-      extractId: item.extractId,
-      moleculeSlug: item.moleculeSlug,
-      from: item.publishState,
-      to: next,
-    });
-    if (write) {
-      if (!setStgExtractPublishStateInDoc(doc, item.extractId, next)) {
-        console.error(`Failed to mutate ${item.extractId}`);
+  if (write) {
+    for (const m of applied.mutations) {
+      if (!setStgExtractPublishStateInDoc(doc, m.extractId, m.to)) {
+        console.error(`Failed to mutate ${m.extractId}`);
         process.exit(1);
       }
-      appendDecision(decision);
     }
+    for (const decision of applied.decisions) {
+      appendDecision({
+        ...decision,
+        id: `${decision.id}-${Date.now()}`,
+        note: `publish-stg-batch ${scope} persist`,
+      });
+    }
+    if (doc.meta) doc.meta.updated = new Date().toISOString().slice(0, 10);
+    writeFileSync(stgPath, `${JSON.stringify(doc, null, 2)}\n`, "utf8");
   }
 
   console.log(
     JSON.stringify(
       {
         dryRun: !write,
-        batch,
-        label: ref.label,
+        batch: scope,
         count: results.length,
-        alreadyPublished: plan.alreadyPublished,
+        alreadyPublished: applied.alreadyPublished,
         results,
-        note: plan.note,
+        note: applied.note,
       },
       null,
       2,
@@ -716,8 +647,6 @@ function cmdPublishStgBatch(batchRaw, attestation, write) {
     console.error("\nDry-run only. Re-run with --write to persist.");
     return;
   }
-  if (doc.meta) doc.meta.updated = new Date().toISOString().slice(0, 10);
-  writeFileSync(stgPath, `${JSON.stringify(doc, null, 2)}\n`, "utf8");
   console.error(`Wrote ${stgPath} (${results.length} extracts) + ${decisionsPath}`);
 }
 

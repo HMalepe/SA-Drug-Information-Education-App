@@ -116,6 +116,7 @@ import {
   planDosingAllBatches,
   validateStgExtractDecision,
   applyStgExtractDecisionState,
+  applyStgBatchPublish,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
   previewUpcoming,
@@ -141,6 +142,7 @@ import {
   loadStgExtractsFromDisk,
   persistReviewDecision,
   persistStgExtractDecision,
+  persistStgExtractBatchDecisions,
   reviewPersistEnabled,
 } from "./reviewPersist.js";
 import { getInRegionRagPublicStatus } from "./ragInRegionRuntime.js";
@@ -3268,7 +3270,7 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · GET /review/queue?batch=A · GET /review/stg-queue?batch=A · POST /review/decide or /review/stg-decide (attestation: sourced|confirm). Never invents mg. No dosing batch auto-publish.",
+      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · POST /review/publish-stg-batch (attestation required; all-or-nothing) · POST /review/decide or /review/stg-decide. Never invents mg. No dosing batch auto-publish.",
   });
 });
 
@@ -3359,6 +3361,109 @@ app.get("/review/stg-queue", (req, res) => {
     items,
     batch: batch || null,
     note: "Draft STG extracts do not index in RAG until published. PublishState only — text unchanged.",
+  });
+});
+
+app.post("/review/publish-stg-batch", (req, res) => {
+  const schema = z.object({
+    batch: z.string().min(1),
+    reviewerLabel: z.string().min(2),
+    attestation: z.string().min(8),
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten() });
+    return;
+  }
+  const scope = parsed.data.batch.trim().toUpperCase();
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgExtractsFromDisk();
+
+  const plans: Array<ReturnType<typeof planStgBatchPublish> & { label?: string }> = [];
+  if (scope === "ALL") {
+    plans.push(
+      ...planStgAllBatches({
+        batchMoleculeIds,
+        extracts,
+        attestation: parsed.data.attestation,
+      }).batches,
+    );
+  } else {
+    const ids = batchMoleculeIds.get(scope);
+    if (!ids) {
+      res.status(400).json({ error: `Unknown batch ${scope}. Use A–I or all.` });
+      return;
+    }
+    const ref = STG_BATCH_A_I_SEEDS.find((b) => b.batch === scope);
+    plans.push({
+      ...planStgBatchPublish({
+        batch: scope,
+        extracts,
+        moleculeIds: ids,
+        attestation: parsed.data.attestation,
+      }),
+      label: ref?.label,
+    });
+  }
+
+  const applied = applyStgBatchPublish({
+    scope,
+    plans,
+    reviewerLabel: parsed.data.reviewerLabel,
+    attestation: parsed.data.attestation,
+    decisionIdPrefix: `api-stg-batch-${scope}`,
+  });
+
+  if (!applied.ok) {
+    res.status(400).json({
+      error: applied.reason,
+      blocked: applied.blocked,
+      note: "No mutations applied — all-or-nothing STG batch gate.",
+    });
+    return;
+  }
+
+  for (const decision of applied.decisions) {
+    db.reviewDecisions.push(decision);
+  }
+
+  let persisted:
+    | { ok: true; path: string; count: number }
+    | { ok: false; reason: string }
+    | null = null;
+  if (reviewPersistEnabled() && applied.mutations.length > 0) {
+    persisted = persistStgExtractBatchDecisions({
+      decisions: applied.decisions,
+      mutations: applied.mutations.map((m) => ({
+        extractId: m.extractId,
+        publishState: m.to,
+      })),
+    });
+    if (!persisted.ok) {
+      res.status(500).json({
+        error: "STG batch write-back failed",
+        reason: persisted.reason,
+        count: applied.mutations.length,
+      });
+      return;
+    }
+  }
+
+  res.json({
+    scope,
+    count: applied.mutations.length,
+    alreadyPublished: applied.alreadyPublished,
+    results: applied.mutations.map((m) => ({
+      batch: m.batch,
+      extractId: m.extractId,
+      moleculeSlug: m.moleculeSlug,
+      from: m.from,
+      to: m.to,
+    })),
+    persisted: persisted?.ok ? { path: persisted.path, count: persisted.count } : null,
+    note: reviewPersistEnabled()
+      ? applied.note
+      : `${applied.note} In-memory only (REVIEW_PERSIST=false).`,
   });
 });
 

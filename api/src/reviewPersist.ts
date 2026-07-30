@@ -98,6 +98,50 @@ export function persistStgExtractDecision(input: {
   return { ok: true, path: "content/rag/stg-extracts.json" };
 }
 
+/**
+ * Persist a batch of STG publishState transitions in one file write.
+ * Never changes extract text. Audits every decision to decisions.jsonl.
+ */
+export function persistStgExtractBatchDecisions(input: {
+  decisions: ReviewDecision[];
+  mutations: Array<{ extractId: string; publishState: PublishState }>;
+}): { ok: true; path: string; count: number } | { ok: false; reason: string } {
+  mkdirSync(reviewDir, { recursive: true });
+
+  let doc: { extracts?: StgExtract[]; meta?: { updated?: string } };
+  try {
+    doc = JSON.parse(readFileSync(stgExtractsPath, "utf8")) as typeof doc;
+  } catch {
+    return { ok: false, reason: "Could not read content/rag/stg-extracts.json" };
+  }
+
+  const textBefore = new Map(
+    (doc.extracts ?? []).map((e) => [e.id, e.text] as const),
+  );
+
+  for (const m of input.mutations) {
+    const ok = setStgExtractPublishStateInDoc(doc, m.extractId, m.publishState);
+    if (!ok) {
+      return { ok: false, reason: `STG extract ${m.extractId} not found` };
+    }
+  }
+
+  for (const e of doc.extracts ?? []) {
+    if (textBefore.get(e.id) !== e.text) {
+      return { ok: false, reason: `Refused: extract text changed for ${e.id}` };
+    }
+  }
+
+  if (doc.meta) {
+    doc.meta.updated = new Date().toISOString().slice(0, 10);
+  }
+  writeFileSync(stgExtractsPath, `${JSON.stringify(doc, null, 2)}\n`, "utf8");
+  for (const decision of input.decisions) {
+    appendFileSync(decisionsPath, `${JSON.stringify(decision)}\n`, "utf8");
+  }
+  return { ok: true, path: "content/rag/stg-extracts.json", count: input.mutations.length };
+}
+
 export function loadStgExtractsFromDisk(): StgExtract[] {
   try {
     const doc = JSON.parse(readFileSync(stgExtractsPath, "utf8")) as { extracts?: StgExtract[] };

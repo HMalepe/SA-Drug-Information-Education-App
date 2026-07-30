@@ -161,6 +161,39 @@ export default function ReviewPage() {
     await load();
   }
 
+  async function publishStgBatch(scope: string) {
+    const confirmed = window.confirm(
+      `Publish all eligible STG pointers for batch ${scope}? ` +
+        "This changes publishState only (text unchanged). Requires attestation.",
+    );
+    if (!confirmed) return;
+    const res = await fetch(`${API}/review/publish-stg-batch`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        batch: scope,
+        reviewerLabel: reviewer,
+        attestation,
+      }),
+    });
+    const data = await res.json();
+    setMsg(JSON.stringify(data, null, 2));
+    await load();
+  }
+
+  const stgEligibleForFilter =
+    stgPlan == null
+      ? 0
+      : batch
+        ? (stgPlan.batches.find((b) => b.batch === batch)?.eligible.length ?? 0)
+        : stgPlan.totals.eligible;
+  const stgBlockedForFilter =
+    stgPlan == null
+      ? 0
+      : batch
+        ? (stgPlan.batches.find((b) => b.batch === batch)?.blocked.length ?? 0)
+        : stgPlan.totals.blocked;
+
   return (
     <>
       <h1>Clinical review</h1>
@@ -207,6 +240,22 @@ export default function ReviewPage() {
             CLI: <code>npm run review:batches -- plan-stg all</code> ·{" "}
             <code>npm run review:batches -- plan-dosing all</code>
           </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+            <button
+              className="btn"
+              type="button"
+              disabled={stgEligibleForFilter === 0 || stgBlockedForFilter > 0}
+              onClick={() => void publishStgBatch(batch || "all")}
+            >
+              Publish eligible STG
+              {batch ? ` batch ${batch}` : " all"} ({stgEligibleForFilter})
+            </button>
+            {stgBlockedForFilter > 0 ? (
+              <span className="muted">
+                Blocked {stgBlockedForFilter} — fix before batch publish (all-or-nothing).
+              </span>
+            ) : null}
+          </div>
         </section>
       )}
 

@@ -4,7 +4,7 @@
  */
 
 import type { PublishState } from "./types.js";
-import type { ReviewQueueItem } from "./reviewQueue.js";
+import type { ReviewDecision, ReviewQueueItem } from "./reviewQueue.js";
 import { nextPublishState, type ReviewDecisionKind } from "./reviewQueue.js";
 import type { StgExtract } from "./ragCorpus.js";
 
@@ -386,6 +386,134 @@ export function planStgAllBatches(input: {
     totals: { alreadyPublished, eligible, blocked },
     note:
       "Roll-up of plan-stg A–I. Use publish-stg-batch <letter> --write after review. Does not touch dosing.",
+  };
+}
+
+export interface StgBatchPublishMutation {
+  extractId: string;
+  moleculeId: string;
+  moleculeSlug: string;
+  batch: string;
+  from: PublishState;
+  to: PublishState;
+  queueItemId: string;
+}
+
+export type ApplyStgBatchPublishResult =
+  | {
+      ok: true;
+      scope: string;
+      alreadyPublished: number;
+      mutations: StgBatchPublishMutation[];
+      decisions: ReviewDecision[];
+      note: string;
+    }
+  | {
+      ok: false;
+      reason: string;
+      blocked: Array<{ extractId: string; reason: string; preview: string; batch?: string }>;
+    };
+
+/**
+ * Pure batch STG publish: publishState transitions + audit rows only.
+ * Refuses the whole scope if any extract is blocked or attestation is weak.
+ * Never changes extract text.
+ */
+export function applyStgBatchPublish(input: {
+  scope: string;
+  plans: Array<StgBatchPublishPlan & { label?: string }>;
+  reviewerLabel: string;
+  attestation: string;
+  decisionIdPrefix?: string;
+  at?: string;
+}): ApplyStgBatchPublishResult {
+  const attestation = input.attestation.trim();
+  const okText = attestation.toLowerCase();
+  if (!okText.includes("sourced") && !okText.includes("confirm")) {
+    return {
+      ok: false,
+      reason:
+        "Publishing STG extracts requires attestation containing 'sourced' or 'confirm' (RAG gate).",
+      blocked: [],
+    };
+  }
+  if (input.reviewerLabel.trim().length < 2) {
+    return {
+      ok: false,
+      reason: "reviewerLabel must be at least 2 characters.",
+      blocked: [],
+    };
+  }
+
+  const blocked = input.plans.flatMap((p) =>
+    p.blocked.map((b) => ({ ...b, batch: p.batch })),
+  );
+  if (blocked.length > 0) {
+    return {
+      ok: false,
+      reason: "Refuse batch publish — one or more extracts blocked",
+      blocked,
+    };
+  }
+
+  const at = input.at ?? new Date().toISOString();
+  const prefix = input.decisionIdPrefix ?? `stg-batch-${input.scope}`;
+  const mutations: StgBatchPublishMutation[] = [];
+  const decisions: ReviewDecision[] = [];
+  let alreadyPublished = 0;
+
+  for (const plan of input.plans) {
+    alreadyPublished += plan.alreadyPublished;
+    for (const item of plan.eligible) {
+      const gate = validateStgExtractDecision({
+        item,
+        decision: "publish",
+        attestation,
+      });
+      if (!gate.ok) {
+        return {
+          ok: false,
+          reason: "Refuse batch publish — gate failed during apply",
+          blocked: [
+            {
+              extractId: item.extractId,
+              reason: gate.reason,
+              preview: item.preview.slice(0, 120),
+              batch: plan.batch,
+            },
+          ],
+        };
+      }
+      const to = applyStgExtractDecisionState(item.publishState, "publish");
+      mutations.push({
+        extractId: item.extractId,
+        moleculeId: item.moleculeId,
+        moleculeSlug: item.moleculeSlug,
+        batch: plan.batch,
+        from: item.publishState,
+        to,
+        queueItemId: item.id,
+      });
+      decisions.push({
+        id: `${prefix}-${item.extractId}`,
+        queueItemId: item.id,
+        decision: "publish",
+        reviewerLabel: input.reviewerLabel.trim(),
+        attestation,
+        at,
+        note: `publish-stg-batch ${input.scope} — publishState only`,
+      });
+    }
+  }
+
+  return {
+    ok: true,
+    scope: input.scope,
+    alreadyPublished,
+    mutations,
+    decisions,
+    note:
+      "STG batch publish changes publishState only. Does not invent text or touch dosing scaffolds.",
   };
 }
 
