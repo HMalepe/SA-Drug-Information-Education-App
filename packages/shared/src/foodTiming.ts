@@ -1401,6 +1401,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-dutasteride",
+    fact: {
+      value:
+        "5-ARI teaching: take as on the labelled product — crushed-capsule handling caution if pregnancy is a household concern. Materia does not invent a dose or PSA target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-mirabegron",
+    fact: {
+      value:
+        "Beta-3 agonist teaching: blood-pressure watch is common counselling — confirm against the labelled product. Materia does not invent a dose or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-folic-acid",
+    fact: {
+      value:
+        "Vitamin B9 teaching: pregnancy and anaemia plans differ — confirm against the labelled product. Materia does not invent a dose or lab target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-cyanocobalamin",
+    fact: {
+      value:
+        "Vitamin B12 teaching: tablets and injections differ — confirm the labelled product. Materia does not invent a dose, injection interval, or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-betamethasone",
+    fact: {
+      value:
+        "Potent topical corticosteroid teaching: thin layer to affected skin only — confirm against the labelled product. Materia does not invent a finger-tip unit count or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-clobetasol",
+    fact: {
+      value:
+        "Very potent topical corticosteroid teaching: short courses are common counselling — confirm against the labelled product. Materia does not invent a finger-tip unit count or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-fusidic-acid",
+    fact: {
+      value:
+        "Topical antibiotic teaching: thin layer to the affected area — confirm against the labelled product. Materia does not invent a dose, application clock, or course length.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-permethrin",
+    fact: {
+      value:
+        "Scabicide / pediculicide teaching: cream and lotion instructions differ — confirm leave-on time against the labelled product. Materia does not invent a dose, leave-on clock, or contact list.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-fluticasone-nasal",
+    fact: {
+      value:
+        "Intranasal corticosteroid teaching: shake and prime as the labelled product advises. Materia does not invent a spray count or step-up plan.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-desmopressin",
+    fact: {
+      value:
+        "Vasopressin analogue teaching: fluid-restriction belongs with the clinician’s plan — do not invent a litre target. Materia does not invent a dose or sodium target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
