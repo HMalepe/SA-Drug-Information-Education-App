@@ -2601,6 +2601,156 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-beclomethasone",
+    fact: {
+      value:
+        "ICS teaching: rinse mouth if advised — not a reliever. Materia does not invent puff counts or spacer schedules.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-ipratropium",
+    fact: {
+      value:
+        "SAMA teaching: eye protection with nebulisers if advised. Materia does not invent puff or nebuliser doses.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-glibenclamide",
+    fact: {
+      value:
+        "Sulfonylurea teaching: hypoglycaemia watch and meal regularity. Materia does not invent a dose or renal cut-off.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-amiodarone",
+    fact: {
+      value:
+        "Amiodarone teaching: thyroid/lung/liver watch and interaction checks. Materia does not invent loading doses or monitoring intervals.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-adenosine",
+    fact: {
+      value:
+        "Adenosine teaching: cardiac monitoring only. Materia does not invent a dose or flush technique.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-nevirapine",
+    fact: {
+      value:
+        "Nevirapine teaching: rash and liver-safety counselling. Materia does not invent a regimen or lead-in schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-atazanavir",
+    fact: {
+      value:
+        "Atazanavir teaching: acid-suppressant and interaction checks. Materia does not invent a dose or booster pairing.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-chlorpromazine",
+    fact: {
+      value:
+        "Chlorpromazine teaching: sedation and alcohol caution. Materia does not invent a dose or titration.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-clozapine",
+    fact: {
+      value:
+        "Clozapine teaching: FBC monitoring is non-negotiable. Materia does not invent a titration or FBC schedule.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-phenobarbital",
+    fact: {
+      value:
+        "Phenobarbital teaching: do not stop suddenly; interaction checks matter. Materia does not invent a dose or blood-level target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-potassium-chloride",
+    fact: {
+      value:
+        "KCl teaching: concentration/rate safety rules are institutional. Materia does not invent an infusion rate or mmol dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-thiamine",
+    fact: {
+      value:
+        "Thiamine teaching: Wernicke-risk pathways are clinician-directed. Materia does not invent a dose or infusion sequence.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-pyridoxine",
+    fact: {
+      value:
+        "Pyridoxine teaching: often an INH adjunct — confirm the TB plan. Materia does not invent a dose.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-oseltamivir",
+    fact: {
+      value:
+        "Oseltamivir teaching: start as directed after symptoms/exposure. Materia does not invent a start-window or renal adjustment.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-misoprostol",
+    fact: {
+      value:
+        "Misoprostol teaching: indication and route change counselling completely. Materia does not invent a dose or route regimen.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(

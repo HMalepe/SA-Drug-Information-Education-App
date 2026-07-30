@@ -319,10 +319,9 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v322–v329 STG Batch B (<code>artesunate</code>,{" "}
-          <code>artemether-lumefantrine</code>, <code>albendazole</code>, <code>praziquantel</code>,{" "}
-          <code>amphotericin-b</code>, <code>ampicillin</code>, <code>cefazolin</code>,{" "}
-          <code>benzylpenicillin</code>). Locum accepts <code>?lang=zu</code> (af/st/xh too).
+          Published SA counselling: deepened v330–v344 STG Batch C (15 hospital-chronic gap
+          molecules — ICS/SAMA, SU, antiarrhythmics, ART, psych, AED, electrolytes, vitamins,
+          oseltamivir, misoprostol). Locum accepts <code>?lang=zu</code> (af/st/xh too).
         </p>{" "}
         <button
           className="btn"

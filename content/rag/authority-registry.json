@@ -48,8 +48,8 @@
     "Batch C hospital-chronic EML scaffolds (respiratory/psych/cardio/supportive)"
   ],
   "pipelineNext": [
-    "Multilingual counselling for Batch C (hospital-chronic STG gaps)",
     "PHC + Paediatric STG gap passes (separate PDFs)",
-    "Wire real in-region embedder/LLM adapters (chunks-only)"
+    "Wire real in-region embedder/LLM adapters (chunks-only)",
+    "Founder clinical review to publish draft dosing for Batches A–C"
   ]
 }

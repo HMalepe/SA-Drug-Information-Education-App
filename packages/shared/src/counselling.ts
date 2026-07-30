@@ -24,6 +24,7 @@ import { COUNSELLING_V300_TO_V309 } from "./counsellingV300V309.js";
 import { COUNSELLING_V310_TO_V314 } from "./counsellingV310V314.js";
 import { COUNSELLING_V315_TO_V321 } from "./counsellingV315V321.js";
 import { COUNSELLING_V322_TO_V329 } from "./counsellingV322V329.js";
+import { COUNSELLING_V330_TO_V344 } from "./counsellingV330V344.js";
 
 export type CounsellingLang = "en" | "zu" | "af" | "st" | "xh";
 
@@ -1213,6 +1214,7 @@ const SCRIPTS: Record<string, Partial<Record<CounsellingLang, CounsellingScript>
   ...COUNSELLING_V310_TO_V314,
   ...COUNSELLING_V315_TO_V321,
   ...COUNSELLING_V322_TO_V329,
+  ...COUNSELLING_V330_TO_V344,
 };
 
 export function getCounsellingScript(
