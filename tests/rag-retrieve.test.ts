@@ -3,11 +3,14 @@ import { describe, it } from "node:test";
 import {
   answerUsesOnlyRetrievedText,
   assertIndexableLicense,
+  assertInRegionEndpoint,
   chunksFromInsertDocuments,
   chunksFromPublishedInteractions,
   chunksFromStgExtracts,
   cosineSimilarity,
+  createHostedInRegionEmbedder,
   createHostedInRegionEmbedderStub,
+  createHostedInRegionLlmComposer,
   groundedAskFromCorpus,
   indexRagChunks,
   licenseClassForSourceId,
@@ -275,6 +278,151 @@ describe("RAG grounded composer", () => {
     const stub = createHostedInRegionEmbedderStub();
     assert.throws(() => stub.embed("amoxicillin"), /not configured|in-region/i);
     const withUrl = createHostedInRegionEmbedderStub({ endpointUrl: "https://embed.local.za" });
-    assert.throws(() => withUrl.embed("amoxicillin"), /not wired|offshore/i);
+    assert.throws(() => withUrl.embed("amoxicillin"), /stub cannot|createHostedInRegionEmbedder|offshore/i);
+  });
+});
+
+describe("RAG in-region HTTP adapters", () => {
+  it("assertInRegionEndpoint refuses known offshore hosts", () => {
+    assert.throws(
+      () => assertInRegionEndpoint("https://api.openai.com/v1/embeddings"),
+      /offshore|openai/i,
+    );
+    assert.throws(
+      () => assertInRegionEndpoint("https://api.anthropic.com/v1/messages"),
+      /offshore|anthropic/i,
+    );
+    assert.throws(
+      () => assertInRegionEndpoint("https://embed.example.com/v1"),
+      /allowlist/i,
+    );
+  });
+
+  it("assertInRegionEndpoint allows localhost, .za, and founder allowHosts", () => {
+    assert.equal(assertInRegionEndpoint("http://127.0.0.1:8080/embed").hostname, "127.0.0.1");
+    assert.equal(
+      assertInRegionEndpoint("https://rag.materia.za/embed").hostname,
+      "rag.materia.za",
+    );
+    assert.equal(
+      assertInRegionEndpoint("https://vendor.cloud.example/v1", {
+        allowHosts: ["vendor.cloud.example"],
+      }).hostname,
+      "vendor.cloud.example",
+    );
+  });
+
+  it("hosted embedder POSTs text and returns embedding (mock fetch)", async () => {
+    const expected = Array.from({ length: 64 }, (_, i) => i / 64);
+    let sawBody = "";
+    const embedder = createHostedInRegionEmbedder({
+      endpointUrl: "https://embed.local.za/v1",
+      fetchImpl: async (_url, init) => {
+        sawBody = init?.body ?? "";
+        return {
+          ok: true,
+          status: 200,
+          text: async () => "",
+          json: async () => ({ embedding: expected }),
+        };
+      },
+    });
+    const vec = await embedder.embedAsync("amoxicillin counselling");
+    assert.deepEqual(vec, expected);
+    assert.match(sawBody, /"text"/);
+    assert.match(sawBody, /amoxicillin counselling/);
+  });
+
+  it("hosted embedder refuses HTTP error without offshore fallback", async () => {
+    const embedder = createHostedInRegionEmbedder({
+      endpointUrl: "http://localhost:9999/embed",
+      fetchImpl: async () => ({
+        ok: false,
+        status: 503,
+        text: async () => "down",
+        json: async () => ({}),
+      }),
+    });
+    await assert.rejects(() => embedder.embedAsync("x"), /HTTP 503|offshore/i);
+  });
+
+  it("hosted LLM composer sends chunks-only payload and grounds answer", async () => {
+    const chunkText = "Amoxicillin blocks bacterial cell-wall synthesis.";
+    let payload = "";
+    const composer = createHostedInRegionLlmComposer({
+      endpointUrl: "https://llm.local.za/compose",
+      fetchImpl: async (_url, init) => {
+        payload = init?.body ?? "";
+        return {
+          ok: true,
+          status: 200,
+          text: async () => "",
+          json: async () => ({ answer: chunkText }),
+        };
+      },
+    });
+    const out = await composer.composeAsync({
+      question: "mechanism?",
+      chunks: [
+        {
+          fieldPath: "moa",
+          text: chunkText,
+          fact: {
+            value: chunkText,
+            sourceId: "src-materia-edu",
+            publishState: "published",
+            lastReviewed: "2026-07-30",
+          },
+          source: edu,
+          embedding: [],
+          licenseClass: "owned_authoring",
+        },
+      ],
+      scores: [0.9],
+    });
+    assert.equal(out.answer, chunkText);
+    assert.match(payload, /"chunks"/);
+    assert.match(payload, /fieldPath/);
+    assert.ok(!payload.includes("patient"));
+    assert.ok(!/"mg"|trough|INR/.test(payload));
+  });
+
+  it("hosted LLM composer refuses empty chunks and ungrounded answers", async () => {
+    const composer = createHostedInRegionLlmComposer({
+      endpointUrl: "https://llm.local.za/compose",
+      fetchImpl: async () => ({
+        ok: true,
+        status: 200,
+        text: async () => "",
+        json: async () => ({ answer: "Give 500 mg TDS — invented." }),
+      }),
+    });
+    await assert.rejects(
+      () => composer.composeAsync({ question: "dose?", chunks: [], scores: [] }),
+      /no retrieved chunks/i,
+    );
+    await assert.rejects(
+      () =>
+        composer.composeAsync({
+          question: "dose?",
+          chunks: [
+            {
+              fieldPath: "dosing",
+              text: "Adult dosing not published in Materia yet.",
+              fact: {
+                value: "Adult dosing not published in Materia yet.",
+                sourceId: "src-doh-stg",
+                publishState: "published",
+                lastReviewed: "2026-07-01",
+              },
+              source: stg,
+              embedding: [],
+              licenseClass: "public_guideline",
+            },
+          ],
+          scores: [0.5],
+        }),
+      /grounding check/i,
+    );
   });
 });

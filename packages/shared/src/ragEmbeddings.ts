@@ -4,11 +4,19 @@
  * Never send identifiable patient text to offshore embedders — call sites strip first (POPIA).
  */
 
+import { assertInRegionEndpoint, type FetchLike } from "./ragInRegion.js";
+
 export const RAG_EMBED_DIM = 64;
 
 export interface Embedder {
   readonly id: string;
   embed(text: string): number[];
+}
+
+/** Async-capable hosted embedder (HTTP). */
+export interface AsyncEmbedder {
+  readonly id: string;
+  embedAsync(text: string): Promise<number[]>;
 }
 
 /** Stable 32-bit hash for token → dimension bucket. */
@@ -90,8 +98,76 @@ export function createHostedInRegionEmbedderStub(opts?: {
         );
       }
       throw new Error(
-        `In-region embedder endpoint registered (${url}) but HTTP adapter not wired yet. Falling open to offshore models is forbidden.`,
+        `In-region embedder stub cannot call HTTP. Use createHostedInRegionEmbedder({ endpointUrl, fetchImpl }) — falling open to offshore models is forbidden.`,
       );
     },
   };
+}
+
+export interface HostedEmbedderOpts {
+  endpointUrl: string;
+  /** Injected fetch for tests / runtimes without global fetch. */
+  fetchImpl: FetchLike;
+  allowHosts?: string[];
+  expectedDim?: number;
+  /**
+   * Optional bearer token for the in-region service.
+   * Never log or commit secrets — pass from env at the API boundary only.
+   */
+  authToken?: string;
+}
+
+/**
+ * Hosted in-region embedder HTTP adapter (async).
+ * POSTs `{ text }` to a founder-approved endpoint; expects `{ embedding: number[] }`.
+ * Refuses known offshore hosts. Does not invent vectors on failure.
+ */
+export function createHostedInRegionEmbedder(opts: HostedEmbedderOpts): AsyncEmbedder {
+  assertInRegionEndpoint(opts.endpointUrl, { allowHosts: opts.allowHosts });
+  const expectedDim = opts.expectedDim ?? RAG_EMBED_DIM;
+
+  return {
+    id: "hosted-in-region-http-v1",
+    async embedAsync(text: string): Promise<number[]> {
+      return embedWithHostedInRegion(text, { ...opts, expectedDim });
+    },
+  };
+}
+
+/**
+ * Async embed against a founder-approved in-region HTTP endpoint.
+ */
+export async function embedWithHostedInRegion(
+  text: string,
+  opts: HostedEmbedderOpts,
+): Promise<number[]> {
+  const url = assertInRegionEndpoint(opts.endpointUrl, { allowHosts: opts.allowHosts });
+  const expectedDim = opts.expectedDim ?? RAG_EMBED_DIM;
+  const headers: Record<string, string> = {
+    "content-type": "application/json",
+    accept: "application/json",
+  };
+  if (opts.authToken?.trim()) {
+    headers.authorization = `Bearer ${opts.authToken.trim()}`;
+  }
+  const res = await opts.fetchImpl(url.toString(), {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ text }),
+  });
+  if (!res.ok) {
+    throw new Error(
+      `In-region embedder HTTP ${res.status}. Will not fall back to an offshore model.`,
+    );
+  }
+  const body = (await res.json()) as { embedding?: unknown };
+  if (!Array.isArray(body.embedding) || !body.embedding.every((n) => typeof n === "number")) {
+    throw new Error("In-region embedder response missing numeric embedding[] — refusing.");
+  }
+  if (body.embedding.length !== expectedDim) {
+    throw new Error(
+      `In-region embedder returned dim ${body.embedding.length}; expected ${expectedDim}.`,
+    );
+  }
+  return body.embedding as number[];
 }

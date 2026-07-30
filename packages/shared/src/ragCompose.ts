@@ -6,6 +6,7 @@
  */
 
 import type { IndexedRagChunk } from "./ragRetrieve.js";
+import { assertInRegionEndpoint, type FetchLike } from "./ragInRegion.js";
 
 export interface ComposeInput {
   question: string;
@@ -92,6 +93,91 @@ export function setGroundedComposer(composer: GroundedComposer): void {
 
 export function resetGroundedComposer(): void {
   activeComposer = templateGroundedComposer;
+}
+
+export interface HostedLlmComposerOpts {
+  endpointUrl: string;
+  fetchImpl: FetchLike;
+  allowHosts?: string[];
+  authToken?: string;
+  /** Default true — refuse answers that cannot be grounded in retrieved chunk text. */
+  requireGroundingCheck?: boolean;
+}
+
+/**
+ * Payload shape sent to an in-region LLM. Chunks only — never patient identifiers,
+ * never model knowledge as a clinical source (constitution 3.1 / docs/17).
+ */
+export interface GroundedLlmRequestPayload {
+  question: string;
+  chunks: Array<{ fieldPath: string; text: string; sourceId?: string }>;
+  scores: number[];
+}
+
+/**
+ * Hosted in-region LLM composer (async).
+ * Sends ONLY ComposeInput (question + retrieved chunks + scores).
+ * Refuses empty chunks and known offshore hosts. Optionally rejects ungrounded answers.
+ */
+export function createHostedInRegionLlmComposer(opts: HostedLlmComposerOpts): {
+  readonly id: string;
+  composeAsync(input: ComposeInput): Promise<ComposeOutput>;
+} {
+  assertInRegionEndpoint(opts.endpointUrl, { allowHosts: opts.allowHosts });
+  const requireGrounding = opts.requireGroundingCheck !== false;
+
+  return {
+    id: "hosted-in-region-llm-v1",
+    async composeAsync(input: ComposeInput): Promise<ComposeOutput> {
+      if (input.chunks.length === 0) {
+        throw new Error("GroundedComposer refuse: no retrieved chunks — will not invent.");
+      }
+      const url = assertInRegionEndpoint(opts.endpointUrl, { allowHosts: opts.allowHosts });
+      const payload: GroundedLlmRequestPayload = {
+        question: input.question,
+        chunks: input.chunks.map((c) => ({
+          fieldPath: c.fieldPath,
+          text: c.text,
+          sourceId: c.source.id,
+        })),
+        scores: input.scores,
+      };
+      const headers: Record<string, string> = {
+        "content-type": "application/json",
+        accept: "application/json",
+      };
+      if (opts.authToken?.trim()) {
+        headers.authorization = `Bearer ${opts.authToken.trim()}`;
+      }
+      const res = await opts.fetchImpl(url.toString(), {
+        method: "POST",
+        headers,
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        throw new Error(
+          `In-region LLM HTTP ${res.status}. Will not fall back to an offshore model.`,
+        );
+      }
+      const body = (await res.json()) as { answer?: unknown };
+      if (typeof body.answer !== "string" || !body.answer.trim()) {
+        throw new Error("In-region LLM response missing answer string — refusing.");
+      }
+      const answer = body.answer.trim();
+      if (requireGrounding) {
+        const ok = answerUsesOnlyRetrievedText(
+          answer,
+          input.chunks.map((c) => c.text),
+        );
+        if (!ok) {
+          throw new Error(
+            "In-region LLM answer failed grounding check — refuse unattributable clinical text.",
+          );
+        }
+      }
+      return { answer, composerId: "hosted-in-region-llm-v1" };
+    },
+  };
 }
 
 /**

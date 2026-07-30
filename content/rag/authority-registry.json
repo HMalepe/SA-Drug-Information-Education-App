@@ -1,7 +1,7 @@
 {
   "meta": {
     "note": "Authority registry for Materia RAG ingest. Licensed commercial references are forbidden. Public DoH/SAHPRA feeds and owned authoring are allowed after founder review.",
-    "updated": "2026-07-30"
+    "updated": "2026-07-31"
   },
   "allowed": [
     {
@@ -53,11 +53,12 @@
     "Deepened counselling v345–v356 for PHC Batch D clinic-core",
     "Deepened counselling v357–v372 for PHC Batches E–F",
     "Deepened counselling v373–v384 for Paediatric Batch G",
-    "Deepened counselling v385–v403 for Paediatric Batches H–I"
+    "Deepened counselling v385–v403 for Paediatric Batches H–I",
+    "In-region HTTP embedder + LLM composer adapters (chunks-only; offshore refuse)"
   ],
   "pipelineNext": [
-    "Wire real in-region embedder/LLM adapters (chunks-only)",
     "Founder clinical review to publish draft dosing for Batches A–I",
-    "STG/RAG extract refresh for newly scaffolded molecules (draft gate)"
+    "STG/RAG extract refresh for newly scaffolded molecules (draft gate)",
+    "Point API at founder-approved in-region embedder/LLM URLs (env only)"
   ]
 }

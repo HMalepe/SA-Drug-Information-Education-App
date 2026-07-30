@@ -3,6 +3,7 @@ export * from "./publish.js";
 export * from "./search.js";
 export * from "./grounding.js";
 export * from "./ragEmbeddings.js";
+export * from "./ragInRegion.js";
 export * from "./ragLicense.js";
 export * from "./ragRetrieve.js";
 export * from "./ragAsk.js";
