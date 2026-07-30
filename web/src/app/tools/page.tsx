@@ -319,10 +319,10 @@ export default function ToolsPage() {
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Published SA counselling: deepened v260–v269 (<code>darbepoetin</code>,{" "}
-          <code>eltrombopag</code>, <code>deferasirox</code>, <code>folinic-acid</code>,{" "}
-          <code>fondaparinux</code>, <code>aciclovir-eye</code>, <code>prednisolone-eye</code>,{" "}
-          <code>mometasone-nasal</code>…) — 6-line scripts. Locum accepts <code>?lang=zu</code>{" "}
+          Published SA counselling: deepened v270–v279 (<code>pseudoephedrine</code>,{" "}
+          <code>oxymetazoline</code>, <code>xylometazoline</code>, <code>hypromellose</code>,{" "}
+          <code>rizatriptan</code>, <code>tolterodine</code>, <code>vardenafil</code>,{" "}
+          <code>prednisolone-oral</code>…) — 6-line scripts. Locum accepts <code>?lang=zu</code>{" "}
           (af/st/xh too).
         </p>{" "}
         <button

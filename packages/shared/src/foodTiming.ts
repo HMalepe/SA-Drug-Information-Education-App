@@ -2001,6 +2001,106 @@ export const FOOD_TIMING_LIBRARY: Array<{
       lastReviewed: "2026-07-30",
     },
   },
+  {
+    moleculeId: "mol-pseudoephedrine",
+    fact: {
+      value:
+        "Oral decongestant teaching: multi-ingredient cold packs differ — blood-pressure watch is common counselling. Materia does not invent a dose, spacing hours, or congestion score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-oxymetazoline",
+    fact: {
+      value:
+        "Topical nasal decongestant teaching: short courses are common — confirm the labelled maximum duration. Materia does not invent a dose, spray clock, or congestion score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-xylometazoline",
+    fact: {
+      value:
+        "Topical nasal decongestant teaching: short courses are common — confirm the labelled maximum duration. Materia does not invent a dose, spray clock, or congestion score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-hypromellose",
+    fact: {
+      value:
+        "Artificial tears teaching: preservative-free and multi-dose packs differ — confirm against the labelled product. Materia does not invent a drop count, spacing minutes, or dryness score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-sodium-cromoglicate",
+    fact: {
+      value:
+        "Mast-cell stabiliser teaching: nasal and ocular forms differ — regular use before full benefit is common counselling. Materia does not invent a dose, spray or drop clock, or allergy score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-rizatriptan",
+    fact: {
+      value:
+        "Triptan teaching: for migraine attacks as labelled — do not stack triptans casually. Materia does not invent a dose, attack clock, or migraine score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-tolterodine",
+    fact: {
+      value:
+        "Antimuscarinic teaching: immediate- and modified-release forms differ — dry mouth and constipation watch are common. Materia does not invent a dose, dosing clock, or bladder score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-vardenafil",
+    fact: {
+      value:
+        "PDE5 teaching: never combine with nitrates without clinician advice — ask how food and alcohol fit the labelled product. Materia does not invent a dose, timing hours, or erection score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-prednisolone-oral",
+    fact: {
+      value:
+        "Systemic corticosteroid teaching: do not stop suddenly without the clinician’s plan — infection and stomach watch are common. Materia does not invent a dose, taper clock, or steroid score.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
+  {
+    moleculeId: "mol-fludrocortisone",
+    fact: {
+      value:
+        "Mineralocorticoid teaching: salt and fluid advice belongs with the clinician — blood-pressure and swelling watch are common. Materia does not invent a dose, sodium target, or blood-pressure target.",
+      sourceId: "src-materia-edu",
+      publishState: "published",
+      lastReviewed: "2026-07-30",
+    },
+  },
 ];
 
 export function resolveFoodLifestyleFact(
