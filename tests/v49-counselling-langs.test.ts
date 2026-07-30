@@ -14,7 +14,7 @@ describe("v49 published Sesotho + isiXhosa counselling §9", () => {
     assert.deepEqual(langs.sort(), ["af", "en", "st", "xh", "zu"]);
     const cov = counsellingCoverage("mol-amox");
     assert.equal(cov.length, 5);
-    assert.ok(cov.every((c) => c.lineCount === 4));
+    assert.ok(cov.every((c) => c.lineCount === 6));
   });
 
   it("keeps emergency / allergy teaching points without inventing doses", () => {

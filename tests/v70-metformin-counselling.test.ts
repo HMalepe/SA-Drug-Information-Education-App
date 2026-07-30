@@ -13,7 +13,7 @@ describe("v70 metformin multilingual counselling §9", () => {
     assert.deepEqual(langs.sort(), ["af", "en", "st", "xh", "zu"]);
     const cov = counsellingCoverage("mol-metformin");
     assert.equal(cov.length, 5);
-    assert.ok(cov.every((c) => c.lineCount === 4));
+    assert.ok(cov.every((c) => c.lineCount === 6));
     assert.ok(listMoleculesWithPublishedCounselling().includes("mol-metformin"));
   });
 

@@ -98,8 +98,8 @@ describe("multilingual counselling", () => {
     assert.ok(xh);
     assert.equal(st!.publishState, "published");
     assert.equal(xh!.publishState, "published");
-    assert.equal(st!.lines.length, 4);
-    assert.equal(xh!.lines.length, 4);
+    assert.equal(st!.lines.length, 6);
+    assert.equal(xh!.lines.length, 6);
     assert.equal(st!.lines.some((l) => /\[Draft\]/i.test(l)), false);
     assert.equal(xh!.lines.some((l) => /\[Draft\]/i.test(l)), false);
     assert.doesNotMatch(st!.lines.join(" "), /\d+\s*mg/i);
