@@ -6,6 +6,7 @@
  * Usage:
  *   npm run review:batches
  *   npm run review:batches -- progress [--json]
+ *   npm run review:batches -- decisions [--limit 50] [--json]
  *   npm run review:batches -- show A
  *   npm run review:batches -- show A --stg
  *   npm run review:batches -- plan-stg A|all [--json]
@@ -46,6 +47,8 @@ import {
   DEFAULT_HONEST_ABSENCE_ATTESTATION,
   summarizeFounderProgress,
   describeInRegionRagEnv,
+  parseReviewDecisionsJsonl,
+  listRecentReviewDecisions,
 } from "@materia/shared";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -92,6 +95,7 @@ function parseArgs(argv) {
   const flags = new Set();
   const positional = [];
   let attestation = "";
+  let limit;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === "--write") flags.add("write");
@@ -102,6 +106,10 @@ function parseArgs(argv) {
       attestation = String(args[++i] ?? "");
     } else if (a.startsWith("--attestation=")) {
       attestation = a.slice("--attestation=".length);
+    } else if (a === "--limit") {
+      limit = Number(args[++i] ?? "");
+    } else if (a.startsWith("--limit=")) {
+      limit = Number(a.slice("--limit=".length));
     } else if (a.startsWith("-")) {
       console.error(`Unknown flag: ${a}`);
       process.exit(2);
@@ -109,7 +117,7 @@ function parseArgs(argv) {
       positional.push(a);
     }
   }
-  return { positional, flags, attestation };
+  return { positional, flags, attestation, limit };
 }
 
 function printSummary(json) {
@@ -600,6 +608,40 @@ function cmdExportDosingCli(batchRaw, json, attestation) {
   }
 }
 
+function cmdDecisions(json, limitRaw) {
+  let raw = "";
+  try {
+    raw = readFileSync(decisionsPath, "utf8");
+  } catch {
+    raw = "";
+  }
+  const all = parseReviewDecisionsJsonl(raw);
+  const limit = limitRaw ? Number(limitRaw) : 50;
+  const items = listRecentReviewDecisions(all, Number.isFinite(limit) ? limit : 50);
+  const body = {
+    total: all.length,
+    limit: items.length,
+    items,
+    note:
+      "Audit journal (newest first). publishState changes only — never invented clinical text. Empty until first --write / REVIEW_PERSIST decide.",
+  };
+  if (json) {
+    console.log(JSON.stringify(body, null, 2));
+    return;
+  }
+  console.log(`Review decisions — ${body.total} total, showing ${body.limit}\n`);
+  if (items.length === 0) {
+    console.log("(empty — no persisted decisions yet)");
+    console.log(`\n${body.note}`);
+    return;
+  }
+  for (const d of items) {
+    console.log(`${d.at}  ${d.decision.padEnd(14)}  ${d.reviewerLabel}  ${d.queueItemId}`);
+    if (d.note) console.log(`  note: ${d.note}`);
+  }
+  console.log(`\n${body.note}`);
+}
+
 function cmdProgress(json) {
   const batchMoleculeIds = loadBatchMoleculeIds();
   const extracts = loadStgDoc().extracts ?? [];
@@ -754,6 +796,7 @@ function usage() {
 
   npm run review:batches
   npm run review:batches -- progress [--json]
+  npm run review:batches -- decisions [--limit 50] [--json]
   npm run review:batches -- show A [--stg|--dosing] [--json]
   npm run review:batches -- plan-stg A|all [--json]
   npm run review:batches -- plan-dosing A|all [--json]
@@ -767,7 +810,7 @@ Default is dry-run. --write persists publishState only (never invents clinical t
 No batch auto-publish for dosing — use plan-dosing / export-dosing-cli then individual publish-dosing.`);
 }
 
-const { positional, flags, attestation } = parseArgs(process.argv);
+const { positional, flags, attestation, limit } = parseArgs(process.argv);
 const cmd = positional[0] ?? "summary";
 
 if (cmd === "help" || cmd === "-h" || cmd === "--help") {
@@ -779,6 +822,8 @@ if (cmd === "summary") {
   printSummary(flags.has("json"));
 } else if (cmd === "progress") {
   cmdProgress(flags.has("json"));
+} else if (cmd === "decisions") {
+  cmdDecisions(flags.has("json"), limit ?? positional[1]);
 } else if (cmd === "show") {
   const batch = positional[1];
   if (!batch) {

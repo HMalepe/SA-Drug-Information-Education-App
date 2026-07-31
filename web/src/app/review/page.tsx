@@ -104,6 +104,16 @@ type FounderProgress = {
   note: string;
 };
 
+type ReviewDecisionRow = {
+  id: string;
+  queueItemId: string;
+  decision: string;
+  reviewerLabel: string;
+  attestation?: string;
+  at: string;
+  note?: string;
+};
+
 const BATCHES = ["A", "B", "C", "D", "E", "F", "G", "H", "I"] as const;
 
 const ATTEST_STG =
@@ -119,6 +129,8 @@ export default function ReviewPage() {
   const [stgPlan, setStgPlan] = useState<StgPlanAll | null>(null);
   const [dosingPlan, setDosingPlan] = useState<DosingPlanAll | null>(null);
   const [progress, setProgress] = useState<FounderProgress | null>(null);
+  const [decisions, setDecisions] = useState<ReviewDecisionRow[]>([]);
+  const [decisionsTotal, setDecisionsTotal] = useState(0);
   const [area, setArea] = useState("");
   const [batch, setBatch] = useState("");
   const [reviewer, setReviewer] = useState("Founder pharmacist");
@@ -138,7 +150,7 @@ export default function ReviewPage() {
     const qs = params.toString() ? `?${params}` : "";
     const stgQs = batch ? `?batch=${encodeURIComponent(batch)}` : "";
 
-    const [c, q, b, sp, dp, stg, prog] = await Promise.all([
+    const [c, q, b, sp, dp, stg, prog, dec] = await Promise.all([
       fetch(`${API}/review/coverage`).then((r) => r.json()),
       fetch(`${API}/review/queue${qs}`).then((r) => r.json()),
       fetch(`${API}/review/batches-ai`).then((r) => r.json()),
@@ -146,6 +158,7 @@ export default function ReviewPage() {
       fetch(`${API}/review/plan-dosing?batch=all`).then((r) => r.json()),
       fetch(`${API}/review/stg-queue${stgQs}`).then((r) => r.json()),
       fetch(`${API}/review/progress`).then((r) => r.json()),
+      fetch(`${API}/review/decisions?limit=20`).then((r) => r.json()),
     ]);
     setCoverage(c);
     setItems(q.items ?? []);
@@ -154,6 +167,8 @@ export default function ReviewPage() {
     setDosingPlan(dp);
     setStgItems(stg.items ?? []);
     setProgress(prog);
+    setDecisions(dec.items ?? []);
+    setDecisionsTotal(dec.total ?? 0);
   }
 
   useEffect(() => {
@@ -619,6 +634,27 @@ export default function ReviewPage() {
             </div>
           </article>
         ))
+      )}
+
+      <h2 style={{ marginTop: 32 }}>
+        Recent decisions ({decisions.length}
+        {decisionsTotal > decisions.length ? ` of ${decisionsTotal}` : ""})
+      </h2>
+      <p className="muted">
+        Audit journal from decisions.jsonl — publishState only. CLI:{" "}
+        <code>npm run review:batches -- decisions --json</code>
+      </p>
+      {decisions.length === 0 ? (
+        <p className="muted">No persisted decisions yet.</p>
+      ) : (
+        <ul className="muted" style={{ paddingLeft: 20 }}>
+          {decisions.map((d) => (
+            <li key={d.id} style={{ marginBottom: 8 }}>
+              <strong>{d.decision}</strong> · {d.at} · {d.reviewerLabel} · {d.queueItemId}
+              {d.note ? ` — ${d.note}` : ""}
+            </li>
+          ))}
+        </ul>
       )}
 
       {msg && (

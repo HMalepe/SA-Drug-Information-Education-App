@@ -130,4 +130,13 @@ describe("founder-batch-review CLI", () => {
     assert.match(doc.nextActions[0], /STG|eligible|blocked/i);
     assert.match(doc.note, /read-only/i);
   });
+
+  it("decisions returns empty journal safely when no file yet", () => {
+    const r = run(["decisions", "--json", "--limit", "10"]);
+    assert.equal(r.status, 0, r.stderr);
+    const doc = JSON.parse(r.stdout);
+    assert.ok(typeof doc.total === "number");
+    assert.ok(Array.isArray(doc.items));
+    assert.match(doc.note, /Audit journal|publishState/i);
+  });
 });

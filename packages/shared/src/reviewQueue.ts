@@ -271,3 +271,47 @@ export function nextPublishState(
   if (decision === "publish") return "published";
   return current;
 }
+
+/**
+ * Parse decisions.jsonl — skips corrupt lines. Never invents clinical text.
+ * Journal lines are audit metadata only (no patient identifiers).
+ */
+export function parseReviewDecisionsJsonl(raw: string): ReviewDecision[] {
+  const out: ReviewDecision[] = [];
+  for (const line of raw.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    try {
+      const row = JSON.parse(trimmed) as Partial<ReviewDecision>;
+      if (
+        typeof row.id === "string" &&
+        typeof row.queueItemId === "string" &&
+        typeof row.decision === "string" &&
+        typeof row.reviewerLabel === "string" &&
+        typeof row.at === "string"
+      ) {
+        out.push({
+          id: row.id,
+          queueItemId: row.queueItemId,
+          decision: row.decision as ReviewDecisionKind,
+          reviewerLabel: row.reviewerLabel,
+          attestation: row.attestation,
+          at: row.at,
+          note: row.note,
+        });
+      }
+    } catch {
+      // skip corrupt line
+    }
+  }
+  return out;
+}
+
+/** Newest-first slice of the audit journal (default 50, max 200). */
+export function listRecentReviewDecisions(
+  decisions: ReviewDecision[],
+  limit = 50,
+): ReviewDecision[] {
+  const n = Number.isFinite(limit) ? Math.min(200, Math.max(1, Math.floor(limit))) : 50;
+  return decisions.slice(-n).reverse();
+}

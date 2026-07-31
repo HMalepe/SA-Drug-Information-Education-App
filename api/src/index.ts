@@ -122,6 +122,8 @@ import {
   applyStgExtractDecisionState,
   applyStgBatchPublish,
   filterReviewQueueByDosingClass,
+  parseReviewDecisionsJsonl,
+  listRecentReviewDecisions,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
   previewUpcoming,
@@ -145,6 +147,7 @@ import { createCheckoutSession, hmacSha512Hex, paystackConfigured } from "./bill
 import { messagingProvidersStatus, sendOutbound } from "./messaging/dispatch.js";
 import {
   loadStgExtractsFromDisk,
+  loadReviewDecisionsJsonlFromDisk,
   persistReviewDecision,
   persistStgExtractDecision,
   persistStgExtractBatchDecisions,
@@ -3297,7 +3300,7 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/progress · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
+      "GET /review/progress · GET /review/decisions · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
   });
 });
 
@@ -3325,6 +3328,21 @@ app.get("/review/progress", (_req, res) => {
       },
     }),
   );
+});
+
+/** Read-only audit journal from content/review/decisions.jsonl (newest first). */
+app.get("/review/decisions", (req, res) => {
+  const limitRaw = Number(req.query.limit ?? 50);
+  const limit = Number.isFinite(limitRaw) ? limitRaw : 50;
+  const all = parseReviewDecisionsJsonl(loadReviewDecisionsJsonlFromDisk());
+  const items = listRecentReviewDecisions(all, limit);
+  res.json({
+    total: all.length,
+    limit: items.length,
+    items,
+    note:
+      "Audit journal (newest first). publishState changes only — never invented clinical text. Empty until first persisted decide.",
+  });
 });
 
 app.get("/review/plan-stg", (req, res) => {

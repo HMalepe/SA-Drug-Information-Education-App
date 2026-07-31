@@ -151,6 +151,15 @@ export function loadStgExtractsFromDisk(): StgExtract[] {
   }
 }
 
+/** Raw decisions.jsonl text — empty string when missing. Never invents content. */
+export function loadReviewDecisionsJsonlFromDisk(): string {
+  try {
+    return readFileSync(decisionsPath, "utf8");
+  } catch {
+    return "";
+  }
+}
+
 export function reviewPersistEnabled(): boolean {
   return process.env.REVIEW_PERSIST !== "false";
 }
