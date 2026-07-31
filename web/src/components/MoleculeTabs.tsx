@@ -58,6 +58,16 @@ export function MoleculeTabs({
             <InteractionsPanel body={tab.body as Record<string, unknown>} />
           ) : active === "pregnancy" ? (
             <PregnancyPanel body={tab.body as Record<string, unknown>} />
+          ) : active === "dosing" ? (
+            <DosingPanel body={tab.body as Record<string, unknown>} />
+          ) : active === "chemistry" ? (
+            <ChemistryPanel body={tab.body as Record<string, unknown>} />
+          ) : active === "moa" || active === "food-lifestyle" ? (
+            <SummaryPanel body={tab.body as Record<string, unknown>} />
+          ) : active === "quiz" ? (
+            <QuizPanel body={tab.body as Record<string, unknown>} />
+          ) : active === "ai-tutor" ? (
+            <AiTutorPanel body={tab.body as Record<string, unknown>} />
           ) : isSourcedListTab(active) ? (
             <SourcedListPanel body={tab.body as Record<string, unknown>} />
           ) : (
@@ -143,6 +153,90 @@ function PregnancyPanel({ body }: { body: Record<string, unknown> }) {
       <p style={{ marginTop: 0 }}>{String(body.pregnancy ?? "")}</p>
       <h3 style={{ marginBottom: 4 }}>Breastfeeding</h3>
       <p style={{ marginTop: 0 }}>{String(body.breastfeeding ?? "")}</p>
+    </div>
+  );
+}
+
+function DosingPanel({ body }: { body: Record<string, unknown> }) {
+  const rows: Array<{ label: string; key: string }> = [
+    { label: "Adult", key: "adult" },
+    { label: "Paediatric", key: "paediatric" },
+    { label: "Geriatric", key: "geriatric" },
+    { label: "Renal adjustment", key: "renal" },
+    { label: "Hepatic adjustment", key: "hepatic" },
+  ];
+  return (
+    <div>
+      {rows.map((r) => (
+        <div key={r.key} style={{ marginBottom: 14 }}>
+          <h3 style={{ marginBottom: 4 }}>{r.label}</h3>
+          <p style={{ marginTop: 0 }}>{String(body[r.key] ?? "")}</p>
+        </div>
+      ))}
+      {typeof body.note === "string" && body.note ? (
+        <p className="muted" style={{ fontSize: 14 }}>
+          {body.note}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function ChemistryPanel({ body }: { body: Record<string, unknown> }) {
+  return (
+    <div>
+      <h3 style={{ marginBottom: 4 }}>Summary</h3>
+      <p style={{ marginTop: 0 }}>{String(body.summary ?? "")}</p>
+      {body.discovery ? (
+        <>
+          <h3 style={{ marginBottom: 4 }}>Discovery</h3>
+          <p style={{ marginTop: 0 }}>{String(body.discovery)}</p>
+        </>
+      ) : null}
+    </div>
+  );
+}
+
+function SummaryPanel({ body }: { body: Record<string, unknown> }) {
+  return (
+    <div>
+      <p style={{ marginTop: 0 }}>{String(body.summary ?? "")}</p>
+    </div>
+  );
+}
+
+function QuizPanel({ body }: { body: Record<string, unknown> }) {
+  const questions = (Array.isArray(body.questions) ? body.questions : []) as Array<{
+    id?: string;
+    prompt?: string;
+    stem?: string;
+  }>;
+  return (
+    <div>
+      {questions.length === 0 ? (
+        <p className="muted">No published quiz questions for this molecule yet.</p>
+      ) : (
+        <ol style={{ paddingLeft: "1.1rem", margin: 0 }}>
+          {questions.map((q, i) => (
+            <li key={q.id ?? i} style={{ marginBottom: 10 }}>
+              {String(q.prompt ?? q.stem ?? "Question")}
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  );
+}
+
+function AiTutorPanel({ body }: { body: Record<string, unknown> }) {
+  return (
+    <div>
+      <p style={{ marginTop: 0 }}>
+        {String(
+          body.hint ??
+            "Ask via the AI tutor — answers are grounded on published, sourced molecule content only. Materia will not invent doses.",
+        )}
+      </p>
     </div>
   );
 }

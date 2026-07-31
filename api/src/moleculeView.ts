@@ -79,6 +79,21 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
   const counselling = sourcedListFacts(safety?.counsellingPoints as never);
   const pregnancy = sourcedText(safety?.pregnancy);
   const breastfeeding = sourcedText(safety?.breastfeeding);
+  const dosingAdult = sourcedText(safety?.dosingAdult);
+  const dosingPaediatric = sourcedText(safety?.dosingPaediatric);
+  const dosingGeriatric = sourcedText(safety?.dosingGeriatric);
+  const dosingRenal = sourcedText(safety?.renalAdjustment);
+  const dosingHepatic = sourcedText(safety?.hepaticAdjustment);
+  const foodLifestyle = sourcedText(safety?.foodLifestyle);
+
+  const dosingSources = [
+    dosingAdult.source,
+    dosingPaediatric.source,
+    dosingGeriatric.source,
+    dosingRenal.source,
+    dosingHepatic.source,
+  ].filter(Boolean) as Source[];
+  const dosingSourcesUnique = [...new Map(dosingSources.map((s) => [s.id, s])).values()];
 
   const tabs: Record<
     Medicine360TabId,
@@ -140,16 +155,16 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     dosing: {
       title: "Dosing",
       body: {
-        adult: sourcedText(safety?.dosingAdult).text,
-        paediatric: sourcedText(safety?.dosingPaediatric).text,
-        geriatric: sourcedText(safety?.dosingGeriatric).text,
-        renal: sourcedText(safety?.renalAdjustment).text,
-        hepatic: sourcedText(safety?.hepaticAdjustment).text,
+        adult: dosingAdult.text,
+        paediatric: dosingPaediatric.text,
+        geriatric: dosingGeriatric.text,
+        renal: dosingRenal.text,
+        hepatic: dosingHepatic.text,
         note: "Numeric calculator rules are not invented — unavailable until published DoseRules exist.",
         modeFraming: lens.framing.dosing,
         professionalDepth: lens.professionalDepthTabs.includes("dosing"),
       },
-      sources: [sourcedText(safety?.dosingAdult).source].filter(Boolean) as Source[],
+      sources: dosingSourcesUnique,
     },
     contraindications: {
       title: "Contraindications",
@@ -180,8 +195,8 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     },
     "food-lifestyle": {
       title: "Food & Lifestyle",
-      body: { summary: sourcedText(safety?.foodLifestyle).text },
-      sources: [sourcedText(safety?.foodLifestyle).source].filter(Boolean) as Source[],
+      body: { summary: foodLifestyle.text },
+      sources: foodLifestyle.source ? [foodLifestyle.source] : [],
     },
     pregnancy: {
       title: "Pregnancy & Breastfeeding",
