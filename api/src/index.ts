@@ -3307,8 +3307,9 @@ app.get("/review/batches-ai", (_req, res) => {
   });
 });
 
-/** Read-only founder next-actions for Batches A–I + RAG env (no write). */
-app.get("/review/progress", (_req, res) => {
+/** Read-only founder next-actions for Batches A–I (or one letter) + RAG env (no write). */
+app.get("/review/progress", (req, res) => {
+  const batch = String(req.query.batch ?? "all").trim().toUpperCase() || "ALL";
   const batchMoleculeIds = loadBatchMoleculeIds();
   const extracts = loadStgExtractsFromDisk();
   const dosingItems = buildReviewQueue({
@@ -3316,19 +3317,49 @@ app.get("/review/progress", (_req, res) => {
     safetyProfiles: db.safetyProfiles,
     states: ["draft", "reviewed"],
   });
-  const stg = planStgAllBatches({ batchMoleculeIds, extracts });
-  const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
   const rag = getInRegionRagPublicStatus();
+  const ragInput = {
+    ok: rag.ok,
+    mode: rag.mode,
+    embedderConfigured: rag.embedderConfigured,
+    llmConfigured: rag.llmConfigured,
+  };
+
+  if (batch === "ALL") {
+    const stg = planStgAllBatches({ batchMoleculeIds, extracts });
+    const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+    res.json(
+      summarizeFounderProgress({
+        scope: "all",
+        stgTotals: stg.totals,
+        dosingTotals: dosing.totals,
+        rag: ragInput,
+      }),
+    );
+    return;
+  }
+
+  const ids = batchMoleculeIds.get(batch);
+  if (!ids) {
+    res.status(400).json({ error: `Unknown batch ${batch}. Use A–I or all.` });
+    return;
+  }
+  const stg = planStgBatchPublish({ batch, extracts, moleculeIds: ids });
+  const dosing = planDosingBatch({ batch, dosingItems, moleculeIds: ids });
   res.json(
     summarizeFounderProgress({
-      stgTotals: stg.totals,
-      dosingTotals: dosing.totals,
-      rag: {
-        ok: rag.ok,
-        mode: rag.mode,
-        embedderConfigured: rag.embedderConfigured,
-        llmConfigured: rag.llmConfigured,
+      scope: batch,
+      stgTotals: {
+        alreadyPublished: stg.alreadyPublished,
+        eligible: stg.eligible.length,
+        blocked: stg.blocked.length,
       },
+      dosingTotals: {
+        placeholderAbsent: dosing.placeholderAbsent.length,
+        numericSuspect: dosing.numericSuspect.length,
+        otherDraft: dosing.otherDraft.length,
+      },
+      rag: ragInput,
     }),
   );
 });

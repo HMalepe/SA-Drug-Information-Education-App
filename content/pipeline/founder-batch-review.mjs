@@ -5,7 +5,7 @@
  *
  * Usage:
  *   npm run review:batches
- *   npm run review:batches -- progress [--json]
+ *   npm run review:batches -- progress [A|all] [--json]
  *   npm run review:batches -- decisions [--limit 50] [--json]
  *   npm run review:batches -- show A
  *   npm run review:batches -- show A --stg
@@ -701,7 +701,7 @@ function cmdDecisions(json, limitRaw) {
   console.log(`\n${body.note}`);
 }
 
-function cmdProgress(json) {
+function cmdProgress(json, batchRaw) {
   const batchMoleculeIds = loadBatchMoleculeIds();
   const extracts = loadStgDoc().extracts ?? [];
   const { molecules, safetyProfiles } = loadAllMoleculesAndSafety();
@@ -710,24 +710,63 @@ function cmdProgress(json) {
     safetyProfiles,
     states: ["draft", "reviewed"],
   });
-  const stg = planStgAllBatches({ batchMoleculeIds, extracts });
-  const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
   const rag = describeInRegionRagEnv(process.env);
-  const snap = summarizeFounderProgress({
-    stgTotals: stg.totals,
-    dosingTotals: dosing.totals,
-    rag: {
-      ok: rag.ok,
-      mode: rag.mode,
-      embedderConfigured: rag.embedderConfigured,
-      llmConfigured: rag.llmConfigured,
-    },
-  });
+  const ragInput = {
+    ok: rag.ok,
+    mode: rag.mode,
+    embedderConfigured: rag.embedderConfigured,
+    llmConfigured: rag.llmConfigured,
+  };
+
+  const key = batchRaw ? String(batchRaw).toUpperCase() : "ALL";
+  let snap;
+  if (key === "ALL") {
+    const stg = planStgAllBatches({ batchMoleculeIds, extracts });
+    const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+    snap = summarizeFounderProgress({
+      scope: "all",
+      stgTotals: stg.totals,
+      dosingTotals: dosing.totals,
+      rag: ragInput,
+    });
+  } else {
+    const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === key);
+    if (!ref) {
+      console.error(`Unknown batch ${batchRaw}. Use A–I or omit for all.`);
+      process.exit(2);
+    }
+    const ids = batchMoleculeIds.get(key) ?? [];
+    const stg = planStgBatchPublish({
+      batch: key,
+      extracts,
+      moleculeIds: ids,
+    });
+    const dosing = planDosingBatch({
+      batch: key,
+      dosingItems,
+      moleculeIds: ids,
+    });
+    snap = summarizeFounderProgress({
+      scope: key,
+      stgTotals: {
+        alreadyPublished: stg.alreadyPublished,
+        eligible: stg.eligible.length,
+        blocked: stg.blocked.length,
+      },
+      dosingTotals: {
+        placeholderAbsent: dosing.placeholderAbsent.length,
+        numericSuspect: dosing.numericSuspect.length,
+        otherDraft: dosing.otherDraft.length,
+      },
+      rag: ragInput,
+    });
+  }
+
   if (json) {
     console.log(JSON.stringify(snap, null, 2));
     return;
   }
-  console.log("Founder progress — Batches A–I (read-only)\n");
+  console.log(`Founder progress — ${snap.scope === "all" ? "Batches A–I" : `Batch ${snap.scope.toUpperCase()}`} (read-only)\n`);
   console.log(
     `STG: published=${snap.stg.alreadyPublished} eligible=${snap.stg.eligible} blocked=${snap.stg.blocked}`,
   );
@@ -854,7 +893,7 @@ function usage() {
   console.log(`Founder Batch A–I review CLI
 
   npm run review:batches
-  npm run review:batches -- progress [--json]
+  npm run review:batches -- progress [A|all] [--json]
   npm run review:batches -- decisions [--limit 50] [--json]
   npm run review:batches -- show A [--stg|--dosing] [--json]
   npm run review:batches -- plan-stg A|all [--json]
@@ -881,7 +920,7 @@ if (cmd === "help" || cmd === "-h" || cmd === "--help") {
 if (cmd === "summary") {
   printSummary(flags.has("json"));
 } else if (cmd === "progress") {
-  cmdProgress(flags.has("json"));
+  cmdProgress(flags.has("json"), positional[1]);
 } else if (cmd === "decisions") {
   cmdDecisions(flags.has("json"), limit ?? positional[1]);
 } else if (cmd === "show") {

@@ -730,6 +730,7 @@ export function flattenStgEligibleItems(
 }
 
 export interface FounderProgressSnapshot {
+  scope: string;
   stg: {
     alreadyPublished: number;
     eligible: number;
@@ -751,10 +752,11 @@ export interface FounderProgressSnapshot {
 }
 
 /**
- * Read-only founder progress for Batches A–I + optional RAG env status.
+ * Read-only founder progress for Batches A–I (or one letter) + optional RAG env status.
  * Does not write. Does not invent doses.
  */
 export function summarizeFounderProgress(input: {
+  scope?: string;
   stgTotals: { alreadyPublished: number; eligible: number; blocked: number };
   dosingTotals: {
     placeholderAbsent: number;
@@ -768,6 +770,8 @@ export function summarizeFounderProgress(input: {
     llmConfigured: boolean;
   };
 }): FounderProgressSnapshot {
+  const scope = (input.scope ?? "all").toLowerCase();
+  const scopeLabel = scope === "all" ? "Batches A–I" : `Batch ${scope.toUpperCase()}`;
   const stg = { ...input.stgTotals };
   const dosing = { ...input.dosingTotals };
   const hostedConfigured = Boolean(
@@ -784,22 +788,22 @@ export function summarizeFounderProgress(input: {
   const nextActions: string[] = [];
   if (stg.blocked > 0) {
     nextActions.push(
-      `Fix ${stg.blocked} blocked STG extract(s) before batch publish (all-or-nothing gate).`,
+      `Fix ${stg.blocked} blocked STG extract(s) in ${scopeLabel} before batch publish (all-or-nothing gate).`,
     );
   }
   if (stg.eligible > 0) {
     nextActions.push(
-      `Preview then publish ${stg.eligible} eligible STG pointer(s) via /review or publish-stg-batch (attestation; publishState only).`,
+      `Preview then publish ${stg.eligible} eligible STG pointer(s) for ${scopeLabel} via /review or publish-stg-batch ${scope === "all" ? "all" : scope.toUpperCase()} (attestation; publishState only).`,
     );
   }
   if (dosing.numericSuspect > 0) {
     nextActions.push(
-      `Rewrite ${dosing.numericSuspect} numeric_suspect dosing draft(s) with sourced text — do not publish inventable mg.`,
+      `Rewrite ${dosing.numericSuspect} numeric_suspect dosing draft(s) in ${scopeLabel} with sourced text — do not publish inventable mg.`,
     );
   }
   if (dosing.placeholderAbsent > 0) {
     nextActions.push(
-      `Export ${dosing.placeholderAbsent} honest placeholder publish-dosing line(s) (export-dosing-cli); append --write only after clinical confirm — no dosing batch auto-publish.`,
+      `Export ${dosing.placeholderAbsent} honest placeholder publish-dosing line(s) for ${scopeLabel} (export-dosing-cli ${scope === "all" ? "all" : scope.toUpperCase()}); append --write only after clinical confirm — no dosing batch auto-publish.`,
     );
   }
   if (input.rag && !input.rag.ok) {
@@ -813,17 +817,18 @@ export function summarizeFounderProgress(input: {
   }
   if (nextActions.length === 0) {
     nextActions.push(
-      "Batches A–I STG/dosing gates clear for current scaffolds — keep REVIEW_PERSIST on and re-check after new extracts.",
+      `${scopeLabel} STG/dosing gates clear for current scaffolds — keep REVIEW_PERSIST on and re-check after new extracts.`,
     );
   }
 
   return {
+    scope,
     stg,
     dosing,
     rag,
     nextActions,
     note:
-      "Founder progress snapshot — read-only. Never invents mg. STG batch publish is attested publishState-only; dosing stays individual.",
+      `Founder progress snapshot (${scopeLabel}) — read-only. Never invents mg. STG batch publish is attested publishState-only; dosing stays individual.`,
   };
 }
 

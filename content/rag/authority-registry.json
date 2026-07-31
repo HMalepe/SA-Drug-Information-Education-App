@@ -85,7 +85,8 @@
     "Molecule 360 dosing/chemistry/moa/food/quiz panels + full dosing source set",
     "Expo molecule 360 uses sourced tab panels (no raw JSON clinical dump)",
     "Remove orphaned web/app duplicate route; add buildMolecule360 grounding tests",
-    "Harden seed merge against missing arrays (store byId skip undefined)"
+    "Harden seed merge against missing arrays (store byId skip undefined)",
+    "Batch-scoped founder progress — CLI progress A|all + GET /review/progress?batch= + /review filter"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

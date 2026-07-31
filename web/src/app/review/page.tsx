@@ -97,6 +97,7 @@ type DosingPlanAll = {
 };
 
 type FounderProgress = {
+  scope: string;
   stg: { alreadyPublished: number; eligible: number; blocked: number };
   dosing: { placeholderAbsent: number; numericSuspect: number; otherDraft: number };
   rag: { ok: boolean; mode: string; hostedConfigured: boolean };
@@ -157,7 +158,9 @@ export default function ReviewPage() {
       fetch(`${API}/review/plan-stg?batch=all`).then((r) => r.json()),
       fetch(`${API}/review/plan-dosing?batch=all`).then((r) => r.json()),
       fetch(`${API}/review/stg-queue${stgQs}`).then((r) => r.json()),
-      fetch(`${API}/review/progress`).then((r) => r.json()),
+      fetch(
+        `${API}/review/progress?batch=${encodeURIComponent(batch || "all")}`,
+      ).then((r) => r.json()),
       fetch(`${API}/review/decisions?limit=20`).then((r) => r.json()),
     ]);
     setCoverage(c);
@@ -312,7 +315,12 @@ export default function ReviewPage() {
 
       {progress && (
         <section style={{ marginTop: 16 }}>
-          <h2>Founder progress</h2>
+          <h2>
+            Founder progress
+            {progress.scope && progress.scope !== "all"
+              ? ` — Batch ${progress.scope.toUpperCase()}`
+              : " — Batches A–I"}
+          </h2>
           <p className="muted">
             STG published {progress.stg.alreadyPublished} · eligible {progress.stg.eligible} ·
             blocked {progress.stg.blocked} · dosing placeholders{" "}
@@ -326,7 +334,13 @@ export default function ReviewPage() {
             ))}
           </ol>
           <p className="muted" style={{ marginTop: 8 }}>
-            {progress.note} · CLI: <code>npm run review:batches -- progress</code>
+            {progress.note} · CLI:{" "}
+            <code>
+              npm run review:batches -- progress
+              {progress.scope && progress.scope !== "all"
+                ? ` ${progress.scope.toUpperCase()}`
+                : ""}
+            </code>
           </p>
         </section>
       )}

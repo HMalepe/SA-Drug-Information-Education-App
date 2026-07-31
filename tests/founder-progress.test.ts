@@ -14,14 +14,28 @@ describe("summarizeFounderProgress", () => {
         llmConfigured: false,
       },
     });
+    assert.equal(snap.scope, "all");
     assert.equal(snap.stg.blocked, 2);
     assert.equal(snap.dosing.placeholderAbsent, 8);
-    assert.match(snap.nextActions[0]!, /blocked STG/i);
+    assert.match(snap.nextActions[0]!, /blocked STG.*Batches A–I/i);
     assert.match(snap.nextActions[1]!, /eligible STG/i);
     assert.match(snap.nextActions[2]!, /numeric_suspect/i);
     assert.match(snap.nextActions[3]!, /export-dosing-cli|placeholder/i);
     assert.match(snap.nextActions[4]!, /in-region|rag:check-env/i);
     assert.match(snap.note, /read-only/i);
+  });
+
+  it("scopes next-actions to a single batch letter", () => {
+    const snap = summarizeFounderProgress({
+      scope: "A",
+      stgTotals: { alreadyPublished: 2, eligible: 3, blocked: 0 },
+      dosingTotals: { placeholderAbsent: 4, numericSuspect: 0, otherDraft: 0 },
+    });
+    assert.equal(snap.scope, "a");
+    assert.match(snap.nextActions[0]!, /Batch A/i);
+    assert.match(snap.nextActions[0]!, /publish-stg-batch A/i);
+    assert.match(snap.nextActions[1]!, /export-dosing-cli A/i);
+    assert.match(snap.note, /Batch A/i);
   });
 
   it("reports clear when STG/dosing done and hosted RAG already configured", () => {
@@ -36,7 +50,7 @@ describe("summarizeFounderProgress", () => {
       },
     });
     assert.equal(snap.nextActions.length, 1);
-    assert.match(snap.nextActions[0]!, /gates clear/i);
+    assert.match(snap.nextActions[0]!, /Batches A–I.*gates clear/i);
     assert.equal(snap.rag.hostedConfigured, true);
   });
 
