@@ -6,6 +6,42 @@ import { isBrowserOffline, loadOfflinePack, saveOfflinePack } from "@/lib/offlin
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
+type DoseAdjustResult = {
+  status: string;
+  disclaimer: string;
+  context?: string;
+  whyAdjust?: string;
+  renalBandNote?: string;
+  publishedGuidance?: string;
+  working?: string[];
+  message?: string;
+  source?: { citation?: string; lastReviewed?: string };
+  inventedAdjustedDose?: null;
+};
+
+type ClashBoardRow = {
+  id: string;
+  kind: string;
+  tone: "red" | "orange" | "yellow" | "slate" | string;
+  title: string;
+  detail: string;
+  severity?: string;
+};
+
+type ClashBoardView = {
+  rows: ClashBoardRow[];
+  summary: { red: number; orange: number; yellow: number; slate: number; total: number };
+  note: string;
+  disclaimer: string;
+};
+
+const TONE_COLOR: Record<string, string> = {
+  red: "var(--danger)",
+  orange: "var(--caution)",
+  yellow: "var(--adjust)",
+  slate: "var(--slate)",
+};
+
 export default function ToolsPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [slug, setSlug] = useState("amoxicillin");
@@ -18,6 +54,8 @@ export default function ToolsPage() {
   const [insertLevel, setInsertLevel] = useState<"grade5" | "professional">("grade5");
   const [city, setCity] = useState("johannesburg");
   const [out, setOut] = useState("");
+  const [doseAdjust, setDoseAdjust] = useState<DoseAdjustResult | null>(null);
+  const [clashBoard, setClashBoard] = useState<ClashBoardView | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -30,6 +68,12 @@ export default function ToolsPage() {
       window.removeEventListener("offline", sync);
     };
   }, []);
+
+  function showRaw(data: unknown) {
+    setDoseAdjust(null);
+    setClashBoard(null);
+    setOut(JSON.stringify(data, null, 2));
+  }
 
   async function ensurePro() {
     if (userId) return userId;
@@ -61,7 +105,7 @@ export default function ToolsPage() {
     } else {
       track("tool_used", { tool: tool ?? path.split("?")[0] ?? path }, { tier: "professional" });
     }
-    setOut(JSON.stringify(data, null, 2));
+    showRaw(data);
   }
 
   async function cacheOffline() {
@@ -69,7 +113,7 @@ export default function ToolsPage() {
     const res = await fetch(`${API}/offline/pack?userId=${uid}`);
     const data = await res.json();
     if (res.ok) saveOfflinePack(data);
-    setOut(JSON.stringify(data, null, 2));
+    showRaw(data);
   }
 
   async function resolveVision() {
@@ -79,7 +123,7 @@ export default function ToolsPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: uid, input: scanInput }),
     });
-    setOut(JSON.stringify(await res.json(), null, 2));
+    showRaw(await res.json());
   }
 
   async function runDoseAdjustment(confirmed: boolean) {
@@ -96,7 +140,10 @@ export default function ToolsPage() {
       }),
     });
     track("tool_used", { tool: "dose_adjustment" }, { tier: "professional" });
-    setOut(JSON.stringify(await res.json(), null, 2));
+    const data = (await res.json()) as DoseAdjustResult;
+    setOut("");
+    setClashBoard(null);
+    setDoseAdjust(data);
   }
 
   async function runClashBoard() {
@@ -111,7 +158,10 @@ export default function ToolsPage() {
       body: JSON.stringify({ userId: uid, moleculeSlugs }),
     });
     track("tool_used", { tool: "clash_board" }, { tier: "professional" });
-    setOut(JSON.stringify(await res.json(), null, 2));
+    const data = (await res.json()) as ClashBoardView;
+    setOut("");
+    setDoseAdjust(null);
+    setClashBoard(data);
   }
 
   async function runInsertTranslator() {
@@ -119,7 +169,7 @@ export default function ToolsPage() {
       `${API}/tools/insert/${encodeURIComponent(slug)}?level=${insertLevel}`,
     );
     track("tool_used", { tool: "insert_translator" }, { tier: "free" });
-    setOut(JSON.stringify(await res.json(), null, 2));
+    showRaw(await res.json());
   }
 
   async function speakVoice() {
@@ -128,7 +178,7 @@ export default function ToolsPage() {
       `${API}/tools/voice/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
     );
     const data = await res.json();
-    setOut(JSON.stringify(data, null, 2));
+    showRaw(data);
     if (res.ok && data.text && typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(data.text as string);
@@ -270,7 +320,8 @@ export default function ToolsPage() {
           Build clash board
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Colour-coded published interactions, duplications, class overlap, renal/hepatic/food flags. Empty ≠ safe.
+          Colour-coded published interactions, duplications, class overlap, renal/hepatic/food
+          flags. Empty ≠ safe.
         </p>
       </div>
 
@@ -288,8 +339,8 @@ export default function ToolsPage() {
           Show insert for slug
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Both levels are separately authored educational excerpts — Materia never invents a rewrite. Try{" "}
-          <code>amoxicillin</code> or <code>paracetamol</code>.
+          Both levels are separately authored educational excerpts — Materia never invents a
+          rewrite. Try <code>amoxicillin</code> or <code>paracetamol</code>.
         </p>
       </div>
 
@@ -320,8 +371,8 @@ export default function ToolsPage() {
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
           Published SA counselling: deepened v385–v403 Paediatric Batches H–I (19 molecules —
-          cardio/neuro/endocrine + supportive). Locum accepts <code>?lang=zu</code>{" "}
-          (af/st/xh too).
+          cardio/neuro/endocrine + supportive). Locum accepts <code>?lang=zu</code> (af/st/xh
+          too).
         </p>{" "}
         <button
           className="btn"
@@ -336,7 +387,10 @@ export default function ToolsPage() {
           className="btn"
           type="button"
           onClick={() =>
-            void call(`/tools/monograph/${encodeURIComponent(slug)}?lang=${lang}`, "monograph_export")
+            void call(
+              `/tools/monograph/${encodeURIComponent(slug)}?lang=${lang}`,
+              "monograph_export",
+            )
           }
         >
           Molecule monograph
@@ -348,7 +402,7 @@ export default function ToolsPage() {
           className="btn"
           type="button"
           style={{ background: "var(--ink)" }}
-          onClick={() => setOut(JSON.stringify(loadOfflinePack(), null, 2))}
+          onClick={() => showRaw(loadOfflinePack())}
         >
           Read cache
         </button>
@@ -381,7 +435,8 @@ export default function ToolsPage() {
           Nearby pharmacies + SEP refill prompt
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
-          Illustrative directory only — not live stock or Google Places. SEP from published seed prices.
+          Illustrative directory only — not live stock or Google Places. SEP from published seed
+          prices.
         </p>
       </div>
 
@@ -401,11 +456,85 @@ export default function ToolsPage() {
         </p>
       </div>
 
+      {doseAdjust && <DoseAdjustResultPanel result={doseAdjust} />}
+      {clashBoard && <ClashBoardPanel view={clashBoard} />}
+
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
           {out}
         </pre>
       )}
     </>
+  );
+}
+
+function DoseAdjustResultPanel({ result }: { result: DoseAdjustResult }) {
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>Dose adjustment · {result.status}</h2>
+      {result.message ? <p>{result.message}</p> : null}
+      {result.whyAdjust ? <p>{result.whyAdjust}</p> : null}
+      {result.renalBandNote ? <p className="muted">{result.renalBandNote}</p> : null}
+      {result.publishedGuidance ? (
+        <p>
+          <strong>Published guidance:</strong> {result.publishedGuidance}
+        </p>
+      ) : null}
+      {result.working && result.working.length > 0 ? (
+        <ol style={{ paddingLeft: 20 }}>
+          {result.working.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      ) : null}
+      {result.source?.citation ? (
+        <p className="source-tag">
+          source · {result.source.citation}
+          {result.source.lastReviewed ? ` · reviewed ${result.source.lastReviewed}` : ""}
+        </p>
+      ) : null}
+      <p className="muted">{result.disclaimer}</p>
+      <p className="muted" style={{ marginBottom: 0 }}>
+        inventedAdjustedDose stays null — Materia never invents an adjusted mg/schedule.
+      </p>
+    </section>
+  );
+}
+
+function ClashBoardPanel({ view }: { view: ClashBoardView }) {
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>Clash board</h2>
+      <p className="muted">
+        red {view.summary.red} · orange {view.summary.orange} · yellow {view.summary.yellow} · slate{" "}
+        {view.summary.slate} · total {view.summary.total}
+      </p>
+      {view.rows.length === 0 ? (
+        <p className="muted">No published clash rows for this list — empty ≠ safe.</p>
+      ) : (
+        <ul style={{ listStyle: "none", padding: 0, margin: "12px 0" }}>
+          {view.rows.map((row) => (
+            <li
+              key={row.id}
+              style={{
+                borderLeft: `4px solid ${TONE_COLOR[row.tone] ?? TONE_COLOR.slate}`,
+                padding: "8px 12px",
+                marginBottom: 8,
+              }}
+            >
+              <strong>{row.title}</strong>
+              {row.severity ? <span className="muted"> · {row.severity}</span> : null}
+              <div className="muted" style={{ marginTop: 4 }}>
+                {row.detail}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="muted">{view.note}</p>
+      <p className="muted" style={{ marginBottom: 0 }}>
+        {view.disclaimer}
+      </p>
+    </section>
   );
 }
