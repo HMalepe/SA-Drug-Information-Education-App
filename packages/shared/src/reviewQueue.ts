@@ -315,3 +315,61 @@ export function listRecentReviewDecisions(
   const n = Number.isFinite(limit) ? Math.min(200, Math.max(1, Math.floor(limit))) : 50;
   return decisions.slice(-n).reverse();
 }
+
+export interface PublishedNumericSuspectHit {
+  moleculeId: string;
+  fieldPath: string;
+  preview: string;
+}
+
+/**
+ * Seed/CI gate: published dosing text must not look like inventable numeric scaffolds.
+ * Draft/reviewed numeric_suspect is allowed (founder backlog); published is S0.
+ */
+export function listPublishedNumericSuspectDosing(
+  safetyProfiles: Array<Record<string, unknown>>,
+): PublishedNumericSuspectHit[] {
+  const hits: PublishedNumericSuspectHit[] = [];
+  for (const sp of safetyProfiles) {
+    const moleculeId = String(sp.moleculeId ?? "");
+    for (const [key, val] of Object.entries(sp)) {
+      if (key === "id" || key === "moleculeId" || key === "publishState") continue;
+      if (!/dosing/i.test(key)) continue;
+      const facts = Array.isArray(val) ? val : [val];
+      facts.forEach((fact, i) => {
+        if (!fact || typeof fact !== "object") return;
+        const f = fact as { publishState?: string; value?: unknown };
+        if (f.publishState !== "published") return;
+        const preview =
+          typeof f.value === "string"
+            ? f.value
+            : f.value && typeof f.value === "object" && "text" in (f.value as object)
+              ? String((f.value as { text: unknown }).text)
+              : JSON.stringify(f.value ?? "");
+        if (classifyDosingPreview(preview) === "numeric_suspect") {
+          hits.push({
+            moleculeId,
+            fieldPath: Array.isArray(val) ? `${key}[${i}]` : key,
+            preview: preview.slice(0, 160),
+          });
+        }
+      });
+    }
+  }
+  return hits;
+}
+
+/** Published STG extract text must not contain inventable dose units. */
+export function listPublishedStgNumericSuspects(
+  extracts: Array<{ id: string; publishState?: string; text?: string }>,
+): Array<{ extractId: string; preview: string }> {
+  const hits: Array<{ extractId: string; preview: string }> = [];
+  for (const e of extracts) {
+    if (e.publishState !== "published") continue;
+    const text = e.text ?? "";
+    if (/\d+\s*mg\b|\d+\s*mmol\b/i.test(text)) {
+      hits.push({ extractId: e.id, preview: text.slice(0, 120) });
+    }
+  }
+  return hits;
+}

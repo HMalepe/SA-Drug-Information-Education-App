@@ -2,13 +2,21 @@
 /**
  * Content pipeline gate: published clinical facts must have sourceId;
  * draft content must not be treated as renderable.
- * Validates every JSON file under content/seed/.
+ * Published dosing / STG text must not look like inventable numeric scaffolds
+ * (constitution 3.1 — shared classifyDosingPreview / STG mg gate).
+ * Validates every JSON file under content/seed/ + content/rag/stg-extracts.json.
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import {
+  listPublishedNumericSuspectDosing,
+  listPublishedStgNumericSuspects,
+} from "@materia/shared";
 
-const seedDir = join(dirname(fileURLToPath(import.meta.url)), "..", "seed");
+const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const seedDir = join(root, "content", "seed");
+const stgPath = join(root, "content", "rag", "stg-extracts.json");
 const files = readdirSync(seedDir).filter((f) => f.endsWith(".json"));
 
 let errors = 0;
@@ -56,6 +64,14 @@ for (const file of files) {
     }
   }
 
+  const dosingHits = listPublishedNumericSuspectDosing(seed.safetyProfiles ?? []);
+  for (const hit of dosingHits) {
+    fail(
+      file,
+      `published dosing ${hit.moleculeId}.${hit.fieldPath} looks like inventable numeric scaffold (constitution 3.1): ${hit.preview}`,
+    );
+  }
+
   if (seed.doseRules?.length) {
     for (const r of seed.doseRules) {
       checkFact(file, `doseRule.${r.indicationKey}`, r.fact, sourceIds);
@@ -66,10 +82,23 @@ for (const file of files) {
   }
 }
 
+try {
+  const stgDoc = JSON.parse(readFileSync(stgPath, "utf8"));
+  const stgHits = listPublishedStgNumericSuspects(stgDoc.extracts ?? []);
+  for (const hit of stgHits) {
+    fail(
+      "stg-extracts.json",
+      `published STG ${hit.extractId} contains numeric dose units (constitution 3.1): ${hit.preview}`,
+    );
+  }
+} catch (err) {
+  fail("stg-extracts.json", `could not read STG extracts: ${err instanceof Error ? err.message : err}`);
+}
+
 if (errors) {
   console.error(`\n${errors} seed validation error(s).`);
   process.exit(1);
 }
 console.log(
-  `Seed OK: ${files.length} files, ${moleculeCount} molecules, ${productCount} products, ${allSources.size} unique source ids.`,
+  `Seed OK: ${files.length} files, ${moleculeCount} molecules, ${productCount} products, ${allSources.size} unique source ids (no published numeric-suspect dosing/STG).`,
 );

@@ -77,7 +77,8 @@
     "export-dosing-cli + GET /review/export-dosing-cli — individual placeholder CLI lines (no --write)",
     "Founder progress snapshot — CLI progress + GET /review/progress + /review banner (read-only)",
     "Review decisions audit trail — CLI decisions + GET /review/decisions + /review panel (read-only)",
-    "export-stg-cli + GET /review/export-stg-cli — individual eligible STG CLI lines (no --write)"
+    "export-stg-cli + GET /review/export-stg-cli — individual eligible STG CLI lines (no --write)",
+    "seed:check refuses published numeric-suspect dosing/STG (constitution 3.1 CI gate)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

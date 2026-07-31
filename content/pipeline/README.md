@@ -42,7 +42,9 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    Filter: `GET /review/queue?dosingClass=placeholder_absent` (also `numeric_suspect`|
    `other_draft`); web `/review` toggles “Publishable placeholders” and “Numeric suspects
    (audit)” — suspects stay unpublished (constitution 3.1).
-7. CI clinical-eval must pass (no published draft dosing).
+7. CI clinical-eval / `npm run seed:check` must pass. Seed gate refuses **published** dosing
+   or STG text that still looks like inventable numeric scaffolds (`listPublishedNumericSuspectDosing`
+   / `listPublishedStgNumericSuspects`) — draft suspects may remain in backlog.
 8. Deploy RAG: `npm run rag:check-env` (blank = local default; refuses offshore hosts). Runtime: `GET /health/rag`.
 
 ## Forbidden
