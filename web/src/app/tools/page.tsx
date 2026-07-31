@@ -35,6 +35,43 @@ type ClashBoardView = {
   disclaimer: string;
 };
 
+type CounsellingResult = {
+  error?: string;
+  moleculeName?: string;
+  moleculeSlug?: string;
+  available?: string[];
+  script?: { lang?: string; lines?: string[]; sourceNote?: string; publishState?: string };
+};
+
+type InsertResult = {
+  status: string;
+  level?: string;
+  title?: string;
+  body?: string;
+  availableLevels?: string[];
+  source?: { citation?: string; lastReviewed?: string };
+  message?: string;
+  disclaimer?: string;
+  moleculeName?: string;
+};
+
+type MonographResult = {
+  error?: string;
+  title?: string;
+  moleculeName?: string;
+  className?: string;
+  therapeuticArea?: string;
+  sections?: Array<{
+    id: string;
+    title: string;
+    body: string;
+    sourceId?: string;
+    lastReviewed?: string;
+  }>;
+  omittedDraftTabs?: string[];
+  disclaimer?: string;
+};
+
 const TONE_COLOR: Record<string, string> = {
   red: "var(--danger)",
   orange: "var(--caution)",
@@ -56,6 +93,9 @@ export default function ToolsPage() {
   const [out, setOut] = useState("");
   const [doseAdjust, setDoseAdjust] = useState<DoseAdjustResult | null>(null);
   const [clashBoard, setClashBoard] = useState<ClashBoardView | null>(null);
+  const [counselling, setCounselling] = useState<CounsellingResult | null>(null);
+  const [insertResult, setInsertResult] = useState<InsertResult | null>(null);
+  const [monograph, setMonograph] = useState<MonographResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -69,10 +109,30 @@ export default function ToolsPage() {
     };
   }, []);
 
-  function showRaw(data: unknown) {
+  function clearClinicalPanels() {
     setDoseAdjust(null);
     setClashBoard(null);
+    setCounselling(null);
+    setInsertResult(null);
+    setMonograph(null);
+  }
+
+  function showRaw(data: unknown) {
+    clearClinicalPanels();
     setOut(JSON.stringify(data, null, 2));
+  }
+
+  function showClinicalPanel(
+    kind: "dose" | "clash" | "counselling" | "insert" | "monograph",
+    data: unknown,
+  ) {
+    clearClinicalPanels();
+    setOut("");
+    if (kind === "dose") setDoseAdjust(data as DoseAdjustResult);
+    else if (kind === "clash") setClashBoard(data as ClashBoardView);
+    else if (kind === "counselling") setCounselling(data as CounsellingResult);
+    else if (kind === "insert") setInsertResult(data as InsertResult);
+    else setMonograph(data as MonographResult);
   }
 
   async function ensurePro() {
@@ -140,10 +200,7 @@ export default function ToolsPage() {
       }),
     });
     track("tool_used", { tool: "dose_adjustment" }, { tier: "professional" });
-    const data = (await res.json()) as DoseAdjustResult;
-    setOut("");
-    setClashBoard(null);
-    setDoseAdjust(data);
+    showClinicalPanel("dose", await res.json());
   }
 
   async function runClashBoard() {
@@ -158,10 +215,16 @@ export default function ToolsPage() {
       body: JSON.stringify({ userId: uid, moleculeSlugs }),
     });
     track("tool_used", { tool: "clash_board" }, { tier: "professional" });
-    const data = (await res.json()) as ClashBoardView;
-    setOut("");
-    setDoseAdjust(null);
-    setClashBoard(data);
+    showClinicalPanel("clash", await res.json());
+  }
+
+  async function runCounselling() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/counselling/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+    );
+    track("tool_used", { tool: "counselling" }, { tier: "professional" });
+    showClinicalPanel("counselling", await res.json());
   }
 
   async function runInsertTranslator() {
@@ -169,7 +232,16 @@ export default function ToolsPage() {
       `${API}/tools/insert/${encodeURIComponent(slug)}?level=${insertLevel}`,
     );
     track("tool_used", { tool: "insert_translator" }, { tier: "free" });
-    showRaw(await res.json());
+    showClinicalPanel("insert", await res.json());
+  }
+
+  async function runMonograph() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/monograph/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+    );
+    track("tool_used", { tool: "monograph_export" }, { tier: "professional" });
+    showClinicalPanel("monograph", await res.json());
   }
 
   async function speakVoice() {
@@ -357,13 +429,7 @@ export default function ToolsPage() {
           <option value="st">Sesotho</option>
           <option value="xh">isiXhosa</option>
         </select>
-        <button
-          className="btn"
-          type="button"
-          onClick={() =>
-            void call(`/tools/counselling/${encodeURIComponent(slug)}?lang=${lang}`)
-          }
-        >
+        <button className="btn" type="button" onClick={() => void runCounselling()}>
           Counselling script
         </button>{" "}
         <button className="btn" type="button" onClick={() => void speakVoice()}>
@@ -383,16 +449,7 @@ export default function ToolsPage() {
         >
           Counselling handout
         </button>{" "}
-        <button
-          className="btn"
-          type="button"
-          onClick={() =>
-            void call(
-              `/tools/monograph/${encodeURIComponent(slug)}?lang=${lang}`,
-              "monograph_export",
-            )
-          }
-        >
+        <button className="btn" type="button" onClick={() => void runMonograph()}>
           Molecule monograph
         </button>{" "}
         <button className="btn" type="button" onClick={() => void cacheOffline()}>
@@ -458,6 +515,9 @@ export default function ToolsPage() {
 
       {doseAdjust && <DoseAdjustResultPanel result={doseAdjust} />}
       {clashBoard && <ClashBoardPanel view={clashBoard} />}
+      {counselling && <CounsellingResultPanel result={counselling} />}
+      {insertResult && <InsertResultPanel result={insertResult} />}
+      {monograph && <MonographResultPanel result={monograph} />}
 
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
@@ -535,6 +595,120 @@ function ClashBoardPanel({ view }: { view: ClashBoardView }) {
       <p className="muted" style={{ marginBottom: 0 }}>
         {view.disclaimer}
       </p>
+    </section>
+  );
+}
+
+function CounsellingResultPanel({ result }: { result: CounsellingResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Counselling</h2>
+        <p>{result.error}</p>
+        {result.available && result.available.length > 0 ? (
+          <p className="muted">Available languages: {result.available.join(", ")}</p>
+        ) : null}
+      </section>
+    );
+  }
+  const lines = result.script?.lines ?? [];
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Counselling{result.moleculeName ? ` · ${result.moleculeName}` : ""}
+        {result.script?.lang ? ` · ${result.script.lang}` : ""}
+      </h2>
+      {lines.length === 0 ? (
+        <p className="muted">No published counselling lines for this language.</p>
+      ) : (
+        <ol style={{ paddingLeft: 20 }}>
+          {lines.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ol>
+      )}
+      {result.available && result.available.length > 0 ? (
+        <p className="muted">Available languages: {result.available.join(", ")}</p>
+      ) : null}
+      {result.script?.sourceNote ? (
+        <p className="source-tag">source · {result.script.sourceNote}</p>
+      ) : null}
+    </section>
+  );
+}
+
+function InsertResultPanel({ result }: { result: InsertResult }) {
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Insert translator · {result.level ?? "—"}
+        {result.moleculeName ? ` · ${result.moleculeName}` : ""}
+      </h2>
+      {result.status === "unavailable" || !result.body ? (
+        <p>{result.message ?? "No published insert passage for this level."}</p>
+      ) : (
+        <>
+          {result.title ? <h3 style={{ marginBottom: 8 }}>{result.title}</h3> : null}
+          <p style={{ whiteSpace: "pre-wrap" }}>{result.body}</p>
+        </>
+      )}
+      {result.availableLevels && result.availableLevels.length > 0 ? (
+        <p className="muted">Available levels: {result.availableLevels.join(", ")}</p>
+      ) : null}
+      {result.source?.citation ? (
+        <p className="source-tag">
+          source · {result.source.citation}
+          {result.source.lastReviewed ? ` · reviewed ${result.source.lastReviewed}` : ""}
+        </p>
+      ) : null}
+      {result.disclaimer ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.disclaimer}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function MonographResultPanel({ result }: { result: MonographResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Monograph</h2>
+        <p>{result.error}</p>
+      </section>
+    );
+  }
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>{result.title ?? "Molecule monograph"}</h2>
+      <p className="muted">
+        {result.moleculeName}
+        {result.className ? ` · ${result.className}` : ""}
+        {result.therapeuticArea ? ` · ${result.therapeuticArea}` : ""}
+      </p>
+      {(result.sections ?? []).map((section) => (
+        <div key={section.id} style={{ marginTop: 12 }}>
+          <h3 style={{ marginBottom: 4 }}>{section.title}</h3>
+          <p style={{ whiteSpace: "pre-wrap", marginTop: 0 }}>{section.body}</p>
+          {section.sourceId || section.lastReviewed ? (
+            <p className="source-tag">
+              {section.sourceId ? `source · ${section.sourceId}` : "source"}
+              {section.lastReviewed ? ` · reviewed ${section.lastReviewed}` : ""}
+            </p>
+          ) : null}
+        </div>
+      ))}
+      {result.omittedDraftTabs && result.omittedDraftTabs.length > 0 ? (
+        <p className="muted">
+          Omitted draft tabs (not published): {result.omittedDraftTabs.join(", ")}
+        </p>
+      ) : null}
+      {result.disclaimer ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.disclaimer}
+        </p>
+      ) : null}
     </section>
   );
 }

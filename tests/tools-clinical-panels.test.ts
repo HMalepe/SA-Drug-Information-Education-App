@@ -15,26 +15,61 @@ describe("Pro tools clinical result panels", () => {
   it("dose-adjustment routes to DoseAdjustResultPanel, not setOut(JSON)", () => {
     const src = readFileSync(toolsPage, "utf8");
     assert.match(src, /function DoseAdjustResultPanel/);
-    assert.match(src, /setDoseAdjust\(data\)/);
+    assert.match(src, /setDoseAdjust\(data\)|showClinicalPanel\("dose"/);
     assert.match(src, /publishedGuidance/);
     assert.match(src, /inventedAdjustedDose stays null/);
     const runFn = src.slice(src.indexOf("async function runDoseAdjustment"));
     const end = runFn.indexOf("async function runClashBoard");
     const body = runFn.slice(0, end);
     assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
-    assert.match(body, /setDoseAdjust/);
+    assert.match(body, /showClinicalPanel\("dose"|setDoseAdjust/);
   });
 
   it("clash board routes to ClashBoardPanel with tone-coded rows", () => {
     const src = readFileSync(toolsPage, "utf8");
     assert.match(src, /function ClashBoardPanel/);
-    assert.match(src, /setClashBoard\(data\)/);
+    assert.match(src, /showClinicalPanel\("clash"/);
     assert.match(src, /view\.summary\.red/);
     assert.match(src, /view\.disclaimer/);
     const runFn = src.slice(src.indexOf("async function runClashBoard"));
+    const end = runFn.indexOf("async function runCounselling");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.match(body, /showClinicalPanel\("clash"/);
+  });
+
+  it("counselling routes to CounsellingResultPanel with sourceNote", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function CounsellingResultPanel/);
+    assert.match(src, /async function runCounselling/);
+    assert.match(src, /script\.sourceNote|sourceNote/);
+    const runFn = src.slice(src.indexOf("async function runCounselling"));
     const end = runFn.indexOf("async function runInsertTranslator");
     const body = runFn.slice(0, end);
     assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
-    assert.match(body, /setClashBoard/);
+    assert.match(body, /showClinicalPanel\("counselling"/);
+  });
+
+  it("insert translator routes to InsertResultPanel with source + disclaimer", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function InsertResultPanel/);
+    assert.match(src, /result\.disclaimer/);
+    const runFn = src.slice(src.indexOf("async function runInsertTranslator"));
+    const end = runFn.indexOf("async function runMonograph");
+    const body = runFn.slice(0, end);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.match(body, /showClinicalPanel\("insert"/);
+  });
+
+  it("monograph routes to MonographResultPanel with sections + disclaimer", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function MonographResultPanel/);
+    assert.match(src, /omittedDraftTabs/);
+    assert.match(src, /async function runMonograph/);
+    const runFn = src.slice(src.indexOf("async function runMonograph"));
+    const end = runFn.indexOf("async function speakVoice");
+    const body = runFn.slice(0, end);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.match(body, /showClinicalPanel\("monograph"/);
   });
 });

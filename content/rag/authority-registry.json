@@ -91,7 +91,8 @@
     "Scope /review Batches panel stats+CLI to active filter; single-batch plan composition tests",
     "Web Medicine 360 refuses clinical JSON dump fallback; panel-coverage CI guard",
     "Expo dosing hub uses sourced panels + calculator working/source UI (no JSON dump)",
-    "Web Pro tools: dose-adjustment + clash-board sourced panels (no clinical JSON dump)"
+    "Web Pro tools: dose-adjustment + clash-board sourced panels (no clinical JSON dump)",
+    "Web Pro tools: counselling + insert + monograph sourced panels (no clinical JSON dump)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
