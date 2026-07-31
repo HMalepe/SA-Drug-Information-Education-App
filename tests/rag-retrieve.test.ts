@@ -498,16 +498,14 @@ describe("RAG in-region env + async ask", () => {
         source: stg,
       },
     ];
-    const ans = await groundedAskFromCorpusAsync(
-      "adult dosing published Materia yet?",
-      corpus,
-      {
-        minScore: 0.05,
-        composeAsync: async () => {
-          throw new Error("In-region LLM answer failed grounding check — refuse.");
-        },
+    // Question must reliably retrieve (near-exact overlap) so composeAsync runs —
+    // otherwise a weak BOW miss refuses for retrieval and never exercises invent gate.
+    const ans = await groundedAskFromCorpusAsync(chunkText, corpus, {
+      minScore: 0.05,
+      composeAsync: async () => {
+        throw new Error("In-region LLM answer failed grounding check — refuse.");
       },
-    );
+    });
     assert.equal(ans.status, "refused");
     assert.match(ans.refusalReason ?? "", /grounding|will not invent|offshore/i);
   });

@@ -71,7 +71,8 @@
     "API/web STG batch publish (POST /review/publish-stg-batch; attestation + all-or-nothing)",
     "Dosing publish gate refuses numeric_suspect previews (shared classifyDosingPreview)",
     "Review queue dosingClass on /review — disable Publish for numeric_suspect",
-    "GET /review/queue?dosingClass=… + web placeholders-only toggle"
+    "GET /review/queue?dosingClass=… + web placeholders-only toggle",
+    "Web /review dosingClass filters: placeholders + numeric-suspects audit (no dosing batch publish)"
   ],
   "pipelineNext": [
     "Founder: publish STG pointers via /review or publish-stg-batch all --write (attestation)",

@@ -99,13 +99,16 @@ export default function ReviewPage() {
     "I confirm this is sourced from labelled product / SA guideline — not invented.",
   );
   const [msg, setMsg] = useState("");
-  const [placeholdersOnly, setPlaceholdersOnly] = useState(false);
+  /** Queue dosingClass filter — mutually exclusive audit modes for founder publish sweeps. */
+  const [dosingClassFilter, setDosingClassFilter] = useState<
+    "" | "placeholder_absent" | "numeric_suspect"
+  >("");
 
   async function load() {
     const params = new URLSearchParams();
     if (area) params.set("area", area);
     if (batch) params.set("batch", batch);
-    if (placeholdersOnly) params.set("dosingClass", "placeholder_absent");
+    if (dosingClassFilter) params.set("dosingClass", dosingClassFilter);
     const qs = params.toString() ? `?${params}` : "";
     const stgQs = batch ? `?batch=${encodeURIComponent(batch)}` : "";
 
@@ -127,7 +130,7 @@ export default function ReviewPage() {
 
   useEffect(() => {
     void load();
-  }, [area, batch, placeholdersOnly]);
+  }, [area, batch, dosingClassFilter]);
 
   async function decide(queueItemId: string, decision: "keep_draft" | "mark_reviewed" | "publish") {
     const res = await fetch(`${API}/review/decide`, {
@@ -309,21 +312,47 @@ export default function ReviewPage() {
       <h2 style={{ marginTop: 24 }}>
         Dosing / safety queue ({items.length})
         {batch ? ` · batch ${batch}` : ""}
-        {placeholdersOnly ? " · placeholders only" : ""}
+        {dosingClassFilter === "placeholder_absent"
+          ? " · placeholders only"
+          : dosingClassFilter === "numeric_suspect"
+            ? " · numeric suspects only"
+            : ""}
       </h2>
       <p className="muted">
         Dosing Publish is disabled when classification is numeric_suspect (invented-looking mg).
-        placeholder_absent may be published as an honest absence after attestation.
+        placeholder_absent may be published as an honest absence after attestation. Use suspects
+        filter to audit inventable drafts — do not publish them.
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "8px 0 16px" }}>
         <button
           className="btn"
           type="button"
-          style={{ opacity: placeholdersOnly ? 1 : 0.75 }}
-          onClick={() => setPlaceholdersOnly((v) => !v)}
+          style={{ opacity: dosingClassFilter === "" ? 1 : 0.75 }}
+          onClick={() => setDosingClassFilter("")}
         >
-          {placeholdersOnly ? "Showing placeholders only" : "Show publishable placeholders only"}
+          All queue items
+        </button>
+        <button
+          className="btn"
+          type="button"
+          style={{ opacity: dosingClassFilter === "placeholder_absent" ? 1 : 0.75 }}
+          onClick={() =>
+            setDosingClassFilter((v) => (v === "placeholder_absent" ? "" : "placeholder_absent"))
+          }
+        >
+          Publishable placeholders
           {dosingPlan ? ` (${dosingPlan.totals.placeholderAbsent})` : ""}
+        </button>
+        <button
+          className="btn"
+          type="button"
+          style={{ opacity: dosingClassFilter === "numeric_suspect" ? 1 : 0.75 }}
+          onClick={() =>
+            setDosingClassFilter((v) => (v === "numeric_suspect" ? "" : "numeric_suspect"))
+          }
+        >
+          Numeric suspects (audit)
+          {dosingPlan ? ` (${dosingPlan.totals.numericSuspect})` : ""}
         </button>
       </div>
       {items.length === 0 ? (
