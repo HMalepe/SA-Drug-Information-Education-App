@@ -68,9 +68,10 @@ export function calculateDose(body: {
   clinicallyConfirmed: boolean;
 }) {
   return api<{
-    status: string;
+    status: "ok" | "needs_confirmation" | "unavailable" | "refused" | string;
     working?: string[];
     suggestedDoseDisplay?: string;
+    source?: { citation?: string; lastReviewed?: string; id?: string };
     message?: string;
     disclaimer: string;
   }>("/tools/dose-calculator", { method: "POST", body: JSON.stringify(body) });

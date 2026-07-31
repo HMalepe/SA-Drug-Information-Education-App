@@ -1,51 +1,99 @@
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { MoleculeTabBody } from "../../lib/MoleculeTabBody";
 import { calculateDose, getMedicine360 } from "../../lib/api";
 import { theme } from "../../lib/theme";
 
+type SourceTag = { citation?: string; lastReviewed?: string; id?: string };
+type TabBody = { title: string; body: unknown; sources: SourceTag[] };
+
+type DoseCalcView = {
+  status: "ok" | "needs_confirmation" | "unavailable" | "refused" | string;
+  working?: string[];
+  suggestedDoseDisplay?: string;
+  source?: SourceTag;
+  message?: string;
+  disclaimer: string;
+};
+
 export default function DosingHubScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
-  const [hub, setHub] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const [moleculeId, setMoleculeId] = useState("");
+  const [dosingTab, setDosingTab] = useState<TabBody | null>(null);
+  const [overdoseTab, setOverdoseTab] = useState<TabBody | null>(null);
   const [weight, setWeight] = useState("18");
   const [confirmed, setConfirmed] = useState(false);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState<DoseCalcView | null>(null);
+  const [calcError, setCalcError] = useState<string | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
     (async () => {
-      const page = await getMedicine360(String(slug));
-      setMoleculeId(page.molecule.id);
-      setHub(
-        JSON.stringify(
-          {
-            dosing: page.tabs.dosing,
-            overdose: page.tabs.overdose,
-          },
-          null,
-          2,
-        ),
-      );
-    })().catch((e) => setHub(String(e)));
+      try {
+        const page = await getMedicine360(String(slug));
+        if (cancelled) return;
+        setMoleculeId(page.molecule.id);
+        setDosingTab(page.tabs.dosing as TabBody);
+        setOverdoseTab(page.tabs.overdose as TabBody);
+        setError(null);
+      } catch (e) {
+        if (!cancelled) setError(e instanceof Error ? e.message : "Failed to load");
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [slug]);
 
   async function onCalc() {
-    const res = await calculateDose({
-      moleculeId,
-      weightKg: Number(weight),
-      indicationKey: "scaffold",
-      clinicallyConfirmed: confirmed,
-    });
-    setResult(JSON.stringify(res, null, 2));
+    setCalcError(null);
+    setResult(null);
+    try {
+      const res = await calculateDose({
+        moleculeId,
+        weightKg: Number(weight),
+        indicationKey: "scaffold",
+        clinicallyConfirmed: confirmed,
+      });
+      setResult(res);
+    } catch (e) {
+      setCalcError(e instanceof Error ? e.message : "Calculator request failed");
+    }
   }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Dosing & overdose</Text>
       <Text style={styles.meta}>
-        Fixed emergency template + governed calculator (show working, clinical confirmation).
+        Sourced panels + governed calculator (show working, clinical confirmation). Never invents
+        mg.
       </Text>
-      <Text style={styles.pre}>{hub}</Text>
+
+      {error ? <Text style={styles.error}>{error}</Text> : null}
+
+      {dosingTab ? (
+        <View style={styles.card}>
+          <Text style={styles.section}>{dosingTab.title}</Text>
+          <MoleculeTabBody
+            tabId="dosing"
+            body={dosingTab.body}
+            sources={dosingTab.sources ?? []}
+          />
+        </View>
+      ) : null}
+
+      {overdoseTab ? (
+        <View style={styles.card}>
+          <Text style={styles.section}>{overdoseTab.title}</Text>
+          <MoleculeTabBody
+            tabId="overdose"
+            body={overdoseTab.body}
+            sources={overdoseTab.sources ?? []}
+          />
+        </View>
+      ) : null}
 
       <Text style={styles.section}>Calculator</Text>
       <TextInput
@@ -60,11 +108,42 @@ export default function DosingHubScreen() {
           {confirmed ? "☑" : "☐"} I confirm this will be checked clinically before use
         </Text>
       </Pressable>
-      <Pressable style={styles.button} onPress={onCalc}>
+      <Pressable style={styles.button} onPress={() => void onCalc()}>
         <Text style={styles.buttonText}>Calculate (sourced rules only)</Text>
       </Pressable>
-      {result ? <Text style={styles.pre}>{result}</Text> : null}
+
+      {calcError ? <Text style={styles.error}>{calcError}</Text> : null}
+      {result ? <DoseCalcResultPanel result={result} /> : null}
     </ScrollView>
+  );
+}
+
+function DoseCalcResultPanel({ result }: { result: DoseCalcView }) {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.section}>Result · {result.status}</Text>
+      {result.message ? <Text style={styles.prose}>{result.message}</Text> : null}
+      {result.status === "ok" && result.suggestedDoseDisplay ? (
+        <Text style={styles.dose}>{result.suggestedDoseDisplay}</Text>
+      ) : null}
+      {result.working && result.working.length > 0 ? (
+        <View style={styles.working}>
+          <Text style={styles.workingLabel}>Working</Text>
+          {result.working.map((step, i) => (
+            <Text key={`${i}-${step}`} style={styles.prose}>
+              {i + 1}. {step}
+            </Text>
+          ))}
+        </View>
+      ) : null}
+      {result.source?.citation ? (
+        <Text style={styles.source}>
+          source · {result.source.citation}
+          {result.source.lastReviewed ? ` · reviewed ${result.source.lastReviewed}` : ""}
+        </Text>
+      ) : null}
+      <Text style={styles.disclaimer}>{result.disclaimer}</Text>
+    </View>
   );
 }
 
@@ -72,13 +151,12 @@ const styles = StyleSheet.create({
   container: { padding: theme.space.lg, gap: theme.space.md, backgroundColor: theme.colors.mist },
   title: { fontSize: theme.typography.size.xl, fontWeight: "800", color: theme.colors.ink },
   meta: { color: theme.colors.slate },
-  section: { fontWeight: "700", color: theme.colors.teal },
-  pre: {
-    fontFamily: theme.typography.fontFamily.mono,
-    fontSize: theme.typography.size.xs,
-    color: theme.colors.slate,
+  section: { fontWeight: "700", color: theme.colors.teal, fontSize: theme.typography.size.md },
+  card: {
     backgroundColor: theme.colors.white,
-    padding: theme.space.sm,
+    padding: theme.space.md,
+    borderRadius: 8,
+    gap: theme.space.sm,
   },
   input: {
     backgroundColor: theme.colors.white,
@@ -96,4 +174,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: { color: theme.colors.white, fontWeight: "700" },
+  prose: {
+    color: theme.colors.ink,
+    fontSize: theme.typography.size.md,
+    lineHeight: 22,
+  },
+  dose: {
+    fontWeight: "800",
+    fontSize: theme.typography.size.lg,
+    color: theme.colors.ink,
+  },
+  working: { gap: 4 },
+  workingLabel: { fontWeight: "700", color: theme.colors.ink },
+  source: {
+    color: theme.colors.deepTeal,
+    fontSize: theme.typography.size.sm,
+  },
+  disclaimer: {
+    color: theme.colors.slate,
+    fontSize: theme.typography.size.sm,
+    lineHeight: 20,
+  },
+  error: { color: theme.colors.danger },
 });

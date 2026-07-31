@@ -51,7 +51,6 @@ describe("Medicine 360 tab panels — no clinical JSON dump", () => {
         tab.id === "pearls" ||
         tab.id === "counselling"
       ) {
-        // Expo groups these similarly — accept either explicit id or shared list helper.
         const explicit = new RegExp(`tabId === ["']${tab.id}["']`);
         const listHelper = /SourcedList|contraindications|warnings|pearls|counselling/;
         assert.ok(
@@ -63,5 +62,14 @@ describe("Medicine 360 tab panels — no clinical JSON dump", () => {
       const needle = new RegExp(`tabId === ["']${tab.id}["']`);
       assert.match(src, needle, `missing Expo panel branch for tab ${tab.id}`);
     }
+  });
+
+  it("Expo dosing hub never JSON.stringifys clinical bodies or calculator results", () => {
+    const src = readFileSync(join(root, "app/app/dosing/[slug].tsx"), "utf8");
+    assert.doesNotMatch(src, /JSON\.stringify\(/);
+    assert.match(src, /MoleculeTabBody/);
+    assert.match(src, /DoseCalcResultPanel|working/);
+    assert.match(src, /suggestedDoseDisplay/);
+    assert.match(src, /disclaimer/);
   });
 });
