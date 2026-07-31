@@ -119,6 +119,19 @@ describe("founder-batch-review CLI", () => {
     assert.match(doc.note, /no dosing batch/i);
   });
 
+  it("export-stg-cli all emits eligible publish-stg lines without --write", () => {
+    const r = run(["export-stg-cli", "all", "--json"]);
+    assert.equal(r.status, 0, r.stderr);
+    const doc = JSON.parse(r.stdout);
+    assert.ok(doc.count >= 70);
+    assert.equal(doc.skippedBlocked, 0);
+    assert.ok(Array.isArray(doc.lines));
+    assert.equal(doc.lines.length, doc.count);
+    assert.ok(doc.lines.every((line: string) => !line.includes("--write")));
+    assert.ok(doc.lines.every((line: string) => /publish-stg stg-/.test(line)));
+    assert.match(doc.note, /publish-stg-batch|publishState/i);
+  });
+
   it("progress returns ordered next actions without writing", () => {
     const r = run(["progress", "--json"]);
     assert.equal(r.status, 0, r.stderr);

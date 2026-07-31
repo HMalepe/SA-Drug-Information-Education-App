@@ -23,6 +23,8 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    - `npm run review:batches -- plan-dosing A|all` — classify dosing drafts (placeholder vs numeric suspect)
    - `npm run review:batches -- export-dosing-cli A|all` — individual publish-dosing lines for
      placeholders only (no `--write`; never includes numeric_suspect)
+   - `npm run review:batches -- export-stg-cli A|all` — individual publish-stg lines for eligible
+     pointers only (no `--write`; blocked omitted; prefer batch for all-or-nothing)
    - `npm run review:batches -- publish-stg-batch A|all --attestation "I confirm sourced…" [--write]`
    - `npm run review:batches -- publish-stg <id> --attestation "I confirm sourced…" --write`
    - API: `POST /review/publish-stg-batch` `{ batch, reviewerLabel, attestation, dryRun? }` —

@@ -76,10 +76,11 @@
     "API/web STG batch dryRun preview + checklist + attestation presets (no write)",
     "export-dosing-cli + GET /review/export-dosing-cli — individual placeholder CLI lines (no --write)",
     "Founder progress snapshot — CLI progress + GET /review/progress + /review banner (read-only)",
-    "Review decisions audit trail — CLI decisions + GET /review/decisions + /review panel (read-only)"
+    "Review decisions audit trail — CLI decisions + GET /review/decisions + /review panel (read-only)",
+    "export-stg-cli + GET /review/export-stg-cli — individual eligible STG CLI lines (no --write)"
   ],
   "pipelineNext": [
-    "Founder: Preview then publish STG pointers via /review or publish-stg-batch all --write (attestation)",
+    "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
     "Founder: export-dosing-cli → append --write per placeholder after clinical confirm",
     "Provision real in-region embedder/LLM URLs; verify with npm run rag:check-env"
   ]

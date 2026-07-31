@@ -12,6 +12,7 @@
  *   npm run review:batches -- plan-stg A|all [--json]
  *   npm run review:batches -- plan-dosing A|all [--json]
  *   npm run review:batches -- export-dosing-cli A|all [--attestation "…"] [--json]
+ *   npm run review:batches -- export-stg-cli A|all [--attestation "…"] [--json]
  *   npm run review:batches -- publish-stg-batch A|all --attestation "I confirm sourced …" [--write]
  *   npm run review:batches -- publish-stg <extractId> --attestation "I confirm sourced …"
  *   npm run review:batches -- publish-stg <extractId> --attestation "…" --write
@@ -45,6 +46,9 @@ import {
   exportPlaceholderDosingCli,
   flattenDosingPlanItems,
   DEFAULT_HONEST_ABSENCE_ATTESTATION,
+  exportEligibleStgCli,
+  flattenStgEligibleItems,
+  DEFAULT_STG_POINTER_ATTESTATION,
   summarizeFounderProgress,
   describeInRegionRagEnv,
   parseReviewDecisionsJsonl,
@@ -608,6 +612,61 @@ function cmdExportDosingCli(batchRaw, json, attestation) {
   }
 }
 
+function cmdExportStgCli(batchRaw, json, attestation) {
+  const key = String(batchRaw).toUpperCase();
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgDoc().extracts ?? [];
+
+  let eligible;
+  let blockedCount;
+  let scope;
+  if (key === "ALL") {
+    const plan = planStgAllBatches({
+      batchMoleculeIds,
+      extracts,
+      attestation: attestation || DEFAULT_STG_POINTER_ATTESTATION,
+    });
+    eligible = flattenStgEligibleItems(plan.batches);
+    blockedCount = plan.totals.blocked;
+    scope = "all";
+  } else {
+    const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === key);
+    if (!ref) {
+      console.error(`Unknown batch ${batchRaw}. Use A–I or all.`);
+      process.exit(2);
+    }
+    const plan = planStgBatchPublish({
+      batch: key,
+      extracts,
+      moleculeIds: batchMoleculeIds.get(key) ?? [],
+      attestation: attestation || DEFAULT_STG_POINTER_ATTESTATION,
+    });
+    eligible = flattenStgEligibleItems([{ eligible: plan.eligible }]);
+    blockedCount = plan.blocked.length;
+    scope = key;
+  }
+
+  const exported = exportEligibleStgCli({
+    scope,
+    eligible,
+    blockedCount,
+    attestation: attestation || DEFAULT_STG_POINTER_ATTESTATION,
+  });
+
+  if (json) {
+    console.log(JSON.stringify(exported, null, 2));
+    return;
+  }
+
+  console.log(`# ${exported.note}`);
+  console.log(
+    `# scope=${exported.scope} eligible=${exported.count} skippedBlocked=${exported.skippedBlocked}`,
+  );
+  for (const line of exported.lines) {
+    console.log(line);
+  }
+}
+
 function cmdDecisions(json, limitRaw) {
   let raw = "";
   try {
@@ -801,6 +860,7 @@ function usage() {
   npm run review:batches -- plan-stg A|all [--json]
   npm run review:batches -- plan-dosing A|all [--json]
   npm run review:batches -- export-dosing-cli A|all [--attestation "…"] [--json]
+  npm run review:batches -- export-stg-cli A|all [--attestation "…"] [--json]
   npm run review:batches -- publish-stg-batch A|all --attestation "I confirm sourced…" [--write]
   npm run review:batches -- publish-stg <extractId> --attestation "I confirm sourced…" [--write]
   npm run review:batches -- mark-reviewed-stg <extractId> [--write]
@@ -852,6 +912,13 @@ if (cmd === "summary") {
     process.exit(2);
   }
   cmdExportDosingCli(batch, flags.has("json"), attestation);
+} else if (cmd === "export-stg-cli") {
+  const batch = positional[1];
+  if (!batch) {
+    console.error("Need: export-stg-cli <A–I|all>");
+    process.exit(2);
+  }
+  cmdExportStgCli(batch, flags.has("json"), attestation);
 } else if (cmd === "publish-stg-batch") {
   const batch = positional[1];
   if (!batch || !attestation) {

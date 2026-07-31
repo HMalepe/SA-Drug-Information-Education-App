@@ -210,6 +210,27 @@ export default function ReviewPage() {
     await load();
   }
 
+  async function copyStgCli() {
+    const params = new URLSearchParams();
+    params.set("batch", batch || "all");
+    if (attestation.trim()) params.set("attestation", attestation.trim());
+    const res = await fetch(`${API}/review/export-stg-cli?${params}`);
+    const data = await res.json();
+    if (!res.ok) {
+      setMsg(JSON.stringify(data, null, 2));
+      return;
+    }
+    const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
+      "\n",
+    );
+    try {
+      await navigator.clipboard.writeText(text);
+      setMsg(`Copied ${data.count} eligible publish-stg lines (no --write).`);
+    } catch {
+      setMsg(text);
+    }
+  }
+
   async function copyPlaceholderCli() {
     const params = new URLSearchParams();
     params.set("batch", batch || "all");
@@ -346,6 +367,7 @@ export default function ReviewPage() {
           </div>
           <p className="muted" style={{ marginTop: 12 }}>
             CLI: <code>npm run review:batches -- plan-stg all</code> ·{" "}
+            <code>npm run review:batches -- export-stg-cli all</code> ·{" "}
             <code>npm run review:batches -- plan-dosing all</code> ·{" "}
             <code>npm run review:batches -- export-dosing-cli all</code>
           </p>
@@ -375,6 +397,14 @@ export default function ReviewPage() {
               onClick={() => setShowStgChecklist((v) => !v)}
             >
               {showStgChecklist ? "Hide" : "Show"} STG checklist
+            </button>
+            <button
+              className="btn"
+              type="button"
+              disabled={stgEligibleForFilter === 0}
+              onClick={() => void copyStgCli()}
+            >
+              Copy STG CLI ({stgEligibleForFilter})
             </button>
             <button
               className="btn"

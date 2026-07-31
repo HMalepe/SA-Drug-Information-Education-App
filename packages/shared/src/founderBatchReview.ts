@@ -623,11 +623,24 @@ export function planDosingAllBatches(input: {
 export const DEFAULT_HONEST_ABSENCE_ATTESTATION =
   "I confirm this honest absence is intentional — Materia has no sourced dose yet.";
 
+export const DEFAULT_STG_POINTER_ATTESTATION =
+  "I confirm this is sourced from DoH STG/EML — publishState only, no invented mg.";
+
 export interface PlaceholderDosingCliExport {
   scope: string;
   count: number;
   skippedNumericSuspect: number;
   skippedOtherDraft: number;
+  attestation: string;
+  /** Commands without --write — founder appends --write after clinical confirm. */
+  lines: string[];
+  note: string;
+}
+
+export interface EligibleStgCliExport {
+  scope: string;
+  count: number;
+  skippedBlocked: number;
   attestation: string;
   /** Commands without --write — founder appends --write after clinical confirm. */
   lines: string[];
@@ -670,6 +683,34 @@ export function exportPlaceholderDosingCli(input: {
   };
 }
 
+/**
+ * Export individual publish-stg CLI lines for eligible STG pointers only.
+ * Blocked extracts omitted. Prefer publish-stg-batch for all-or-nothing sweeps.
+ * Does not invent mg; publishState only.
+ */
+export function exportEligibleStgCli(input: {
+  scope: string;
+  eligible: Array<{ extractId: string }>;
+  blockedCount?: number;
+  attestation?: string;
+}): EligibleStgCliExport {
+  const attestation = (input.attestation ?? DEFAULT_STG_POINTER_ATTESTATION).trim();
+  const attEscaped = attestation.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+  const lines = input.eligible.map(
+    (row) =>
+      `npm run review:batches -- publish-stg ${row.extractId} --attestation "${attEscaped}"`,
+  );
+  return {
+    scope: input.scope,
+    count: lines.length,
+    skippedBlocked: input.blockedCount ?? 0,
+    attestation,
+    lines,
+    note:
+      "Individual STG publish-stg commands only — no --write (dry-run default). Append --write after clinical confirm. Blocked extracts omitted. Prefer publish-stg-batch for attested all-or-nothing sweeps. publishState only; never invents mg.",
+  };
+}
+
 /** Flatten plan-dosing batch rows into one DosingPlanItem list for CLI export. */
 export function flattenDosingPlanItems(
   batches: Array<Pick<DosingBatchPlan, "placeholderAbsent" | "numericSuspect" | "otherDraft">>,
@@ -679,6 +720,13 @@ export function flattenDosingPlanItems(
     ...b.numericSuspect,
     ...b.otherDraft,
   ]);
+}
+
+/** Flatten plan-stg eligible extract rows across batches. */
+export function flattenStgEligibleItems(
+  batches: Array<{ eligible: Array<{ extractId: string }> }>,
+): Array<{ extractId: string }> {
+  return batches.flatMap((b) => b.eligible.map((e) => ({ extractId: e.extractId })));
 }
 
 export interface FounderProgressSnapshot {

@@ -117,6 +117,9 @@ import {
   exportPlaceholderDosingCli,
   flattenDosingPlanItems,
   DEFAULT_HONEST_ABSENCE_ATTESTATION,
+  exportEligibleStgCli,
+  flattenStgEligibleItems,
+  DEFAULT_STG_POINTER_ATTESTATION,
   summarizeFounderProgress,
   validateStgExtractDecision,
   applyStgExtractDecisionState,
@@ -3300,7 +3303,7 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/progress · GET /review/decisions · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
+      "GET /review/progress · GET /review/decisions · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · GET /review/export-stg-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
   });
 });
 
@@ -3432,6 +3435,49 @@ app.get("/review/export-dosing-cli", (req, res) => {
       scope,
       items,
       attestation: attestationRaw || DEFAULT_HONEST_ABSENCE_ATTESTATION,
+    }),
+  );
+});
+
+/** Export individual publish-stg CLI lines for eligible pointers only (no write). */
+app.get("/review/export-stg-cli", (req, res) => {
+  const batch = String(req.query.batch ?? "all").trim().toUpperCase() || "ALL";
+  const attestationRaw = String(req.query.attestation ?? "").trim();
+  const attestation = attestationRaw || DEFAULT_STG_POINTER_ATTESTATION;
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgExtractsFromDisk();
+
+  let eligible;
+  let blockedCount;
+  let scope;
+  if (batch === "ALL") {
+    const plan = planStgAllBatches({ batchMoleculeIds, extracts, attestation });
+    eligible = flattenStgEligibleItems(plan.batches);
+    blockedCount = plan.totals.blocked;
+    scope = "all";
+  } else {
+    const ids = batchMoleculeIds.get(batch);
+    if (!ids) {
+      res.status(400).json({ error: `Unknown batch ${batch}. Use A–I or all.` });
+      return;
+    }
+    const plan = planStgBatchPublish({
+      batch,
+      extracts,
+      moleculeIds: ids,
+      attestation,
+    });
+    eligible = flattenStgEligibleItems([{ eligible: plan.eligible }]);
+    blockedCount = plan.blocked.length;
+    scope = batch;
+  }
+
+  res.json(
+    exportEligibleStgCli({
+      scope,
+      eligible,
+      blockedCount,
+      attestation,
     }),
   );
 });
