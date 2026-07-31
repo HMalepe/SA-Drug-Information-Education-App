@@ -5,6 +5,7 @@ import {
   buildManufacturingTransparency,
   buildInteractionTabBody,
   collectInteractionTabSources,
+  buildSourcedListItems,
   emptyStateMessage,
   explainProductExcipients,
   getModeLens,
@@ -35,6 +36,18 @@ function sourcedText(
   return { text: String(rendered.value), source, empty: false };
 }
 
+type SourcedListItem = {
+  text: string;
+  level?: string;
+  source: Source | null;
+};
+
+function sourcedListFacts(
+  facts: Array<{ value: unknown; sourceId: string; publishState: string; lastReviewed?: string }> | undefined,
+): { items: SourcedListItem[]; sources: Source[] } {
+  return buildSourcedListItems(facts as never, getSource);
+}
+
 export function buildMolecule360(slug: string, modeInput: UserMode | string = "pharmacist") {
   const mode = parseUserMode(modeInput);
   const lens = getModeLens(mode);
@@ -59,6 +72,13 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     getSource,
   });
   const interactionSources = collectInteractionTabSources(interactionBody);
+
+  const contraindications = sourcedListFacts(safety?.contraindications as never);
+  const warnings = sourcedListFacts(safety?.warnings as never);
+  const pearls = sourcedListFacts(safety?.clinicalPearls as never);
+  const counselling = sourcedListFacts(safety?.counsellingPoints as never);
+  const pregnancy = sourcedText(safety?.pregnancy);
+  const breastfeeding = sourcedText(safety?.breastfeeding);
 
   const tabs: Record<
     Medicine360TabId,
@@ -134,29 +154,24 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     contraindications: {
       title: "Contraindications",
       body: {
-        items: (safety?.contraindications ?? [])
-          .map((f) => {
-            const r = renderableFact(f);
-            if (!r) return null;
-            return { ...r.value, source: getSource(r.sourceId) };
-          })
-          .filter(Boolean),
+        items: contraindications.items,
+        empty:
+          contraindications.items.length === 0
+            ? "No published contraindications for this molecule yet."
+            : null,
         modeFraming: lens.framing.contraindications,
       },
-      sources: [],
+      sources: contraindications.sources,
     },
     warnings: {
       title: "Warnings & Monitoring",
       body: {
-        items: (safety?.warnings ?? [])
-          .map((f) => {
-            const r = renderableFact(f);
-            return r ? { text: r.value, source: getSource(r.sourceId) } : null;
-          })
-          .filter(Boolean),
+        items: warnings.items,
+        empty:
+          warnings.items.length === 0 ? "No published warnings for this molecule yet." : null,
         modeFraming: lens.framing.warnings,
       },
-      sources: [],
+      sources: warnings.sources,
     },
     interactions: {
       title: "Drug Interactions",
@@ -171,10 +186,12 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     pregnancy: {
       title: "Pregnancy & Breastfeeding",
       body: {
-        pregnancy: sourcedText(safety?.pregnancy).text,
-        breastfeeding: sourcedText(safety?.breastfeeding).text,
+        pregnancy: pregnancy.text,
+        breastfeeding: breastfeeding.text,
+        pregnancyEmpty: pregnancy.empty,
+        breastfeedingEmpty: breastfeeding.empty,
       },
-      sources: [],
+      sources: [pregnancy.source, breastfeeding.source].filter(Boolean) as Source[],
     },
     overdose: {
       title: "Overdose & Emergency",
@@ -195,16 +212,12 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     pearls: {
       title: "Clinical Pearls",
       body: {
-        items: (safety?.clinicalPearls ?? [])
-          .map((f) => {
-            const r = renderableFact(f);
-            return r ? { text: r.value, source: getSource(r.sourceId) } : null;
-          })
-          .filter(Boolean),
+        items: pearls.items,
+        empty: pearls.items.length === 0 ? "No published clinical pearls for this molecule yet." : null,
         modeFraming: lens.framing.pearls,
         professionalDepth: lens.professionalDepthTabs.includes("pearls"),
       },
-      sources: [],
+      sources: pearls.sources,
     },
     animations: {
       title: "Visual identification",
@@ -232,16 +245,15 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     counselling: {
       title: "Patient Counselling Points",
       body: {
-        items: (safety?.counsellingPoints ?? [])
-          .map((f) => {
-            const r = renderableFact(f);
-            return r ? { text: r.value, source: getSource(r.sourceId) } : null;
-          })
-          .filter(Boolean),
+        items: counselling.items,
+        empty:
+          counselling.items.length === 0
+            ? "No published counselling points for this molecule yet."
+            : null,
         modeNote: lens.framing.counselling,
         modeFraming: lens.framing.counselling,
       },
-      sources: [],
+      sources: counselling.sources,
     },
   };
 

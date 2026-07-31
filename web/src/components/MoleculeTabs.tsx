@@ -56,6 +56,10 @@ export function MoleculeTabs({
             <VisualIdPanel body={tab.body as Record<string, unknown>} />
           ) : active === "interactions" ? (
             <InteractionsPanel body={tab.body as Record<string, unknown>} />
+          ) : active === "pregnancy" ? (
+            <PregnancyPanel body={tab.body as Record<string, unknown>} />
+          ) : isSourcedListTab(active) ? (
+            <SourcedListPanel body={tab.body as Record<string, unknown>} />
           ) : (
             <pre
               style={{
@@ -84,6 +88,63 @@ function modeFramingOf(body: unknown): string | null {
   if (!body || typeof body !== "object") return null;
   const framing = (body as { modeFraming?: unknown }).modeFraming;
   return typeof framing === "string" && framing.trim() ? framing : null;
+}
+
+function isSourcedListTab(id: string): boolean {
+  return (
+    id === "contraindications" ||
+    id === "warnings" ||
+    id === "pearls" ||
+    id === "counselling"
+  );
+}
+
+type ListRow = {
+  text: string;
+  level?: string;
+  source?: { citation: string; lastReviewed: string } | null;
+};
+
+function SourcedListPanel({ body }: { body: Record<string, unknown> }) {
+  const items = (Array.isArray(body.items) ? body.items : []) as ListRow[];
+  const empty = typeof body.empty === "string" ? body.empty : null;
+
+  return (
+    <div>
+      {items.length === 0 ? (
+        <p className="muted">{empty ?? "No published items for this section yet."}</p>
+      ) : (
+        <ul style={{ paddingLeft: "1.1rem", margin: 0 }}>
+          {items.map((row, i) => (
+            <li key={`${row.text.slice(0, 40)}-${i}`} style={{ marginBottom: 12 }}>
+              {row.level ? (
+                <span className="muted" style={{ marginRight: 6 }}>
+                  [{row.level}]
+                </span>
+              ) : null}
+              {row.text}
+              {row.source ? (
+                <div className="source-tag" style={{ marginTop: 6 }}>
+                  source · {row.source.citation} · reviewed {row.source.lastReviewed}
+                </div>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function PregnancyPanel({ body }: { body: Record<string, unknown> }) {
+  return (
+    <div>
+      <h3 style={{ marginBottom: 4 }}>Pregnancy</h3>
+      <p style={{ marginTop: 0 }}>{String(body.pregnancy ?? "")}</p>
+      <h3 style={{ marginBottom: 4 }}>Breastfeeding</h3>
+      <p style={{ marginTop: 0 }}>{String(body.breastfeeding ?? "")}</p>
+    </div>
+  );
 }
 
 type InteractionRow = {

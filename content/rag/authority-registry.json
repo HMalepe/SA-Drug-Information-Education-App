@@ -80,7 +80,8 @@
     "export-stg-cli + GET /review/export-stg-cli — individual eligible STG CLI lines (no --write)",
     "seed:check refuses published numeric-suspect dosing/STG (constitution 3.1 CI gate)",
     "Clinical S0 seed-gate uses shared helpers + CI runs rag:check-env",
-    "Molecule 360 Interactions tab surfaces published sourced pairwise interactions"
+    "Molecule 360 Interactions tab surfaces published sourced pairwise interactions",
+    "Molecule 360 list tabs + pregnancy attach visible sources (no raw-JSON dump)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
