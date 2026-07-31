@@ -3293,7 +3293,7 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · POST /review/publish-stg-batch (attestation required; all-or-nothing) · POST /review/decide or /review/stg-decide. Never invents mg. No dosing batch auto-publish.",
+      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · POST /review/publish-stg-batch (attestation required; dryRun optional; all-or-nothing) · POST /review/decide or /review/stg-decide. Never invents mg. No dosing batch auto-publish.",
   });
 });
 
@@ -3392,6 +3392,8 @@ app.post("/review/publish-stg-batch", (req, res) => {
     batch: z.string().min(1),
     reviewerLabel: z.string().min(2),
     attestation: z.string().min(8),
+    /** When true: run all-or-nothing gate and return planned mutations — no write. */
+    dryRun: z.boolean().optional().default(false),
   });
   const parsed = schema.safeParse(req.body);
   if (!parsed.success) {
@@ -3399,6 +3401,7 @@ app.post("/review/publish-stg-batch", (req, res) => {
     return;
   }
   const scope = parsed.data.batch.trim().toUpperCase();
+  const dryRun = parsed.data.dryRun === true;
   const batchMoleculeIds = loadBatchMoleculeIds();
   const extracts = loadStgExtractsFromDisk();
 
@@ -3441,7 +3444,29 @@ app.post("/review/publish-stg-batch", (req, res) => {
     res.status(400).json({
       error: applied.reason,
       blocked: applied.blocked,
+      dryRun,
       note: "No mutations applied — all-or-nothing STG batch gate.",
+    });
+    return;
+  }
+
+  const results = applied.mutations.map((m) => ({
+    batch: m.batch,
+    extractId: m.extractId,
+    moleculeSlug: m.moleculeSlug,
+    from: m.from,
+    to: m.to,
+  }));
+
+  if (dryRun) {
+    res.json({
+      scope,
+      dryRun: true,
+      count: applied.mutations.length,
+      alreadyPublished: applied.alreadyPublished,
+      results,
+      persisted: null,
+      note: `${applied.note} Dry-run only — no seed/STG write and no audit append.`,
     });
     return;
   }
@@ -3474,15 +3499,10 @@ app.post("/review/publish-stg-batch", (req, res) => {
 
   res.json({
     scope,
+    dryRun: false,
     count: applied.mutations.length,
     alreadyPublished: applied.alreadyPublished,
-    results: applied.mutations.map((m) => ({
-      batch: m.batch,
-      extractId: m.extractId,
-      moleculeSlug: m.moleculeSlug,
-      from: m.from,
-      to: m.to,
-    })),
+    results,
     persisted: persisted?.ok ? { path: persisted.path, count: persisted.count } : null,
     note: reviewPersistEnabled()
       ? applied.note

@@ -59,31 +59,49 @@ type BatchBacklog = {
   note: string;
 };
 
+type StgPlanItem = {
+  extractId: string;
+  moleculeSlug: string;
+  preview?: string;
+};
+
 type StgPlanAll = {
   batches: Array<{
     batch: string;
     label: string;
     alreadyPublished: number;
-    eligible: unknown[];
-    blocked: unknown[];
+    eligible: StgPlanItem[];
+    blocked: Array<{ extractId: string; reason: string }>;
   }>;
   totals: { alreadyPublished: number; eligible: number; blocked: number };
   note: string;
+};
+
+type DosingPlanItem = {
+  moleculeId: string;
+  moleculeSlug: string;
+  fieldPath: string;
+  preview: string;
 };
 
 type DosingPlanAll = {
   batches: Array<{
     batch: string;
     label: string;
-    placeholderAbsent: unknown[];
-    numericSuspect: unknown[];
-    otherDraft: unknown[];
+    placeholderAbsent: DosingPlanItem[];
+    numericSuspect: DosingPlanItem[];
+    otherDraft: DosingPlanItem[];
   }>;
   totals: { placeholderAbsent: number; numericSuspect: number; otherDraft: number };
   note: string;
 };
 
 const BATCHES = ["A", "B", "C", "D", "E", "F", "G", "H", "I"] as const;
+
+const ATTEST_STG =
+  "I confirm this is sourced from DoH STG/EML — publishState only, no invented mg.";
+const ATTEST_PLACEHOLDER =
+  "I confirm this honest absence is intentional — Materia has no sourced dose yet.";
 
 export default function ReviewPage() {
   const [coverage, setCoverage] = useState<Coverage | null>(null);
@@ -95,14 +113,13 @@ export default function ReviewPage() {
   const [area, setArea] = useState("");
   const [batch, setBatch] = useState("");
   const [reviewer, setReviewer] = useState("Founder pharmacist");
-  const [attestation, setAttestation] = useState(
-    "I confirm this is sourced from labelled product / SA guideline — not invented.",
-  );
+  const [attestation, setAttestation] = useState(ATTEST_STG);
   const [msg, setMsg] = useState("");
   /** Queue dosingClass filter — mutually exclusive audit modes for founder publish sweeps. */
   const [dosingClassFilter, setDosingClassFilter] = useState<
     "" | "placeholder_absent" | "numeric_suspect"
   >("");
+  const [showStgChecklist, setShowStgChecklist] = useState(false);
 
   async function load() {
     const params = new URLSearchParams();
@@ -167,12 +184,14 @@ export default function ReviewPage() {
     await load();
   }
 
-  async function publishStgBatch(scope: string) {
-    const confirmed = window.confirm(
-      `Publish all eligible STG pointers for batch ${scope}? ` +
-        "This changes publishState only (text unchanged). Requires attestation.",
-    );
-    if (!confirmed) return;
+  async function publishStgBatch(scope: string, dryRun: boolean) {
+    if (!dryRun) {
+      const confirmed = window.confirm(
+        `Publish all eligible STG pointers for batch ${scope}? ` +
+          "This changes publishState only (text unchanged). Requires attestation. Prefer Preview first.",
+      );
+      if (!confirmed) return;
+    }
     const res = await fetch(`${API}/review/publish-stg-batch`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -180,11 +199,12 @@ export default function ReviewPage() {
         batch: scope,
         reviewerLabel: reviewer,
         attestation,
+        dryRun,
       }),
     });
     const data = await res.json();
     setMsg(JSON.stringify(data, null, 2));
-    await load();
+    if (!dryRun) await load();
   }
 
   const stgEligibleForFilter =
@@ -199,6 +219,20 @@ export default function ReviewPage() {
       : batch
         ? (stgPlan.batches.find((b) => b.batch === batch)?.blocked.length ?? 0)
         : stgPlan.totals.blocked;
+
+  const stgEligibleItems: StgPlanItem[] =
+    stgPlan == null
+      ? []
+      : batch
+        ? (stgPlan.batches.find((b) => b.batch === batch)?.eligible ?? [])
+        : stgPlan.batches.flatMap((b) => b.eligible);
+
+  const placeholderItems: DosingPlanItem[] =
+    dosingPlan == null
+      ? []
+      : batch
+        ? (dosingPlan.batches.find((b) => b.batch === batch)?.placeholderAbsent ?? [])
+        : dosingPlan.batches.flatMap((b) => b.placeholderAbsent);
 
   return (
     <>
@@ -250,11 +284,28 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
+              disabled={stgEligibleForFilter === 0}
+              onClick={() => void publishStgBatch(batch || "all", true)}
+            >
+              Preview STG publish
+              {batch ? ` batch ${batch}` : " all"} ({stgEligibleForFilter})
+            </button>
+            <button
+              className="btn"
+              type="button"
               disabled={stgEligibleForFilter === 0 || stgBlockedForFilter > 0}
-              onClick={() => void publishStgBatch(batch || "all")}
+              onClick={() => void publishStgBatch(batch || "all", false)}
             >
               Publish eligible STG
               {batch ? ` batch ${batch}` : " all"} ({stgEligibleForFilter})
+            </button>
+            <button
+              className="btn"
+              type="button"
+              style={{ opacity: showStgChecklist ? 1 : 0.75 }}
+              onClick={() => setShowStgChecklist((v) => !v)}
+            >
+              {showStgChecklist ? "Hide" : "Show"} STG checklist
             </button>
             {stgBlockedForFilter > 0 ? (
               <span className="muted">
@@ -262,6 +313,44 @@ export default function ReviewPage() {
               </span>
             ) : null}
           </div>
+          {showStgChecklist ? (
+            <div style={{ marginTop: 12 }}>
+              <p className="muted">
+                Eligible STG pointers ({stgEligibleItems.length}) — publishState only; text
+                unchanged. Dry-run via Preview before Publish.
+              </p>
+              {stgEligibleItems.length === 0 ? (
+                <p className="muted">None eligible in this filter.</p>
+              ) : (
+                <ul className="muted" style={{ marginTop: 8, paddingLeft: 20 }}>
+                  {stgEligibleItems.slice(0, 40).map((e) => (
+                    <li key={e.extractId}>
+                      {e.extractId} · {e.moleculeSlug}
+                    </li>
+                  ))}
+                  {stgEligibleItems.length > 40 ? (
+                    <li>…and {stgEligibleItems.length - 40} more (use Preview for full list)</li>
+                  ) : null}
+                </ul>
+              )}
+              <p className="muted" style={{ marginTop: 12 }}>
+                Honest dosing placeholders ({placeholderItems.length}) — individual Publish only;
+                no dosing batch auto-publish. Switch queue filter to “Publishable placeholders”.
+              </p>
+              {placeholderItems.length === 0 ? null : (
+                <ul className="muted" style={{ marginTop: 8, paddingLeft: 20 }}>
+                  {placeholderItems.slice(0, 20).map((d) => (
+                    <li key={`${d.moleculeId}-${d.fieldPath}`}>
+                      {d.moleculeSlug} · {d.fieldPath}
+                    </li>
+                  ))}
+                  {placeholderItems.length > 20 ? (
+                    <li>…and {placeholderItems.length - 20} more</li>
+                  ) : null}
+                </ul>
+              )}
+            </div>
+          ) : null}
         </section>
       )}
 
@@ -302,6 +391,18 @@ export default function ReviewPage() {
           onChange={(e) => setReviewer(e.target.value)}
         />
         <label className="muted">Publish attestation (required for high-stakes / STG)</label>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "8px 0" }}>
+          <button className="btn" type="button" onClick={() => setAttestation(ATTEST_STG)}>
+            Preset: STG pointer
+          </button>
+          <button
+            className="btn"
+            type="button"
+            onClick={() => setAttestation(ATTEST_PLACEHOLDER)}
+          >
+            Preset: honest absence
+          </button>
+        </div>
         <input
           style={{ display: "block", width: "100%", margin: "8px 0 0", padding: 10 }}
           value={attestation}
