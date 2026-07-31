@@ -9,8 +9,11 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { MoleculeTabBody } from "../../lib/MoleculeTabBody";
 import { askAi, getMedicine360 } from "../../lib/api";
 import { theme } from "../../lib/theme";
+
+type SourceTag = { citation?: string; lastReviewed?: string; id?: string };
 
 export default function Molecule360Screen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
@@ -22,7 +25,7 @@ export default function Molecule360Screen() {
     [],
   );
   const [tabs, setTabs] = useState<
-    Record<string, { title: string; body: unknown; sources: unknown[] }>
+    Record<string, { title: string; body: unknown; sources: SourceTag[] }>
   >({});
   const [activeId, setActiveId] = useState("chemistry");
   const [question, setQuestion] = useState("What is the mechanism of action?");
@@ -119,7 +122,11 @@ export default function Molecule360Screen() {
             <Text style={styles.tabHeading}>
               {tab.title} <Text style={styles.badge}>{sourcesNote}</Text>
             </Text>
-            <Text style={styles.bodyText}>{JSON.stringify(tab.body, null, 2)}</Text>
+            <MoleculeTabBody
+              tabId={activeId}
+              body={tab.body}
+              sources={Array.isArray(tab.sources) ? tab.sources : []}
+            />
           </>
         ) : null}
 
@@ -135,7 +142,7 @@ export default function Molecule360Screen() {
             <Pressable style={styles.button} onPress={onAsk}>
               <Text style={styles.buttonText}>Ask (grounded)</Text>
             </Pressable>
-            {aiOut ? <Text style={styles.bodyText}>{aiOut}</Text> : null}
+            {aiOut ? <Text style={styles.aiOut}>{aiOut}</Text> : null}
           </View>
         ) : null}
       </ScrollView>
@@ -170,10 +177,10 @@ const styles = StyleSheet.create({
   body: { padding: theme.space.md, gap: theme.space.sm },
   tabHeading: { fontSize: theme.typography.size.xl, fontWeight: "700", color: theme.colors.ink },
   badge: { fontSize: theme.typography.size.sm, color: theme.colors.deepTeal },
-  bodyText: {
+  aiOut: {
     color: theme.colors.slate,
-    fontFamily: theme.typography.fontFamily.mono,
     fontSize: theme.typography.size.sm,
+    lineHeight: 20,
   },
   error: { color: theme.colors.danger },
   aiBox: { gap: theme.space.sm, marginTop: theme.space.md },
