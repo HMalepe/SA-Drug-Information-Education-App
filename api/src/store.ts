@@ -108,21 +108,24 @@ function loadSeedFile(name: string): SeedFile {
   return JSON.parse(readFileSync(join(seedDir, name), "utf8")) as SeedFile;
 }
 
-function byId<T extends { id: string }>(items: T[]): T[] {
+function byId<T extends { id: string }>(items: Array<T | null | undefined>): T[] {
   const map = new Map<string, T>();
-  for (const item of items) map.set(item.id, item);
+  for (const item of items) {
+    if (!item?.id) continue;
+    map.set(item.id, item);
+  }
   return [...map.values()];
 }
 
 function mergeSeeds(...parts: SeedFile[]): SeedFile {
   return {
-    sources: byId(parts.flatMap((p) => p.sources)),
-    manufacturers: byId(parts.flatMap((p) => p.manufacturers)),
-    excipients: byId(parts.flatMap((p) => p.excipients)),
-    molecules: byId(parts.flatMap((p) => p.molecules)),
-    products: byId(parts.flatMap((p) => p.products)),
-    safetyProfiles: byId(parts.flatMap((p) => p.safetyProfiles)),
-    priceRecords: byId(parts.flatMap((p) => p.priceRecords)),
+    sources: byId(parts.flatMap((p) => p.sources ?? [])),
+    manufacturers: byId(parts.flatMap((p) => p.manufacturers ?? [])),
+    excipients: byId(parts.flatMap((p) => p.excipients ?? [])),
+    molecules: byId(parts.flatMap((p) => p.molecules ?? [])),
+    products: byId(parts.flatMap((p) => p.products ?? [])),
+    safetyProfiles: byId(parts.flatMap((p) => p.safetyProfiles ?? [])),
+    priceRecords: byId(parts.flatMap((p) => p.priceRecords ?? [])),
     doseRules: parts.flatMap((p) => p.doseRules ?? []),
     interactions: byId(parts.flatMap((p) => p.interactions ?? [])),
     formularyEntries: byId(parts.flatMap((p) => p.formularyEntries ?? [])),
