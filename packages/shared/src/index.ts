@@ -63,4 +63,5 @@ export * from "./packagingGame.js";
 export * from "./saFocus.js";
 export * from "./adaptiveLearning.js";
 export * from "./manufacturing.js";
+export * from "./interactionTab.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";

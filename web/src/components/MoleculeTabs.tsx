@@ -54,6 +54,8 @@ export function MoleculeTabs({
             <SaProductsPanel body={tab.body as Record<string, unknown>} />
           ) : active === "animations" ? (
             <VisualIdPanel body={tab.body as Record<string, unknown>} />
+          ) : active === "interactions" ? (
+            <InteractionsPanel body={tab.body as Record<string, unknown>} />
           ) : (
             <pre
               style={{
@@ -82,6 +84,61 @@ function modeFramingOf(body: unknown): string | null {
   if (!body || typeof body !== "object") return null;
   const framing = (body as { modeFraming?: unknown }).modeFraming;
   return typeof framing === "string" && framing.trim() ? framing : null;
+}
+
+type InteractionRow = {
+  id: string;
+  otherMoleculeSlug: string;
+  otherMoleculeName: string;
+  severity: string;
+  mechanism: string | null;
+  action: string | null;
+  sources: Array<{ citation: string; lastReviewed: string }>;
+};
+
+function InteractionsPanel({ body }: { body: Record<string, unknown> }) {
+  const items = (Array.isArray(body.items) ? body.items : []) as InteractionRow[];
+  const empty = typeof body.empty === "string" ? body.empty : null;
+  const note = typeof body.note === "string" ? body.note : null;
+
+  return (
+    <div>
+      {note ? <p className="muted">{note}</p> : null}
+      {items.length === 0 ? (
+        <p className="muted">{empty ?? "No published pairwise interactions for this molecule yet."}</p>
+      ) : (
+        items.map((row) => (
+          <article
+            key={row.id}
+            style={{ marginBottom: 16, paddingBottom: 12, borderBottom: "1px solid #ddd" }}
+          >
+            <strong>
+              {row.otherMoleculeName}{" "}
+              <span className="muted">({row.severity})</span>
+            </strong>
+            <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>
+              <a href={`/molecules/${row.otherMoleculeSlug}`}>{row.otherMoleculeSlug}</a>
+            </div>
+            {row.mechanism ? (
+              <p style={{ margin: "8px 0 4px" }}>
+                <strong>Mechanism:</strong> {row.mechanism}
+              </p>
+            ) : null}
+            {row.action ? (
+              <p style={{ margin: "4px 0" }}>
+                <strong>Action:</strong> {row.action}
+              </p>
+            ) : null}
+            {row.sources.map((s) => (
+              <div key={`${row.id}-${s.citation}`} className="source-tag">
+                source · {s.citation} · reviewed {s.lastReviewed}
+              </div>
+            ))}
+          </article>
+        ))
+      )}
+    </div>
+  );
 }
 
 function EmergencyPanel({ body }: { body: Record<string, unknown> }) {

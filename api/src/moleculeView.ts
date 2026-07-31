@@ -3,6 +3,8 @@ import {
   buildMoleculeVisualGallery,
   buildProductVisualCard,
   buildManufacturingTransparency,
+  buildInteractionTabBody,
+  collectInteractionTabSources,
   emptyStateMessage,
   explainProductExcipients,
   getModeLens,
@@ -14,7 +16,13 @@ import {
   type UserMode,
 } from "@materia/shared";
 import { buildOverdoseEmergencyTemplate } from "@materia/shared";
-import { db, getMoleculeBySlug, getSafety, getSource } from "./store.js";
+import {
+  db,
+  getMoleculeBySlug,
+  getSafety,
+  getSource,
+  listPublishedInteractionsForMolecule,
+} from "./store.js";
 
 function sourcedText(
   fact: { value: string; sourceId: string; publishState: string; lastReviewed: string } | undefined,
@@ -43,6 +51,14 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
   const chemistry = sourcedText(molecule.chemistrySummary);
   const moa = sourcedText(molecule.moaSummary);
   const discovery = sourcedText(molecule.discoveryNote);
+
+  const interactionBody = buildInteractionTabBody({
+    moleculeId: molecule.id,
+    interactions: listPublishedInteractionsForMolecule(molecule.id),
+    molecules: db.molecules,
+    getSource,
+  });
+  const interactionSources = collectInteractionTabSources(interactionBody);
 
   const tabs: Record<
     Medicine360TabId,
@@ -144,11 +160,8 @@ export function buildMolecule360(slug: string, modeInput: UserMode | string = "p
     },
     interactions: {
       title: "Drug Interactions",
-      body: {
-        items: [],
-        empty: "No published pairwise interactions in the seed set yet.",
-      },
-      sources: [],
+      body: interactionBody,
+      sources: interactionSources,
     },
     "food-lifestyle": {
       title: "Food & Lifestyle",

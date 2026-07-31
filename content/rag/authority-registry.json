@@ -79,7 +79,8 @@
     "Review decisions audit trail — CLI decisions + GET /review/decisions + /review panel (read-only)",
     "export-stg-cli + GET /review/export-stg-cli — individual eligible STG CLI lines (no --write)",
     "seed:check refuses published numeric-suspect dosing/STG (constitution 3.1 CI gate)",
-    "Clinical S0 seed-gate uses shared helpers + CI runs rag:check-env"
+    "Clinical S0 seed-gate uses shared helpers + CI runs rag:check-env",
+    "Molecule 360 Interactions tab surfaces published sourced pairwise interactions"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
