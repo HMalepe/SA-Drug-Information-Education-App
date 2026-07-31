@@ -5,8 +5,15 @@
 
 import type { PublishState } from "./types.js";
 import type { ReviewDecision, ReviewQueueItem } from "./reviewQueue.js";
-import { nextPublishState, type ReviewDecisionKind } from "./reviewQueue.js";
+import {
+  classifyDosingPreview,
+  nextPublishState,
+  type DosingDraftClass,
+  type ReviewDecisionKind,
+} from "./reviewQueue.js";
 import type { StgExtract } from "./ragCorpus.js";
+
+export { classifyDosingPreview, type DosingDraftClass } from "./reviewQueue.js";
 
 export interface StgBatchSeedRef {
   batch: "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
@@ -515,19 +522,6 @@ export function applyStgBatchPublish(input: {
     note:
       "STG batch publish changes publishState only. Does not invent text or touch dosing scaffolds.",
   };
-}
-
-export type DosingDraftClass = "placeholder_absent" | "numeric_suspect" | "other_draft";
-
-/** Classify a dosing draft preview — never invents; flags numeric text as suspect. */
-export function classifyDosingPreview(preview: string): DosingDraftClass {
-  if (/\d+\s*mg\b|\d+\s*mmol\b|\d+\s*mcg\b|\d+\s*units?\b/i.test(preview)) {
-    return "numeric_suspect";
-  }
-  if (/not publish|will not invent|ABSENT|not yet in Materia/i.test(preview)) {
-    return "placeholder_absent";
-  }
-  return "other_draft";
 }
 
 export interface DosingPlanItem {

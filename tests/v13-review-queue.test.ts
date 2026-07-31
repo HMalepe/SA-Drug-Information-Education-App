@@ -84,4 +84,36 @@ describe("v13 clinical review queue", () => {
     );
     assert.equal(nextPublishState("draft", "publish"), "published");
   });
+
+  it("refuses to publish a dosing draft whose preview looks like an invented numeric value", () => {
+    const numericSafety: SafetyProfile[] = [
+      {
+        id: "safe-x",
+        moleculeId: "mol-x",
+        publishState: "published",
+        dosingAdult: {
+          value: "Give 500 mg TDS.",
+          sourceId: "src",
+          publishState: "draft",
+          lastReviewed: "2026-07-01",
+        },
+        contraindications: [],
+        warnings: [],
+        clinicalPearls: [],
+        counsellingPoints: [],
+      },
+    ];
+    const item = buildReviewQueue({ molecules, safetyProfiles: numericSafety }).find(
+      (i) => i.fieldPath === "dosingAdult",
+    )!;
+    const gate = validateReviewDecision({
+      item,
+      decision: "publish",
+      attestation: "I confirm this is sourced from the label",
+    });
+    assert.equal(gate.ok, false);
+    if (!gate.ok) {
+      assert.match(gate.reason, /numeric/i);
+    }
+  });
 });

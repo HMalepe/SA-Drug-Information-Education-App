@@ -24,7 +24,12 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    - API: `POST /review/publish-stg-batch` `{ batch, reviewerLabel, attestation }` — same all-or-nothing gate; web `/review` has “Publish eligible STG” button
    - `npm run review:batches -- publish-dosing <moleculeId> <fieldPath> --attestation "…" --write`
    Decisions persist to seed / `stg-extracts.json` + `content/review/decisions.jsonl` (dry-run without `--write`).
-   No batch auto-publish for dosing.
+   No batch auto-publish for dosing. Every individual dosing publish path (CLI `publish-dosing`,
+   `POST /review/decide`, web `/review` "Publish" button) shares one gate
+   (`validateReviewDecision` in `@materia/shared`) that refuses to publish a dosing field whose
+   preview still looks like an invented numeric placeholder (`classifyDosingPreview` ===
+   `numeric_suspect`, e.g. "500 mg") — only honest "not yet published" placeholders or facts
+   rewritten with a real sourced value may be published.
 7. CI clinical-eval must pass (no published draft dosing).
 8. Deploy RAG: `npm run rag:check-env` (blank = local default; refuses offshore hosts). Runtime: `GET /health/rag`.
 

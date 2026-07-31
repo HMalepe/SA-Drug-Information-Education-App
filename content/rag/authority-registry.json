@@ -68,11 +68,12 @@
     "Deepened counselling v428–v439 for thin high-volume core (warfarin/ARB/statin/abx/steroid)",
     "Deepened counselling v440–v451 for thin core (v120 batch + pantoprazole/codeine)",
     "Deepened counselling v452–v463 — cleared remaining thin 4-line published counselling",
-    "API/web STG batch publish (POST /review/publish-stg-batch; attestation + all-or-nothing)"
+    "API/web STG batch publish (POST /review/publish-stg-batch; attestation + all-or-nothing)",
+    "Dosing publish gate refuses numeric_suspect previews (shared classifyDosingPreview)"
   ],
   "pipelineNext": [
     "Founder: publish STG pointers via /review or publish-stg-batch all --write (attestation)",
-    "Founder: plan-dosing all → individual publish-dosing for honest placeholders",
+    "Founder: plan-dosing all → individual publish-dosing for honest placeholders only",
     "Provision real in-region embedder/LLM URLs; verify with npm run rag:check-env"
   ]
 }

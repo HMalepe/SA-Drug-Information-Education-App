@@ -190,6 +190,24 @@ export function summarizeCoverage(input: {
   };
 }
 
+export type DosingDraftClass = "placeholder_absent" | "numeric_suspect" | "other_draft";
+
+/**
+ * Classify a dosing draft preview — never invents; flags numeric text as suspect.
+ * Shared by the founder batch review pack AND the individual publish gate below,
+ * so every dosing publish path (CLI publish-dosing, POST /review/decide, web
+ * /review "Publish" button) refuses the same invented-looking numeric drafts.
+ */
+export function classifyDosingPreview(preview: string): DosingDraftClass {
+  if (/\d+\s*mg\b|\d+\s*mmol\b|\d+\s*mcg\b|\d+\s*units?\b/i.test(preview)) {
+    return "numeric_suspect";
+  }
+  if (/not publish|will not invent|ABSENT|not yet in Materia/i.test(preview)) {
+    return "placeholder_absent";
+  }
+  return "other_draft";
+}
+
 export function validateReviewDecision(input: {
   item: ReviewQueueItem;
   decision: ReviewDecisionKind;
@@ -208,6 +226,16 @@ export function validateReviewDecision(input: {
             "High-stakes publish requires attestation containing 'sourced' or 'confirm' (founder gate).",
         };
       }
+    }
+    if (
+      /dosing/i.test(input.item.fieldPath) &&
+      classifyDosingPreview(input.item.preview) === "numeric_suspect"
+    ) {
+      return {
+        ok: false,
+        reason:
+          "Refuse publish — dosing preview contains numeric dose units (mg/mmol/mcg/units) that look like an unreviewed AI scaffold value, not a founder-sourced fact (constitution 3.1). Rewrite with a real Source before publishing, or leave as an honest 'not yet published' placeholder.",
+      };
     }
   }
   if (input.decision === "mark_reviewed" && input.item.publishState === "published") {
