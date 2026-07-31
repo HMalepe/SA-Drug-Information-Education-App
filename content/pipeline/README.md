@@ -31,6 +31,8 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    `numeric_suspect`, e.g. "500 mg") — only honest "not yet published" placeholders or facts
    rewritten with a real sourced value may be published. `GET /review/queue` attaches
    `dosingClass` on dosing items so the web UI can disable Publish before the click.
+   Filter: `GET /review/queue?dosingClass=placeholder_absent` (also `numeric_suspect`|
+   `other_draft`); web `/review` has “Show publishable placeholders only”.
 7. CI clinical-eval must pass (no published draft dosing).
 8. Deploy RAG: `npm run rag:check-env` (blank = local default; refuses offshore hosts). Runtime: `GET /health/rag`.
 

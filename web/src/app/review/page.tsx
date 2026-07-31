@@ -99,11 +99,13 @@ export default function ReviewPage() {
     "I confirm this is sourced from labelled product / SA guideline — not invented.",
   );
   const [msg, setMsg] = useState("");
+  const [placeholdersOnly, setPlaceholdersOnly] = useState(false);
 
   async function load() {
     const params = new URLSearchParams();
     if (area) params.set("area", area);
     if (batch) params.set("batch", batch);
+    if (placeholdersOnly) params.set("dosingClass", "placeholder_absent");
     const qs = params.toString() ? `?${params}` : "";
     const stgQs = batch ? `?batch=${encodeURIComponent(batch)}` : "";
 
@@ -125,7 +127,7 @@ export default function ReviewPage() {
 
   useEffect(() => {
     void load();
-  }, [area, batch]);
+  }, [area, batch, placeholdersOnly]);
 
   async function decide(queueItemId: string, decision: "keep_draft" | "mark_reviewed" | "publish") {
     const res = await fetch(`${API}/review/decide`, {
@@ -307,11 +309,23 @@ export default function ReviewPage() {
       <h2 style={{ marginTop: 24 }}>
         Dosing / safety queue ({items.length})
         {batch ? ` · batch ${batch}` : ""}
+        {placeholdersOnly ? " · placeholders only" : ""}
       </h2>
       <p className="muted">
         Dosing Publish is disabled when classification is numeric_suspect (invented-looking mg).
         placeholder_absent may be published as an honest absence after attestation.
       </p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "8px 0 16px" }}>
+        <button
+          className="btn"
+          type="button"
+          style={{ opacity: placeholdersOnly ? 1 : 0.75 }}
+          onClick={() => setPlaceholdersOnly((v) => !v)}
+        >
+          {placeholdersOnly ? "Showing placeholders only" : "Show publishable placeholders only"}
+          {dosingPlan ? ` (${dosingPlan.totals.placeholderAbsent})` : ""}
+        </button>
+      </div>
       {items.length === 0 ? (
         <p className="muted">No draft/reviewed facts in this filter.</p>
       ) : (

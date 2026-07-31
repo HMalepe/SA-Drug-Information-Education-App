@@ -111,6 +111,14 @@ function pushFact(
   out.push(item);
 }
 
+/** Filter review queue items by dosingClass (AND with other filters at the call site). */
+export function filterReviewQueueByDosingClass(
+  items: ReviewQueueItem[],
+  dosingClass: DosingDraftClass,
+): ReviewQueueItem[] {
+  return items.filter((i) => i.dosingClass === dosingClass);
+}
+
 /** Build founder review queue from molecule + safety sourced facts. */
 export function buildReviewQueue(input: {
   molecules: Molecule[];

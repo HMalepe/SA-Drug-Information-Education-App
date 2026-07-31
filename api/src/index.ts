@@ -117,6 +117,7 @@ import {
   validateStgExtractDecision,
   applyStgExtractDecisionState,
   applyStgBatchPublish,
+  filterReviewQueueByDosingClass,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
   previewUpcoming,
@@ -3229,6 +3230,7 @@ app.get("/review/coverage", (_req, res) => {
 app.get("/review/queue", (req, res) => {
   const area = String(req.query.area ?? "").trim();
   const batch = String(req.query.batch ?? "").trim().toUpperCase();
+  const dosingClassRaw = String(req.query.dosingClass ?? "").trim();
   const statesRaw = String(req.query.states ?? "draft,reviewed");
   const states = statesRaw
     .split(",")
@@ -3236,6 +3238,20 @@ app.get("/review/queue", (req, res) => {
     .filter((s): s is "draft" | "reviewed" | "published" =>
       s === "draft" || s === "reviewed" || s === "published",
     );
+  const allowedDosingClass = new Set([
+    "placeholder_absent",
+    "numeric_suspect",
+    "other_draft",
+  ] as const);
+  if (
+    dosingClassRaw &&
+    !allowedDosingClass.has(dosingClassRaw as "placeholder_absent" | "numeric_suspect" | "other_draft")
+  ) {
+    res.status(400).json({
+      error: `Invalid dosingClass ${dosingClassRaw}. Use placeholder_absent|numeric_suspect|other_draft.`,
+    });
+    return;
+  }
   let items = buildReviewQueue({
     molecules: db.molecules,
     safetyProfiles: db.safetyProfiles,
@@ -3246,10 +3262,17 @@ app.get("/review/queue", (req, res) => {
     const molIds = moleculeIdsForBatch(batch);
     if (molIds) items = filterReviewQueueByMoleculeIds(items, molIds);
   }
+  if (dosingClassRaw) {
+    items = filterReviewQueueByDosingClass(
+      items,
+      dosingClassRaw as "placeholder_absent" | "numeric_suspect" | "other_draft",
+    );
+  }
   res.json({
     count: items.length,
     items,
     batch: batch || null,
+    dosingClass: dosingClassRaw || null,
     note: "Founder gate only. Publishing never invents clinical text — it only changes publishState.",
   });
 });
