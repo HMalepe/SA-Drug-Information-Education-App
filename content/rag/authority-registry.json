@@ -88,7 +88,8 @@
     "Harden seed merge against missing arrays (store byId skip undefined)",
     "Batch-scoped founder progress — CLI progress A|all + GET /review/progress?batch= + /review filter",
     "Remove dead duplicate GET /review/decisions + route-uniqueness CI guard",
-    "Scope /review Batches panel stats+CLI to active filter; single-batch plan composition tests"
+    "Scope /review Batches panel stats+CLI to active filter; single-batch plan composition tests",
+    "Web Medicine 360 refuses clinical JSON dump fallback; panel-coverage CI guard"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

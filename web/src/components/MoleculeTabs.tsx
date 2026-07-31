@@ -71,17 +71,10 @@ export function MoleculeTabs({
           ) : isSourcedListTab(active) ? (
             <SourcedListPanel body={tab.body as Record<string, unknown>} />
           ) : (
-            <pre
-              style={{
-                whiteSpace: "pre-wrap",
-                fontFamily: "inherit",
-                margin: 0,
-                fontSize: 16,
-                lineHeight: 1.5,
-              }}
-            >
-              {JSON.stringify(tab.body, null, 2)}
-            </pre>
+            <p className="muted" style={{ margin: 0 }}>
+              This tab has no web panel yet. Clinical values are not dumped as raw JSON —
+              open a supported tab or check back after the layout ships.
+            </p>
           )}
           {tab.sources?.map((s) => (
             <div key={s.citation} className="source-tag">
