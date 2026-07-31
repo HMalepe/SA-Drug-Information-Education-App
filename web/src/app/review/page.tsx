@@ -305,6 +305,22 @@ export default function ReviewPage() {
         ? (dosingPlan.batches.find((b) => b.batch === batch)?.placeholderAbsent ?? [])
         : dosingPlan.batches.flatMap((b) => b.placeholderAbsent);
 
+  const dosingSuspectsForFilter =
+    dosingPlan == null
+      ? 0
+      : batch
+        ? (dosingPlan.batches.find((b) => b.batch === batch)?.numericSuspect.length ?? 0)
+        : dosingPlan.totals.numericSuspect;
+
+  const stgPublishedForFilter =
+    stgPlan == null
+      ? 0
+      : batch
+        ? (stgPlan.batches.find((b) => b.batch === batch)?.alreadyPublished ?? 0)
+        : stgPlan.totals.alreadyPublished;
+
+  const cliScope = batch || "all";
+
   return (
     <>
       <h1>Clinical review</h1>
@@ -347,11 +363,11 @@ export default function ReviewPage() {
 
       {backlog && stgPlan && dosingPlan && (
         <section style={{ marginTop: 16 }}>
-          <h2>Batches A–I</h2>
+          <h2>Batches A–I{batch ? ` — filter ${batch}` : ""}</h2>
           <p className="muted">
-            STG eligible {stgPlan.totals.eligible} · blocked {stgPlan.totals.blocked} · dosing
-            placeholders {dosingPlan.totals.placeholderAbsent} · numeric suspects{" "}
-            {dosingPlan.totals.numericSuspect} (must stay unpublished)
+            STG published {stgPublishedForFilter} · eligible {stgEligibleForFilter} · blocked{" "}
+            {stgBlockedForFilter} · dosing placeholders {placeholderItems.length} · numeric
+            suspects {dosingSuspectsForFilter} (must stay unpublished)
           </p>
           <p className="muted">{backlog.note}</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
@@ -380,10 +396,10 @@ export default function ReviewPage() {
             })}
           </div>
           <p className="muted" style={{ marginTop: 12 }}>
-            CLI: <code>npm run review:batches -- plan-stg all</code> ·{" "}
-            <code>npm run review:batches -- export-stg-cli all</code> ·{" "}
-            <code>npm run review:batches -- plan-dosing all</code> ·{" "}
-            <code>npm run review:batches -- export-dosing-cli all</code>
+            CLI: <code>npm run review:batches -- plan-stg {cliScope}</code> ·{" "}
+            <code>npm run review:batches -- export-stg-cli {cliScope}</code> ·{" "}
+            <code>npm run review:batches -- plan-dosing {cliScope}</code> ·{" "}
+            <code>npm run review:batches -- export-dosing-cli {cliScope}</code>
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
             <button
