@@ -69,7 +69,8 @@
     "Deepened counselling v440–v451 for thin core (v120 batch + pantoprazole/codeine)",
     "Deepened counselling v452–v463 — cleared remaining thin 4-line published counselling",
     "API/web STG batch publish (POST /review/publish-stg-batch; attestation + all-or-nothing)",
-    "Dosing publish gate refuses numeric_suspect previews (shared classifyDosingPreview)"
+    "Dosing publish gate refuses numeric_suspect previews (shared classifyDosingPreview)",
+    "Review queue dosingClass on /review — disable Publish for numeric_suspect"
   ],
   "pipelineNext": [
     "Founder: publish STG pointers via /review or publish-stg-batch all --write (attestation)",

@@ -106,6 +106,7 @@ describe("v13 clinical review queue", () => {
     const item = buildReviewQueue({ molecules, safetyProfiles: numericSafety }).find(
       (i) => i.fieldPath === "dosingAdult",
     )!;
+    assert.equal(item.dosingClass, "numeric_suspect");
     const gate = validateReviewDecision({
       item,
       decision: "publish",
@@ -115,5 +116,39 @@ describe("v13 clinical review queue", () => {
     if (!gate.ok) {
       assert.match(gate.reason, /numeric/i);
     }
+  });
+
+  it("attaches dosingClass for placeholder and other dosing drafts", () => {
+    const placeholder = buildReviewQueue({ molecules, safetyProfiles: safety }).find(
+      (i) => i.fieldPath === "dosingAdult",
+    )!;
+    assert.equal(placeholder.dosingClass, "placeholder_absent");
+
+    const otherSafety: SafetyProfile[] = [
+      {
+        id: "safe-x",
+        moleculeId: "mol-x",
+        publishState: "published",
+        dosingAdult: {
+          value: "Follow labelled product and clinician plan.",
+          sourceId: "src",
+          publishState: "draft",
+          lastReviewed: "2026-07-01",
+        },
+        contraindications: [],
+        warnings: [],
+        clinicalPearls: [],
+        counsellingPoints: [],
+      },
+    ];
+    const other = buildReviewQueue({ molecules, safetyProfiles: otherSafety }).find(
+      (i) => i.fieldPath === "dosingAdult",
+    )!;
+    assert.equal(other.dosingClass, "other_draft");
+
+    const counselling = buildReviewQueue({ molecules, safetyProfiles: safety }).find(
+      (i) => i.fieldPath.startsWith("counsellingPoints"),
+    )!;
+    assert.equal(counselling.dosingClass, undefined);
   });
 });

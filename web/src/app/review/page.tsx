@@ -28,6 +28,7 @@ type QueueItem = {
   priority: string;
   highStakes: boolean;
   sourceId?: string;
+  dosingClass?: "placeholder_absent" | "numeric_suspect" | "other_draft";
 };
 
 type StgQueueItem = {
@@ -307,10 +308,16 @@ export default function ReviewPage() {
         Dosing / safety queue ({items.length})
         {batch ? ` · batch ${batch}` : ""}
       </h2>
+      <p className="muted">
+        Dosing Publish is disabled when classification is numeric_suspect (invented-looking mg).
+        placeholder_absent may be published as an honest absence after attestation.
+      </p>
       {items.length === 0 ? (
         <p className="muted">No draft/reviewed facts in this filter.</p>
       ) : (
-        items.map((item) => (
+        items.map((item) => {
+          const numericBlocked = item.dosingClass === "numeric_suspect";
+          return (
           <article key={item.id} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #ddd" }}>
             <strong>
               {item.moleculeName} · {item.fieldPath}
@@ -318,7 +325,19 @@ export default function ReviewPage() {
             <div className="muted">
               {item.therapeuticArea} · {item.publishState} · {item.priority}
               {item.highStakes ? " · high-stakes" : ""} · source {item.sourceId ?? "missing"}
+              {item.dosingClass ? ` · dosing ${item.dosingClass}` : ""}
             </div>
+            {item.dosingClass === "placeholder_absent" ? (
+              <p className="muted" style={{ margin: "4px 0 0" }}>
+                Honest absence placeholder — safe to publish after attestation (no invented mg).
+              </p>
+            ) : null}
+            {numericBlocked ? (
+              <p className="muted" style={{ margin: "4px 0 0" }}>
+                Publish blocked — rewrite without invented numeric units, or leave unpublished
+                (constitution 3.1).
+              </p>
+            ) : null}
             <p style={{ margin: "8px 0" }}>{item.preview}</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               <button className="btn" type="button" onClick={() => void decide(item.id, "keep_draft")}>
@@ -331,7 +350,17 @@ export default function ReviewPage() {
               >
                 Mark reviewed
               </button>
-              <button className="btn" type="button" onClick={() => void decide(item.id, "publish")}>
+              <button
+                className="btn"
+                type="button"
+                disabled={numericBlocked}
+                title={
+                  numericBlocked
+                    ? "numeric_suspect — rewrite without invented mg before publish"
+                    : undefined
+                }
+                onClick={() => void decide(item.id, "publish")}
+              >
                 Publish
               </button>
               <a className="btn" href={`/molecules/${item.moleculeSlug}`}>
@@ -339,7 +368,8 @@ export default function ReviewPage() {
               </a>
             </div>
           </article>
-        ))
+          );
+        })
       )}
 
       <h2 style={{ marginTop: 32 }}>

@@ -7,6 +7,24 @@ import type {
 
 export type ReviewPriority = "critical" | "high" | "normal";
 
+export type DosingDraftClass = "placeholder_absent" | "numeric_suspect" | "other_draft";
+
+/**
+ * Classify a dosing draft preview — never invents; flags numeric text as suspect.
+ * Shared by the founder batch review pack, buildReviewQueue dosingClass, and
+ * validateReviewDecision — so every dosing publish path refuses the same
+ * invented-looking numeric drafts.
+ */
+export function classifyDosingPreview(preview: string): DosingDraftClass {
+  if (/\d+\s*mg\b|\d+\s*mmol\b|\d+\s*mcg\b|\d+\s*units?\b/i.test(preview)) {
+    return "numeric_suspect";
+  }
+  if (/not publish|will not invent|ABSENT|not yet in Materia/i.test(preview)) {
+    return "placeholder_absent";
+  }
+  return "other_draft";
+}
+
 export interface ReviewQueueItem {
   id: string;
   moleculeId: string;
@@ -20,6 +38,11 @@ export interface ReviewQueueItem {
   priority: ReviewPriority;
   /** True when field looks like dosing / overdose clinical stakes */
   highStakes: boolean;
+  /**
+   * Present when fieldPath looks like dosing — mirrors classifyDosingPreview
+   * so web / CLI can disable Publish on numeric_suspect before the click.
+   */
+  dosingClass?: DosingDraftClass;
 }
 
 export interface CoverageAreaRow {
@@ -68,7 +91,8 @@ function pushFact(
 ) {
   if (!fact) return;
   const highStakes = HIGH_STAKES.test(fieldPath);
-  out.push({
+  const preview = previewValue(fact.value);
+  const item: ReviewQueueItem = {
     id: `${mol.id}:${fieldPath}`,
     moleculeId: mol.id,
     moleculeSlug: mol.slug,
@@ -77,10 +101,14 @@ function pushFact(
     fieldPath,
     publishState: fact.publishState,
     sourceId: fact.sourceId,
-    preview: previewValue(fact.value),
+    preview,
     priority: highStakes && fact.publishState !== "published" ? "critical" : fact.publishState === "draft" ? "high" : "normal",
     highStakes,
-  });
+  };
+  if (/dosing/i.test(fieldPath)) {
+    item.dosingClass = classifyDosingPreview(preview);
+  }
+  out.push(item);
 }
 
 /** Build founder review queue from molecule + safety sourced facts. */
@@ -188,24 +216,6 @@ export function summarizeCoverage(input: {
     totals,
     note: "Coverage counts sourced facts only. Empty dosing is intentional until founder publish.",
   };
-}
-
-export type DosingDraftClass = "placeholder_absent" | "numeric_suspect" | "other_draft";
-
-/**
- * Classify a dosing draft preview — never invents; flags numeric text as suspect.
- * Shared by the founder batch review pack AND the individual publish gate below,
- * so every dosing publish path (CLI publish-dosing, POST /review/decide, web
- * /review "Publish" button) refuses the same invented-looking numeric drafts.
- */
-export function classifyDosingPreview(preview: string): DosingDraftClass {
-  if (/\d+\s*mg\b|\d+\s*mmol\b|\d+\s*mcg\b|\d+\s*units?\b/i.test(preview)) {
-    return "numeric_suspect";
-  }
-  if (/not publish|will not invent|ABSENT|not yet in Materia/i.test(preview)) {
-    return "placeholder_absent";
-  }
-  return "other_draft";
 }
 
 export function validateReviewDecision(input: {
