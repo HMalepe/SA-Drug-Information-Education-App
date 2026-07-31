@@ -44,7 +44,8 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    (audit)” — suspects stay unpublished (constitution 3.1).
 7. CI clinical-eval / `npm run seed:check` must pass. Seed gate refuses **published** dosing
    or STG text that still looks like inventable numeric scaffolds (`listPublishedNumericSuspectDosing`
-   / `listPublishedStgNumericSuspects`) — draft suspects may remain in backlog.
+   / `listPublishedStgNumericSuspects`) — draft suspects may remain in backlog. Clinical eval
+   (`npm run test:clinical`) uses the same helpers. CI also runs `npm run rag:check-env`.
 8. Deploy RAG: `npm run rag:check-env` (blank = local default; refuses offshore hosts). Runtime: `GET /health/rag`.
 
 ## Forbidden

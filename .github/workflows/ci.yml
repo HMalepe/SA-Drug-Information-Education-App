@@ -20,6 +20,8 @@ jobs:
         run: npm run build -w @materia/design-tokens -w @materia/shared
       - name: Seed validation
         run: npm run seed:check
+      - name: In-region RAG env check
+        run: npm run rag:check-env
       - name: Typecheck
         run: npm run typecheck
       - name: Unit + clinical eval
@@ -28,3 +30,4 @@ jobs:
         run: |
           echo "S0 clinical-critical: any failing clinical eval blocks release."
           echo "Open S0 = do not merge."
+          echo "Published numeric-suspect dosing/STG refused by seed:check + clinical seed-gate."

@@ -1,15 +1,22 @@
 /**
- * Seed-level S0 gate — no invented published numeric doses.
+ * Seed-level S0 gate — no invented published numeric doses / STG scaffolds.
+ * Uses the same helpers as `npm run seed:check` (constitution 3.1).
  */
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { resolveSearch } from "@materia/shared";
+import {
+  listPublishedNumericSuspectDosing,
+  listPublishedStgNumericSuspects,
+  resolveSearch,
+} from "@materia/shared";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const seedDir = join(__dirname, "../../content/seed");
+const root = join(__dirname, "../..");
+const seedDir = join(root, "content/seed");
+const stgPath = join(root, "content/rag/stg-extracts.json");
 const files = readdirSync(seedDir).filter((f) => f.endsWith(".json"));
 const seeds = files.map((f) => JSON.parse(readFileSync(join(seedDir, f), "utf8")));
 const molecules = seeds.flatMap((s) => s.molecules ?? []);
@@ -17,13 +24,27 @@ const products = seeds.flatMap((s) => s.products ?? []);
 const safetyProfiles = seeds.flatMap((s) => s.safetyProfiles ?? []);
 
 describe("seed S0 gate", () => {
-  it("does not publish numeric adult dosing invents", () => {
-    for (const sp of safetyProfiles) {
-      const adult = sp.dosingAdult;
-      if (adult?.publishState === "published") {
-        assert.doesNotMatch(adult.value, /\d+\s*mg/i);
+  it("refuses published numeric-suspect dosing across all dosing fields", () => {
+    const hits = listPublishedNumericSuspectDosing(safetyProfiles);
+    assert.deepEqual(
+      hits,
+      [],
+      hits.map((h) => `${h.moleculeId}.${h.fieldPath}: ${h.preview}`).join("; "),
+    );
+  });
+
+  it("refuses published STG extracts that contain inventable dose units", () => {
+    const extracts = (
+      JSON.parse(readFileSync(stgPath, "utf8")) as {
+        extracts: Array<{ id: string; publishState?: string; text?: string }>;
       }
-    }
+    ).extracts;
+    const hits = listPublishedStgNumericSuspects(extracts);
+    assert.deepEqual(
+      hits,
+      [],
+      hits.map((h) => `${h.extractId}: ${h.preview}`).join("; "),
+    );
   });
 
   it("published antidote text is supportive empty-state only", () => {
