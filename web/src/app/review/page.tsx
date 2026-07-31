@@ -96,6 +96,14 @@ type DosingPlanAll = {
   note: string;
 };
 
+type FounderProgress = {
+  stg: { alreadyPublished: number; eligible: number; blocked: number };
+  dosing: { placeholderAbsent: number; numericSuspect: number; otherDraft: number };
+  rag: { ok: boolean; mode: string; hostedConfigured: boolean };
+  nextActions: string[];
+  note: string;
+};
+
 const BATCHES = ["A", "B", "C", "D", "E", "F", "G", "H", "I"] as const;
 
 const ATTEST_STG =
@@ -110,6 +118,7 @@ export default function ReviewPage() {
   const [backlog, setBacklog] = useState<BatchBacklog | null>(null);
   const [stgPlan, setStgPlan] = useState<StgPlanAll | null>(null);
   const [dosingPlan, setDosingPlan] = useState<DosingPlanAll | null>(null);
+  const [progress, setProgress] = useState<FounderProgress | null>(null);
   const [area, setArea] = useState("");
   const [batch, setBatch] = useState("");
   const [reviewer, setReviewer] = useState("Founder pharmacist");
@@ -129,13 +138,14 @@ export default function ReviewPage() {
     const qs = params.toString() ? `?${params}` : "";
     const stgQs = batch ? `?batch=${encodeURIComponent(batch)}` : "";
 
-    const [c, q, b, sp, dp, stg] = await Promise.all([
+    const [c, q, b, sp, dp, stg, prog] = await Promise.all([
       fetch(`${API}/review/coverage`).then((r) => r.json()),
       fetch(`${API}/review/queue${qs}`).then((r) => r.json()),
       fetch(`${API}/review/batches-ai`).then((r) => r.json()),
       fetch(`${API}/review/plan-stg?batch=all`).then((r) => r.json()),
       fetch(`${API}/review/plan-dosing?batch=all`).then((r) => r.json()),
       fetch(`${API}/review/stg-queue${stgQs}`).then((r) => r.json()),
+      fetch(`${API}/review/progress`).then((r) => r.json()),
     ]);
     setCoverage(c);
     setItems(q.items ?? []);
@@ -143,6 +153,7 @@ export default function ReviewPage() {
     setStgPlan(sp);
     setDosingPlan(dp);
     setStgItems(stg.items ?? []);
+    setProgress(prog);
   }
 
   useEffect(() => {
@@ -262,6 +273,27 @@ export default function ReviewPage() {
         Founder publish gate — surfaces draft facts and STG/RAG pointers. Never invents doses.
         Decisions persist to content/seed, stg-extracts.json, and content/review/decisions.jsonl.
       </p>
+
+      {progress && (
+        <section style={{ marginTop: 16 }}>
+          <h2>Founder progress</h2>
+          <p className="muted">
+            STG published {progress.stg.alreadyPublished} · eligible {progress.stg.eligible} ·
+            blocked {progress.stg.blocked} · dosing placeholders{" "}
+            {progress.dosing.placeholderAbsent} · suspects {progress.dosing.numericSuspect} · RAG{" "}
+            {progress.rag.mode}
+            {progress.rag.hostedConfigured ? " (hosted)" : " (local default)"}
+          </p>
+          <ol className="muted" style={{ marginTop: 8, paddingLeft: 20 }}>
+            {progress.nextActions.map((action) => (
+              <li key={action}>{action}</li>
+            ))}
+          </ol>
+          <p className="muted" style={{ marginTop: 8 }}>
+            {progress.note} · CLI: <code>npm run review:batches -- progress</code>
+          </p>
+        </section>
+      )}
 
       {backlog && stgPlan && dosingPlan && (
         <section style={{ marginTop: 16 }}>

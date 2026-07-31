@@ -118,4 +118,16 @@ describe("founder-batch-review CLI", () => {
     );
     assert.match(doc.note, /no dosing batch/i);
   });
+
+  it("progress returns ordered next actions without writing", () => {
+    const r = run(["progress", "--json"]);
+    assert.equal(r.status, 0, r.stderr);
+    const doc = JSON.parse(r.stdout);
+    assert.ok(doc.stg.eligible >= 0);
+    assert.ok(doc.dosing.placeholderAbsent >= 70);
+    assert.ok(Array.isArray(doc.nextActions));
+    assert.ok(doc.nextActions.length >= 1);
+    assert.match(doc.nextActions[0], /STG|eligible|blocked/i);
+    assert.match(doc.note, /read-only/i);
+  });
 });

@@ -117,6 +117,7 @@ import {
   exportPlaceholderDosingCli,
   flattenDosingPlanItems,
   DEFAULT_HONEST_ABSENCE_ATTESTATION,
+  summarizeFounderProgress,
   validateStgExtractDecision,
   applyStgExtractDecisionState,
   applyStgBatchPublish,
@@ -3296,8 +3297,34 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · GET /review/export-dosing-cli · POST /review/publish-stg-batch (attestation; dryRun optional) · POST /review/decide or /review/stg-decide. Never invents mg. No dosing batch auto-publish.",
+      "GET /review/progress · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
   });
+});
+
+/** Read-only founder next-actions for Batches A–I + RAG env (no write). */
+app.get("/review/progress", (_req, res) => {
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgExtractsFromDisk();
+  const dosingItems = buildReviewQueue({
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+  const stg = planStgAllBatches({ batchMoleculeIds, extracts });
+  const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+  const rag = getInRegionRagPublicStatus();
+  res.json(
+    summarizeFounderProgress({
+      stgTotals: stg.totals,
+      dosingTotals: dosing.totals,
+      rag: {
+        ok: rag.ok,
+        mode: rag.mode,
+        embedderConfigured: rag.embedderConfigured,
+        llmConfigured: rag.llmConfigured,
+      },
+    }),
+  );
 });
 
 app.get("/review/plan-stg", (req, res) => {

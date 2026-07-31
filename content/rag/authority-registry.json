@@ -74,7 +74,8 @@
     "GET /review/queue?dosingClass=… + web placeholders-only toggle",
     "Web /review dosingClass filters: placeholders + numeric-suspects audit (no dosing batch publish)",
     "API/web STG batch dryRun preview + checklist + attestation presets (no write)",
-    "export-dosing-cli + GET /review/export-dosing-cli — individual placeholder CLI lines (no --write)"
+    "export-dosing-cli + GET /review/export-dosing-cli — individual placeholder CLI lines (no --write)",
+    "Founder progress snapshot — CLI progress + GET /review/progress + /review banner (read-only)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch all --write (attestation)",

@@ -5,6 +5,7 @@
  *
  * Usage:
  *   npm run review:batches
+ *   npm run review:batches -- progress [--json]
  *   npm run review:batches -- show A
  *   npm run review:batches -- show A --stg
  *   npm run review:batches -- plan-stg A|all [--json]
@@ -43,6 +44,8 @@ import {
   exportPlaceholderDosingCli,
   flattenDosingPlanItems,
   DEFAULT_HONEST_ABSENCE_ATTESTATION,
+  summarizeFounderProgress,
+  describeInRegionRagEnv,
 } from "@materia/shared";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -597,6 +600,47 @@ function cmdExportDosingCli(batchRaw, json, attestation) {
   }
 }
 
+function cmdProgress(json) {
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgDoc().extracts ?? [];
+  const { molecules, safetyProfiles } = loadAllMoleculesAndSafety();
+  const dosingItems = buildReviewQueue({
+    molecules,
+    safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+  const stg = planStgAllBatches({ batchMoleculeIds, extracts });
+  const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+  const rag = describeInRegionRagEnv(process.env);
+  const snap = summarizeFounderProgress({
+    stgTotals: stg.totals,
+    dosingTotals: dosing.totals,
+    rag: {
+      ok: rag.ok,
+      mode: rag.mode,
+      embedderConfigured: rag.embedderConfigured,
+      llmConfigured: rag.llmConfigured,
+    },
+  });
+  if (json) {
+    console.log(JSON.stringify(snap, null, 2));
+    return;
+  }
+  console.log("Founder progress — Batches A–I (read-only)\n");
+  console.log(
+    `STG: published=${snap.stg.alreadyPublished} eligible=${snap.stg.eligible} blocked=${snap.stg.blocked}`,
+  );
+  console.log(
+    `Dosing: placeholders=${snap.dosing.placeholderAbsent} suspects=${snap.dosing.numericSuspect} other=${snap.dosing.otherDraft}`,
+  );
+  console.log(`RAG: ok=${snap.rag.ok} mode=${snap.rag.mode} hosted=${snap.rag.hostedConfigured}`);
+  console.log("\nNext actions:");
+  for (const [i, action] of snap.nextActions.entries()) {
+    console.log(`  ${i + 1}. ${action}`);
+  }
+  console.log(`\n${snap.note}`);
+}
+
 function cmdPublishStgBatch(batchRaw, attestation, write) {
   const key = String(batchRaw).toUpperCase();
   const batchMoleculeIds = loadBatchMoleculeIds();
@@ -709,6 +753,7 @@ function usage() {
   console.log(`Founder Batch A–I review CLI
 
   npm run review:batches
+  npm run review:batches -- progress [--json]
   npm run review:batches -- show A [--stg|--dosing] [--json]
   npm run review:batches -- plan-stg A|all [--json]
   npm run review:batches -- plan-dosing A|all [--json]
@@ -732,6 +777,8 @@ if (cmd === "help" || cmd === "-h" || cmd === "--help") {
 
 if (cmd === "summary") {
   printSummary(flags.has("json"));
+} else if (cmd === "progress") {
+  cmdProgress(flags.has("json"));
 } else if (cmd === "show") {
   const batch = positional[1];
   if (!batch) {

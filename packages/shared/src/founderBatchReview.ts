@@ -681,3 +681,101 @@ export function flattenDosingPlanItems(
   ]);
 }
 
+export interface FounderProgressSnapshot {
+  stg: {
+    alreadyPublished: number;
+    eligible: number;
+    blocked: number;
+  };
+  dosing: {
+    placeholderAbsent: number;
+    numericSuspect: number;
+    otherDraft: number;
+  };
+  rag: {
+    ok: boolean;
+    mode: string;
+    hostedConfigured: boolean;
+  };
+  /** Ordered, actionable next steps — read-only guidance; never invents clinical text. */
+  nextActions: string[];
+  note: string;
+}
+
+/**
+ * Read-only founder progress for Batches A–I + optional RAG env status.
+ * Does not write. Does not invent doses.
+ */
+export function summarizeFounderProgress(input: {
+  stgTotals: { alreadyPublished: number; eligible: number; blocked: number };
+  dosingTotals: {
+    placeholderAbsent: number;
+    numericSuspect: number;
+    otherDraft: number;
+  };
+  rag?: {
+    ok: boolean;
+    mode: { embedder: string; composer: string };
+    embedderConfigured: boolean;
+    llmConfigured: boolean;
+  };
+}): FounderProgressSnapshot {
+  const stg = { ...input.stgTotals };
+  const dosing = { ...input.dosingTotals };
+  const hostedConfigured = Boolean(
+    input.rag?.embedderConfigured || input.rag?.llmConfigured,
+  );
+  const rag = {
+    ok: input.rag?.ok ?? true,
+    mode: input.rag
+      ? `${input.rag.mode.embedder}/${input.rag.mode.composer}`
+      : "unknown",
+    hostedConfigured,
+  };
+
+  const nextActions: string[] = [];
+  if (stg.blocked > 0) {
+    nextActions.push(
+      `Fix ${stg.blocked} blocked STG extract(s) before batch publish (all-or-nothing gate).`,
+    );
+  }
+  if (stg.eligible > 0) {
+    nextActions.push(
+      `Preview then publish ${stg.eligible} eligible STG pointer(s) via /review or publish-stg-batch (attestation; publishState only).`,
+    );
+  }
+  if (dosing.numericSuspect > 0) {
+    nextActions.push(
+      `Rewrite ${dosing.numericSuspect} numeric_suspect dosing draft(s) with sourced text — do not publish inventable mg.`,
+    );
+  }
+  if (dosing.placeholderAbsent > 0) {
+    nextActions.push(
+      `Export ${dosing.placeholderAbsent} honest placeholder publish-dosing line(s) (export-dosing-cli); append --write only after clinical confirm — no dosing batch auto-publish.`,
+    );
+  }
+  if (input.rag && !input.rag.ok) {
+    nextActions.push(
+      "Fix MATERIA_IN_REGION_* env (offshore refused) — npm run rag:check-env.",
+    );
+  } else if (input.rag && !hostedConfigured) {
+    nextActions.push(
+      "Optional: provision founder-approved in-region embedder/LLM URLs; verify with npm run rag:check-env (blank = local default).",
+    );
+  }
+  if (nextActions.length === 0) {
+    nextActions.push(
+      "Batches A–I STG/dosing gates clear for current scaffolds — keep REVIEW_PERSIST on and re-check after new extracts.",
+    );
+  }
+
+  return {
+    stg,
+    dosing,
+    rag,
+    nextActions,
+    note:
+      "Founder progress snapshot — read-only. Never invents mg. STG batch publish is attested publishState-only; dosing stays individual.",
+  };
+}
+
