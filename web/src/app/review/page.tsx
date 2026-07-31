@@ -184,6 +184,27 @@ export default function ReviewPage() {
     await load();
   }
 
+  async function copyPlaceholderCli() {
+    const params = new URLSearchParams();
+    params.set("batch", batch || "all");
+    if (attestation.trim()) params.set("attestation", attestation.trim());
+    const res = await fetch(`${API}/review/export-dosing-cli?${params}`);
+    const data = await res.json();
+    if (!res.ok) {
+      setMsg(JSON.stringify(data, null, 2));
+      return;
+    }
+    const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
+      "\n",
+    );
+    try {
+      await navigator.clipboard.writeText(text);
+      setMsg(`Copied ${data.count} placeholder publish-dosing lines (no --write).`);
+    } catch {
+      setMsg(text);
+    }
+  }
+
   async function publishStgBatch(scope: string, dryRun: boolean) {
     if (!dryRun) {
       const confirmed = window.confirm(
@@ -278,7 +299,8 @@ export default function ReviewPage() {
           </div>
           <p className="muted" style={{ marginTop: 12 }}>
             CLI: <code>npm run review:batches -- plan-stg all</code> ·{" "}
-            <code>npm run review:batches -- plan-dosing all</code>
+            <code>npm run review:batches -- plan-dosing all</code> ·{" "}
+            <code>npm run review:batches -- export-dosing-cli all</code>
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
             <button
@@ -306,6 +328,14 @@ export default function ReviewPage() {
               onClick={() => setShowStgChecklist((v) => !v)}
             >
               {showStgChecklist ? "Hide" : "Show"} STG checklist
+            </button>
+            <button
+              className="btn"
+              type="button"
+              disabled={placeholderItems.length === 0}
+              onClick={() => void copyPlaceholderCli()}
+            >
+              Copy placeholder CLI ({placeholderItems.length})
             </button>
             {stgBlockedForFilter > 0 ? (
               <span className="muted">

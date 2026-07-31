@@ -9,6 +9,7 @@
  *   npm run review:batches -- show A --stg
  *   npm run review:batches -- plan-stg A|all [--json]
  *   npm run review:batches -- plan-dosing A|all [--json]
+ *   npm run review:batches -- export-dosing-cli A|all [--attestation "…"] [--json]
  *   npm run review:batches -- publish-stg-batch A|all --attestation "I confirm sourced …" [--write]
  *   npm run review:batches -- publish-stg <extractId> --attestation "I confirm sourced …"
  *   npm run review:batches -- publish-stg <extractId> --attestation "…" --write
@@ -39,6 +40,9 @@ import {
   applyStgBatchPublish,
   validateReviewDecision,
   validateStgExtractDecision,
+  exportPlaceholderDosingCli,
+  flattenDosingPlanItems,
+  DEFAULT_HONEST_ABSENCE_ATTESTATION,
 } from "@materia/shared";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -542,6 +546,57 @@ function cmdPlanDosing(batchRaw, json) {
   console.log(`\n${plan.note}`);
 }
 
+function cmdExportDosingCli(batchRaw, json, attestation) {
+  const key = String(batchRaw).toUpperCase();
+  const { molecules, safetyProfiles } = loadAllMoleculesAndSafety();
+  const dosingItems = buildReviewQueue({
+    molecules,
+    safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+  const batchMoleculeIds = loadBatchMoleculeIds();
+
+  let items;
+  let scope;
+  if (key === "ALL") {
+    const plan = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+    items = flattenDosingPlanItems(plan.batches);
+    scope = "all";
+  } else {
+    const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === key);
+    if (!ref) {
+      console.error(`Unknown batch ${batchRaw}. Use A–I or all.`);
+      process.exit(2);
+    }
+    const plan = planDosingBatch({
+      batch: key,
+      dosingItems,
+      moleculeIds: batchMoleculeIds.get(key) ?? [],
+    });
+    items = flattenDosingPlanItems([plan]);
+    scope = key;
+  }
+
+  const exported = exportPlaceholderDosingCli({
+    scope,
+    items,
+    attestation: attestation || DEFAULT_HONEST_ABSENCE_ATTESTATION,
+  });
+
+  if (json) {
+    console.log(JSON.stringify(exported, null, 2));
+    return;
+  }
+
+  console.log(`# ${exported.note}`);
+  console.log(
+    `# scope=${exported.scope} placeholders=${exported.count} skippedSuspect=${exported.skippedNumericSuspect}`,
+  );
+  for (const line of exported.lines) {
+    console.log(line);
+  }
+}
+
 function cmdPublishStgBatch(batchRaw, attestation, write) {
   const key = String(batchRaw).toUpperCase();
   const batchMoleculeIds = loadBatchMoleculeIds();
@@ -657,13 +712,14 @@ function usage() {
   npm run review:batches -- show A [--stg|--dosing] [--json]
   npm run review:batches -- plan-stg A|all [--json]
   npm run review:batches -- plan-dosing A|all [--json]
+  npm run review:batches -- export-dosing-cli A|all [--attestation "…"] [--json]
   npm run review:batches -- publish-stg-batch A|all --attestation "I confirm sourced…" [--write]
   npm run review:batches -- publish-stg <extractId> --attestation "I confirm sourced…" [--write]
   npm run review:batches -- mark-reviewed-stg <extractId> [--write]
   npm run review:batches -- publish-dosing <moleculeId> <fieldPath> --attestation "…" [--write]
 
 Default is dry-run. --write persists publishState only (never invents clinical text).
-No batch auto-publish for dosing — use plan-dosing then individual publish-dosing.`);
+No batch auto-publish for dosing — use plan-dosing / export-dosing-cli then individual publish-dosing.`);
 }
 
 const { positional, flags, attestation } = parseArgs(process.argv);
@@ -697,6 +753,13 @@ if (cmd === "summary") {
     process.exit(2);
   }
   cmdPlanDosing(batch, flags.has("json"));
+} else if (cmd === "export-dosing-cli") {
+  const batch = positional[1];
+  if (!batch) {
+    console.error("Need: export-dosing-cli <A–I|all>");
+    process.exit(2);
+  }
+  cmdExportDosingCli(batch, flags.has("json"), attestation);
 } else if (cmd === "publish-stg-batch") {
   const batch = positional[1];
   if (!batch || !attestation) {

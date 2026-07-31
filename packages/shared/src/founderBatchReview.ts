@@ -620,3 +620,64 @@ export function planDosingAllBatches(input: {
   };
 }
 
+export const DEFAULT_HONEST_ABSENCE_ATTESTATION =
+  "I confirm this honest absence is intentional — Materia has no sourced dose yet.";
+
+export interface PlaceholderDosingCliExport {
+  scope: string;
+  count: number;
+  skippedNumericSuspect: number;
+  skippedOtherDraft: number;
+  attestation: string;
+  /** Commands without --write — founder appends --write after clinical confirm. */
+  lines: string[];
+  note: string;
+}
+
+/**
+ * Export individual publish-dosing CLI lines for honest placeholders only.
+ * Never includes numeric_suspect. Never batch-publishes. Does not invent mg.
+ */
+export function exportPlaceholderDosingCli(input: {
+  scope: string;
+  items: DosingPlanItem[];
+  attestation?: string;
+}): PlaceholderDosingCliExport {
+  const attestation = (input.attestation ?? DEFAULT_HONEST_ABSENCE_ATTESTATION).trim();
+  const skippedNumericSuspect = input.items.filter(
+    (i) => i.classification === "numeric_suspect",
+  ).length;
+  const skippedOtherDraft = input.items.filter(
+    (i) => i.classification === "other_draft",
+  ).length;
+  const placeholders = input.items.filter(
+    (i) => i.classification === "placeholder_absent",
+  );
+  const attEscaped = attestation.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+  const lines = placeholders.map(
+    (row) =>
+      `npm run review:batches -- publish-dosing ${row.moleculeId} ${row.fieldPath} --attestation "${attEscaped}"`,
+  );
+  return {
+    scope: input.scope,
+    count: lines.length,
+    skippedNumericSuspect,
+    skippedOtherDraft,
+    attestation,
+    lines,
+    note:
+      "Individual placeholder publish commands only — no --write (dry-run default). Append --write after clinical confirm. numeric_suspect omitted. No dosing batch auto-publish.",
+  };
+}
+
+/** Flatten plan-dosing batch rows into one DosingPlanItem list for CLI export. */
+export function flattenDosingPlanItems(
+  batches: Array<Pick<DosingBatchPlan, "placeholderAbsent" | "numericSuspect" | "otherDraft">>,
+): DosingPlanItem[] {
+  return batches.flatMap((b) => [
+    ...b.placeholderAbsent,
+    ...b.numericSuspect,
+    ...b.otherDraft,
+  ]);
+}
+

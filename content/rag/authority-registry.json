@@ -73,11 +73,12 @@
     "Review queue dosingClass on /review — disable Publish for numeric_suspect",
     "GET /review/queue?dosingClass=… + web placeholders-only toggle",
     "Web /review dosingClass filters: placeholders + numeric-suspects audit (no dosing batch publish)",
-    "API/web STG batch dryRun preview + checklist + attestation presets (no write)"
+    "API/web STG batch dryRun preview + checklist + attestation presets (no write)",
+    "export-dosing-cli + GET /review/export-dosing-cli — individual placeholder CLI lines (no --write)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch all --write (attestation)",
-    "Founder: plan-dosing all → individual publish-dosing for honest placeholders only",
+    "Founder: export-dosing-cli → append --write per placeholder after clinical confirm",
     "Provision real in-region embedder/LLM URLs; verify with npm run rag:check-env"
   ]
 }

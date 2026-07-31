@@ -103,4 +103,19 @@ describe("founder-batch-review CLI", () => {
     assert.ok(doseDoc.totals.placeholderAbsent >= 70);
     assert.equal(doseDoc.totals.numericSuspect, 0);
   });
+
+  it("export-dosing-cli all emits placeholder lines without --write", () => {
+    const r = run(["export-dosing-cli", "all", "--json"]);
+    assert.equal(r.status, 0, r.stderr);
+    const doc = JSON.parse(r.stdout);
+    assert.ok(doc.count >= 70);
+    assert.equal(doc.skippedNumericSuspect, 0);
+    assert.ok(Array.isArray(doc.lines));
+    assert.equal(doc.lines.length, doc.count);
+    assert.ok(doc.lines.every((line: string) => !line.includes("--write")));
+    assert.ok(
+      doc.lines.every((line: string) => /publish-dosing mol-/.test(line)),
+    );
+    assert.match(doc.note, /no dosing batch/i);
+  });
 });

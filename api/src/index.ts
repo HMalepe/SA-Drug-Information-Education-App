@@ -114,6 +114,9 @@ import {
   planStgAllBatches,
   planDosingBatch,
   planDosingAllBatches,
+  exportPlaceholderDosingCli,
+  flattenDosingPlanItems,
+  DEFAULT_HONEST_ABSENCE_ATTESTATION,
   validateStgExtractDecision,
   applyStgExtractDecisionState,
   applyStgBatchPublish,
@@ -3293,7 +3296,7 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · POST /review/publish-stg-batch (attestation required; dryRun optional; all-or-nothing) · POST /review/decide or /review/stg-decide. Never invents mg. No dosing batch auto-publish.",
+      "GET /review/plan-stg?batch=all · GET /review/plan-dosing?batch=all · GET /review/export-dosing-cli · POST /review/publish-stg-batch (attestation; dryRun optional) · POST /review/decide or /review/stg-decide. Never invents mg. No dosing batch auto-publish.",
   });
 });
 
@@ -3349,6 +3352,43 @@ app.get("/review/plan-dosing", (req, res) => {
     ...planDosingBatch({ batch, dosingItems, moleculeIds: ids }),
     label: ref?.label,
   });
+});
+
+/** Export individual publish-dosing CLI lines for honest placeholders only (no write). */
+app.get("/review/export-dosing-cli", (req, res) => {
+  const batch = String(req.query.batch ?? "all").trim().toUpperCase() || "ALL";
+  const attestationRaw = String(req.query.attestation ?? "").trim();
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const dosingItems = buildReviewQueue({
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+
+  let items;
+  let scope;
+  if (batch === "ALL") {
+    const plan = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+    items = flattenDosingPlanItems(plan.batches);
+    scope = "all";
+  } else {
+    const ids = batchMoleculeIds.get(batch);
+    if (!ids) {
+      res.status(400).json({ error: `Unknown batch ${batch}. Use A–I or all.` });
+      return;
+    }
+    const plan = planDosingBatch({ batch, dosingItems, moleculeIds: ids });
+    items = flattenDosingPlanItems([plan]);
+    scope = batch;
+  }
+
+  res.json(
+    exportPlaceholderDosingCli({
+      scope,
+      items,
+      attestation: attestationRaw || DEFAULT_HONEST_ABSENCE_ATTESTATION,
+    }),
+  );
 });
 
 app.get("/review/stg-queue", (req, res) => {
