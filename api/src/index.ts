@@ -3825,10 +3825,6 @@ app.post("/review/decide", (req, res) => {
   });
 });
 
-app.get("/review/decisions", (_req, res) => {
-  res.json({ decisions: db.reviewDecisions.slice(-100) });
-});
-
 /* ── Ingest preview (Doc 16 — admin/content tooling) ── */
 app.post("/ingest/preview", (req, res) => {
   const schema = z.object({

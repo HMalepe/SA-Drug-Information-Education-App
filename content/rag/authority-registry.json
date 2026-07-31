@@ -86,7 +86,8 @@
     "Expo molecule 360 uses sourced tab panels (no raw JSON clinical dump)",
     "Remove orphaned web/app duplicate route; add buildMolecule360 grounding tests",
     "Harden seed merge against missing arrays (store byId skip undefined)",
-    "Batch-scoped founder progress — CLI progress A|all + GET /review/progress?batch= + /review filter"
+    "Batch-scoped founder progress — CLI progress A|all + GET /review/progress?batch= + /review filter",
+    "Remove dead duplicate GET /review/decisions + route-uniqueness CI guard"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
