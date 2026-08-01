@@ -100,7 +100,8 @@
     "Founder checklist CLI — checklist A|all copy-ready STG/dosing sweep pack (no --write)",
     "GET /review/checklist?batch= + /review Sweep checklist panel (read-only copy CLI)",
     "Founder RAG provision pack — CLI rag + GET /review/rag + /review panel (no invented URLs)",
-    "Web Pro tools: substitution + formulary sourced panels (no clinical JSON dump; missing SEP ≠ R0)"
+    "Web Pro tools: substitution + formulary sourced panels (no clinical JSON dump; missing SEP ≠ R0)",
+    "Web Pro tools: availability + shortages sourced panels (empty ≠ reassuring; no clinical JSON dump)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

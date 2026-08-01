@@ -178,6 +178,49 @@ type FormularyResult = {
   disclaimer?: string;
 };
 
+type StockSignalView = "in_stock" | "limited" | "shortage" | "unknown";
+
+type AvailabilitySignalView = {
+  wholesaler: string;
+  signal: StockSignalView;
+  note?: string;
+  observedAt: string;
+};
+
+type AvailabilityRowView = {
+  productId: string;
+  brandName: string;
+  moleculeId: string;
+  strength: string;
+  form: string;
+  signals: AvailabilitySignalView[];
+  worstSignal: StockSignalView;
+  isShortage: boolean;
+  alternativesHint: string;
+};
+
+type AvailabilityResult = {
+  error?: string;
+  upgradeTo?: string;
+  moleculeSlug?: string;
+  rows?: AvailabilityRowView[];
+  note?: string;
+};
+
+type ShortagesResult = {
+  error?: string;
+  upgradeTo?: string;
+  shortages?: AvailabilityRowView[];
+  note?: string;
+};
+
+const STOCK_SIGNAL_TONE: Record<StockSignalView, string> = {
+  shortage: "red",
+  limited: "orange",
+  unknown: "slate",
+  in_stock: "slate",
+};
+
 /** Published SEP/co-pay only — null never renders as R0. */
 function formatPublishedZar(
   value: number | null | undefined,
@@ -223,6 +266,8 @@ export default function ToolsPage() {
   const [coldChain, setColdChain] = useState<ColdChainResult | null>(null);
   const [substitution, setSubstitution] = useState<SubstitutionResult | null>(null);
   const [formulary, setFormulary] = useState<FormularyResult | null>(null);
+  const [availability, setAvailability] = useState<AvailabilityResult | null>(null);
+  const [shortages, setShortages] = useState<ShortagesResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -248,6 +293,8 @@ export default function ToolsPage() {
     setColdChain(null);
     setSubstitution(null);
     setFormulary(null);
+    setAvailability(null);
+    setShortages(null);
   }
 
   function showRaw(data: unknown) {
@@ -267,7 +314,9 @@ export default function ToolsPage() {
       | "locum"
       | "coldchain"
       | "substitution"
-      | "formulary",
+      | "formulary"
+      | "availability"
+      | "shortages",
     data: unknown,
   ) {
     clearClinicalPanels();
@@ -282,7 +331,9 @@ export default function ToolsPage() {
     else if (kind === "locum") setLocum(data as LocumResult);
     else if (kind === "coldchain") setColdChain(data as ColdChainResult);
     else if (kind === "substitution") setSubstitution(data as SubstitutionResult);
-    else setFormulary(data as FormularyResult);
+    else if (kind === "formulary") setFormulary(data as FormularyResult);
+    else if (kind === "availability") setAvailability(data as AvailabilityResult);
+    else setShortages(data as ShortagesResult);
   }
 
   async function ensurePro() {
@@ -453,6 +504,38 @@ export default function ToolsPage() {
     showClinicalPanel("formulary", await res.json());
   }
 
+  async function runAvailability() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/availability/${encodeURIComponent(slug)}?userId=${uid}`,
+    );
+    if (res.status === 402) {
+      track(
+        "gated_feature_hit",
+        { feature: "shortage_alerts", tier: "professional" },
+        { tier: "free" },
+      );
+    } else {
+      track("tool_used", { tool: "shortage_alerts" }, { tier: "professional" });
+    }
+    showClinicalPanel("availability", await res.json());
+  }
+
+  async function runShortages() {
+    const uid = await ensurePro();
+    const res = await fetch(`${API}/tools/shortages?userId=${uid}`);
+    if (res.status === 402) {
+      track(
+        "gated_feature_hit",
+        { feature: "shortage_alerts", tier: "professional" },
+        { tier: "free" },
+      );
+    } else {
+      track("tool_used", { tool: "shortage_alerts" }, { tier: "professional" });
+    }
+    showClinicalPanel("shortages", await res.json());
+  }
+
   async function speakVoice() {
     const uid = await ensurePro();
     const res = await fetch(
@@ -519,14 +602,10 @@ export default function ToolsPage() {
           <button className="btn" type="button" onClick={() => void runColdChain()}>
             Cold-chain notes
           </button>
-          <button
-            className="btn"
-            type="button"
-            onClick={() => void call(`/tools/availability/${encodeURIComponent(slug)}`)}
-          >
+          <button className="btn" type="button" onClick={() => void runAvailability()}>
             Availability
           </button>
-          <button className="btn" type="button" onClick={() => void call(`/tools/shortages`)}>
+          <button className="btn" type="button" onClick={() => void runShortages()}>
             Active shortages
           </button>
         </div>
@@ -708,6 +787,8 @@ export default function ToolsPage() {
       {coldChain && <ColdChainResultPanel result={coldChain} />}
       {substitution && <SubstitutionResultPanel result={substitution} />}
       {formulary && <FormularyResultPanel result={formulary} />}
+      {availability && <AvailabilityResultPanel result={availability} />}
+      {shortages && <ShortagesResultPanel result={shortages} />}
 
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
@@ -1186,6 +1267,105 @@ function FormularyResultPanel({ result }: { result: FormularyResult }) {
       {result.disclaimer ? (
         <p className="muted" style={{ marginBottom: 0 }}>
           {result.disclaimer}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function stockSignalColor(signal: StockSignalView): string {
+  return TONE_COLOR[STOCK_SIGNAL_TONE[signal]] ?? TONE_COLOR.slate;
+}
+
+function AvailabilityRowList({ rows }: { rows: AvailabilityRowView[] }) {
+  return (
+    <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+      {rows.map((row) => (
+        <li key={row.productId} style={{ marginBottom: 12 }}>
+          <strong>{row.brandName}</strong> · {row.strength} · {row.form}{" "}
+          <span style={{ color: stockSignalColor(row.worstSignal) }}>
+            · {row.worstSignal.replace("_", " ")}
+          </span>
+          {row.isShortage ? " · shortage flag" : ""}
+          {(row.signals ?? []).length > 0 ? (
+            <ul style={{ paddingLeft: 18, marginTop: 4 }}>
+              {row.signals.map((s, i) => (
+                <li key={`${row.productId}-${s.wholesaler}-${s.observedAt}-${i}`}>
+                  <span style={{ color: stockSignalColor(s.signal) }}>{s.signal}</span>
+                  {" · "}
+                  {s.wholesaler} · observed {s.observedAt}
+                  {s.note ? ` — ${s.note}` : ""}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="muted" style={{ margin: "4px 0 0" }}>
+              No published wholesaler signals for this product.
+            </p>
+          )}
+          {row.alternativesHint ? <p className="muted">{row.alternativesHint}</p> : null}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function AvailabilityResultPanel({ result }: { result: AvailabilityResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Availability</h2>
+        <p>{result.error}</p>
+        {result.upgradeTo ? <p className="muted">Upgrade to {result.upgradeTo}</p> : null}
+      </section>
+    );
+  }
+  const rows = result.rows ?? [];
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Availability{result.moleculeSlug ? ` · ${result.moleculeSlug}` : ""}
+      </h2>
+      {rows.length === 0 ? (
+        <p className="muted">
+          No published availability signals — empty ≠ reassuring; confirm stock locally.
+        </p>
+      ) : (
+        <AvailabilityRowList rows={rows} />
+      )}
+      {result.note ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.note}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function ShortagesResultPanel({ result }: { result: ShortagesResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Active shortages</h2>
+        <p>{result.error}</p>
+        {result.upgradeTo ? <p className="muted">Upgrade to {result.upgradeTo}</p> : null}
+      </section>
+    );
+  }
+  const rows = result.shortages ?? [];
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>Active shortages</h2>
+      {rows.length === 0 ? (
+        <p className="muted">
+          No published active shortages — empty ≠ all clear; confirm stock locally.
+        </p>
+      ) : (
+        <AvailabilityRowList rows={rows} />
+      )}
+      {result.note ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.note}
         </p>
       ) : null}
     </section>
