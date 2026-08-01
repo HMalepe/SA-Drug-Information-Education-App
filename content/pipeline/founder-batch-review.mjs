@@ -52,6 +52,7 @@ import {
   DEFAULT_STG_POINTER_ATTESTATION,
   summarizeFounderProgress,
   buildBatchChecklist,
+  buildRagProvisionPack,
   describeInRegionRagEnv,
   parseReviewDecisionsJsonl,
   listRecentReviewDecisions,
@@ -1053,12 +1054,41 @@ function cmdPublishStgBatch(batchRaw, attestation, write) {
   console.error(`Wrote ${stgPath} (${results.length} extracts) + ${decisionsPath}`);
 }
 
+function cmdRag(json) {
+  const pack = buildRagProvisionPack(process.env);
+  if (json) {
+    console.log(JSON.stringify(pack, null, 2));
+    return;
+  }
+  console.log("Founder RAG provision pack (read-only — no invented URLs)\n");
+  console.log(
+    `Status: ok=${pack.status.ok} mode=${pack.status.mode.embedder}/${pack.status.mode.composer}` +
+      ` hosted=${pack.status.embedderConfigured || pack.status.llmConfigured}` +
+      (pack.status.embedderHost ? ` embedderHost=${pack.status.embedderHost}` : "") +
+      (pack.status.llmHost ? ` llmHost=${pack.status.llmHost}` : ""),
+  );
+  if (pack.status.errors.length > 0) {
+    console.log("Errors:");
+    for (const e of pack.status.errors) console.log(`  - ${e}`);
+  }
+  console.log("\nSteps:");
+  for (const [i, step] of pack.steps.entries()) {
+    console.log(`  ${i + 1}. ${step}`);
+  }
+  console.log("\nEnv stub (empty placeholders — paste founder URLs locally):\n");
+  console.log(pack.envStubLines.join("\n"));
+  console.log(`\nVerify: ${pack.verifyCmd}`);
+  console.log(`Runtime: ${pack.healthPath}`);
+  console.log(`\n${pack.note}`);
+}
+
 function usage() {
   console.log(`Founder Batch A–I review CLI
 
   npm run review:batches
   npm run review:batches -- progress [A|all] [--json]
   npm run review:batches -- checklist [A|all] [--json]
+  npm run review:batches -- rag [--json]
   npm run review:batches -- decisions [A|all] [--limit 50] [--json]
   npm run review:batches -- show A [--stg|--dosing] [--json]
   npm run review:batches -- plan-stg A|all [--json]
@@ -1088,6 +1118,8 @@ if (cmd === "summary") {
   cmdProgress(flags.has("json"), positional[1]);
 } else if (cmd === "checklist") {
   cmdChecklist(flags.has("json"), positional[1]);
+} else if (cmd === "rag") {
+  cmdRag(flags.has("json"));
 } else if (cmd === "decisions") {
   cmdDecisions(flags.has("json"), limit, positional[1]);
 } else if (cmd === "show") {

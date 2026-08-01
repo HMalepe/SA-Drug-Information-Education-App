@@ -121,6 +121,26 @@ type FounderChecklist = {
   note: string;
 };
 
+type RagProvisionPack = {
+  status: {
+    ok: boolean;
+    mode: { embedder: string; composer: string };
+    embedderConfigured: boolean;
+    llmConfigured: boolean;
+    embedderHost: string | null;
+    llmHost: string | null;
+    allowHostsCount: number;
+    authTokenConfigured: boolean;
+    errors: string[];
+    note: string;
+  };
+  verifyCmd: string;
+  healthPath: string;
+  envStubLines: string[];
+  steps: string[];
+  note: string;
+};
+
 type ReviewDecisionRow = {
   id: string;
   queueItemId: string;
@@ -188,6 +208,7 @@ export default function ReviewPage() {
   const [dosingPlan, setDosingPlan] = useState<DosingPlanAll | null>(null);
   const [progress, setProgress] = useState<FounderProgress | null>(null);
   const [checklist, setChecklist] = useState<FounderChecklist | null>(null);
+  const [ragPack, setRagPack] = useState<RagProvisionPack | null>(null);
   const [decisions, setDecisions] = useState<ReviewDecisionRow[]>([]);
   const [decisionsTotal, setDecisionsTotal] = useState(0);
   const [area, setArea] = useState("");
@@ -209,7 +230,7 @@ export default function ReviewPage() {
     const qs = params.toString() ? `?${params}` : "";
     const stgQs = batch ? `?batch=${encodeURIComponent(batch)}` : "";
 
-    const [c, q, b, sp, dp, stg, prog, check, dec] = await Promise.all([
+    const [c, q, b, sp, dp, stg, prog, check, rag, dec] = await Promise.all([
       fetch(`${API}/review/coverage`).then((r) => r.json()),
       fetch(`${API}/review/queue${qs}`).then((r) => r.json()),
       fetch(`${API}/review/batches-ai`).then((r) => r.json()),
@@ -222,6 +243,7 @@ export default function ReviewPage() {
       fetch(
         `${API}/review/checklist?batch=${encodeURIComponent(batch || "all")}`,
       ).then((r) => r.json()),
+      fetch(`${API}/review/rag`).then((r) => r.json()),
       fetch(
         `${API}/review/decisions?limit=20&batch=${encodeURIComponent(batch || "all")}`,
       ).then((r) => r.json()),
@@ -234,6 +256,7 @@ export default function ReviewPage() {
     setStgItems(stg.items ?? []);
     setProgress(prog);
     setChecklist(check);
+    setRagPack(rag);
     setDecisions(dec.items ?? []);
     setDecisionsTotal(dec.total ?? 0);
   }
@@ -509,6 +532,54 @@ export default function ReviewPage() {
                 ? ` ${checklist.scope.toUpperCase()}`
                 : ""}
             </code>
+          </p>
+        </section>
+      )}
+
+      {ragPack && (
+        <section style={{ marginTop: 16 }}>
+          <h2>RAG provision (optional)</h2>
+          <p className="muted">{ragPack.note}</p>
+          <p className="muted" style={{ marginTop: 8 }}>
+            Mode {ragPack.status.mode.embedder}/{ragPack.status.mode.composer}
+            {ragPack.status.embedderConfigured || ragPack.status.llmConfigured
+              ? " (hosted)"
+              : " (local default)"}
+            {ragPack.status.embedderHost ? ` · embedder ${ragPack.status.embedderHost}` : ""}
+            {ragPack.status.llmHost ? ` · llm ${ragPack.status.llmHost}` : ""}
+            {ragPack.status.authTokenConfigured ? " · auth set" : ""}
+          </p>
+          {ragPack.status.errors.length > 0 ? (
+            <p className="muted" style={{ marginTop: 8 }}>
+              Errors: {ragPack.status.errors.join("; ")}
+            </p>
+          ) : null}
+          <ol className="muted" style={{ marginTop: 8, paddingLeft: 20 }}>
+            {ragPack.steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+            <button
+              className="btn"
+              type="button"
+              onClick={() =>
+                void copyText("RAG env stub", ragPack.envStubLines.join("\n"))
+              }
+            >
+              Copy env stub
+            </button>
+            <button
+              className="btn"
+              type="button"
+              onClick={() => void copyText("RAG verify command", ragPack.verifyCmd)}
+            >
+              Copy verify command
+            </button>
+          </div>
+          <p className="muted" style={{ marginTop: 8 }}>
+            CLI: <code>npm run review:batches -- rag</code> · runtime{" "}
+            <code>{ragPack.healthPath}</code>
           </p>
         </section>
       )}

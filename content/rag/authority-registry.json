@@ -98,11 +98,12 @@
     "Locum + cold-chain sourced panels; /review action status without clinical JSON dump",
     "Composition test for GET /review/decisions?batch= (real seed + STG extracts)",
     "Founder checklist CLI — checklist A|all copy-ready STG/dosing sweep pack (no --write)",
-    "GET /review/checklist?batch= + /review Sweep checklist panel (read-only copy CLI)"
+    "GET /review/checklist?batch= + /review Sweep checklist panel (read-only copy CLI)",
+    "Founder RAG provision pack — CLI rag + GET /review/rag + /review panel (no invented URLs)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
     "Founder: export-dosing-cli → append --write per placeholder after clinical confirm",
-    "Provision real in-region embedder/LLM URLs; verify with npm run rag:check-env"
+    "Founder: paste approved in-region URLs into .env.local; verify with npm run rag:check-env / review:batches -- rag"
   ]
 }

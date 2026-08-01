@@ -204,3 +204,59 @@ export function describeInRegionRagEnv(
     };
   }
 }
+
+/** Copy-ready founder pack for optional in-region RAG — never invents hosts or secrets. */
+export interface RagProvisionPack {
+  status: InRegionRagPublicStatus;
+  verifyCmd: string;
+  healthPath: string;
+  /** Placeholder env stub only — empty values; never real tokens or invented URLs. */
+  envStubLines: string[];
+  steps: string[];
+  note: string;
+}
+
+/**
+ * Founder gate-3 helper: status + copy stub + verify command.
+ * Blank env remains a valid local default; hosted URLs are founder-supplied only.
+ */
+export function buildRagProvisionPack(
+  env: Record<string, string | undefined> = {},
+): RagProvisionPack {
+  const status = describeInRegionRagEnv(env);
+  const hosted = status.embedderConfigured || status.llmConfigured;
+  let note: string;
+  if (!status.ok) {
+    note =
+      "Env check failed — fix MATERIA_IN_REGION_* before deploy. Offshore hosts are refused (POPIA / docs/17).";
+  } else if (hosted) {
+    note =
+      "Hosted in-region URLs configured (hosts only in status — no secrets). Re-run verify after deploy.";
+  } else {
+    note =
+      "Local default OK. Hosted provision is optional until you have founder-approved in-region endpoints.";
+  }
+  return {
+    status,
+    verifyCmd: "npm run rag:check-env",
+    healthPath: "GET /health/rag",
+    envStubLines: [
+      "# Copy into .env.local — never commit secrets (POPIA / docs/17)",
+      "# Blank = local bag-of-words + template (OK for offline default)",
+      `${IN_REGION_EMBEDDER_URL_ENV}=`,
+      `${IN_REGION_LLM_URL_ENV}=`,
+      `${IN_REGION_ALLOW_HOSTS_ENV}=`,
+      `${IN_REGION_AUTH_TOKEN_ENV}=`,
+      "# Fill only founder-approved in-region HTTPS hosts (.za / private / allowHosts).",
+      "# Never openai.com, anthropic.com, or other known offshore hosts.",
+    ],
+    steps: [
+      "Choose founder-approved in-region embedder + LLM HTTPS endpoints (or leave blank for local default).",
+      "Paste URLs into .env.local using the stub — never commit MATERIA_IN_REGION_AUTH_TOKEN.",
+      "If the host is not .za / private / localhost, add it to MATERIA_IN_REGION_ALLOW_HOSTS.",
+      "Run: npm run rag:check-env (must exit 0; refuses known offshore hosts).",
+      "Restart API; confirm GET /health/rag shows hosted-in-region when URLs are set.",
+    ],
+    note,
+  };
+}

@@ -19,6 +19,8 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    - `npm run review:batches -- progress` — read-only next actions (STG + dosing + RAG)
    - `npm run review:batches -- checklist A|all` — one-shot sweep pack: progress + blocked +
      copy-ready STG/dosing CLI lines (no `--write`)
+   - `npm run review:batches -- rag` — optional in-region RAG provision pack (status + env stub +
+     verify); same as `GET /review/rag` — never invents hosts
    - API: `GET /review/checklist?batch=A|all` — same pack for web `/review` Sweep checklist panel
    - `npm run review:batches -- decisions [--limit 50]` — recent decisions.jsonl audit lines
    - `npm run review:batches -- show A` — detail for one batch

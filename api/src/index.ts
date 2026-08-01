@@ -122,6 +122,7 @@ import {
   DEFAULT_STG_POINTER_ATTESTATION,
   summarizeFounderProgress,
   buildBatchChecklist,
+  buildRagProvisionPack,
   validateStgExtractDecision,
   applyStgExtractDecisionState,
   applyStgBatchPublish,
@@ -3305,8 +3306,13 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/progress · GET /review/checklist · GET /review/decisions · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · GET /review/export-stg-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
+      "GET /review/progress · GET /review/checklist · GET /review/rag · GET /review/decisions · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · GET /review/export-stg-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
   });
+});
+
+/** Read-only founder RAG provision pack (status + env stub + verify). Never invents hosts/secrets. */
+app.get("/review/rag", (_req, res) => {
+  res.json(buildRagProvisionPack(process.env));
 });
 
 /** Read-only founder next-actions for Batches A–I (or one letter) + RAG env (no write). */
