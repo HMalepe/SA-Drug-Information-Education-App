@@ -116,7 +116,8 @@
     "formatApiError in @materia/shared + Expo api messageFromHttpErrorBody (no raw JSON throws)",
     "Expo home: listMolecules/searchMolecules via shared api + visible error state",
     "Expo auth: try/catch + busy gate + visible error (no unhandled API reject)",
-    "Expo molecule Ask + dosing calc: busy gates, slug reload, coerce AI strings"
+    "Expo molecule Ask + dosing calc: busy gates, slug reload, coerce AI strings",
+    "Web AskMateria busy/error harden + apiGet/apiPost messageFromHttpErrorBody"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
