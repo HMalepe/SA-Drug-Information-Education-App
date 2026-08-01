@@ -73,6 +73,13 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.brand}>Materia</Text>
       <Text style={styles.tag}>Every medicine, understood.</Text>
+      <View style={styles.navRow}>
+        <Link href="/auth" asChild>
+          <Pressable style={styles.navChip}>
+            <Text style={styles.navChipText}>Accounts & mode</Text>
+          </Pressable>
+        </Link>
+      </View>
       <View style={styles.searchRow}>
         <TextInput
           style={styles.input}
@@ -145,7 +152,17 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.mist, padding: space.lg },
   brand: { fontSize: typography.size.display, fontWeight: "700", color: colors.ink },
-  tag: { color: colors.slate, marginBottom: space.md },
+  tag: { color: colors.slate, marginBottom: space.sm },
+  navRow: { flexDirection: "row", flexWrap: "wrap", gap: space.sm, marginBottom: space.md },
+  navChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.line,
+  },
+  navChipText: { color: colors.teal, fontWeight: "600", fontSize: 13 },
   searchRow: { flexDirection: "row", gap: space.sm, marginBottom: space.md },
   input: {
     flex: 1,

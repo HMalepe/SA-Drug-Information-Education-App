@@ -12,7 +12,12 @@ export default function RootLayout() {
           headerTintColor: colors.ink,
           headerTitleStyle: { fontWeight: "700" },
         }}
-      />
+      >
+        <Stack.Screen name="index" options={{ title: "Materia" }} />
+        <Stack.Screen name="auth" options={{ title: "Accounts & mode" }} />
+        <Stack.Screen name="molecule/[slug]" options={{ title: "Medicine 360" }} />
+        <Stack.Screen name="dosing/[slug]" options={{ title: "Dosing & overdose" }} />
+      </Stack>
     </>
   );
 }

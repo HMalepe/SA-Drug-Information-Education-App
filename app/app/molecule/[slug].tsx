@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
@@ -118,6 +118,11 @@ export default function Molecule360Screen() {
         <Text style={styles.trust}>
           Only published, sourced facts render. Reference tool — not a medical device.
         </Text>
+        <Link href={`/dosing/${String(slug)}`} asChild>
+          <Pressable style={styles.dosingLink}>
+            <Text style={styles.dosingLinkText}>Dosing & overdose hub →</Text>
+          </Pressable>
+        </Link>
       </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tabBar}>
@@ -185,6 +190,19 @@ const styles = StyleSheet.create({
   title: { fontSize: theme.typography.size.display, fontWeight: "800", color: theme.colors.ink },
   subtitle: { color: theme.colors.teal, fontWeight: "600" },
   trust: { marginTop: theme.space.sm, color: theme.colors.slate, fontSize: theme.typography.size.sm },
+  dosingLink: {
+    marginTop: theme.space.sm,
+    alignSelf: "flex-start",
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    backgroundColor: theme.colors.mint,
+  },
+  dosingLinkText: {
+    color: theme.colors.deepTeal,
+    fontWeight: "700",
+    fontSize: theme.typography.size.sm,
+  },
   tabBar: { maxHeight: 52, backgroundColor: theme.colors.white },
   tabChip: {
     paddingHorizontal: theme.space.md,

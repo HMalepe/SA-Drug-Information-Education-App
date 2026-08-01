@@ -74,4 +74,18 @@ describe("Expo design tokens (no magic hex)", () => {
     assert.match(src, /colors\.ink/);
     assert.match(src, /@materia\/design-tokens/);
   });
+
+  it("Expo stack titles + home/auth and molecule/dosing nav links", () => {
+    const layout = readFileSync(join(root, "app/app/_layout.tsx"), "utf8");
+    assert.match(layout, /Stack\.Screen name="index"/);
+    assert.match(layout, /Stack\.Screen name="auth"/);
+    assert.match(layout, /Stack\.Screen name="molecule\/\[slug\]"/);
+    assert.match(layout, /Stack\.Screen name="dosing\/\[slug\]"/);
+
+    const home = readFileSync(join(root, "app/app/index.tsx"), "utf8");
+    assert.match(home, /href="\/auth"/);
+
+    const mol = readFileSync(join(root, "app/app/molecule/[slug].tsx"), "utf8");
+    assert.match(mol, /href=\{`\/dosing\/\$\{/);
+  });
 });
