@@ -34,6 +34,27 @@ interface SaFocus {
   disclaimer: string;
 }
 
+/** Quiz feedback — never dumps raw API JSON into the grade box. */
+function formatQuizGradeMsg(
+  ok: boolean,
+  data: {
+    error?: unknown;
+    grade?: { tutorMessage?: string; correct?: boolean };
+  },
+): string {
+  if (!ok || data.error) {
+    const err =
+      typeof data.error === "string"
+        ? data.error
+        : data.error
+          ? "Could not grade answer"
+          : "Request failed";
+    return `Error: ${err}`;
+  }
+  if (data.grade?.tutorMessage) return data.grade.tutorMessage;
+  return "Answer recorded — no tutor message returned.";
+}
+
 export function CoursePlayer({ courseId }: { courseId: string }) {
   const [userId, setUserId] = useState<string | null>(null);
   const [title, setTitle] = useState("");
@@ -104,7 +125,7 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
       courseId,
       correct: Boolean(data.grade?.correct),
     });
-    setGradeMsg(data.grade?.tutorMessage ?? JSON.stringify(data));
+    setGradeMsg(formatQuizGradeMsg(res.ok, data));
     await load(uid);
   }
 

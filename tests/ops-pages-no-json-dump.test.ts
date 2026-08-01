@@ -76,4 +76,11 @@ describe("Ops pages status (no raw JSON dump)", () => {
     assert.doesNotMatch(src, /JSON\.stringify\(personal\./);
     assert.doesNotMatch(src, /JSON\.stringify\(summary\./);
   });
+
+  it("CoursePlayer quiz grade uses formatQuizGradeMsg (no JSON.stringify dump)", () => {
+    const src = readFileSync(join(root, "web/src/components/CoursePlayer.tsx"), "utf8");
+    assert.match(src, /function formatQuizGradeMsg/);
+    assert.match(src, /setGradeMsg\(formatQuizGradeMsg/);
+    assert.doesNotMatch(src, /setGradeMsg\([^)]*JSON\.stringify/);
+  });
 });
