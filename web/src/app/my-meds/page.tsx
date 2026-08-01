@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { formatApiError } from "@/lib/formatApiError";
+import { formatApiError, messageFromHttpErrorBody } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -232,7 +232,12 @@ export default function MyMedsPage() {
     if (!userId) return;
     const qs = activeDependantId ? `?format=text&dependantId=${encodeURIComponent(activeDependantId)}` : "?format=text";
     const res = await fetch(`${API}/companion/symptoms/${userId}/export${qs}`);
-    setSymptomExport(await res.text());
+    const text = await res.text();
+    if (!res.ok) {
+      setSymptomExport(messageFromHttpErrorBody(text, "Could not export symptoms"));
+      return;
+    }
+    setSymptomExport(text.trim() || "No symptoms to export.");
   }
 
   async function preview() {

@@ -1,4 +1,5 @@
 import Constants from "expo-constants";
+import { messageFromHttpErrorBody } from "@materia/shared";
 
 const API_BASE =
   process.env.EXPO_PUBLIC_API_BASE_URL ??
@@ -22,7 +23,9 @@ async function api<T>(path: string, init?: RequestInit): Promise<T> {
   });
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(text || res.statusText);
+    throw new Error(
+      messageFromHttpErrorBody(text, res.statusText || "Request failed"),
+    );
   }
   return res.json() as Promise<T>;
 }

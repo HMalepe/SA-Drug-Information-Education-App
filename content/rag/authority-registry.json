@@ -112,7 +112,8 @@
     "CoursePlayer quiz grade: formatQuizGradeMsg (no raw JSON dump on error)",
     "Generic CI guard: no setX(JSON.stringify) or <pre> JSON dumps across web/app trees",
     "Shared formatApiError — ops/review/onboarding never JSON.stringify error objects",
-    "Wire formatApiError across learn/notes/companion/insights (no String(data.error))"
+    "Wire formatApiError across learn/notes/companion/insights (no String(data.error))",
+    "formatApiError in @materia/shared + Expo api messageFromHttpErrorBody (no raw JSON throws)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

@@ -3,32 +3,14 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, it } from "node:test";
+import {
+  formatApiError,
+  messageFromHttpErrorBody,
+} from "@materia/shared";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-/**
- * Behaviour mirror of web/src/lib/formatApiError.ts (kept in lockstep by the
- * source scan below). Avoids a web build step for unit tests.
- */
-function formatApiError(error: unknown, fallback = "Request failed"): string {
-  if (typeof error === "string") {
-    const t = error.trim();
-    return t || fallback;
-  }
-  if (error && typeof error === "object") {
-    const rec = error as Record<string, unknown>;
-    for (const key of ["message", "error", "code"] as const) {
-      const v = rec[key];
-      if (typeof v === "string") {
-        const t = v.trim();
-        if (t) return t;
-      }
-    }
-  }
-  return fallback;
-}
-
-describe("formatApiError", () => {
+describe("formatApiError (shared)", () => {
   it("prefers string / message / error / code over dumping objects", () => {
     assert.equal(formatApiError("seat full"), "seat full");
     assert.equal(formatApiError({ message: "bad token" }), "bad token");
@@ -38,10 +20,44 @@ describe("formatApiError", () => {
     assert.equal(formatApiError(null, "gone"), "gone");
   });
 
-  it("web helper exists and does not JSON.stringify", () => {
-    const src = readFileSync(join(root, "web/src/lib/formatApiError.ts"), "utf8");
-    assert.match(src, /export function formatApiError/);
-    assert.doesNotMatch(src, /JSON\.stringify/);
+  it("messageFromHttpErrorBody parses JSON error bodies without dumping", () => {
+    assert.equal(
+      messageFromHttpErrorBody('{"error":"seat full"}'),
+      "seat full",
+    );
+    assert.equal(
+      messageFromHttpErrorBody('{"message":"gone"}'),
+      "gone",
+    );
+    assert.equal(messageFromHttpErrorBody("plain failure"), "plain failure");
+    assert.equal(
+      messageFromHttpErrorBody('{"nested":{"x":1}}', "fallback"),
+      "fallback",
+    );
+    assert.equal(
+      messageFromHttpErrorBody("x".repeat(400), "too long"),
+      "too long",
+    );
+  });
+
+  it("canonical helper lives in shared; web re-exports", () => {
+    const shared = readFileSync(
+      join(root, "packages/shared/src/formatApiError.ts"),
+      "utf8",
+    );
+    assert.match(shared, /export function formatApiError/);
+    assert.match(shared, /export function messageFromHttpErrorBody/);
+    assert.doesNotMatch(shared, /JSON\.stringify/);
+
+    const web = readFileSync(join(root, "web/src/lib/formatApiError.ts"), "utf8");
+    assert.match(web, /from "@materia\/shared"/);
+    assert.doesNotMatch(web, /function formatApiError/);
+  });
+
+  it("Expo api client uses messageFromHttpErrorBody (no raw res.text throw)", () => {
+    const src = readFileSync(join(root, "app/lib/api.ts"), "utf8");
+    assert.match(src, /messageFromHttpErrorBody/);
+    assert.doesNotMatch(src, /throw new Error\(\s*text\s*\|\|/);
   });
 
   it("ops/review/onboarding import formatApiError (no JSON.stringify of errors)", () => {
@@ -87,5 +103,11 @@ describe("formatApiError", () => {
       assert.match(src, /formatApiError/, `${f} should use formatApiError`);
       assert.doesNotMatch(src, /String\(\s*data\.error/, `${f} must not String(data.error)`);
     }
+  });
+
+  it("my-meds symptom export handles !res.ok via messageFromHttpErrorBody", () => {
+    const src = readFileSync(join(root, "web/src/app/my-meds/page.tsx"), "utf8");
+    assert.match(src, /messageFromHttpErrorBody/);
+    assert.match(src, /Could not export symptoms/);
   });
 });

@@ -65,4 +65,5 @@ export * from "./adaptiveLearning.js";
 export * from "./manufacturing.js";
 export * from "./interactionTab.js";
 export * from "./sourcedList.js";
+export * from "./formatApiError.js";
 export { colors, typography, space, radius, motion } from "@materia/design-tokens";
