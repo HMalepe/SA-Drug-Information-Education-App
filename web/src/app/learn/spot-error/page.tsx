@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -44,7 +45,7 @@ export default function SpotErrorPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setResult(String(data.error ?? "Could not start"));
+      setResult(formatApiError(data.error, "Could not start"));
       return;
     }
     setRoundId(data.roundId);
@@ -62,7 +63,7 @@ export default function SpotErrorPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setResult(String(data.error ?? "Grade failed"));
+      setResult(formatApiError(data.error, "Grade failed"));
       return;
     }
     setResult(

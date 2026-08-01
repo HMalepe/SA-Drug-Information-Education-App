@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -46,7 +47,7 @@ export default function MysteryPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Could not start"));
+      setMsg(formatApiError(data.error, "Could not start"));
       return;
     }
     setRoundId(data.roundId);
@@ -63,7 +64,7 @@ export default function MysteryPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Hint failed"));
+      setMsg(formatApiError(data.error, "Hint failed"));
       return;
     }
     setUnlocked(Array.isArray(data.unlockedHints) ? data.unlockedHints : []);
@@ -78,7 +79,7 @@ export default function MysteryPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Guess failed"));
+      setMsg(formatApiError(data.error, "Guess failed"));
       return;
     }
     setMsg(`${data.message} ${data.teachNote ?? ""}`);

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -43,13 +44,10 @@ function formatQuizGradeMsg(
   },
 ): string {
   if (!ok || data.error) {
-    const err =
-      typeof data.error === "string"
-        ? data.error
-        : data.error
-          ? "Could not grade answer"
-          : "Request failed";
-    return `Error: ${err}`;
+    return `Error: ${formatApiError(
+      data.error,
+      data.error ? "Could not grade answer" : "Request failed",
+    )}`;
   }
   if (data.grade?.tutorMessage) return data.grade.tutorMessage;
   return "Answer recorded — no tutor message returned.";

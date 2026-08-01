@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -79,7 +80,7 @@ export default function BadgesPage() {
     const res = await fetch(`${API}/academy/gamification/${uid}`);
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Could not load badges"));
+      setMsg(formatApiError(data.error, "Could not load badges"));
       setReport(null);
       return;
     }

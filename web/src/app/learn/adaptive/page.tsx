@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -107,7 +108,7 @@ export default function AdaptivePage() {
     );
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Could not load adaptive session"));
+      setMsg(formatApiError(data.error, "Could not load adaptive session"));
       return;
     }
     setForDate(data.forDate ?? "");

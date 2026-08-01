@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -57,7 +58,7 @@ export default function PearlsPage() {
     const res = await fetch(`${API}/pearls/today?${qs}`);
     const data = await res.json();
     if (res.status === 402) {
-      setErr(String(data.error ?? "Pro required"));
+      setErr(formatApiError(data.error, "Pro required"));
       setItems([]);
       return;
     }

@@ -24,6 +24,8 @@ const SETTER_DUMP_RE = /\bset[A-Za-z0-9_]+\(\s*JSON\.stringify/;
 const PRE_DUMP_RE = /<pre[^>]*>\s*\{?\s*JSON\.stringify/;
 /** Status formatters must not stringify opaque error objects into the UI. */
 const ERROR_STRINGIFY_RE = /JSON\.stringify\([^)]*error/;
+/** String(data.error) becomes "[object Object]" for object errors — use formatApiError. */
+const STRING_ERROR_RE = /String\(\s*data\.error/;
 const ALLOW_RE = /eng-allow:\s*raw-json-dump/;
 
 function listSourceFiles(dir: string): string[] {
@@ -63,7 +65,7 @@ function offendingLines(src: string, re: RegExp): number[] {
 }
 
 describe("Generic guard: no raw JSON dumps in web/app UI trees", () => {
-  it("scans known trees and finds no setX(JSON.stringify), <pre> dumps, or error JSON.stringify", () => {
+  it("scans known trees and finds no setX(JSON.stringify), <pre> dumps, or error JSON.stringify/String(data.error)", () => {
     const files = SCAN_ROOTS.flatMap(listSourceFiles);
     assert.ok(files.length > 40, `expected a non-trivial scan set, got ${files.length}`);
 
@@ -79,6 +81,9 @@ describe("Generic guard: no raw JSON dumps in web/app UI trees", () => {
       }
       for (const line of offendingLines(src, ERROR_STRINGIFY_RE)) {
         violations.push(`${rel}:${line} JSON.stringify(*error*)`);
+      }
+      for (const line of offendingLines(src, STRING_ERROR_RE)) {
+        violations.push(`${rel}:${line} String(data.error)`);
       }
     }
 

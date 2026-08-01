@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -75,7 +76,7 @@ export default function NotesPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Could not submit"));
+      setMsg(formatApiError(data.error, "Could not submit"));
       return;
     }
     setMsg(data.noteStatus ?? "Draft saved");
@@ -94,7 +95,7 @@ export default function NotesPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Publish failed"));
+      setMsg(formatApiError(data.error, "Publish failed"));
       return;
     }
     setMsg("Published.");
@@ -125,7 +126,7 @@ export default function NotesPage() {
       body: JSON.stringify({ userId: v.user.id }),
     });
     const data = await res.json();
-    if (!res.ok) setMsg(String(data.error ?? "Upvote failed"));
+    if (!res.ok) setMsg(formatApiError(data.error, "Upvote failed"));
     else await load();
     void uid;
   }

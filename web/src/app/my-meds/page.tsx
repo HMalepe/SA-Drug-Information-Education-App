@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -144,7 +145,7 @@ export default function MyMedsPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Could not add profile"));
+      setMsg(formatApiError(data.error, "Could not add profile"));
       return;
     }
     setDependants(Array.isArray(data.profiles) ? data.profiles : []);
@@ -191,7 +192,7 @@ export default function MyMedsPage() {
     });
     const data = await res.json();
     if (res.status === 402) {
-      setClashMeta(String(data.error ?? "Pro required"));
+      setClashMeta(formatApiError(data.error, "Pro required"));
       setClashRows([]);
       return;
     }
@@ -217,7 +218,7 @@ export default function MyMedsPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setSymptomExport(String(data.error ?? "Could not log symptom"));
+      setSymptomExport(formatApiError(data.error, "Could not log symptom"));
       return;
     }
     setSymptomExport(
@@ -297,7 +298,7 @@ export default function MyMedsPage() {
     const res = await fetch(`${API}/companion/food-timing/${userId}${qs}`);
     const data = await res.json();
     if (!res.ok) {
-      setFoodMeta(String(data.error ?? "Could not load food timing"));
+      setFoodMeta(formatApiError(data.error, "Could not load food timing"));
       setFoodCues([]);
       return;
     }
@@ -312,7 +313,7 @@ export default function MyMedsPage() {
     const res = await fetch(`${API}/companion/refills/${userId}?${qsParts.join("&")}`);
     const data = await res.json();
     if (!res.ok) {
-      setRefillMeta(String(data.error ?? "Could not load refills"));
+      setRefillMeta(formatApiError(data.error, "Could not load refills"));
       setRefillRows([]);
       return;
     }
@@ -337,7 +338,7 @@ export default function MyMedsPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setAdherenceMeta(String(data.error ?? "Could not log adherence"));
+      setAdherenceMeta(formatApiError(data.error, "Could not log adherence"));
       setAdherenceStats(null);
       return;
     }
@@ -362,7 +363,7 @@ export default function MyMedsPage() {
     const res = await fetch(`${API}/companion/adherence/${userId}?${qsParts.join("&")}`);
     const data = await res.json();
     if (!res.ok) {
-      setAdherenceMeta(String(data.error ?? "Could not load adherence"));
+      setAdherenceMeta(formatApiError(data.error, "Could not load adherence"));
       setAdherenceStats(null);
       return;
     }

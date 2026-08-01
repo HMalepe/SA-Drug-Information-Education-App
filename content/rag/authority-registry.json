@@ -111,7 +111,8 @@
     "Insights: learning curve / mastery / tops as tables+lists (no raw JSON dumps)",
     "CoursePlayer quiz grade: formatQuizGradeMsg (no raw JSON dump on error)",
     "Generic CI guard: no setX(JSON.stringify) or <pre> JSON dumps across web/app trees",
-    "Shared formatApiError — ops/review/onboarding never JSON.stringify error objects"
+    "Shared formatApiError — ops/review/onboarding never JSON.stringify error objects",
+    "Wire formatApiError across learn/notes/companion/insights (no String(data.error))"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

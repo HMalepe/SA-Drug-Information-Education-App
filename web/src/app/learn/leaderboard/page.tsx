@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -75,7 +76,7 @@ export default function LeaderboardPage() {
     const res = await fetch(`${API}/academy/leaderboard?userId=${encodeURIComponent(uid)}`);
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Could not load leaderboard"));
+      setMsg(formatApiError(data.error, "Could not load leaderboard"));
       setBoard(null);
       return;
     }

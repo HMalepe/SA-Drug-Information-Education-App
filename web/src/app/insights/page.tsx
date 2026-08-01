@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -218,7 +219,7 @@ export default function InsightsPage() {
     const res = await fetch(`${API}/analytics/personal/${uid}`);
     const data = await res.json();
     if (!res.ok) {
-      setMsg(String(data.error ?? "Could not load personal analytics"));
+      setMsg(formatApiError(data.error, "Could not load personal analytics"));
       setPersonal(null);
       return;
     }

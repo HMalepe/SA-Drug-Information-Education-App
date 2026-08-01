@@ -63,4 +63,29 @@ describe("formatApiError", () => {
       );
     }
   });
+
+  it("learn/notes/companion surfaces use formatApiError (no String(data.error))", () => {
+    const files = [
+      "web/src/app/my-meds/page.tsx",
+      "web/src/app/insights/page.tsx",
+      "web/src/app/pearls/page.tsx",
+      "web/src/app/notes/page.tsx",
+      "web/src/app/learn/mystery/page.tsx",
+      "web/src/app/learn/spot-error/page.tsx",
+      "web/src/app/learn/match/page.tsx",
+      "web/src/app/learn/drag-drop/page.tsx",
+      "web/src/app/learn/packaging/page.tsx",
+      "web/src/app/learn/build-treatment/page.tsx",
+      "web/src/app/learn/badges/page.tsx",
+      "web/src/app/learn/adaptive/page.tsx",
+      "web/src/app/learn/leaderboard/page.tsx",
+      "web/src/app/learn/review/page.tsx",
+      "web/src/components/CoursePlayer.tsx",
+    ];
+    for (const f of files) {
+      const src = readFileSync(join(root, f), "utf8");
+      assert.match(src, /formatApiError/, `${f} should use formatApiError`);
+      assert.doesNotMatch(src, /String\(\s*data\.error/, `${f} must not String(data.error)`);
+    }
+  });
 });
