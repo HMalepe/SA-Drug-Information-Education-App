@@ -6,6 +6,28 @@ import { TrackPage } from "@/components/TrackPage";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
+/** Short status line for pricing/subscribe — never dumps raw API JSON. */
+function formatPricingMsg(data: {
+  error?: unknown;
+  tier?: string;
+  provider?: string;
+  checkout?: { authorizationUrl?: string; reference?: string };
+  note?: string;
+}): string {
+  if (data.error) {
+    const err =
+      typeof data.error === "string" ? data.error : JSON.stringify(data.error);
+    return `Error: ${err}`;
+  }
+  const parts: string[] = [];
+  if (data.tier) parts.push(`tier=${data.tier}`);
+  if (data.provider) parts.push(`provider=${data.provider}`);
+  if (data.checkout?.authorizationUrl) parts.push("redirecting to checkout…");
+  else if (data.checkout?.reference) parts.push(`ref=${data.checkout.reference}`);
+  if (data.note) parts.push(data.note);
+  return parts.join(" · ") || "Subscribed";
+}
+
 export default function PricingPage() {
   const [prices, setPrices] = useState<Record<string, { monthly: number; annual: number; label: string }>>({});
   const [provider, setProvider] = useState("stub");
@@ -43,7 +65,7 @@ export default function PricingPage() {
     });
     const data = await res.json();
     track("subscription_started", { tier }, { tier });
-    setMsg(JSON.stringify(data, null, 2));
+    setMsg(formatPricingMsg({ ...data, tier }));
     const url = data.checkout?.authorizationUrl as string | undefined;
     if (url) window.location.href = url;
   }
@@ -77,9 +99,9 @@ export default function PricingPage() {
         ))}
       </div>
       {msg && (
-        <pre className="card" style={{ whiteSpace: "pre-wrap", marginTop: 16 }}>
+        <p className="card muted" style={{ whiteSpace: "pre-wrap", marginTop: 16 }} aria-live="polite">
           {msg}
-        </pre>
+        </p>
       )}
     </>
   );

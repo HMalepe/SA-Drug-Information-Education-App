@@ -4,6 +4,42 @@ import { useState } from "react";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
+/** Short status line for ambassador actions — never dumps raw API JSON. */
+function formatAmbassadorMsg(data: {
+  error?: unknown;
+  code?: { code?: string; kind?: string; campusLabel?: string };
+  credit?: { amount?: number; kind?: string };
+  redeemed?: boolean;
+  stats?: { codes?: number; redemptions?: number; credits?: number };
+  note?: string;
+}): string {
+  if (data.error) {
+    const err =
+      typeof data.error === "string" ? data.error : JSON.stringify(data.error);
+    return `Error: ${err}`;
+  }
+  const parts: string[] = [];
+  if (data.code?.code) {
+    parts.push(`code=${data.code.code}`);
+    if (data.code.kind) parts.push(`kind=${data.code.kind}`);
+  }
+  if (data.redeemed || data.credit) {
+    parts.push("redeemed");
+    if (typeof data.credit?.amount === "number") {
+      parts.push(`credit=${data.credit.amount}`);
+    }
+  }
+  if (data.stats) {
+    if (typeof data.stats.codes === "number") parts.push(`codes=${data.stats.codes}`);
+    if (typeof data.stats.redemptions === "number") {
+      parts.push(`redemptions=${data.stats.redemptions}`);
+    }
+    if (typeof data.stats.credits === "number") parts.push(`credits=${data.stats.credits}`);
+  }
+  if (data.note) parts.push(data.note);
+  return parts.join(" · ") || "OK";
+}
+
 export default function AmbassadorPage() {
   const [ownerId, setOwnerId] = useState<string | null>(null);
   const [refereeId, setRefereeId] = useState<string | null>(null);
@@ -53,7 +89,7 @@ export default function AmbassadorPage() {
     });
     const data = await res.json();
     if (data.code?.code) setCode(data.code.code);
-    setOut(JSON.stringify(data, null, 2));
+    setOut(formatAmbassadorMsg(data));
   }
 
   async function redeem() {
@@ -63,13 +99,13 @@ export default function AmbassadorPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: uid, code }),
     });
-    setOut(JSON.stringify(await res.json(), null, 2));
+    setOut(formatAmbassadorMsg(await res.json()));
   }
 
   async function dashboard() {
     const uid = await ensureOwner();
     const res = await fetch(`${API}/ambassador/dashboard/${uid}`);
-    setOut(JSON.stringify(await res.json(), null, 2));
+    setOut(formatAmbassadorMsg(await res.json()));
   }
 
   return (
@@ -111,9 +147,9 @@ export default function AmbassadorPage() {
       </div>
 
       {out && (
-        <pre className="card" style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: 13 }}>
+        <p className="card muted" style={{ marginTop: 16 }} aria-live="polite">
           {out}
-        </pre>
+        </p>
       )}
     </>
   );

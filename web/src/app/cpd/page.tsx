@@ -13,13 +13,42 @@ type ModuleRow = {
   eligibility: { ok: boolean; reason?: string };
 };
 
+type CertRow = {
+  id?: string;
+  title?: string;
+  moduleId?: string;
+  issuedAt?: string;
+  credits?: number;
+};
+
+/** Short status line for CPD actions — never dumps raw API JSON. */
+function formatCpdMsg(data: {
+  error?: unknown;
+  moduleId?: string;
+  creditsEarned?: number;
+  certificate?: { title?: string; moduleId?: string; issuedAt?: string };
+  note?: string;
+}): string {
+  if (data.error) {
+    const err =
+      typeof data.error === "string" ? data.error : JSON.stringify(data.error);
+    return `Error: ${err}`;
+  }
+  const parts: string[] = [];
+  if (data.certificate?.title) parts.push(`cert=${data.certificate.title}`);
+  else if (data.moduleId) parts.push(`claimed=${data.moduleId}`);
+  if (typeof data.creditsEarned === "number") parts.push(`total=${data.creditsEarned}`);
+  if (data.note) parts.push(data.note);
+  return parts.join(" · ") || "OK";
+}
+
 export default function CpdPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [disclaimer, setDisclaimer] = useState("");
   const [credits, setCredits] = useState(0);
   const [target, setTarget] = useState(30);
   const [modules, setModules] = useState<ModuleRow[]>([]);
-  const [certs, setCerts] = useState<unknown[]>([]);
+  const [certs, setCerts] = useState<CertRow[]>([]);
   const [msg, setMsg] = useState("");
 
   async function ensurePro() {
@@ -48,14 +77,14 @@ export default function CpdPage() {
     const res = await fetch(`${API}/cpd/dashboard/${uid}`);
     const data = await res.json();
     if (!res.ok) {
-      setMsg(JSON.stringify(data, null, 2));
+      setMsg(formatCpdMsg(data));
       return;
     }
     setDisclaimer(data.disclaimer ?? "");
     setCredits(data.creditsEarned ?? 0);
     setTarget(data.annualTarget ?? 30);
     setModules(data.modules ?? []);
-    setCerts(data.certificates ?? []);
+    setCerts((data.certificates ?? []) as CertRow[]);
     setMsg("");
   }
 
@@ -67,7 +96,7 @@ export default function CpdPage() {
       body: JSON.stringify({ userId: uid, moduleId }),
     });
     const data = await res.json();
-    setMsg(JSON.stringify(data, null, 2));
+    setMsg(formatCpdMsg({ ...data, moduleId }));
     await load();
   }
 
@@ -118,14 +147,22 @@ export default function CpdPage() {
       {certs.length > 0 && (
         <div className="card" style={{ marginTop: 16 }}>
           <strong>Certificates</strong>
-          <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>{JSON.stringify(certs, null, 2)}</pre>
+          <ul style={{ paddingLeft: 20, marginBottom: 0 }}>
+            {certs.map((c, i) => (
+              <li key={c.id ?? `${c.moduleId ?? "cert"}-${i}`}>
+                {c.title ?? c.moduleId ?? "Certificate"}
+                {typeof c.credits === "number" ? ` · ${c.credits} credit` : ""}
+                {c.issuedAt ? ` · issued ${c.issuedAt}` : ""}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
       {msg && (
-        <pre className="card" style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: 13 }}>
+        <p className="card muted" style={{ marginTop: 16 }} aria-live="polite">
           {msg}
-        </pre>
+        </p>
       )}
     </>
   );

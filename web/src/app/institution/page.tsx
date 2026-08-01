@@ -30,6 +30,44 @@ type LeaderboardBundle = {
   disclaimer: string;
 };
 
+/** Short status line for institution console — never dumps raw API JSON. */
+function formatInstitutionMsg(data: {
+  error?: unknown;
+  org?: { id?: string; name?: string };
+  member?: { email?: string; id?: string };
+  seat?: { id?: string };
+  cohort?: { id?: string; name?: string; memberUserIds?: string[] };
+  totals?: { seats?: number; cohorts?: number; completionPercent?: number };
+  note?: string;
+}): string {
+  if (data.error) {
+    const err =
+      typeof data.error === "string" ? data.error : JSON.stringify(data.error);
+    return `Error: ${err}`;
+  }
+  const parts: string[] = [];
+  if (data.org?.id) {
+    parts.push(`org=${data.org.name ?? data.org.id}`);
+  }
+  if (data.member?.email) parts.push(`seat=${data.member.email}`);
+  else if (data.seat?.id) parts.push(`seat=${data.seat.id}`);
+  if (data.cohort?.id) {
+    parts.push(`cohort=${data.cohort.name ?? data.cohort.id}`);
+    if (Array.isArray(data.cohort.memberUserIds)) {
+      parts.push(`members=${data.cohort.memberUserIds.length}`);
+    }
+  }
+  if (data.totals) {
+    if (typeof data.totals.seats === "number") parts.push(`seats=${data.totals.seats}`);
+    if (typeof data.totals.cohorts === "number") parts.push(`cohorts=${data.totals.cohorts}`);
+    if (typeof data.totals.completionPercent === "number") {
+      parts.push(`completion=${data.totals.completionPercent}%`);
+    }
+  }
+  if (data.note) parts.push(data.note);
+  return parts.join(" · ") || "OK";
+}
+
 export default function InstitutionPage() {
   const [adminId, setAdminId] = useState<string | null>(null);
   const [orgId, setOrgId] = useState<string | null>(null);
@@ -72,7 +110,7 @@ export default function InstitutionPage() {
     const data = await res.json();
     if (data.org?.id) setOrgId(data.org.id);
     setBoards(null);
-    setOut(JSON.stringify(data, null, 2));
+    setOut(formatInstitutionMsg(data));
   }
 
   async function addSeat() {
@@ -91,7 +129,7 @@ export default function InstitutionPage() {
         memberMode: "student",
       }),
     });
-    setOut(JSON.stringify(await res.json(), null, 2));
+    setOut(formatInstitutionMsg(await res.json()));
   }
 
   async function createCohort() {
@@ -124,7 +162,9 @@ export default function InstitutionPage() {
     });
     const cohortPayload = await res.json();
     if (cohortPayload.cohort?.id) setLastCohortId(cohortPayload.cohort.id);
-    setOut(JSON.stringify({ seat: seatData, cohort: cohortPayload }, null, 2));
+    const seatLine = formatInstitutionMsg(seatData);
+    const cohortLine = formatInstitutionMsg(cohortPayload);
+    setOut(`${seatLine} · ${cohortLine}`);
   }
 
   async function loadAnalytics() {
@@ -134,7 +174,7 @@ export default function InstitutionPage() {
     }
     const uid = await ensureAdmin();
     const res = await fetch(`${API}/institution/${orgId}/analytics?userId=${uid}`);
-    setOut(JSON.stringify(await res.json(), null, 2));
+    setOut(formatInstitutionMsg(await res.json()));
   }
 
   async function loadLeaderboards() {
@@ -166,7 +206,7 @@ export default function InstitutionPage() {
     const data = await res.json();
     if (!res.ok) {
       setBoards(null);
-      setOut(JSON.stringify(data, null, 2));
+      setOut(formatInstitutionMsg(data));
       return;
     }
     setBoards(data);
@@ -282,9 +322,9 @@ export default function InstitutionPage() {
       )}
 
       {out && (
-        <pre className="card" style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: 13 }}>
+        <p className="card muted" style={{ marginTop: 16 }} aria-live="polite">
           {out}
-        </pre>
+        </p>
       )}
     </>
   );
