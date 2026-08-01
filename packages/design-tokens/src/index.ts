@@ -11,6 +11,9 @@ export const colors = {
   mist: "#EEF2F6",
   mint: "#E7F6F3",
   white: "#FFFFFF",
+  /** Hairline borders on mist backgrounds */
+  line: "#CBD5E1",
+  lineSoft: "#DBE3EA",
   // Semantic (safety) — meaning-locked
   danger: "#DC2626",
   caution: "#EA580C",

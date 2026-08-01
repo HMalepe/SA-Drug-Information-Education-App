@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { colors } from "@materia/design-tokens";
 
 export default function RootLayout() {
   return (
@@ -7,8 +8,8 @@ export default function RootLayout() {
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: "#EEF2F6" },
-          headerTintColor: "#12283C",
+          headerStyle: { backgroundColor: colors.mist },
+          headerTintColor: colors.ink,
           headerTitleStyle: { fontWeight: "700" },
         }}
       />
