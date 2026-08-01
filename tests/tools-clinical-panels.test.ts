@@ -113,9 +113,36 @@ describe("Pro tools clinical result panels", () => {
     assert.match(src, /function ColdChainResultPanel/);
     assert.match(src, /async function runColdChain/);
     const runFn = src.slice(src.indexOf("async function runColdChain"));
-    const end = runFn.indexOf("async function speakVoice");
-    const body = runFn.slice(0, end);
+    const end = runFn.indexOf("async function runSubstitution");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
     assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
     assert.match(body, /showClinicalPanel\("coldchain"/);
+  });
+
+  it("substitution routes to SubstitutionResultPanel (SEP never R0 when missing)", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function SubstitutionResultPanel/);
+    assert.match(src, /async function runSubstitution/);
+    assert.match(src, /formatPublishedZar/);
+    assert.match(src, /not yet published/);
+    const runFn = src.slice(src.indexOf("async function runSubstitution"));
+    const end = runFn.indexOf("async function runFormulary");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.doesNotMatch(body, /showRaw\(/);
+    assert.match(body, /showClinicalPanel\("substitution"/);
+  });
+
+  it("formulary routes to FormularyResultPanel with disclaimer", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function FormularyResultPanel/);
+    assert.match(src, /async function runFormulary/);
+    assert.match(src, /result\.disclaimer/);
+    const runFn = src.slice(src.indexOf("async function runFormulary"));
+    const end = runFn.indexOf("async function speakVoice");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.doesNotMatch(body, /showRaw\(/);
+    assert.match(body, /showClinicalPanel\("formulary"/);
   });
 });

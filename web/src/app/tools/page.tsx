@@ -128,6 +128,71 @@ type ColdChainResult = {
   }>;
 };
 
+type SubstitutionOptionRow = {
+  productId: string;
+  brandName: string;
+  strength: string;
+  form: string;
+  schedule: string;
+  isOriginator: boolean;
+  bioequivalentFlag: boolean;
+  sepZar: number | null;
+  sepPublished: boolean;
+  priceDeltaVsSelected: number | null;
+  rankReason: string;
+};
+
+type SubstitutionResult = {
+  error?: string;
+  upgradeTo?: string;
+  molecule?: { id?: string; slug?: string; innName?: string };
+  moleculeId?: string;
+  selectedProductId?: string;
+  options?: SubstitutionOptionRow[];
+  cheapestBioequivalentId?: string | null;
+  note?: string;
+};
+
+type FormularyMatchRowView = {
+  productId: string;
+  brandName: string;
+  schemeName: string;
+  reimbursed: boolean;
+  coPayEstimateZar: number | null;
+  sepZar: number | null;
+  bioequivalentFlag: boolean;
+  isOriginator: boolean;
+  switchSavesVsSelected: number | null;
+  note: string;
+};
+
+type FormularyResult = {
+  error?: string;
+  upgradeTo?: string;
+  molecule?: { slug?: string; innName?: string };
+  schemeName?: string;
+  moleculeId?: string;
+  selectedProductId?: string;
+  rows?: FormularyMatchRowView[];
+  recommendedProductId?: string | null;
+  disclaimer?: string;
+};
+
+/** Published SEP/co-pay only — null never renders as R0. */
+function formatPublishedZar(
+  value: number | null | undefined,
+  emptyLabel = "not yet published",
+): string {
+  if (value == null) return emptyLabel;
+  return `R${value.toFixed(2)}`;
+}
+
+function formatZarDelta(value: number | null | undefined): string | null {
+  if (value == null) return null;
+  const sign = value > 0 ? "+" : "";
+  return `${sign}R${value.toFixed(2)}`;
+}
+
 const TONE_COLOR: Record<string, string> = {
   red: "var(--danger)",
   orange: "var(--caution)",
@@ -156,6 +221,8 @@ export default function ToolsPage() {
   const [voice, setVoice] = useState<VoiceResult | null>(null);
   const [locum, setLocum] = useState<LocumResult | null>(null);
   const [coldChain, setColdChain] = useState<ColdChainResult | null>(null);
+  const [substitution, setSubstitution] = useState<SubstitutionResult | null>(null);
+  const [formulary, setFormulary] = useState<FormularyResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -179,6 +246,8 @@ export default function ToolsPage() {
     setVoice(null);
     setLocum(null);
     setColdChain(null);
+    setSubstitution(null);
+    setFormulary(null);
   }
 
   function showRaw(data: unknown) {
@@ -196,7 +265,9 @@ export default function ToolsPage() {
       | "handout"
       | "voice"
       | "locum"
-      | "coldchain",
+      | "coldchain"
+      | "substitution"
+      | "formulary",
     data: unknown,
   ) {
     clearClinicalPanels();
@@ -209,7 +280,9 @@ export default function ToolsPage() {
     else if (kind === "handout") setHandout(data as HandoutResult);
     else if (kind === "voice") setVoice(data as VoiceResult);
     else if (kind === "locum") setLocum(data as LocumResult);
-    else setColdChain(data as ColdChainResult);
+    else if (kind === "coldchain") setColdChain(data as ColdChainResult);
+    else if (kind === "substitution") setSubstitution(data as SubstitutionResult);
+    else setFormulary(data as FormularyResult);
   }
 
   async function ensurePro() {
@@ -346,6 +419,40 @@ export default function ToolsPage() {
     showClinicalPanel("coldchain", await res.json());
   }
 
+  async function runSubstitution() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/substitution/${encodeURIComponent(slug)}?userId=${uid}&selectedProductId=prod-amoxil`,
+    );
+    if (res.status === 402) {
+      track(
+        "gated_feature_hit",
+        { feature: "substitution_sep", tier: "professional" },
+        { tier: "free" },
+      );
+    } else {
+      track("tool_used", { tool: "substitution_sep" }, { tier: "professional" });
+    }
+    showClinicalPanel("substitution", await res.json());
+  }
+
+  async function runFormulary() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/formulary/${encodeURIComponent(slug)}?userId=${uid}&scheme=${encodeURIComponent(scheme)}&selectedProductId=prod-amoxil`,
+    );
+    if (res.status === 402) {
+      track(
+        "gated_feature_hit",
+        { feature: "formulary_copay", tier: "professional" },
+        { tier: "free" },
+      );
+    } else {
+      track("tool_used", { tool: "formulary_copay" }, { tier: "professional" });
+    }
+    showClinicalPanel("formulary", await res.json());
+  }
+
   async function speakVoice() {
     const uid = await ensurePro();
     const res = await fetch(
@@ -400,26 +507,10 @@ export default function ToolsPage() {
           <option>Bonitas</option>
         </select>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-          <button
-            className="btn"
-            type="button"
-            onClick={() =>
-              void call(
-                `/tools/substitution/${encodeURIComponent(slug)}?selectedProductId=prod-amoxil`,
-              )
-            }
-          >
+          <button className="btn" type="button" onClick={() => void runSubstitution()}>
             Substitute + SEP
           </button>
-          <button
-            className="btn"
-            type="button"
-            onClick={() =>
-              void call(
-                `/tools/formulary/${encodeURIComponent(slug)}?scheme=${encodeURIComponent(scheme)}&selectedProductId=prod-amoxil`,
-              )
-            }
-          >
+          <button className="btn" type="button" onClick={() => void runFormulary()}>
             Formulary + co-pay
           </button>
           <button className="btn" type="button" onClick={() => void runLocum()}>
@@ -615,6 +706,8 @@ export default function ToolsPage() {
       {voice && <VoiceResultPanel result={voice} />}
       {locum && <LocumResultPanel result={locum} />}
       {coldChain && <ColdChainResultPanel result={coldChain} />}
+      {substitution && <SubstitutionResultPanel result={substitution} />}
+      {formulary && <FormularyResultPanel result={formulary} />}
 
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
@@ -981,6 +1074,120 @@ function ColdChainResultPanel({ result }: { result: ColdChainResult }) {
           </div>
         ))
       )}
+    </section>
+  );
+}
+
+function SubstitutionResultPanel({ result }: { result: SubstitutionResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Substitute + SEP</h2>
+        <p>{result.error}</p>
+        {result.upgradeTo ? <p className="muted">Upgrade to {result.upgradeTo}</p> : null}
+      </section>
+    );
+  }
+  const options = result.options ?? [];
+  const title =
+    result.molecule?.innName ?? result.molecule?.slug ?? result.moleculeId ?? "Substitution";
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>Substitute + SEP · {title}</h2>
+      {result.selectedProductId ? (
+        <p className="muted">Selected product: {result.selectedProductId}</p>
+      ) : null}
+      {options.length === 0 ? (
+        <p className="muted">No published products for substitution.</p>
+      ) : (
+        <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+          {options.map((o) => {
+            const delta = formatZarDelta(o.priceDeltaVsSelected);
+            const cheapest =
+              result.cheapestBioequivalentId && o.productId === result.cheapestBioequivalentId;
+            return (
+              <li key={o.productId} style={{ marginBottom: 10 }}>
+                <strong>{o.brandName}</strong> · {o.strength} · {o.form} · {o.schedule}
+                {o.isOriginator ? " · originator" : ""}
+                {o.bioequivalentFlag ? " · bioequivalent" : ""}
+                {cheapest ? " · cheapest bioeq (published SEP)" : ""}
+                <br />
+                <span className="muted">
+                  SEP {formatPublishedZar(o.sepZar)}
+                  {o.sepPublished ? "" : " (unpublished)"}
+                  {delta ? ` · Δ vs selected ${delta}` : ""}
+                </span>
+                <br />
+                <span className="muted">{o.rankReason}</span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {result.note ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.note}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function FormularyResultPanel({ result }: { result: FormularyResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Formulary + co-pay</h2>
+        <p>{result.error}</p>
+        {result.upgradeTo ? <p className="muted">Upgrade to {result.upgradeTo}</p> : null}
+      </section>
+    );
+  }
+  const rows = result.rows ?? [];
+  const title =
+    result.molecule?.innName ?? result.molecule?.slug ?? result.moleculeId ?? "Formulary";
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Formulary + co-pay · {title}
+        {result.schemeName ? ` · ${result.schemeName}` : ""}
+      </h2>
+      {result.selectedProductId ? (
+        <p className="muted">Selected product: {result.selectedProductId}</p>
+      ) : null}
+      {rows.length === 0 ? (
+        <p className="muted">No published products for this scheme match.</p>
+      ) : (
+        <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+          {rows.map((r) => {
+            const saves = formatZarDelta(r.switchSavesVsSelected);
+            const recommended =
+              result.recommendedProductId && r.productId === result.recommendedProductId;
+            return (
+              <li key={r.productId} style={{ marginBottom: 10 }}>
+                <strong>{r.brandName}</strong>
+                {r.reimbursed ? " · reimbursed" : " · not reimbursed"}
+                {r.isOriginator ? " · originator" : ""}
+                {r.bioequivalentFlag ? " · bioequivalent" : ""}
+                {recommended ? " · recommended" : ""}
+                <br />
+                <span className="muted">
+                  Co-pay {formatPublishedZar(r.coPayEstimateZar)} · SEP{" "}
+                  {formatPublishedZar(r.sepZar)}
+                  {saves ? ` · switch vs selected ${saves}` : ""}
+                </span>
+                <br />
+                <span className="muted">{r.note}</span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {result.disclaimer ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.disclaimer}
+        </p>
+      ) : null}
     </section>
   );
 }
