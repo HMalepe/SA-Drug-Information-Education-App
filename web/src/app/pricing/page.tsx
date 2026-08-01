@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
 import { TrackPage } from "@/components/TrackPage";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -15,9 +16,7 @@ function formatPricingMsg(data: {
   note?: string;
 }): string {
   if (data.error) {
-    const err =
-      typeof data.error === "string" ? data.error : JSON.stringify(data.error);
-    return `Error: ${err}`;
+    return `Error: ${formatApiError(data.error)}`;
   }
   const parts: string[] = [];
   if (data.tier) parts.push(`tier=${data.tier}`);

@@ -2,17 +2,13 @@
 
 import { useState } from "react";
 import { MODE_STORAGE_KEY, useUserMode, WEB_USER_MODES } from "@/components/ModeProvider";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
 /** Onboarding status — never dumps raw auth error JSON. */
 function formatOnboardingError(error: unknown): string {
-  if (typeof error === "string") return `Error: ${error}`;
-  if (error && typeof error === "object" && "message" in error) {
-    const msg = (error as { message?: unknown }).message;
-    if (typeof msg === "string") return `Error: ${msg}`;
-  }
-  return "Error: could not create session";
+  return `Error: ${formatApiError(error, "could not create session")}`;
 }
 
 export default function OnboardingPage() {

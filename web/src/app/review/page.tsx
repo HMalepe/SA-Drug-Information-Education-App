@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { formatApiError } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -174,13 +175,7 @@ function formatReviewActionMsg(
   },
 ): string {
   if (!ok || data.error) {
-    const err =
-      typeof data.error === "string"
-        ? data.error
-        : data.error
-          ? JSON.stringify(data.error)
-          : "Request failed";
-    return `Error: ${err}`;
+    return `Error: ${formatApiError(data.error, "Request failed")}`;
   }
   const parts: string[] = [];
   if (data.dryRun) parts.push("Preview (dry-run)");

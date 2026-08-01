@@ -18,9 +18,15 @@ export function AskMateria({ moleculeSlug }: { moleculeSlug: string }) {
       body: JSON.stringify({ moleculeSlug, question }),
     });
     const data = await res.json();
-    setStatus(data.status);
-    setAnswer(data.answer ?? data.refusalReason ?? "");
-    setCitations(data.citations ?? []);
+    setStatus(typeof data.status === "string" ? data.status : "");
+    const answerText =
+      typeof data.answer === "string"
+        ? data.answer
+        : typeof data.refusalReason === "string"
+          ? data.refusalReason
+          : "";
+    setAnswer(answerText);
+    setCitations(Array.isArray(data.citations) ? data.citations : []);
   }
 
   return (
