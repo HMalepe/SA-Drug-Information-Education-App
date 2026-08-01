@@ -6,7 +6,7 @@
  * Usage:
  *   npm run review:batches
  *   npm run review:batches -- progress [A|all] [--json]
- *   npm run review:batches -- decisions [--limit 50] [--json]
+ *   npm run review:batches -- decisions [A|all] [--limit 50] [--json]
  *   npm run review:batches -- show A
  *   npm run review:batches -- show A --stg
  *   npm run review:batches -- plan-stg A|all [--json]
@@ -53,6 +53,7 @@ import {
   describeInRegionRagEnv,
   parseReviewDecisionsJsonl,
   listRecentReviewDecisions,
+  filterReviewDecisionsByMoleculeIds,
 } from "@materia/shared";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -667,7 +668,7 @@ function cmdExportStgCli(batchRaw, json, attestation) {
   }
 }
 
-function cmdDecisions(json, limitRaw) {
+function cmdDecisions(json, limitRaw, batchRaw) {
   let raw = "";
   try {
     raw = readFileSync(decisionsPath, "utf8");
@@ -675,20 +676,42 @@ function cmdDecisions(json, limitRaw) {
     raw = "";
   }
   const all = parseReviewDecisionsJsonl(raw);
-  const limit = limitRaw ? Number(limitRaw) : 50;
-  const items = listRecentReviewDecisions(all, Number.isFinite(limit) ? limit : 50);
+  const limit = limitRaw != null ? Number(limitRaw) : 50;
+  const key = batchRaw ? String(batchRaw).toUpperCase() : "ALL";
+
+  let scoped = all;
+  let scope = "all";
+  if (key !== "ALL") {
+    const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === key);
+    if (!ref) {
+      console.error(`Unknown batch ${batchRaw}. Use A–I or omit for all.`);
+      process.exit(2);
+    }
+    const ids = loadBatchMoleculeIds().get(key) ?? [];
+    const extracts = loadStgDoc().extracts ?? [];
+    const extractMoleculeById = new Map(extracts.map((e) => [e.id, e.moleculeId]));
+    scoped = filterReviewDecisionsByMoleculeIds(all, ids, extractMoleculeById);
+    scope = key;
+  }
+
+  const items = listRecentReviewDecisions(scoped, Number.isFinite(limit) ? limit : 50);
   const body = {
-    total: all.length,
+    scope,
+    total: scoped.length,
     limit: items.length,
     items,
     note:
-      "Audit journal (newest first). publishState changes only — never invented clinical text. Empty until first --write / REVIEW_PERSIST decide.",
+      scope === "all"
+        ? "Audit journal (newest first). publishState changes only — never invented clinical text. Empty until first --write / REVIEW_PERSIST decide."
+        : `Audit journal filtered to Batch ${scope} (newest first). publishState only — never invented clinical text.`,
   };
   if (json) {
     console.log(JSON.stringify(body, null, 2));
     return;
   }
-  console.log(`Review decisions — ${body.total} total, showing ${body.limit}\n`);
+  console.log(
+    `Review decisions — ${scope === "all" ? "Batches A–I" : `Batch ${scope}`} · ${body.total} total, showing ${body.limit}\n`,
+  );
   if (items.length === 0) {
     console.log("(empty — no persisted decisions yet)");
     console.log(`\n${body.note}`);
@@ -894,7 +917,7 @@ function usage() {
 
   npm run review:batches
   npm run review:batches -- progress [A|all] [--json]
-  npm run review:batches -- decisions [--limit 50] [--json]
+  npm run review:batches -- decisions [A|all] [--limit 50] [--json]
   npm run review:batches -- show A [--stg|--dosing] [--json]
   npm run review:batches -- plan-stg A|all [--json]
   npm run review:batches -- plan-dosing A|all [--json]
@@ -922,7 +945,7 @@ if (cmd === "summary") {
 } else if (cmd === "progress") {
   cmdProgress(flags.has("json"), positional[1]);
 } else if (cmd === "decisions") {
-  cmdDecisions(flags.has("json"), limit ?? positional[1]);
+  cmdDecisions(flags.has("json"), limit, positional[1]);
 } else if (cmd === "show") {
   const batch = positional[1];
   if (!batch) {

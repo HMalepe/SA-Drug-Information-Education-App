@@ -316,6 +316,38 @@ export function listRecentReviewDecisions(
   return decisions.slice(-n).reverse();
 }
 
+/**
+ * Resolve molecule id from a review queueItemId.
+ * - Fact/dosing: `mol-xxx:fieldPath`
+ * - STG extract: `stg:<extractId>` (needs extract→molecule map)
+ */
+export function resolveMoleculeIdFromQueueItemId(
+  queueItemId: string,
+  extractMoleculeById?: Map<string, string>,
+): string | null {
+  if (queueItemId.startsWith("stg:")) {
+    const extractId = queueItemId.slice(4);
+    if (!extractId || !extractMoleculeById) return null;
+    return extractMoleculeById.get(extractId) ?? null;
+  }
+  const colon = queueItemId.indexOf(":");
+  if (colon <= 0) return null;
+  return queueItemId.slice(0, colon);
+}
+
+/** Filter audit journal rows to molecules in a batch (dosing + STG queue ids). */
+export function filterReviewDecisionsByMoleculeIds(
+  decisions: ReviewDecision[],
+  moleculeIds: Iterable<string>,
+  extractMoleculeById?: Map<string, string>,
+): ReviewDecision[] {
+  const want = new Set(moleculeIds);
+  return decisions.filter((d) => {
+    const molId = resolveMoleculeIdFromQueueItemId(d.queueItemId, extractMoleculeById);
+    return molId != null && want.has(molId);
+  });
+}
+
 export interface PublishedNumericSuspectHit {
   moleculeId: string;
   fieldPath: string;

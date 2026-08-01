@@ -161,7 +161,9 @@ export default function ReviewPage() {
       fetch(
         `${API}/review/progress?batch=${encodeURIComponent(batch || "all")}`,
       ).then((r) => r.json()),
-      fetch(`${API}/review/decisions?limit=20`).then((r) => r.json()),
+      fetch(
+        `${API}/review/decisions?limit=20&batch=${encodeURIComponent(batch || "all")}`,
+      ).then((r) => r.json()),
     ]);
     setCoverage(c);
     setItems(q.items ?? []);
@@ -697,12 +699,16 @@ export default function ReviewPage() {
       )}
 
       <h2 style={{ marginTop: 32 }}>
-        Recent decisions ({decisions.length}
+        Recent decisions
+        {batch ? ` — Batch ${batch}` : " — Batches A–I"} ({decisions.length}
         {decisionsTotal > decisions.length ? ` of ${decisionsTotal}` : ""})
       </h2>
       <p className="muted">
         Audit journal from decisions.jsonl — publishState only. CLI:{" "}
-        <code>npm run review:batches -- decisions --json</code>
+        <code>
+          npm run review:batches -- decisions
+          {batch ? ` ${batch}` : ""} --json
+        </code>
       </p>
       {decisions.length === 0 ? (
         <p className="muted">No persisted decisions yet.</p>

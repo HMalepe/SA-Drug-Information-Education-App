@@ -93,7 +93,8 @@
     "Expo dosing hub uses sourced panels + calculator working/source UI (no JSON dump)",
     "Web Pro tools: dose-adjustment + clash-board sourced panels (no clinical JSON dump)",
     "Web Pro tools: counselling + insert + monograph sourced panels (no clinical JSON dump)",
-    "Web Pro tools: handout + voice sourced panels (no clinical JSON dump); handout sourceNote on payload"
+    "Web Pro tools: handout + voice sourced panels (no clinical JSON dump); handout sourceNote on payload",
+    "Batch-scoped review decisions — CLI/API ?batch= + /review Recent decisions filter"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
+  filterReviewDecisionsByMoleculeIds,
   listRecentReviewDecisions,
   parseReviewDecisionsJsonl,
+  resolveMoleculeIdFromQueueItemId,
   type ReviewDecision,
 } from "@materia/shared";
 
@@ -74,5 +76,55 @@ describe("review decisions audit journal", () => {
     }));
     assert.equal(listRecentReviewDecisions(decisions, 0).length, 1);
     assert.equal(listRecentReviewDecisions(decisions, 999).length, 5);
+  });
+
+  it("resolves molecule ids from dosing and STG queueItemIds", () => {
+    assert.equal(
+      resolveMoleculeIdFromQueueItemId("mol-amox:dosingAdult"),
+      "mol-amox",
+    );
+    const extracts = new Map([["stg-amox-eml-pointer", "mol-amox"]]);
+    assert.equal(
+      resolveMoleculeIdFromQueueItemId("stg:stg-amox-eml-pointer", extracts),
+      "mol-amox",
+    );
+    assert.equal(resolveMoleculeIdFromQueueItemId("stg:unknown", extracts), null);
+    assert.equal(resolveMoleculeIdFromQueueItemId("orphan"), null);
+  });
+
+  it("filters decisions to batch molecule ids (dosing + STG)", () => {
+    const decisions: ReviewDecision[] = [
+      {
+        id: "1",
+        queueItemId: "mol-amox:dosingAdult",
+        decision: "publish",
+        reviewerLabel: "F",
+        at: "2026-07-01T00:00:00.000Z",
+      },
+      {
+        id: "2",
+        queueItemId: "mol-warfarin:dosingAdult",
+        decision: "publish",
+        reviewerLabel: "F",
+        at: "2026-07-02T00:00:00.000Z",
+      },
+      {
+        id: "3",
+        queueItemId: "stg:stg-amox-eml-pointer",
+        decision: "publish",
+        reviewerLabel: "F",
+        at: "2026-07-03T00:00:00.000Z",
+      },
+    ];
+    const extracts = new Map([["stg-amox-eml-pointer", "mol-amox"]]);
+    const filtered = filterReviewDecisionsByMoleculeIds(
+      decisions,
+      ["mol-amox"],
+      extracts,
+    );
+    assert.deepEqual(
+      filtered.map((d) => d.id),
+      ["1", "3"],
+    );
   });
 });

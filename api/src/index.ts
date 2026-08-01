@@ -127,6 +127,7 @@ import {
   filterReviewQueueByDosingClass,
   parseReviewDecisionsJsonl,
   listRecentReviewDecisions,
+  filterReviewDecisionsByMoleculeIds,
   normalizeReferralCode,
   parsePaystackChargeSuccess,
   previewUpcoming,
@@ -3368,14 +3369,33 @@ app.get("/review/progress", (req, res) => {
 app.get("/review/decisions", (req, res) => {
   const limitRaw = Number(req.query.limit ?? 50);
   const limit = Number.isFinite(limitRaw) ? limitRaw : 50;
+  const batch = String(req.query.batch ?? "all").trim().toUpperCase() || "ALL";
   const all = parseReviewDecisionsJsonl(loadReviewDecisionsJsonlFromDisk());
-  const items = listRecentReviewDecisions(all, limit);
+
+  let scoped = all;
+  let scope: string = "all";
+  if (batch !== "ALL") {
+    const ids = loadBatchMoleculeIds().get(batch);
+    if (!ids) {
+      res.status(400).json({ error: `Unknown batch ${batch}. Use A–I or all.` });
+      return;
+    }
+    const extracts = loadStgExtractsFromDisk();
+    const extractMoleculeById = new Map(extracts.map((e) => [e.id, e.moleculeId]));
+    scoped = filterReviewDecisionsByMoleculeIds(all, ids, extractMoleculeById);
+    scope = batch;
+  }
+
+  const items = listRecentReviewDecisions(scoped, limit);
   res.json({
-    total: all.length,
+    scope,
+    total: scoped.length,
     limit: items.length,
     items,
     note:
-      "Audit journal (newest first). publishState changes only — never invented clinical text. Empty until first persisted decide.",
+      scope === "all"
+        ? "Audit journal (newest first). publishState changes only — never invented clinical text. Empty until first persisted decide."
+        : `Audit journal filtered to Batch ${scope} molecules (dosing + STG queue ids). publishState only — never invented clinical text.`,
   });
 });
 
