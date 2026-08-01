@@ -26,9 +26,13 @@ export default function DosingHubScreen() {
   const [confirmed, setConfirmed] = useState(false);
   const [result, setResult] = useState<DoseCalcView | null>(null);
   const [calcError, setCalcError] = useState<string | null>(null);
+  const [calculating, setCalculating] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
+    setError(null);
+    setResult(null);
+    setCalcError(null);
     (async () => {
       try {
         const page = await getMedicine360(String(slug));
@@ -47,18 +51,27 @@ export default function DosingHubScreen() {
   }, [slug]);
 
   async function onCalc() {
+    if (calculating || !moleculeId) return;
+    const weightKg = Number(weight);
+    if (!Number.isFinite(weightKg) || weightKg <= 0) {
+      setCalcError("Enter a valid weight in kg.");
+      return;
+    }
+    setCalculating(true);
     setCalcError(null);
     setResult(null);
     try {
       const res = await calculateDose({
         moleculeId,
-        weightKg: Number(weight),
+        weightKg,
         indicationKey: "scaffold",
         clinicallyConfirmed: confirmed,
       });
       setResult(res);
     } catch (e) {
       setCalcError(e instanceof Error ? e.message : "Calculator request failed");
+    } finally {
+      setCalculating(false);
     }
   }
 
@@ -101,14 +114,21 @@ export default function DosingHubScreen() {
         onChangeText={setWeight}
         keyboardType="decimal-pad"
         placeholder="Weight kg"
+        editable={!calculating}
       />
-      <Pressable onPress={() => setConfirmed((v) => !v)}>
+      <Pressable onPress={() => setConfirmed((v) => !v)} disabled={calculating}>
         <Text style={styles.check}>
           {confirmed ? "☑" : "☐"} I confirm this will be checked clinically before use
         </Text>
       </Pressable>
-      <Pressable style={styles.button} onPress={() => void onCalc()}>
-        <Text style={styles.buttonText}>Calculate (sourced rules only)</Text>
+      <Pressable
+        style={[styles.button, calculating && styles.buttonDisabled]}
+        onPress={() => void onCalc()}
+        disabled={calculating}
+      >
+        <Text style={styles.buttonText}>
+          {calculating ? "Calculating…" : "Calculate (sourced rules only)"}
+        </Text>
       </Pressable>
 
       {calcError ? <Text style={styles.error}>{calcError}</Text> : null}
@@ -172,6 +192,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
   },
+  buttonDisabled: { opacity: 0.6 },
   buttonText: { color: theme.colors.white, fontWeight: "700" },
   prose: {
     color: theme.colors.ink,

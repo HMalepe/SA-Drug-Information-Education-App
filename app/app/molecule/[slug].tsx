@@ -28,9 +28,13 @@ export default function Molecule360Screen() {
   const [activeId, setActiveId] = useState("chemistry");
   const [question, setQuestion] = useState("What is the mechanism of action?");
   const [aiOut, setAiOut] = useState<string | null>(null);
+  const [asking, setAsking] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
+    setLoading(true);
+    setError(null);
+    setAiOut(null);
     (async () => {
       try {
         const data = await getMedicine360(String(slug));
@@ -58,20 +62,36 @@ export default function Molecule360Screen() {
   }, [tab]);
 
   async function onAsk() {
+    if (asking) return;
+    const q = question.trim();
+    if (!q) return;
+    setAsking(true);
     setAiOut(null);
     try {
-      const res = await askAi(String(slug), question);
+      const res = await askAi(String(slug), q);
       if (res.status === "answered") {
-        setAiOut(
-          `${res.answer}\n\nCitations:\n${res.citations
-            .map((c) => `• ${c.fieldPath}: ${c.citation} (${c.lastReviewed})`)
-            .join("\n")}`,
-        );
+        const answer = typeof res.answer === "string" ? res.answer : "";
+        const citations = Array.isArray(res.citations) ? res.citations : [];
+        const citeBlock = citations
+          .map((c) => {
+            const path = typeof c.fieldPath === "string" ? c.fieldPath : "";
+            const cite = typeof c.citation === "string" ? c.citation : "";
+            const reviewed = typeof c.lastReviewed === "string" ? c.lastReviewed : "";
+            return `• ${path}: ${cite} (${reviewed})`;
+          })
+          .join("\n");
+        setAiOut(citeBlock ? `${answer}\n\nCitations:\n${citeBlock}` : answer);
       } else {
-        setAiOut(`Refused: ${res.refusalReason}`);
+        const reason =
+          typeof res.refusalReason === "string" && res.refusalReason.trim()
+            ? res.refusalReason
+            : "Refused — no grounded answer available.";
+        setAiOut(`Refused: ${reason}`);
       }
     } catch (e) {
       setAiOut(e instanceof Error ? e.message : "AI request failed");
+    } finally {
+      setAsking(false);
     }
   }
 
@@ -136,9 +156,14 @@ export default function Molecule360Screen() {
               style={styles.input}
               placeholder="Ask about this molecule"
               placeholderTextColor={theme.colors.slate}
+              editable={!asking}
             />
-            <Pressable style={styles.button} onPress={onAsk}>
-              <Text style={styles.buttonText}>Ask (grounded)</Text>
+            <Pressable
+              style={[styles.button, asking && styles.buttonDisabled]}
+              onPress={() => void onAsk()}
+              disabled={asking}
+            >
+              <Text style={styles.buttonText}>{asking ? "Asking…" : "Ask (grounded)"}</Text>
             </Pressable>
             {aiOut ? <Text style={styles.aiOut}>{aiOut}</Text> : null}
           </View>
@@ -196,5 +221,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
   },
+  buttonDisabled: { opacity: 0.6 },
   buttonText: { color: theme.colors.white, fontWeight: "700" },
 });

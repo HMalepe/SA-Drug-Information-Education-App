@@ -60,4 +60,16 @@ describe("CI typecheck coverage", () => {
     assert.match(src, /catch\s*\(/);
     assert.doesNotMatch(src, /\bfetch\s*\(/);
   });
+
+  it("Expo molecule Ask + dosing calc use busy gates and coerce AI strings", () => {
+    const mol = readFileSync(join(root, "app/app/molecule/[slug].tsx"), "utf8");
+    assert.match(mol, /setAsking/);
+    assert.match(mol, /typeof res\.answer === "string"/);
+    assert.match(mol, /typeof res\.refusalReason === "string"/);
+    assert.match(mol, /setLoading\(true\)/);
+
+    const dosing = readFileSync(join(root, "app/app/dosing/[slug].tsx"), "utf8");
+    assert.match(dosing, /setCalculating/);
+    assert.match(dosing, /Number\.isFinite\(weightKg\)/);
+  });
 });
