@@ -103,7 +103,8 @@
     "Web Pro tools: substitution + formulary sourced panels (no clinical JSON dump; missing SEP ≠ R0)",
     "Web Pro tools: availability + shortages sourced panels (empty ≠ reassuring; no clinical JSON dump)",
     "Web Pro tools: pharmacy locator sourced panel (illustrative directory + published SEP context)",
-    "Web Pro tools: offline pack/cache sourced panel (overdose first-aid always paired with disclaimer)"
+    "Web Pro tools: offline pack/cache sourced panel (overdose first-aid always paired with disclaimer)",
+    "Web Pro tools: vision resolve sourced panel; remove remaining showRaw JSON dump on /tools"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

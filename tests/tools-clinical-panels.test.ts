@@ -205,4 +205,18 @@ describe("Pro tools clinical result panels", () => {
     assert.doesNotMatch(readBody, /showRaw\(/);
     assert.match(readBody, /showClinicalPanel\("offlinepack"/);
   });
+
+  it("vision resolve routes to VisionResolveResultPanel; tools page has no showRaw", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function VisionResolveResultPanel/);
+    assert.match(src, /async function resolveVision/);
+    assert.match(src, /result\.note/);
+    assert.doesNotMatch(src, /function showRaw/);
+    assert.doesNotMatch(src, /setOut\(JSON\.stringify/);
+    const runFn = src.slice(src.indexOf("async function resolveVision"));
+    const end = runFn.indexOf("async function runDoseAdjustment");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
+    assert.doesNotMatch(body, /showRaw\(/);
+    assert.match(body, /showClinicalPanel\("vision"/);
+  });
 });

@@ -264,6 +264,24 @@ type OfflinePackResult = {
   fromCache?: boolean;
 };
 
+type VisionHitView = {
+  kind: "barcode" | "brand_text" | "fuzzy" | string;
+  query: string;
+  moleculeId: string;
+  moleculeSlug: string;
+  moleculeName: string;
+  brandName?: string;
+  confidence: "high" | "medium" | "low" | string;
+  note: string;
+};
+
+type VisionResolveResult = {
+  error?: string;
+  upgradeTo?: string;
+  hits?: VisionHitView[];
+  note?: string;
+};
+
 const STOCK_SIGNAL_TONE: Record<StockSignalView, string> = {
   shortage: "red",
   limited: "orange",
@@ -304,7 +322,6 @@ export default function ToolsPage() {
   const [clashSlugs, setClashSlugs] = useState("amoxicillin, warfarin, aspirin");
   const [insertLevel, setInsertLevel] = useState<"grade5" | "professional">("grade5");
   const [city, setCity] = useState("johannesburg");
-  const [out, setOut] = useState("");
   const [doseAdjust, setDoseAdjust] = useState<DoseAdjustResult | null>(null);
   const [clashBoard, setClashBoard] = useState<ClashBoardView | null>(null);
   const [counselling, setCounselling] = useState<CounsellingResult | null>(null);
@@ -320,6 +337,7 @@ export default function ToolsPage() {
   const [shortages, setShortages] = useState<ShortagesResult | null>(null);
   const [pharmacyLocator, setPharmacyLocator] = useState<PharmacyLocatorResult | null>(null);
   const [offlinePack, setOfflinePack] = useState<OfflinePackResult | null>(null);
+  const [vision, setVision] = useState<VisionResolveResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -349,11 +367,7 @@ export default function ToolsPage() {
     setShortages(null);
     setPharmacyLocator(null);
     setOfflinePack(null);
-  }
-
-  function showRaw(data: unknown) {
-    clearClinicalPanels();
-    setOut(JSON.stringify(data, null, 2));
+    setVision(null);
   }
 
   function showClinicalPanel(
@@ -372,11 +386,11 @@ export default function ToolsPage() {
       | "availability"
       | "shortages"
       | "pharmacy"
-      | "offlinepack",
+      | "offlinepack"
+      | "vision",
     data: unknown,
   ) {
     clearClinicalPanels();
-    setOut("");
     if (kind === "dose") setDoseAdjust(data as DoseAdjustResult);
     else if (kind === "clash") setClashBoard(data as ClashBoardView);
     else if (kind === "counselling") setCounselling(data as CounsellingResult);
@@ -391,7 +405,8 @@ export default function ToolsPage() {
     else if (kind === "availability") setAvailability(data as AvailabilityResult);
     else if (kind === "shortages") setShortages(data as ShortagesResult);
     else if (kind === "pharmacy") setPharmacyLocator(data as PharmacyLocatorResult);
-    else setOfflinePack(data as OfflinePackResult);
+    else if (kind === "offlinepack") setOfflinePack(data as OfflinePackResult);
+    else setVision(data as VisionResolveResult);
   }
 
   async function ensurePro() {
@@ -463,7 +478,16 @@ export default function ToolsPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: uid, input: scanInput }),
     });
-    showRaw(await res.json());
+    if (res.status === 402) {
+      track(
+        "gated_feature_hit",
+        { feature: "vision_scan", tier: "professional" },
+        { tier: "free" },
+      );
+    } else {
+      track("tool_used", { tool: "vision_scan" }, { tier: "professional" });
+    }
+    showClinicalPanel("vision", await res.json());
   }
 
   async function runDoseAdjustment(confirmed: boolean) {
@@ -878,12 +902,7 @@ export default function ToolsPage() {
       {shortages && <ShortagesResultPanel result={shortages} />}
       {pharmacyLocator && <PharmacyLocatorResultPanel result={pharmacyLocator} />}
       {offlinePack && <OfflinePackResultPanel result={offlinePack} />}
-
-      {out && (
-        <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
-          {out}
-        </pre>
-      )}
+      {vision && <VisionResolveResultPanel result={vision} />}
     </>
   );
 }
@@ -1601,6 +1620,50 @@ function OfflinePackResultPanel({ result }: { result: OfflinePackResult }) {
           </div>
         ))
       )}
+    </section>
+  );
+}
+
+function VisionResolveResultPanel({ result }: { result: VisionResolveResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Pack / barcode resolve</h2>
+        <p>{result.error}</p>
+        {result.upgradeTo ? <p className="muted">Upgrade to {result.upgradeTo}</p> : null}
+      </section>
+    );
+  }
+  const hits = result.hits ?? [];
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>Pack / barcode resolve</h2>
+      {hits.length === 0 ? (
+        <p className="muted">
+          No published matches — empty ≠ unidentified. Try another barcode, brand, or form cue;
+          confirm the physical pack.
+        </p>
+      ) : (
+        <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+          {hits.map((h) => (
+            <li key={`${h.kind}-${h.moleculeId}-${h.query}`} style={{ marginBottom: 10 }}>
+              <strong>{h.moleculeName}</strong>
+              {h.brandName ? ` · ${h.brandName}` : ""} · {h.moleculeSlug}
+              <br />
+              <span className="muted">
+                {h.kind} · confidence {h.confidence} · query “{h.query}”
+              </span>
+              <br />
+              <span className="muted">{h.note}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {result.note ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.note}
+        </p>
+      ) : null}
     </section>
   );
 }
