@@ -832,3 +832,69 @@ export function summarizeFounderProgress(input: {
   };
 }
 
+export interface BatchChecklist {
+  scope: string;
+  progress: FounderProgressSnapshot;
+  stgBlocked: Array<{ extractId: string; reason: string; preview: string }>;
+  dosingNumericSuspect: Array<{
+    moleculeId: string;
+    moleculeSlug: string;
+    fieldPath: string;
+    preview: string;
+  }>;
+  stgCli: EligibleStgCliExport;
+  dosingCli: PlaceholderDosingCliExport;
+  /** One-shot batch STG publish command (still no --write). */
+  stgBatchPreviewLine: string;
+  note: string;
+}
+
+/**
+ * One-shot founder sweep pack for a batch letter or all.
+ * Read-only aggregation — never invents mg, never writes, never includes --write.
+ */
+export function buildBatchChecklist(input: {
+  scope: string;
+  progress: FounderProgressSnapshot;
+  stgBlocked: Array<{ extractId: string; reason: string; preview: string }>;
+  dosingNumericSuspect: Array<{
+    moleculeId: string;
+    moleculeSlug: string;
+    fieldPath: string;
+    preview: string;
+  }>;
+  stgEligible: Array<{ extractId: string }>;
+  dosingPlaceholders: DosingPlanItem[];
+  stgAttestation?: string;
+  dosingAttestation?: string;
+}): BatchChecklist {
+  const scope = (input.scope ?? "all").toLowerCase() === "all" ? "all" : input.scope.toUpperCase();
+  const stgCli = exportEligibleStgCli({
+    scope,
+    eligible: input.stgEligible,
+    blockedCount: input.stgBlocked.length,
+    attestation: input.stgAttestation,
+  });
+  const dosingCli = exportPlaceholderDosingCli({
+    scope,
+    items: input.dosingPlaceholders,
+    attestation: input.dosingAttestation,
+  });
+  const stgAtt = (input.stgAttestation ?? DEFAULT_STG_POINTER_ATTESTATION)
+    .trim()
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"');
+  const batchArg = scope === "all" ? "all" : scope;
+  return {
+    scope,
+    progress: input.progress,
+    stgBlocked: input.stgBlocked,
+    dosingNumericSuspect: input.dosingNumericSuspect,
+    stgCli,
+    dosingCli,
+    stgBatchPreviewLine: `npm run review:batches -- publish-stg-batch ${batchArg} --attestation "${stgAtt}"`,
+    note:
+      "Founder checklist (read-only). Copy CLI lines below; append --write only after clinical confirm. Never invents mg. No dosing batch auto-publish.",
+  };
+}
+

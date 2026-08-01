@@ -17,6 +17,8 @@ Only **published** clinical facts render in app/web (constitution 3.3).
    - `npm run review:report` — coverage by therapeutic area
    - `npm run review:batches` — Batch A–I dosing + STG extract backlog
    - `npm run review:batches -- progress` — read-only next actions (STG + dosing + RAG)
+   - `npm run review:batches -- checklist A|all` — one-shot sweep pack: progress + blocked +
+     copy-ready STG/dosing CLI lines (no `--write`)
    - `npm run review:batches -- decisions [--limit 50]` — recent decisions.jsonl audit lines
    - `npm run review:batches -- show A` — detail for one batch
    - `npm run review:batches -- plan-stg A|all` — dry-run report of STG drafts eligible to publish

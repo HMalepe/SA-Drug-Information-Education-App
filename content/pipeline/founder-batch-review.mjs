@@ -6,6 +6,7 @@
  * Usage:
  *   npm run review:batches
  *   npm run review:batches -- progress [A|all] [--json]
+ *   npm run review:batches -- checklist [A|all] [--json]
  *   npm run review:batches -- decisions [A|all] [--limit 50] [--json]
  *   npm run review:batches -- show A
  *   npm run review:batches -- show A --stg
@@ -50,6 +51,7 @@ import {
   flattenStgEligibleItems,
   DEFAULT_STG_POINTER_ATTESTATION,
   summarizeFounderProgress,
+  buildBatchChecklist,
   describeInRegionRagEnv,
   parseReviewDecisionsJsonl,
   listRecentReviewDecisions,
@@ -804,6 +806,145 @@ function cmdProgress(json, batchRaw) {
   console.log(`\n${snap.note}`);
 }
 
+function cmdChecklist(json, batchRaw) {
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgDoc().extracts ?? [];
+  const { molecules, safetyProfiles } = loadAllMoleculesAndSafety();
+  const dosingItems = buildReviewQueue({
+    molecules,
+    safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+  const rag = describeInRegionRagEnv(process.env);
+  const ragInput = {
+    ok: rag.ok,
+    mode: rag.mode,
+    embedderConfigured: rag.embedderConfigured,
+    llmConfigured: rag.llmConfigured,
+  };
+
+  const key = batchRaw ? String(batchRaw).toUpperCase() : "ALL";
+  let progress;
+  let stgBlocked;
+  let dosingNumericSuspect;
+  let stgEligible;
+  let dosingPlaceholders;
+  let scope;
+
+  if (key === "ALL") {
+    const stg = planStgAllBatches({ batchMoleculeIds, extracts });
+    const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+    scope = "all";
+    progress = summarizeFounderProgress({
+      scope: "all",
+      stgTotals: stg.totals,
+      dosingTotals: dosing.totals,
+      rag: ragInput,
+    });
+    stgBlocked = stg.batches.flatMap((b) => b.blocked);
+    dosingNumericSuspect = dosing.batches.flatMap((b) => b.numericSuspect);
+    stgEligible = flattenStgEligibleItems(stg.batches);
+    dosingPlaceholders = dosing.batches.flatMap((b) => b.placeholderAbsent);
+  } else {
+    const ref = STG_BATCH_A_I_SEEDS.find((x) => x.batch === key);
+    if (!ref) {
+      console.error(`Unknown batch ${batchRaw}. Use A–I or omit for all.`);
+      process.exit(2);
+    }
+    const ids = batchMoleculeIds.get(key) ?? [];
+    const stg = planStgBatchPublish({
+      batch: key,
+      extracts,
+      moleculeIds: ids,
+    });
+    const dosing = planDosingBatch({
+      batch: key,
+      dosingItems,
+      moleculeIds: ids,
+    });
+    scope = key;
+    progress = summarizeFounderProgress({
+      scope: key,
+      stgTotals: {
+        alreadyPublished: stg.alreadyPublished,
+        eligible: stg.eligible.length,
+        blocked: stg.blocked.length,
+      },
+      dosingTotals: {
+        placeholderAbsent: dosing.placeholderAbsent.length,
+        numericSuspect: dosing.numericSuspect.length,
+        otherDraft: dosing.otherDraft.length,
+      },
+      rag: ragInput,
+    });
+    stgBlocked = stg.blocked;
+    dosingNumericSuspect = dosing.numericSuspect;
+    stgEligible = stg.eligible.map((e) => ({ extractId: e.extractId }));
+    dosingPlaceholders = dosing.placeholderAbsent;
+  }
+
+  const pack = buildBatchChecklist({
+    scope,
+    progress,
+    stgBlocked,
+    dosingNumericSuspect,
+    stgEligible,
+    dosingPlaceholders,
+  });
+
+  if (json) {
+    console.log(JSON.stringify(pack, null, 2));
+    return;
+  }
+
+  const label = pack.scope === "all" ? "Batches A–I" : `Batch ${pack.scope}`;
+  console.log(`Founder checklist — ${label} (read-only, no --write)\n`);
+  console.log(
+    `STG: published=${pack.progress.stg.alreadyPublished} eligible=${pack.progress.stg.eligible} blocked=${pack.progress.stg.blocked}`,
+  );
+  console.log(
+    `Dosing: placeholders=${pack.progress.dosing.placeholderAbsent} suspects=${pack.progress.dosing.numericSuspect} other=${pack.progress.dosing.otherDraft}`,
+  );
+  console.log(
+    `RAG: ok=${pack.progress.rag.ok} mode=${pack.progress.rag.mode} hosted=${pack.progress.rag.hostedConfigured}`,
+  );
+
+  console.log("\nNext actions:");
+  for (const [i, action] of pack.progress.nextActions.entries()) {
+    console.log(`  ${i + 1}. ${action}`);
+  }
+
+  if (pack.stgBlocked.length > 0) {
+    console.log(`\nBlocked STG (${pack.stgBlocked.length}):`);
+    for (const b of pack.stgBlocked) {
+      console.log(`  - ${b.extractId}: ${b.reason}`);
+    }
+  } else {
+    console.log("\nBlocked STG: none");
+  }
+
+  if (pack.dosingNumericSuspect.length > 0) {
+    console.log(`\nNumeric-suspect dosing (do not publish) (${pack.dosingNumericSuspect.length}):`);
+    for (const row of pack.dosingNumericSuspect) {
+      console.log(`  - ${row.moleculeId} ${row.fieldPath}`);
+    }
+  } else {
+    console.log("\nNumeric-suspect dosing: none");
+  }
+
+  console.log(`\nSTG batch preview (still no --write):\n  ${pack.stgBatchPreviewLine}`);
+
+  console.log(`\nCopy-ready STG CLI (${pack.stgCli.count}):`);
+  if (pack.stgCli.lines.length === 0) console.log("  (none)");
+  else for (const line of pack.stgCli.lines) console.log(`  ${line}`);
+
+  console.log(`\nCopy-ready dosing placeholder CLI (${pack.dosingCli.count}):`);
+  if (pack.dosingCli.lines.length === 0) console.log("  (none)");
+  else for (const line of pack.dosingCli.lines) console.log(`  ${line}`);
+
+  console.log(`\n${pack.note}`);
+}
+
 function cmdPublishStgBatch(batchRaw, attestation, write) {
   const key = String(batchRaw).toUpperCase();
   const batchMoleculeIds = loadBatchMoleculeIds();
@@ -917,6 +1058,7 @@ function usage() {
 
   npm run review:batches
   npm run review:batches -- progress [A|all] [--json]
+  npm run review:batches -- checklist [A|all] [--json]
   npm run review:batches -- decisions [A|all] [--limit 50] [--json]
   npm run review:batches -- show A [--stg|--dosing] [--json]
   npm run review:batches -- plan-stg A|all [--json]
@@ -944,6 +1086,8 @@ if (cmd === "summary") {
   printSummary(flags.has("json"));
 } else if (cmd === "progress") {
   cmdProgress(flags.has("json"), positional[1]);
+} else if (cmd === "checklist") {
+  cmdChecklist(flags.has("json"), positional[1]);
 } else if (cmd === "decisions") {
   cmdDecisions(flags.has("json"), limit, positional[1]);
 } else if (cmd === "show") {
