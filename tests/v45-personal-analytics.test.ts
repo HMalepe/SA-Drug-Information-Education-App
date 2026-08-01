@@ -57,7 +57,6 @@ function evt(partial: {
     props: partial.props,
     at: partial.at ?? "2026-07-23T10:00:00.000Z",
   });
-  assert.equal(built.ok, true);
   if (!built.ok) throw new Error(built.reason);
   return built.event;
 }

@@ -5,6 +5,13 @@ const API_BASE =
   (Constants.expoConfig?.extra?.apiBaseUrl as string | undefined) ??
   "http://localhost:4000";
 
+/** Canonical citation tag from Medicine 360 / dose calculator — never invent text. */
+export type SourceTag = {
+  citation?: string;
+  lastReviewed?: string;
+  id?: string;
+};
+
 async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
     ...init,
@@ -30,7 +37,7 @@ export function getMedicine360(slug: string) {
   return api<{
     molecule: { id: string; innName: string; slug: string; className: string };
     tabOrder: Array<{ id: string; label: string; index: number }>;
-    tabs: Record<string, { title: string; body: unknown; sources: unknown[] }>;
+    tabs: Record<string, { title: string; body: unknown; sources: SourceTag[] }>;
     defaultTab: string;
   }>(`/molecules/${slug}`);
 }

@@ -13,6 +13,10 @@ const safety: SafetyProfile[] = [
     id: "safe-amox",
     moleculeId: "mol-amox",
     publishState: "published",
+    contraindications: [],
+    warnings: [],
+    clinicalPearls: [],
+    counsellingPoints: [],
     foodLifestyle: {
       value: "May be taken with food if stomach upset occurs; complete the prescribed course unless a clinician advises otherwise.",
       sourceId: "src-materia-edu",

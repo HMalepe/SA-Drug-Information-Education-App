@@ -10,10 +10,8 @@ import {
   View,
 } from "react-native";
 import { MoleculeTabBody } from "../../lib/MoleculeTabBody";
-import { askAi, getMedicine360 } from "../../lib/api";
+import { askAi, getMedicine360, type SourceTag } from "../../lib/api";
 import { theme } from "../../lib/theme";
-
-type SourceTag = { citation?: string; lastReviewed?: string; id?: string };
 
 export default function Molecule360Screen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();

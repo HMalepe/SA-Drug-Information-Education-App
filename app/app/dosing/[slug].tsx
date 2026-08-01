@@ -2,10 +2,9 @@ import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { MoleculeTabBody } from "../../lib/MoleculeTabBody";
-import { calculateDose, getMedicine360 } from "../../lib/api";
+import { calculateDose, getMedicine360, type SourceTag } from "../../lib/api";
 import { theme } from "../../lib/theme";
 
-type SourceTag = { citation?: string; lastReviewed?: string; id?: string };
 type TabBody = { title: string; body: unknown; sources: SourceTag[] };
 
 type DoseCalcView = {

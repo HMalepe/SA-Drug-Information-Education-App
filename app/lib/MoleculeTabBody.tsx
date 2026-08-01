@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import type { SourceTag } from "./api";
 import { theme } from "./theme";
-
-type SourceTag = { citation?: string; lastReviewed?: string; id?: string };
 
 function asRecord(body: unknown): Record<string, unknown> {
   return body && typeof body === "object" ? (body as Record<string, unknown>) : {};

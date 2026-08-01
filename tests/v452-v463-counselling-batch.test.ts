@@ -67,7 +67,7 @@ describe("v452–v463 deepened counselling batch §9 (final thin-core clear)", (
   it("clears the published thin 4-line counselling backlog", () => {
     const thin = listMoleculesWithPublishedCounselling().filter((id) => {
       const en = getCounsellingScript(id, "en");
-      return en !== undefined && en.lines.length < 6;
+      return en != null && en.lines.length < 6;
     });
     assert.deepEqual(thin, []);
   });

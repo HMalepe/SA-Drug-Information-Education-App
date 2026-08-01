@@ -24,6 +24,10 @@ jobs:
         run: npm run rag:check-env
       - name: Typecheck
         run: npm run typecheck
+      - name: Install Expo app deps
+        run: npm install --prefix app
+      - name: Typecheck Expo app
+        run: npm run typecheck:app
       - name: Unit + clinical eval
         run: npm test && npm run test:clinical
       - name: S0 gate note

@@ -7,7 +7,7 @@ import { describe, it } from "node:test";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const cli = join(root, "content/pipeline/founder-batch-review.mjs");
 
-function run(args) {
+function run(args: string[]) {
   return spawnSync(process.execPath, [cli, ...args], {
     cwd: root,
     encoding: "utf8",

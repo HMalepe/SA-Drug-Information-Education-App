@@ -44,8 +44,8 @@ function loadExtracts(): StgExtract[] {
 }
 
 function loadDosingItems() {
-  const molecules = [];
-  const safetyProfiles = [];
+  const molecules: Array<{ id: string }> = [];
+  const safetyProfiles: never[] = [];
   for (const ref of STG_BATCH_A_I_SEEDS) {
     const doc = JSON.parse(
       readFileSync(join(root, "content/seed", ref.seedFile), "utf8"),
@@ -58,7 +58,7 @@ function loadDosingItems() {
   }
   return buildReviewQueue({
     molecules: molecules as never[],
-    safetyProfiles: safetyProfiles as never[],
+    safetyProfiles,
     states: ["draft", "reviewed"],
   });
 }

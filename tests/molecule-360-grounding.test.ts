@@ -5,7 +5,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { emptyStateMessage } from "@materia/shared";
-import { buildMolecule360 } from "../api/src/moleculeView.ts";
+import { buildMolecule360 } from "../api/src/moleculeView.js";
 
 describe("buildMolecule360 grounding contract", () => {
   it("returns null for unknown slug", () => {
