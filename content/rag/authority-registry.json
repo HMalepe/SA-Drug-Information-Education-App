@@ -95,7 +95,8 @@
     "Web Pro tools: counselling + insert + monograph sourced panels (no clinical JSON dump)",
     "Web Pro tools: handout + voice sourced panels (no clinical JSON dump); handout sourceNote on payload",
     "Batch-scoped review decisions — CLI/API ?batch= + /review Recent decisions filter",
-    "Locum + cold-chain sourced panels; /review action status without clinical JSON dump"
+    "Locum + cold-chain sourced panels; /review action status without clinical JSON dump",
+    "Composition test for GET /review/decisions?batch= (real seed + STG extracts)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
