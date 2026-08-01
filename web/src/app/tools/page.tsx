@@ -72,6 +72,27 @@ type MonographResult = {
   disclaimer?: string;
 };
 
+type HandoutResult = {
+  error?: string;
+  available?: string[];
+  title?: string;
+  moleculeName?: string;
+  moleculeSlug?: string;
+  lang?: string;
+  lines?: string[];
+  sourceNote?: string;
+  disclaimer?: string;
+  generatedAt?: string;
+};
+
+type VoiceResult = {
+  error?: string;
+  moleculeSlug?: string;
+  lang?: string;
+  text?: string;
+  note?: string;
+};
+
 const TONE_COLOR: Record<string, string> = {
   red: "var(--danger)",
   orange: "var(--caution)",
@@ -96,6 +117,8 @@ export default function ToolsPage() {
   const [counselling, setCounselling] = useState<CounsellingResult | null>(null);
   const [insertResult, setInsertResult] = useState<InsertResult | null>(null);
   const [monograph, setMonograph] = useState<MonographResult | null>(null);
+  const [handout, setHandout] = useState<HandoutResult | null>(null);
+  const [voice, setVoice] = useState<VoiceResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -115,6 +138,8 @@ export default function ToolsPage() {
     setCounselling(null);
     setInsertResult(null);
     setMonograph(null);
+    setHandout(null);
+    setVoice(null);
   }
 
   function showRaw(data: unknown) {
@@ -123,7 +148,7 @@ export default function ToolsPage() {
   }
 
   function showClinicalPanel(
-    kind: "dose" | "clash" | "counselling" | "insert" | "monograph",
+    kind: "dose" | "clash" | "counselling" | "insert" | "monograph" | "handout" | "voice",
     data: unknown,
   ) {
     clearClinicalPanels();
@@ -132,7 +157,9 @@ export default function ToolsPage() {
     else if (kind === "clash") setClashBoard(data as ClashBoardView);
     else if (kind === "counselling") setCounselling(data as CounsellingResult);
     else if (kind === "insert") setInsertResult(data as InsertResult);
-    else setMonograph(data as MonographResult);
+    else if (kind === "monograph") setMonograph(data as MonographResult);
+    else if (kind === "handout") setHandout(data as HandoutResult);
+    else setVoice(data as VoiceResult);
   }
 
   async function ensurePro() {
@@ -244,13 +271,23 @@ export default function ToolsPage() {
     showClinicalPanel("monograph", await res.json());
   }
 
+  async function runHandout() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/handout/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+    );
+    track("tool_used", { tool: "handout_export" }, { tier: "professional" });
+    showClinicalPanel("handout", await res.json());
+  }
+
   async function speakVoice() {
     const uid = await ensurePro();
     const res = await fetch(
       `${API}/tools/voice/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
     );
     const data = await res.json();
-    showRaw(data);
+    track("tool_used", { tool: "voice_mode" }, { tier: "professional" });
+    showClinicalPanel("voice", data);
     if (res.ok && data.text && typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(data.text as string);
@@ -440,13 +477,7 @@ export default function ToolsPage() {
           cardio/neuro/endocrine + supportive). Locum accepts <code>?lang=zu</code> (af/st/xh
           too).
         </p>{" "}
-        <button
-          className="btn"
-          type="button"
-          onClick={() =>
-            void call(`/tools/handout/${encodeURIComponent(slug)}?lang=${lang}`)
-          }
-        >
+        <button className="btn" type="button" onClick={() => void runHandout()}>
           Counselling handout
         </button>{" "}
         <button className="btn" type="button" onClick={() => void runMonograph()}>
@@ -518,6 +549,8 @@ export default function ToolsPage() {
       {counselling && <CounsellingResultPanel result={counselling} />}
       {insertResult && <InsertResultPanel result={insertResult} />}
       {monograph && <MonographResultPanel result={monograph} />}
+      {handout && <HandoutResultPanel result={handout} />}
+      {voice && <VoiceResultPanel result={voice} />}
 
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
@@ -707,6 +740,76 @@ function MonographResultPanel({ result }: { result: MonographResult }) {
       {result.disclaimer ? (
         <p className="muted" style={{ marginBottom: 0 }}>
           {result.disclaimer}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function HandoutResultPanel({ result }: { result: HandoutResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Counselling handout</h2>
+        <p>{result.error}</p>
+        {result.available && result.available.length > 0 ? (
+          <p className="muted">Available languages: {result.available.join(", ")}</p>
+        ) : null}
+      </section>
+    );
+  }
+  const lines = result.lines ?? [];
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>{result.title ?? "Counselling handout"}</h2>
+      <p className="muted">
+        {result.moleculeName}
+        {result.lang ? ` · ${result.lang}` : ""}
+        {result.generatedAt ? ` · generated ${result.generatedAt}` : ""}
+      </p>
+      {lines.length === 0 ? (
+        <p className="muted">No published counselling lines for this handout.</p>
+      ) : (
+        <ol style={{ paddingLeft: 20 }}>
+          {lines.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ol>
+      )}
+      {result.sourceNote ? <p className="source-tag">source · {result.sourceNote}</p> : null}
+      {result.disclaimer ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.disclaimer}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function VoiceResultPanel({ result }: { result: VoiceResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Voice read-aloud</h2>
+        <p>{result.error}</p>
+      </section>
+    );
+  }
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Voice read-aloud
+        {result.lang ? ` · ${result.lang}` : ""}
+        {result.moleculeSlug ? ` · ${result.moleculeSlug}` : ""}
+      </h2>
+      {result.text ? (
+        <p style={{ whiteSpace: "pre-wrap" }}>{result.text}</p>
+      ) : (
+        <p className="muted">No voice text returned.</p>
+      )}
+      {result.note ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.note}
         </p>
       ) : null}
     </section>

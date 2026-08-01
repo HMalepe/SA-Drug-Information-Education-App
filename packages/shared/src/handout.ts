@@ -7,6 +7,8 @@ export interface HandoutPayload {
   moleculeSlug: string;
   lang: CounsellingLang;
   lines: string[];
+  /** Echo of counselling script sourceNote when provided — never invented. */
+  sourceNote?: string;
   disclaimer: string;
   generatedAt: string;
   /** Plain text + simple HTML for print/share — PDF later */
@@ -63,6 +65,7 @@ export function buildCounsellingHandout(input: {
     moleculeSlug: input.molecule.slug,
     lang: input.lang,
     lines: input.lines,
+    sourceNote: input.sourceNote,
     disclaimer: HANDOUT_DISCLAIMER,
     generatedAt,
     plainText,

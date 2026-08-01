@@ -67,9 +67,32 @@ describe("Pro tools clinical result panels", () => {
     assert.match(src, /omittedDraftTabs/);
     assert.match(src, /async function runMonograph/);
     const runFn = src.slice(src.indexOf("async function runMonograph"));
+    const end = runFn.indexOf("async function runHandout");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.match(body, /showClinicalPanel\("monograph"/);
+  });
+
+  it("handout routes to HandoutResultPanel with lines + disclaimer", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function HandoutResultPanel/);
+    assert.match(src, /async function runHandout/);
+    assert.match(src, /result\.sourceNote|sourceNote/);
+    const runFn = src.slice(src.indexOf("async function runHandout"));
     const end = runFn.indexOf("async function speakVoice");
     const body = runFn.slice(0, end);
     assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
-    assert.match(body, /showClinicalPanel\("monograph"/);
+    assert.match(body, /showClinicalPanel\("handout"/);
+  });
+
+  it("voice routes to VoiceResultPanel (text + note), not showRaw JSON", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function VoiceResultPanel/);
+    const runFn = src.slice(src.indexOf("async function speakVoice"));
+    const end = runFn.indexOf("\n  return (");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
+    assert.doesNotMatch(body, /showRaw\(/);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.match(body, /showClinicalPanel\("voice"/);
   });
 });
