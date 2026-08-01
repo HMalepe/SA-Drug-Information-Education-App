@@ -114,7 +114,8 @@
     "Shared formatApiError — ops/review/onboarding never JSON.stringify error objects",
     "Wire formatApiError across learn/notes/companion/insights (no String(data.error))",
     "formatApiError in @materia/shared + Expo api messageFromHttpErrorBody (no raw JSON throws)",
-    "Expo home: listMolecules/searchMolecules via shared api + visible error state"
+    "Expo home: listMolecules/searchMolecules via shared api + visible error state",
+    "Expo auth: try/catch + busy gate + visible error (no unhandled API reject)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

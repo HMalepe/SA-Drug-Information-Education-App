@@ -10,13 +10,24 @@ export default function AuthScreen() {
   const [mode, setMode] = useState<(typeof MODES)[number]>("pharmacist");
   const [userId, setUserId] = useState<string | null>(null);
   const [status, setStatus] = useState("Stub auth — configure Supabase keys for production.");
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
   const [popia, setPopia] = useState(false);
   const [disclaimer, setDisclaimer] = useState(false);
 
   async function register() {
-    const res = await stubRegister(email, mode);
-    setUserId(res.user.id);
-    setStatus("Session created. Accept POPIA + medical disclaimer to ungated use.");
+    if (busy) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await stubRegister(email.trim(), mode);
+      setUserId(res.user.id);
+      setStatus("Session created. Accept POPIA + medical disclaimer to ungated use.");
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not create session");
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function consent() {
@@ -24,15 +35,25 @@ export default function AuthScreen() {
       setStatus("Accept POPIA + medical disclaimer to continue.");
       return;
     }
-    await acceptConsent(userId, "popia");
-    await acceptConsent(userId, "medical_disclaimer");
-    setStatus("Consents logged. Mode: " + mode);
+    if (busy) return;
+    setBusy(true);
+    setError(null);
+    try {
+      await acceptConsent(userId, "popia");
+      await acceptConsent(userId, "medical_disclaimer");
+      setStatus("Consents logged. Mode: " + mode);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not log consents");
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Accounts & mode</Text>
       <Text style={styles.meta}>{status}</Text>
+      {error ? <Text style={styles.error}>{error}</Text> : null}
 
       <TextInput
         style={styles.input}
@@ -40,6 +61,7 @@ export default function AuthScreen() {
         onChangeText={setEmail}
         autoCapitalize="none"
         keyboardType="email-address"
+        editable={!busy}
       />
 
       <View style={styles.modes}>
@@ -48,27 +70,36 @@ export default function AuthScreen() {
             key={m}
             onPress={() => setMode(m)}
             style={[styles.chip, mode === m && styles.chipActive]}
+            disabled={busy}
           >
             <Text style={[styles.chipText, mode === m && styles.chipTextActive]}>{m}</Text>
           </Pressable>
         ))}
       </View>
 
-      <Pressable style={styles.button} onPress={register}>
-        <Text style={styles.buttonText}>Create stub session</Text>
+      <Pressable
+        style={[styles.button, busy && styles.buttonDisabled]}
+        onPress={() => void register()}
+        disabled={busy}
+      >
+        <Text style={styles.buttonText}>{busy ? "Working…" : "Create stub session"}</Text>
       </Pressable>
 
-      <Pressable onPress={() => setPopia((v) => !v)}>
+      <Pressable onPress={() => setPopia((v) => !v)} disabled={busy}>
         <Text style={styles.check}>{popia ? "☑" : "☐"} POPIA consent (no offshore health data)</Text>
       </Pressable>
-      <Pressable onPress={() => setDisclaimer((v) => !v)}>
+      <Pressable onPress={() => setDisclaimer((v) => !v)} disabled={busy}>
         <Text style={styles.check}>
           {disclaimer ? "☑" : "☐"} Medical disclaimer (reference tool, not a device)
         </Text>
       </Pressable>
 
-      <Pressable style={styles.button} onPress={consent}>
-        <Text style={styles.buttonText}>Accept & continue</Text>
+      <Pressable
+        style={[styles.button, busy && styles.buttonDisabled]}
+        onPress={() => void consent()}
+        disabled={busy}
+      >
+        <Text style={styles.buttonText}>{busy ? "Working…" : "Accept & continue"}</Text>
       </Pressable>
     </View>
   );
@@ -83,6 +114,7 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: theme.typography.size.xl, fontWeight: "800", color: theme.colors.ink },
   meta: { color: theme.colors.slate },
+  error: { color: theme.colors.danger, fontWeight: "600" },
   input: {
     backgroundColor: theme.colors.white,
     borderWidth: 1,
@@ -107,6 +139,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
   },
+  buttonDisabled: { opacity: 0.6 },
   buttonText: { color: theme.colors.white, fontWeight: "700" },
   check: { color: theme.colors.ink },
 });

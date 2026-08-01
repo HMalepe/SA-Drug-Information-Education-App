@@ -51,4 +51,13 @@ describe("CI typecheck coverage", () => {
     assert.doesNotMatch(home, /\bfetch\s*\(/);
     assert.match(home, /setError/);
   });
+
+  it("Expo auth catches API failures and shows error state", () => {
+    const src = readFileSync(join(root, "app/app/auth.tsx"), "utf8");
+    assert.match(src, /stubRegister/);
+    assert.match(src, /acceptConsent/);
+    assert.match(src, /setError/);
+    assert.match(src, /catch\s*\(/);
+    assert.doesNotMatch(src, /\bfetch\s*\(/);
+  });
 });
