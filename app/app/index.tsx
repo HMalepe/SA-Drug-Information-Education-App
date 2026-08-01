@@ -10,8 +10,7 @@ import {
   View,
 } from "react-native";
 import { colors, space, typography } from "@materia/design-tokens";
-
-const API = process.env.EXPO_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
+import { listMolecules, searchMolecules } from "../lib/api";
 
 interface MoleculeRow {
   slug: string;
@@ -24,25 +23,50 @@ export default function HomeScreen() {
   const [areas, setAreas] = useState<string[]>([]);
   const [area, setArea] = useState<string>("");
   const [q, setQ] = useState("");
-  const [hits, setHits] = useState<Array<{ moleculeSlug: string; moleculeName: string; brandName?: string }>>([]);
+  const [hits, setHits] = useState<
+    Array<{ moleculeSlug: string; moleculeName: string; brandName?: string }>
+  >([]);
   const [loading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const qs = area ? `?area=${encodeURIComponent(area)}` : "";
-    setLoading(true);
-    fetch(`${API}/molecules${qs}`)
-      .then((r) => r.json())
-      .then((d) => {
+    let cancelled = false;
+    (async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const d = await listMolecules(area || undefined);
+        if (cancelled) return;
         setMolecules(d.molecules ?? []);
         if (d.areas) setAreas(d.areas);
-      })
-      .finally(() => setLoading(false));
+      } catch (e) {
+        if (cancelled) return;
+        setMolecules([]);
+        setError(e instanceof Error ? e.message : "Could not load molecules");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [area]);
 
   async function search() {
-    const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
-    const data = await res.json();
-    setHits(data.hits ?? []);
+    const query = q.trim();
+    if (!query || searching) return;
+    setSearching(true);
+    setError(null);
+    try {
+      const data = await searchMolecules(query);
+      setHits(data.hits ?? []);
+    } catch (e) {
+      setHits([]);
+      setError(e instanceof Error ? e.message : "Search failed");
+    } finally {
+      setSearching(false);
+    }
   }
 
   return (
@@ -56,12 +80,18 @@ export default function HomeScreen() {
           placeholderTextColor={colors.slate}
           value={q}
           onChangeText={setQ}
-          onSubmitEditing={search}
+          onSubmitEditing={() => void search()}
+          editable={!searching}
         />
-        <Pressable style={styles.btn} onPress={search}>
-          <Text style={styles.btnText}>Search</Text>
+        <Pressable
+          style={[styles.btn, searching && styles.btnDisabled]}
+          onPress={() => void search()}
+          disabled={searching}
+        >
+          <Text style={styles.btnText}>{searching ? "…" : "Search"}</Text>
         </Pressable>
       </View>
+      {error ? <Text style={styles.error}>{error}</Text> : null}
       {hits.map((h) => (
         <Link key={`${h.moleculeSlug}-${h.brandName}`} href={`/molecule/${h.moleculeSlug}`} asChild>
           <Pressable style={styles.card}>
@@ -95,6 +125,9 @@ export default function HomeScreen() {
         <FlatList
           data={molecules}
           keyExtractor={(item) => item.slug}
+          ListEmptyComponent={
+            error ? null : <Text style={styles.muted}>No molecules in this area yet.</Text>
+          }
           renderItem={({ item }) => (
             <Link href={`/molecule/${item.slug}`} asChild>
               <Pressable style={styles.card}>
@@ -131,7 +164,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.md,
     justifyContent: "center",
   },
+  btnDisabled: { opacity: 0.6 },
   btnText: { color: colors.white, fontWeight: "700" },
+  error: { color: colors.danger, marginBottom: space.sm, fontWeight: "600" },
   section: {
     marginTop: space.md,
     marginBottom: space.sm,

@@ -39,4 +39,16 @@ describe("CI typecheck coverage", () => {
       assert.match(src, /SourceTag/);
     }
   });
+
+  it("Expo home uses shared api client (no raw fetch)", () => {
+    const api = readFileSync(join(root, "app/lib/api.ts"), "utf8");
+    assert.match(api, /export function listMolecules/);
+    assert.match(api, /export function searchMolecules/);
+
+    const home = readFileSync(join(root, "app/app/index.tsx"), "utf8");
+    assert.match(home, /listMolecules/);
+    assert.match(home, /searchMolecules/);
+    assert.doesNotMatch(home, /\bfetch\s*\(/);
+    assert.match(home, /setError/);
+  });
 });

@@ -36,6 +36,14 @@ export function searchMolecules(q: string) {
   }>(`/search?q=${encodeURIComponent(q)}`);
 }
 
+export function listMolecules(area?: string) {
+  const qs = area ? `?area=${encodeURIComponent(area)}` : "";
+  return api<{
+    molecules: Array<{ slug: string; innName: string; className: string }>;
+    areas?: string[];
+  }>(`/molecules${qs}`);
+}
+
 export function getMedicine360(slug: string) {
   return api<{
     molecule: { id: string; innName: string; slug: string; className: string };
