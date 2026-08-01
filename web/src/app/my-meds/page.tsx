@@ -49,7 +49,39 @@ export default function MyMedsPage() {
     takenLast7Days: number;
     expectedLast7Days: number;
   } | null>(null);
-  const [out, setOut] = useState("");
+  const [reminderStatus, setReminderStatus] = useState("");
+  const [upcomingReminders, setUpcomingReminders] = useState<
+    Array<{ moleculeName: string; brandName?: string; scheduledTime: string; channel?: string }>
+  >([]);
+  const [dispatchResults, setDispatchResults] = useState<
+    Array<{ channel?: string; status?: string; provider?: string; detail?: string }>
+  >([]);
+
+  /** Reminder preview/dispatch status — never dumps regimen JSON. */
+  function formatRemindersMsg(data: {
+    error?: unknown;
+    upgradeTo?: string;
+    disclaimer?: string;
+    note?: string;
+    dueCount?: number;
+    nowHhmm?: string;
+    upcoming?: unknown[];
+    results?: unknown[];
+  }): string {
+    if (data.error) {
+      const err =
+        typeof data.error === "string" ? data.error : "Request failed";
+      return data.upgradeTo ? `Error: ${err} · upgrade to ${data.upgradeTo}` : `Error: ${err}`;
+    }
+    const parts: string[] = [];
+    if (typeof data.dueCount === "number") parts.push(`due=${data.dueCount}`);
+    if (data.nowHhmm) parts.push(`at ${data.nowHhmm}`);
+    if (Array.isArray(data.upcoming)) parts.push(`upcoming=${data.upcoming.length}`);
+    if (Array.isArray(data.results)) parts.push(`sent=${data.results.length}`);
+    if (data.note) parts.push(data.note);
+    if (data.disclaimer) parts.push(data.disclaimer);
+    return parts.join(" · ") || "OK";
+  }
 
   async function start() {
     const res = await fetch(`${API}/auth/stub-session`, {
@@ -188,7 +220,11 @@ export default function MyMedsPage() {
       setSymptomExport(String(data.error ?? "Could not log symptom"));
       return;
     }
-    setSymptomExport(data.exportText ?? JSON.stringify(data, null, 2));
+    setSymptomExport(
+      typeof data.exportText === "string" && data.exportText.trim()
+        ? data.exportText
+        : "Symptom logged — use Export for clinician for the share text.",
+    );
   }
 
   async function exportSymptoms() {
@@ -201,7 +237,30 @@ export default function MyMedsPage() {
   async function preview() {
     if (!userId) return;
     const res = await fetch(`${API}/companion/reminders/${userId}?from=${nowHhmm}`);
-    setOut(JSON.stringify(await res.json(), null, 2));
+    const data = await res.json();
+    setDispatchResults([]);
+    if (!res.ok) {
+      setUpcomingReminders([]);
+      setReminderStatus(formatRemindersMsg(data));
+      return;
+    }
+    const upcoming = Array.isArray(data.upcoming) ? data.upcoming : [];
+    setUpcomingReminders(
+      upcoming.map(
+        (u: {
+          moleculeName?: string;
+          brandName?: string;
+          scheduledTime?: string;
+          channel?: string;
+        }) => ({
+          moleculeName: u.moleculeName ?? "Medicine",
+          brandName: u.brandName,
+          scheduledTime: u.scheduledTime ?? "—",
+          channel: u.channel,
+        }),
+      ),
+    );
+    setReminderStatus(formatRemindersMsg(data));
   }
 
   async function dispatch() {
@@ -211,7 +270,25 @@ export default function MyMedsPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, nowHhmm }),
     });
-    setOut(JSON.stringify(await res.json(), null, 2));
+    const data = await res.json();
+    setUpcomingReminders([]);
+    if (!res.ok) {
+      setDispatchResults([]);
+      setReminderStatus(formatRemindersMsg(data));
+      return;
+    }
+    const results = Array.isArray(data.results) ? data.results : [];
+    setDispatchResults(
+      results.map(
+        (r: { channel?: string; status?: string; provider?: string; detail?: string }) => ({
+          channel: r.channel,
+          status: r.status,
+          provider: r.provider,
+          detail: r.detail,
+        }),
+      ),
+    );
+    setReminderStatus(formatRemindersMsg(data));
   }
 
   async function loadFoodTiming() {
@@ -515,10 +592,33 @@ export default function MyMedsPage() {
           )}
         </div>
       )}
-      {out && (
-        <pre className="card" style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: 13 }}>
-          {out}
-        </pre>
+      {(reminderStatus || upcomingReminders.length > 0 || dispatchResults.length > 0) && (
+        <div className="card" style={{ marginTop: 16 }} aria-live="polite">
+          <h2 style={{ marginTop: 0 }}>Reminders</h2>
+          {reminderStatus ? <p className="muted">{reminderStatus}</p> : null}
+          {upcomingReminders.length > 0 ? (
+            <ul style={{ paddingLeft: 20 }}>
+              {upcomingReminders.map((u, i) => (
+                <li key={`${u.moleculeName}-${u.scheduledTime}-${i}`}>
+                  {u.scheduledTime} · {u.moleculeName}
+                  {u.brandName ? ` (${u.brandName})` : ""}
+                  {u.channel ? ` · ${u.channel}` : ""}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {dispatchResults.length > 0 ? (
+            <ul style={{ paddingLeft: 20 }}>
+              {dispatchResults.map((r, i) => (
+                <li key={`${r.channel ?? "ch"}-${i}`}>
+                  {r.channel ?? "channel"} · {r.status ?? "ok"}
+                  {r.provider ? ` · ${r.provider}` : ""}
+                  {r.detail ? ` — ${r.detail}` : ""}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
       )}
     </>
   );

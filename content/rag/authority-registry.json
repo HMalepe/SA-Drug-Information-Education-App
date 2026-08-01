@@ -106,7 +106,8 @@
     "Web Pro tools: offline pack/cache sourced panel (overdose first-aid always paired with disclaimer)",
     "Web Pro tools: vision resolve sourced panel; remove remaining showRaw JSON dump on /tools",
     "CI typecheck covers @materia/web + Expo app/; canonical SourceTag in app/lib/api.ts",
-    "Ops pages (institution/CPD/ambassador/pricing): status formatters, no raw JSON dumps"
+    "Ops pages (institution/CPD/ambassador/pricing): status formatters, no raw JSON dumps",
+    "My Meds reminders + onboarding: status formatters (no raw JSON dumps)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

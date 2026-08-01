@@ -5,6 +5,16 @@ import { MODE_STORAGE_KEY, useUserMode, WEB_USER_MODES } from "@/components/Mode
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
+/** Onboarding status — never dumps raw auth error JSON. */
+function formatOnboardingError(error: unknown): string {
+  if (typeof error === "string") return `Error: ${error}`;
+  if (error && typeof error === "object" && "message" in error) {
+    const msg = (error as { message?: unknown }).message;
+    if (typeof msg === "string") return `Error: ${msg}`;
+  }
+  return "Error: could not create session";
+}
+
 export default function OnboardingPage() {
   const { mode, setMode } = useUserMode();
   const [email, setEmail] = useState("");
@@ -20,7 +30,7 @@ export default function OnboardingPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      setMsg(JSON.stringify(data.error));
+      setMsg(formatOnboardingError(data.error ?? data));
       return;
     }
     window.localStorage.setItem(MODE_STORAGE_KEY, mode);

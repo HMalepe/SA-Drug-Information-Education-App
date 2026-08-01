@@ -49,4 +49,19 @@ describe("Ops pages status (no raw JSON dump)", () => {
     assert.doesNotMatch(src, /JSON\.stringify\(certs/);
     assert.match(src, /certs\.map/);
   });
+
+  it("my-meds reminders use formatRemindersMsg (no setOut JSON dump)", () => {
+    const src = readFileSync(join(root, "web/src/app/my-meds/page.tsx"), "utf8");
+    assert.match(src, /function formatRemindersMsg/);
+    assert.match(src, /setReminderStatus\(formatRemindersMsg/);
+    assert.doesNotMatch(src, /setOut\(JSON\.stringify/);
+    assert.doesNotMatch(src, /exportText \?\? JSON\.stringify/);
+  });
+
+  it("onboarding uses formatOnboardingError (no setMsg JSON dump)", () => {
+    const src = readFileSync(join(root, "web/src/app/onboarding/page.tsx"), "utf8");
+    assert.match(src, /function formatOnboardingError/);
+    assert.match(src, /setMsg\(formatOnboardingError/);
+    assert.doesNotMatch(src, /setMsg\(JSON\.stringify/);
+  });
 });
