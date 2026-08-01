@@ -185,4 +185,24 @@ describe("Pro tools clinical result panels", () => {
     assert.doesNotMatch(body, /showRaw\(/);
     assert.match(body, /showClinicalPanel\("pharmacy"/);
   });
+
+  it("offline pack + read cache route to OfflinePackResultPanel (no showRaw; first-aid + disclaimer)", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function OfflinePackResultPanel/);
+    assert.match(src, /async function cacheOffline/);
+    assert.match(src, /function readOfflineCache/);
+    assert.match(src, /overdoseFirstAid/);
+    assert.match(src, /e\.disclaimer|disclaimer/);
+    const cacheFn = src.slice(src.indexOf("async function cacheOffline"));
+    const cacheEnd = cacheFn.indexOf("function readOfflineCache");
+    const cacheBody = cacheFn.slice(0, cacheEnd > 0 ? cacheEnd : undefined);
+    assert.doesNotMatch(cacheBody, /setOut\(JSON\.stringify/);
+    assert.doesNotMatch(cacheBody, /showRaw\(/);
+    assert.match(cacheBody, /showClinicalPanel\("offlinepack"/);
+    const readFn = src.slice(src.indexOf("function readOfflineCache"));
+    const readEnd = readFn.indexOf("async function resolveVision");
+    const readBody = readFn.slice(0, readEnd > 0 ? readEnd : undefined);
+    assert.doesNotMatch(readBody, /showRaw\(/);
+    assert.match(readBody, /showClinicalPanel\("offlinepack"/);
+  });
 });

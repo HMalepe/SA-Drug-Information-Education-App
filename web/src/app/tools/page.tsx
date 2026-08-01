@@ -243,6 +243,27 @@ type PharmacyLocatorResult = {
   cities?: Array<{ key: string; label: string }>;
 };
 
+type OfflineEssentialView = {
+  moleculeId: string;
+  slug: string;
+  innName: string;
+  className: string;
+  scheduleHints: string[];
+  counsellingEn: string[];
+  overdoseFirstAid: string[];
+  cachedAt: string;
+  disclaimer: string;
+};
+
+type OfflinePackResult = {
+  error?: string;
+  upgradeTo?: string;
+  generatedAt?: string;
+  count?: number;
+  essentials?: OfflineEssentialView[];
+  fromCache?: boolean;
+};
+
 const STOCK_SIGNAL_TONE: Record<StockSignalView, string> = {
   shortage: "red",
   limited: "orange",
@@ -298,6 +319,7 @@ export default function ToolsPage() {
   const [availability, setAvailability] = useState<AvailabilityResult | null>(null);
   const [shortages, setShortages] = useState<ShortagesResult | null>(null);
   const [pharmacyLocator, setPharmacyLocator] = useState<PharmacyLocatorResult | null>(null);
+  const [offlinePack, setOfflinePack] = useState<OfflinePackResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -326,6 +348,7 @@ export default function ToolsPage() {
     setAvailability(null);
     setShortages(null);
     setPharmacyLocator(null);
+    setOfflinePack(null);
   }
 
   function showRaw(data: unknown) {
@@ -348,7 +371,8 @@ export default function ToolsPage() {
       | "formulary"
       | "availability"
       | "shortages"
-      | "pharmacy",
+      | "pharmacy"
+      | "offlinepack",
     data: unknown,
   ) {
     clearClinicalPanels();
@@ -366,7 +390,8 @@ export default function ToolsPage() {
     else if (kind === "formulary") setFormulary(data as FormularyResult);
     else if (kind === "availability") setAvailability(data as AvailabilityResult);
     else if (kind === "shortages") setShortages(data as ShortagesResult);
-    else setPharmacyLocator(data as PharmacyLocatorResult);
+    else if (kind === "pharmacy") setPharmacyLocator(data as PharmacyLocatorResult);
+    else setOfflinePack(data as OfflinePackResult);
   }
 
   async function ensurePro() {
@@ -390,24 +415,45 @@ export default function ToolsPage() {
     return data.user.id as string;
   }
 
-  async function call(path: string, tool?: string) {
-    const uid = await ensurePro();
-    const res = await fetch(`${API}${path}${path.includes("?") ? "&" : "?"}userId=${uid}`);
-    const data = await res.json();
-    if (res.status === 402) {
-      track("gated_feature_hit", { feature: tool ?? path, tier: "professional" }, { tier: "free" });
-    } else {
-      track("tool_used", { tool: tool ?? path.split("?")[0] ?? path }, { tier: "professional" });
-    }
-    showRaw(data);
-  }
-
   async function cacheOffline() {
     const uid = await ensurePro();
     const res = await fetch(`${API}/offline/pack?userId=${uid}`);
     const data = await res.json();
-    if (res.ok) saveOfflinePack(data);
-    showRaw(data);
+    if (res.status === 402) {
+      track(
+        "gated_feature_hit",
+        { feature: "offline_core", tier: "professional" },
+        { tier: "free" },
+      );
+      showClinicalPanel("offlinepack", data);
+      return;
+    }
+    track("tool_used", { tool: "offline_core" }, { tier: "professional" });
+    if (res.ok && data.essentials) {
+      saveOfflinePack({
+        generatedAt: data.generatedAt ?? new Date().toISOString(),
+        essentials: data.essentials,
+      });
+      showClinicalPanel("offlinepack", { ...data, fromCache: false });
+      return;
+    }
+    showClinicalPanel("offlinepack", data);
+  }
+
+  function readOfflineCache() {
+    const cached = loadOfflinePack();
+    if (!cached) {
+      showClinicalPanel("offlinepack", {
+        error: "No pack cached yet — tap Offline pack first while online.",
+      });
+      return;
+    }
+    showClinicalPanel("offlinepack", {
+      generatedAt: cached.generatedAt,
+      essentials: cached.essentials,
+      count: cached.essentials.length,
+      fromCache: true,
+    });
   }
 
   async function resolveVision() {
@@ -772,7 +818,7 @@ export default function ToolsPage() {
           className="btn"
           type="button"
           style={{ background: "var(--ink)" }}
-          onClick={() => showRaw(loadOfflinePack())}
+          onClick={() => readOfflineCache()}
         >
           Read cache
         </button>
@@ -831,6 +877,7 @@ export default function ToolsPage() {
       {availability && <AvailabilityResultPanel result={availability} />}
       {shortages && <ShortagesResultPanel result={shortages} />}
       {pharmacyLocator && <PharmacyLocatorResultPanel result={pharmacyLocator} />}
+      {offlinePack && <OfflinePackResultPanel result={offlinePack} />}
 
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
@@ -1490,6 +1537,70 @@ function PharmacyLocatorResultPanel({ result }: { result: PharmacyLocatorResult 
           {result.disclaimer}
         </p>
       ) : null}
+    </section>
+  );
+}
+
+function OfflinePackResultPanel({ result }: { result: OfflinePackResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Offline pack</h2>
+        <p>{result.error}</p>
+        {result.upgradeTo ? <p className="muted">Upgrade to {result.upgradeTo}</p> : null}
+      </section>
+    );
+  }
+  const essentials = result.essentials ?? [];
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Offline pack
+        {result.fromCache ? " · browser cache" : " · freshly generated"}
+        {typeof result.count === "number" ? ` · ${result.count}` : ""}
+      </h2>
+      {result.generatedAt ? (
+        <p className="muted">Generated {result.generatedAt}</p>
+      ) : null}
+      {essentials.length === 0 ? (
+        <p className="muted">No essentials in this pack — empty ≠ safe offline coverage.</p>
+      ) : (
+        essentials.map((e) => (
+          <div key={e.moleculeId} style={{ marginTop: 16 }}>
+            <h3 style={{ marginBottom: 4 }}>
+              {e.innName} · {e.className}
+            </h3>
+            <p className="muted">
+              {e.slug}
+              {(e.scheduleHints ?? []).length > 0
+                ? ` · schedules ${e.scheduleHints.join(", ")}`
+                : ""}
+              {e.cachedAt ? ` · cached ${e.cachedAt}` : ""}
+            </p>
+            <h4 style={{ marginBottom: 4 }}>Counselling (EN)</h4>
+            {(e.counsellingEn ?? []).length === 0 ? (
+              <p className="muted">No published counselling lines in pack.</p>
+            ) : (
+              <ol style={{ paddingLeft: 20, marginTop: 0 }}>
+                {e.counsellingEn.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ol>
+            )}
+            <h4 style={{ marginBottom: 4 }}>Overdose first aid</h4>
+            <ol style={{ paddingLeft: 20, marginTop: 0 }}>
+              {(e.overdoseFirstAid ?? []).map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+            {e.disclaimer ? (
+              <p className="muted" style={{ marginBottom: 0 }}>
+                {e.disclaimer}
+              </p>
+            ) : null}
+          </div>
+        ))
+      )}
     </section>
   );
 }
