@@ -165,10 +165,24 @@ describe("Pro tools clinical result panels", () => {
     assert.match(src, /async function runShortages/);
     assert.match(src, /AvailabilityRowList/);
     const runFn = src.slice(src.indexOf("async function runShortages"));
-    const end = runFn.indexOf("async function speakVoice");
+    const end = runFn.indexOf("async function runPharmacyLocator");
     const body = runFn.slice(0, end > 0 ? end : undefined);
     assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
     assert.doesNotMatch(body, /showRaw\(/);
     assert.match(body, /showClinicalPanel\("shortages"/);
+  });
+
+  it("pharmacy locator routes to PharmacyLocatorResultPanel (disclaimer + no showRaw)", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function PharmacyLocatorResultPanel/);
+    assert.match(src, /async function runPharmacyLocator/);
+    assert.match(src, /result\.disclaimer/);
+    assert.match(src, /refillPrompt/);
+    const runFn = src.slice(src.indexOf("async function runPharmacyLocator"));
+    const end = runFn.indexOf("async function speakVoice");
+    const body = runFn.slice(0, end > 0 ? end : undefined);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.doesNotMatch(body, /showRaw\(/);
+    assert.match(body, /showClinicalPanel\("pharmacy"/);
   });
 });

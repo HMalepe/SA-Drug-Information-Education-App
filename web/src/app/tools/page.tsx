@@ -214,6 +214,35 @@ type ShortagesResult = {
   note?: string;
 };
 
+type PharmacyHitView = {
+  pharmacy: {
+    id: string;
+    name: string;
+    chain?: string;
+    city: string;
+    suburb: string;
+    phoneDisplay?: string;
+    hoursNote: string;
+  };
+  distanceKm: number | null;
+  cityMatch: boolean;
+};
+
+type PharmacyLocatorResult = {
+  error?: string;
+  upgradeTo?: string;
+  city?: string;
+  queryLat?: number;
+  queryLng?: number;
+  pharmacies?: PharmacyHitView[];
+  substitution?: SubstitutionResult | null;
+  refillPrompt?: string | null;
+  note?: string;
+  disclaimer?: string;
+  molecule?: { id?: string; slug?: string; innName?: string } | null;
+  cities?: Array<{ key: string; label: string }>;
+};
+
 const STOCK_SIGNAL_TONE: Record<StockSignalView, string> = {
   shortage: "red",
   limited: "orange",
@@ -268,6 +297,7 @@ export default function ToolsPage() {
   const [formulary, setFormulary] = useState<FormularyResult | null>(null);
   const [availability, setAvailability] = useState<AvailabilityResult | null>(null);
   const [shortages, setShortages] = useState<ShortagesResult | null>(null);
+  const [pharmacyLocator, setPharmacyLocator] = useState<PharmacyLocatorResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -295,6 +325,7 @@ export default function ToolsPage() {
     setFormulary(null);
     setAvailability(null);
     setShortages(null);
+    setPharmacyLocator(null);
   }
 
   function showRaw(data: unknown) {
@@ -316,7 +347,8 @@ export default function ToolsPage() {
       | "substitution"
       | "formulary"
       | "availability"
-      | "shortages",
+      | "shortages"
+      | "pharmacy",
     data: unknown,
   ) {
     clearClinicalPanels();
@@ -333,7 +365,8 @@ export default function ToolsPage() {
     else if (kind === "substitution") setSubstitution(data as SubstitutionResult);
     else if (kind === "formulary") setFormulary(data as FormularyResult);
     else if (kind === "availability") setAvailability(data as AvailabilityResult);
-    else setShortages(data as ShortagesResult);
+    else if (kind === "shortages") setShortages(data as ShortagesResult);
+    else setPharmacyLocator(data as PharmacyLocatorResult);
   }
 
   async function ensurePro() {
@@ -534,6 +567,23 @@ export default function ToolsPage() {
       track("tool_used", { tool: "shortage_alerts" }, { tier: "professional" });
     }
     showClinicalPanel("shortages", await res.json());
+  }
+
+  async function runPharmacyLocator() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/pharmacy-locator?userId=${uid}&city=${encodeURIComponent(city)}&moleculeSlug=${encodeURIComponent(slug)}&selectedProductId=prod-amoxil`,
+    );
+    if (res.status === 402) {
+      track(
+        "gated_feature_hit",
+        { feature: "pharmacy_locator", tier: "professional" },
+        { tier: "free" },
+      );
+    } else {
+      track("tool_used", { tool: "pharmacy_locator" }, { tier: "professional" });
+    }
+    showClinicalPanel("pharmacy", await res.json());
   }
 
   async function speakVoice() {
@@ -742,16 +792,7 @@ export default function ToolsPage() {
           <option value="bloemfontein">Bloemfontein</option>
           <option value="gqeberha">Gqeberha / PE</option>
         </select>
-        <button
-          className="btn"
-          type="button"
-          onClick={() =>
-            void call(
-              `/tools/pharmacy-locator?city=${encodeURIComponent(city)}&moleculeSlug=${encodeURIComponent(slug)}&selectedProductId=prod-amoxil`,
-              "pharmacy_locator",
-            )
-          }
-        >
+        <button className="btn" type="button" onClick={() => void runPharmacyLocator()}>
           Nearby pharmacies + SEP refill prompt
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
@@ -789,6 +830,7 @@ export default function ToolsPage() {
       {formulary && <FormularyResultPanel result={formulary} />}
       {availability && <AvailabilityResultPanel result={availability} />}
       {shortages && <ShortagesResultPanel result={shortages} />}
+      {pharmacyLocator && <PharmacyLocatorResultPanel result={pharmacyLocator} />}
 
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
@@ -1366,6 +1408,86 @@ function ShortagesResultPanel({ result }: { result: ShortagesResult }) {
       {result.note ? (
         <p className="muted" style={{ marginBottom: 0 }}>
           {result.note}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function PharmacyLocatorResultPanel({ result }: { result: PharmacyLocatorResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Pharmacy locator</h2>
+        <p>{result.error}</p>
+        {result.upgradeTo ? <p className="muted">Upgrade to {result.upgradeTo}</p> : null}
+      </section>
+    );
+  }
+  const hits = result.pharmacies ?? [];
+  const sub = result.substitution;
+  const molLabel = result.molecule?.innName ?? result.molecule?.slug;
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Pharmacy locator
+        {result.city ? ` · ${result.city}` : ""}
+        {molLabel ? ` · ${molLabel}` : ""}
+      </h2>
+      {hits.length === 0 ? (
+        <p className="muted">No published pharmacy fixtures for this query.</p>
+      ) : (
+        <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+          {hits.map((hit) => {
+            const p = hit.pharmacy;
+            return (
+              <li key={p.id} style={{ marginBottom: 10 }}>
+                <strong>{p.name}</strong>
+                {p.chain ? ` · ${p.chain}` : ""}
+                <br />
+                <span className="muted">
+                  {p.suburb}
+                  {hit.distanceKm != null ? ` · ~${hit.distanceKm.toFixed(1)} km` : ""}
+                  {hit.cityMatch ? " · city match" : ""}
+                </span>
+                <br />
+                <span className="muted">{p.hoursNote}</span>
+                {p.phoneDisplay ? (
+                  <>
+                    <br />
+                    <span className="muted">Display phone: {p.phoneDisplay} (confirm locally)</span>
+                  </>
+                ) : null}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {result.refillPrompt ? (
+        <>
+          <h3 style={{ marginBottom: 4 }}>Refill / SEP prompt</h3>
+          <p>{result.refillPrompt}</p>
+        </>
+      ) : null}
+      {sub && (sub.options?.length ?? 0) > 0 ? (
+        <>
+          <h3 style={{ marginBottom: 4 }}>Published substitution / SEP context</h3>
+          <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+            {(sub.options ?? []).slice(0, 5).map((o) => (
+              <li key={o.productId} style={{ marginBottom: 6 }}>
+                <strong>{o.brandName}</strong> · {o.strength} · SEP{" "}
+                {formatPublishedZar(o.sepZar)}
+                {o.bioequivalentFlag ? " · bioequivalent" : ""}
+              </li>
+            ))}
+          </ul>
+          {sub.note ? <p className="muted">{sub.note}</p> : null}
+        </>
+      ) : null}
+      {result.note ? <p className="muted">{result.note}</p> : null}
+      {result.disclaimer ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {result.disclaimer}
         </p>
       ) : null}
     </section>
