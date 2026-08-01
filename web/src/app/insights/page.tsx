@@ -15,6 +15,13 @@ type Summary = {
   note: string;
 };
 
+type MasteryRow = {
+  label: string;
+  courses: number;
+  avgCompletionPercent: number;
+  quizAccuracyPercent: number;
+};
+
 type Personal = {
   learningCurve: Array<{
     dateKey: string;
@@ -22,18 +29,8 @@ type Personal = {
     quizzesAnswered: number;
     moleculeViews: number;
   }>;
-  masteryByTherapeuticArea: Array<{
-    label: string;
-    courses: number;
-    avgCompletionPercent: number;
-    quizAccuracyPercent: number;
-  }>;
-  masteryByClass: Array<{
-    label: string;
-    courses: number;
-    avgCompletionPercent: number;
-    quizAccuracyPercent: number;
-  }>;
+  masteryByTherapeuticArea: MasteryRow[];
+  masteryByClass: MasteryRow[];
   topMolecules: Array<{ slug: string; views: number }>;
   topTools: Array<{ tool: string; uses: number }>;
   totals: {
@@ -47,6 +44,106 @@ type Personal = {
   note: string;
   disclaimer: string;
 };
+
+function EmptyNote({ label }: { label: string }) {
+  return <p className="muted">No {label} yet.</p>;
+}
+
+function LearningCurveTable({
+  rows,
+}: {
+  rows: Personal["learningCurve"];
+}) {
+  if (rows.length === 0) return <EmptyNote label="learning-curve days" />;
+  return (
+    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14, marginTop: 8 }}>
+      <thead>
+        <tr className="muted" style={{ textAlign: "left" }}>
+          <th style={{ padding: "4px 8px 4px 0" }}>Date</th>
+          <th style={{ padding: 4 }}>Lessons</th>
+          <th style={{ padding: 4 }}>Quizzes</th>
+          <th style={{ padding: 4 }}>Views</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr key={r.dateKey}>
+            <td style={{ padding: "4px 8px 4px 0" }}>{r.dateKey}</td>
+            <td style={{ padding: 4 }}>{r.lessonsCompleted}</td>
+            <td style={{ padding: 4 }}>{r.quizzesAnswered}</td>
+            <td style={{ padding: 4 }}>{r.moleculeViews}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function MasteryTable({ rows }: { rows: MasteryRow[] }) {
+  if (rows.length === 0) return <EmptyNote label="mastery rows" />;
+  return (
+    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14, marginTop: 8 }}>
+      <thead>
+        <tr className="muted" style={{ textAlign: "left" }}>
+          <th style={{ padding: "4px 8px 4px 0" }}>Label</th>
+          <th style={{ padding: 4 }}>Courses</th>
+          <th style={{ padding: 4 }}>Avg complete %</th>
+          <th style={{ padding: 4 }}>Quiz accuracy %</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr key={r.label}>
+            <td style={{ padding: "4px 8px 4px 0" }}>{r.label}</td>
+            <td style={{ padding: 4 }}>{r.courses}</td>
+            <td style={{ padding: 4 }}>{r.avgCompletionPercent}</td>
+            <td style={{ padding: 4 }}>{r.quizAccuracyPercent}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function MoleculeViewsList({ rows }: { rows: Array<{ slug: string; views: number }> }) {
+  if (rows.length === 0) return <EmptyNote label="molecule views" />;
+  return (
+    <ol style={{ paddingLeft: 20, marginTop: 8, marginBottom: 0 }}>
+      {rows.map((r) => (
+        <li key={r.slug}>
+          {r.slug} — {r.views} view{r.views === 1 ? "" : "s"}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function ToolUsesList({ rows }: { rows: Array<{ tool: string; uses: number }> }) {
+  if (rows.length === 0) return <EmptyNote label="tool uses" />;
+  return (
+    <ol style={{ paddingLeft: 20, marginTop: 8, marginBottom: 0 }}>
+      {rows.map((r) => (
+        <li key={r.tool}>
+          {r.tool} — {r.uses} use{r.uses === 1 ? "" : "s"}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function EventCountsList({ byName }: { byName: Record<string, number> }) {
+  const entries = Object.entries(byName).sort((a, b) => b[1] - a[1]);
+  if (entries.length === 0) return <EmptyNote label="events" />;
+  return (
+    <ul style={{ paddingLeft: 20, marginTop: 8, marginBottom: 0 }}>
+      {entries.map(([name, count]) => (
+        <li key={name}>
+          {name} — {count}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function InsightsPage() {
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -164,33 +261,23 @@ export default function InsightsPage() {
             </div>
             <div style={{ marginTop: 16 }}>
               <strong>Learning curve</strong>
-              <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-                {JSON.stringify(personal.learningCurve, null, 2)}
-              </pre>
+              <LearningCurveTable rows={personal.learningCurve} />
             </div>
             <div style={{ marginTop: 12 }}>
               <strong>Mastery by therapeutic area</strong>
-              <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-                {JSON.stringify(personal.masteryByTherapeuticArea, null, 2)}
-              </pre>
+              <MasteryTable rows={personal.masteryByTherapeuticArea} />
             </div>
             <div style={{ marginTop: 12 }}>
               <strong>Mastery by class</strong>
-              <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-                {JSON.stringify(personal.masteryByClass, null, 2)}
-              </pre>
+              <MasteryTable rows={personal.masteryByClass} />
             </div>
             <div style={{ marginTop: 12 }}>
               <strong>Your top molecules</strong>
-              <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-                {JSON.stringify(personal.topMolecules, null, 2)}
-              </pre>
+              <MoleculeViewsList rows={personal.topMolecules} />
             </div>
             <div style={{ marginTop: 12 }}>
               <strong>Your top tools</strong>
-              <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-                {JSON.stringify(personal.topTools, null, 2)}
-              </pre>
+              <ToolUsesList rows={personal.topTools} />
             </div>
             <p className="muted">{personal.note}</p>
           </>
@@ -213,21 +300,15 @@ export default function InsightsPage() {
           </div>
           <div className="card" style={{ marginTop: 12 }}>
             <strong>By event</strong>
-            <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-              {JSON.stringify(summary.byName, null, 2)}
-            </pre>
+            <EventCountsList byName={summary.byName} />
           </div>
           <div className="card" style={{ marginTop: 12 }}>
             <strong>Top molecules</strong>
-            <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-              {JSON.stringify(summary.topMolecules, null, 2)}
-            </pre>
+            <MoleculeViewsList rows={summary.topMolecules} />
           </div>
           <div className="card" style={{ marginTop: 12 }}>
             <strong>Top tools</strong>
-            <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>
-              {JSON.stringify(summary.topTools, null, 2)}
-            </pre>
+            <ToolUsesList rows={summary.topTools} />
           </div>
         </>
       )}

@@ -64,4 +64,16 @@ describe("Ops pages status (no raw JSON dump)", () => {
     assert.match(src, /setMsg\(formatOnboardingError/);
     assert.doesNotMatch(src, /setMsg\(JSON\.stringify/);
   });
+
+  it("insights renders tables/lists — no JSON.stringify dumps in <pre>", () => {
+    const src = readFileSync(join(root, "web/src/app/insights/page.tsx"), "utf8");
+    assert.match(src, /function LearningCurveTable/);
+    assert.match(src, /function MasteryTable/);
+    assert.match(src, /function MoleculeViewsList/);
+    assert.match(src, /function ToolUsesList/);
+    assert.match(src, /function EventCountsList/);
+    assert.doesNotMatch(src, /<pre[^>]*>[\s\S]*JSON\.stringify/);
+    assert.doesNotMatch(src, /JSON\.stringify\(personal\./);
+    assert.doesNotMatch(src, /JSON\.stringify\(summary\./);
+  });
 });
