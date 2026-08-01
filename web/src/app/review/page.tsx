@@ -122,6 +122,47 @@ const ATTEST_STG =
 const ATTEST_PLACEHOLDER =
   "I confirm this honest absence is intentional — Materia has no sourced dose yet.";
 
+/** Short status line for review actions — never dumps clinical preview JSON. */
+function formatReviewActionMsg(
+  ok: boolean,
+  data: {
+    error?: unknown;
+    note?: string;
+    dryRun?: boolean;
+    published?: number;
+    eligible?: number | unknown[];
+    blocked?: number | unknown[];
+    count?: number;
+    item?: { id?: string; publishState?: string };
+    persisted?: { seedFile?: string } | null;
+  },
+): string {
+  if (!ok || data.error) {
+    const err =
+      typeof data.error === "string"
+        ? data.error
+        : data.error
+          ? JSON.stringify(data.error)
+          : "Request failed";
+    return `Error: ${err}`;
+  }
+  const parts: string[] = [];
+  if (data.dryRun) parts.push("Preview (dry-run)");
+  if (typeof data.published === "number") parts.push(`published=${data.published}`);
+  if (typeof data.eligible === "number") parts.push(`eligible=${data.eligible}`);
+  else if (Array.isArray(data.eligible)) parts.push(`eligible=${data.eligible.length}`);
+  if (typeof data.blocked === "number") parts.push(`blocked=${data.blocked}`);
+  else if (Array.isArray(data.blocked)) parts.push(`blocked=${data.blocked.length}`);
+  if (typeof data.count === "number") parts.push(`count=${data.count}`);
+  if (data.item?.id) {
+    parts.push(data.item.id);
+    if (data.item.publishState) parts.push(`→ ${data.item.publishState}`);
+  }
+  if (data.persisted?.seedFile) parts.push(`wrote ${data.persisted.seedFile}`);
+  if (data.note) parts.push(data.note);
+  return parts.join(" · ") || "OK";
+}
+
 export default function ReviewPage() {
   const [coverage, setCoverage] = useState<Coverage | null>(null);
   const [items, setItems] = useState<QueueItem[]>([]);
@@ -192,7 +233,7 @@ export default function ReviewPage() {
       }),
     });
     const data = await res.json();
-    setMsg(JSON.stringify(data, null, 2));
+    setMsg(formatReviewActionMsg(res.ok, data));
     await load();
   }
 
@@ -211,7 +252,7 @@ export default function ReviewPage() {
       }),
     });
     const data = await res.json();
-    setMsg(JSON.stringify(data, null, 2));
+    setMsg(formatReviewActionMsg(res.ok, data));
     await load();
   }
 
@@ -222,7 +263,7 @@ export default function ReviewPage() {
     const res = await fetch(`${API}/review/export-stg-cli?${params}`);
     const data = await res.json();
     if (!res.ok) {
-      setMsg(JSON.stringify(data, null, 2));
+      setMsg(formatReviewActionMsg(false, data));
       return;
     }
     const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
@@ -243,7 +284,7 @@ export default function ReviewPage() {
     const res = await fetch(`${API}/review/export-dosing-cli?${params}`);
     const data = await res.json();
     if (!res.ok) {
-      setMsg(JSON.stringify(data, null, 2));
+      setMsg(formatReviewActionMsg(false, data));
       return;
     }
     const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
@@ -276,7 +317,7 @@ export default function ReviewPage() {
       }),
     });
     const data = await res.json();
-    setMsg(JSON.stringify(data, null, 2));
+    setMsg(formatReviewActionMsg(res.ok, { ...data, dryRun }));
     if (!dryRun) await load();
   }
 

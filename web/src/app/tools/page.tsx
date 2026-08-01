@@ -93,6 +93,41 @@ type VoiceResult = {
   note?: string;
 };
 
+type LocumResult = {
+  error?: string;
+  brief?: {
+    innName?: string;
+    className?: string;
+    schedules?: string[];
+    topBrands?: Array<{ brandName: string; strength: string; isOriginator: boolean }>;
+    topWarnings?: string[];
+    counsellingLang?: string;
+    counsellingLines?: string[];
+    availableCounsellingLangs?: string[];
+    stockoutHint?: string;
+    disclaimer?: string;
+  };
+};
+
+type ColdChainResult = {
+  error?: string;
+  available?: string[];
+  note?: {
+    productKey?: string;
+    title?: string;
+    storage?: string;
+    loadSheddingSteps?: string[];
+    sourceNote?: string;
+  };
+  notes?: Array<{
+    productKey?: string;
+    title?: string;
+    storage?: string;
+    loadSheddingSteps?: string[];
+    sourceNote?: string;
+  }>;
+};
+
 const TONE_COLOR: Record<string, string> = {
   red: "var(--danger)",
   orange: "var(--caution)",
@@ -119,6 +154,8 @@ export default function ToolsPage() {
   const [monograph, setMonograph] = useState<MonographResult | null>(null);
   const [handout, setHandout] = useState<HandoutResult | null>(null);
   const [voice, setVoice] = useState<VoiceResult | null>(null);
+  const [locum, setLocum] = useState<LocumResult | null>(null);
+  const [coldChain, setColdChain] = useState<ColdChainResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
 
   useEffect(() => {
@@ -140,6 +177,8 @@ export default function ToolsPage() {
     setMonograph(null);
     setHandout(null);
     setVoice(null);
+    setLocum(null);
+    setColdChain(null);
   }
 
   function showRaw(data: unknown) {
@@ -148,7 +187,16 @@ export default function ToolsPage() {
   }
 
   function showClinicalPanel(
-    kind: "dose" | "clash" | "counselling" | "insert" | "monograph" | "handout" | "voice",
+    kind:
+      | "dose"
+      | "clash"
+      | "counselling"
+      | "insert"
+      | "monograph"
+      | "handout"
+      | "voice"
+      | "locum"
+      | "coldchain",
     data: unknown,
   ) {
     clearClinicalPanels();
@@ -159,7 +207,9 @@ export default function ToolsPage() {
     else if (kind === "insert") setInsertResult(data as InsertResult);
     else if (kind === "monograph") setMonograph(data as MonographResult);
     else if (kind === "handout") setHandout(data as HandoutResult);
-    else setVoice(data as VoiceResult);
+    else if (kind === "voice") setVoice(data as VoiceResult);
+    else if (kind === "locum") setLocum(data as LocumResult);
+    else setColdChain(data as ColdChainResult);
   }
 
   async function ensurePro() {
@@ -280,6 +330,22 @@ export default function ToolsPage() {
     showClinicalPanel("handout", await res.json());
   }
 
+  async function runLocum() {
+    const uid = await ensurePro();
+    const res = await fetch(
+      `${API}/tools/locum/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+    );
+    track("tool_used", { tool: "locum_brief" }, { tier: "professional" });
+    showClinicalPanel("locum", await res.json());
+  }
+
+  async function runColdChain() {
+    const uid = await ensurePro();
+    const res = await fetch(`${API}/tools/cold-chain?userId=${uid}`);
+    track("tool_used", { tool: "cold_chain_notes" }, { tier: "professional" });
+    showClinicalPanel("coldchain", await res.json());
+  }
+
   async function speakVoice() {
     const uid = await ensurePro();
     const res = await fetch(
@@ -356,14 +422,10 @@ export default function ToolsPage() {
           >
             Formulary + co-pay
           </button>
-          <button
-            className="btn"
-            type="button"
-            onClick={() => void call(`/tools/locum/${encodeURIComponent(slug)}`)}
-          >
+          <button className="btn" type="button" onClick={() => void runLocum()}>
             Locum brief
           </button>
-          <button className="btn" type="button" onClick={() => void call(`/tools/cold-chain`)}>
+          <button className="btn" type="button" onClick={() => void runColdChain()}>
             Cold-chain notes
           </button>
           <button
@@ -551,6 +613,8 @@ export default function ToolsPage() {
       {monograph && <MonographResultPanel result={monograph} />}
       {handout && <HandoutResultPanel result={handout} />}
       {voice && <VoiceResultPanel result={voice} />}
+      {locum && <LocumResultPanel result={locum} />}
+      {coldChain && <ColdChainResultPanel result={coldChain} />}
 
       {out && (
         <pre className="card" style={{ whiteSpace: "pre-wrap" }}>
@@ -812,6 +876,111 @@ function VoiceResultPanel({ result }: { result: VoiceResult }) {
           {result.note}
         </p>
       ) : null}
+    </section>
+  );
+}
+
+function LocumResultPanel({ result }: { result: LocumResult }) {
+  if (result.error || !result.brief) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Locum brief</h2>
+        <p>{result.error ?? "No locum brief returned."}</p>
+      </section>
+    );
+  }
+  const b = result.brief;
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>
+        Locum brief · {b.innName ?? "—"}
+        {b.className ? ` · ${b.className}` : ""}
+      </h2>
+      {b.schedules && b.schedules.length > 0 ? (
+        <p className="muted">Schedules: {b.schedules.join(", ")}</p>
+      ) : null}
+      {b.topBrands && b.topBrands.length > 0 ? (
+        <>
+          <h3 style={{ marginBottom: 4 }}>Top brands</h3>
+          <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+            {b.topBrands.map((p) => (
+              <li key={`${p.brandName}-${p.strength}`}>
+                {p.brandName} · {p.strength}
+                {p.isOriginator ? " · originator" : ""}
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+      {b.topWarnings && b.topWarnings.length > 0 ? (
+        <>
+          <h3 style={{ marginBottom: 4 }}>Published warnings / CIs</h3>
+          <ul style={{ paddingLeft: 20, marginTop: 0 }}>
+            {b.topWarnings.map((w) => (
+              <li key={w}>{w}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+      <h3 style={{ marginBottom: 4 }}>
+        Counselling{b.counsellingLang ? ` · ${b.counsellingLang}` : ""}
+      </h3>
+      {(b.counsellingLines ?? []).length === 0 ? (
+        <p className="muted">No published counselling lines.</p>
+      ) : (
+        <ol style={{ paddingLeft: 20, marginTop: 0 }}>
+          {(b.counsellingLines ?? []).map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ol>
+      )}
+      {b.availableCounsellingLangs && b.availableCounsellingLangs.length > 0 ? (
+        <p className="muted">Available langs: {b.availableCounsellingLangs.join(", ")}</p>
+      ) : null}
+      {b.stockoutHint ? <p className="muted">{b.stockoutHint}</p> : null}
+      {b.disclaimer ? (
+        <p className="muted" style={{ marginBottom: 0 }}>
+          {b.disclaimer}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function ColdChainResultPanel({ result }: { result: ColdChainResult }) {
+  if (result.error) {
+    return (
+      <section className="card" aria-live="polite">
+        <h2 style={{ marginTop: 0 }}>Cold-chain notes</h2>
+        <p>{result.error}</p>
+        {result.available && result.available.length > 0 ? (
+          <p className="muted">Available keys: {result.available.join(", ")}</p>
+        ) : null}
+      </section>
+    );
+  }
+  const notes = result.notes ?? (result.note ? [result.note] : []);
+  return (
+    <section className="card" aria-live="polite">
+      <h2 style={{ marginTop: 0 }}>Cold-chain notes</h2>
+      {notes.length === 0 ? (
+        <p className="muted">No published cold-chain notes.</p>
+      ) : (
+        notes.map((n) => (
+          <div key={n.productKey ?? n.title} style={{ marginTop: 12 }}>
+            <h3 style={{ marginBottom: 4 }}>{n.title}</h3>
+            {n.storage ? <p>{n.storage}</p> : null}
+            {(n.loadSheddingSteps ?? []).length > 0 ? (
+              <ol style={{ paddingLeft: 20 }}>
+                {(n.loadSheddingSteps ?? []).map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            ) : null}
+            {n.sourceNote ? <p className="source-tag">source · {n.sourceNote}</p> : null}
+          </div>
+        ))
+      )}
     </section>
   );
 }

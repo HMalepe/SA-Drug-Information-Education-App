@@ -95,4 +95,27 @@ describe("Pro tools clinical result panels", () => {
     assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
     assert.match(body, /showClinicalPanel\("voice"/);
   });
+
+  it("locum brief routes to LocumResultPanel with counselling + disclaimer", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function LocumResultPanel/);
+    assert.match(src, /async function runLocum/);
+    assert.match(src, /counsellingLines/);
+    const runFn = src.slice(src.indexOf("async function runLocum"));
+    const end = runFn.indexOf("async function runColdChain");
+    const body = runFn.slice(0, end);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.match(body, /showClinicalPanel\("locum"/);
+  });
+
+  it("cold-chain routes to ColdChainResultPanel with sourceNote", () => {
+    const src = readFileSync(toolsPage, "utf8");
+    assert.match(src, /function ColdChainResultPanel/);
+    assert.match(src, /async function runColdChain/);
+    const runFn = src.slice(src.indexOf("async function runColdChain"));
+    const end = runFn.indexOf("async function speakVoice");
+    const body = runFn.slice(0, end);
+    assert.doesNotMatch(body, /setOut\(JSON\.stringify/);
+    assert.match(body, /showClinicalPanel\("coldchain"/);
+  });
 });

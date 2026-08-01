@@ -94,7 +94,8 @@
     "Web Pro tools: dose-adjustment + clash-board sourced panels (no clinical JSON dump)",
     "Web Pro tools: counselling + insert + monograph sourced panels (no clinical JSON dump)",
     "Web Pro tools: handout + voice sourced panels (no clinical JSON dump); handout sourceNote on payload",
-    "Batch-scoped review decisions — CLI/API ?batch= + /review Recent decisions filter"
+    "Batch-scoped review decisions — CLI/API ?batch= + /review Recent decisions filter",
+    "Locum + cold-chain sourced panels; /review action status without clinical JSON dump"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
