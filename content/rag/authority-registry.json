@@ -97,7 +97,8 @@
     "Batch-scoped review decisions — CLI/API ?batch= + /review Recent decisions filter",
     "Locum + cold-chain sourced panels; /review action status without clinical JSON dump",
     "Composition test for GET /review/decisions?batch= (real seed + STG extracts)",
-    "Founder checklist CLI — checklist A|all copy-ready STG/dosing sweep pack (no --write)"
+    "Founder checklist CLI — checklist A|all copy-ready STG/dosing sweep pack (no --write)",
+    "GET /review/checklist?batch= + /review Sweep checklist panel (read-only copy CLI)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

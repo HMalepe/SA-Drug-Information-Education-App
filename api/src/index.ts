@@ -121,6 +121,7 @@ import {
   flattenStgEligibleItems,
   DEFAULT_STG_POINTER_ATTESTATION,
   summarizeFounderProgress,
+  buildBatchChecklist,
   validateStgExtractDecision,
   applyStgExtractDecisionState,
   applyStgBatchPublish,
@@ -3304,7 +3305,7 @@ app.get("/review/batches-ai", (_req, res) => {
   res.json({
     ...summary,
     howTo:
-      "GET /review/progress · GET /review/decisions · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · GET /review/export-stg-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
+      "GET /review/progress · GET /review/checklist · GET /review/decisions · GET /review/plan-stg · GET /review/plan-dosing · GET /review/export-dosing-cli · GET /review/export-stg-cli · POST /review/publish-stg-batch (attestation; dryRun optional). Never invents mg. No dosing batch auto-publish.",
   });
 });
 
@@ -3361,6 +3362,85 @@ app.get("/review/progress", (req, res) => {
         otherDraft: dosing.otherDraft.length,
       },
       rag: ragInput,
+    }),
+  );
+});
+
+/** Read-only one-shot founder sweep pack (progress + copy-ready CLI). Never writes. */
+app.get("/review/checklist", (req, res) => {
+  const batch = String(req.query.batch ?? "all").trim().toUpperCase() || "ALL";
+  const batchMoleculeIds = loadBatchMoleculeIds();
+  const extracts = loadStgExtractsFromDisk();
+  const dosingItems = buildReviewQueue({
+    molecules: db.molecules,
+    safetyProfiles: db.safetyProfiles,
+    states: ["draft", "reviewed"],
+  });
+  const rag = getInRegionRagPublicStatus();
+  const ragInput = {
+    ok: rag.ok,
+    mode: rag.mode,
+    embedderConfigured: rag.embedderConfigured,
+    llmConfigured: rag.llmConfigured,
+  };
+  const stgAttestation = String(req.query.attestation ?? "").trim() || undefined;
+  const dosingAttestation = String(req.query.dosingAttestation ?? "").trim() || undefined;
+
+  if (batch === "ALL") {
+    const stg = planStgAllBatches({ batchMoleculeIds, extracts });
+    const dosing = planDosingAllBatches({ batchMoleculeIds, dosingItems });
+    const progress = summarizeFounderProgress({
+      scope: "all",
+      stgTotals: stg.totals,
+      dosingTotals: dosing.totals,
+      rag: ragInput,
+    });
+    res.json(
+      buildBatchChecklist({
+        scope: "all",
+        progress,
+        stgBlocked: stg.batches.flatMap((b) => b.blocked),
+        dosingNumericSuspect: dosing.batches.flatMap((b) => b.numericSuspect),
+        stgEligible: flattenStgEligibleItems(stg.batches),
+        dosingPlaceholders: dosing.batches.flatMap((b) => b.placeholderAbsent),
+        stgAttestation,
+        dosingAttestation,
+      }),
+    );
+    return;
+  }
+
+  const ids = batchMoleculeIds.get(batch);
+  if (!ids) {
+    res.status(400).json({ error: `Unknown batch ${batch}. Use A–I or all.` });
+    return;
+  }
+  const stg = planStgBatchPublish({ batch, extracts, moleculeIds: ids });
+  const dosing = planDosingBatch({ batch, dosingItems, moleculeIds: ids });
+  const progress = summarizeFounderProgress({
+    scope: batch,
+    stgTotals: {
+      alreadyPublished: stg.alreadyPublished,
+      eligible: stg.eligible.length,
+      blocked: stg.blocked.length,
+    },
+    dosingTotals: {
+      placeholderAbsent: dosing.placeholderAbsent.length,
+      numericSuspect: dosing.numericSuspect.length,
+      otherDraft: dosing.otherDraft.length,
+    },
+    rag: ragInput,
+  });
+  res.json(
+    buildBatchChecklist({
+      scope: batch,
+      progress,
+      stgBlocked: stg.blocked,
+      dosingNumericSuspect: dosing.numericSuspect,
+      stgEligible: stg.eligible.map((e) => ({ extractId: e.extractId })),
+      dosingPlaceholders: dosing.placeholderAbsent,
+      stgAttestation,
+      dosingAttestation,
     }),
   );
 });

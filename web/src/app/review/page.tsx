@@ -105,6 +105,22 @@ type FounderProgress = {
   note: string;
 };
 
+type FounderChecklist = {
+  scope: string;
+  progress: FounderProgress;
+  stgBlocked: Array<{ extractId: string; reason: string; preview: string }>;
+  dosingNumericSuspect: Array<{
+    moleculeId: string;
+    moleculeSlug: string;
+    fieldPath: string;
+    preview: string;
+  }>;
+  stgCli: { count: number; lines: string[]; note: string };
+  dosingCli: { count: number; lines: string[]; note: string };
+  stgBatchPreviewLine: string;
+  note: string;
+};
+
 type ReviewDecisionRow = {
   id: string;
   queueItemId: string;
@@ -171,6 +187,7 @@ export default function ReviewPage() {
   const [stgPlan, setStgPlan] = useState<StgPlanAll | null>(null);
   const [dosingPlan, setDosingPlan] = useState<DosingPlanAll | null>(null);
   const [progress, setProgress] = useState<FounderProgress | null>(null);
+  const [checklist, setChecklist] = useState<FounderChecklist | null>(null);
   const [decisions, setDecisions] = useState<ReviewDecisionRow[]>([]);
   const [decisionsTotal, setDecisionsTotal] = useState(0);
   const [area, setArea] = useState("");
@@ -192,7 +209,7 @@ export default function ReviewPage() {
     const qs = params.toString() ? `?${params}` : "";
     const stgQs = batch ? `?batch=${encodeURIComponent(batch)}` : "";
 
-    const [c, q, b, sp, dp, stg, prog, dec] = await Promise.all([
+    const [c, q, b, sp, dp, stg, prog, check, dec] = await Promise.all([
       fetch(`${API}/review/coverage`).then((r) => r.json()),
       fetch(`${API}/review/queue${qs}`).then((r) => r.json()),
       fetch(`${API}/review/batches-ai`).then((r) => r.json()),
@@ -201,6 +218,9 @@ export default function ReviewPage() {
       fetch(`${API}/review/stg-queue${stgQs}`).then((r) => r.json()),
       fetch(
         `${API}/review/progress?batch=${encodeURIComponent(batch || "all")}`,
+      ).then((r) => r.json()),
+      fetch(
+        `${API}/review/checklist?batch=${encodeURIComponent(batch || "all")}`,
       ).then((r) => r.json()),
       fetch(
         `${API}/review/decisions?limit=20&batch=${encodeURIComponent(batch || "all")}`,
@@ -213,6 +233,7 @@ export default function ReviewPage() {
     setDosingPlan(dp);
     setStgItems(stg.items ?? []);
     setProgress(prog);
+    setChecklist(check);
     setDecisions(dec.items ?? []);
     setDecisionsTotal(dec.total ?? 0);
   }
@@ -293,6 +314,15 @@ export default function ReviewPage() {
     try {
       await navigator.clipboard.writeText(text);
       setMsg(`Copied ${data.count} placeholder publish-dosing lines (no --write).`);
+    } catch {
+      setMsg(text);
+    }
+  }
+
+  async function copyText(label: string, text: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      setMsg(`Copied ${label} (no --write).`);
     } catch {
       setMsg(text);
     }
@@ -398,6 +428,85 @@ export default function ReviewPage() {
               npm run review:batches -- progress
               {progress.scope && progress.scope !== "all"
                 ? ` ${progress.scope.toUpperCase()}`
+                : ""}
+            </code>
+          </p>
+        </section>
+      )}
+
+      {checklist && (
+        <section style={{ marginTop: 16 }}>
+          <h2>
+            Sweep checklist
+            {checklist.scope && checklist.scope !== "all"
+              ? ` — Batch ${checklist.scope.toUpperCase()}`
+              : " — Batches A–I"}
+          </h2>
+          <p className="muted">{checklist.note}</p>
+          {checklist.stgBlocked.length > 0 ? (
+            <p className="muted" style={{ marginTop: 8 }}>
+              Blocked STG ({checklist.stgBlocked.length}):{" "}
+              {checklist.stgBlocked.map((b) => b.extractId).join(", ")}
+            </p>
+          ) : (
+            <p className="muted" style={{ marginTop: 8 }}>
+              Blocked STG: none
+            </p>
+          )}
+          {checklist.dosingNumericSuspect.length > 0 ? (
+            <p className="muted">
+              Numeric-suspect dosing (do not publish):{" "}
+              {checklist.dosingNumericSuspect
+                .map((r) => `${r.moleculeSlug}:${r.fieldPath}`)
+                .join(", ")}
+            </p>
+          ) : (
+            <p className="muted">Numeric-suspect dosing: none</p>
+          )}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+            <button
+              className="btn"
+              type="button"
+              disabled={!checklist.stgBatchPreviewLine}
+              onClick={() =>
+                void copyText("STG batch preview line", checklist.stgBatchPreviewLine)
+              }
+            >
+              Copy STG batch preview line
+            </button>
+            <button
+              className="btn"
+              type="button"
+              disabled={checklist.stgCli.count === 0}
+              onClick={() =>
+                void copyText(
+                  `${checklist.stgCli.count} STG CLI lines`,
+                  checklist.stgCli.lines.join("\n"),
+                )
+              }
+            >
+              Copy STG CLI ({checklist.stgCli.count})
+            </button>
+            <button
+              className="btn"
+              type="button"
+              disabled={checklist.dosingCli.count === 0}
+              onClick={() =>
+                void copyText(
+                  `${checklist.dosingCli.count} dosing CLI lines`,
+                  checklist.dosingCli.lines.join("\n"),
+                )
+              }
+            >
+              Copy dosing CLI ({checklist.dosingCli.count})
+            </button>
+          </div>
+          <p className="muted" style={{ marginTop: 8 }}>
+            CLI:{" "}
+            <code>
+              npm run review:batches -- checklist
+              {checklist.scope && checklist.scope !== "all"
+                ? ` ${checklist.scope.toUpperCase()}`
                 : ""}
             </code>
           </p>
