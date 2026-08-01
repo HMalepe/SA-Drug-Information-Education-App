@@ -109,7 +109,8 @@
     "Ops pages (institution/CPD/ambassador/pricing): status formatters, no raw JSON dumps",
     "My Meds reminders + onboarding: status formatters (no raw JSON dumps)",
     "Insights: learning curve / mastery / tops as tables+lists (no raw JSON dumps)",
-    "CoursePlayer quiz grade: formatQuizGradeMsg (no raw JSON dump on error)"
+    "CoursePlayer quiz grade: formatQuizGradeMsg (no raw JSON dump on error)",
+    "Generic CI guard: no setX(JSON.stringify) or <pre> JSON dumps across web/app trees"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
