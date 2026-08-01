@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { MoleculeTabBody } from "../../lib/MoleculeTabBody";
@@ -82,6 +82,11 @@ export default function DosingHubScreen() {
         Sourced panels + governed calculator (show working, clinical confirmation). Never invents
         mg.
       </Text>
+      <Link href={`/molecule/${String(slug)}`} asChild>
+        <Pressable style={styles.backLink}>
+          <Text style={styles.backLinkText}>← Medicine 360</Text>
+        </Pressable>
+      </Link>
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
@@ -170,6 +175,18 @@ const styles = StyleSheet.create({
   container: { padding: theme.space.lg, gap: theme.space.md, backgroundColor: theme.colors.mist },
   title: { fontSize: theme.typography.size.xl, fontWeight: "800", color: theme.colors.ink },
   meta: { color: theme.colors.slate },
+  backLink: {
+    alignSelf: "flex-start",
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    backgroundColor: theme.colors.mint,
+  },
+  backLinkText: {
+    color: theme.colors.deepTeal,
+    fontWeight: "700",
+    fontSize: theme.typography.size.sm,
+  },
   section: { fontWeight: "700", color: theme.colors.teal, fontSize: theme.typography.size.md },
   card: {
     backgroundColor: theme.colors.white,

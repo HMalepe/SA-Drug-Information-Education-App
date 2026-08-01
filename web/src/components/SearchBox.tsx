@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { track } from "@/lib/analytics";
+import { formatApiError, messageFromHttpErrorBody } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -20,25 +21,45 @@ export function SearchBox() {
   const [q, setQ] = useState("");
   const [hits, setHits] = useState<Hit[]>([]);
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
 
   async function onSearch(e: React.FormEvent) {
     e.preventDefault();
+    if (busy) return;
+    const query = q.trim();
+    if (!query) return;
     setBusy(true);
+    setError("");
+    setHits([]);
     try {
-      const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}&limit=20`);
-      const data = (await res.json()) as { hits: Hit[] };
-      setHits(data.hits);
+      const res = await fetch(`${API}/search?q=${encodeURIComponent(query)}&limit=20`);
+      const raw = await res.text();
+      let data: { hits?: Hit[]; error?: unknown } = {};
+      try {
+        data = raw ? (JSON.parse(raw) as { hits?: Hit[]; error?: unknown }) : {};
+      } catch {
+        setError(messageFromHttpErrorBody(raw, "Search failed"));
+        return;
+      }
+      if (!res.ok) {
+        setError(formatApiError(data.error ?? data, "Search failed"));
+        return;
+      }
+      const nextHits = Array.isArray(data.hits) ? data.hits : [];
+      setHits(nextHits);
       track("search_performed", {
-        queryLen: q.trim().length,
-        hitCount: data.hits.length,
-        hasResults: data.hits.length > 0,
+        queryLen: query.length,
+        hitCount: nextHits.length,
+        hasResults: nextHits.length > 0,
       });
-      const top = data.hits[0];
+      const top = nextHits[0];
       const onlyExact =
-        data.hits.length === 1 && (top?.kind === "molecule" || top?.kind === "brand");
+        nextHits.length === 1 && (top?.kind === "molecule" || top?.kind === "brand");
       if (top && onlyExact) {
         router.push(`/molecules/${top.moleculeSlug}`);
       }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Search failed");
     } finally {
       setBusy(false);
     }
@@ -52,11 +73,17 @@ export function SearchBox() {
           placeholder="Brand, molecule, class, or indication — e.g. ACE inhibitors, Augmentin"
           value={q}
           onChange={(e) => setQ(e.target.value)}
+          disabled={busy}
         />
         <button type="submit" disabled={busy}>
           {busy ? "…" : "Search"}
         </button>
       </form>
+      {error ? (
+        <p className="muted" role="alert">
+          {error}
+        </p>
+      ) : null}
       {hits.length > 0 && (
         <div className="card">
           {hits.map((h) => (

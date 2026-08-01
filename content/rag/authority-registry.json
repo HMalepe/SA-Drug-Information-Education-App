@@ -119,7 +119,8 @@
     "Expo molecule Ask + dosing calc: busy gates, slug reload, coerce AI strings",
     "Web AskMateria busy/error harden + apiGet/apiPost messageFromHttpErrorBody",
     "Expo design tokens: _layout + home borders; CI bans magic hex in app UI",
-    "Expo nav: Stack titles + home→auth + molecule→dosing links"
+    "Expo nav: Stack titles + home→auth + molecule→dosing links",
+    "Web SearchBox error harden + Expo dosing→molecule back link"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
