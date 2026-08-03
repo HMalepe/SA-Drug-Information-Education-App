@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
+import { createStubSession } from "@/lib/stubSession";
 import { isBrowserOffline, loadOfflinePack, saveOfflinePack } from "@/lib/offlineCache";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
@@ -409,29 +410,26 @@ export default function ToolsPage() {
     else setVision(data as VisionResolveResult);
   }
 
-  async function ensurePro() {
+  async function ensurePro(): Promise<string | null> {
     if (userId) return userId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const id = await createStubSession({
         email: "pro@materiatest.za",
         mode: "pharmacist",
         tier: "professional",
-      }),
-    });
-    const data = await res.json();
-    await fetch(`${API}/billing/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: data.user.id, tier: "professional" }),
-    });
-    setUserId(data.user.id);
-    return data.user.id as string;
+        subscribeTier: "professional",
+      });
+      setUserId(id);
+      return id;
+    } catch (e) {
+      setOut(e instanceof Error ? e.message : "Could not create session");
+      return null;
+    }
   }
 
   async function cacheOffline() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(`${API}/offline/pack?userId=${uid}`);
     const data = await res.json();
     if (res.status === 402) {
@@ -473,6 +471,7 @@ export default function ToolsPage() {
 
   async function resolveVision() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(`${API}/tools/vision/resolve`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -492,6 +491,7 @@ export default function ToolsPage() {
 
   async function runDoseAdjustment(confirmed: boolean) {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(`${API}/tools/dose-adjustment`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -509,6 +509,7 @@ export default function ToolsPage() {
 
   async function runClashBoard() {
     const uid = await ensurePro();
+    if (!uid) return;
     const moleculeSlugs = clashSlugs
       .split(/[,;\n]+/)
       .map((s) => s.trim())
@@ -524,6 +525,7 @@ export default function ToolsPage() {
 
   async function runCounselling() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/counselling/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
     );
@@ -541,6 +543,7 @@ export default function ToolsPage() {
 
   async function runMonograph() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/monograph/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
     );
@@ -550,6 +553,7 @@ export default function ToolsPage() {
 
   async function runHandout() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/handout/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
     );
@@ -559,6 +563,7 @@ export default function ToolsPage() {
 
   async function runLocum() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/locum/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
     );
@@ -568,6 +573,7 @@ export default function ToolsPage() {
 
   async function runColdChain() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(`${API}/tools/cold-chain?userId=${uid}`);
     track("tool_used", { tool: "cold_chain_notes" }, { tier: "professional" });
     showClinicalPanel("coldchain", await res.json());
@@ -575,6 +581,7 @@ export default function ToolsPage() {
 
   async function runSubstitution() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/substitution/${encodeURIComponent(slug)}?userId=${uid}&selectedProductId=prod-amoxil`,
     );
@@ -592,6 +599,7 @@ export default function ToolsPage() {
 
   async function runFormulary() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/formulary/${encodeURIComponent(slug)}?userId=${uid}&scheme=${encodeURIComponent(scheme)}&selectedProductId=prod-amoxil`,
     );
@@ -609,6 +617,7 @@ export default function ToolsPage() {
 
   async function runAvailability() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/availability/${encodeURIComponent(slug)}?userId=${uid}`,
     );
@@ -626,6 +635,7 @@ export default function ToolsPage() {
 
   async function runShortages() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(`${API}/tools/shortages?userId=${uid}`);
     if (res.status === 402) {
       track(
@@ -641,6 +651,7 @@ export default function ToolsPage() {
 
   async function runPharmacyLocator() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/pharmacy-locator?userId=${uid}&city=${encodeURIComponent(city)}&moleculeSlug=${encodeURIComponent(slug)}&selectedProductId=prod-amoxil`,
     );
@@ -658,6 +669,7 @@ export default function ToolsPage() {
 
   async function speakVoice() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/tools/voice/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
     );

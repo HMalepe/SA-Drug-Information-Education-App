@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
 import { formatApiError, messageFromHttpErrorBody } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -83,19 +84,13 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
 
   async function ensureUser() {
     if (userId) return userId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, mode: "student", tier: "student" }),
+    const id = await createStubSession({
+      email,
+      mode: "student",
+      tier: "student",
     });
-    const data = await readJson(res);
-    if (!res.ok) {
-      throw new Error(formatApiError(data.error ?? data, "Could not create session"));
-    }
-    const user = data.user as { id?: string } | undefined;
-    if (!user?.id) throw new Error("Session created without a user id");
-    setUserId(user.id);
-    return user.id;
+    setUserId(id);
+    return id;
   }
 
   async function load(uid?: string) {

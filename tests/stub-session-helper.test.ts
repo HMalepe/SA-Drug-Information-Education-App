@@ -42,4 +42,24 @@ describe("shared createStubSession for Academy learn pages", () => {
     }
     assert.ok(wired.length >= 10, `expected ≥10 learn pages wired, got ${wired.join(",")}`);
   });
+
+  it("Pro demo pages + CoursePlayer use createStubSession", () => {
+    const files = [
+      "web/src/app/pearls/page.tsx",
+      "web/src/app/cpd/page.tsx",
+      "web/src/app/notes/page.tsx",
+      "web/src/app/tools/page.tsx",
+      "web/src/app/insights/page.tsx",
+      "web/src/components/CoursePlayer.tsx",
+    ];
+    for (const rel of files) {
+      const src = readFileSync(join(root, rel), "utf8");
+      assert.match(src, /createStubSession/, `${rel} should use createStubSession`);
+      assert.doesNotMatch(
+        src,
+        /fetch\(`\$\{API\}\/auth\/stub-session`/,
+        `${rel} must not raw-fetch stub-session`,
+      );
+    }
+  });
 });

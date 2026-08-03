@@ -125,7 +125,8 @@
     "Expo radius tokens (md/lg/pill) replace magic borderRadius in app UI",
     "Web CoursePlayer: !res.ok + busy gates + formatApiError on load/lesson/quiz",
     "Web globals.css radius scale (--radius-sm/md/lg/pill) aligned with design tokens",
-    "Shared createStubSession for Academy learn pages (!res.ok + null-safe ensureStudent)"
+    "Shared createStubSession for Academy learn pages (!res.ok + null-safe ensureStudent)",
+    "Wire createStubSession into Pro demos (tools/pearls/cpd/notes/insights) + CoursePlayer"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

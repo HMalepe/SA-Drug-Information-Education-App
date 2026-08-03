@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
 import { formatApiError } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -28,29 +29,26 @@ export default function NotesPage() {
   const [drafts, setDrafts] = useState<Note[]>([]);
   const [msg, setMsg] = useState("");
 
-  async function ensurePro() {
+  async function ensurePro(): Promise<string | null> {
     if (userId) return userId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const id = await createStubSession({
         email: "notes@materiatest.za",
         mode: "pharmacist",
         tier: "professional",
-      }),
-    });
-    const data = await res.json();
-    await fetch(`${API}/billing/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: data.user.id, tier: "professional" }),
-    });
-    setUserId(data.user.id);
-    return data.user.id as string;
+        subscribeTier: "professional",
+      });
+      setUserId(id);
+      return id;
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Could not create session");
+      return null;
+    }
   }
 
   async function load() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(
       `${API}/notes?moleculeSlug=${encodeURIComponent(slug)}&includeDraft=1&userId=${uid}`,
     );
@@ -62,6 +60,7 @@ export default function NotesPage() {
 
   async function contribute() {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(`${API}/notes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -85,6 +84,7 @@ export default function NotesPage() {
 
   async function publish(noteId: string) {
     const uid = await ensurePro();
+    if (!uid) return;
     const res = await fetch(`${API}/notes/${noteId}/publish`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -104,31 +104,28 @@ export default function NotesPage() {
 
   async function upvote(noteId: string) {
     const uid = await ensurePro();
+    if (!uid) return;
     // second pro user to avoid self-upvote on own notes after publish-as-same-user demo
-    const voter = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    let voterId: string;
+    try {
+      voterId = await createStubSession({
         email: "voter@materiatest.za",
         mode: "pharmacist",
         tier: "professional",
-      }),
-    });
-    const v = await voter.json();
-    await fetch(`${API}/billing/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: v.user.id, tier: "professional" }),
-    });
+        subscribeTier: "professional",
+      });
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Could not create voter session");
+      return;
+    }
     const res = await fetch(`${API}/notes/${noteId}/upvote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: v.user.id }),
+      body: JSON.stringify({ userId: voterId }),
     });
     const data = await res.json();
     if (!res.ok) setMsg(formatApiError(data.error, "Upvote failed"));
     else await load();
-    void uid;
   }
 
   return (
