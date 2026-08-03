@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MODE_STORAGE_KEY, useUserMode, WEB_USER_MODES } from "@/components/ModeProvider";
 import { formatApiError } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -19,19 +20,14 @@ export default function OnboardingPage() {
 
   async function createSession(e: React.FormEvent) {
     e.preventDefault();
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, mode }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatOnboardingError(data.error ?? data));
-      return;
+    try {
+      const id = await createStubSession({ email, mode });
+      window.localStorage.setItem(MODE_STORAGE_KEY, mode);
+      setUserId(id);
+      setMsg(`Session ready as ${mode}. Accept disclaimers below.`);
+    } catch (err) {
+      setMsg(formatOnboardingError(err instanceof Error ? err.message : err));
     }
-    window.localStorage.setItem(MODE_STORAGE_KEY, mode);
-    setUserId(data.user.id);
-    setMsg(`Session ready as ${mode}. Accept disclaimers below.`);
   }
 
   async function accept(consentType: "popia" | "medical_disclaimer") {

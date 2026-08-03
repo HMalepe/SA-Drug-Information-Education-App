@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatApiError } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -77,25 +78,26 @@ export default function InstitutionPage() {
   const [boards, setBoards] = useState<LeaderboardBundle | null>(null);
   const [out, setOut] = useState("");
 
-  async function ensureAdmin() {
+  async function ensureAdmin(): Promise<string | null> {
     if (adminId) return adminId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const id = await createStubSession({
         email: "dean@materiatest.za",
         mode: "pharmacist",
         tier: "institution",
         displayName: "Demo Dean",
-      }),
-    });
-    const data = await res.json();
-    setAdminId(data.user.id);
-    return data.user.id as string;
+      });
+      setAdminId(id);
+      return id;
+    } catch (e) {
+      setOut(e instanceof Error ? e.message : "Could not create session");
+      return null;
+    }
   }
 
   async function createOrg() {
     const uid = await ensureAdmin();
+    if (!uid) return;
     const res = await fetch(`${API}/institution/orgs`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -118,6 +120,7 @@ export default function InstitutionPage() {
       return;
     }
     const uid = await ensureAdmin();
+    if (!uid) return;
     const res = await fetch(`${API}/institution/seats`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -137,6 +140,7 @@ export default function InstitutionPage() {
       return;
     }
     const uid = await ensureAdmin();
+    if (!uid) return;
     const seatRes = await fetch(`${API}/institution/seats`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -172,6 +176,7 @@ export default function InstitutionPage() {
       return;
     }
     const uid = await ensureAdmin();
+    if (!uid) return;
     const res = await fetch(`${API}/institution/${orgId}/analytics?userId=${uid}`);
     setOut(formatInstitutionMsg(await res.json()));
   }
@@ -182,6 +187,7 @@ export default function InstitutionPage() {
       return;
     }
     const uid = await ensureAdmin();
+    if (!uid) return;
     try {
       const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
       const first = Array.isArray(list.courses) ? list.courses[0] : null;

@@ -5,7 +5,7 @@ const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 export type StubSessionOpts = {
   email: string;
   mode: "patient" | "student" | "pharmacist" | "doctor" | string;
-  tier: "free" | "student" | "professional" | string;
+  tier?: "free" | "student" | "professional" | "institution" | string;
   displayName?: string;
   /** When set, also POST /billing/subscribe after session create. */
   subscribeTier?: "free" | "student" | "professional" | string;
@@ -22,15 +22,15 @@ async function readJson(res: Response): Promise<Record<string, unknown>> {
 }
 
 /**
- * Stub auth session for demo Academy / Pro pages.
+ * Stub auth session for demo Academy / Pro / ops pages.
  * Always checks !res.ok — never assumes data.user.id exists.
  */
 export async function createStubSession(opts: StubSessionOpts): Promise<string> {
   const body: Record<string, string> = {
     email: opts.email,
     mode: opts.mode,
-    tier: opts.tier,
   };
+  if (opts.tier) body.tier = opts.tier;
   if (opts.displayName) body.displayName = opts.displayName;
 
   const res = await fetch(`${API}/auth/stub-session`, {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatApiError } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -46,41 +47,42 @@ export default function AmbassadorPage() {
   const [campus, setCampus] = useState("Wits Pharmacy");
   const [out, setOut] = useState("");
 
-  async function ensureOwner() {
+  async function ensureOwner(): Promise<string | null> {
     if (ownerId) return ownerId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const id = await createStubSession({
         email: "ambassador@materiatest.za",
         mode: "student",
         tier: "student",
         displayName: "Campus Ambassador",
-      }),
-    });
-    const data = await res.json();
-    setOwnerId(data.user.id);
-    return data.user.id as string;
+      });
+      setOwnerId(id);
+      return id;
+    } catch (e) {
+      setOut(e instanceof Error ? e.message : "Could not create session");
+      return null;
+    }
   }
 
-  async function ensureReferee() {
+  async function ensureReferee(): Promise<string | null> {
     if (refereeId) return refereeId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const id = await createStubSession({
         email: `classmate-${Date.now()}@materiatest.za`,
         mode: "student",
         tier: "free",
-      }),
-    });
-    const data = await res.json();
-    setRefereeId(data.user.id);
-    return data.user.id as string;
+      });
+      setRefereeId(id);
+      return id;
+    } catch (e) {
+      setOut(e instanceof Error ? e.message : "Could not create session");
+      return null;
+    }
   }
 
   async function createCode(kind: "ambassador" | "standard") {
     const uid = await ensureOwner();
+    if (!uid) return;
     const res = await fetch(`${API}/ambassador/code`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -93,6 +95,7 @@ export default function AmbassadorPage() {
 
   async function redeem() {
     const uid = await ensureReferee();
+    if (!uid) return;
     const res = await fetch(`${API}/ambassador/redeem`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -103,6 +106,7 @@ export default function AmbassadorPage() {
 
   async function dashboard() {
     const uid = await ensureOwner();
+    if (!uid) return;
     const res = await fetch(`${API}/ambassador/dashboard/${uid}`);
     setOut(formatAmbassadorMsg(await res.json()));
   }

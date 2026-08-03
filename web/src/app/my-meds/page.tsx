@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatApiError, messageFromHttpErrorBody } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -85,55 +86,54 @@ export default function MyMedsPage() {
   }
 
   async function start() {
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, mode: "patient", tier: "free" }),
-    });
-    const data = await res.json();
-    setUserId(data.user.id);
-    setMsg("Session ready. Sample Amoxicillin regimen (support only).");
-    await fetch(`${API}/companion/regimen/${data.user.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        items: [
-          {
-            moleculeId: "mol-amox",
-            moleculeName: "Amoxicillin",
-            brandName: "Amoxil",
-            reminderTimes: ["08:00", "20:00"],
-            refillDueOn: "2026-07-25",
-            lastFilledOn: "2026-06-27",
-            packDaysUser: 28,
-          },
-        ],
-      }),
-    });
-    await fetch(`${API}/companion/reminders/prefs/${data.user.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        channels: ["in_app", "email"],
-        email,
-        timezone: "Africa/Johannesburg",
-        consentMessaging: true,
-      }),
-    });
-    const check = await fetch(`${API}/companion/interactions/check`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: data.user.id }),
-    });
-    const clash = await check.json();
-    if (check.status === 402) {
-      setRegimenNote(`${clash.error} — upgrade to Student for full interaction check.`);
-    } else {
-      setRegimenNote(clash.note);
+    try {
+      const id = await createStubSession({ email, mode: "patient", tier: "free" });
+      setUserId(id);
+      setMsg("Session ready. Sample Amoxicillin regimen (support only).");
+      await fetch(`${API}/companion/regimen/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: [
+            {
+              moleculeId: "mol-amox",
+              moleculeName: "Amoxicillin",
+              brandName: "Amoxil",
+              reminderTimes: ["08:00", "20:00"],
+              refillDueOn: "2026-07-25",
+              lastFilledOn: "2026-06-27",
+              packDaysUser: 28,
+            },
+          ],
+        }),
+      });
+      await fetch(`${API}/companion/reminders/prefs/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          channels: ["in_app", "email"],
+          email,
+          timezone: "Africa/Johannesburg",
+          consentMessaging: true,
+        }),
+      });
+      const check = await fetch(`${API}/companion/interactions/check`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: id }),
+      });
+      const clash = await check.json();
+      if (check.status === 402) {
+        setRegimenNote(`${clash.error} — upgrade to Student for full interaction check.`);
+      } else {
+        setRegimenNote(clash.note);
+      }
+      const deps = await fetch(`${API}/companion/dependants/${id}`);
+      const depData = await deps.json();
+      setDependants(Array.isArray(depData.profiles) ? depData.profiles : []);
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Could not create session");
     }
-    const deps = await fetch(`${API}/companion/dependants/${data.user.id}`);
-    const depData = await deps.json();
-    setDependants(Array.isArray(depData.profiles) ? depData.profiles : []);
   }
 
   async function addDependant() {

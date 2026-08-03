@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
 import { TrackPage } from "@/components/TrackPage";
 import { formatApiError } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -42,31 +43,30 @@ export default function PricingPage() {
   }, []);
 
   async function subscribe(tier: "free" | "student" | "professional") {
-    const session = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const userId = await createStubSession({
         email: `${tier}@materiatest.za`,
         mode: tier === "student" ? "student" : "pharmacist",
         tier: "free",
-      }),
-    });
-    const { user } = await session.json();
-    const res = await fetch(`${API}/billing/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: user.id,
-        tier,
-        studentVerified: tier === "student",
-        callbackUrl: `${window.location.origin}/pricing?paid=1`,
-      }),
-    });
-    const data = await res.json();
-    track("subscription_started", { tier }, { tier });
-    setMsg(formatPricingMsg({ ...data, tier }));
-    const url = data.checkout?.authorizationUrl as string | undefined;
-    if (url) window.location.href = url;
+      });
+      const res = await fetch(`${API}/billing/subscribe`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId,
+          tier,
+          studentVerified: tier === "student",
+          callbackUrl: `${window.location.origin}/pricing?paid=1`,
+        }),
+      });
+      const data = await res.json();
+      track("subscription_started", { tier }, { tier });
+      setMsg(formatPricingMsg({ ...data, tier }));
+      const url = data.checkout?.authorizationUrl as string | undefined;
+      if (url) window.location.href = url;
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Could not create session");
+    }
   }
 
   return (

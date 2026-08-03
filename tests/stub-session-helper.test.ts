@@ -16,6 +16,8 @@ describe("shared createStubSession for Academy learn pages", () => {
     assert.match(src, /messageFromHttpErrorBody/);
     assert.match(src, /Session created without a user id/);
     assert.match(src, /subscribeTier/);
+    assert.match(src, /tier\?:/);
+    assert.match(src, /if \(opts\.tier\) body\.tier = opts\.tier/);
   });
 
   it("learn demo pages use createStubSession (no raw stub-session fetch)", () => {
@@ -51,6 +53,25 @@ describe("shared createStubSession for Academy learn pages", () => {
       "web/src/app/tools/page.tsx",
       "web/src/app/insights/page.tsx",
       "web/src/components/CoursePlayer.tsx",
+    ];
+    for (const rel of files) {
+      const src = readFileSync(join(root, rel), "utf8");
+      assert.match(src, /createStubSession/, `${rel} should use createStubSession`);
+      assert.doesNotMatch(
+        src,
+        /fetch\(`\$\{API\}\/auth\/stub-session`/,
+        `${rel} must not raw-fetch stub-session`,
+      );
+    }
+  });
+
+  it("ops/onboarding/my-meds pages use createStubSession (no raw stub-session fetch)", () => {
+    const files = [
+      "web/src/app/ambassador/page.tsx",
+      "web/src/app/institution/page.tsx",
+      "web/src/app/pricing/page.tsx",
+      "web/src/app/onboarding/page.tsx",
+      "web/src/app/my-meds/page.tsx",
     ];
     for (const rel of files) {
       const src = readFileSync(join(root, rel), "utf8");

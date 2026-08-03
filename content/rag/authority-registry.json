@@ -126,7 +126,8 @@
     "Web CoursePlayer: !res.ok + busy gates + formatApiError on load/lesson/quiz",
     "Web globals.css radius scale (--radius-sm/md/lg/pill) aligned with design tokens",
     "Shared createStubSession for Academy learn pages (!res.ok + null-safe ensureStudent)",
-    "Wire createStubSession into Pro demos (tools/pearls/cpd/notes/insights) + CoursePlayer"
+    "Wire createStubSession into Pro demos (tools/pearls/cpd/notes/insights) + CoursePlayer",
+    "Wire createStubSession into ops/onboarding/my-meds (optional tier; no raw stub-session)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
