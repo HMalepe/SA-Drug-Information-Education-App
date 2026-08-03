@@ -121,7 +121,8 @@
     "Expo design tokens: _layout + home borders; CI bans magic hex in app UI",
     "Expo nav: Stack titles + home→auth + molecule→dosing links",
     "Web SearchBox error harden + Expo dosing→molecule back link",
-    "Web globals.css: --white/--line/--line-soft vars aligned with design tokens"
+    "Web globals.css: --white/--line/--line-soft vars aligned with design tokens",
+    "Expo radius tokens (md/lg/pill) replace magic borderRadius in app UI"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

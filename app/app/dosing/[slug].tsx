@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     paddingVertical: 6,
     paddingHorizontal: 10,
-    borderRadius: 8,
+    borderRadius: theme.radius.md,
     backgroundColor: theme.colors.mint,
   },
   backLinkText: {
@@ -191,14 +191,14 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: theme.colors.white,
     padding: theme.space.md,
-    borderRadius: 8,
+    borderRadius: theme.radius.md,
     gap: theme.space.sm,
   },
   input: {
     backgroundColor: theme.colors.white,
     borderWidth: 1,
     borderColor: theme.colors.slate,
-    borderRadius: 8,
+    borderRadius: theme.radius.md,
     padding: theme.space.sm,
     color: theme.colors.ink,
   },
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.colors.teal,
     padding: theme.space.md,
-    borderRadius: 8,
+    borderRadius: theme.radius.md,
     alignItems: "center",
   },
   buttonDisabled: { opacity: 0.6 },
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     fontSize: theme.typography.size.lg,
     color: theme.colors.ink,
   },
-  working: { gap: 4 },
+  working: { gap: theme.space.xs },
   workingLabel: { fontWeight: "700", color: theme.colors.ink },
   source: {
     color: theme.colors.deepTeal,

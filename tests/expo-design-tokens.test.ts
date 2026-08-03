@@ -88,4 +88,28 @@ describe("Expo design tokens (no magic hex)", () => {
     const mol = readFileSync(join(root, "app/app/molecule/[slug].tsx"), "utf8");
     assert.match(mol, /href=\{`\/dosing\/\$\{/);
   });
+
+  it("Expo UI uses radius tokens (no magic borderRadius 8/12/999)", () => {
+    const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
+    assert.match(tokens, /pill:\s*999/);
+
+    const theme = readFileSync(join(root, "app/lib/theme.ts"), "utf8");
+    assert.match(theme, /radius/);
+
+    const files = SCAN_ROOTS.flatMap(listSourceFiles);
+    const MAGIC_RADIUS = /borderRadius:\s*(8|12|999)\b/;
+    const violations: string[] = [];
+    for (const file of files) {
+      const lines = readFileSync(file, "utf8").split(/\r?\n/);
+      const rel = relative(root, file).replace(/\\/g, "/");
+      for (let i = 0; i < lines.length; i++) {
+        if (MAGIC_RADIUS.test(lines[i]!)) violations.push(`${rel}:${i + 1}`);
+      }
+    }
+    assert.deepEqual(
+      violations,
+      [],
+      `Use radius.md/lg/pill instead of magic borderRadius:\n${violations.join("\n")}`,
+    );
+  });
 });

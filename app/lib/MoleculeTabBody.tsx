@@ -317,7 +317,7 @@ function SourcesBlock({ sources }: { sources: SourceTag[] }) {
 
 const styles = StyleSheet.create({
   stack: { gap: theme.space.sm },
-  section: { gap: 4 },
+  section: { gap: theme.space.xs },
   sectionLabel: {
     fontSize: theme.typography.size.sm,
     fontWeight: "700",
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   item: {
-    gap: 4,
+    gap: theme.space.xs,
     paddingBottom: theme.space.sm,
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.mist,
@@ -349,5 +349,5 @@ const styles = StyleSheet.create({
     fontSize: theme.typography.size.sm,
     marginTop: 2,
   },
-  sourcesBlock: { marginTop: theme.space.sm, gap: 4 },
+  sourcesBlock: { marginTop: theme.space.sm, gap: theme.space.xs },
 });

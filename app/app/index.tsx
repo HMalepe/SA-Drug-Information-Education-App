@@ -9,7 +9,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { colors, space, typography } from "@materia/design-tokens";
+import { colors, space, typography, radius } from "@materia/design-tokens";
 import { listMolecules, searchMolecules } from "../lib/api";
 
 interface MoleculeRow {
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   navChip: {
     paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 999,
+    borderRadius: radius.pill,
     backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.line,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     backgroundColor: colors.white,
-    borderRadius: 8,
+    borderRadius: radius.md,
     paddingHorizontal: space.md,
     paddingVertical: 12,
     borderWidth: 1,
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: colors.teal,
-    borderRadius: 8,
+    borderRadius: radius.md,
     paddingHorizontal: space.md,
     justifyContent: "center",
   },
@@ -191,11 +191,11 @@ const styles = StyleSheet.create({
     color: colors.ink,
     fontSize: typography.size.lg,
   },
-  chips: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: space.sm },
+  chips: { flexDirection: "row", flexWrap: "wrap", gap: space.sm, marginBottom: space.sm },
   chip: {
     paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 999,
+    borderRadius: radius.pill,
     backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.line,
@@ -205,12 +205,12 @@ const styles = StyleSheet.create({
   chipTextOn: { color: colors.white, fontWeight: "600", fontSize: 13 },
   card: {
     backgroundColor: colors.white,
-    borderRadius: 12,
+    borderRadius: radius.lg,
     padding: space.md,
     marginBottom: space.sm,
     borderWidth: 1,
     borderColor: colors.lineSoft,
   },
   cardTitle: { color: colors.ink, fontWeight: "700", fontSize: typography.size.md },
-  muted: { color: colors.slate, marginTop: 4 },
+  muted: { color: colors.slate, marginTop: space.xs },
 });
