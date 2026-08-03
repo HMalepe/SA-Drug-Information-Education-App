@@ -77,6 +77,7 @@ export default function InstitutionPage() {
   const [lastCohortId, setLastCohortId] = useState<string | null>(null);
   const [boards, setBoards] = useState<LeaderboardBundle | null>(null);
   const [out, setOut] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureAdmin(): Promise<string | null> {
     if (adminId) return adminId;
@@ -96,22 +97,28 @@ export default function InstitutionPage() {
   }
 
   async function createOrg() {
-    const uid = await ensureAdmin();
-    if (!uid) return;
-    const res = await fetch(`${API}/institution/orgs`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        adminUserId: uid,
-        name: orgName,
-        kind: "university",
-        seatLimit: 50,
-      }),
-    });
-    const data = await res.json();
-    if (data.org?.id) setOrgId(data.org.id);
-    setBoards(null);
-    setOut(formatInstitutionMsg(data));
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensureAdmin();
+      if (!uid) return;
+      const res = await fetch(`${API}/institution/orgs`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          adminUserId: uid,
+          name: orgName,
+          kind: "university",
+          seatLimit: 50,
+        }),
+      });
+      const data = await res.json();
+      if (data.org?.id) setOrgId(data.org.id);
+      setBoards(null);
+      setOut(formatInstitutionMsg(data));
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function addSeat() {
@@ -119,19 +126,25 @@ export default function InstitutionPage() {
       setOut("Create an organisation first.");
       return;
     }
-    const uid = await ensureAdmin();
-    if (!uid) return;
-    const res = await fetch(`${API}/institution/seats`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        orgId,
-        adminUserId: uid,
-        memberEmail,
-        memberMode: "student",
-      }),
-    });
-    setOut(formatInstitutionMsg(await res.json()));
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensureAdmin();
+      if (!uid) return;
+      const res = await fetch(`${API}/institution/seats`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orgId,
+          adminUserId: uid,
+          memberEmail,
+          memberMode: "student",
+        }),
+      });
+      setOut(formatInstitutionMsg(await res.json()));
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function createCohort() {
@@ -139,35 +152,41 @@ export default function InstitutionPage() {
       setOut("Create an organisation first.");
       return;
     }
-    const uid = await ensureAdmin();
-    if (!uid) return;
-    const seatRes = await fetch(`${API}/institution/seats`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        orgId,
-        adminUserId: uid,
-        memberEmail: `cohort-${Date.now()}@materiatest.za`,
-        memberMode: "student",
-      }),
-    });
-    const seatData = await seatRes.json();
-    const memberId = seatData.member?.id as string | undefined;
-    const res = await fetch(`${API}/institution/cohorts`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        orgId,
-        adminUserId: uid,
-        name: cohortName,
-        memberUserIds: memberId ? [memberId, uid] : [uid],
-      }),
-    });
-    const cohortPayload = await res.json();
-    if (cohortPayload.cohort?.id) setLastCohortId(cohortPayload.cohort.id);
-    const seatLine = formatInstitutionMsg(seatData);
-    const cohortLine = formatInstitutionMsg(cohortPayload);
-    setOut(`${seatLine} · ${cohortLine}`);
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensureAdmin();
+      if (!uid) return;
+      const seatRes = await fetch(`${API}/institution/seats`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orgId,
+          adminUserId: uid,
+          memberEmail: `cohort-${Date.now()}@materiatest.za`,
+          memberMode: "student",
+        }),
+      });
+      const seatData = await seatRes.json();
+      const memberId = seatData.member?.id as string | undefined;
+      const res = await fetch(`${API}/institution/cohorts`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orgId,
+          adminUserId: uid,
+          name: cohortName,
+          memberUserIds: memberId ? [memberId, uid] : [uid],
+        }),
+      });
+      const cohortPayload = await res.json();
+      if (cohortPayload.cohort?.id) setLastCohortId(cohortPayload.cohort.id);
+      const seatLine = formatInstitutionMsg(seatData);
+      const cohortLine = formatInstitutionMsg(cohortPayload);
+      setOut(`${seatLine} · ${cohortLine}`);
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function loadAnalytics() {
@@ -175,10 +194,16 @@ export default function InstitutionPage() {
       setOut("Create an organisation first.");
       return;
     }
-    const uid = await ensureAdmin();
-    if (!uid) return;
-    const res = await fetch(`${API}/institution/${orgId}/analytics?userId=${uid}`);
-    setOut(formatInstitutionMsg(await res.json()));
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensureAdmin();
+      if (!uid) return;
+      const res = await fetch(`${API}/institution/${orgId}/analytics?userId=${uid}`);
+      setOut(formatInstitutionMsg(await res.json()));
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function loadLeaderboards() {
@@ -186,36 +211,42 @@ export default function InstitutionPage() {
       setOut("Create an organisation first.");
       return;
     }
-    const uid = await ensureAdmin();
-    if (!uid) return;
+    if (busy) return;
+    setBusy(true);
     try {
-      const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
-      const first = Array.isArray(list.courses) ? list.courses[0] : null;
-      if (first?.id) {
-        const detail = await fetch(`${API}/academy/courses/${first.id}?userId=${uid}`).then((r) =>
-          r.json(),
-        );
-        const lessonId = detail.lessons?.[0]?.id;
-        if (lessonId) {
-          await fetch(`${API}/academy/courses/${first.id}/lessons/${lessonId}/complete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId: uid }),
-          });
+      const uid = await ensureAdmin();
+      if (!uid) return;
+      try {
+        const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
+        const first = Array.isArray(list.courses) ? list.courses[0] : null;
+        if (first?.id) {
+          const detail = await fetch(`${API}/academy/courses/${first.id}?userId=${uid}`).then((r) =>
+            r.json(),
+          );
+          const lessonId = detail.lessons?.[0]?.id;
+          if (lessonId) {
+            await fetch(`${API}/academy/courses/${first.id}/lessons/${lessonId}/complete`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userId: uid }),
+            });
+          }
         }
+      } catch {
+        /* best-effort seed XP for demo dean */
       }
-    } catch {
-      /* best-effort seed XP for demo dean */
+      const res = await fetch(`${API}/institution/${orgId}/leaderboards?userId=${encodeURIComponent(uid)}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setBoards(null);
+        setOut(formatInstitutionMsg(data));
+        return;
+      }
+      setBoards(data);
+      setOut("");
+    } finally {
+      setBusy(false);
     }
-    const res = await fetch(`${API}/institution/${orgId}/leaderboards?userId=${encodeURIComponent(uid)}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setBoards(null);
-      setOut(formatInstitutionMsg(data));
-      return;
-    }
-    setBoards(data);
-    setOut("");
   }
 
   function renderBoard(board: Board, key: string) {
@@ -264,8 +295,9 @@ export default function InstitutionPage() {
           style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
           value={orgName}
           onChange={(e) => setOrgName(e.target.value)}
+          disabled={busy}
         />
-        <button className="btn" type="button" onClick={() => void createOrg()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void createOrg()}>
           Create org
         </button>
         {orgId && <div className="muted" style={{ marginTop: 8 }}>Org id: {orgId}</div>}
@@ -277,8 +309,9 @@ export default function InstitutionPage() {
           style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
           value={memberEmail}
           onChange={(e) => setMemberEmail(e.target.value)}
+          disabled={busy}
         />
-        <button className="btn" type="button" onClick={() => void addSeat()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void addSeat()}>
           Add seat
         </button>
       </div>
@@ -289,15 +322,21 @@ export default function InstitutionPage() {
           style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
           value={cohortName}
           onChange={(e) => setCohortName(e.target.value)}
+          disabled={busy}
         />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-          <button className="btn" type="button" onClick={() => void createCohort()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void createCohort()}>
             Create cohort + member
           </button>
-          <button className="btn" type="button" onClick={() => void loadAnalytics()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void loadAnalytics()}>
             Load analytics
           </button>
-          <button className="btn" type="button" onClick={() => void loadLeaderboards()}>
+          <button
+            className="btn"
+            type="button"
+            disabled={busy}
+            onClick={() => void loadLeaderboards()}
+          >
             Load XP leaderboards
           </button>
         </div>

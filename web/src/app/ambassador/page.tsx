@@ -46,6 +46,7 @@ export default function AmbassadorPage() {
   const [code, setCode] = useState("");
   const [campus, setCampus] = useState("Wits Pharmacy");
   const [out, setOut] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureOwner(): Promise<string | null> {
     if (ownerId) return ownerId;
@@ -81,34 +82,52 @@ export default function AmbassadorPage() {
   }
 
   async function createCode(kind: "ambassador" | "standard") {
-    const uid = await ensureOwner();
-    if (!uid) return;
-    const res = await fetch(`${API}/ambassador/code`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, kind, campusLabel: campus }),
-    });
-    const data = await res.json();
-    if (data.code?.code) setCode(data.code.code);
-    setOut(formatAmbassadorMsg(data));
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensureOwner();
+      if (!uid) return;
+      const res = await fetch(`${API}/ambassador/code`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, kind, campusLabel: campus }),
+      });
+      const data = await res.json();
+      if (data.code?.code) setCode(data.code.code);
+      setOut(formatAmbassadorMsg(data));
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function redeem() {
-    const uid = await ensureReferee();
-    if (!uid) return;
-    const res = await fetch(`${API}/ambassador/redeem`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, code }),
-    });
-    setOut(formatAmbassadorMsg(await res.json()));
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensureReferee();
+      if (!uid) return;
+      const res = await fetch(`${API}/ambassador/redeem`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, code }),
+      });
+      setOut(formatAmbassadorMsg(await res.json()));
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function dashboard() {
-    const uid = await ensureOwner();
-    if (!uid) return;
-    const res = await fetch(`${API}/ambassador/dashboard/${uid}`);
-    setOut(formatAmbassadorMsg(await res.json()));
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensureOwner();
+      if (!uid) return;
+      const res = await fetch(`${API}/ambassador/dashboard/${uid}`);
+      setOut(formatAmbassadorMsg(await res.json()));
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -122,15 +141,26 @@ export default function AmbassadorPage() {
           style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10 }}
           value={campus}
           onChange={(e) => setCampus(e.target.value)}
+          disabled={busy}
         />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-          <button className="btn" type="button" onClick={() => void createCode("ambassador")}>
+          <button
+            className="btn"
+            type="button"
+            disabled={busy}
+            onClick={() => void createCode("ambassador")}
+          >
             Create ambassador code
           </button>
-          <button className="btn" type="button" onClick={() => void createCode("standard")}>
+          <button
+            className="btn"
+            type="button"
+            disabled={busy}
+            onClick={() => void createCode("standard")}
+          >
             Create standard code
           </button>
-          <button className="btn" type="button" onClick={() => void dashboard()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void dashboard()}>
             Dashboard
           </button>
         </div>
@@ -143,8 +173,9 @@ export default function AmbassadorPage() {
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="AMB-…"
+          disabled={busy}
         />
-        <button className="btn" type="button" onClick={() => void redeem()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void redeem()}>
           Redeem code
         </button>
       </div>

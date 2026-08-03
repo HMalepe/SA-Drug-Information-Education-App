@@ -32,17 +32,39 @@ export default function PricingPage() {
   const [prices, setPrices] = useState<Record<string, { monthly: number; annual: number; label: string }>>({});
   const [provider, setProvider] = useState("stub");
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [tiersError, setTiersError] = useState("");
 
   useEffect(() => {
-    void fetch(`${API}/billing/tiers`)
-      .then((r) => r.json())
-      .then((d) => {
-        setPrices(d.prices ?? {});
-        setProvider(d.provider ?? "stub");
-      });
+    void (async () => {
+      try {
+        const res = await fetch(`${API}/billing/tiers`);
+        const raw = await res.text();
+        let data: { prices?: typeof prices; provider?: string; error?: unknown } = {};
+        if (raw.trim()) {
+          try {
+            data = JSON.parse(raw) as typeof data;
+          } catch {
+            setTiersError("Could not load pricing tiers");
+            return;
+          }
+        }
+        if (!res.ok) {
+          setTiersError(formatApiError(data.error ?? data, "Could not load pricing tiers"));
+          return;
+        }
+        setPrices(data.prices ?? {});
+        setProvider(data.provider ?? "stub");
+        setTiersError("");
+      } catch (e) {
+        setTiersError(e instanceof Error ? e.message : "Could not load pricing tiers");
+      }
+    })();
   }, []);
 
   async function subscribe(tier: "free" | "student" | "professional") {
+    if (busy) return;
+    setBusy(true);
     try {
       const userId = await createStubSession({
         email: `${tier}@materiatest.za`,
@@ -66,6 +88,8 @@ export default function PricingPage() {
       if (url) window.location.href = url;
     } catch (e) {
       setMsg(e instanceof Error ? e.message : "Could not create session");
+    } finally {
+      setBusy(false);
     }
   }
 
@@ -77,6 +101,11 @@ export default function PricingPage() {
         Launch hypothesis (Doc 6) — provider: {provider}
         {provider === "stub" ? " (no charges until Paystack keys)." : " (live checkout)."}.
       </p>
+      {tiersError && (
+        <p className="card muted" style={{ marginBottom: 12 }} aria-live="polite">
+          {tiersError}
+        </p>
+      )}
       <div style={{ display: "grid", gap: 12 }}>
         {Object.entries(prices).map(([key, p]) => (
           <div key={key} className="card">
@@ -89,9 +118,10 @@ export default function PricingPage() {
                 className="btn"
                 type="button"
                 style={{ marginTop: 12 }}
+                disabled={busy}
                 onClick={() => void subscribe(key as "free" | "student" | "professional")}
               >
-                Choose {p.label}
+                {busy ? "Working…" : `Choose ${p.label}`}
               </button>
             )}
           </div>
