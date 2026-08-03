@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
-import { formatApiError } from "@/lib/formatApiError";
+import { formatApiError, messageFromHttpErrorBody } from "@/lib/formatApiError";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -53,6 +53,16 @@ function formatQuizGradeMsg(
   return "Answer recorded — no tutor message returned.";
 }
 
+async function readJson(res: Response): Promise<Record<string, unknown>> {
+  const raw = await res.text();
+  if (!raw.trim()) return {};
+  try {
+    return JSON.parse(raw) as Record<string, unknown>;
+  } catch {
+    throw new Error(messageFromHttpErrorBody(raw, `HTTP ${res.status}`));
+  }
+}
+
 export function CoursePlayer({ courseId }: { courseId: string }) {
   const [userId, setUserId] = useState<string | null>(null);
   const [title, setTitle] = useState("");
@@ -67,6 +77,9 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
   } | null>(null);
   const [gradeMsg, setGradeMsg] = useState("");
   const [email, setEmail] = useState("student@materiatest.za");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function ensureUser() {
     if (userId) return userId;
@@ -75,63 +88,132 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, mode: "student", tier: "student" }),
     });
-    const data = await res.json();
-    setUserId(data.user.id);
-    return data.user.id as string;
+    const data = await readJson(res);
+    if (!res.ok) {
+      throw new Error(formatApiError(data.error ?? data, "Could not create session"));
+    }
+    const user = data.user as { id?: string } | undefined;
+    if (!user?.id) throw new Error("Session created without a user id");
+    setUserId(user.id);
+    return user.id;
   }
 
   async function load(uid?: string) {
     const q = uid ? `?userId=${uid}` : "";
     const res = await fetch(`${API}/academy/courses/${courseId}${q}`);
-    const data = await res.json();
-    setTitle(data.course.title);
-    setLessons(data.course.lessons);
-    setQuiz(data.course.quiz);
-    setProgress(data.progress);
-    setSaFocus(data.saFocus ?? null);
+    const data = await readJson(res);
+    if (!res.ok) {
+      throw new Error(formatApiError(data.error ?? data, "Could not load course"));
+    }
+    const course = data.course as
+      | { title?: string; lessons?: Lesson[]; quiz?: QuizQ[] }
+      | undefined;
+    setTitle(typeof course?.title === "string" ? course.title : "");
+    setLessons(Array.isArray(course?.lessons) ? course.lessons : []);
+    setQuiz(Array.isArray(course?.quiz) ? course.quiz : []);
+    setProgress(
+      data.progress && typeof data.progress === "object"
+        ? (data.progress as {
+            completionPercent: number;
+            expertLevel: number;
+            completedLessonIds: string[];
+          })
+        : null,
+    );
+    setSaFocus((data.saFocus as SaFocus | null | undefined) ?? null);
   }
 
   useEffect(() => {
-    void load();
+    let cancelled = false;
+    (async () => {
+      setLoading(true);
+      setError("");
+      try {
+        await load();
+      } catch (e) {
+        if (!cancelled) {
+          setError(e instanceof Error ? e.message : "Could not load course");
+          setTitle("");
+          setLessons([]);
+          setQuiz([]);
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [courseId]);
 
   async function completeLesson() {
-    const uid = await ensureUser();
+    if (busy) return;
     const lesson = lessons[activeLesson];
     if (!lesson) return;
-    const res = await fetch(`${API}/academy/lessons/complete`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, courseId, lessonId: lesson.id }),
-    });
-    const data = await res.json();
-    if (data.saFocus) setSaFocus(data.saFocus);
-    track("lesson_completed", { courseId, lessonId: lesson.id });
-    await load(uid);
-    if (activeLesson < lessons.length - 1) setActiveLesson((i) => i + 1);
+    setBusy(true);
+    setError("");
+    try {
+      const uid = await ensureUser();
+      const res = await fetch(`${API}/academy/lessons/complete`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, courseId, lessonId: lesson.id }),
+      });
+      const data = await readJson(res);
+      if (!res.ok) {
+        setError(formatApiError(data.error ?? data, "Could not complete lesson"));
+        return;
+      }
+      if (data.saFocus) setSaFocus(data.saFocus as SaFocus);
+      track("lesson_completed", { courseId, lessonId: lesson.id });
+      await load(uid);
+      if (activeLesson < lessons.length - 1) setActiveLesson((i) => i + 1);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not complete lesson");
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function answerQuiz(questionId: string, selectedIndex: number) {
-    const uid = await ensureUser();
-    const res = await fetch(`${API}/academy/quiz/answer`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, courseId, questionId, selectedIndex }),
-    });
-    const data = await res.json();
-    track("quiz_answered", {
-      courseId,
-      correct: Boolean(data.grade?.correct),
-    });
-    setGradeMsg(formatQuizGradeMsg(res.ok, data));
-    await load(uid);
+    if (busy) return;
+    setBusy(true);
+    setError("");
+    try {
+      const uid = await ensureUser();
+      const res = await fetch(`${API}/academy/quiz/answer`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, courseId, questionId, selectedIndex }),
+      });
+      const data = await readJson(res);
+      track("quiz_answered", {
+        courseId,
+        correct: Boolean(
+          data.grade &&
+            typeof data.grade === "object" &&
+            (data.grade as { correct?: boolean }).correct,
+        ),
+      });
+      setGradeMsg(formatQuizGradeMsg(res.ok, data as Parameters<typeof formatQuizGradeMsg>[1]));
+      if (res.ok) await load(uid);
+    } catch (e) {
+      setGradeMsg(`Error: ${e instanceof Error ? e.message : "Could not grade answer"}`);
+    } finally {
+      setBusy(false);
+    }
   }
 
   const lesson = lessons[activeLesson];
 
   return (
     <div>
-      <h1>{title || "Loading…"}</h1>
+      <h1>{loading ? "Loading…" : title || "Course"}</h1>
+      {error ? (
+        <p className="muted" role="alert">
+          {error}
+        </p>
+      ) : null}
       {progress && (
         <p className="muted">
           {progress.completionPercent}% · Expert level {progress.expertLevel} ·{" "}
@@ -144,6 +226,7 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
           style={{ display: "block", width: "100%", marginTop: 8, padding: 10 }}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={busy}
         />
       </div>
       {lesson && (
@@ -153,8 +236,13 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
           </p>
           <h2 style={{ marginTop: 0 }}>{lesson.title}</h2>
           <p style={{ lineHeight: 1.55 }}>{lesson.body}</p>
-          <button className="btn" type="button" onClick={() => void completeLesson()}>
-            Mark complete & continue
+          <button
+            className="btn"
+            type="button"
+            disabled={busy}
+            onClick={() => void completeLesson()}
+          >
+            {busy ? "Working…" : "Mark complete & continue"}
           </button>
         </section>
       )}
@@ -225,6 +313,7 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
                 type="button"
                 className="tab"
                 style={{ display: "block", marginBottom: 6, width: "100%", textAlign: "left" }}
+                disabled={busy}
                 onClick={() => void answerQuiz(q.id, i)}
               >
                 {c}
