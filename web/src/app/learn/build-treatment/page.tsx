@@ -18,6 +18,7 @@ export default function BuildTreatmentPage() {
   const [options, setOptions] = useState<Option[]>([]);
   const [result, setResult] = useState("");
   const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
@@ -37,45 +38,56 @@ export default function BuildTreatmentPage() {
   }
 
   async function start() {
+    if (busy) return;
+    setBusy(true);
     setResult("");
     setOptions([]);
-    const uid = await ensureStudent();
-    if (!uid) return;
-    const res = await fetch(`${API}/academy/build-treatment/start`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Could not start"));
-      return;
+    try {
+      const uid = await ensureStudent();
+      if (!uid) return;
+      const res = await fetch(`${API}/academy/build-treatment/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Could not start"));
+        return;
+      }
+      setRoundId(data.roundId);
+      setTitle(data.case?.title ?? "");
+      setVignette(data.case?.vignette ?? "");
+      setPrompt(data.case?.prompt ?? "");
+      setOptions(Array.isArray(data.case?.options) ? data.case.options : []);
+      setNote(data.note ?? "");
+    } finally {
+      setBusy(false);
     }
-    setRoundId(data.roundId);
-    setTitle(data.case?.title ?? "");
-    setVignette(data.case?.vignette ?? "");
-    setPrompt(data.case?.prompt ?? "");
-    setOptions(Array.isArray(data.case?.options) ? data.case.options : []);
-    setNote(data.note ?? "");
   }
 
   async function choose(chosenOptionId: string) {
-    if (!userId || !roundId) return;
-    const res = await fetch(`${API}/academy/build-treatment/${roundId}/grade`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, chosenOptionId }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Grade failed"));
-      return;
+    if (!userId || !roundId || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/academy/build-treatment/${roundId}/grade`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, chosenOptionId }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Grade failed"));
+        return;
+      }
+      setResult(
+        `${data.message}\n\n${data.explanation}${
+          data.relatedMoleculeSlug ? `\n\nDeepen: /molecules/${data.relatedMoleculeSlug}` : ""
+        }`,
+      );
+    } finally {
+      setBusy(false);
     }
-    setResult(
-      `${data.message}\n\n${data.explanation}${
-        data.relatedMoleculeSlug ? `\n\nDeepen: /molecules/${data.relatedMoleculeSlug}` : ""
-      }`,
-    );
   }
 
   return (
@@ -86,7 +98,7 @@ export default function BuildTreatmentPage() {
         Read the case, pick the educational class — then learn the reasoning.
       </p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void start()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void start()}>
           New case
         </button>
       </div>
@@ -103,6 +115,7 @@ export default function BuildTreatmentPage() {
                 className="btn"
                 type="button"
                 style={{ textAlign: "left", background: "var(--ink)" }}
+                disabled={busy}
                 onClick={() => void choose(o.id)}
               >
                 {o.label}

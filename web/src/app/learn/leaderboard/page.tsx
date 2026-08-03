@@ -29,6 +29,7 @@ export default function LeaderboardPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [board, setBoard] = useState<Board | null>(null);
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
@@ -49,36 +50,42 @@ export default function LeaderboardPage() {
   }
 
   async function load() {
+    if (busy) return;
+    setBusy(true);
     setMsg("");
-    const uid = await ensureStudent();
-    if (!uid) return;
     try {
-      const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
-      const first = Array.isArray(list.courses) ? list.courses[0] : null;
-      if (first?.id) {
-        const detail = await fetch(`${API}/academy/courses/${first.id}?userId=${uid}`).then((r) =>
-          r.json(),
-        );
-        const lessonId = detail.lessons?.[0]?.id;
-        if (lessonId) {
-          await fetch(`${API}/academy/courses/${first.id}/lessons/${lessonId}/complete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId: uid }),
-          });
+      const uid = await ensureStudent();
+      if (!uid) return;
+      try {
+        const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
+        const first = Array.isArray(list.courses) ? list.courses[0] : null;
+        if (first?.id) {
+          const detail = await fetch(`${API}/academy/courses/${first.id}?userId=${uid}`).then((r) =>
+            r.json(),
+          );
+          const lessonId = detail.lessons?.[0]?.id;
+          if (lessonId) {
+            await fetch(`${API}/academy/courses/${first.id}/lessons/${lessonId}/complete`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userId: uid }),
+            });
+          }
         }
+      } catch {
+        /* best-effort seed */
       }
-    } catch {
-      /* best-effort seed */
+      const res = await fetch(`${API}/academy/leaderboard?userId=${encodeURIComponent(uid)}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Could not load leaderboard"));
+        setBoard(null);
+        return;
+      }
+      setBoard(data);
+    } finally {
+      setBusy(false);
     }
-    const res = await fetch(`${API}/academy/leaderboard?userId=${encodeURIComponent(uid)}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Could not load leaderboard"));
-      setBoard(null);
-      return;
-    }
-    setBoard(data);
   }
 
   return (
@@ -90,8 +97,8 @@ export default function LeaderboardPage() {
         <a href="/institution">Institution console</a>.
       </p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void load()}>
-          Load Academy leaderboard
+        <button className="btn" type="button" disabled={busy} onClick={() => void load()}>
+          {busy ? "Loading…" : "Load Academy leaderboard"}
         </button>
       </div>
       {msg && <p style={{ marginTop: 12 }}>{msg}</p>}

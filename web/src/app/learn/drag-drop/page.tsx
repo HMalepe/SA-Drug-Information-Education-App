@@ -18,6 +18,7 @@ export default function DragDropPage() {
   const [mapping, setMapping] = useState<Record<string, string>>({});
   const [result, setResult] = useState("");
   const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
 
   const options = useMemo(
     () => [{ id: "", label: "— choose class —" }, ...buckets],
@@ -42,39 +43,50 @@ export default function DragDropPage() {
   }
 
   async function start() {
+    if (busy) return;
+    setBusy(true);
     setResult("");
     setMapping({});
-    const uid = await ensureStudent();
-    if (!uid) return;
-    const res = await fetch(`${API}/academy/drag-drop/start`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, bucketCount: 3, perBucket: 2 }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Could not start"));
-      return;
+    try {
+      const uid = await ensureStudent();
+      if (!uid) return;
+      const res = await fetch(`${API}/academy/drag-drop/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, bucketCount: 3, perBucket: 2 }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Could not start"));
+        return;
+      }
+      setRoundId(data.roundId);
+      setMedicines(Array.isArray(data.medicines) ? data.medicines : []);
+      setBuckets(Array.isArray(data.buckets) ? data.buckets : []);
+      setNote(data.note ?? "");
+    } finally {
+      setBusy(false);
     }
-    setRoundId(data.roundId);
-    setMedicines(Array.isArray(data.medicines) ? data.medicines : []);
-    setBuckets(Array.isArray(data.buckets) ? data.buckets : []);
-    setNote(data.note ?? "");
   }
 
   async function submit() {
-    if (!userId || !roundId) return;
-    const res = await fetch(`${API}/academy/drag-drop/${roundId}/grade`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, mapping }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Grade failed"));
-      return;
+    if (!userId || !roundId || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/academy/drag-drop/${roundId}/grade`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, mapping }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Grade failed"));
+        return;
+      }
+      setResult(`${data.message} (score ${data.score}/${data.total})`);
+    } finally {
+      setBusy(false);
     }
-    setResult(`${data.message} (score ${data.score}/${data.total})`);
   }
 
   return (
@@ -83,7 +95,7 @@ export default function DragDropPage() {
       <h1>Drag &amp; drop</h1>
       <p className="tagline">Sort each medicine into its published therapeutic class.</p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void start()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void start()}>
           New class-sort round
         </button>
       </div>
@@ -100,6 +112,7 @@ export default function DragDropPage() {
                 value={mapping[m.id] ?? ""}
                 onChange={(e) => setMapping((prev) => ({ ...prev, [m.id]: e.target.value }))}
                 style={{ width: "100%", padding: 10 }}
+                disabled={busy}
               >
                 {options.map((o) => (
                   <option key={`${m.id}-${o.id || "blank"}`} value={o.id}>
@@ -109,7 +122,7 @@ export default function DragDropPage() {
               </select>
             </div>
           ))}
-          <button className="btn" type="button" onClick={() => void submit()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void submit()}>
             Check sort
           </button>
         </div>

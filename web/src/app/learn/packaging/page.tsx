@@ -18,6 +18,7 @@ export default function PackagingPage() {
   const [mapping, setMapping] = useState<Record<string, string>>({});
   const [result, setResult] = useState("");
   const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
 
   const options = useMemo(
     () => [{ id: "", name: "— choose molecule —" }, ...medicines.map((m) => ({ id: m.id, name: m.name }))],
@@ -42,39 +43,50 @@ export default function PackagingPage() {
   }
 
   async function start() {
+    if (busy) return;
+    setBusy(true);
     setResult("");
     setMapping({});
-    const uid = await ensureStudent();
-    if (!uid) return;
-    const res = await fetch(`${API}/academy/packaging/start`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, size: 4 }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Could not start"));
-      return;
+    try {
+      const uid = await ensureStudent();
+      if (!uid) return;
+      const res = await fetch(`${API}/academy/packaging/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, size: 4 }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Could not start"));
+        return;
+      }
+      setRoundId(data.roundId);
+      setPacks(Array.isArray(data.packs) ? data.packs : []);
+      setMedicines(Array.isArray(data.medicines) ? data.medicines : []);
+      setNote(data.note ?? "");
+    } finally {
+      setBusy(false);
     }
-    setRoundId(data.roundId);
-    setPacks(Array.isArray(data.packs) ? data.packs : []);
-    setMedicines(Array.isArray(data.medicines) ? data.medicines : []);
-    setNote(data.note ?? "");
   }
 
   async function submit() {
-    if (!userId || !roundId) return;
-    const res = await fetch(`${API}/academy/packaging/${roundId}/grade`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, mapping }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Grade failed"));
-      return;
+    if (!userId || !roundId || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/academy/packaging/${roundId}/grade`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, mapping }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Grade failed"));
+        return;
+      }
+      setResult(`${data.message} (score ${data.score}/${data.total})`);
+    } finally {
+      setBusy(false);
     }
-    setResult(`${data.message} (score ${data.score}/${data.total})`);
   }
 
   return (
@@ -85,7 +97,7 @@ export default function PackagingPage() {
         Match published SA brands to molecules (§7.6) — no invented imprints or pack photos.
       </p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void start()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void start()}>
           New packaging round
         </button>
       </div>
@@ -105,6 +117,7 @@ export default function PackagingPage() {
                 value={mapping[p.cueId] ?? ""}
                 onChange={(e) => setMapping((prev) => ({ ...prev, [p.cueId]: e.target.value }))}
                 style={{ width: "100%", padding: 10 }}
+                disabled={busy}
               >
                 {options.map((o) => (
                   <option key={`${p.cueId}-${o.id || "blank"}`} value={o.id}>
@@ -114,7 +127,7 @@ export default function PackagingPage() {
               </select>
             </div>
           ))}
-          <button className="btn" type="button" onClick={() => void submit()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void submit()}>
             Check matches
           </button>
         </div>

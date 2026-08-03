@@ -16,6 +16,7 @@ export default function MysteryPage() {
   const [guess, setGuess] = useState("");
   const [msg, setMsg] = useState("");
   const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
@@ -35,53 +36,69 @@ export default function MysteryPage() {
   }
 
   async function start() {
+    if (busy) return;
+    setBusy(true);
     setMsg("");
-    const uid = await ensureStudent();
-    if (!uid) return;
-    const res = await fetch(`${API}/academy/mystery/start`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Could not start"));
-      return;
+    try {
+      const uid = await ensureStudent();
+      if (!uid) return;
+      const res = await fetch(`${API}/academy/mystery/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Could not start"));
+        return;
+      }
+      setRoundId(data.roundId);
+      setUnlocked(Array.isArray(data.unlockedHints) ? data.unlockedHints : []);
+      setNote(data.note ?? "");
+    } finally {
+      setBusy(false);
     }
-    setRoundId(data.roundId);
-    setUnlocked(Array.isArray(data.unlockedHints) ? data.unlockedHints : []);
-    setNote(data.note ?? "");
   }
 
   async function moreHint() {
-    if (!userId || !roundId) return;
-    const res = await fetch(`${API}/academy/mystery/${roundId}/hint`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Hint failed"));
-      return;
+    if (!userId || !roundId || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/academy/mystery/${roundId}/hint`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Hint failed"));
+        return;
+      }
+      setUnlocked(Array.isArray(data.unlockedHints) ? data.unlockedHints : []);
+    } finally {
+      setBusy(false);
     }
-    setUnlocked(Array.isArray(data.unlockedHints) ? data.unlockedHints : []);
   }
 
   async function submitGuess() {
-    if (!userId || !roundId) return;
-    const res = await fetch(`${API}/academy/mystery/${roundId}/guess`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, guess }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Guess failed"));
-      return;
+    if (!userId || !roundId || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/academy/mystery/${roundId}/guess`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, guess }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Guess failed"));
+        return;
+      }
+      setMsg(`${data.message} ${data.teachNote ?? ""}`);
+      if (data.view?.unlockedHints) setUnlocked(data.view.unlockedHints);
+    } finally {
+      setBusy(false);
     }
-    setMsg(`${data.message} ${data.teachNote ?? ""}`);
-    if (data.view?.unlockedHints) setUnlocked(data.view.unlockedHints);
   }
 
   return (
@@ -92,10 +109,15 @@ export default function MysteryPage() {
         Unlock hints in order — mechanism → class → area → SA brands — then name the molecule.
       </p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void start()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void start()}>
           New round
         </button>{" "}
-        <button className="btn" type="button" disabled={!roundId} onClick={() => void moreHint()}>
+        <button
+          className="btn"
+          type="button"
+          disabled={busy || !roundId}
+          onClick={() => void moreHint()}
+        >
           Unlock next hint
         </button>
       </div>
@@ -116,8 +138,9 @@ export default function MysteryPage() {
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             placeholder="e.g. amoxicillin"
+            disabled={busy}
           />
-          <button className="btn" type="button" onClick={() => void submitGuess()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void submitGuess()}>
             Submit guess
           </button>
         </div>

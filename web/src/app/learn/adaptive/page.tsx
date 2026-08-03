@@ -39,6 +39,7 @@ export default function AdaptivePage() {
   const [courses, setCourses] = useState<CourseRec[]>([]);
   const [cards, setCards] = useState<CardRec[]>([]);
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
@@ -98,24 +99,30 @@ export default function AdaptivePage() {
   }
 
   async function load() {
+    if (busy) return;
+    setBusy(true);
     setMsg("");
-    await seedQuizMiss();
-    const uid = await ensureStudent();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/academy/adaptive/${encodeURIComponent(uid)}?asOf=2026-07-23&aheadDays=1`,
-    );
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Could not load adaptive session"));
-      return;
+    try {
+      await seedQuizMiss();
+      const uid = await ensureStudent();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/academy/adaptive/${encodeURIComponent(uid)}?asOf=2026-07-23&aheadDays=1`,
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Could not load adaptive session"));
+        return;
+      }
+      setForDate(data.forDate ?? "");
+      setNote(data.note ?? "");
+      setDisclaimer(data.disclaimer ?? "");
+      setWeakAreas(Array.isArray(data.weakAreas) ? data.weakAreas : []);
+      setCourses(Array.isArray(data.recommendedCourses) ? data.recommendedCourses : []);
+      setCards(Array.isArray(data.recommendedReviewCards) ? data.recommendedReviewCards : []);
+    } finally {
+      setBusy(false);
     }
-    setForDate(data.forDate ?? "");
-    setNote(data.note ?? "");
-    setDisclaimer(data.disclaimer ?? "");
-    setWeakAreas(Array.isArray(data.weakAreas) ? data.weakAreas : []);
-    setCourses(Array.isArray(data.recommendedCourses) ? data.recommendedCourses : []);
-    setCards(Array.isArray(data.recommendedReviewCards) ? data.recommendedReviewCards : []);
   }
 
   return (
@@ -126,8 +133,8 @@ export default function AdaptivePage() {
         Tomorrow&apos;s plan from your quiz gaps (§7.5) — published Academy content only.
       </p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void load()}>
-          Build tomorrow&apos;s session
+        <button className="btn" type="button" disabled={busy} onClick={() => void load()}>
+          {busy ? "Loading…" : "Build tomorrow\u2019s session"}
         </button>
       </div>
       {msg && <p style={{ marginTop: 12 }}>{msg}</p>}

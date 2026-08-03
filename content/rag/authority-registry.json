@@ -130,7 +130,8 @@
     "Wire createStubSession into ops/onboarding/my-meds (optional tier; no raw stub-session)",
     "Expo input borders use colors.line; chip text uses typography.size.sm (no magic 13)",
     "Pro demos (pearls/cpd/notes): busy gates + disabled controls; pearls !res.ok harden",
-    "Ops demos (ambassador/institution/pricing): busy gates; pricing tiers fetch harden"
+    "Ops demos (ambassador/institution/pricing): busy gates; pricing tiers fetch harden",
+    "Academy learn demos: busy gates on ensureStudent pages (start/grade/load)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

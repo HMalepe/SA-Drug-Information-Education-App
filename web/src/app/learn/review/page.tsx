@@ -26,6 +26,7 @@ export default function ReviewPage() {
   const [revealed, setRevealed] = useState(false);
   const [meta, setMeta] = useState("");
   const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
@@ -44,17 +45,17 @@ export default function ReviewPage() {
     }
   }
 
-  async function loadSession() {
-    setErr("");
-    setRevealed(false);
-    setIdx(0);
-    const uid = await ensureStudent();
-    if (!uid) return;
+  async function refreshQueue(uid: string) {
     const qs = new URLSearchParams({ weak, limit: "10" });
     const res = await fetch(`${API}/academy/review/${uid}?${qs}`);
     const data = await res.json();
     if (res.status === 402) {
       setErr(formatApiError(data.error, "Student tier required"));
+      setDue([]);
+      return;
+    }
+    if (!res.ok) {
+      setErr(formatApiError(data.error ?? data, "Could not load review queue"));
       setDue([]);
       return;
     }
@@ -64,16 +65,39 @@ export default function ReviewPage() {
     );
   }
 
-  async function grade(g: "again" | "hard" | "good" | "easy") {
-    if (!userId || !due[idx]) return;
-    await fetch(`${API}/academy/review/${userId}/grade`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cardId: due[idx].id, grade: g }),
-    });
+  async function loadSession() {
+    if (busy) return;
+    setBusy(true);
+    setErr("");
     setRevealed(false);
-    if (idx + 1 < due.length) setIdx(idx + 1);
-    else await loadSession();
+    setIdx(0);
+    try {
+      const uid = await ensureStudent();
+      if (!uid) return;
+      await refreshQueue(uid);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function grade(g: "again" | "hard" | "good" | "easy") {
+    if (!userId || !due[idx] || busy) return;
+    setBusy(true);
+    try {
+      await fetch(`${API}/academy/review/${userId}/grade`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardId: due[idx].id, grade: g }),
+      });
+      setRevealed(false);
+      if (idx + 1 < due.length) setIdx(idx + 1);
+      else {
+        setIdx(0);
+        await refreshQueue(userId);
+      }
+    } finally {
+      setBusy(false);
+    }
   }
 
   const card = due[idx];
@@ -92,8 +116,9 @@ export default function ReviewPage() {
           value={weak}
           onChange={(e) => setWeak(e.target.value)}
           placeholder="antibiotics, diabetes"
+          disabled={busy}
         />
-        <button className="btn" type="button" onClick={() => void loadSession()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void loadSession()}>
           Start today&apos;s queue
         </button>
       </div>
@@ -110,23 +135,22 @@ export default function ReviewPage() {
               <p style={{ lineHeight: 1.5 }}>
                 <strong>Answer:</strong> {card.answer}
               </p>
-              {card.teachFromMiss && (
-                <p className="muted">{card.teachFromMiss}</p>
-              )}
+              {card.teachFromMiss && <p className="muted">{card.teachFromMiss}</p>}
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
-                <button className="btn" type="button" onClick={() => void grade("again")}>
+                <button className="btn" type="button" disabled={busy} onClick={() => void grade("again")}>
                   Again
                 </button>
-                <button className="btn" type="button" onClick={() => void grade("hard")}>
+                <button className="btn" type="button" disabled={busy} onClick={() => void grade("hard")}>
                   Hard
                 </button>
-                <button className="btn" type="button" onClick={() => void grade("good")}>
+                <button className="btn" type="button" disabled={busy} onClick={() => void grade("good")}>
                   Good
                 </button>
                 <button
                   className="btn"
                   type="button"
                   style={{ background: "var(--ink)" }}
+                  disabled={busy}
                   onClick={() => void grade("easy")}
                 >
                   Easy
@@ -134,7 +158,7 @@ export default function ReviewPage() {
               </div>
             </>
           ) : (
-            <button className="btn" type="button" onClick={() => setRevealed(true)}>
+            <button className="btn" type="button" disabled={busy} onClick={() => setRevealed(true)}>
               Reveal answer
             </button>
           )}

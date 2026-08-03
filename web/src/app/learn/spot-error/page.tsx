@@ -14,6 +14,7 @@ export default function SpotErrorPage() {
   const [moleculeName, setMoleculeName] = useState("");
   const [result, setResult] = useState("");
   const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
@@ -33,42 +34,53 @@ export default function SpotErrorPage() {
   }
 
   async function start() {
+    if (busy) return;
+    setBusy(true);
     setResult("");
-    const uid = await ensureStudent();
-    if (!uid) return;
-    const res = await fetch(`${API}/academy/spot-error/start`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Could not start"));
-      return;
+    try {
+      const uid = await ensureStudent();
+      if (!uid) return;
+      const res = await fetch(`${API}/academy/spot-error/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Could not start"));
+        return;
+      }
+      setRoundId(data.roundId);
+      setStatement(data.card?.statement ?? "");
+      setMoleculeName(data.card?.moleculeName ?? "");
+      setNote(data.note ?? "");
+    } finally {
+      setBusy(false);
     }
-    setRoundId(data.roundId);
-    setStatement(data.card?.statement ?? "");
-    setMoleculeName(data.card?.moleculeName ?? "");
-    setNote(data.note ?? "");
   }
 
   async function choose(choice: "correct_statement" | "error") {
-    if (!userId || !roundId) return;
-    const res = await fetch(`${API}/academy/spot-error/${roundId}/grade`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, choice }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResult(formatApiError(data.error, "Grade failed"));
-      return;
+    if (!userId || !roundId || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/academy/spot-error/${roundId}/grade`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, choice }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(formatApiError(data.error, "Grade failed"));
+        return;
+      }
+      setResult(
+        `${data.message}\n\nVerdict: ${data.verdict}\n\n${data.explanation}${
+          data.moleculeSlug ? `\n\nDeepen: /molecules/${data.moleculeSlug}` : ""
+        }`,
+      );
+    } finally {
+      setBusy(false);
     }
-    setResult(
-      `${data.message}\n\nVerdict: ${data.verdict}\n\n${data.explanation}${
-        data.moleculeSlug ? `\n\nDeepen: /molecules/${data.moleculeSlug}` : ""
-      }`,
-    );
   }
 
   return (
@@ -79,7 +91,7 @@ export default function SpotErrorPage() {
         Is this counselling statement sound — or does it hide a teaching trap?
       </p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void start()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void start()}>
           New statement
         </button>
       </div>
@@ -89,13 +101,19 @@ export default function SpotErrorPage() {
           {moleculeName && <p className="pearl-reason">{moleculeName}</p>}
           <h2 style={{ marginTop: 0, fontSize: 20 }}>{statement}</h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16 }}>
-            <button className="btn" type="button" onClick={() => void choose("correct_statement")}>
+            <button
+              className="btn"
+              type="button"
+              disabled={busy}
+              onClick={() => void choose("correct_statement")}
+            >
               Sounds correct
             </button>
             <button
               className="btn"
               type="button"
               style={{ background: "var(--danger)" }}
+              disabled={busy}
               onClick={() => void choose("error")}
             >
               Spot an error

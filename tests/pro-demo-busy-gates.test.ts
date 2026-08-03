@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, it } from "node:test";
@@ -42,5 +42,26 @@ describe("Pro demo busy gates", () => {
       assert.match(src, /disabled=\{busy\}/, `${rel} should disable controls while busy`);
       assert.match(src, /finally \{\s*setBusy\(false\)/, `${rel} should clear busy in finally`);
     }
+  });
+
+  it("Academy learn demos with ensureStudent use busy gates", () => {
+    const learnDir = join(root, "web/src/app/learn");
+    const dirs = readdirSync(learnDir, { withFileTypes: true }).filter((d) => d.isDirectory());
+    const wired: string[] = [];
+    for (const d of dirs) {
+      let src: string;
+      try {
+        src = readFileSync(join(learnDir, d.name, "page.tsx"), "utf8");
+      } catch {
+        continue;
+      }
+      if (!src.includes("ensureStudent")) continue;
+      assert.match(src, /const \[busy, setBusy\]/, `${d.name} should declare busy`);
+      assert.match(src, /busy\) return/, `${d.name} should early-return when busy`);
+      assert.match(src, /disabled=\{busy/, `${d.name} should disable controls while busy`);
+      assert.match(src, /finally \{\s*setBusy\(false\)/, `${d.name} should clear busy in finally`);
+      wired.push(d.name);
+    }
+    assert.ok(wired.length >= 10, `expected ≥10 learn demos busy-gated, got ${wired.join(",")}`);
   });
 });

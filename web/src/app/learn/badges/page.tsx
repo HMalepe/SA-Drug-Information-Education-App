@@ -33,6 +33,7 @@ export default function BadgesPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [report, setReport] = useState<Report | null>(null);
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
@@ -52,37 +53,43 @@ export default function BadgesPage() {
   }
 
   async function load() {
+    if (busy) return;
+    setBusy(true);
     setMsg("");
-    const uid = await ensureStudent();
-    if (!uid) return;
-    // Best-effort: complete first lesson so streak/XP aren't empty on first visit
     try {
-      const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
-      const first = Array.isArray(list.courses) ? list.courses[0] : null;
-      if (first?.id) {
-        const detail = await fetch(`${API}/academy/courses/${first.id}?userId=${uid}`).then((r) =>
-          r.json(),
-        );
-        const lessonId = detail.lessons?.[0]?.id;
-        if (lessonId) {
-          await fetch(`${API}/academy/courses/${first.id}/lessons/${lessonId}/complete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId: uid }),
-          });
+      const uid = await ensureStudent();
+      if (!uid) return;
+      // Best-effort: complete first lesson so streak/XP aren't empty on first visit
+      try {
+        const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
+        const first = Array.isArray(list.courses) ? list.courses[0] : null;
+        if (first?.id) {
+          const detail = await fetch(`${API}/academy/courses/${first.id}?userId=${uid}`).then((r) =>
+            r.json(),
+          );
+          const lessonId = detail.lessons?.[0]?.id;
+          if (lessonId) {
+            await fetch(`${API}/academy/courses/${first.id}/lessons/${lessonId}/complete`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userId: uid }),
+            });
+          }
         }
+      } catch {
+        /* ignore */
       }
-    } catch {
-      /* ignore */
+      const res = await fetch(`${API}/academy/gamification/${uid}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Could not load badges"));
+        setReport(null);
+        return;
+      }
+      setReport(data);
+    } finally {
+      setBusy(false);
     }
-    const res = await fetch(`${API}/academy/gamification/${uid}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Could not load badges"));
-      setReport(null);
-      return;
-    }
-    setReport(data);
   }
 
   return (
@@ -91,8 +98,8 @@ export default function BadgesPage() {
       <h1>Badges &amp; streaks</h1>
       <p className="tagline">Earn XP and Spec badges as you complete Academy lessons — §7.2.</p>
       <div className="card">
-        <button className="btn" type="button" onClick={() => void load()}>
-          Refresh my progress
+        <button className="btn" type="button" disabled={busy} onClick={() => void load()}>
+          {busy ? "Loading…" : "Refresh my progress"}
         </button>
       </div>
       {msg && <p style={{ marginTop: 12 }}>{msg}</p>}
