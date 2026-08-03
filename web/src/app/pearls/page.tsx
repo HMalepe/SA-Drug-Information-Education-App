@@ -25,6 +25,7 @@ export default function PearlsPage() {
   const [items, setItems] = useState<PearlItem[]>([]);
   const [meta, setMeta] = useState("");
   const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensurePro(): Promise<string | null> {
     if (userId) return userId;
@@ -44,26 +45,37 @@ export default function PearlsPage() {
   }
 
   async function loadFeed() {
+    if (busy) return;
+    setBusy(true);
     setErr("");
-    const uid = await ensurePro();
-    if (!uid) return;
-    const qs = new URLSearchParams({
-      userId: uid,
-      specialty,
-      weak,
-      limit: "5",
-    });
-    const res = await fetch(`${API}/pearls/today?${qs}`);
-    const data = await res.json();
-    if (res.status === 402) {
-      setErr(formatApiError(data.error, "Pro required"));
-      setItems([]);
-      return;
+    try {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const qs = new URLSearchParams({
+        userId: uid,
+        specialty,
+        weak,
+        limit: "5",
+      });
+      const res = await fetch(`${API}/pearls/today?${qs}`);
+      const data = await res.json();
+      if (res.status === 402) {
+        setErr(formatApiError(data.error, "Pro required"));
+        setItems([]);
+        return;
+      }
+      if (!res.ok) {
+        setErr(formatApiError(data.error ?? data, "Could not load pearls"));
+        setItems([]);
+        return;
+      }
+      setItems(Array.isArray(data.items) ? data.items : []);
+      setMeta(
+        `${data.dateKey ?? ""} · pool ${data.totalPublishedPool ?? 0} · ${data.note ?? ""}`,
+      );
+    } finally {
+      setBusy(false);
     }
-    setItems(Array.isArray(data.items) ? data.items : []);
-    setMeta(
-      `${data.dateKey ?? ""} · pool ${data.totalPublishedPool ?? 0} · ${data.note ?? ""}`,
-    );
   }
 
   return (
@@ -80,6 +92,7 @@ export default function PearlsPage() {
           value={specialty}
           onChange={(e) => setSpecialty(e.target.value)}
           placeholder="antibiotics, hiv-tb"
+          disabled={busy}
         />
         <label className="muted">Weak areas to boost</label>
         <input
@@ -87,9 +100,10 @@ export default function PearlsPage() {
           value={weak}
           onChange={(e) => setWeak(e.target.value)}
           placeholder="diabetes, renal"
+          disabled={busy}
         />
-        <button className="btn" type="button" onClick={() => void loadFeed()}>
-          Load today&apos;s feed
+        <button className="btn" type="button" disabled={busy} onClick={() => void loadFeed()}>
+          {busy ? "Loading…" : "Load today\u2019s feed"}
         </button>
       </div>
       {err && <p className="muted">{err}</p>}

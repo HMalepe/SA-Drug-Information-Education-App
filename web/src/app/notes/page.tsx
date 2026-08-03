@@ -28,6 +28,7 @@ export default function NotesPage() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [drafts, setDrafts] = useState<Note[]>([]);
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensurePro(): Promise<string | null> {
     if (userId) return userId;
@@ -46,86 +47,118 @@ export default function NotesPage() {
     }
   }
 
-  async function load() {
-    const uid = await ensurePro();
-    if (!uid) return;
+  async function refreshNotes(uid: string) {
     const res = await fetch(
       `${API}/notes?moleculeSlug=${encodeURIComponent(slug)}&includeDraft=1&userId=${uid}`,
     );
     const data = await res.json();
+    if (!res.ok) {
+      setMsg(formatApiError(data.error ?? data, "Could not load notes"));
+      return;
+    }
     setNotes(Array.isArray(data.notes) ? data.notes : []);
     setDrafts(Array.isArray(data.drafts) ? data.drafts : []);
     setMsg(data.disclaimer ?? "");
   }
 
-  async function contribute() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/notes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: uid,
-        moleculeSlug: slug,
-        kind,
-        body,
-        authorDisplayName: "Demo Pharmacist",
-        authorCredential: "BPharm",
-      }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Could not submit"));
-      return;
+  async function load() {
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensurePro();
+      if (!uid) return;
+      await refreshNotes(uid);
+    } finally {
+      setBusy(false);
     }
-    setMsg(data.noteStatus ?? "Draft saved");
-    await load();
+  }
+
+  async function contribute() {
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/notes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: uid,
+          moleculeSlug: slug,
+          kind,
+          body,
+          authorDisplayName: "Demo Pharmacist",
+          authorCredential: "BPharm",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Could not submit"));
+        return;
+      }
+      setMsg(data.noteStatus ?? "Draft saved");
+      await refreshNotes(uid);
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function publish(noteId: string) {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/notes/${noteId}/publish`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: uid,
-        attestation: "Reviewed as local practice context — not dosing advice.",
-      }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Publish failed"));
-      return;
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/notes/${noteId}/publish`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: uid,
+          attestation: "Reviewed as local practice context — not dosing advice.",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Publish failed"));
+        return;
+      }
+      setMsg("Published.");
+      await refreshNotes(uid);
+    } finally {
+      setBusy(false);
     }
-    setMsg("Published.");
-    await load();
   }
 
   async function upvote(noteId: string) {
-    const uid = await ensurePro();
-    if (!uid) return;
-    // second pro user to avoid self-upvote on own notes after publish-as-same-user demo
-    let voterId: string;
+    if (busy) return;
+    setBusy(true);
     try {
-      voterId = await createStubSession({
-        email: "voter@materiatest.za",
-        mode: "pharmacist",
-        tier: "professional",
-        subscribeTier: "professional",
+      const uid = await ensurePro();
+      if (!uid) return;
+      // second pro user to avoid self-upvote on own notes after publish-as-same-user demo
+      let voterId: string;
+      try {
+        voterId = await createStubSession({
+          email: "voter@materiatest.za",
+          mode: "pharmacist",
+          tier: "professional",
+          subscribeTier: "professional",
+        });
+      } catch (e) {
+        setMsg(e instanceof Error ? e.message : "Could not create voter session");
+        return;
+      }
+      const res = await fetch(`${API}/notes/${noteId}/upvote`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: voterId }),
       });
-    } catch (e) {
-      setMsg(e instanceof Error ? e.message : "Could not create voter session");
-      return;
+      const data = await res.json();
+      if (!res.ok) setMsg(formatApiError(data.error, "Upvote failed"));
+      else await refreshNotes(uid);
+    } finally {
+      setBusy(false);
     }
-    const res = await fetch(`${API}/notes/${noteId}/upvote`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: voterId }),
-    });
-    const data = await res.json();
-    if (!res.ok) setMsg(formatApiError(data.error, "Upvote failed"));
-    else await load();
   }
 
   return (
@@ -141,12 +174,14 @@ export default function NotesPage() {
           style={{ display: "block", width: "100%", margin: "8px 0 12px", padding: 10 }}
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
+          disabled={busy}
         />
         <label className="muted">Kind</label>
         <select
           value={kind}
           onChange={(e) => setKind(e.target.value)}
           style={{ display: "block", width: "100%", margin: "8px 0 12px", padding: 10 }}
+          disabled={busy}
         >
           <option value="counselling_tip">Counselling tip</option>
           <option value="stockout_intel">Stockout intel</option>
@@ -157,12 +192,13 @@ export default function NotesPage() {
           style={{ display: "block", width: "100%", margin: "8px 0 16px", padding: 10, minHeight: 80 }}
           value={body}
           onChange={(e) => setBody(e.target.value)}
+          disabled={busy}
         />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-          <button className="btn" type="button" onClick={() => void contribute()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void contribute()}>
             Submit draft
           </button>
-          <button className="btn" type="button" onClick={() => void load()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void load()}>
             Refresh
           </button>
         </div>
@@ -179,7 +215,7 @@ export default function NotesPage() {
               {n.authorCredential ? ` · ${n.authorCredential}` : ""} · ▲ {n.upvotes}
               {n.lastReviewed ? ` · reviewed ${n.lastReviewed}` : ""}
             </p>
-            <button className="btn" type="button" onClick={() => void upvote(n.id)}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void upvote(n.id)}>
               Upvote
             </button>
           </article>
@@ -196,6 +232,7 @@ export default function NotesPage() {
               className="btn"
               type="button"
               style={{ marginTop: 8 }}
+              disabled={busy}
               onClick={() => void publish(n.id)}
             >
               Publish with attestation

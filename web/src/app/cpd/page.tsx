@@ -50,6 +50,7 @@ export default function CpdPage() {
   const [modules, setModules] = useState<ModuleRow[]>([]);
   const [certs, setCerts] = useState<CertRow[]>([]);
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function ensurePro(): Promise<string | null> {
     if (userId) return userId;
@@ -68,9 +69,7 @@ export default function CpdPage() {
     }
   }
 
-  async function load() {
-    const uid = await ensurePro();
-    if (!uid) return;
+  async function refreshDashboard(uid: string) {
     const res = await fetch(`${API}/cpd/dashboard/${uid}`);
     const data = await res.json();
     if (!res.ok) {
@@ -85,17 +84,35 @@ export default function CpdPage() {
     setMsg("");
   }
 
+  async function load() {
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensurePro();
+      if (!uid) return;
+      await refreshDashboard(uid);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function claim(moduleId: string) {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/cpd/claim`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, moduleId }),
-    });
-    const data = await res.json();
-    setMsg(formatCpdMsg({ ...data, moduleId }));
-    await load();
+    if (busy) return;
+    setBusy(true);
+    try {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/cpd/claim`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, moduleId }),
+      });
+      const data = await res.json();
+      setMsg(formatCpdMsg({ ...data, moduleId }));
+      await refreshDashboard(uid);
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -108,8 +125,8 @@ export default function CpdPage() {
       </p>
 
       <div style={{ display: "flex", gap: 8, margin: "16px 0" }}>
-        <button className="btn" type="button" onClick={() => void load()}>
-          Load dashboard
+        <button className="btn" type="button" disabled={busy} onClick={() => void load()}>
+          {busy ? "Loading…" : "Load dashboard"}
         </button>
         <a className="btn" href="/learn">
           Open Academy
@@ -132,7 +149,12 @@ export default function CpdPage() {
             </div>
             <p style={{ margin: "8px 0" }}>{m.description}</p>
             {m.eligibility?.ok ? (
-              <button className="btn" type="button" onClick={() => void claim(m.id)}>
+              <button
+                className="btn"
+                type="button"
+                disabled={busy}
+                onClick={() => void claim(m.id)}
+              >
                 Claim credit
               </button>
             ) : (
