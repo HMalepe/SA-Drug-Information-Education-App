@@ -64,4 +64,17 @@ describe("Pro demo busy gates", () => {
     }
     assert.ok(wired.length >= 10, `expected ≥10 learn demos busy-gated, got ${wired.join(",")}`);
   });
+
+  it("insights + onboarding use busy gates", () => {
+    for (const rel of ["web/src/app/insights/page.tsx", "web/src/app/onboarding/page.tsx"]) {
+      const src = readFileSync(join(root, rel), "utf8");
+      assert.match(src, /const \[busy, setBusy\]/, `${rel} should declare busy`);
+      assert.match(src, /if \(busy\) return/, `${rel} should early-return when busy`);
+      assert.match(src, /disabled=\{busy\}/, `${rel} should disable controls while busy`);
+      assert.match(src, /finally \{\s*setBusy\(false\)/, `${rel} should clear busy in finally`);
+    }
+    const insights = readFileSync(join(root, "web/src/app/insights/page.tsx"), "utf8");
+    assert.match(insights, /!res\.ok/);
+    assert.match(insights, /formatApiError/);
+  });
 });

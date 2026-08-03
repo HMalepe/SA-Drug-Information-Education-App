@@ -17,9 +17,12 @@ export default function OnboardingPage() {
   const [email, setEmail] = useState("");
   const [userId, setUserId] = useState<string | null>(null);
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function createSession(e: React.FormEvent) {
     e.preventDefault();
+    if (busy) return;
+    setBusy(true);
     try {
       const id = await createStubSession({ email, mode });
       window.localStorage.setItem(MODE_STORAGE_KEY, mode);
@@ -27,17 +30,29 @@ export default function OnboardingPage() {
       setMsg(`Session ready as ${mode}. Accept disclaimers below.`);
     } catch (err) {
       setMsg(formatOnboardingError(err instanceof Error ? err.message : err));
+    } finally {
+      setBusy(false);
     }
   }
 
   async function accept(consentType: "popia" | "medical_disclaimer") {
-    if (!userId) return;
-    await fetch(`${API}/consent`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, consentType, version: "2026-07-01" }),
-    });
-    setMsg((m) => `${m} · Logged ${consentType}`);
+    if (!userId || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/consent`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, consentType, version: "2026-07-01" }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setMsg(formatOnboardingError(data.error ?? data));
+        return;
+      }
+      setMsg((m) => `${m} · Logged ${consentType}`);
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -52,6 +67,7 @@ export default function OnboardingPage() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={busy}
         />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
           {WEB_USER_MODES.map((m) => (
@@ -59,14 +75,15 @@ export default function OnboardingPage() {
               key={m}
               type="button"
               className={`tab${mode === m ? " active" : ""}`}
+              disabled={busy}
               onClick={() => setMode(m)}
             >
               {m}
             </button>
           ))}
         </div>
-        <button className="btn" type="submit">
-          Continue
+        <button className="btn" type="submit" disabled={busy}>
+          {busy ? "Working…" : "Continue"}
         </button>
       </form>
       {userId && (
@@ -75,10 +92,21 @@ export default function OnboardingPage() {
             Materia is a <strong>reference / education</strong> tool — not emergency care and not a
             medical device that directs treatment for a specific patient.
           </p>
-          <button className="btn" type="button" onClick={() => accept("medical_disclaimer")}>
+          <button
+            className="btn"
+            type="button"
+            disabled={busy}
+            onClick={() => void accept("medical_disclaimer")}
+          >
             I understand — medical disclaimer
           </button>{" "}
-          <button className="btn" type="button" onClick={() => accept("popia")} style={{ background: "var(--ink)" }}>
+          <button
+            className="btn"
+            type="button"
+            disabled={busy}
+            onClick={() => void accept("popia")}
+            style={{ background: "var(--ink)" }}
+          >
             POPIA consent (account data)
           </button>
         </div>

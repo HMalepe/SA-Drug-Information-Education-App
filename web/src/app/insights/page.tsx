@@ -152,10 +152,22 @@ export default function InsightsPage() {
   const [personal, setPersonal] = useState<Personal | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
 
   async function loadProduct() {
-    const res = await fetch(`${API}/analytics/summary`);
-    setSummary(await res.json());
+    if (busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/analytics/summary`);
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error ?? data, "Could not load product summary"));
+        return;
+      }
+      setSummary(data);
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function ensurePro(): Promise<string | null> {
@@ -207,26 +219,50 @@ export default function InsightsPage() {
     void day;
   }
 
-  async function loadPersonal() {
-    setMsg("");
-    const uid = await ensurePro();
-    if (!uid) return;
-    await seedDemoActivity(uid);
-    // brief delay so fire-and-forget events land in the in-memory buffer
-    await new Promise((r) => setTimeout(r, 200));
-    const res = await fetch(`${API}/analytics/personal/${uid}`);
+  async function refreshProduct() {
+    const res = await fetch(`${API}/analytics/summary`);
     const data = await res.json();
     if (!res.ok) {
-      setMsg(formatApiError(data.error, "Could not load personal analytics"));
-      setPersonal(null);
+      setMsg(formatApiError(data.error ?? data, "Could not load product summary"));
       return;
     }
-    setPersonal(data);
-    await loadProduct();
+    setSummary(data);
+  }
+
+  async function loadPersonal() {
+    if (busy) return;
+    setBusy(true);
+    setMsg("");
+    try {
+      const uid = await ensurePro();
+      if (!uid) return;
+      await seedDemoActivity(uid);
+      // brief delay so fire-and-forget events land in the in-memory buffer
+      await new Promise((r) => setTimeout(r, 200));
+      const res = await fetch(`${API}/analytics/personal/${uid}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Could not load personal analytics"));
+        setPersonal(null);
+        return;
+      }
+      setPersonal(data);
+      await refreshProduct();
+    } finally {
+      setBusy(false);
+    }
   }
 
   useEffect(() => {
-    void loadProduct();
+    void (async () => {
+      try {
+        const res = await fetch(`${API}/analytics/summary`);
+        const data = await res.json();
+        if (res.ok) setSummary(data);
+      } catch {
+        /* initial product pulse best-effort */
+      }
+    })();
   }, []);
 
   return (
@@ -242,8 +278,8 @@ export default function InsightsPage() {
           Your learning curve, mastery by area/class, and most-looked-up molecules — self-knowledge,
           not a clinical score.
         </p>
-        <button className="btn" type="button" onClick={() => void loadPersonal()}>
-          Load my Pro analytics
+        <button className="btn" type="button" disabled={busy} onClick={() => void loadPersonal()}>
+          {busy ? "Loading…" : "Load my Pro analytics"}
         </button>
         {msg && <p style={{ marginTop: 12 }}>{msg}</p>}
         {personal && (
@@ -284,8 +320,8 @@ export default function InsightsPage() {
       </div>
 
       <h2 style={{ marginTop: 28, fontSize: 20 }}>Product analytics</h2>
-      <button className="btn" type="button" onClick={() => void loadProduct()}>
-        Refresh product summary
+      <button className="btn" type="button" disabled={busy} onClick={() => void loadProduct()}>
+        {busy ? "Loading…" : "Refresh product summary"}
       </button>
       {!summary ? (
         <p className="muted">Loading…</p>
