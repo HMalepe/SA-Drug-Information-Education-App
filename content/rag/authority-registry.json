@@ -120,7 +120,8 @@
     "Web AskMateria busy/error harden + apiGet/apiPost messageFromHttpErrorBody",
     "Expo design tokens: _layout + home borders; CI bans magic hex in app UI",
     "Expo nav: Stack titles + home→auth + molecule→dosing links",
-    "Web SearchBox error harden + Expo dosing→molecule back link"
+    "Web SearchBox error harden + Expo dosing→molecule back link",
+    "Web globals.css: --white/--line/--line-soft vars aligned with design tokens"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
