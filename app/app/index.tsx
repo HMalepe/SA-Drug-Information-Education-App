@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.line,
   },
-  navChipText: { color: colors.teal, fontWeight: "600", fontSize: 13 },
+  navChipText: { color: colors.teal, fontWeight: "600", fontSize: typography.size.sm },
   searchRow: { flexDirection: "row", gap: space.sm, marginBottom: space.md },
   input: {
     flex: 1,
@@ -201,8 +201,8 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
   },
   chipOn: { backgroundColor: colors.teal, borderColor: colors.teal },
-  chipText: { color: colors.ink, fontWeight: "600", fontSize: 13 },
-  chipTextOn: { color: colors.white, fontWeight: "600", fontSize: 13 },
+  chipText: { color: colors.ink, fontWeight: "600", fontSize: typography.size.sm },
+  chipTextOn: { color: colors.white, fontWeight: "600", fontSize: typography.size.sm },
   card: {
     backgroundColor: colors.white,
     borderRadius: radius.lg,

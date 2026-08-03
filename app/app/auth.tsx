@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: theme.colors.white,
     borderWidth: 1,
-    borderColor: theme.colors.slate,
+    borderColor: theme.colors.line,
     borderRadius: theme.radius.md,
     padding: theme.space.sm,
     color: theme.colors.ink,

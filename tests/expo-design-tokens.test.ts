@@ -112,4 +112,24 @@ describe("Expo design tokens (no magic hex)", () => {
       `Use radius.md/lg/pill instead of magic borderRadius:\n${violations.join("\n")}`,
     );
   });
+
+  it("Expo inputs use colors.line borders; chip text uses typography.size.sm", () => {
+    for (const rel of [
+      "app/app/auth.tsx",
+      "app/app/molecule/[slug].tsx",
+      "app/app/dosing/[slug].tsx",
+    ]) {
+      const src = readFileSync(join(root, rel), "utf8");
+      assert.match(src, /borderColor:\s*(theme\.)?colors\.line/, `${rel} input border`);
+      assert.doesNotMatch(
+        src,
+        /borderColor:\s*(theme\.)?colors\.slate/,
+        `${rel} must not use slate for borders`,
+      );
+    }
+
+    const home = readFileSync(join(root, "app/app/index.tsx"), "utf8");
+    assert.match(home, /fontSize:\s*typography\.size\.sm/);
+    assert.doesNotMatch(home, /fontSize:\s*13\b/, "home must not use magic fontSize 13");
+  });
 });
