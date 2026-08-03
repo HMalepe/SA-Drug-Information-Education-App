@@ -53,7 +53,11 @@ export const typography = {
 
 export const space = {
   xs: 4,
+  /** Compact chip / control vertical padding */
+  chipY: 6,
   sm: 8,
+  /** Compact chip / control horizontal padding (also input vertical mid) */
+  chipX: 12,
   md: 16,
   lg: 24,
   xl: 32,

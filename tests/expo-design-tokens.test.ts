@@ -132,4 +132,30 @@ describe("Expo design tokens (no magic hex)", () => {
     assert.match(home, /fontSize:\s*typography\.size\.sm/);
     assert.doesNotMatch(home, /fontSize:\s*13\b/, "home must not use magic fontSize 13");
   });
+
+  it("Expo UI uses space.chipX/chipY instead of magic padding 6/12", () => {
+    const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
+    assert.match(tokens, /chipY:\s*6/);
+    assert.match(tokens, /chipX:\s*12/);
+
+    const files = SCAN_ROOTS.flatMap(listSourceFiles);
+    const MAGIC_PAD = /padding(Horizontal|Vertical):\s*(6|12)\b/;
+    const violations: string[] = [];
+    for (const file of files) {
+      const lines = readFileSync(file, "utf8").split(/\r?\n/);
+      const rel = relative(root, file).replace(/\\/g, "/");
+      for (let i = 0; i < lines.length; i++) {
+        if (MAGIC_PAD.test(lines[i]!)) violations.push(`${rel}:${i + 1}`);
+      }
+    }
+    assert.deepEqual(
+      violations,
+      [],
+      `Use space.chipX/chipY instead of magic padding 6/12:\n${violations.join("\n")}`,
+    );
+
+    const home = readFileSync(join(root, "app/app/index.tsx"), "utf8");
+    assert.match(home, /space\.chipX/);
+    assert.match(home, /space\.chipY/);
+  });
 });

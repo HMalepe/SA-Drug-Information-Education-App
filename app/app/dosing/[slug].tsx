@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
   meta: { color: theme.colors.slate },
   backLink: {
     alignSelf: "flex-start",
-    paddingVertical: 6,
-    paddingHorizontal: 10,
+    paddingVertical: theme.space.chipY,
+    paddingHorizontal: theme.space.chipX,
     borderRadius: theme.radius.md,
     backgroundColor: theme.colors.mint,
   },
