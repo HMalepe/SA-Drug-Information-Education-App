@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
 import { formatApiError } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -29,31 +30,28 @@ export default function LeaderboardPage() {
   const [board, setBoard] = useState<Board | null>(null);
   const [msg, setMsg] = useState("");
 
-  async function ensureStudent() {
+  async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const id = await createStubSession({
         email: "leaderboard@materiatest.za",
-        displayName: "Academy Demo",
         mode: "student",
         tier: "student",
-      }),
-    });
-    const data = await res.json();
-    await fetch(`${API}/billing/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: data.user.id, tier: "student" }),
-    });
-    setUserId(data.user.id);
-    return data.user.id as string;
+        displayName: "Academy Demo",
+        subscribeTier: "student",
+      });
+      setUserId(id);
+      return id;
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Could not create session");
+      return null;
+    }
   }
 
   async function load() {
     setMsg("");
     const uid = await ensureStudent();
+    if (!uid) return;
     try {
       const list = await fetch(`${API}/academy/courses`).then((r) => r.json());
       const first = Array.isArray(list.courses) ? list.courses[0] : null;

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { TrackPage } from "@/components/TrackPage";
 import { formatApiError } from "@/lib/formatApiError";
+import { createStubSession } from "@/lib/stubSession";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
@@ -23,31 +24,28 @@ export default function PackagingPage() {
     [medicines],
   );
 
-  async function ensureStudent() {
+  async function ensureStudent(): Promise<string | null> {
     if (userId) return userId;
-    const res = await fetch(`${API}/auth/stub-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      const id = await createStubSession({
         email: "packaging@materiatest.za",
         mode: "student",
         tier: "student",
-      }),
-    });
-    const data = await res.json();
-    await fetch(`${API}/billing/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: data.user.id, tier: "student" }),
-    });
-    setUserId(data.user.id);
-    return data.user.id as string;
+        subscribeTier: "student",
+      });
+      setUserId(id);
+      return id;
+    } catch (e) {
+      setResult(e instanceof Error ? e.message : "Could not create session");
+      return null;
+    }
   }
 
   async function start() {
     setResult("");
     setMapping({});
     const uid = await ensureStudent();
+    if (!uid) return;
     const res = await fetch(`${API}/academy/packaging/start`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
