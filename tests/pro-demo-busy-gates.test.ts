@@ -88,4 +88,26 @@ describe("Pro demo busy gates", () => {
     const busyButtons = src.match(/disabled=\{busy\}/g) ?? [];
     assert.ok(busyButtons.length >= 12, `expected ≥12 busy-disabled controls, got ${busyButtons.length}`);
   });
+
+  it("Pro tools page uses runBusy and disabled={busy}", () => {
+    const src = readFileSync(join(root, "web/src/app/tools/page.tsx"), "utf8");
+    assert.match(src, /const \[busy, setBusy\]/);
+    assert.match(src, /async function runBusy/);
+    assert.match(src, /if \(busy\) return/);
+    assert.match(src, /finally \{\s*setBusy\(false\)/);
+    assert.match(src, /disabled=\{busy\}/);
+    const wrapped = [
+      "cacheOffline",
+      "resolveVision",
+      "runDoseAdjustment",
+      "runClashBoard",
+      "runCounselling",
+      "speakVoice",
+    ];
+    for (const name of wrapped) {
+      assert.match(src, new RegExp(`async function ${name}[\\s\\S]*?await runBusy`), `${name} wrapped`);
+    }
+    const busyButtons = src.match(/disabled=\{busy\}/g) ?? [];
+    assert.ok(busyButtons.length >= 15, `expected ≥15 busy-disabled controls, got ${busyButtons.length}`);
+  });
 });

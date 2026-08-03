@@ -340,6 +340,8 @@ export default function ToolsPage() {
   const [offlinePack, setOfflinePack] = useState<OfflinePackResult | null>(null);
   const [vision, setVision] = useState<VisionResolveResult | null>(null);
   const [offlineBadge, setOfflineBadge] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [sessionError, setSessionError] = useState("");
 
   useEffect(() => {
     const sync = () => setOfflineBadge(isBrowserOffline());
@@ -410,6 +412,16 @@ export default function ToolsPage() {
     else setVision(data as VisionResolveResult);
   }
 
+  async function runBusy(action: () => Promise<void>) {
+    if (busy) return;
+    setBusy(true);
+    try {
+      await action();
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function ensurePro(): Promise<string | null> {
     if (userId) return userId;
     try {
@@ -420,37 +432,40 @@ export default function ToolsPage() {
         subscribeTier: "professional",
       });
       setUserId(id);
+      setSessionError("");
       return id;
     } catch (e) {
-      setOut(e instanceof Error ? e.message : "Could not create session");
+      setSessionError(e instanceof Error ? e.message : "Could not create session");
       return null;
     }
   }
 
   async function cacheOffline() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/offline/pack?userId=${uid}`);
-    const data = await res.json();
-    if (res.status === 402) {
-      track(
-        "gated_feature_hit",
-        { feature: "offline_core", tier: "professional" },
-        { tier: "free" },
-      );
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/offline/pack?userId=${uid}`);
+      const data = await res.json();
+      if (res.status === 402) {
+        track(
+          "gated_feature_hit",
+          { feature: "offline_core", tier: "professional" },
+          { tier: "free" },
+        );
+        showClinicalPanel("offlinepack", data);
+        return;
+      }
+      track("tool_used", { tool: "offline_core" }, { tier: "professional" });
+      if (res.ok && data.essentials) {
+        saveOfflinePack({
+          generatedAt: data.generatedAt ?? new Date().toISOString(),
+          essentials: data.essentials,
+        });
+        showClinicalPanel("offlinepack", { ...data, fromCache: false });
+        return;
+      }
       showClinicalPanel("offlinepack", data);
-      return;
-    }
-    track("tool_used", { tool: "offline_core" }, { tier: "professional" });
-    if (res.ok && data.essentials) {
-      saveOfflinePack({
-        generatedAt: data.generatedAt ?? new Date().toISOString(),
-        essentials: data.essentials,
-      });
-      showClinicalPanel("offlinepack", { ...data, fromCache: false });
-      return;
-    }
-    showClinicalPanel("offlinepack", data);
+        });
   }
 
   function readOfflineCache() {
@@ -470,227 +485,257 @@ export default function ToolsPage() {
   }
 
   async function resolveVision() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/tools/vision/resolve`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, input: scanInput }),
-    });
-    if (res.status === 402) {
-      track(
-        "gated_feature_hit",
-        { feature: "vision_scan", tier: "professional" },
-        { tier: "free" },
-      );
-    } else {
-      track("tool_used", { tool: "vision_scan" }, { tier: "professional" });
-    }
-    showClinicalPanel("vision", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/tools/vision/resolve`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, input: scanInput }),
+      });
+      if (res.status === 402) {
+        track(
+          "gated_feature_hit",
+          { feature: "vision_scan", tier: "professional" },
+          { tier: "free" },
+        );
+      } else {
+        track("tool_used", { tool: "vision_scan" }, { tier: "professional" });
+      }
+      showClinicalPanel("vision", await res.json());
+        });
   }
 
   async function runDoseAdjustment(confirmed: boolean) {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/tools/dose-adjustment`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: uid,
-        moleculeSlug: slug,
-        context: adjustContext,
-        egfrMlMin: egfr.trim() ? Number(egfr) : undefined,
-        clinicallyConfirmed: confirmed,
-      }),
-    });
-    track("tool_used", { tool: "dose_adjustment" }, { tier: "professional" });
-    showClinicalPanel("dose", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/tools/dose-adjustment`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: uid,
+          moleculeSlug: slug,
+          context: adjustContext,
+          egfrMlMin: egfr.trim() ? Number(egfr) : undefined,
+          clinicallyConfirmed: confirmed,
+        }),
+      });
+      track("tool_used", { tool: "dose_adjustment" }, { tier: "professional" });
+      showClinicalPanel("dose", await res.json());
+        });
   }
 
   async function runClashBoard() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const moleculeSlugs = clashSlugs
-      .split(/[,;\n]+/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-    const res = await fetch(`${API}/tools/clash-board`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: uid, moleculeSlugs }),
-    });
-    track("tool_used", { tool: "clash_board" }, { tier: "professional" });
-    showClinicalPanel("clash", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const moleculeSlugs = clashSlugs
+        .split(/[,;\n]+/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+      const res = await fetch(`${API}/tools/clash-board`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: uid, moleculeSlugs }),
+      });
+      track("tool_used", { tool: "clash_board" }, { tier: "professional" });
+      showClinicalPanel("clash", await res.json());
+        });
   }
 
   async function runCounselling() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/counselling/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
-    );
-    track("tool_used", { tool: "counselling" }, { tier: "professional" });
-    showClinicalPanel("counselling", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/counselling/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+      );
+      track("tool_used", { tool: "counselling" }, { tier: "professional" });
+      showClinicalPanel("counselling", await res.json());
+        });
   }
 
   async function runInsertTranslator() {
-    const res = await fetch(
-      `${API}/tools/insert/${encodeURIComponent(slug)}?level=${insertLevel}`,
-    );
-    track("tool_used", { tool: "insert_translator" }, { tier: "free" });
-    showClinicalPanel("insert", await res.json());
+    await runBusy(async () => {
+      const res = await fetch(
+        `${API}/tools/insert/${encodeURIComponent(slug)}?level=${insertLevel}`,
+      );
+      track("tool_used", { tool: "insert_translator" }, { tier: "free" });
+      showClinicalPanel("insert", await res.json());
+        });
   }
 
   async function runMonograph() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/monograph/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
-    );
-    track("tool_used", { tool: "monograph_export" }, { tier: "professional" });
-    showClinicalPanel("monograph", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/monograph/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+      );
+      track("tool_used", { tool: "monograph_export" }, { tier: "professional" });
+      showClinicalPanel("monograph", await res.json());
+        });
   }
 
   async function runHandout() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/handout/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
-    );
-    track("tool_used", { tool: "handout_export" }, { tier: "professional" });
-    showClinicalPanel("handout", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/handout/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+      );
+      track("tool_used", { tool: "handout_export" }, { tier: "professional" });
+      showClinicalPanel("handout", await res.json());
+        });
   }
 
   async function runLocum() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/locum/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
-    );
-    track("tool_used", { tool: "locum_brief" }, { tier: "professional" });
-    showClinicalPanel("locum", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/locum/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+      );
+      track("tool_used", { tool: "locum_brief" }, { tier: "professional" });
+      showClinicalPanel("locum", await res.json());
+        });
   }
 
   async function runColdChain() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/tools/cold-chain?userId=${uid}`);
-    track("tool_used", { tool: "cold_chain_notes" }, { tier: "professional" });
-    showClinicalPanel("coldchain", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/tools/cold-chain?userId=${uid}`);
+      track("tool_used", { tool: "cold_chain_notes" }, { tier: "professional" });
+      showClinicalPanel("coldchain", await res.json());
+        });
   }
 
   async function runSubstitution() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/substitution/${encodeURIComponent(slug)}?userId=${uid}&selectedProductId=prod-amoxil`,
-    );
-    if (res.status === 402) {
-      track(
-        "gated_feature_hit",
-        { feature: "substitution_sep", tier: "professional" },
-        { tier: "free" },
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/substitution/${encodeURIComponent(slug)}?userId=${uid}&selectedProductId=prod-amoxil`,
       );
-    } else {
-      track("tool_used", { tool: "substitution_sep" }, { tier: "professional" });
-    }
-    showClinicalPanel("substitution", await res.json());
+      if (res.status === 402) {
+        track(
+          "gated_feature_hit",
+          { feature: "substitution_sep", tier: "professional" },
+          { tier: "free" },
+        );
+      } else {
+        track("tool_used", { tool: "substitution_sep" }, { tier: "professional" });
+      }
+      showClinicalPanel("substitution", await res.json());
+        });
   }
 
   async function runFormulary() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/formulary/${encodeURIComponent(slug)}?userId=${uid}&scheme=${encodeURIComponent(scheme)}&selectedProductId=prod-amoxil`,
-    );
-    if (res.status === 402) {
-      track(
-        "gated_feature_hit",
-        { feature: "formulary_copay", tier: "professional" },
-        { tier: "free" },
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/formulary/${encodeURIComponent(slug)}?userId=${uid}&scheme=${encodeURIComponent(scheme)}&selectedProductId=prod-amoxil`,
       );
-    } else {
-      track("tool_used", { tool: "formulary_copay" }, { tier: "professional" });
-    }
-    showClinicalPanel("formulary", await res.json());
+      if (res.status === 402) {
+        track(
+          "gated_feature_hit",
+          { feature: "formulary_copay", tier: "professional" },
+          { tier: "free" },
+        );
+      } else {
+        track("tool_used", { tool: "formulary_copay" }, { tier: "professional" });
+      }
+      showClinicalPanel("formulary", await res.json());
+        });
   }
 
   async function runAvailability() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/availability/${encodeURIComponent(slug)}?userId=${uid}`,
-    );
-    if (res.status === 402) {
-      track(
-        "gated_feature_hit",
-        { feature: "shortage_alerts", tier: "professional" },
-        { tier: "free" },
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/availability/${encodeURIComponent(slug)}?userId=${uid}`,
       );
-    } else {
-      track("tool_used", { tool: "shortage_alerts" }, { tier: "professional" });
-    }
-    showClinicalPanel("availability", await res.json());
+      if (res.status === 402) {
+        track(
+          "gated_feature_hit",
+          { feature: "shortage_alerts", tier: "professional" },
+          { tier: "free" },
+        );
+      } else {
+        track("tool_used", { tool: "shortage_alerts" }, { tier: "professional" });
+      }
+      showClinicalPanel("availability", await res.json());
+        });
   }
 
   async function runShortages() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(`${API}/tools/shortages?userId=${uid}`);
-    if (res.status === 402) {
-      track(
-        "gated_feature_hit",
-        { feature: "shortage_alerts", tier: "professional" },
-        { tier: "free" },
-      );
-    } else {
-      track("tool_used", { tool: "shortage_alerts" }, { tier: "professional" });
-    }
-    showClinicalPanel("shortages", await res.json());
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(`${API}/tools/shortages?userId=${uid}`);
+      if (res.status === 402) {
+        track(
+          "gated_feature_hit",
+          { feature: "shortage_alerts", tier: "professional" },
+          { tier: "free" },
+        );
+      } else {
+        track("tool_used", { tool: "shortage_alerts" }, { tier: "professional" });
+      }
+      showClinicalPanel("shortages", await res.json());
+        });
   }
 
   async function runPharmacyLocator() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/pharmacy-locator?userId=${uid}&city=${encodeURIComponent(city)}&moleculeSlug=${encodeURIComponent(slug)}&selectedProductId=prod-amoxil`,
-    );
-    if (res.status === 402) {
-      track(
-        "gated_feature_hit",
-        { feature: "pharmacy_locator", tier: "professional" },
-        { tier: "free" },
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/pharmacy-locator?userId=${uid}&city=${encodeURIComponent(city)}&moleculeSlug=${encodeURIComponent(slug)}&selectedProductId=prod-amoxil`,
       );
-    } else {
-      track("tool_used", { tool: "pharmacy_locator" }, { tier: "professional" });
-    }
-    showClinicalPanel("pharmacy", await res.json());
+      if (res.status === 402) {
+        track(
+          "gated_feature_hit",
+          { feature: "pharmacy_locator", tier: "professional" },
+          { tier: "free" },
+        );
+      } else {
+        track("tool_used", { tool: "pharmacy_locator" }, { tier: "professional" });
+      }
+      showClinicalPanel("pharmacy", await res.json());
+        });
   }
 
   async function speakVoice() {
-    const uid = await ensurePro();
-    if (!uid) return;
-    const res = await fetch(
-      `${API}/tools/voice/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
-    );
-    const data = await res.json();
-    track("tool_used", { tool: "voice_mode" }, { tier: "professional" });
-    showClinicalPanel("voice", data);
-    if (res.ok && data.text && typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(data.text as string);
-      utter.lang =
-        lang === "af"
-          ? "af-ZA"
-          : lang === "zu"
-            ? "zu-ZA"
-            : lang === "xh"
-              ? "xh-ZA"
-              : lang === "st"
-                ? "st-ZA"
-                : "en-ZA";
-      window.speechSynthesis.speak(utter);
-    }
+    await runBusy(async () => {
+      const uid = await ensurePro();
+      if (!uid) return;
+      const res = await fetch(
+        `${API}/tools/voice/${encodeURIComponent(slug)}?userId=${uid}&lang=${lang}`,
+      );
+      const data = await res.json();
+      track("tool_used", { tool: "voice_mode" }, { tier: "professional" });
+      showClinicalPanel("voice", data);
+      if (res.ok && data.text && typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(data.text as string);
+        utter.lang =
+          lang === "af"
+            ? "af-ZA"
+            : lang === "zu"
+              ? "zu-ZA"
+              : lang === "xh"
+                ? "xh-ZA"
+                : lang === "st"
+                  ? "st-ZA"
+                  : "en-ZA";
+        window.speechSynthesis.speak(utter);
+      }
+        });
   }
 
   return (
@@ -704,6 +749,11 @@ export default function ToolsPage() {
           </span>
         )}
       </p>
+      {sessionError && (
+        <p className="muted" aria-live="polite">
+          {sessionError}
+        </p>
+      )}
 
       <div className="card">
         <label className="muted">Molecule slug</label>
@@ -722,22 +772,22 @@ export default function ToolsPage() {
           <option>Bonitas</option>
         </select>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-          <button className="btn" type="button" onClick={() => void runSubstitution()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void runSubstitution()}>
             Substitute + SEP
           </button>
-          <button className="btn" type="button" onClick={() => void runFormulary()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void runFormulary()}>
             Formulary + co-pay
           </button>
-          <button className="btn" type="button" onClick={() => void runLocum()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void runLocum()}>
             Locum brief
           </button>
-          <button className="btn" type="button" onClick={() => void runColdChain()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void runColdChain()}>
             Cold-chain notes
           </button>
-          <button className="btn" type="button" onClick={() => void runAvailability()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void runAvailability()}>
             Availability
           </button>
-          <button className="btn" type="button" onClick={() => void runShortages()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void runShortages()}>
             Active shortages
           </button>
         </div>
@@ -765,14 +815,13 @@ export default function ToolsPage() {
           onChange={(e) => setEgfr(e.target.value)}
           placeholder="e.g. 45"
         />
-        <button className="btn" type="button" onClick={() => void runDoseAdjustment(false)}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void runDoseAdjustment(false)}>
           Preview (needs confirmation)
         </button>{" "}
         <button
           className="btn"
           type="button"
-          style={{ background: "var(--ink)" }}
-          onClick={() => void runDoseAdjustment(true)}
+          style={{ background: "var(--ink)" }} disabled={busy} onClick={() => void runDoseAdjustment(true)}
         >
           Confirm clinically + show
         </button>
@@ -789,7 +838,7 @@ export default function ToolsPage() {
           onChange={(e) => setClashSlugs(e.target.value)}
           placeholder="amoxicillin, warfarin, aspirin"
         />
-        <button className="btn" type="button" onClick={() => void runClashBoard()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void runClashBoard()}>
           Build clash board
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
@@ -808,7 +857,7 @@ export default function ToolsPage() {
           <option value="grade5">Grade ~5 plain English</option>
           <option value="professional">Professional</option>
         </select>
-        <button className="btn" type="button" onClick={() => void runInsertTranslator()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void runInsertTranslator()}>
           Show insert for slug
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
@@ -830,10 +879,10 @@ export default function ToolsPage() {
           <option value="st">Sesotho</option>
           <option value="xh">isiXhosa</option>
         </select>
-        <button className="btn" type="button" onClick={() => void runCounselling()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void runCounselling()}>
           Counselling script
         </button>{" "}
-        <button className="btn" type="button" onClick={() => void speakVoice()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void speakVoice()}>
           Voice read-aloud
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
@@ -841,20 +890,23 @@ export default function ToolsPage() {
           cardio/neuro/endocrine + supportive). Locum accepts <code>?lang=zu</code> (af/st/xh
           too).
         </p>{" "}
-        <button className="btn" type="button" onClick={() => void runHandout()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void runHandout()}>
           Counselling handout
         </button>{" "}
-        <button className="btn" type="button" onClick={() => void runMonograph()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void runMonograph()}>
           Molecule monograph
         </button>{" "}
-        <button className="btn" type="button" onClick={() => void cacheOffline()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void cacheOffline()}>
           Offline pack
         </button>{" "}
         <button
           className="btn"
           type="button"
           style={{ background: "var(--ink)" }}
-          onClick={() => readOfflineCache()}
+          disabled={busy}
+          onClick={() => {
+            if (!busy) readOfflineCache();
+          }}
         >
           Read cache
         </button>
@@ -874,7 +926,7 @@ export default function ToolsPage() {
           <option value="bloemfontein">Bloemfontein</option>
           <option value="gqeberha">Gqeberha / PE</option>
         </select>
-        <button className="btn" type="button" onClick={() => void runPharmacyLocator()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void runPharmacyLocator()}>
           Nearby pharmacies + SEP refill prompt
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
@@ -891,7 +943,7 @@ export default function ToolsPage() {
           onChange={(e) => setScanInput(e.target.value)}
           placeholder="6001234567890 or Amoxil"
         />
-        <button className="btn" type="button" onClick={() => void resolveVision()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void resolveVision()}>
           Resolve pack / barcode
         </button>
         <p className="muted" style={{ marginTop: 8 }}>
