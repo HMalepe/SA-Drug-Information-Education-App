@@ -12,7 +12,11 @@
   --caution: #ea580c;
   --adjust: #d97706;
   --safe: #16a34a;
-  --radius: 8px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --radius: var(--radius-md);
   --font: "Source Sans 3", "Segoe UI", sans-serif;
 }
 
@@ -74,7 +78,7 @@ main {
   border: 1px solid var(--line);
   background: var(--white);
   color: var(--slate);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 4px 10px;
   font-size: 12px;
   font-weight: 600;
@@ -143,7 +147,7 @@ main {
 .card {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--line-soft);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 16px;
   margin-bottom: 12px;
 }
@@ -159,7 +163,7 @@ main {
 .tab {
   white-space: nowrap;
   padding: 8px 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--line);
   background: var(--white);
   color: var(--slate);
@@ -179,13 +183,13 @@ main {
   color: var(--slate);
   background: var(--mint);
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .emergency {
   border: 2px solid var(--danger);
   background: #fef2f2;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 16px;
 }
 
@@ -217,7 +221,7 @@ main {
   padding: 10px 12px;
   background: var(--white);
   border-left: 3px solid var(--danger);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   opacity: 0;
   transform: translateY(6px);
   animation: toxicity-in 420ms ease forwards;
@@ -252,7 +256,7 @@ main {
   color: var(--white);
   background: var(--danger);
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 13px;
 }
 
@@ -264,7 +268,7 @@ main {
 
 .clash-row {
   padding: 12px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--white);
   border-left: 4px solid var(--slate);
 }
@@ -307,7 +311,7 @@ main {
 .pearl-card {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--line-soft);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 16px 18px;
   animation: toxicity-in 420ms ease both;
 }

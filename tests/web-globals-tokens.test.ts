@@ -26,4 +26,22 @@ describe("Web globals.css design token vars", () => {
     assert.doesNotMatch(withoutRoot, /#dbe3ea/i);
     assert.doesNotMatch(withoutRoot, /(?<![\w-])#fff(?![\w-])/i);
   });
+
+  it("defines radius scale vars and avoids magic 8/12/999px radii outside :root", () => {
+    const css = readFileSync(join(root, "web/src/app/globals.css"), "utf8");
+    assert.match(css, /--radius-sm:\s*4px/);
+    assert.match(css, /--radius-md:\s*8px/);
+    assert.match(css, /--radius-lg:\s*12px/);
+    assert.match(css, /--radius-pill:\s*999px/);
+    assert.match(css, /--radius:\s*var\(--radius-md\)/);
+
+    const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
+    assert.match(tokens, /sm:\s*4/);
+    assert.match(tokens, /md:\s*8/);
+    assert.match(tokens, /lg:\s*12/);
+    assert.match(tokens, /pill:\s*999/);
+
+    const withoutRoot = css.replace(/:root\s*\{[\s\S]*?\n\}/, "");
+    assert.doesNotMatch(withoutRoot, /border-radius:\s*(8|12|999)px/);
+  });
 });
