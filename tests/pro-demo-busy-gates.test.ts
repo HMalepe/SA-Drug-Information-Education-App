@@ -77,4 +77,15 @@ describe("Pro demo busy gates", () => {
     assert.match(insights, /!res\.ok/);
     assert.match(insights, /formatApiError/);
   });
+
+  it("my-meds uses runBusy helper and disabled={busy}", () => {
+    const src = readFileSync(join(root, "web/src/app/my-meds/page.tsx"), "utf8");
+    assert.match(src, /const \[busy, setBusy\]/);
+    assert.match(src, /async function runBusy/);
+    assert.match(src, /if \(busy\) return/);
+    assert.match(src, /finally \{\s*setBusy\(false\)/);
+    assert.match(src, /disabled=\{busy\}/);
+    const busyButtons = src.match(/disabled=\{busy\}/g) ?? [];
+    assert.ok(busyButtons.length >= 12, `expected ≥12 busy-disabled controls, got ${busyButtons.length}`);
+  });
 });

@@ -58,6 +58,17 @@ export default function MyMedsPage() {
   const [dispatchResults, setDispatchResults] = useState<
     Array<{ channel?: string; status?: string; provider?: string; detail?: string }>
   >([]);
+  const [busy, setBusy] = useState(false);
+
+  async function runBusy(action: () => Promise<void>) {
+    if (busy) return;
+    setBusy(true);
+    try {
+      await action();
+    } finally {
+      setBusy(false);
+    }
+  }
 
   /** Reminder preview/dispatch status — never dumps regimen JSON. */
   function formatRemindersMsg(data: {
@@ -86,298 +97,324 @@ export default function MyMedsPage() {
   }
 
   async function start() {
-    try {
-      const id = await createStubSession({ email, mode: "patient", tier: "free" });
-      setUserId(id);
-      setMsg("Session ready. Sample Amoxicillin regimen (support only).");
-      await fetch(`${API}/companion/regimen/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: [
-            {
-              moleculeId: "mol-amox",
-              moleculeName: "Amoxicillin",
-              brandName: "Amoxil",
-              reminderTimes: ["08:00", "20:00"],
-              refillDueOn: "2026-07-25",
-              lastFilledOn: "2026-06-27",
-              packDaysUser: 28,
-            },
-          ],
-        }),
-      });
-      await fetch(`${API}/companion/reminders/prefs/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          channels: ["in_app", "email"],
-          email,
-          timezone: "Africa/Johannesburg",
-          consentMessaging: true,
-        }),
-      });
-      const check = await fetch(`${API}/companion/interactions/check`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: id }),
-      });
-      const clash = await check.json();
-      if (check.status === 402) {
-        setRegimenNote(`${clash.error} — upgrade to Student for full interaction check.`);
-      } else {
-        setRegimenNote(clash.note);
+    await runBusy(async () => {
+      try {
+        const id = await createStubSession({ email, mode: "patient", tier: "free" });
+        setUserId(id);
+        setMsg("Session ready. Sample Amoxicillin regimen (support only).");
+        await fetch(`${API}/companion/regimen/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            items: [
+              {
+                moleculeId: "mol-amox",
+                moleculeName: "Amoxicillin",
+                brandName: "Amoxil",
+                reminderTimes: ["08:00", "20:00"],
+                refillDueOn: "2026-07-25",
+                lastFilledOn: "2026-06-27",
+                packDaysUser: 28,
+              },
+            ],
+          }),
+        });
+        await fetch(`${API}/companion/reminders/prefs/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            channels: ["in_app", "email"],
+            email,
+            timezone: "Africa/Johannesburg",
+            consentMessaging: true,
+          }),
+        });
+        const check = await fetch(`${API}/companion/interactions/check`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId: id }),
+        });
+        const clash = await check.json();
+        if (check.status === 402) {
+          setRegimenNote(`${clash.error} — upgrade to Student for full interaction check.`);
+        } else {
+          setRegimenNote(clash.note);
+        }
+        const deps = await fetch(`${API}/companion/dependants/${id}`);
+        const depData = await deps.json();
+        setDependants(Array.isArray(depData.profiles) ? depData.profiles : []);
+      } catch (e) {
+        setMsg(e instanceof Error ? e.message : "Could not create session");
       }
-      const deps = await fetch(`${API}/companion/dependants/${id}`);
-      const depData = await deps.json();
-      setDependants(Array.isArray(depData.profiles) ? depData.profiles : []);
-    } catch (e) {
-      setMsg(e instanceof Error ? e.message : "Could not create session");
-    }
+    });
   }
 
   async function addDependant() {
     if (!userId) return;
-    const res = await fetch(`${API}/companion/dependants/${userId}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ displayName: depName, relation: depRelation }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatApiError(data.error, "Could not add profile"));
-      return;
-    }
-    setDependants(Array.isArray(data.profiles) ? data.profiles : []);
-    if (data.profile?.id) {
-      setActiveDependantId(data.profile.id);
-      await fetch(`${API}/companion/regimen/${userId}`, {
-        method: "PUT",
+    await runBusy(async () => {
+      const res = await fetch(`${API}/companion/dependants/${userId}`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          dependantId: data.profile.id,
-          items: [
-            {
-              moleculeId: "mol-amox",
-              moleculeName: "Amoxicillin",
-              brandName: "Amoxil",
-              reminderTimes: ["08:00"],
-            },
-          ],
-        }),
+        body: JSON.stringify({ displayName: depName, relation: depRelation }),
       });
-      setMsg(`Caregiver profile ready for ${data.profile.displayName}. Sample regimen scoped to them.`);
-    }
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatApiError(data.error, "Could not add profile"));
+        return;
+      }
+      setDependants(Array.isArray(data.profiles) ? data.profiles : []);
+      if (data.profile?.id) {
+        setActiveDependantId(data.profile.id);
+        await fetch(`${API}/companion/regimen/${userId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            dependantId: data.profile.id,
+            items: [
+              {
+                moleculeId: "mol-amox",
+                moleculeName: "Amoxicillin",
+                brandName: "Amoxil",
+                reminderTimes: ["08:00"],
+              },
+            ],
+          }),
+        });
+        setMsg(`Caregiver profile ready for ${data.profile.displayName}. Sample regimen scoped to them.`);
+      }
+    });
   }
 
   async function removeDependant(id: string) {
     if (!userId) return;
-    const res = await fetch(`${API}/companion/dependants/${userId}/${id}`, { method: "DELETE" });
-    const data = await res.json();
-    setDependants(Array.isArray(data.profiles) ? data.profiles : []);
-    if (activeDependantId === id) setActiveDependantId("");
+    await runBusy(async () => {
+      const res = await fetch(`${API}/companion/dependants/${userId}/${id}`, { method: "DELETE" });
+      const data = await res.json();
+      setDependants(Array.isArray(data.profiles) ? data.profiles : []);
+      if (activeDependantId === id) setActiveDependantId("");
+    });
   }
 
   async function loadClashBoard() {
     if (!userId) return;
-    await fetch(`${API}/billing/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, tier: "professional" }),
+    await runBusy(async () => {
+      await fetch(`${API}/billing/subscribe`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, tier: "professional" }),
+      });
+      const res = await fetch(`${API}/tools/clash-board`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId }),
+      });
+      const data = await res.json();
+      if (res.status === 402) {
+        setClashMeta(formatApiError(data.error, "Pro required"));
+        setClashRows([]);
+        return;
+      }
+      setClashRows(Array.isArray(data.rows) ? data.rows : []);
+      setClashMeta(
+        `${data.note ?? ""} · red ${data.summary?.red ?? 0} · orange ${data.summary?.orange ?? 0} · yellow ${data.summary?.yellow ?? 0}`,
+      );
     });
-    const res = await fetch(`${API}/tools/clash-board`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId }),
-    });
-    const data = await res.json();
-    if (res.status === 402) {
-      setClashMeta(formatApiError(data.error, "Pro required"));
-      setClashRows([]);
-      return;
-    }
-    setClashRows(Array.isArray(data.rows) ? data.rows : []);
-    setClashMeta(
-      `${data.note ?? ""} · red ${data.summary?.red ?? 0} · orange ${data.summary?.orange ?? 0} · yellow ${data.summary?.yellow ?? 0}`,
-    );
   }
 
   async function logSymptom() {
     if (!userId) return;
-    const res = await fetch(`${API}/companion/symptoms/${userId}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        dependantId: activeDependantId || undefined,
-        at: symptomAt,
-        label: symptomLabel,
-        severity: symptomSeverity,
-        moleculeId: "mol-amox",
-        moleculeName: "Amoxicillin",
-      }),
+    await runBusy(async () => {
+      const res = await fetch(`${API}/companion/symptoms/${userId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          dependantId: activeDependantId || undefined,
+          at: symptomAt,
+          label: symptomLabel,
+          severity: symptomSeverity,
+          moleculeId: "mol-amox",
+          moleculeName: "Amoxicillin",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setSymptomExport(formatApiError(data.error, "Could not log symptom"));
+        return;
+      }
+      setSymptomExport(
+        typeof data.exportText === "string" && data.exportText.trim()
+          ? data.exportText
+          : "Symptom logged — use Export for clinician for the share text.",
+      );
     });
-    const data = await res.json();
-    if (!res.ok) {
-      setSymptomExport(formatApiError(data.error, "Could not log symptom"));
-      return;
-    }
-    setSymptomExport(
-      typeof data.exportText === "string" && data.exportText.trim()
-        ? data.exportText
-        : "Symptom logged — use Export for clinician for the share text.",
-    );
   }
 
   async function exportSymptoms() {
     if (!userId) return;
-    const qs = activeDependantId ? `?format=text&dependantId=${encodeURIComponent(activeDependantId)}` : "?format=text";
-    const res = await fetch(`${API}/companion/symptoms/${userId}/export${qs}`);
-    const text = await res.text();
-    if (!res.ok) {
-      setSymptomExport(messageFromHttpErrorBody(text, "Could not export symptoms"));
-      return;
-    }
-    setSymptomExport(text.trim() || "No symptoms to export.");
+    await runBusy(async () => {
+      const qs = activeDependantId
+        ? `?format=text&dependantId=${encodeURIComponent(activeDependantId)}`
+        : "?format=text";
+      const res = await fetch(`${API}/companion/symptoms/${userId}/export${qs}`);
+      const text = await res.text();
+      if (!res.ok) {
+        setSymptomExport(messageFromHttpErrorBody(text, "Could not export symptoms"));
+        return;
+      }
+      setSymptomExport(text.trim() || "No symptoms to export.");
+    });
   }
 
   async function preview() {
     if (!userId) return;
-    const res = await fetch(`${API}/companion/reminders/${userId}?from=${nowHhmm}`);
-    const data = await res.json();
-    setDispatchResults([]);
-    if (!res.ok) {
-      setUpcomingReminders([]);
+    await runBusy(async () => {
+      const res = await fetch(`${API}/companion/reminders/${userId}?from=${nowHhmm}`);
+      const data = await res.json();
+      setDispatchResults([]);
+      if (!res.ok) {
+        setUpcomingReminders([]);
+        setReminderStatus(formatRemindersMsg(data));
+        return;
+      }
+      const upcoming = Array.isArray(data.upcoming) ? data.upcoming : [];
+      setUpcomingReminders(
+        upcoming.map(
+          (u: {
+            moleculeName?: string;
+            brandName?: string;
+            scheduledTime?: string;
+            channel?: string;
+          }) => ({
+            moleculeName: u.moleculeName ?? "Medicine",
+            brandName: u.brandName,
+            scheduledTime: u.scheduledTime ?? "—",
+            channel: u.channel,
+          }),
+        ),
+      );
       setReminderStatus(formatRemindersMsg(data));
-      return;
-    }
-    const upcoming = Array.isArray(data.upcoming) ? data.upcoming : [];
-    setUpcomingReminders(
-      upcoming.map(
-        (u: {
-          moleculeName?: string;
-          brandName?: string;
-          scheduledTime?: string;
-          channel?: string;
-        }) => ({
-          moleculeName: u.moleculeName ?? "Medicine",
-          brandName: u.brandName,
-          scheduledTime: u.scheduledTime ?? "—",
-          channel: u.channel,
-        }),
-      ),
-    );
-    setReminderStatus(formatRemindersMsg(data));
+    });
   }
 
   async function dispatch() {
     if (!userId) return;
-    const res = await fetch(`${API}/companion/reminders/dispatch`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, nowHhmm }),
-    });
-    const data = await res.json();
-    setUpcomingReminders([]);
-    if (!res.ok) {
-      setDispatchResults([]);
+    await runBusy(async () => {
+      const res = await fetch(`${API}/companion/reminders/dispatch`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, nowHhmm }),
+      });
+      const data = await res.json();
+      setUpcomingReminders([]);
+      if (!res.ok) {
+        setDispatchResults([]);
+        setReminderStatus(formatRemindersMsg(data));
+        return;
+      }
+      const results = Array.isArray(data.results) ? data.results : [];
+      setDispatchResults(
+        results.map(
+          (r: { channel?: string; status?: string; provider?: string; detail?: string }) => ({
+            channel: r.channel,
+            status: r.status,
+            provider: r.provider,
+            detail: r.detail,
+          }),
+        ),
+      );
       setReminderStatus(formatRemindersMsg(data));
-      return;
-    }
-    const results = Array.isArray(data.results) ? data.results : [];
-    setDispatchResults(
-      results.map(
-        (r: { channel?: string; status?: string; provider?: string; detail?: string }) => ({
-          channel: r.channel,
-          status: r.status,
-          provider: r.provider,
-          detail: r.detail,
-        }),
-      ),
-    );
-    setReminderStatus(formatRemindersMsg(data));
+    });
   }
 
   async function loadFoodTiming() {
     if (!userId) return;
-    const qs = activeDependantId ? `?dependantId=${encodeURIComponent(activeDependantId)}` : "";
-    const res = await fetch(`${API}/companion/food-timing/${userId}${qs}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setFoodMeta(formatApiError(data.error, "Could not load food timing"));
-      setFoodCues([]);
-      return;
-    }
-    setFoodMeta(`${data.note} ${data.disclaimer}`);
-    setFoodCues(Array.isArray(data.cues) ? data.cues : []);
+    await runBusy(async () => {
+      const qs = activeDependantId ? `?dependantId=${encodeURIComponent(activeDependantId)}` : "";
+      const res = await fetch(`${API}/companion/food-timing/${userId}${qs}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setFoodMeta(formatApiError(data.error, "Could not load food timing"));
+        setFoodCues([]);
+        return;
+      }
+      setFoodMeta(`${data.note} ${data.disclaimer}`);
+      setFoodCues(Array.isArray(data.cues) ? data.cues : []);
+    });
   }
 
   async function loadRefills() {
     if (!userId) return;
-    const qsParts = ["asOf=2026-07-23"];
-    if (activeDependantId) qsParts.push(`dependantId=${encodeURIComponent(activeDependantId)}`);
-    const res = await fetch(`${API}/companion/refills/${userId}?${qsParts.join("&")}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setRefillMeta(formatApiError(data.error, "Could not load refills"));
-      setRefillRows([]);
-      return;
-    }
-    setRefillMeta(`${data.note ?? ""} ${data.disclaimer ?? ""}`);
-    setRefillRows(Array.isArray(data.rows) ? data.rows : []);
+    await runBusy(async () => {
+      const qsParts = ["asOf=2026-07-23"];
+      if (activeDependantId) qsParts.push(`dependantId=${encodeURIComponent(activeDependantId)}`);
+      const res = await fetch(`${API}/companion/refills/${userId}?${qsParts.join("&")}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setRefillMeta(formatApiError(data.error, "Could not load refills"));
+        setRefillRows([]);
+        return;
+      }
+      setRefillMeta(`${data.note ?? ""} ${data.disclaimer ?? ""}`);
+      setRefillRows(Array.isArray(data.rows) ? data.rows : []);
+    });
   }
 
   async function markTaken(status: "taken" | "skipped") {
     if (!userId) return;
-    const res = await fetch(`${API}/companion/adherence/${userId}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        dependantId: activeDependantId || undefined,
-        moleculeId: "mol-amox",
-        moleculeName: "Amoxicillin",
-        brandName: "Amoxil",
-        scheduledTime: "08:00",
-        onDate: "2026-07-23",
-        status,
-      }),
+    await runBusy(async () => {
+      const res = await fetch(`${API}/companion/adherence/${userId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          dependantId: activeDependantId || undefined,
+          moleculeId: "mol-amox",
+          moleculeName: "Amoxicillin",
+          brandName: "Amoxil",
+          scheduledTime: "08:00",
+          onDate: "2026-07-23",
+          status,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setAdherenceMeta(formatApiError(data.error, "Could not log adherence"));
+        setAdherenceStats(null);
+        return;
+      }
+      const report = data.report;
+      setAdherenceMeta(`${report?.note ?? ""} ${report?.disclaimer ?? ""}`);
+      setAdherenceStats(
+        report
+          ? {
+              currentStreakDays: report.currentStreakDays,
+              bestStreakDays: report.bestStreakDays,
+              takenLast7Days: report.takenLast7Days,
+              expectedLast7Days: report.expectedLast7Days,
+            }
+          : null,
+      );
     });
-    const data = await res.json();
-    if (!res.ok) {
-      setAdherenceMeta(formatApiError(data.error, "Could not log adherence"));
-      setAdherenceStats(null);
-      return;
-    }
-    const report = data.report;
-    setAdherenceMeta(`${report?.note ?? ""} ${report?.disclaimer ?? ""}`);
-    setAdherenceStats(
-      report
-        ? {
-            currentStreakDays: report.currentStreakDays,
-            bestStreakDays: report.bestStreakDays,
-            takenLast7Days: report.takenLast7Days,
-            expectedLast7Days: report.expectedLast7Days,
-          }
-        : null,
-    );
   }
 
   async function loadAdherence() {
     if (!userId) return;
-    const qsParts = ["asOf=2026-07-23"];
-    if (activeDependantId) qsParts.push(`dependantId=${encodeURIComponent(activeDependantId)}`);
-    const res = await fetch(`${API}/companion/adherence/${userId}?${qsParts.join("&")}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setAdherenceMeta(formatApiError(data.error, "Could not load adherence"));
-      setAdherenceStats(null);
-      return;
-    }
-    setAdherenceMeta(`${data.note ?? ""} ${data.disclaimer ?? ""}`);
-    setAdherenceStats({
-      currentStreakDays: data.currentStreakDays,
-      bestStreakDays: data.bestStreakDays,
-      takenLast7Days: data.takenLast7Days,
-      expectedLast7Days: data.expectedLast7Days,
+    await runBusy(async () => {
+      const qsParts = ["asOf=2026-07-23"];
+      if (activeDependantId) qsParts.push(`dependantId=${encodeURIComponent(activeDependantId)}`);
+      const res = await fetch(`${API}/companion/adherence/${userId}?${qsParts.join("&")}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setAdherenceMeta(formatApiError(data.error, "Could not load adherence"));
+        setAdherenceStats(null);
+        return;
+      }
+      setAdherenceMeta(`${data.note ?? ""} ${data.disclaimer ?? ""}`);
+      setAdherenceStats({
+        currentStreakDays: data.currentStreakDays,
+        bestStreakDays: data.bestStreakDays,
+        takenLast7Days: data.takenLast7Days,
+        expectedLast7Days: data.expectedLast7Days,
+      });
     });
   }
 
@@ -392,8 +429,9 @@ export default function MyMedsPage() {
           style={{ width: "100%", padding: 12, marginBottom: 12 }}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={busy}
         />
-        <button className="btn" type="button" onClick={() => void start()}>
+        <button className="btn" type="button" disabled={busy} onClick={() => void start()}>
           Set up sample regimen + consent
         </button>
       </div>
@@ -421,7 +459,7 @@ export default function MyMedsPage() {
             <option value="other">Other</option>
             <option value="self">Self</option>
           </select>
-          <button className="btn" type="button" onClick={() => void addDependant()}>
+          <button className="btn" type="button" disabled={busy} onClick={() => void addDependant()}>
             Add dependant profile
           </button>
           {dependants.length > 0 && (
@@ -430,12 +468,11 @@ export default function MyMedsPage() {
                 <li key={d.id} style={{ marginBottom: 8 }}>
                   <button
                     type="button"
-                    className={`tab${activeDependantId === d.id ? " active" : ""}`}
-                    onClick={() => setActiveDependantId(d.id)}
+                    className={`tab${activeDependantId === d.id ? " active" : ""}`} disabled={busy} onClick={() => setActiveDependantId(d.id)}
                   >
                     {d.displayName} · {d.relation}
                   </button>{" "}
-                  <button className="btn" type="button" onClick={() => void removeDependant(d.id)}>
+                  <button className="btn" type="button" disabled={busy} onClick={() => void removeDependant(d.id)}>
                     Remove
                   </button>
                 </li>
@@ -456,28 +493,28 @@ export default function MyMedsPage() {
             onChange={(e) => setNowHhmm(e.target.value)}
           />
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            <button className="btn" type="button" onClick={() => void preview()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void preview()}>
               Preview upcoming
             </button>
-            <button className="btn" type="button" onClick={() => void dispatch()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void dispatch()}>
               Dispatch due now
             </button>
-            <button className="btn" type="button" onClick={() => void loadClashBoard()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void loadClashBoard()}>
               Clash board (Pro)
             </button>
-            <button className="btn" type="button" onClick={() => void loadFoodTiming()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void loadFoodTiming()}>
               Food timing (§6)
             </button>
-            <button className="btn" type="button" onClick={() => void loadRefills()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void loadRefills()}>
               Refill board (§6)
             </button>
-            <button className="btn" type="button" onClick={() => void loadAdherence()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void loadAdherence()}>
               Adherence streak (§6)
             </button>
-            <button className="btn" type="button" onClick={() => void markTaken("taken")}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void markTaken("taken")}>
               Mark 08:00 taken
             </button>
-            <button className="btn" type="button" onClick={() => void markTaken("skipped")}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void markTaken("skipped")}>
               Mark 08:00 skipped
             </button>
           </div>
@@ -514,10 +551,10 @@ export default function MyMedsPage() {
             onChange={(e) => setSymptomSeverity(Number(e.target.value))}
           />
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            <button className="btn" type="button" onClick={() => void logSymptom()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void logSymptom()}>
               Log vs Amoxicillin
             </button>
-            <button className="btn" type="button" onClick={() => void exportSymptoms()}>
+            <button className="btn" type="button" disabled={busy} onClick={() => void exportSymptoms()}>
               Export for clinician
             </button>
           </div>

@@ -132,7 +132,8 @@
     "Pro demos (pearls/cpd/notes): busy gates + disabled controls; pearls !res.ok harden",
     "Ops demos (ambassador/institution/pricing): busy gates; pricing tiers fetch harden",
     "Academy learn demos: busy gates on ensureStudent pages (start/grade/load)",
-    "Insights + onboarding busy gates; insights product summary !res.ok harden"
+    "Insights + onboarding busy gates; insights product summary !res.ok harden",
+    "My Meds demo: runBusy helper + disabled controls across companion actions"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
