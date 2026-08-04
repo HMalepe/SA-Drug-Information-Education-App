@@ -17,6 +17,14 @@
   --radius-lg: 12px;
   --radius-pill: 999px;
   --radius: var(--radius-md);
+  --space-xs: 4px;
+  --space-chip-y: 6px;
+  --space-sm: 8px;
+  --space-chip-x: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
   --font: "Source Sans 3", "Segoe UI", sans-serif;
 }
 
@@ -48,15 +56,15 @@ a:hover {
 main {
   max-width: 960px;
   margin: 0 auto;
-  padding: 24px 16px 64px;
+  padding: var(--space-lg) var(--space-md) 64px;
 }
 
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 16px 0 24px;
+  gap: var(--space-md);
+  padding: var(--space-md) 0 var(--space-lg);
   flex-wrap: wrap;
 }
 
@@ -70,7 +78,7 @@ main {
 .mode-toggle {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: var(--space-xs);
   justify-content: flex-end;
 }
 
@@ -79,7 +87,7 @@ main {
   background: var(--white);
   color: var(--slate);
   border-radius: var(--radius-pill);
-  padding: 4px 10px;
+  padding: var(--space-xs) 10px;
   font-size: 12px;
   font-weight: 600;
   text-transform: capitalize;
@@ -93,8 +101,8 @@ main {
 }
 
 .mode-framing {
-  margin: 0 0 12px;
-  padding: 10px 12px;
+  margin: 0 0 var(--space-chip-x);
+  padding: 10px var(--space-chip-x);
   background: var(--mint);
   border-radius: var(--radius);
   color: var(--slate);
@@ -115,18 +123,18 @@ main {
 
 .tagline {
   color: var(--slate);
-  margin: 0 0 24px;
+  margin: 0 0 var(--space-lg);
 }
 
 .search-box {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
 }
 
 .search-box input {
   flex: 1;
-  padding: 12px 14px;
+  padding: var(--space-chip-x) 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   font-size: 16px;
@@ -139,7 +147,7 @@ main {
   color: var(--white);
   border: 0;
   border-radius: var(--radius);
-  padding: 12px 16px;
+  padding: var(--space-chip-x) var(--space-md);
   font-weight: 600;
   cursor: pointer;
 }
@@ -148,21 +156,21 @@ main {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  padding: 16px;
-  margin-bottom: 12px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-chip-x);
 }
 
 .tabs {
   display: flex;
-  gap: 8px;
+  gap: var(--space-sm);
   overflow-x: auto;
-  padding-bottom: 8px;
-  margin: 16px 0;
+  padding-bottom: var(--space-sm);
+  margin: var(--space-md) 0;
 }
 
 .tab {
   white-space: nowrap;
-  padding: 8px 12px;
+  padding: var(--space-sm) var(--space-chip-x);
   border-radius: var(--radius-pill);
   border: 1px solid var(--line);
   background: var(--white);
@@ -178,11 +186,11 @@ main {
 
 .source-tag {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: var(--space-sm);
   font-size: 12px;
   color: var(--slate);
   background: var(--mint);
-  padding: 4px 8px;
+  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
 }
 
@@ -190,7 +198,7 @@ main {
   border: 2px solid var(--danger);
   background: #fef2f2;
   border-radius: var(--radius-lg);
-  padding: 16px;
+  padding: var(--space-md);
 }
 
 .emergency h3 {
@@ -199,31 +207,31 @@ main {
 }
 
 .toxicity-timeline {
-  margin-top: 16px;
-  padding-top: 12px;
+  margin-top: var(--space-md);
+  padding-top: var(--space-chip-x);
   border-top: 1px dashed #fecaca;
 }
 
 .toxicity-track {
   list-style: none;
-  margin: 12px 0 0;
+  margin: var(--space-chip-x) 0 0;
   padding: 0;
   display: grid;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .toxicity-step {
   display: grid;
   grid-template-columns: 64px 1fr;
   grid-template-rows: auto auto;
-  column-gap: 12px;
+  column-gap: var(--space-chip-x);
   row-gap: 2px;
-  padding: 10px 12px;
+  padding: 10px var(--space-chip-x);
   background: var(--white);
   border-left: 3px solid var(--danger);
   border-radius: var(--radius-md);
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(var(--space-chip-y));
   animation: toxicity-in 420ms ease forwards;
 }
 
@@ -255,19 +263,19 @@ main {
 .chip-red {
   color: var(--white);
   background: var(--danger);
-  padding: 4px 8px;
+  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-size: 13px;
 }
 
 .clash-board {
   display: grid;
-  gap: 8px;
-  margin-top: 12px;
+  gap: var(--space-sm);
+  margin-top: var(--space-chip-x);
 }
 
 .clash-row {
-  padding: 12px 14px;
+  padding: var(--space-chip-x) 14px;
   border-radius: var(--radius-md);
   background: var(--white);
   border-left: 4px solid var(--slate);
@@ -295,7 +303,7 @@ main {
 
 .clash-kind {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: var(--space-sm);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -304,20 +312,20 @@ main {
 
 .pearl-feed {
   display: grid;
-  gap: 12px;
-  margin-top: 16px;
+  gap: var(--space-chip-x);
+  margin-top: var(--space-md);
 }
 
 .pearl-card {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  padding: 16px 18px;
+  padding: var(--space-md) 18px;
   animation: toxicity-in 420ms ease both;
 }
 
 .pearl-reason {
-  margin: 0 0 6px;
+  margin: 0 0 var(--space-chip-y);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -331,9 +339,9 @@ main {
 }
 
 .disclaimer {
-  margin-top: 32px;
+  margin-top: var(--space-xl);
   font-size: 13px;
   color: var(--slate);
   border-top: 1px solid var(--line-soft);
-  padding-top: 16px;
+  padding-top: var(--space-md);
 }

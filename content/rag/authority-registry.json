@@ -135,7 +135,8 @@
     "Insights + onboarding busy gates; insights product summary !res.ok harden",
     "My Meds demo: runBusy helper + disabled controls across companion actions",
     "Expo space.chipX/chipY tokens replace magic padding 6/12 in app UI",
-    "Pro tools page: runBusy helper + disabled controls across tool actions"
+    "Pro tools page: runBusy helper + disabled controls across tool actions",
+    "Web globals.css space scale vars (--space-*) aligned with design-tokens chipX/chipY"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",
