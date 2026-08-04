@@ -50,22 +50,37 @@ describe("Web globals.css design token vars", () => {
     assert.match(css, /--space-xs:\s*4px/);
     assert.match(css, /--space-chip-y:\s*6px/);
     assert.match(css, /--space-sm:\s*8px/);
+    assert.match(css, /--space-control-y:\s*10px/);
     assert.match(css, /--space-chip-x:\s*12px/);
+    assert.match(css, /--space-control-x:\s*14px/);
     assert.match(css, /--space-md:\s*16px/);
+    assert.match(css, /--space-inset-x:\s*18px/);
     assert.match(css, /--space-lg:\s*24px/);
     assert.match(css, /--space-xl:\s*32px/);
     assert.match(css, /--space-xxl:\s*48px/);
 
     const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
     assert.match(tokens, /chipY:\s*6/);
+    assert.match(tokens, /controlY:\s*10/);
     assert.match(tokens, /chipX:\s*12/);
+    assert.match(tokens, /controlX:\s*14/);
+    assert.match(tokens, /insetX:\s*18/);
 
     const withoutRoot = css.replace(/:root\s*\{[\s\S]*?\n\}/, "");
-    // Core scale values must come from vars — not bare 8/12/16/24px spacing props
-    assert.doesNotMatch(withoutRoot, /(?:padding|margin|gap|column-gap):\s*(?:8|12|16|24)px\b/);
-    assert.doesNotMatch(withoutRoot, /(?:padding|margin|gap):\s*\d+px\s+(?:8|12|16|24)px\b/);
+    // Core scale values must come from vars — not bare spacing props
+    assert.doesNotMatch(
+      withoutRoot,
+      /(?:padding|margin|gap|column-gap):\s*(?:8|10|12|14|16|18|24)px\b/,
+    );
+    assert.doesNotMatch(
+      withoutRoot,
+      /(?:padding|margin|gap):\s*(?:\d+px|var\([^)]+\))\s+(?:8|10|12|14|16|18|24)px\b/,
+    );
     assert.match(withoutRoot, /var\(--space-chip-x\)/);
     assert.match(withoutRoot, /var\(--space-chip-y\)/);
+    assert.match(withoutRoot, /var\(--space-control-y\)/);
+    assert.match(withoutRoot, /var\(--space-control-x\)/);
+    assert.match(withoutRoot, /var\(--space-inset-x\)/);
     assert.match(withoutRoot, /var\(--space-md\)/);
   });
 

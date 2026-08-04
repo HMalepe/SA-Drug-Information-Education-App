@@ -61,9 +61,15 @@ export const space = {
   /** Compact chip / control vertical padding */
   chipY: 6,
   sm: 8,
+  /** Mid control vertical padding (mode framing, toxicity steps) */
+  controlY: 10,
   /** Compact chip / control horizontal padding (also input vertical mid) */
   chipX: 12,
+  /** Mid control horizontal padding (inputs, clash rows) */
+  controlX: 14,
   md: 16,
+  /** Section / card horizontal inset (between md and lg) */
+  insetX: 18,
   lg: 24,
   xl: 32,
   xxl: 48,

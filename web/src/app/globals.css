@@ -20,8 +20,11 @@
   --space-xs: 4px;
   --space-chip-y: 6px;
   --space-sm: 8px;
+  --space-control-y: 10px;
   --space-chip-x: 12px;
+  --space-control-x: 14px;
   --space-md: 16px;
+  --space-inset-x: 18px;
   --space-lg: 24px;
   --space-xl: 32px;
   --space-xxl: 48px;
@@ -78,7 +81,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: var(--space-control-y);
 }
 
 .mode-toggle {
@@ -93,7 +96,7 @@ main {
   background: var(--white);
   color: var(--slate);
   border-radius: var(--radius-pill);
-  padding: var(--space-xs) 10px;
+  padding: var(--space-xs) var(--space-control-y);
   font-size: var(--font-size-xs);
   font-weight: 600;
   text-transform: capitalize;
@@ -108,7 +111,7 @@ main {
 
 .mode-framing {
   margin: 0 0 var(--space-chip-x);
-  padding: 10px var(--space-chip-x);
+  padding: var(--space-control-y) var(--space-chip-x);
   background: var(--mint);
   border-radius: var(--radius);
   color: var(--slate);
@@ -140,7 +143,7 @@ main {
 
 .search-box input {
   flex: 1;
-  padding: var(--space-chip-x) 14px;
+  padding: var(--space-chip-x) var(--space-control-x);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   font-size: var(--font-size-md);
@@ -232,7 +235,7 @@ main {
   grid-template-rows: auto auto;
   column-gap: var(--space-chip-x);
   row-gap: 2px;
-  padding: 10px var(--space-chip-x);
+  padding: var(--space-control-y) var(--space-chip-x);
   background: var(--white);
   border-left: 3px solid var(--danger);
   border-radius: var(--radius-md);
@@ -281,7 +284,7 @@ main {
 }
 
 .clash-row {
-  padding: var(--space-chip-x) 14px;
+  padding: var(--space-chip-x) var(--space-control-x);
   border-radius: var(--radius-md);
   background: var(--white);
   border-left: 4px solid var(--slate);
@@ -326,7 +329,7 @@ main {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  padding: var(--space-md) 18px;
+  padding: var(--space-md) var(--space-inset-x);
   animation: toxicity-in 420ms ease both;
 }
 
