@@ -139,7 +139,8 @@
     "Web globals.css space scale vars (--space-*) aligned with design-tokens chipX/chipY",
     "Web globals.css font-size vars aligned with shared typography scale",
     "Expo typography.lineHeightPx tokens replace magic lineHeight 20/22 in app UI",
-    "Web globals.css controlY/controlX/insetX space vars (no magic 10/14/18px)"
+    "Web globals.css controlY/controlX/insetX space vars (no magic 10/14/18px)",
+    "Founder /review: runBusy + disabled controls on decide/publish/copy (no double-submit)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

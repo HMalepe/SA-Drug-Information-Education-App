@@ -110,4 +110,19 @@ describe("Pro demo busy gates", () => {
     const busyButtons = src.match(/disabled=\{busy\}/g) ?? [];
     assert.ok(busyButtons.length >= 15, `expected ≥15 busy-disabled controls, got ${busyButtons.length}`);
   });
+
+  it("founder /review uses runBusy and disables write/copy controls", () => {
+    const src = readFileSync(join(root, "web/src/app/review/page.tsx"), "utf8");
+    assert.match(src, /const \[busy, setBusy\]/);
+    assert.match(src, /async function runBusy/);
+    assert.match(src, /if \(busy\) return/);
+    assert.match(src, /finally \{\s*setBusy\(false\)/);
+    for (const name of ["decide", "decideStg", "publishStgBatch", "copyStgCli", "copyPlaceholderCli"]) {
+      assert.match(src, new RegExp(`async function ${name}[\\s\\S]*?await runBusy`), `${name} wrapped`);
+    }
+    assert.match(src, /disabled=\{busy \|\| numericBlocked\}/);
+    assert.match(src, /disabled=\{busy \|\| stgEligibleForFilter === 0 \|\| stgBlockedForFilter > 0\}/);
+    const busyDisabled = src.match(/disabled=\{busy(?:\s*\|\|[^}]+)?\}/g) ?? [];
+    assert.ok(busyDisabled.length >= 18, `expected ≥18 busy-disabled controls, got ${busyDisabled.length}`);
+  });
 });

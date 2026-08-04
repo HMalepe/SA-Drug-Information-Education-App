@@ -216,6 +216,17 @@ export default function ReviewPage() {
     "" | "placeholder_absent" | "numeric_suspect"
   >("");
   const [showStgChecklist, setShowStgChecklist] = useState(false);
+  const [busy, setBusy] = useState(false);
+
+  async function runBusy(action: () => Promise<void>) {
+    if (busy) return;
+    setBusy(true);
+    try {
+      await action();
+    } finally {
+      setBusy(false);
+    }
+  }
 
   async function load() {
     const params = new URLSearchParams();
@@ -261,92 +272,103 @@ export default function ReviewPage() {
   }, [area, batch, dosingClassFilter]);
 
   async function decide(queueItemId: string, decision: "keep_draft" | "mark_reviewed" | "publish") {
-    const res = await fetch(`${API}/review/decide`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        queueItemId,
-        decision,
-        reviewerLabel: reviewer,
-        attestation: decision === "publish" ? attestation : undefined,
-      }),
+    await runBusy(async () => {
+      const res = await fetch(`${API}/review/decide`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          queueItemId,
+          decision,
+          reviewerLabel: reviewer,
+          attestation: decision === "publish" ? attestation : undefined,
+        }),
+      });
+      const data = await res.json();
+      setMsg(formatReviewActionMsg(res.ok, data));
+      await load();
     });
-    const data = await res.json();
-    setMsg(formatReviewActionMsg(res.ok, data));
-    await load();
   }
 
   async function decideStg(
     queueItemId: string,
     decision: "keep_draft" | "mark_reviewed" | "publish",
   ) {
-    const res = await fetch(`${API}/review/stg-decide`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        queueItemId,
-        decision,
-        reviewerLabel: reviewer,
-        attestation: decision === "publish" ? attestation : undefined,
-      }),
+    await runBusy(async () => {
+      const res = await fetch(`${API}/review/stg-decide`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          queueItemId,
+          decision,
+          reviewerLabel: reviewer,
+          attestation: decision === "publish" ? attestation : undefined,
+        }),
+      });
+      const data = await res.json();
+      setMsg(formatReviewActionMsg(res.ok, data));
+      await load();
     });
-    const data = await res.json();
-    setMsg(formatReviewActionMsg(res.ok, data));
-    await load();
   }
 
   async function copyStgCli() {
-    const params = new URLSearchParams();
-    params.set("batch", batch || "all");
-    if (attestation.trim()) params.set("attestation", attestation.trim());
-    const res = await fetch(`${API}/review/export-stg-cli?${params}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatReviewActionMsg(false, data));
-      return;
-    }
-    const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
-      "\n",
-    );
-    try {
-      await navigator.clipboard.writeText(text);
-      setMsg(`Copied ${data.count} eligible publish-stg lines (no --write).`);
-    } catch {
-      setMsg(text);
-    }
+    await runBusy(async () => {
+      const params = new URLSearchParams();
+      params.set("batch", batch || "all");
+      if (attestation.trim()) params.set("attestation", attestation.trim());
+      const res = await fetch(`${API}/review/export-stg-cli?${params}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatReviewActionMsg(false, data));
+        return;
+      }
+      const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
+        "\n",
+      );
+      try {
+        await navigator.clipboard.writeText(text);
+        setMsg(`Copied ${data.count} eligible publish-stg lines (no --write).`);
+      } catch {
+        setMsg(text);
+      }
+    });
   }
 
   async function copyPlaceholderCli() {
-    const params = new URLSearchParams();
-    params.set("batch", batch || "all");
-    if (attestation.trim()) params.set("attestation", attestation.trim());
-    const res = await fetch(`${API}/review/export-dosing-cli?${params}`);
-    const data = await res.json();
-    if (!res.ok) {
-      setMsg(formatReviewActionMsg(false, data));
-      return;
-    }
-    const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
-      "\n",
-    );
-    try {
-      await navigator.clipboard.writeText(text);
-      setMsg(`Copied ${data.count} placeholder publish-dosing lines (no --write).`);
-    } catch {
-      setMsg(text);
-    }
+    await runBusy(async () => {
+      const params = new URLSearchParams();
+      params.set("batch", batch || "all");
+      if (attestation.trim()) params.set("attestation", attestation.trim());
+      const res = await fetch(`${API}/review/export-dosing-cli?${params}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setMsg(formatReviewActionMsg(false, data));
+        return;
+      }
+      const text = [`# ${data.note}`, `# count=${data.count}`, ...(data.lines ?? [])].join(
+        "\n",
+      );
+      try {
+        await navigator.clipboard.writeText(text);
+        setMsg(`Copied ${data.count} placeholder publish-dosing lines (no --write).`);
+      } catch {
+        setMsg(text);
+      }
+    });
   }
 
   async function copyText(label: string, text: string) {
-    try {
-      await navigator.clipboard.writeText(text);
-      setMsg(`Copied ${label} (no --write).`);
-    } catch {
-      setMsg(text);
-    }
+    await runBusy(async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setMsg(`Copied ${label} (no --write).`);
+      } catch {
+        setMsg(text);
+      }
+    });
   }
 
   async function publishStgBatch(scope: string, dryRun: boolean) {
+    if (busy) return;
     if (!dryRun) {
       const confirmed = window.confirm(
         `Publish all eligible STG pointers for batch ${scope}? ` +
@@ -354,19 +376,21 @@ export default function ReviewPage() {
       );
       if (!confirmed) return;
     }
-    const res = await fetch(`${API}/review/publish-stg-batch`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        batch: scope,
-        reviewerLabel: reviewer,
-        attestation,
-        dryRun,
-      }),
+    await runBusy(async () => {
+      const res = await fetch(`${API}/review/publish-stg-batch`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          batch: scope,
+          reviewerLabel: reviewer,
+          attestation,
+          dryRun,
+        }),
+      });
+      const data = await res.json();
+      setMsg(formatReviewActionMsg(res.ok, { ...data, dryRun }));
+      if (!dryRun) await load();
     });
-    const data = await res.json();
-    setMsg(formatReviewActionMsg(res.ok, { ...data, dryRun }));
-    if (!dryRun) await load();
   }
 
   const stgEligibleForFilter =
@@ -485,7 +509,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
-              disabled={!checklist.stgBatchPreviewLine}
+              disabled={busy || !checklist.stgBatchPreviewLine}
               onClick={() =>
                 void copyText("STG batch preview line", checklist.stgBatchPreviewLine)
               }
@@ -495,7 +519,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
-              disabled={checklist.stgCli.count === 0}
+              disabled={busy || checklist.stgCli.count === 0}
               onClick={() =>
                 void copyText(
                   `${checklist.stgCli.count} STG CLI lines`,
@@ -508,7 +532,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
-              disabled={checklist.dosingCli.count === 0}
+              disabled={busy || checklist.dosingCli.count === 0}
               onClick={() =>
                 void copyText(
                   `${checklist.dosingCli.count} dosing CLI lines`,
@@ -558,6 +582,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
+              disabled={busy}
               onClick={() =>
                 void copyText("RAG env stub", ragPack.envStubLines.join("\n"))
               }
@@ -567,6 +592,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
+              disabled={busy}
               onClick={() => void copyText("RAG verify command", ragPack.verifyCmd)}
             >
               Copy verify command
@@ -623,7 +649,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
-              disabled={stgEligibleForFilter === 0}
+              disabled={busy || stgEligibleForFilter === 0}
               onClick={() => void publishStgBatch(batch || "all", true)}
             >
               Preview STG publish
@@ -632,7 +658,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
-              disabled={stgEligibleForFilter === 0 || stgBlockedForFilter > 0}
+              disabled={busy || stgEligibleForFilter === 0 || stgBlockedForFilter > 0}
               onClick={() => void publishStgBatch(batch || "all", false)}
             >
               Publish eligible STG
@@ -641,6 +667,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
+              disabled={busy}
               style={{ opacity: showStgChecklist ? 1 : 0.75 }}
               onClick={() => setShowStgChecklist((v) => !v)}
             >
@@ -649,7 +676,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
-              disabled={stgEligibleForFilter === 0}
+              disabled={busy || stgEligibleForFilter === 0}
               onClick={() => void copyStgCli()}
             >
               Copy STG CLI ({stgEligibleForFilter})
@@ -657,7 +684,7 @@ export default function ReviewPage() {
             <button
               className="btn"
               type="button"
-              disabled={placeholderItems.length === 0}
+              disabled={busy || placeholderItems.length === 0}
               onClick={() => void copyPlaceholderCli()}
             >
               Copy placeholder CLI ({placeholderItems.length})
@@ -743,16 +770,23 @@ export default function ReviewPage() {
         <input
           style={{ display: "block", width: "100%", margin: "8px 0", padding: 10 }}
           value={reviewer}
+          disabled={busy}
           onChange={(e) => setReviewer(e.target.value)}
         />
         <label className="muted">Publish attestation (required for high-stakes / STG)</label>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "8px 0" }}>
-          <button className="btn" type="button" onClick={() => setAttestation(ATTEST_STG)}>
+          <button
+            className="btn"
+            type="button"
+            disabled={busy}
+            onClick={() => setAttestation(ATTEST_STG)}
+          >
             Preset: STG pointer
           </button>
           <button
             className="btn"
             type="button"
+            disabled={busy}
             onClick={() => setAttestation(ATTEST_PLACEHOLDER)}
           >
             Preset: honest absence
@@ -761,6 +795,7 @@ export default function ReviewPage() {
         <input
           style={{ display: "block", width: "100%", margin: "8px 0 0", padding: 10 }}
           value={attestation}
+          disabled={busy}
           onChange={(e) => setAttestation(e.target.value)}
         />
       </section>
@@ -839,12 +874,18 @@ export default function ReviewPage() {
             ) : null}
             <p style={{ margin: "8px 0" }}>{item.preview}</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              <button className="btn" type="button" onClick={() => void decide(item.id, "keep_draft")}>
+              <button
+                className="btn"
+                type="button"
+                disabled={busy}
+                onClick={() => void decide(item.id, "keep_draft")}
+              >
                 Keep draft
               </button>
               <button
                 className="btn"
                 type="button"
+                disabled={busy}
                 onClick={() => void decide(item.id, "mark_reviewed")}
               >
                 Mark reviewed
@@ -852,7 +893,7 @@ export default function ReviewPage() {
               <button
                 className="btn"
                 type="button"
-                disabled={numericBlocked}
+                disabled={busy || numericBlocked}
                 title={
                   numericBlocked
                     ? "numeric_suspect — rewrite without invented mg before publish"
@@ -895,6 +936,7 @@ export default function ReviewPage() {
               <button
                 className="btn"
                 type="button"
+                disabled={busy}
                 onClick={() => void decideStg(item.id, "keep_draft")}
               >
                 Keep draft
@@ -902,11 +944,17 @@ export default function ReviewPage() {
               <button
                 className="btn"
                 type="button"
+                disabled={busy}
                 onClick={() => void decideStg(item.id, "mark_reviewed")}
               >
                 Mark reviewed
               </button>
-              <button className="btn" type="button" onClick={() => void decideStg(item.id, "publish")}>
+              <button
+                className="btn"
+                type="button"
+                disabled={busy}
+                onClick={() => void decideStg(item.id, "publish")}
+              >
                 Publish STG pointer
               </button>
             </div>
