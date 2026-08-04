@@ -146,7 +146,7 @@ export default function AdaptivePage() {
             </p>
           )}
           <p>{note}</p>
-          <p className="muted" style={{ fontSize: 13 }}>
+          <p className="muted" style={{ fontSize: "var(--font-size-sm)" }}>
             {disclaimer}
           </p>
         </div>

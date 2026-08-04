@@ -141,7 +141,8 @@
     "Expo typography.lineHeightPx tokens replace magic lineHeight 20/22 in app UI",
     "Web globals.css controlY/controlX/insetX space vars (no magic 10/14/18px)",
     "Founder /review: runBusy + disabled controls on decide/publish/copy (no double-submit)",
-    "Web shellBottom space token + hairlines use var(--line) (no #ddd)"
+    "Web shellBottom space token + hairlines use var(--line) (no #ddd)",
+    "Web UI muted text uses --font-size-sm (no magic fontSize 13)"
   ],
   "pipelineNext": [
     "Founder: Preview then publish STG pointers via /review or publish-stg-batch / export-stg-cli (attestation)",

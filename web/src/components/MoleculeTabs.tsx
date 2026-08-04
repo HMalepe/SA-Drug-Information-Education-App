@@ -428,7 +428,7 @@ function SaProductsPanel({ body }: { body: Record<string, unknown> }) {
             </article>
           ))}
           {manufacturing.disclaimer ? (
-            <p className="muted" style={{ fontSize: 13 }}>
+            <p className="muted" style={{ fontSize: "var(--font-size-sm)" }}>
               {manufacturing.disclaimer}
             </p>
           ) : null}
@@ -461,12 +461,12 @@ function SaProductsPanel({ body }: { body: Record<string, unknown> }) {
                       </div>
                     ) : null}
                     {e.allergyRisk ? (
-                      <div className="muted" style={{ fontSize: 13 }}>
+                      <div className="muted" style={{ fontSize: "var(--font-size-sm)" }}>
                         Allergy lens: {e.allergyRisk}
                       </div>
                     ) : null}
                     {e.counsellingCue ? (
-                      <div className="muted" style={{ fontSize: 13 }}>
+                      <div className="muted" style={{ fontSize: "var(--font-size-sm)" }}>
                         Counselling: {e.counsellingCue}
                       </div>
                     ) : null}
@@ -514,7 +514,7 @@ function VisualIdPanel({ body }: { body: Record<string, unknown> }) {
             <article key={c.productId} style={{ textAlign: "center" }}>
               <VisualSilhouette kind={c.kind} label={c.label} />
               <strong style={{ display: "block", marginTop: 8, fontSize: 14 }}>{c.brandName}</strong>
-              <span className="muted" style={{ fontSize: 13 }}>
+              <span className="muted" style={{ fontSize: "var(--font-size-sm)" }}>
                 {c.form}
               </span>
             </article>

@@ -988,7 +988,7 @@ export default function ReviewPage() {
       )}
 
       {msg && (
-        <pre style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: 13 }}>
+        <pre style={{ marginTop: 16, whiteSpace: "pre-wrap", fontSize: "var(--font-size-sm)" }}>
           {msg}
         </pre>
       )}

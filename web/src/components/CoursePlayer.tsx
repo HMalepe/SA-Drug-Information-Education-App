@@ -290,7 +290,7 @@ export function CoursePlayer({ courseId }: { courseId: string }) {
               Packaging recognition
             </a>
           </p>
-          <p className="muted" style={{ marginTop: 12, fontSize: 13 }}>
+          <p className="muted" style={{ marginTop: 12, fontSize: "var(--font-size-sm)" }}>
             {saFocus.disclaimer}
           </p>
         </section>

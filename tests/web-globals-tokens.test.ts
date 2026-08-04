@@ -1,10 +1,20 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, it } from "node:test";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+
+function listWebSourceFiles(dir: string): string[] {
+  const out: string[] = [];
+  for (const name of readdirSync(dir)) {
+    const full = join(dir, name);
+    if (statSync(full).isDirectory()) out.push(...listWebSourceFiles(full));
+    else if (/\.(tsx|ts|css)$/.test(name)) out.push(full);
+  }
+  return out;
+}
 
 describe("Web globals.css design token vars", () => {
   it("defines --white / --line / --line-soft matching Expo design tokens", () => {
@@ -124,5 +134,29 @@ describe("Web globals.css design token vars", () => {
     assert.doesNotMatch(withoutRoot, /font-size:\s*(12|14|16|18|22|32)px\b/);
     assert.match(withoutRoot, /var\(--font-size-sm\)/);
     assert.match(withoutRoot, /var\(--font-size-display\)/);
+  });
+
+  it("web UI uses --font-size-sm instead of magic fontSize 13", () => {
+    const files = listWebSourceFiles(join(root, "web/src"));
+    const violations: string[] = [];
+    for (const file of files) {
+      const lines = readFileSync(file, "utf8").split(/\r?\n/);
+      const rel = relative(root, file).replace(/\\/g, "/");
+      for (let i = 0; i < lines.length; i++) {
+        if (/fontSize:\s*13\b/.test(lines[i]!) || /font-size:\s*13px\b/.test(lines[i]!)) {
+          violations.push(`${rel}:${i + 1}`);
+        }
+      }
+    }
+    assert.deepEqual(violations, [], `Use var(--font-size-sm) instead of 13:\n${violations.join("\n")}`);
+
+    for (const rel of [
+      "web/src/components/MoleculeTabs.tsx",
+      "web/src/components/CoursePlayer.tsx",
+      "web/src/app/my-meds/page.tsx",
+      "web/src/app/review/page.tsx",
+    ]) {
+      assert.match(readFileSync(join(root, rel), "utf8"), /--font-size-sm/);
+    }
   });
 });

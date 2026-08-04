@@ -110,7 +110,7 @@ export default function PackagingPage() {
               <div className="muted">
                 {p.formLabel} · schedule {p.schedule}
               </div>
-              <p className="muted" style={{ fontSize: 13, margin: "4px 0 8px" }}>
+              <p className="muted" style={{ fontSize: "var(--font-size-sm)", margin: "4px 0 8px" }}>
                 {p.hint}
               </p>
               <select

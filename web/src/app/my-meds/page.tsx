@@ -559,7 +559,7 @@ export default function MyMedsPage() {
             </button>
           </div>
           {symptomExport && (
-            <pre style={{ marginTop: 12, whiteSpace: "pre-wrap", fontSize: 13 }}>{symptomExport}</pre>
+            <pre style={{ marginTop: 12, whiteSpace: "pre-wrap", fontSize: "var(--font-size-sm)" }}>{symptomExport}</pre>
           )}
         </div>
       )}
@@ -593,7 +593,7 @@ export default function MyMedsPage() {
               <strong>{c.moleculeName}</strong>
               <div className="muted">{c.tags.join(" · ")}</div>
               <p style={{ margin: "6px 0" }}>{c.publishedNote}</p>
-              <p className="muted" style={{ fontSize: 13 }}>
+              <p className="muted" style={{ fontSize: "var(--font-size-sm)" }}>
                 {c.reminderHint}
               </p>
             </article>
@@ -613,7 +613,7 @@ export default function MyMedsPage() {
               {r.refillDueOn && <div className="muted">Marked due {r.refillDueOn}</div>}
               <p style={{ margin: "6px 0" }}>{r.statusLabel}</p>
               {r.sepPrompt && (
-                <p className="muted" style={{ fontSize: 13 }}>
+                <p className="muted" style={{ fontSize: "var(--font-size-sm)" }}>
                   {r.sepPrompt}
                 </p>
               )}
