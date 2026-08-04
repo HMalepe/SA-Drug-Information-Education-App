@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.radius.md,
     alignItems: "center",
   },
-  buttonDisabled: { opacity: 0.6 },
+  buttonDisabled: { opacity: theme.opacity.disabled },
   buttonText: { color: theme.colors.white, fontWeight: "700" },
   prose: {
     color: theme.colors.ink,

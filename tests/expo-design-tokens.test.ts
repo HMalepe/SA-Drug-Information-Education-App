@@ -189,4 +189,38 @@ describe("Expo design tokens (no magic hex)", () => {
       assert.match(src, /lineHeightPx/, `${rel} should use lineHeightPx`);
     }
   });
+
+  it("Expo UI uses opacity.disabled instead of magic opacity 0.6", () => {
+    const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
+    assert.match(tokens, /opacity\s*=\s*\{[\s\S]*?disabled:\s*0\.6/);
+
+    const theme = readFileSync(join(root, "app/lib/theme.ts"), "utf8");
+    assert.match(theme, /opacity/);
+
+    const files = SCAN_ROOTS.flatMap(listSourceFiles);
+    const MAGIC_OP = /opacity:\s*0\.6\b/;
+    const violations: string[] = [];
+    for (const file of files) {
+      const lines = readFileSync(file, "utf8").split(/\r?\n/);
+      const rel = relative(root, file).replace(/\\/g, "/");
+      for (let i = 0; i < lines.length; i++) {
+        if (MAGIC_OP.test(lines[i]!)) violations.push(`${rel}:${i + 1}`);
+      }
+    }
+    assert.deepEqual(
+      violations,
+      [],
+      `Use opacity.disabled instead of magic 0.6:\n${violations.join("\n")}`,
+    );
+
+    for (const rel of [
+      "app/app/index.tsx",
+      "app/app/auth.tsx",
+      "app/app/molecule/[slug].tsx",
+      "app/app/dosing/[slug].tsx",
+    ]) {
+      const src = readFileSync(join(root, rel), "utf8");
+      assert.match(src, /opacity\.disabled/, `${rel} should use opacity.disabled`);
+    }
+  });
 });

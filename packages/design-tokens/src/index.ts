@@ -90,5 +90,10 @@ export const motion = {
   baseMs: 200,
 } as const;
 
+/** Interaction opacities (busy / disabled controls) */
+export const opacity = {
+  disabled: 0.6,
+} as const;
+
 export type MateriaColors = typeof colors;
 export type ScheduleCode = keyof typeof colors.schedule;

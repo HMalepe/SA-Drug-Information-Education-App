@@ -1,8 +1,9 @@
-import { colors, space, typography, radius } from "@materia/design-tokens";
+import { colors, space, typography, radius, opacity } from "@materia/design-tokens";
 
 export const theme = {
   colors,
   space,
   typography,
   radius,
+  opacity,
 };

@@ -9,7 +9,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { colors, space, typography, radius } from "@materia/design-tokens";
+import { colors, space, typography, radius, opacity } from "@materia/design-tokens";
 import { listMolecules, searchMolecules } from "../lib/api";
 
 interface MoleculeRow {
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.md,
     justifyContent: "center",
   },
-  btnDisabled: { opacity: 0.6 },
+  btnDisabled: { opacity: opacity.disabled },
   btnText: { color: colors.white, fontWeight: "700" },
   error: { color: colors.danger, marginBottom: space.sm, fontWeight: "600" },
   section: {
