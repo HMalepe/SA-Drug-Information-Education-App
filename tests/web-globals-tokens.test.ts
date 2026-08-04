@@ -68,4 +68,27 @@ describe("Web globals.css design token vars", () => {
     assert.match(withoutRoot, /var\(--space-chip-y\)/);
     assert.match(withoutRoot, /var\(--space-md\)/);
   });
+
+  it("defines font size vars aligned with shared typography scale", () => {
+    const css = readFileSync(join(root, "web/src/app/globals.css"), "utf8");
+    assert.match(css, /--font-size-xs:\s*12px/);
+    assert.match(css, /--font-size-sm:\s*14px/);
+    assert.match(css, /--font-size-md:\s*16px/);
+    assert.match(css, /--font-size-lg:\s*18px/);
+    assert.match(css, /--font-size-xl:\s*22px/);
+    assert.match(css, /--font-size-display:\s*32px/);
+
+    const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
+    assert.match(tokens, /xs:\s*12/);
+    assert.match(tokens, /sm:\s*14/);
+    assert.match(tokens, /md:\s*16/);
+    assert.match(tokens, /lg:\s*18/);
+    assert.match(tokens, /xl:\s*22/);
+    assert.match(tokens, /display:\s*32/);
+
+    const withoutRoot = css.replace(/:root\s*\{[\s\S]*?\n\}/, "");
+    assert.doesNotMatch(withoutRoot, /font-size:\s*(12|14|16|18|22|32)px\b/);
+    assert.match(withoutRoot, /var\(--font-size-sm\)/);
+    assert.match(withoutRoot, /var\(--font-size-display\)/);
+  });
 });

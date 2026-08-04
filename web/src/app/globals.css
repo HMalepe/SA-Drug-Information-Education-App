@@ -25,6 +25,12 @@
   --space-lg: 24px;
   --space-xl: 32px;
   --space-xxl: 48px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-display: 32px;
   --font: "Source Sans 3", "Segoe UI", sans-serif;
 }
 
@@ -88,7 +94,7 @@ main {
   color: var(--slate);
   border-radius: var(--radius-pill);
   padding: var(--space-xs) 10px;
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: 600;
   text-transform: capitalize;
   cursor: pointer;
@@ -106,12 +112,12 @@ main {
   background: var(--mint);
   border-radius: var(--radius);
   color: var(--slate);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   line-height: 1.45;
 }
 
 .brand {
-  font-size: 28px;
+  font-size: var(--font-size-display);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -137,7 +143,7 @@ main {
   padding: var(--space-chip-x) 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  font-size: 16px;
+  font-size: var(--font-size-md);
   background: var(--white);
 }
 
@@ -175,7 +181,7 @@ main {
   border: 1px solid var(--line);
   background: var(--white);
   color: var(--slate);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
 }
 
 .tab.active {
@@ -187,7 +193,7 @@ main {
 .source-tag {
   display: inline-block;
   margin-top: var(--space-sm);
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   color: var(--slate);
   background: var(--mint);
   padding: var(--space-xs) var(--space-sm);
@@ -239,7 +245,7 @@ main {
   grid-row: 1 / span 2;
   align-self: center;
   font-weight: 700;
-  font-size: 13px;
+  font-size: calc(var(--font-size-xs) + 1px);
   color: var(--danger);
 }
 
@@ -250,7 +256,7 @@ main {
 .toxicity-step .muted {
   grid-column: 2;
   margin: 0;
-  font-size: 13px;
+  font-size: calc(var(--font-size-xs) + 1px);
 }
 
 @keyframes toxicity-in {
@@ -265,7 +271,7 @@ main {
   background: var(--danger);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
-  font-size: 13px;
+  font-size: calc(var(--font-size-xs) + 1px);
 }
 
 .clash-board {
@@ -304,7 +310,7 @@ main {
 .clash-kind {
   display: inline-block;
   margin-top: var(--space-sm);
-  font-size: 11px;
+  font-size: calc(var(--font-size-xs) - 1px);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--slate);
@@ -326,7 +332,7 @@ main {
 
 .pearl-reason {
   margin: 0 0 var(--space-chip-y);
-  font-size: 11px;
+  font-size: calc(var(--font-size-xs) - 1px);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -335,12 +341,12 @@ main {
 
 .muted {
   color: var(--slate);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
 }
 
 .disclaimer {
   margin-top: var(--space-xl);
-  font-size: 13px;
+  font-size: calc(var(--font-size-xs) + 1px);
   color: var(--slate);
   border-top: 1px solid var(--line-soft);
   padding-top: var(--space-md);
