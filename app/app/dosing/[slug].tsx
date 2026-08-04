@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
   prose: {
     color: theme.colors.ink,
     fontSize: theme.typography.size.md,
-    lineHeight: 22,
+    lineHeight: theme.typography.lineHeightPx.md,
   },
   dose: {
     fontWeight: "800",
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   disclaimer: {
     color: theme.colors.slate,
     fontSize: theme.typography.size.sm,
-    lineHeight: 20,
+    lineHeight: theme.typography.lineHeightPx.sm,
   },
   error: { color: theme.colors.danger },
 });

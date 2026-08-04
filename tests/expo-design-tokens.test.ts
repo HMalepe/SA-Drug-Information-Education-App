@@ -158,4 +158,35 @@ describe("Expo design tokens (no magic hex)", () => {
     assert.match(home, /space\.chipX/);
     assert.match(home, /space\.chipY/);
   });
+
+  it("Expo UI uses typography.lineHeightPx instead of magic lineHeight 20/22", () => {
+    const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
+    assert.match(tokens, /lineHeightPx:\s*\{[\s\S]*?sm:\s*20/);
+    assert.match(tokens, /lineHeightPx:\s*\{[\s\S]*?md:\s*22/);
+
+    const files = SCAN_ROOTS.flatMap(listSourceFiles);
+    const MAGIC_LH = /lineHeight:\s*(20|22)\b/;
+    const violations: string[] = [];
+    for (const file of files) {
+      const lines = readFileSync(file, "utf8").split(/\r?\n/);
+      const rel = relative(root, file).replace(/\\/g, "/");
+      for (let i = 0; i < lines.length; i++) {
+        if (MAGIC_LH.test(lines[i]!)) violations.push(`${rel}:${i + 1}`);
+      }
+    }
+    assert.deepEqual(
+      violations,
+      [],
+      `Use typography.lineHeightPx instead of magic lineHeight 20/22:\n${violations.join("\n")}`,
+    );
+
+    for (const rel of [
+      "app/lib/MoleculeTabBody.tsx",
+      "app/app/molecule/[slug].tsx",
+      "app/app/dosing/[slug].tsx",
+    ]) {
+      const src = readFileSync(join(root, rel), "utf8");
+      assert.match(src, /lineHeightPx/, `${rel} should use lineHeightPx`);
+    }
+  });
 });

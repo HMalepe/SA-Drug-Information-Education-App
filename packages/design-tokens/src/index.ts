@@ -49,6 +49,11 @@ export const typography = {
     body: 1.5,
     loose: 1.65,
   },
+  /** Absolute px for React Native StyleSheet (multipliers are for web/CSS) */
+  lineHeightPx: {
+    sm: 20,
+    md: 22,
+  },
 } as const;
 
 export const space = {

@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
   aiOut: {
     color: theme.colors.slate,
     fontSize: theme.typography.size.sm,
-    lineHeight: 20,
+    lineHeight: theme.typography.lineHeightPx.sm,
   },
   error: { color: theme.colors.danger },
   aiBox: { gap: theme.space.sm, marginTop: theme.space.md },
