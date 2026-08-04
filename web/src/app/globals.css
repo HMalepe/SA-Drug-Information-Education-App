@@ -28,6 +28,7 @@
   --space-lg: 24px;
   --space-xl: 32px;
   --space-xxl: 48px;
+  --space-shell-bottom: 64px;
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-md: 16px;
@@ -65,7 +66,7 @@ a:hover {
 main {
   max-width: 960px;
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-md) 64px;
+  padding: var(--space-lg) var(--space-md) var(--space-shell-bottom);
 }
 
 .site-header {

@@ -58,6 +58,7 @@ describe("Web globals.css design token vars", () => {
     assert.match(css, /--space-lg:\s*24px/);
     assert.match(css, /--space-xl:\s*32px/);
     assert.match(css, /--space-xxl:\s*48px/);
+    assert.match(css, /--space-shell-bottom:\s*64px/);
 
     const tokens = readFileSync(join(root, "packages/design-tokens/src/index.ts"), "utf8");
     assert.match(tokens, /chipY:\s*6/);
@@ -65,23 +66,41 @@ describe("Web globals.css design token vars", () => {
     assert.match(tokens, /chipX:\s*12/);
     assert.match(tokens, /controlX:\s*14/);
     assert.match(tokens, /insetX:\s*18/);
+    assert.match(tokens, /shellBottom:\s*64/);
 
     const withoutRoot = css.replace(/:root\s*\{[\s\S]*?\n\}/, "");
     // Core scale values must come from vars — not bare spacing props
     assert.doesNotMatch(
       withoutRoot,
-      /(?:padding|margin|gap|column-gap):\s*(?:8|10|12|14|16|18|24)px\b/,
+      /(?:padding|margin|gap|column-gap):\s*(?:8|10|12|14|16|18|24|64)px\b/,
     );
     assert.doesNotMatch(
       withoutRoot,
-      /(?:padding|margin|gap):\s*(?:\d+px|var\([^)]+\))\s+(?:8|10|12|14|16|18|24)px\b/,
+      /(?:padding|margin|gap):\s*(?:\d+px|var\([^)]+\))\s+(?:8|10|12|14|16|18|24|64)px\b/,
+    );
+    assert.doesNotMatch(
+      withoutRoot,
+      /(?:padding|margin|gap):\s*(?:\d+px|var\([^)]+\))\s+(?:\d+px|var\([^)]+\))\s+64px\b/,
     );
     assert.match(withoutRoot, /var\(--space-chip-x\)/);
     assert.match(withoutRoot, /var\(--space-chip-y\)/);
     assert.match(withoutRoot, /var\(--space-control-y\)/);
     assert.match(withoutRoot, /var\(--space-control-x\)/);
     assert.match(withoutRoot, /var\(--space-inset-x\)/);
+    assert.match(withoutRoot, /var\(--space-shell-bottom\)/);
     assert.match(withoutRoot, /var\(--space-md\)/);
+  });
+
+  it("web UI hairlines use var(--line) instead of raw #ddd", () => {
+    const files = [
+      "web/src/app/review/page.tsx",
+      "web/src/components/MoleculeTabs.tsx",
+    ];
+    for (const rel of files) {
+      const src = readFileSync(join(root, rel), "utf8");
+      assert.doesNotMatch(src, /#ddd/i, `${rel} must not use #ddd`);
+      assert.match(src, /var\(--line\)/, `${rel} should use --line`);
+    }
   });
 
   it("defines font size vars aligned with shared typography scale", () => {

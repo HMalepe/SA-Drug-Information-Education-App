@@ -258,13 +258,13 @@ function InteractionsPanel({ body }: { body: Record<string, unknown> }) {
         items.map((row) => (
           <article
             key={row.id}
-            style={{ marginBottom: 16, paddingBottom: 12, borderBottom: "1px solid #ddd" }}
+            style={{ marginBottom: 16, paddingBottom: 12, borderBottom: "1px solid var(--line)" }}
           >
             <strong>
               {row.otherMoleculeName}{" "}
               <span className="muted">({row.severity})</span>
             </strong>
-            <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>
+            <div className="muted" style={{ fontSize: "var(--font-size-sm)", marginTop: 2 }}>
               <a href={`/molecules/${row.otherMoleculeSlug}`}>{row.otherMoleculeSlug}</a>
             </div>
             {row.mechanism ? (

@@ -73,6 +73,8 @@ export const space = {
   lg: 24,
   xl: 32,
   xxl: 48,
+  /** Main shell bottom padding */
+  shellBottom: 64,
 } as const;
 
 export const radius = {

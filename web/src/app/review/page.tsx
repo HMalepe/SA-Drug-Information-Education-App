@@ -852,7 +852,7 @@ export default function ReviewPage() {
         items.map((item) => {
           const numericBlocked = item.dosingClass === "numeric_suspect";
           return (
-          <article key={item.id} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #ddd" }}>
+          <article key={item.id} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid var(--line)" }}>
             <strong>
               {item.moleculeName} · {item.fieldPath}
             </strong>
@@ -924,7 +924,7 @@ export default function ReviewPage() {
         <p className="muted">No draft/reviewed STG extracts in this filter.</p>
       ) : (
         stgItems.map((item) => (
-          <article key={item.id} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #ddd" }}>
+          <article key={item.id} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid var(--line)" }}>
             <strong>
               {item.extractId} · {item.moleculeSlug}
             </strong>
