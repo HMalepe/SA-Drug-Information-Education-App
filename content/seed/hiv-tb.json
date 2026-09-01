@@ -37,11 +37,31 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-cipla", "name": "Cipla", "madeInSa": true },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-cipla",
+      "name": "Cipla",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -64,7 +84,11 @@
       "innName": "Tenofovir disoproxil",
       "className": "NRTI — nucleotide reverse transcriptase inhibitor",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["tdf", "viread", "tenofovir"],
+      "synonyms": [
+        "tdf",
+        "viread",
+        "tenofovir"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Competes with natural nucleotides to terminate HIV reverse transcription — educational framing only; confirm against current SA ART guidance and the labelled product.",
@@ -78,7 +102,10 @@
       "innName": "Lamivudine",
       "className": "NRTI — nucleoside reverse transcriptase inhibitor",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["3tc", "epivir"],
+      "synonyms": [
+        "3tc",
+        "epivir"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Chain-terminating NRTI used across ART backbones — teaching layer; regimens stay clinician-directed.",
@@ -92,7 +119,10 @@
       "innName": "Dolutegravir",
       "className": "Integrase strand transfer inhibitor (INSTI)",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["dtg", "tivicay"],
+      "synonyms": [
+        "dtg",
+        "tivicay"
+      ],
       "publishState": "published"
     },
     {
@@ -101,7 +131,10 @@
       "innName": "Efavirenz",
       "className": "NNRTI",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["efv", "stocrin"],
+      "synonyms": [
+        "efv",
+        "stocrin"
+      ],
       "publishState": "published"
     },
     {
@@ -110,7 +143,10 @@
       "innName": "Ritonavir",
       "className": "HIV protease inhibitor / PK booster",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["rtv", "norvir"],
+      "synonyms": [
+        "rtv",
+        "norvir"
+      ],
       "publishState": "published"
     },
     {
@@ -119,7 +155,10 @@
       "innName": "Rifampicin",
       "className": "Rifamycin antimycobacterial",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["rifampin", "rimactane"],
+      "synonyms": [
+        "rifampin",
+        "rimactane"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Inhibits mycobacterial RNA polymerase — cornerstone TB teaching molecule; enzyme-induction interactions are the counselling hook.",
@@ -133,7 +172,9 @@
       "innName": "Isoniazid",
       "className": "Antimycobacterial — cell-wall synthesis inhibitor",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["inh"],
+      "synonyms": [
+        "inh"
+      ],
       "publishState": "published"
     },
     {
@@ -142,7 +183,9 @@
       "innName": "Pyrazinamide",
       "className": "Antimycobacterial",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["pza"],
+      "synonyms": [
+        "pza"
+      ],
       "publishState": "published"
     },
     {
@@ -151,7 +194,9 @@
       "innName": "Ethambutol",
       "className": "Antimycobacterial",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["emb"],
+      "synonyms": [
+        "emb"
+      ],
       "publishState": "published"
     },
     {
@@ -160,7 +205,12 @@
       "innName": "Sulfamethoxazole-trimethoprim",
       "className": "Sulphonamide + dihydrofolate reductase inhibitor",
       "therapeuticArea": "hiv-tb",
-      "synonyms": ["co-trimoxazole", "bactrim", "septran", "cotrimoxazole"],
+      "synonyms": [
+        "co-trimoxazole",
+        "bactrim",
+        "septran",
+        "cotrimoxazole"
+      ],
       "publishState": "published"
     }
   ],
@@ -175,8 +225,14 @@
       "schedule": "S4",
       "isOriginator": false,
       "isDiscontinued": false,
-      "synonymKeys": ["tld", "teevir", "tenofovir lamivudine dolutegravir"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "tld",
+        "teevir",
+        "tenofovir lamivudine dolutegravir"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -189,8 +245,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["viread"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "viread"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -203,8 +263,13 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["tivicay", "dtg"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "tivicay",
+        "dtg"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -217,8 +282,13 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["rimactane", "rifampicin"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "rimactane",
+        "rifampicin"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -231,8 +301,12 @@
       "schedule": "S4",
       "isOriginator": false,
       "isDiscontinued": false,
-      "synonymKeys": ["isoniazid"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "isoniazid"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -245,8 +319,14 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["bactrim", "septran", "cotrimoxazole"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "bactrim",
+        "septran",
+        "cotrimoxazole"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     }
   ],
@@ -295,6 +375,649 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-lamivudine",
+      "moleculeId": "mol-lamivudine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Rare NRTI-class risk of lactic acidosis/hepatomegaly with steatosis. In patients co-infected with hepatitis B, lamivudine is also active against HBV — stopping it abruptly can trigger a hepatitis B flare.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Unusual fatigue, abdominal pain or breathlessness (possible lactic acidosis) needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Lamivudine's dual HIV/HBV activity means abrupt discontinuation in a co-infected patient can flare hepatitis B — never stop without medical guidance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never stop abruptly, especially if you also have hepatitis B — discuss any change with your clinic first.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-dolutegravir",
+      "moleculeId": "mol-dolutegravir",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Insomnia and mood changes have been reported. Absorption is significantly reduced by polyvalent cation products (antacids, iron, calcium supplements) — spacing is required.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Separate dosing from antacids, iron and calcium supplements by several hours, per the labelled product's instructions.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe insomnia or mood changes warrant clinical review, though not typically an emergency on their own.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Spacing dolutegravir away from antacids/mineral supplements is one of the most practical, commonly tested counselling points in modern ART regimens.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take antacids, iron or calcium supplements several hours apart from this medicine. Report insomnia or mood changes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-efavirenz",
+      "moleculeId": "mol-efavirenz",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Prominent CNS effects (vivid dreams, dizziness, difficulty concentrating) are common, especially in the first weeks, and usually settle with time. Rare but serious psychiatric effects (including suicidal ideation) have been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Often taken at bedtime to reduce the day-to-day impact of CNS side effects; avoid taking with high-fat meals, which increase absorption and side effects.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, vivid dreams, difficulty concentrating.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe mood changes or suicidal thoughts need urgent clinical review.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Taking efavirenz at bedtime is one of the most practical, well-established adherence-support tips in HIV pharmacy counselling.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take at bedtime and avoid high-fat meals around dosing. Report severe or persistent mood changes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-ritonavir",
+      "moleculeId": "mol-ritonavir",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Ritonavir is a potent CYP3A4 inhibitor — its main modern clinical role is as a pharmacokinetic 'booster' for other antiretrovirals, but this means it carries an unusually large drug-interaction list that must always be checked before adding any new medicine. GI upset and lipid abnormalities with long-term use are also recognised.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Follow the labelled product's food instructions exactly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Any new severe symptom after starting another medicine should prompt an interaction check, given ritonavir's CYP3A4 effect.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Ritonavir's value today is mostly as a booster — its potent CYP3A4 inhibition is the whole point, and also the whole risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell every prescriber and pharmacist that you're on ritonavir before starting any new medicine — the interaction risk is genuinely high.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-isoniazid",
+      "moleculeId": "mol-isoniazid",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Acute liver disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hepatotoxicity risk rises with age and alcohol use. Peripheral neuropathy risk relates to pyridoxine (vitamin B6) depletion, which is why pyridoxine is commonly co-prescribed during treatment. Some MAO-inhibiting activity means a tyramine reaction is possible with tyramine-rich foods/alcohol.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take on an empty stomach for best absorption; avoid alcohol and tyramine-rich foods.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Tingling/numbness in hands or feet (early neuropathy), GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Seizures in significant overdose are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Pyridoxine (vitamin B6) is the established treatment for isoniazid-related seizures and neuropathy.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Co-prescribing pyridoxine specifically to prevent isoniazid-induced peripheral neuropathy is a classic TB-treatment teaching point.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Avoid alcohol. Take on an empty stomach. Report any tingling or numbness in the hands or feet.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-pyrazinamide",
+      "moleculeId": "mol-pyrazinamide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe liver disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Acute gout."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hepatotoxicity is a recognised risk and contributes significantly to the combined liver-monitoring burden of standard TB therapy. Hyperuricaemia can precipitate gout flares.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, joint pain.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Yellowing of the skin/eyes (possible liver injury) needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care, with liver function monitored.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Pyrazinamide is one of the more hepatotoxic components of standard TB regimens — liver monitoring covers the whole regimen, not just one drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report yellowing of the skin or eyes, or new joint pain (possible gout flare).",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-ethambutol",
+      "moleculeId": "mol-ethambutol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pre-existing optic neuritis — requires careful specialist risk-benefit assessment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Optic neuritis/visual disturbance risk is dose- and duration-related and specific to ethambutol among the standard TB drugs — periodic visual acuity and colour-vision checks are standard during treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Blurred vision or colour-vision changes are the key early warning sign, not a general GI symptom.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Any visual change needs the drug stopped promptly and urgent medical assessment — this is not a 'wait and see' symptom.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — stopping the drug promptly on visual symptoms is the primary management, under medical direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Ethambutol's optic neuritis risk is the textbook reason visual monitoring is built into standard TB treatment follow-up.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report any change in vision — blurring or altered colour vision — immediately, rather than waiting for the next appointment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-sulfamethoxazole-trimethoprim",
+      "moleculeId": "mol-cotrimoxazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known sulfonamide hypersensitivity."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "G6PD deficiency."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Near term in pregnancy or breastfeeding of a newborn — kernicterus risk."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyperkalaemia risk, especially with ACE inhibitors, ARBs or potassium-sparing diuretics. Rare but serious skin reactions (Stevens-Johnson syndrome/TEN) can occur. In HIV care this drug is often used as long-term prophylaxis rather than a short course, so these risks apply over a longer exposure window.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food to reduce GI upset; maintain adequate fluid intake.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Any new rash, especially with fever or mucosal involvement, needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Long-term prophylactic use in HIV care means routine monitoring matters more here than for a short antibiotic course of the same drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report any new rash immediately. Tell your clinic if you have G6PD deficiency or take blood-pressure medicines that raise potassium.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -314,13 +1037,51 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-ritonavir-simvastatin",
+      "moleculeAId": "mol-ritonavir",
+      "moleculeBId": "mol-simvastatin",
+      "severity": "major",
+      "mechanism": {
+        "value": "Ritonavir's potent CYP3A4 inhibition can raise simvastatin levels dramatically, sharply increasing myopathy/rhabdomyolysis risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "This combination is generally avoided — flag clearly for a non-interacting statin choice rather than adjusting the simvastatin dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-rifampicin-dolutegravir",
+      "moleculeAId": "mol-rifampicin",
+      "moleculeBId": "mol-dolutegravir",
+      "severity": "major",
+      "mechanism": {
+        "value": "Rifampicin strongly induces the enzymes that clear dolutegravir, substantially lowering its levels during concurrent TB treatment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — this is a well-recognised TB/HIV co-treatment interaction requiring clinical regimen review, not a simple substitution.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-viread",
       "productId": "prod-viread",
-      "sepZar": 180.0,
+      "sepZar": 180,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -329,7 +1090,7 @@
     {
       "id": "price-rimactane",
       "productId": "prod-rimactane",
-      "sepZar": 65.0,
+      "sepZar": 65,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
