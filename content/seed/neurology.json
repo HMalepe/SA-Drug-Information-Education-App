@@ -37,14 +37,46 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-ucb", "name": "UCB", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-teva", "name": "Teva", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-ucb",
+      "name": "UCB",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-teva",
+      "name": "Teva",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -67,7 +99,10 @@
       "innName": "Carbamazepine",
       "className": "Antiepileptic / sodium-channel modulator",
       "therapeuticArea": "neurology",
-      "synonyms": ["tegretol", "carbamazepine"],
+      "synonyms": [
+        "tegretol",
+        "carbamazepine"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Stabilises neuronal membranes via sodium-channel effects — enzyme-induction and rash counselling are teaching hooks; never invent a dose or level target.",
@@ -81,7 +116,12 @@
       "innName": "Valproate / sodium valproate",
       "className": "Antiepileptic / mood-stabiliser (epilepsy context)",
       "therapeuticArea": "neurology",
-      "synonyms": ["epilim", "depakine", "sodium valproate", "valproic acid"],
+      "synonyms": [
+        "epilim",
+        "depakine",
+        "sodium valproate",
+        "valproic acid"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Broad-spectrum AED — pregnancy/teratogenicity conversations are non-negotiable counselling themes; regimens stay clinician-directed.",
@@ -95,7 +135,10 @@
       "innName": "Lamotrigine",
       "className": "Antiepileptic",
       "therapeuticArea": "neurology",
-      "synonyms": ["lamictal", "lamotrigine"],
+      "synonyms": [
+        "lamictal",
+        "lamotrigine"
+      ],
       "publishState": "published"
     },
     {
@@ -104,7 +147,10 @@
       "innName": "Levetiracetam",
       "className": "Antiepileptic",
       "therapeuticArea": "neurology",
-      "synonyms": ["keppra", "levetiracetam"],
+      "synonyms": [
+        "keppra",
+        "levetiracetam"
+      ],
       "publishState": "published"
     },
     {
@@ -113,7 +159,11 @@
       "innName": "Phenytoin",
       "className": "Antiepileptic / hydantoin",
       "therapeuticArea": "neurology",
-      "synonyms": ["epanutin", "dilantin", "phenytoin"],
+      "synonyms": [
+        "epanutin",
+        "dilantin",
+        "phenytoin"
+      ],
       "publishState": "published"
     },
     {
@@ -122,7 +172,10 @@
       "innName": "Gabapentin",
       "className": "Gabapentinoid (neuropathic pain / epilepsy contexts)",
       "therapeuticArea": "neurology",
-      "synonyms": ["neurontin", "gabapentin"],
+      "synonyms": [
+        "neurontin",
+        "gabapentin"
+      ],
       "publishState": "published"
     },
     {
@@ -131,7 +184,10 @@
       "innName": "Pregabalin",
       "className": "Gabapentinoid",
       "therapeuticArea": "neurology",
-      "synonyms": ["lyrica", "pregabalin"],
+      "synonyms": [
+        "lyrica",
+        "pregabalin"
+      ],
       "publishState": "published"
     },
     {
@@ -140,7 +196,10 @@
       "innName": "Topiramate",
       "className": "Antiepileptic / migraine prophylaxis",
       "therapeuticArea": "neurology",
-      "synonyms": ["topamax", "topiramate"],
+      "synonyms": [
+        "topamax",
+        "topiramate"
+      ],
       "publishState": "published"
     },
     {
@@ -149,7 +208,10 @@
       "innName": "Sumatriptan",
       "className": "5-HT1B/1D agonist (triptan)",
       "therapeuticArea": "neurology",
-      "synonyms": ["imigran", "sumatriptan"],
+      "synonyms": [
+        "imigran",
+        "sumatriptan"
+      ],
       "publishState": "published"
     },
     {
@@ -158,7 +220,10 @@
       "innName": "Rizatriptan",
       "className": "5-HT1B/1D agonist (triptan)",
       "therapeuticArea": "neurology",
-      "synonyms": ["maxalt", "rizatriptan"],
+      "synonyms": [
+        "maxalt",
+        "rizatriptan"
+      ],
       "publishState": "published"
     },
     {
@@ -167,7 +232,10 @@
       "innName": "Baclofen",
       "className": "Skeletal muscle relaxant (GABA-B agonist)",
       "therapeuticArea": "neurology",
-      "synonyms": ["lioresal", "baclofen"],
+      "synonyms": [
+        "lioresal",
+        "baclofen"
+      ],
       "publishState": "published"
     },
     {
@@ -176,7 +244,11 @@
       "innName": "Levodopa / carbidopa",
       "className": "Dopamine precursor + decarboxylase inhibitor",
       "therapeuticArea": "neurology",
-      "synonyms": ["sinemet", "madopar", "levodopa carbidopa"],
+      "synonyms": [
+        "sinemet",
+        "madopar",
+        "levodopa carbidopa"
+      ],
       "publishState": "published"
     },
     {
@@ -185,7 +257,10 @@
       "innName": "Donepezil",
       "className": "Acetylcholinesterase inhibitor",
       "therapeuticArea": "neurology",
-      "synonyms": ["aricept", "donepezil"],
+      "synonyms": [
+        "aricept",
+        "donepezil"
+      ],
       "publishState": "published"
     }
   ],
@@ -200,8 +275,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["tegretol"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "tegretol"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -215,8 +294,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["epilim"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "epilim"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -229,8 +312,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["lamictal"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "lamictal"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -243,8 +330,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["keppra"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "keppra"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -257,8 +348,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["epanutin"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "epanutin"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -271,8 +366,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["neurontin"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "neurontin"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -285,8 +384,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["lyrica"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "lyrica"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -299,8 +402,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["imigran"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "imigran"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -313,8 +420,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["sinemet"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "sinemet"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -327,8 +438,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["aricept"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "aricept"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -415,6 +530,774 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-lamotrigine",
+      "moleculeId": "mol-lamotrigine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Serious skin reactions (Stevens-Johnson syndrome/TEN) are a recognised risk, particularly with rapid dose titration or when combined with valproate, which raises lamotrigine levels.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction; never skip the prescribed slow-titration schedule.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, unsteadiness (ataxia).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Any new rash, especially with fever or mucosal involvement, is a medical emergency — stop the drug and seek urgent care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — stopping the drug promptly on rash onset is the primary safety step, under medical direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Lamotrigine's rash risk is titration-speed-dependent — slow, guideline-directed titration (even slower with valproate on board) is the core safety mitigation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report any new rash immediately. Don't skip or accelerate the titration schedule, even if it feels slow.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-levetiracetam",
+      "moleculeId": "mol-levetiracetam",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Behavioural/psychiatric effects (irritability, mood changes, rarely aggression) are relatively common and dose-related.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, behavioural changes.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe behavioural disturbance needs clinical review.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Levetiracetam isn't cleared via CYP enzymes, which is a major reason it's often preferred when a patient is on multiple interacting medicines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report new irritability, mood changes or unusual behaviour.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-phenytoin",
+      "moleculeId": "mol-phenytoin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant heart block or bradycardia, particularly relevant to IV administration."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Narrow therapeutic index with nonlinear (zero-order-like) kinetics near the therapeutic range — small dose changes can cause disproportionately large level changes. Long-term use is associated with gum overgrowth and increased hair growth. It is also a strong enzyme inducer, affecting many other drugs' levels.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Keep dosing timing relative to food or tube feeds consistent, since this can affect absorption for some formulations.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Unsteadiness, involuntary eye movements (nystagmus), slurred speech — the classic toxicity triad.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe ataxia, confusion or cardiac effects (with IV use) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — toxicity is managed supportively with levels monitored under specialist care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Phenytoin's near-zero-order kinetics at therapeutic levels is one of the most-tested nonlinear-pharmacokinetics examples in the whole curriculum.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report unsteadiness, gum changes, or excessive hair growth. Keep scheduled level checks — small dose changes can have outsized effects.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-gabapentin",
+      "moleculeId": "mol-gabapentin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Sedation and dizziness are common. Growing regulatory attention on misuse/dependence potential, and respiratory depression risk rises significantly when combined with opioids.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; avoid alcohol.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, dizziness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Respiratory depression, especially combined with opioids or alcohol, is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The combined respiratory-depression risk with opioids is an increasingly emphasised modern safety point for this drug class.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Avoid alcohol. Be cautious combining with opioids or other sedatives. Avoid driving until you know how it affects you.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-pregabalin",
+      "moleculeId": "mol-pregabalin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Sedation and dizziness are common. Growing regulatory attention on misuse/dependence potential, and respiratory depression risk rises significantly when combined with opioids.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; avoid alcohol.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, dizziness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Respiratory depression, especially combined with opioids or alcohol, is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The combined respiratory-depression risk with opioids is an increasingly emphasised modern safety point for this drug class.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Avoid alcohol. Be cautious combining with opioids or other sedatives. Avoid driving until you know how it affects you.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-topiramate",
+      "moleculeId": "mol-topiramate",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Cognitive side effects (word-finding difficulty, slowed thinking, concentration problems) are well recognised. Metabolic acidosis, increased kidney-stone risk, and rare acute angle-closure glaucoma have been reported. Teratogenicity concerns (including cleft lip/palate) are important for reproductive-age counselling.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Maintain good fluid intake to help reduce kidney-stone risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Cognitive slowing, drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Eye pain with visual changes (possible acute glaucoma) or signs of metabolic acidosis need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Topiramate's cognitive side effects are common enough among clinicians to have earned it an informal, unflattering nickname in practice.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report eye pain or vision changes immediately. Keep well hydrated. Discuss contraception with a clinician if you're of reproductive age, given the teratogenicity signal.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-rizatriptan",
+      "moleculeId": "mol-rizatriptan",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Ischaemic heart disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncontrolled hypertension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of stroke or TIA."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Chest tightness/pressure is a common, usually benign triptan sensation but must be distinguished from a genuine cardiac event, especially in at-risk patients. Serotonin syndrome risk exists with other serotonergic drugs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Chest tightness, flushing, tingling.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Chest pain that doesn't resolve quickly, or feels different from the usual triptan sensation, needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Triptans are contraindicated in ischaemic heart disease precisely because their vasoconstrictive mechanism is also what makes them effective for migraine.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Don't exceed the maximum number of doses in 24 hours. Seek urgent care for chest pain that doesn't resolve quickly or feels unusual.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-baclofen",
+      "moleculeId": "mol-baclofen",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Sedation is common. Abrupt discontinuation — whether oral or, more dramatically, intrathecal — can trigger a severe withdrawal syndrome (hyperthermia, seizures, rebound spasticity).",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Sedation, muscle weakness (hypotonia).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe respiratory depression in significant overdose is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Baclofen withdrawal from abrupt stopping is one of the most safety-critical 'never do this' points for the drug, in the same spirit as long-term steroids or benzodiazepines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never stop abruptly — always taper under medical guidance, even if you feel it isn't helping.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-levodopa-carbidopa",
+      "moleculeId": "mol-levodopa-carbidopa",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with non-selective MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Motor fluctuations ('wearing-off' periods and dyskinesias) commonly develop after years of use. Orthostatic hypotension can occur. Impulse-control disorders (compulsive gambling, hypersexuality, compulsive shopping) are a recognised dopaminergic-therapy effect and are often under-reported by patients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "High-protein meals can reduce levodopa absorption and effectiveness for some patients — timing relative to protein intake may need adjusting if response varies through the day.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Nausea, dyskinesias.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Hallucinations or significant hypotension need clinical review.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — dose adjustment under specialist care is the usual response to adverse effects.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Carbidopa exists specifically to reduce peripheral levodopa breakdown and nausea, letting more levodopa reach the brain — a clean mechanism-to-formulation teaching link.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report any new compulsive behaviour (gambling, spending, hypersexuality) — this is a recognised medication effect, not a personal failing. Note whether high-protein meals seem to blunt your response.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-donepezil",
+      "moleculeId": "mol-donepezil",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Cholinergic effects can cause or worsen bradycardia and, rarely, syncope — added caution with other heart-rate-lowering drugs. GI upset (nausea, diarrhoea) is common, especially when starting. Vivid dreams/insomnia have been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Often taken at bedtime; if vivid dreams occur, morning dosing may be tried instead under guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, sweating.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "A notably slow pulse or fainting needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote at primary-care level — severe cholinergic toxicity is managed under specialist/emergency direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Donepezil's cholinergic mechanism is easy to forget as a cardiac-relevant drug since it's thought of purely as a 'cognitive' medicine — but the bradycardia interaction is real.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report a slow pulse or fainting spells. If vivid dreams or insomnia are a problem, ask about adjusting the time of day it's taken.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -434,13 +1317,70 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-lamotrigine-valproate",
+      "moleculeAId": "mol-lamotrigine",
+      "moleculeBId": "mol-valproate",
+      "severity": "major",
+      "mechanism": {
+        "value": "Valproate inhibits lamotrigine's metabolism, roughly doubling its levels and significantly raising serious skin-reaction risk if titration isn't slowed accordingly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — this combination needs a specifically slower, guideline-directed titration schedule under clinical supervision.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-phenytoin-isoniazid",
+      "moleculeAId": "mol-phenytoin",
+      "moleculeBId": "mol-isoniazid",
+      "severity": "major",
+      "mechanism": {
+        "value": "Isoniazid inhibits the hepatic enzymes that clear phenytoin, raising phenytoin levels toward toxicity in a drug with an already narrow therapeutic index.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for phenytoin level monitoring whenever both are co-prescribed, especially during TB treatment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-donepezil-atenolol",
+      "moleculeAId": "mol-donepezil",
+      "moleculeBId": "mol-atenolol",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Both drugs can independently slow heart rate — donepezil via cholinergic effects, atenolol via beta-blockade — so combined bradycardia risk is additive.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for pulse monitoring whenever both are co-prescribed, particularly in older patients.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-tegretol",
       "productId": "prod-tegretol",
-      "sepZar": 145.0,
+      "sepZar": 145,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -449,7 +1389,7 @@
     {
       "id": "price-epilim",
       "productId": "prod-epilim",
-      "sepZar": 168.0,
+      "sepZar": 168,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -458,7 +1398,7 @@
     {
       "id": "price-keppra",
       "productId": "prod-keppra",
-      "sepZar": 320.0,
+      "sepZar": 320,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
