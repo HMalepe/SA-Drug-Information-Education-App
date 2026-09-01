@@ -106,7 +106,10 @@
       "className": "Beta-lactam antibiotic (aminopenicillin)",
       "atcCode": "J01CA04",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["amoxycillin", "amoxil"],
+      "synonyms": [
+        "amoxycillin",
+        "amoxil"
+      ],
       "publishState": "published",
       "chemistrySummary": {
         "value": "Amoxicillin is an aminopenicillin with a beta-lactam ring that targets bacterial cell-wall synthesis machinery.",
@@ -134,7 +137,11 @@
       "className": "Beta-lactam + beta-lactamase inhibitor",
       "atcCode": "J01CR02",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["co-amoxiclav", "amox-clav", "augmentin"],
+      "synonyms": [
+        "co-amoxiclav",
+        "amox-clav",
+        "augmentin"
+      ],
       "publishState": "published",
       "chemistrySummary": {
         "value": "Combination of amoxicillin with clavulanic acid, a beta-lactamase inhibitor that protects the penicillin from enzymatic breakdown.",
@@ -156,7 +163,10 @@
       "className": "Beta-lactam antibiotic (natural penicillin)",
       "atcCode": "J01CE02",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["penicillin v", "pen v"],
+      "synonyms": [
+        "penicillin v",
+        "pen v"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Inhibits bacterial cell-wall synthesis via penicillin-binding proteins; spectrum narrower than aminopenicillins.",
@@ -172,7 +182,9 @@
       "className": "Beta-lactam antibiotic (isoxazolyl penicillin)",
       "atcCode": "J01CF05",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["floxapen"],
+      "synonyms": [
+        "floxapen"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Penicillinase-stable penicillin used primarily against staphylococci; still a cell-wall synthesis inhibitor.",
@@ -188,7 +200,10 @@
       "className": "First-generation cephalosporin",
       "atcCode": "J01DB01",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["cephalexin", "keflex"],
+      "synonyms": [
+        "cephalexin",
+        "keflex"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Beta-lactam cephalosporin that inhibits peptidoglycan cross-linking in susceptible bacteria.",
@@ -204,7 +219,9 @@
       "className": "Second-generation cephalosporin",
       "atcCode": "J01DC02",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["zinnat"],
+      "synonyms": [
+        "zinnat"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Second-generation cephalosporin cell-wall synthesis inhibitor with broader Gram-negative coverage than first-generation agents.",
@@ -220,7 +237,9 @@
       "className": "Third-generation cephalosporin",
       "atcCode": "J01DD04",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["rocephin"],
+      "synonyms": [
+        "rocephin"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Parenteral third-generation cephalosporin inhibiting bacterial cell-wall synthesis; often reserved for more serious infections.",
@@ -236,7 +255,9 @@
       "className": "Macrolide antibiotic",
       "atcCode": "J01FA10",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["zithromax"],
+      "synonyms": [
+        "zithromax"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Macrolide that binds the 50S ribosomal subunit and inhibits bacterial protein synthesis.",
@@ -252,7 +273,9 @@
       "className": "Macrolide antibiotic",
       "atcCode": "J01FA09",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["klaricid"],
+      "synonyms": [
+        "klaricid"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Macrolide inhibiting protein synthesis at the 50S ribosomal subunit; notable CYP3A4 interaction potential (clinical details pending sourced publish).",
@@ -284,7 +307,9 @@
       "className": "Tetracycline antibiotic",
       "atcCode": "J01AA02",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["vibramycin"],
+      "synonyms": [
+        "vibramycin"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Tetracycline that binds the 30S ribosomal subunit and inhibits protein synthesis. Dairy/divalent cations can chelate oral doses — counselling detail pending full sourced publish.",
@@ -300,7 +325,9 @@
       "className": "Fluoroquinolone antibiotic",
       "atcCode": "J01MA02",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["cipro"],
+      "synonyms": [
+        "cipro"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Fluoroquinolone that inhibits bacterial DNA gyrase / topoisomerase IV, blocking DNA replication.",
@@ -316,7 +343,9 @@
       "className": "Nitroimidazole antimicrobial",
       "atcCode": "J01XD01",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["flagyl"],
+      "synonyms": [
+        "flagyl"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Nitroimidazole activated in anaerobic organisms to reactive products that damage microbial DNA.",
@@ -332,7 +361,11 @@
       "className": "Sulfonamide + dihydrofolate reductase inhibitor",
       "atcCode": "J01EE01",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["trimethoprim-sulfamethoxazole", "bactrim", "septran"],
+      "synonyms": [
+        "trimethoprim-sulfamethoxazole",
+        "bactrim",
+        "septran"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Sequential blockade of folate synthesis: sulfamethoxazole inhibits dihydropteroate synthase; trimethoprim inhibits dihydrofolate reductase.",
@@ -348,7 +381,10 @@
       "className": "Nitrofuran antibacterial",
       "atcCode": "J01XE01",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["macrodantin", "furadantin"],
+      "synonyms": [
+        "macrodantin",
+        "furadantin"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Urinary antiseptic activated inside bacteria to reactive intermediates that damage multiple macromolecules.",
@@ -364,7 +400,9 @@
       "className": "Lincosamide antibiotic",
       "atcCode": "J01FF01",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["dalacin"],
+      "synonyms": [
+        "dalacin"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Lincosamide that binds the 50S ribosomal subunit and inhibits protein synthesis.",
@@ -412,7 +450,9 @@
       "className": "Oxazolidinone antibiotic",
       "atcCode": "J01XX08",
       "therapeuticArea": "antibiotics",
-      "synonyms": ["zyvox"],
+      "synonyms": [
+        "zyvox"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Oxazolidinone that prevents formation of the 70S initiation complex, inhibiting protein synthesis.",
@@ -449,8 +489,13 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["amoxil"],
-      "excipientIds": ["exc-mg-stearate", "exc-lactose"],
+      "synonymKeys": [
+        "amoxil"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate",
+        "exc-lactose"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -465,8 +510,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["amoxicillin aspen"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "amoxicillin aspen"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -479,8 +528,14 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["augmentin", "augumentin", "augmetin"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "augmentin",
+        "augumentin",
+        "augmetin"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -494,8 +549,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["co-amoxiclav sandoz"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "co-amoxiclav sandoz"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -508,8 +567,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["zinnat"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "zinnat"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -522,8 +585,13 @@
       "schedule": "S4",
       "isOriginator": false,
       "isDiscontinued": false,
-      "synonymKeys": ["ciprolex", "ciprofloxacin"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "ciprolex",
+        "ciprofloxacin"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -536,8 +604,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["flagyl"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "flagyl"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -550,8 +622,13 @@
       "schedule": "S4",
       "isOriginator": false,
       "isDiscontinued": false,
-      "synonymKeys": ["purbac", "co-trimoxazole"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "purbac",
+        "co-trimoxazole"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -575,7 +652,10 @@
       },
       "contraindications": [
         {
-          "value": { "level": "red", "text": "Hypersensitivity to penicillins / beta-lactams — do not use; seek alternative class." },
+          "value": {
+            "level": "red",
+            "text": "Hypersensitivity to penicillins / beta-lactams — do not use; seek alternative class."
+          },
           "sourceId": "src-materia-edu",
           "publishState": "published",
           "lastReviewed": "2026-07-01"
@@ -635,9 +715,1750 @@
           "lastReviewed": "2026-07-01"
         }
       ]
+    },
+    {
+      "id": "safe-amoxicillin-clavulanate",
+      "moleculeId": "mol-amoxclav",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypersensitivity to penicillins / beta-lactams — do not use; seek alternative class."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of amoxicillin-clavulanate-associated jaundice/hepatic dysfunction — do not rechallenge."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cholestatic jaundice/hepatic dysfunction is a recognised, sometimes delayed reaction — risk rises with age and treatment duration; usually reversible on stopping.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset; complete the prescribed course unless a clinician advises otherwise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset (nausea, diarrhoea); rare renal effects reported with very high doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for amoxicillin-clavulanate overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The clavulanate component, not amoxicillin alone, drives most of the extra GI upset and the hepatotoxicity signal versus plain amoxicillin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take as directed with food if it upsets your stomach. Report yellowing of the eyes/skin or dark urine promptly, even after finishing the course.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-phenoxymethylpenicillin",
+      "moleculeId": "mol-penv",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypersensitivity to penicillins / beta-lactams — do not use; seek alternative class."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Narrower spectrum than aminopenicillins; oral absorption is reduced by food.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Best taken on an empty stomach (an hour before or two hours after food) for more reliable absorption.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for phenoxymethylpenicillin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Exam trap: penicillin V is acid-stable enough for oral use, unlike benzylpenicillin, but still narrower-spectrum than amoxicillin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take on an empty stomach where possible. Tell your pharmacist about any past penicillin allergy before starting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-flucloxacillin",
+      "moleculeId": "mol-fluclox",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypersensitivity to penicillins / beta-lactams — do not use; seek alternative class."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Prior flucloxacillin-associated liver injury — do not rechallenge."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cholestatic jaundice/hepatitis is a recognised reaction that can appear even weeks after the course ends, and is more frequent in older patients or with courses beyond ~2 weeks.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Best taken on an empty stomach (an hour before or two hours after food) for more reliable absorption.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for flucloxacillin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Delayed-onset jaundice after the course has finished is a classic exam and counselling point for flucloxacillin specifically.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take on an empty stomach where possible. Report yellowing of the eyes/skin or dark urine even weeks after finishing the course.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-cefalexin",
+      "moleculeId": "mol-cephalexin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to cephalosporins."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cross-reactivity with penicillin allergy exists but is not automatic — clinical judgement required, especially with a history of severe (anaphylactic) penicillin reaction.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; complete the prescribed course unless a clinician advises otherwise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for cefalexin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "First-generation cephalosporins lean Gram-positive; coverage broadens with each cephalosporin generation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about any past penicillin or cephalosporin allergy before starting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-cefuroxime",
+      "moleculeId": "mol-cefuroxime",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to cephalosporins."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cross-reactivity with penicillin allergy exists but is not automatic — clinical judgement required.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "The oral (axetil) form absorbs better taken with food — take with a meal for reliable levels.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for cefuroxime overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Second-generation cephalosporin: broader Gram-negative reach than first-generation agents such as cefalexin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take the oral form with food for reliable absorption. Tell your pharmacist about any past penicillin/cephalosporin allergy.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-ceftriaxone",
+      "moleculeId": "mol-ceftriaxone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to cephalosporins."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Do not co-administer with IV calcium-containing solutions in neonates — risk of fatal calcium-ceftriaxone precipitation."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Biliary sludging/pseudolithiasis has been reported, usually reversible on stopping.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Given parenterally; food/lifestyle counselling is limited to general injection-site and course-completion advice.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for ceftriaxone overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The calcium-ceftriaxone precipitation risk in neonates is a well-known, high-stakes safety flag distinct from ordinary allergy.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Follow the prescribed injection schedule; report abdominal pain, which could reflect biliary sludging.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-azithromycin",
+      "moleculeId": "mol-azithro",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to macrolides."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "QT-interval prolongation is possible, particularly with other QT-prolonging drugs or existing cardiac risk factors — clinical judgement required.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Food effect varies by formulation — follow the labelled product instructions.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for azithromycin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Long tissue half-life is why azithromycin courses are often shorter than other macrolides — the drug keeps working after the last dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Complete the course even if you feel better quickly — the drug's long half-life does not mean the infection is fully cleared early.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-clarithromycin",
+      "moleculeId": "mol-clarithro",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to macrolides."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Strong CYP3A4 inhibitor — significant interaction potential with statins, warfarin and other CYP3A4-metabolised drugs. QT-interval prolongation is also possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; complete the prescribed course unless a clinician advises otherwise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for clarithromycin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Always screen the medicine list for statins and warfarin before dispensing clarithromycin — the CYP3A4 interaction load is high.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about every other medicine you take, including statins — clarithromycin can raise their levels.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-erythromycin",
+      "moleculeId": "mol-erythro",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to macrolides."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Notable CYP3A4 inhibitor with a similar interaction profile to clarithromycin. GI motility stimulation (via motilin receptor agonism) often causes nausea/cramping.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "GI upset is common; taking with food may help tolerability for some formulations — follow the labelled product instructions.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for erythromycin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Erythromycin's GI upset is partly mechanistic (motilin agonism), not just irritation — this is why newer macrolides are often better tolerated.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "GI upset is common — tell your pharmacist if it is severe rather than stopping the course on your own.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-doxycycline",
+      "moleculeId": "mol-doxy",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Avoid in pregnancy and in children under 8 years where alternatives exist — risk of permanent tooth discolouration and effects on bone growth."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Photosensitivity reactions are possible — advise sun protection.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": "Oesophageal irritation/ulceration can occur if taken without enough water or lying down soon after.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with a full glass of water and remain upright for at least 30 minutes afterwards. Separate from dairy, antacids, iron and calcium supplements, which chelate and reduce absorption.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for doxycycline overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "'Take with milk' is a classic spot-the-error trap — chelation with dairy/divalent cations reduces doxycycline absorption.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with plenty of water, stay upright afterwards, and use sun protection. Space out dairy, antacids and iron/calcium supplements.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-ciprofloxacin",
+      "moleculeId": "mol-cipro",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to fluoroquinolones."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of fluoroquinolone-associated tendon disorder."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Tendon rupture/tendinopathy risk, higher in older patients, with concurrent corticosteroid use, or in transplant recipients. QT-interval prolongation and CNS effects (dizziness, rarely seizures) are also possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Separate from dairy, antacids, iron, zinc and calcium supplements, which chelate and markedly reduce absorption.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for ciprofloxacin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Fluoroquinolones as a class carry a tendon-safety signal that is easy to miss in an older patient on concurrent steroids.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report any tendon pain or swelling promptly and stop activity in that area. Separate dosing from dairy, antacids and mineral supplements.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-metronidazole",
+      "moleculeId": "mol-metro",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to nitroimidazoles."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Disulfiram-like reaction with alcohol (flushing, nausea, palpitations) — avoid alcohol during treatment and for at least 48 hours after the last dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Avoid alcohol during treatment and for 48 hours after finishing. A metallic taste during treatment is common and expected.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset and metallic taste; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for metronidazole overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The alcohol interaction is one of the most reliably tested counselling points for metronidazole — flag it every time.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "No alcohol during the course or for 48 hours after the last dose. A metallic taste is a known, harmless side effect.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-co-trimoxazole",
+      "moleculeId": "mol-cotrim",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known sulfonamide hypersensitivity."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "G6PD deficiency — risk of haemolysis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Avoid near term in pregnancy and in breastfeeding of a newborn — risk of neonatal kernicterus."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyperkalaemia risk, especially with ACE inhibitors, ARBs or potassium-sparing diuretics. Rare but serious skin reactions (Stevens-Johnson syndrome/TEN) have been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food to reduce GI upset; maintain adequate fluid intake.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for co-trimoxazole overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Screen for G6PD status and concurrent ACE inhibitor/ARB/potassium-sparing diuretic use before dispensing — both flags are easy to miss.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report any new rash immediately. Tell your pharmacist if you have G6PD deficiency or take blood-pressure medicines that raise potassium.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-nitrofurantoin",
+      "moleculeId": "mol-nitro",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment — reduced efficacy and increased toxicity risk as the drug relies on urinary concentration."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "G6PD deficiency — risk of haemolytic anaemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Avoid at term in pregnancy and during labour/delivery — risk of neonatal haemolysis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Pulmonary reactions (acute or chronic) have been reported, more often with prolonged use — report new breathlessness or persistent cough.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to improve absorption and reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for nitrofurantoin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Nitrofurantoin needs adequate renal function to concentrate in urine — it is both less effective and riskier as renal function declines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food. Report new breathlessness or persistent cough, especially with longer courses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-clindamycin",
+      "moleculeId": "mol-clinda",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to lincosamides."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Elevated risk of Clostridioides difficile-associated diarrhoea versus many other antibiotic classes — can occur weeks after stopping.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food to reduce GI upset; complete the prescribed course unless a clinician advises otherwise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for clindamycin overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Clindamycin's C. difficile signal is one of the strongest of any commonly used antibiotic — always counsel on this.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report severe, watery or bloody diarrhoea promptly, even weeks after finishing the course.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-vancomycin",
+      "moleculeId": "mol-vanco",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to glycopeptides."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Rapid IV infusion can trigger 'red man syndrome' (flushing, rash, hypotension) — an infusion-rate reaction, not a true allergy. Nephrotoxicity and ototoxicity require monitoring, especially with concurrent nephrotoxic/ototoxic drugs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Given parenterally; food/lifestyle counselling is limited to general course-completion advice.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible flushing/hypotension with rapid infusion; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for vancomycin toxicity — management is supportive, with levels/renal function monitored under clinical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Red man syndrome is about infusion rate, not allergy — slowing the infusion is usually the fix, not stopping vancomycin outright.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report flushing, itching or dizziness during the infusion promptly so the rate can be adjusted.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-gentamicin",
+      "moleculeId": "mol-genta",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to aminoglycosides."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Narrow therapeutic index — nephrotoxicity and ototoxicity (vestibular and cochlear) are dose- and duration-related and require level/renal monitoring under clinical care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Given parenterally; food/lifestyle counselling is limited to general course-completion advice.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible dizziness/tinnitus (vestibular/cochlear warning signs); molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for gentamicin toxicity — management is supportive, with levels/renal function monitored under clinical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Aminoglycoside toxicity is classically dose/duration-related and reversible only if caught early — this is why levels are monitored, not guessed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report ringing in the ears, dizziness or reduced urine output promptly during treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-trimethoprim",
+      "moleculeId": "mol-tmp",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to trimethoprim."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Megaloblastic anaemia due to folate deficiency — caution, as trimethoprim is a folate antagonist."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyperkalaemia risk, especially with ACE inhibitors, ARBs or potassium-sparing diuretics — same mechanism as the trimethoprim component of co-trimoxazole.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for trimethoprim overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Trimethoprim alone carries the same hyperkalaemia and folate-antagonism flags as the trimethoprim half of co-trimoxazole.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist if you take blood-pressure medicines that raise potassium, or if you are pregnant or trying to conceive.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-linezolid",
+      "moleculeId": "mol-amox-draft-only",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors, or within 2 weeks of stopping one — risk of hypertensive crisis/serotonin syndrome."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Linezolid is a weak, reversible MAO inhibitor — serotonin syndrome risk when combined with SSRIs, SNRIs or other serotonergic drugs. Myelosuppression and peripheral/optic neuropathy have been reported with extended courses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; complete the prescribed course unless a clinician advises otherwise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Possible GI upset; molecule-specific early signs pending sourced clinical publish.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe toxicity signs not published yet — treat as medical emergency and call emergency services / poison information.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote published in Materia for linezolid overdose — management is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Linezolid's MAOI-like activity is the reason antidepressant combinations need a careful screen — an easy interaction to miss because linezolid is an antibiotic, not a psychiatric drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about every antidepressant you take before starting linezolid. Report unusual bruising, tingling or vision changes with longer courses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
-  "interactions": [],
+  "interactions": [
+    {
+      "id": "ix-clarithro-statin",
+      "moleculeAId": "mol-clarithro",
+      "moleculeBId": "mol-atorvastatin",
+      "severity": "major",
+      "mechanism": {
+        "value": "Clarithromycin strongly inhibits CYP3A4, the pathway many statins use for clearance — levels can rise sharply.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — confirm clinically whether the statin should be paused or switched to a non-CYP3A4-dependent option for the course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-clarithro-simvastatin",
+      "moleculeAId": "mol-clarithro",
+      "moleculeBId": "mol-simvastatin",
+      "severity": "major",
+      "mechanism": {
+        "value": "Clarithromycin's CYP3A4 inhibition raises simvastatin exposure and myopathy/rhabdomyolysis risk more than for some other statins.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — confirm clinically; simvastatin is often paused or substituted for the course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-metro-warfarin",
+      "moleculeAId": "mol-metro",
+      "moleculeBId": "mol-warfarin",
+      "severity": "major",
+      "mechanism": {
+        "value": "Metronidazole inhibits CYP2C9, the main pathway for warfarin clearance, potentiating its anticoagulant effect.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for INR monitoring and clinical review during and shortly after the course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-cotrim-warfarin",
+      "moleculeAId": "mol-cotrim",
+      "moleculeBId": "mol-warfarin",
+      "severity": "major",
+      "mechanism": {
+        "value": "Co-trimoxazole potentiates warfarin via CYP2C9 inhibition and protein-binding displacement, raising bleeding risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for INR monitoring and clinical review during and shortly after the course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-cipro-warfarin",
+      "moleculeAId": "mol-cipro",
+      "moleculeBId": "mol-warfarin",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Ciprofloxacin can potentiate warfarin's anticoagulant effect through an incompletely defined interaction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for INR monitoring during and shortly after the course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    }
+  ],
   "priceRecords": [
     {
       "id": "price-amoxil",

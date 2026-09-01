@@ -37,9 +37,21 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false }
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -62,7 +74,11 @@
       "innName": "Paracetamol",
       "className": "Analgesic / antipyretic",
       "therapeuticArea": "analgesics",
-      "synonyms": ["acetaminophen", "panado", "calpol"],
+      "synonyms": [
+        "acetaminophen",
+        "panado",
+        "calpol"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Reduces pain and fever mainly via central prostaglandin pathways — educational framing only; confirm against labelled product and guidelines.",
@@ -76,7 +92,10 @@
       "innName": "Ibuprofen",
       "className": "NSAID — propionic acid",
       "therapeuticArea": "analgesics",
-      "synonyms": ["nurofen", "brufen"],
+      "synonyms": [
+        "nurofen",
+        "brufen"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Inhibits cyclo-oxygenase (COX) enzymes, reducing prostaglandin-mediated pain and inflammation — educational layer pending deeper founder review.",
@@ -90,7 +109,10 @@
       "innName": "Diclofenac",
       "className": "NSAID — acetic acid",
       "therapeuticArea": "analgesics",
-      "synonyms": ["voltaren", "cataflam"],
+      "synonyms": [
+        "voltaren",
+        "cataflam"
+      ],
       "publishState": "published"
     },
     {
@@ -99,7 +121,11 @@
       "innName": "Acetylsalicylic acid",
       "className": "NSAID / antiplatelet (context-dependent)",
       "therapeuticArea": "analgesics",
-      "synonyms": ["aspirin", "ecotrin", "disprin"],
+      "synonyms": [
+        "aspirin",
+        "ecotrin",
+        "disprin"
+      ],
       "publishState": "published"
     },
     {
@@ -108,7 +134,10 @@
       "innName": "Naproxen",
       "className": "NSAID — propionic acid",
       "therapeuticArea": "analgesics",
-      "synonyms": ["naprosyn", "aleve"],
+      "synonyms": [
+        "naprosyn",
+        "aleve"
+      ],
       "publishState": "published"
     },
     {
@@ -117,7 +146,9 @@
       "innName": "Mefenamic acid",
       "className": "NSAID — fenamate",
       "therapeuticArea": "analgesics",
-      "synonyms": ["ponstan"],
+      "synonyms": [
+        "ponstan"
+      ],
       "publishState": "published"
     },
     {
@@ -126,7 +157,9 @@
       "innName": "Celecoxib",
       "className": "NSAID — COX-2 selective",
       "therapeuticArea": "analgesics",
-      "synonyms": ["celebrex"],
+      "synonyms": [
+        "celebrex"
+      ],
       "publishState": "published"
     },
     {
@@ -135,7 +168,10 @@
       "innName": "Tramadol",
       "className": "Opioid analgesic (atypical)",
       "therapeuticArea": "analgesics",
-      "synonyms": ["tramal", "tramacet"],
+      "synonyms": [
+        "tramal",
+        "tramacet"
+      ],
       "publishState": "published"
     },
     {
@@ -144,7 +180,9 @@
       "innName": "Codeine",
       "className": "Opioid analgesic",
       "therapeuticArea": "analgesics",
-      "synonyms": ["codeine phosphate"],
+      "synonyms": [
+        "codeine phosphate"
+      ],
       "publishState": "published"
     },
     {
@@ -153,7 +191,10 @@
       "innName": "Morphine",
       "className": "Opioid analgesic",
       "therapeuticArea": "analgesics",
-      "synonyms": ["mst", "morphine sulphate"],
+      "synonyms": [
+        "mst",
+        "morphine sulphate"
+      ],
       "publishState": "published"
     }
   ],
@@ -168,8 +209,13 @@
       "schedule": "S0",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["panado", "panado tablets"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "panado",
+        "panado tablets"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -184,8 +230,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["paracetamol aspen"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "paracetamol aspen"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -198,8 +248,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["nurofen"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "nurofen"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -212,8 +266,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["voltaren"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "voltaren"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     }
   ],
@@ -262,9 +320,804 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-diclofenac",
+      "moleculeId": "mol-diclofenac",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active peptic ulcer or GI bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Established ischaemic heart disease or heart failure — added caution given the class cardiovascular signal."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the NSAID-class GI/renal risk profile; regulatory reviews have flagged a relatively higher cardiovascular risk signal for diclofenac within the NSAID class, particularly at higher doses or with prolonged use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "GI bleeding, renal impairment, CNS depression — seek emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management of NSAID overdose is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Diclofenac's cardiovascular signal is a genuine differentiator within the NSAID class — worth flagging in patients with existing heart disease.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food. Tell your pharmacist about any heart disease before using diclofenac regularly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-acetylsalicylic-acid",
+      "moleculeId": "mol-aspirin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active peptic ulcer or bleeding disorder."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Children and adolescents with a viral illness (e.g. flu-like symptoms, chickenpox) — risk of Reye's syndrome."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "GI bleeding risk; the antiplatelet effect increases bleeding risk further when combined with anticoagulants or other antiplatelet drugs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Tinnitus (ringing in the ears) and hyperventilation are classic early warning signs of salicylate toxicity.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Metabolic acidosis, confusion, altered consciousness — a medical emergency requiring urgent care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — salicylate toxicity is managed supportively under emergency/specialist care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Tinnitus as an early salicylate-toxicity clue is a recurring exam and practice pearl — don't dismiss new ringing in the ears in someone on regular aspirin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Avoid giving aspirin to children/teens with flu-like illness or chickenpox. Tell your pharmacist if you take warfarin or another blood thinner.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-naproxen",
+      "moleculeId": "mol-naproxen",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active peptic ulcer or GI bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the NSAID-class GI/renal/cardiovascular risk triad; its longer half-life means less frequent dosing but also a longer duration of any adverse effect once it occurs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "GI bleeding, renal impairment, CNS depression — seek emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management of NSAID overdose is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Naproxen's longer half-life is a double-edged sword — fewer doses per day, but slower clearance if a problem develops.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food. Don't combine with other NSAIDs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-mefenamic-acid",
+      "moleculeId": "mol-mefenamic",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active peptic ulcer or GI bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Inflammatory bowel disease — fenamates are more frequently associated with diarrhoea."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the NSAID-class GI/renal/cardiovascular risk triad; diarrhoea is reported more often with fenamates than with some other NSAID subclasses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, diarrhoea, drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "GI bleeding, renal impairment, CNS depression (including reported seizures in overdose) — seek emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management of NSAID overdose is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mefenamic acid's diarrhoea signal is a useful differentiator from other NSAIDs when a patient reports GI symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food. Report persistent diarrhoea to your pharmacist or doctor.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-celecoxib",
+      "moleculeId": "mol-celecoxib",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known sulfonamide hypersensitivity — celecoxib contains a sulfonamide moiety."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Established ischaemic heart disease, heart failure, or stroke history — added caution given the COX-2 class cardiovascular signal."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "COX-2 selectivity lowers GI ulcer risk versus non-selective NSAIDs but does not remove cardiovascular risk — COX-2 inhibitors as a class carry a recognised cardiovascular safety signal.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "GI bleeding, renal impairment, CNS depression — seek emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management of NSAID overdose is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "'COX-2 selective' means gentler on the stomach, not gentler on the heart — the cardiovascular signal is a class effect, not just older NSAIDs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about any sulfa allergy or heart disease before starting celecoxib.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-tramadol",
+      "moleculeId": "mol-tramadol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors, or within 2 weeks of stopping one."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncontrolled seizure disorder — tramadol lowers the seizure threshold."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Tramadol has serotonergic activity in addition to weak opioid activity, so serotonin syndrome risk applies when combined with SSRIs, SNRIs or other serotonergic drugs — unlike classic opioids. Dependence/withdrawal potential exists with regular use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, nausea, confusion.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Respiratory depression and seizures are both possible in overdose — this is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Opioid-reversal agents may partially help the opioid component under emergency care, but do not reliably address the seizure risk — management is otherwise supportive.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Tramadol is atypical: its serotonergic activity means it can trigger serotonin syndrome in combination with antidepressants, which classic opioids do not.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about any antidepressants you take. Avoid alcohol and other sedating medicines while on tramadol.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-codeine",
+      "moleculeId": "mol-codeine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Children under 12 years."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Breastfeeding mothers known to be ultra-rapid CYP2D6 metabolisers — higher morphine conversion can reach dangerous levels in the infant."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Codeine is a prodrug converted to morphine via CYP2D6; genetic variability in this enzyme means the same dose can under- or over-deliver active opioid between individuals, affecting both efficacy and respiratory-depression risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; avoid alcohol.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, constipation, nausea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Respiratory depression and decreased consciousness — a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Naloxone is the established opioid-reversal agent, given under emergency medical supervision.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Codeine's CYP2D6 prodrug conversion is why response varies so much between individuals — some people get little effect, others an unexpectedly strong one.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not for children under 12. Avoid alcohol and other sedating medicines. Breastfeeding mothers should discuss codeine use with a clinician first.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-morphine",
+      "moleculeId": "mol-morphine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe respiratory depression."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Paralytic ileus or suspected bowel obstruction."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Dose-related respiratory depression risk; tolerance and dependence can develop with prolonged use; constipation is near-universal and usually needs proactive management.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; a laxative is often needed alongside regular use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, pinpoint pupils, slowed breathing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "The classic overdose triad is pinpoint pupils, respiratory depression and decreased consciousness — a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Naloxone is the established opioid-reversal agent, given under emergency medical supervision.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The pinpoint-pupils/respiratory-depression/coma triad is one of the most reliably tested opioid-overdose teaching points.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Expect constipation and ask about a laxative early. Avoid alcohol and other sedating medicines. Store securely — accidental exposure in children is dangerous.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
-  "interactions": [],
+  "interactions": [
+    {
+      "id": "ix-ibuprofen-warfarin",
+      "moleculeAId": "mol-ibuprofen",
+      "moleculeBId": "mol-warfarin",
+      "severity": "major",
+      "mechanism": {
+        "value": "NSAIDs add bleeding risk on top of warfarin through antiplatelet effects and GI mucosal injury, independent of any effect on INR.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review; an alternative analgesic (e.g. paracetamol) is often preferred with anticoagulation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-ibuprofen-enalapril",
+      "moleculeAId": "mol-ibuprofen",
+      "moleculeBId": "mol-enalapril",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "NSAIDs can blunt the antihypertensive effect of ACE inhibitors and add to renal risk, especially with dehydration or pre-existing renal impairment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review, particularly with regular/prolonged NSAID use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-tramadol-fluoxetine",
+      "moleculeAId": "mol-tramadol",
+      "moleculeBId": "mol-fluoxetine",
+      "severity": "major",
+      "mechanism": {
+        "value": "Both drugs increase serotonergic activity — combining them raises the risk of serotonin syndrome.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review; watch for agitation, tremor, hyperthermia if co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    }
+  ],
   "priceRecords": [
     {
       "id": "price-panado",
