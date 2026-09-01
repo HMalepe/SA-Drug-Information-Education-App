@@ -44,8 +44,9 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **antihypertensives** (10 molecules) — SP: done (8 profiles added) · IX: done (3 added: enalapril+spironolactone, furosemide+gentamicin, atenolol+gliclazide) · DOSE: pending founder
 - [x] **diabetes** (10 molecules) — SP: done (8 profiles added) · IX: done (2 added: glimepiride+atenolol masked hypoglycaemia, empagliflozin+furosemide volume depletion) · DOSE: pending founder
 - [x] **gastrointestinal** (12 molecules) — SP: done (9 profiles added) · IX: done (2 added: domperidone+clarithromycin QT/CYP3A4, ondansetron+azithromycin additive QT) · DOSE: pending founder
+- [x] **respiratory** (10 molecules) — SP: done (8 profiles added) · IX: done (2 added: theophylline+clarithromycin, theophylline+ciprofloxacin) · DOSE: pending founder
 
-## Remaining batches (15 areas, ~134 molecules)
+## Remaining batches (14 areas, ~124 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
@@ -59,7 +60,6 @@ no SP/IX gap, only the DOSE step remains, tracked via
 | neurology | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
 | ophthalmology | 13 | [ ] | [ ] | [ ] |
-| respiratory | 10 | [ ] | [ ] | [ ] |
 | rheumatology | 13 | [ ] | [ ] | [ ] |
 | urology | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |

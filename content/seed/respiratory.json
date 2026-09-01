@@ -37,11 +37,31 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-astra", "name": "AstraZeneca", "madeInSa": false },
-    { "id": "mfr-boehringer", "name": "Boehringer Ingelheim", "madeInSa": false },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false }
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-astra",
+      "name": "AstraZeneca",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-boehringer",
+      "name": "Boehringer Ingelheim",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -64,7 +84,11 @@
       "innName": "Salbutamol",
       "className": "Short-acting beta-2 agonist (SABA)",
       "therapeuticArea": "respiratory",
-      "synonyms": ["albuterol", "ventolin", "asthma relief"],
+      "synonyms": [
+        "albuterol",
+        "ventolin",
+        "asthma relief"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Stimulates airway beta-2 receptors → bronchodilation for symptom relief — educational framing only; confirm against labelled product and SA guidelines.",
@@ -78,7 +102,9 @@
       "innName": "Budesonide",
       "className": "Inhaled corticosteroid (ICS)",
       "therapeuticArea": "respiratory",
-      "synonyms": ["pulmicort"],
+      "synonyms": [
+        "pulmicort"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Local anti-inflammatory effect in the airways — controller teaching molecule; rinsing mouth after use is the adherence hook.",
@@ -92,7 +118,10 @@
       "innName": "Fluticasone",
       "className": "Inhaled corticosteroid (ICS)",
       "therapeuticArea": "respiratory",
-      "synonyms": ["flixotide", "fluticasone propionate"],
+      "synonyms": [
+        "flixotide",
+        "fluticasone propionate"
+      ],
       "publishState": "published"
     },
     {
@@ -101,7 +130,11 @@
       "innName": "Beclometasone",
       "className": "Inhaled corticosteroid (ICS)",
       "therapeuticArea": "respiratory",
-      "synonyms": ["beclomethasone", "qvar", "becotide"],
+      "synonyms": [
+        "beclomethasone",
+        "qvar",
+        "becotide"
+      ],
       "publishState": "published"
     },
     {
@@ -110,7 +143,10 @@
       "innName": "Formoterol",
       "className": "Long-acting beta-2 agonist (LABA)",
       "therapeuticArea": "respiratory",
-      "synonyms": ["oxis", "foradil"],
+      "synonyms": [
+        "oxis",
+        "foradil"
+      ],
       "publishState": "published"
     },
     {
@@ -119,7 +155,9 @@
       "innName": "Salmeterol",
       "className": "Long-acting beta-2 agonist (LABA)",
       "therapeuticArea": "respiratory",
-      "synonyms": ["serevent"],
+      "synonyms": [
+        "serevent"
+      ],
       "publishState": "published"
     },
     {
@@ -128,7 +166,9 @@
       "innName": "Tiotropium",
       "className": "Long-acting muscarinic antagonist (LAMA)",
       "therapeuticArea": "respiratory",
-      "synonyms": ["spiriva"],
+      "synonyms": [
+        "spiriva"
+      ],
       "publishState": "published"
     },
     {
@@ -137,7 +177,9 @@
       "innName": "Montelukast",
       "className": "Leukotriene receptor antagonist",
       "therapeuticArea": "respiratory",
-      "synonyms": ["singulair"],
+      "synonyms": [
+        "singulair"
+      ],
       "publishState": "published"
     },
     {
@@ -146,7 +188,10 @@
       "innName": "Prednisone",
       "className": "Systemic corticosteroid",
       "therapeuticArea": "respiratory",
-      "synonyms": ["lenisone", "prednisone tablet"],
+      "synonyms": [
+        "lenisone",
+        "prednisone tablet"
+      ],
       "publishState": "published"
     },
     {
@@ -155,7 +200,10 @@
       "innName": "Theophylline",
       "className": "Methylxanthine bronchodilator",
       "therapeuticArea": "respiratory",
-      "synonyms": ["uniphyllin", "nuelin"],
+      "synonyms": [
+        "uniphyllin",
+        "nuelin"
+      ],
       "publishState": "published"
     }
   ],
@@ -170,7 +218,10 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["ventolin", "ventolin inhaler"],
+      "synonymKeys": [
+        "ventolin",
+        "ventolin inhaler"
+      ],
       "excipientIds": [],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
@@ -186,7 +237,9 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["salbutamol aspen"],
+      "synonymKeys": [
+        "salbutamol aspen"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -200,8 +253,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["pulmicort"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "pulmicort"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -214,8 +271,13 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["seretide", "advair"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "seretide",
+        "advair"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -228,8 +290,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["symbicort"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "symbicort"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -242,8 +308,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["spiriva"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "spiriva"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -256,8 +326,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["singulair"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "singulair"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     }
   ],
@@ -306,14 +380,688 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-fluticasone",
+      "moleculeId": "mol-fluticasone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Oral candidiasis (thrush) and hoarse voice are the main local risks. High-dose, long-term use can cause systemic corticosteroid effects, including adrenal suppression and, in children, some growth-rate reduction.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Rinse the mouth and spit after each dose to reduce thrush risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Oral thrush, hoarse voice.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Adrenal suppression with high-dose/long-term use needs medical assessment — do not stop abruptly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — local effects are managed supportively; systemic effects are assessed by a clinician.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Rinsing and spitting after every dose is one of the most consistently under-followed counselling points for inhaled corticosteroids.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Rinse and spit after each use. Don't stop long-term/high-dose treatment abruptly without medical guidance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-beclometasone",
+      "moleculeId": "mol-beclometasone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Oral candidiasis (thrush) and hoarse voice are the main local risks. High-dose, long-term use can cause systemic corticosteroid effects, including adrenal suppression and, in children, some growth-rate reduction.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Rinse the mouth and spit after each dose to reduce thrush risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Oral thrush, hoarse voice.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Adrenal suppression with high-dose/long-term use needs medical assessment — do not stop abruptly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — local effects are managed supportively; systemic effects are assessed by a clinician.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Rinsing and spitting after every dose is one of the most consistently under-followed counselling points for inhaled corticosteroids.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Rinse and spit after each use. Don't stop long-term/high-dose treatment abruptly without medical guidance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-formoterol",
+      "moleculeId": "mol-formoterol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Use as sole asthma therapy without an inhaled corticosteroid."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Long-acting beta-agonists must not be used as asthma monotherapy without an inhaled corticosteroid — LABA-only treatment in asthma is linked to increased risk of severe exacerbations and asthma-related death. Tachycardia and tremor are possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Tachycardia, tremor, palpitations.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant arrhythmia or hypokalaemia needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — cardiac monitoring and supportive care under medical direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The LABA-monotherapy-in-asthma safety signal is one of the most consistently tested regulatory warnings in respiratory pharmacology — always confirm ICS is on board.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never use a LABA alone for asthma — confirm it is paired with an inhaled corticosteroid as prescribed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-salmeterol",
+      "moleculeId": "mol-salmeterol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Use as sole asthma therapy without an inhaled corticosteroid."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Long-acting beta-agonists must not be used as asthma monotherapy without an inhaled corticosteroid — LABA-only treatment in asthma is linked to increased risk of severe exacerbations and asthma-related death. Tachycardia and tremor are possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Tachycardia, tremor, palpitations.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant arrhythmia or hypokalaemia needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — cardiac monitoring and supportive care under medical direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The LABA-monotherapy-in-asthma safety signal is one of the most consistently tested regulatory warnings in respiratory pharmacology — always confirm ICS is on board.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never use a LABA alone for asthma — confirm it is paired with an inhaled corticosteroid as prescribed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-tiotropium",
+      "moleculeId": "mol-tiotropium",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to atropine-like anticholinergics."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Anticholinergic effects such as dry mouth are possible. Accidental spray into the eyes during inhaler use can precipitate acute angle-closure glaucoma — a genuine device-technique safety issue, not just a theoretical one.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction; care with inhaler technique to avoid eye contact.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dry mouth, blurred vision, urinary hesitancy.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Eye pain with visual halos (possible acute angle-closure glaucoma) or significant urinary retention needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — anticholinergic effects are managed supportively under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Eye exposure during inhalation is a real, teachable technique-safety point for anticholinergic inhalers, not just a label warning.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Use careful inhaler technique to avoid spraying near the eyes. Report eye pain, visual halos, or difficulty urinating.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-montelukast",
+      "moleculeId": "mol-montelukast",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Neuropsychiatric effects (mood or behaviour changes, sleep disturbance, agitation, and rarely suicidal thoughts) are a recognised, regulator-flagged risk — worth actively screening for, especially in children and adolescents.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Often taken in the evening; may be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, headache.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "New or worsening mood/behaviour changes need prompt medical review.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Montelukast's neuropsychiatric signal is genuinely under-recognised — always ask about mood/behaviour changes at follow-up, not just asthma control.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report any new mood changes, unusual behaviour, or sleep disturbance — especially in children — to a clinician promptly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-prednisone",
+      "moleculeId": "mol-prednisone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Untreated systemic fungal infection."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Long-term use carries a broad, well-established risk profile: adrenal suppression, osteoporosis, hyperglycaemia, hypertension, increased infection susceptibility, mood changes, and cataracts. Abrupt discontinuation after prolonged use can precipitate an adrenal crisis.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset; morning dosing is often preferred to mirror the body's natural cortisol rhythm and reduce insomnia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Raised blood glucose, mood changes, fluid retention.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of adrenal crisis (severe weakness, vomiting, collapse) after abrupt stopping of long-term treatment are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — long-term treatment is stopped via a gradual, clinician-directed taper, never abruptly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "'Never stop long-term steroids abruptly' is one of the single most safety-critical rules in all of pharmacology practice.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food, ideally in the morning. Never stop abruptly after weeks of treatment — always taper under medical guidance. Carry a steroid alert card if on long-term treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-theophylline",
+      "moleculeId": "mol-theophylline",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant untreated cardiac arrhythmia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncontrolled seizure disorder — theophylline lowers the seizure threshold."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Narrow therapeutic index requiring level monitoring. Many interacting drugs (e.g. certain macrolides and fluoroquinolones) raise theophylline levels via CYP1A2/3A4 inhibition. Smoking induces its metabolism, so smokers typically need different handling than non-smokers.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Caffeine intake and smoking status both affect levels — keep both consistent and tell your pharmacist if either changes.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Nausea, tremor, tachycardia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Arrhythmia or seizures in toxicity are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — toxicity is managed supportively with levels monitored under specialist care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Theophylline's narrow therapeutic index plus its long interaction list (macrolides, fluoroquinolones, smoking status) is exactly why it has moved down the treatment ladder over time.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report nausea, tremor or palpitations. Tell your pharmacist about your smoking status and any new antibiotics before starting them.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
-  "interactions": [],
+  "interactions": [
+    {
+      "id": "ix-theophylline-clarithro",
+      "moleculeAId": "mol-theophylline",
+      "moleculeBId": "mol-clarithro",
+      "severity": "major",
+      "mechanism": {
+        "value": "Clarithromycin inhibits the CYP pathways that clear theophylline, raising levels toward toxicity in a drug with an already narrow therapeutic index.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for theophylline level monitoring and clinical review whenever both are co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-theophylline-cipro",
+      "moleculeAId": "mol-theophylline",
+      "moleculeBId": "mol-cipro",
+      "severity": "major",
+      "mechanism": {
+        "value": "Ciprofloxacin inhibits CYP1A2, raising theophylline levels toward toxicity in a drug with an already narrow therapeutic index.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for theophylline level monitoring and clinical review whenever both are co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    }
+  ],
   "priceRecords": [
     {
       "id": "price-ventolin",
       "productId": "prod-ventolin",
-      "sepZar": 78.0,
+      "sepZar": 78,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -322,7 +1070,7 @@
     {
       "id": "price-salbutamol-asp",
       "productId": "prod-salbutamol-asp",
-      "sepZar": 45.0,
+      "sepZar": 45,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
