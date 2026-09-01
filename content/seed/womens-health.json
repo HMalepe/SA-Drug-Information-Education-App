@@ -37,13 +37,41 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-bayer", "name": "Bayer", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-organon", "name": "Organon", "madeInSa": false },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-cipla", "name": "Cipla", "madeInSa": true }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-bayer",
+      "name": "Bayer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-organon",
+      "name": "Organon",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-cipla",
+      "name": "Cipla",
+      "madeInSa": true
+    }
   ],
   "excipients": [
     {
@@ -66,7 +94,13 @@
       "innName": "Levonorgestrel",
       "className": "Progestogen (contraception / emergency contraception)",
       "therapeuticArea": "womens-health",
-      "synonyms": ["postinor", "norlevo", "mirena", "jadelle", "levonorgestrel"],
+      "synonyms": [
+        "postinor",
+        "norlevo",
+        "mirena",
+        "jadelle",
+        "levonorgestrel"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Progestogen that thickens cervical mucus and can delay ovulation — educational framing for contraception counselling only; confirm against labelled product and SA guidelines. Never invent a dose or timing rule.",
@@ -80,7 +114,11 @@
       "innName": "Ethinylestradiol",
       "className": "Synthetic oestrogen (combined oral contraceptive component)",
       "therapeuticArea": "womens-health",
-      "synonyms": ["ee", "ethinyl estradiol", "yasmin component"],
+      "synonyms": [
+        "ee",
+        "ethinyl estradiol",
+        "yasmin component"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Oestrogen component of many COCs — VTE risk and enzyme-inducer counselling are teaching hooks; regimens stay clinician-directed.",
@@ -94,7 +132,11 @@
       "innName": "Drospirenone",
       "className": "Progestogen (COC component)",
       "therapeuticArea": "womens-health",
-      "synonyms": ["yasmin", "yaz", "drospirenone"],
+      "synonyms": [
+        "yasmin",
+        "yaz",
+        "drospirenone"
+      ],
       "publishState": "published"
     },
     {
@@ -103,7 +145,10 @@
       "innName": "Desogestrel",
       "className": "Progestogen-only pill component",
       "therapeuticArea": "womens-health",
-      "synonyms": ["cerazette", "desogestrel"],
+      "synonyms": [
+        "cerazette",
+        "desogestrel"
+      ],
       "publishState": "published"
     },
     {
@@ -112,7 +157,11 @@
       "innName": "Medroxyprogesterone",
       "className": "Injectable / oral progestogen",
       "therapeuticArea": "womens-health",
-      "synonyms": ["depo-provera", "provera", "dmpa"],
+      "synonyms": [
+        "depo-provera",
+        "provera",
+        "dmpa"
+      ],
       "publishState": "published"
     },
     {
@@ -121,7 +170,11 @@
       "innName": "Norethisterone",
       "className": "Progestogen",
       "therapeuticArea": "womens-health",
-      "synonyms": ["primolut-n", "norethisterone", "norethindrone"],
+      "synonyms": [
+        "primolut-n",
+        "norethisterone",
+        "norethindrone"
+      ],
       "publishState": "published"
     },
     {
@@ -130,7 +183,10 @@
       "innName": "Folic acid",
       "className": "Vitamin B9 (pregnancy / haematology support)",
       "therapeuticArea": "womens-health",
-      "synonyms": ["folate", "folic acid"],
+      "synonyms": [
+        "folate",
+        "folic acid"
+      ],
       "publishState": "published"
     },
     {
@@ -139,7 +195,11 @@
       "innName": "Ferrous sulfate",
       "className": "Oral iron salt",
       "therapeuticArea": "womens-health",
-      "synonyms": ["ferro-gradumet", "ferrous sulphate", "iron sulfate"],
+      "synonyms": [
+        "ferro-gradumet",
+        "ferrous sulphate",
+        "iron sulfate"
+      ],
       "publishState": "published"
     },
     {
@@ -148,7 +208,10 @@
       "innName": "Tranexamic acid",
       "className": "Antifibrinolytic",
       "therapeuticArea": "womens-health",
-      "synonyms": ["cyklokapron", "tranexamic acid"],
+      "synonyms": [
+        "cyklokapron",
+        "tranexamic acid"
+      ],
       "publishState": "published"
     },
     {
@@ -157,7 +220,10 @@
       "innName": "Mefenamic acid",
       "className": "NSAID (dysmenorrhoea)",
       "therapeuticArea": "womens-health",
-      "synonyms": ["ponstan", "mefenamic acid"],
+      "synonyms": [
+        "ponstan",
+        "mefenamic acid"
+      ],
       "publishState": "published"
     },
     {
@@ -166,7 +232,10 @@
       "innName": "Clotrimazole",
       "className": "Azole antifungal (topical / vaginal)",
       "therapeuticArea": "womens-health",
-      "synonyms": ["canesten", "clotrimazole"],
+      "synonyms": [
+        "canesten",
+        "clotrimazole"
+      ],
       "publishState": "published"
     },
     {
@@ -175,7 +244,10 @@
       "innName": "Fluconazole",
       "className": "Azole antifungal (systemic)",
       "therapeuticArea": "womens-health",
-      "synonyms": ["diflucan", "fluconazole"],
+      "synonyms": [
+        "diflucan",
+        "fluconazole"
+      ],
       "publishState": "published"
     },
     {
@@ -184,7 +256,10 @@
       "innName": "Oxytocin",
       "className": "Uterotonic peptide",
       "therapeuticArea": "womens-health",
-      "synonyms": ["syntocinon", "oxytocin"],
+      "synonyms": [
+        "syntocinon",
+        "oxytocin"
+      ],
       "publishState": "published"
     }
   ],
@@ -199,8 +274,13 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["postinor", "norlevo"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "postinor",
+        "norlevo"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -214,7 +294,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["mirena"],
+      "synonymKeys": [
+        "mirena"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -228,8 +310,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["yasmin"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "yasmin"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -242,7 +328,10 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["depo-provera", "depo provera"],
+      "synonymKeys": [
+        "depo-provera",
+        "depo provera"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -256,8 +345,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["cerazette"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "cerazette"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -270,8 +363,13 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["primolut", "primolut-n"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "primolut",
+        "primolut-n"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -284,7 +382,9 @@
       "schedule": "S1",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["canesten"],
+      "synonymKeys": [
+        "canesten"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -298,8 +398,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["diflucan"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "diflucan"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -312,8 +416,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["ponstan"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "ponstan"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -326,8 +434,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["cyklokapron"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "cyklokapron"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     }
   ],
@@ -414,6 +526,850 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-drospirenone",
+      "moleculeId": "mol-drospirenone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal, hepatic or adrenal insufficiency — its anti-mineralocorticoid activity raises hyperkalaemia risk in these settings."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyperkalaemia risk is a genuinely distinguishing drospirenone-specific caution among progestins, especially alongside ACE inhibitors, ARBs, potassium-sparing diuretics or NSAIDs. Shares the venous thromboembolism risk associated with combined hormonal contraceptives generally.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Nausea, breakthrough bleeding.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Leg swelling/pain or sudden breathlessness (possible VTE) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Drospirenone's spironolactone-like anti-mineralocorticoid activity is the key feature that sets its potassium caution apart from other progestins.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Routine potassium monitoring if also on interacting drugs. Report leg swelling/pain or breathlessness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-desogestrel",
+      "moleculeId": "mol-desogestrel",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active venous thromboembolism."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe liver disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Irregular bleeding is common, especially when starting. Carries a lower VTE risk than combined hormonal contraceptives, though not zero when part of a combined product.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Consistent daily timing matters more for progestin-only formulations than for combined pills.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Nausea, breakthrough bleeding.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable — seek advice for any concerning new symptom.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive if needed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Progestin-only pill timing consistency matters more clinically than for combined pills — missing the dosing window can reduce effectiveness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take at the same time every day. Know what to do about a late or missed dose from the product leaflet.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-medroxyprogesterone",
+      "moleculeId": "mol-medroxyprogesterone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active venous thromboembolism."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Undiagnosed abnormal vaginal bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant liver disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Reduced bone mineral density is a recognised risk with prolonged injectable use. Irregular bleeding or amenorrhoea is common. Return to fertility after stopping the injectable form can be delayed by months.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not typically applicable to injectable use; oral form may cause GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable — seek advice for any concerning new symptom.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable in the usual sense — effects wear off over time as the injection clears.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The delayed return to fertility after stopping the injectable form is an important, sometimes overlooked counselling point for anyone planning pregnancy in the near future.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Discuss bone health if using long-term. Understand the fertility-return timeline before choosing this method if planning pregnancy soon.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-norethisterone",
+      "moleculeId": "mol-norethisterone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active venous thromboembolism."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant liver disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Irregular bleeding is common. Used both for contraception and to delay menstruation, with different dosing patterns for each — confirming the intended use matters for correct counselling.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Nausea, breakthrough bleeding.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable — seek advice for any concerning new symptom.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive if needed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Norethisterone's dual role (contraception vs. period-delay) means confirming which use is intended is essential before counselling on timing.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Confirm with your pharmacist or doctor which use you're taking it for — the timing instructions differ.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-folic-acid",
+      "moleculeId": "mol-folic-acid",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Very safe at standard doses. High-dose supplementation can mask the blood-count signs of vitamin B12 deficiency while its neurological effects continue to progress silently — a genuinely important safety consideration in some clinical contexts.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "No significant toxicity expected at typical doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not applicable at typical doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Folic acid masking B12-deficiency anaemia while neurological damage continues is a classic, important pharmacology teaching point — not just a 'harmless vitamin' story.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take as advised — especially important before conception and in early pregnancy for neural tube defect prevention.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-tranexamic-acid",
+      "moleculeId": "mol-tranexamic-acid",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active thromboembolic disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of venous thromboembolism — its clot-stabilising effect is a theoretical concern."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Works by stabilising clots (antifibrinolytic) rather than thinning blood — the opposite mechanism to anticoagulants. Rare visual disturbances have been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, dizziness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Visual changes, leg swelling/pain, or breathlessness need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Tranexamic acid stabilises clots rather than dissolving them — an important conceptual distinction from anticoagulants that patients often confuse.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report visual changes, leg swelling/pain, or breathlessness while taking it.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-mefenamic-acid",
+      "moleculeId": "mol-mefenamic-acid",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active peptic ulcer or GI bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Inflammatory bowel disease — fenamates are more frequently associated with diarrhoea."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the NSAID-class GI/renal/cardiovascular risk triad; diarrhoea is reported more often with fenamates than with some other NSAID subclasses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, diarrhoea, drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "GI bleeding, renal impairment, or CNS depression need emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management of NSAID overdose is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mefenamic acid's diarrhoea signal is a useful differentiator when a patient using it for menstrual pain reports GI symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food. Report persistent diarrhoea.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-clotrimazole",
+      "moleculeId": "mol-clotrimazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local irritation or burning is possible. Some oil-based vaginal formulations can weaken latex condoms/diaphragms — a practically important, easily missed counselling point.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical/vaginal use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not applicable at typical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Vaginal antifungal creams/pessaries weakening latex contraceptives is a genuinely under-counselled practical point.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Check the product leaflet for condom/diaphragm compatibility during treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-fluconazole",
+      "moleculeId": "mol-fluconazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "A CYP2C9/CYP3A4 inhibitor with real interaction potential even at a single dose — notably potentiating warfarin (raising INR) and sulfonylureas (raising hypoglycaemia risk).",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, headache.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at standard single-dose use — seek advice for any concerning new symptom.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive if needed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Fluconazole's CYP inhibition means even a 'simple' single-dose antifungal course can meaningfully interact with warfarin or sulfonylureas — always screen the medicine list.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about all other medicines, even for a single-dose treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-oxytocin",
+      "moleculeId": "mol-oxytocin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant cephalopelvic disproportion or obstructed labour — used only in monitored obstetric settings."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Used almost exclusively in monitored hospital settings for labour induction/augmentation or postpartum haemorrhage management. Uterine hyperstimulation and fetal distress risk require continuous monitoring. Water intoxication is a distinctive risk with high doses or prolonged infusion, reflecting its structural similarity to vasopressin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral, hospital-administered use only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Uterine hyperstimulation (managed under continuous obstetric monitoring).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Water intoxication with high-dose/prolonged infusion is managed under specialist obstetric direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — stopping the infusion and supportive care under specialist obstetric direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Oxytocin's water-intoxication risk at high doses reflects its structural kinship with vasopressin/desmopressin — a genuinely interesting pharmacology link, not just a theoretical one.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at community-pharmacy level — used exclusively under continuous hospital monitoring.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -433,13 +1389,70 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-fluconazole-warfarin",
+      "moleculeAId": "mol-fluconazole",
+      "moleculeBId": "mol-warfarin",
+      "severity": "major",
+      "mechanism": {
+        "value": "Fluconazole inhibits CYP2C9, the main pathway for warfarin clearance, potentiating its anticoagulant effect even from a short course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for INR monitoring and clinical review during and shortly after treatment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-fluconazole-gliclazide",
+      "moleculeAId": "mol-fluconazole",
+      "moleculeBId": "mol-gliclazide",
+      "severity": "major",
+      "mechanism": {
+        "value": "Fluconazole inhibits the CYP pathway that clears gliclazide, raising levels and increasing hypoglycaemia risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — counsel on hypoglycaemia symptoms and more frequent glucose checks during treatment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-drospirenone-enalapril",
+      "moleculeAId": "mol-drospirenone",
+      "moleculeBId": "mol-enalapril",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Drospirenone's anti-mineralocorticoid activity adds to the hyperkalaemia risk already present with an ACE inhibitor.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for potassium monitoring whenever both are co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-postinor",
       "productId": "prod-postinor",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -448,7 +1461,7 @@
     {
       "id": "price-yasmin",
       "productId": "prod-yasmin",
-      "sepZar": 185.0,
+      "sepZar": 185,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -457,7 +1470,7 @@
     {
       "id": "price-depo-provera",
       "productId": "prod-depo-provera",
-      "sepZar": 72.0,
+      "sepZar": 72,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",

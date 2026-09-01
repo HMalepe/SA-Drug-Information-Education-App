@@ -50,8 +50,9 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **neurology** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: lamotrigine+valproate, phenytoin+isoniazid, donepezil+atenolol bradycardia) · DOSE: pending founder
 - [x] **rheumatology** (13 molecules) — SP: done (8 profiles added, incl. meloxicam) · IX: done (3 added: azathioprine+allopurinol, colchicine+clarithromycin, febuxostat+azathioprine) · DOSE: pending founder. Note: naproxen/celecoxib in this file reuse the same `mol-id` as their analgesics.json entries, which already carry a profile — not re-authored here to avoid duplicate/conflicting content under one ID.
 - [x] **endocrine** (13 molecules) — SP: done (9 profiles added) · IX: done (3 added: calcium+levothyroxine, calcium+ciprofloxacin, calcium+alendronate — all absorption-chelation spacing interactions) · DOSE: pending founder. Note: mol-prednisone here reuses the respiratory.json id (already profiled).
+- [x] **womens-health** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: fluconazole+warfarin, fluconazole+gliclazide, drospirenone+enalapril hyperkalaemia) · DOSE: pending founder
 
-## Remaining batches (9 areas, ~62 molecules)
+## Remaining batches (8 areas, ~49 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
@@ -63,7 +64,6 @@ no SP/IX gap, only the DOSE step remains, tracked via
 | ophthalmology | 13 | [ ] | [ ] | [ ] |
 | urology | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |
-| womens-health | 13 | [ ] | [ ] | [ ] |
 
 (16 rows above + 5 already done this session + 9 EML batches = the ~30
 `content/seed` files / therapeutic areas in the repo. Each SP/IX/DOSE
