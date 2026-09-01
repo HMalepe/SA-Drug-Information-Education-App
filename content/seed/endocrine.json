@@ -37,15 +37,51 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-merck", "name": "Merck", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
-    { "id": "mfr-ferring", "name": "Ferring", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-merck",
+      "name": "Merck",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-ferring",
+      "name": "Ferring",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -68,7 +104,13 @@
       "innName": "Levothyroxine",
       "className": "Thyroid hormone (T4)",
       "therapeuticArea": "endocrine",
-      "synonyms": ["eltroxin", "euthyrox", "synthroid", "levothyroxine", "t4"],
+      "synonyms": [
+        "eltroxin",
+        "euthyrox",
+        "synthroid",
+        "levothyroxine",
+        "t4"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Synthetic T4 replaced for hypothyroidism — educational framing only; confirm against labelled product and SA guidelines. Never invent a dose or TSH target.",
@@ -82,7 +124,12 @@
       "innName": "Liothyronine",
       "className": "Thyroid hormone (T3)",
       "therapeuticArea": "endocrine",
-      "synonyms": ["tertroxin", "cytomel", "liothyronine", "t3"],
+      "synonyms": [
+        "tertroxin",
+        "cytomel",
+        "liothyronine",
+        "t3"
+      ],
       "publishState": "published"
     },
     {
@@ -91,7 +138,10 @@
       "innName": "Carbimazole",
       "className": "Thionamide antithyroid",
       "therapeuticArea": "endocrine",
-      "synonyms": ["neomercazole", "carbimazole"],
+      "synonyms": [
+        "neomercazole",
+        "carbimazole"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Blocks thyroid hormone synthesis — agranulocytosis counselling is the teaching hook; regimens stay clinician-directed.",
@@ -105,7 +155,10 @@
       "innName": "Propylthiouracil",
       "className": "Thionamide antithyroid",
       "therapeuticArea": "endocrine",
-      "synonyms": ["ptu", "propylthiouracil"],
+      "synonyms": [
+        "ptu",
+        "propylthiouracil"
+      ],
       "publishState": "published"
     },
     {
@@ -114,7 +167,10 @@
       "innName": "Prednisone",
       "className": "Systemic corticosteroid",
       "therapeuticArea": "endocrine",
-      "synonyms": ["prednisone", "deltasone"],
+      "synonyms": [
+        "prednisone",
+        "deltasone"
+      ],
       "publishState": "published"
     },
     {
@@ -123,7 +179,10 @@
       "innName": "Prednisolone",
       "className": "Systemic corticosteroid",
       "therapeuticArea": "endocrine",
-      "synonyms": ["prednisolone", "prelone"],
+      "synonyms": [
+        "prednisolone",
+        "prelone"
+      ],
       "publishState": "published"
     },
     {
@@ -132,7 +191,11 @@
       "innName": "Hydrocortisone (systemic)",
       "className": "Systemic corticosteroid / glucocorticoid replacement",
       "therapeuticArea": "endocrine",
-      "synonyms": ["cortef", "solu-cortef", "hydrocortisone tablets"],
+      "synonyms": [
+        "cortef",
+        "solu-cortef",
+        "hydrocortisone tablets"
+      ],
       "publishState": "published"
     },
     {
@@ -141,7 +204,10 @@
       "innName": "Fludrocortisone",
       "className": "Mineralocorticoid",
       "therapeuticArea": "endocrine",
-      "synonyms": ["florinef", "fludrocortisone"],
+      "synonyms": [
+        "florinef",
+        "fludrocortisone"
+      ],
       "publishState": "published"
     },
     {
@@ -150,7 +216,11 @@
       "innName": "Desmopressin",
       "className": "Vasopressin analogue",
       "therapeuticArea": "endocrine",
-      "synonyms": ["minirin", "ddavp", "desmopressin"],
+      "synonyms": [
+        "minirin",
+        "ddavp",
+        "desmopressin"
+      ],
       "publishState": "published"
     },
     {
@@ -159,7 +229,10 @@
       "innName": "Cabergoline",
       "className": "Dopamine agonist (endocrine)",
       "therapeuticArea": "endocrine",
-      "synonyms": ["dostinex", "cabergoline"],
+      "synonyms": [
+        "dostinex",
+        "cabergoline"
+      ],
       "publishState": "published"
     },
     {
@@ -168,7 +241,11 @@
       "innName": "Alendronate",
       "className": "Bisphosphonate",
       "therapeuticArea": "endocrine",
-      "synonyms": ["fosamax", "alendronic acid", "alendronate"],
+      "synonyms": [
+        "fosamax",
+        "alendronic acid",
+        "alendronate"
+      ],
       "publishState": "published"
     },
     {
@@ -177,7 +254,11 @@
       "innName": "Colecalciferol",
       "className": "Vitamin D3",
       "therapeuticArea": "endocrine",
-      "synonyms": ["vitamin d3", "cholecalciferol", "osteo vitamin d"],
+      "synonyms": [
+        "vitamin d3",
+        "cholecalciferol",
+        "osteo vitamin d"
+      ],
       "publishState": "published"
     },
     {
@@ -186,7 +267,10 @@
       "innName": "Calcium carbonate",
       "className": "Calcium salt (supplement)",
       "therapeuticArea": "endocrine",
-      "synonyms": ["caltrate", "calcium carbonate"],
+      "synonyms": [
+        "caltrate",
+        "calcium carbonate"
+      ],
       "publishState": "published"
     }
   ],
@@ -201,8 +285,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["eltroxin"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "eltroxin"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -216,8 +304,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["euthyrox"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "euthyrox"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -230,8 +322,13 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["neomercazole", "neo-mercazole"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "neomercazole",
+        "neo-mercazole"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -245,8 +342,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["prednisone aspen"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "prednisone aspen"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -259,8 +360,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["florinef"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "florinef"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -273,8 +378,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["minirin"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "minirin"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -287,8 +396,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["dostinex"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "dostinex"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -301,8 +414,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["fosamax"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "fosamax"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -315,7 +432,9 @@
       "schedule": "S0",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["caltrate"],
+      "synonymKeys": [
+        "caltrate"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -329,7 +448,10 @@
       "schedule": "S0",
       "isOriginator": false,
       "isDiscontinued": false,
-      "synonymKeys": ["osteo vitamin d", "vitamin d3"],
+      "synonymKeys": [
+        "osteo vitamin d",
+        "vitamin d3"
+      ],
       "excipientIds": [],
       "publishState": "published"
     }
@@ -417,6 +539,778 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-liothyronine",
+      "moleculeId": "mol-liothyronine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Untreated thyrotoxicosis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Acute myocardial infarction."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncorrected adrenal insufficiency."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Faster onset and shorter half-life than levothyroxine make levels harder to keep smooth — excess more readily causes palpitations and other thyrotoxicosis symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take at a consistent time each day.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Palpitations, tremor, heat intolerance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant tachyarrhythmia needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — symptomatic control (e.g. beta-blockade) under medical direction for significant excess.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Liothyronine's fast onset/offset compared with levothyroxine is exactly why it's used more selectively and is harder to dose smoothly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report palpitations, tremor, or unusual heat intolerance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-propylthiouracil",
+      "moleculeId": "mol-propylthiouracil",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hepatic impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Rare but serious hepatotoxicity (including liver failure) and agranulocytosis are recognised risks requiring routine blood count and liver function monitoring — this is why carbimazole is generally preferred outside specific situations such as early pregnancy.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, signs of thyroid dysfunction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Sore throat/fever (possible agranulocytosis) or jaundice (possible liver injury) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care with blood counts and liver function monitored.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "PTU's serious hepatotoxicity signal is the main reason it has become a second-line choice relative to carbimazole in most non-pregnant patients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report sore throat, fever, or yellowing of the skin/eyes immediately.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-prednisolone",
+      "moleculeId": "mol-prednisolone-oral",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Untreated systemic fungal infection."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Long-term use carries a broad, well-established risk profile: adrenal suppression, osteoporosis, hyperglycaemia, hypertension, increased infection susceptibility, mood changes, and cataracts. Abrupt discontinuation after prolonged use can precipitate an adrenal crisis.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset; morning dosing is often preferred to mirror the body's natural cortisol rhythm and reduce insomnia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Raised blood glucose, mood changes, fluid retention.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of adrenal crisis (severe weakness, vomiting, collapse) after abrupt stopping of long-term treatment are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — long-term treatment is stopped via a gradual, clinician-directed taper, never abruptly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "'Never stop long-term steroids abruptly' is one of the single most safety-critical rules in all of pharmacology practice.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food, ideally in the morning. Never stop abruptly after weeks of treatment. Carry a steroid alert card if on long-term treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-hydrocortisone-systemic",
+      "moleculeId": "mol-hydrocortisone-systemic",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Shares the broad long-term corticosteroid risk profile, but is also used physiologically as replacement therapy in adrenal insufficiency — in that context, 'sick day' stress dosing during illness or before surgery is essential, and missed doses can be life-threatening.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Signs of excess (fluid retention, raised glucose) or, if a replacement dose is missed, signs of deficiency (weakness, dizziness, nausea).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of adrenal crisis (severe weakness, vomiting, collapse) — especially in someone on replacement therapy who has missed doses or is unwell — are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — dose adjustment (including emergency 'sick day' stress dosing) under specialist direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Hydrocortisone for adrenal insufficiency isn't 'just a steroid' — missed doses during illness can be genuinely life-threatening, which is why sick-day rules and a steroid card matter so much.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "If on replacement therapy: never miss doses, know your sick-day rules for illness/vomiting, and carry a steroid card at all times.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-fludrocortisone",
+      "moleculeId": "mol-fludrocortisone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Its mineralocorticoid (salt-retaining) effect causes sodium/fluid retention and potassium loss — routine blood pressure and electrolyte monitoring is standard. Caution in significant hypertension or heart failure given the fluid-retention effect.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Swelling, raised blood pressure, muscle weakness (possible low potassium).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypertension or significant electrolyte disturbance needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive, with electrolytes and blood pressure corrected under medical guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Fludrocortisone's salt-retaining mineralocorticoid effect is why blood pressure and potassium — not glucose or infection risk — are the main things to monitor, in contrast with glucocorticoid-focused steroids.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report swelling, high blood pressure readings, or muscle weakness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-desmopressin",
+      "moleculeId": "mol-desmopressin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hyponatraemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Conditions with significant fluid-overload risk (e.g. moderate-severe renal impairment or heart failure) — added caution."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyponatraemia/water intoxication is a well-documented risk if fluid intake isn't appropriately restricted around dosing — particularly important in children and the elderly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Follow the fluid-restriction instructions around dosing times exactly, as directed for the specific regimen.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, nausea (early signs of low sodium).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion or seizures from significant hyponatraemia are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — fluid restriction and specialist management of hyponatraemia if it develops.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Desmopressin's hyponatraemia risk is directly tied to fluid intake around dosing — one of the most important, and most often under-counselled, points for this drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Strictly follow fluid-restriction advice around dosing times. Report headache, nausea or confusion.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-cabergoline",
+      "moleculeId": "mol-cabergoline",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncontrolled hypertension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy-induced hypertension/pre-eclampsia — added caution."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cardiac valve fibrosis is a rare but serious risk with long-term, high-dose use — much more relevant at higher (e.g. Parkinson's-disease-level) doses than the lower doses typically used for prolactin lowering. Impulse-control disorders (as with other dopamine agonists) and postural hypotension have been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness on standing, GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "New breathlessness or unusual fatigue (possible cardiac valve effect at high doses) needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Cabergoline's valve-fibrosis signal is dose- and duration-dependent — an important nuance when comparing typical prolactin-lowering doses with much higher historical Parkinson's-disease doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report new breathlessness or unusual fatigue. Report any new compulsive behaviours (gambling, spending, hypersexuality).",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-colecalciferol",
+      "moleculeId": "mol-colecalciferol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypercalcaemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypervitaminosis D."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Excessive, prolonged unsupervised supplementation can cause hypercalcaemia — particularly relevant alongside calcium supplements or in renal impairment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Absorption may be somewhat improved when taken with a fat-containing meal.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Nausea, constipation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion or kidney stones from chronic excess (significant hypercalcaemia) need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — stop supplementation and manage hypercalcaemia under medical care if it develops.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Vitamin D toxicity is rare but real with high-dose, prolonged unsupervised use — 'more is better' does not apply here.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Don't exceed recommended doses without medical advice, especially if also taking calcium supplements.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-calcium-carbonate",
+      "moleculeId": "mol-calcium-carbonate",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypercalcaemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe renal impairment (outside supervised phosphate-binder use)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Reduces absorption of several other oral drugs through chelation — including levothyroxine, tetracyclines, fluoroquinolones and bisphosphonates — so dosing must be separated by several hours. Excessive intake can cause hypercalcaemia or, rarely, milk-alkali syndrome.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food for best absorption as a supplement, but always separate the dose from interacting drugs by the recommended interval.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Constipation, nausea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion or kidney impairment from significant hypercalcaemia needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Calcium's absorption-blocking effect on levothyroxine, tetracyclines, fluoroquinolones and bisphosphonates is one of the broadest 'always ask about spacing' counselling points in pharmacy practice.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Separate dosing from levothyroxine, most antibiotics, and bisphosphonates by several hours, as directed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -436,13 +1330,70 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-calcium-levothyroxine",
+      "moleculeAId": "mol-calcium-carbonate",
+      "moleculeBId": "mol-levothyroxine",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Calcium carbonate chelates levothyroxine in the gut, reducing its absorption if taken too close together.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — separate dosing by several hours as the correct fix, not a levothyroxine dose increase.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-calcium-cipro",
+      "moleculeAId": "mol-calcium-carbonate",
+      "moleculeBId": "mol-cipro",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Calcium chelates ciprofloxacin in the gut, markedly reducing its absorption if taken too close together.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — separate dosing by several hours as the correct fix.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-calcium-alendronate",
+      "moleculeAId": "mol-calcium-carbonate",
+      "moleculeBId": "mol-alendronate",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Calcium markedly reduces bisphosphonate absorption, which is already poor even without an interacting product present.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — alendronate should be taken well separated from any calcium-containing product, per its labelled instructions.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-eltroxin",
       "productId": "prod-eltroxin",
-      "sepZar": 68.0,
+      "sepZar": 68,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -451,7 +1402,7 @@
     {
       "id": "price-euthyrox",
       "productId": "prod-euthyrox",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -460,7 +1411,7 @@
     {
       "id": "price-neomercazole",
       "productId": "prod-neomercazole",
-      "sepZar": 112.0,
+      "sepZar": 112,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",

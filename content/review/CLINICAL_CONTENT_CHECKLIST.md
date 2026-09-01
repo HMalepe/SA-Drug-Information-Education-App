@@ -49,14 +49,14 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **hiv-tb** (10 molecules) — SP: done (8 profiles added) · IX: done (2 added: ritonavir+simvastatin contraindicated combo, rifampicin+dolutegravir TB/HIV co-treatment) · DOSE: pending founder
 - [x] **neurology** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: lamotrigine+valproate, phenytoin+isoniazid, donepezil+atenolol bradycardia) · DOSE: pending founder
 - [x] **rheumatology** (13 molecules) — SP: done (8 profiles added, incl. meloxicam) · IX: done (3 added: azathioprine+allopurinol, colchicine+clarithromycin, febuxostat+azathioprine) · DOSE: pending founder. Note: naproxen/celecoxib in this file reuse the same `mol-id` as their analgesics.json entries, which already carry a profile — not re-authored here to avoid duplicate/conflicting content under one ID.
+- [x] **endocrine** (13 molecules) — SP: done (9 profiles added) · IX: done (3 added: calcium+levothyroxine, calcium+ciprofloxacin, calcium+alendronate — all absorption-chelation spacing interactions) · DOSE: pending founder. Note: mol-prednisone here reuses the respiratory.json id (already profiled).
 
-## Remaining batches (10 areas, ~75 molecules)
+## Remaining batches (9 areas, ~62 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
 | anaesthetics | 13 | [ ] | [ ] | [ ] |
 | dermatology | 13 | [ ] | [ ] | [ ] |
-| endocrine | 13 | [ ] | [ ] | [ ] |
 | ent-allergy | 13 | [ ] | [ ] | [ ] |
 | haematology | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
