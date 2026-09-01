@@ -37,11 +37,31 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-novo", "name": "Novo Nordisk", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
-    { "id": "mfr-boehringer", "name": "Boehringer Ingelheim", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-novo",
+      "name": "Novo Nordisk",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-boehringer",
+      "name": "Boehringer Ingelheim",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -64,7 +84,10 @@
       "innName": "Metformin",
       "className": "Biguanide",
       "therapeuticArea": "diabetes",
-      "synonyms": ["glucophage", "metformin hydrochloride"],
+      "synonyms": [
+        "glucophage",
+        "metformin hydrochloride"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Lowers hepatic glucose output and improves insulin sensitivity — first-line educational framing only; confirm against labelled product and SA guidelines.",
@@ -78,7 +101,9 @@
       "innName": "Gliclazide",
       "className": "Sulfonylurea",
       "therapeuticArea": "diabetes",
-      "synonyms": ["diamicron"],
+      "synonyms": [
+        "diamicron"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Stimulates pancreatic insulin release — hypoglycaemia counselling is the teaching hook; dosing stays unpublished until founder review.",
@@ -92,7 +117,9 @@
       "innName": "Glimepiride",
       "className": "Sulfonylurea",
       "therapeuticArea": "diabetes",
-      "synonyms": ["amaryl"],
+      "synonyms": [
+        "amaryl"
+      ],
       "publishState": "published"
     },
     {
@@ -101,7 +128,9 @@
       "innName": "Sitagliptin",
       "className": "DPP-4 inhibitor",
       "therapeuticArea": "diabetes",
-      "synonyms": ["januvia"],
+      "synonyms": [
+        "januvia"
+      ],
       "publishState": "published"
     },
     {
@@ -110,7 +139,9 @@
       "innName": "Empagliflozin",
       "className": "SGLT2 inhibitor",
       "therapeuticArea": "diabetes",
-      "synonyms": ["jardiance"],
+      "synonyms": [
+        "jardiance"
+      ],
       "publishState": "published"
     },
     {
@@ -119,7 +150,9 @@
       "innName": "Dapagliflozin",
       "className": "SGLT2 inhibitor",
       "therapeuticArea": "diabetes",
-      "synonyms": ["forxiga"],
+      "synonyms": [
+        "forxiga"
+      ],
       "publishState": "published"
     },
     {
@@ -128,7 +161,11 @@
       "innName": "Semaglutide",
       "className": "GLP-1 receptor agonist",
       "therapeuticArea": "diabetes",
-      "synonyms": ["ozempic", "rybelsus", "wegovy"],
+      "synonyms": [
+        "ozempic",
+        "rybelsus",
+        "wegovy"
+      ],
       "publishState": "published"
     },
     {
@@ -137,7 +174,11 @@
       "innName": "Insulin glargine",
       "className": "Long-acting basal insulin analogue",
       "therapeuticArea": "diabetes",
-      "synonyms": ["lantus", "basaglar", "toujeo"],
+      "synonyms": [
+        "lantus",
+        "basaglar",
+        "toujeo"
+      ],
       "publishState": "published"
     },
     {
@@ -146,7 +187,10 @@
       "innName": "Insulin aspart",
       "className": "Rapid-acting insulin analogue",
       "therapeuticArea": "diabetes",
-      "synonyms": ["novorapid", "fiasp"],
+      "synonyms": [
+        "novorapid",
+        "fiasp"
+      ],
       "publishState": "published"
     },
     {
@@ -155,7 +199,11 @@
       "innName": "Insulin human",
       "className": "Human insulin (regular / NPH contexts)",
       "therapeuticArea": "diabetes",
-      "synonyms": ["actrapid", "protaphane", "humulin"],
+      "synonyms": [
+        "actrapid",
+        "protaphane",
+        "humulin"
+      ],
       "publishState": "published"
     }
   ],
@@ -170,8 +218,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["glucophage"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "glucophage"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -186,8 +238,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["metformin aspen"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "metformin aspen"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -200,8 +256,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["diamicron"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "diamicron"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -214,8 +274,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["januvia"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "januvia"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -228,8 +292,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["jardiance"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "jardiance"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -242,7 +310,9 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["lantus"],
+      "synonymKeys": [
+        "lantus"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -256,7 +326,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["ozempic"],
+      "synonymKeys": [
+        "ozempic"
+      ],
       "excipientIds": [],
       "publishState": "published"
     }
@@ -306,14 +378,745 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-glimepiride",
+      "moleculeId": "mol-glimepiride",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Type 1 diabetes / diabetic ketoacidosis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe hepatic or renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hypoglycaemia risk, especially with missed meals, alcohol, or interacting drugs (e.g. beta-blockers, which can mask warning symptoms). Weight gain is a recognised class effect of sulfonylureas.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with the first main meal of the day; do not skip meals after dosing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Sweating, tremor, hunger, palpitations (hypoglycaemia).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion, seizure or loss of consciousness from severe hypoglycaemia is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Prompt oral glucose/sugar for mild-moderate hypoglycaemia; severe cases need emergency glucose administration under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Sulfonylureas as a class carry a real hypoglycaemia risk that GLP-1/DPP-4/SGLT2 drugs mostly avoid — worth flagging when a patient is on multiple agents.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never skip a meal after taking this. Carry a fast-acting sugar source and know the early signs of hypoglycaemia.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-sitagliptin",
+      "moleculeId": "mol-sitagliptin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "History of severe hypersensitivity to a DPP-4 inhibitor (e.g. angioedema, Stevens-Johnson syndrome)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Low hypoglycaemia risk alone, but risk rises when combined with a sulfonylurea or insulin. Rare reports of acute pancreatitis — persistent severe abdominal pain warrants urgent review.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Generally well tolerated; GI upset possible.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Persistent severe abdominal pain (possible pancreatitis) needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "DPP-4 inhibitors are often chosen specifically for their low intrinsic hypoglycaemia risk versus sulfonylureas.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report persistent, severe abdominal pain promptly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-empagliflozin",
+      "moleculeId": "mol-empagliflozin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Type 1 diabetes."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment (per labelled thresholds) — effectiveness and safety both depend on kidney function."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Genital mycotic infections and urinary tract infections are more common due to glucose in the urine. Euglycaemic diabetic ketoacidosis (DKA with near-normal glucose) is a recognised, easily missed risk — especially around illness, fasting, surgery, or low-carbohydrate diets. Volume depletion/hypotension can occur, especially with diuretics.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; maintain adequate fluid intake.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Genital itching/discharge, increased urination, nausea (possible early euglycaemic DKA sign even with normal-looking glucose).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Nausea, vomiting, abdominal pain and breathlessness with normal or only mildly raised glucose can still mean DKA — a medical emergency; do not be reassured by a 'normal' glucose reading alone.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — suspected euglycaemic DKA needs urgent medical assessment and standard DKA management.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Euglycaemic DKA with SGLT2 inhibitors is a genuinely dangerous teaching trap — a normal blood glucose does not rule out ketoacidosis on this drug class.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Practise good genital hygiene given the higher infection risk. Discuss temporarily stopping the medicine with a clinician before surgery or during significant illness/fasting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-dapagliflozin",
+      "moleculeId": "mol-dapagliflozin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Type 1 diabetes."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment (per labelled thresholds)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the SGLT2-inhibitor class risks: genital mycotic infections, urinary tract infections, euglycaemic diabetic ketoacidosis (especially around illness, fasting, surgery, or very low-carbohydrate diets), and volume depletion.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; maintain adequate fluid intake.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Genital itching/discharge, increased urination, nausea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Nausea, vomiting, abdominal pain and breathlessness with normal or only mildly raised glucose can still mean DKA — a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — suspected euglycaemic DKA needs urgent medical assessment and standard DKA management.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "This SGLT2-class DKA risk is easy to miss precisely because the glucose reading looks reassuring — always ask about symptoms, not just the number.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Practise good genital hygiene. Discuss temporarily stopping the medicine with a clinician before surgery or during significant illness/fasting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-semaglutide",
+      "moleculeId": "mol-semaglutide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Personal or family history of medullary thyroid carcinoma or MEN2 syndrome."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of severe GI disease (e.g. gastroparesis) — caution given GI slowing effects."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "GI side effects (nausea, vomiting, diarrhoea) are common, especially when starting or increasing dose, and usually settle over time. Rare reports of acute pancreatitis and gallbladder disease. Low hypoglycaemia risk alone, but risk rises when combined with insulin or a sulfonylurea.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Follow the labelled product's timing instructions; GI tolerability often improves with a gradual, guided dose build-up.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Nausea, vomiting, GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Persistent severe abdominal pain (possible pancreatitis) needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "GI side effects are the main reason semaglutide is dose-escalated gradually rather than started at a full dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Expect some GI upset when starting or stepping up the dose — it usually improves. Report persistent severe abdominal pain.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-insulin-glargine",
+      "moleculeId": "mol-insulin-glargine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypoglycaemia (do not administer during an active hypoglycaemic episode)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hypoglycaemia is the principal risk of all insulins; risk rises with missed meals, exercise, alcohol, or dose errors. Never share pens/devices between patients — infection transmission risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Timing relative to meals depends on the specific insulin regimen — follow the individualised plan.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Sweating, tremor, hunger, palpitations, confusion (hypoglycaemia).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Seizure or loss of consciousness from severe hypoglycaemia is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Glucose (oral if conscious, IV/glucagon if not) is the established treatment for hypoglycaemia, under medical guidance for severe cases.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "As a long-acting basal insulin, glargine is designed for a flatter profile — but hypoglycaemia risk never fully disappears and still needs active counselling.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Learn to recognise your own early hypoglycaemia signs and always carry a fast-acting sugar source. Never share insulin pens.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-insulin-aspart",
+      "moleculeId": "mol-insulin-aspart",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypoglycaemia (do not administer during an active hypoglycaemic episode)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "As a rapid-acting insulin, mistimed dosing relative to meals is a common, avoidable cause of hypoglycaemia. Never share pens/devices between patients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Typically given shortly before or with a meal — follow the individualised regimen exactly, since timing matters more than for basal insulin.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Sweating, tremor, hunger, palpitations, confusion (hypoglycaemia).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Seizure or loss of consciousness from severe hypoglycaemia is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Glucose (oral if conscious, IV/glucagon if not) is the established treatment for hypoglycaemia, under medical guidance for severe cases.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Rapid-acting insulins are unforgiving of timing errors — dosing without food shortly after (or instead of) a meal is a classic avoidable hypoglycaemia cause.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Have your food ready before or immediately after dosing, as directed. Always carry a fast-acting sugar source.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-insulin-human",
+      "moleculeId": "mol-insulin-human",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Hypoglycaemia (do not administer during an active hypoglycaemic episode)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hypoglycaemia risk as with any insulin; onset/duration differ from analogue insulins, so timing relative to meals must follow the specific regimen prescribed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Timing relative to meals depends on the specific regimen — follow the individualised plan exactly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Sweating, tremor, hunger, palpitations, confusion (hypoglycaemia).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Seizure or loss of consciousness from severe hypoglycaemia is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Glucose (oral if conscious, IV/glucagon if not) is the established treatment for hypoglycaemia, under medical guidance for severe cases.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Human (non-analogue) insulins have a different onset/duration profile than analogues — mixing up regimens between the two is a real dispensing-safety risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Confirm exactly which insulin you're using before changing timing habits — human and analogue insulins are not interchangeable in timing.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
-  "interactions": [],
+  "interactions": [
+    {
+      "id": "ix-glimepiride-atenolol",
+      "moleculeAId": "mol-glimepiride",
+      "moleculeBId": "mol-atenolol",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Beta-blockers can blunt the tachycardia and tremor that normally warn of sulfonylurea-induced hypoglycaemia, though sweating is usually preserved.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — counsel on alternative hypoglycaemia warning signs and more frequent glucose checks.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-empagliflozin-furosemide",
+      "moleculeAId": "mol-empagliflozin",
+      "moleculeBId": "mol-furosemide",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Both drugs promote fluid loss; combined, the risk of volume depletion, hypotension and acute kidney injury is additive, especially in older or dehydrated patients.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for renal function and hydration status monitoring whenever both are co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    }
+  ],
   "priceRecords": [
     {
       "id": "price-glucophage",
       "productId": "prod-glucophage",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -322,7 +1125,7 @@
     {
       "id": "price-metformin-asp",
       "productId": "prod-metformin-asp",
-      "sepZar": 42.0,
+      "sepZar": 42,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",

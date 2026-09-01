@@ -42,30 +42,30 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **analgesics** (10 molecules) — SP: done (8 profiles added) · IX: done (3 added: ibuprofen+warfarin, ibuprofen+enalapril, tramadol+fluoxetine) · DOSE: pending founder
 - [x] **cardiovascular** (10 molecules) — SP: done (8 profiles added) · IX: done (4 added: clopidogrel+omeprazole, digoxin+furosemide, digoxin+hctz, isosorbide+sildenafil) · DOSE: pending founder
 - [x] **antihypertensives** (10 molecules) — SP: done (8 profiles added) · IX: done (3 added: enalapril+spironolactone, furosemide+gentamicin, atenolol+gliclazide) · DOSE: pending founder
+- [x] **diabetes** (10 molecules) — SP: done (8 profiles added) · IX: done (2 added: glimepiride+atenolol masked hypoglycaemia, empagliflozin+furosemide volume depletion) · DOSE: pending founder
 
-## Remaining batches (17 areas, ~156 molecules)
+## Remaining batches (16 areas, ~146 molecules)
 
 | # | Area | Molecules | SP | IX | DOSE |
 |---|------|-----------|----|----|------|
 | 1 | anaesthetics | 13 | [ ] | [ ] | [ ] |
 | 2 | dermatology | 13 | [ ] | [ ] | [ ] |
-| 3 | diabetes | 10 | [ ] | [ ] | [ ] |
-| 4 | endocrine | 13 | [ ] | [ ] | [ ] |
-| 5 | ent-allergy | 13 | [ ] | [ ] | [ ] |
-| 6 | gastrointestinal | 12 | [ ] | [ ] | [ ] |
-| 7 | haematology | 13 | [ ] | [ ] | [ ] |
-| 8 | hiv-tb | 10 | [ ] | [ ] | [ ] |
-| 9 | mental-health | 13 | [ ] | [ ] | [ ] |
-| 10 | neurology | 13 | [ ] | [ ] | [ ] |
-| 11 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
-| 12 | ophthalmology | 13 | [ ] | [ ] | [ ] |
-| 13 | respiratory | 10 | [ ] | [ ] | [ ] |
-| 14 | rheumatology | 13 | [ ] | [ ] | [ ] |
-| 15 | urology | 13 | [ ] | [ ] | [ ] |
-| 16 | vaccines | 13 | [ ] | [ ] | [ ] |
-| 17 | womens-health | 13 | [ ] | [ ] | [ ] |
+| 3 | endocrine | 13 | [ ] | [ ] | [ ] |
+| 4 | ent-allergy | 13 | [ ] | [ ] | [ ] |
+| 5 | gastrointestinal | 12 | [ ] | [ ] | [ ] |
+| 6 | haematology | 13 | [ ] | [ ] | [ ] |
+| 7 | hiv-tb | 10 | [ ] | [ ] | [ ] |
+| 8 | mental-health | 13 | [ ] | [ ] | [ ] |
+| 9 | neurology | 13 | [ ] | [ ] | [ ] |
+| 10 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
+| 11 | ophthalmology | 13 | [ ] | [ ] | [ ] |
+| 12 | respiratory | 10 | [ ] | [ ] | [ ] |
+| 13 | rheumatology | 13 | [ ] | [ ] | [ ] |
+| 14 | urology | 13 | [ ] | [ ] | [ ] |
+| 15 | vaccines | 13 | [ ] | [ ] | [ ] |
+| 16 | womens-health | 13 | [ ] | [ ] | [ ] |
 
-(19 rows above + 2 already done this session + 9 EML batches = the ~30
+(16 rows above + 5 already done this session + 9 EML batches = the ~30
 `content/seed` files / therapeutic areas in the repo. Each SP/IX/DOSE
 checkpoint is its own sub-task, so this is genuinely 50-90+ checklist points
 end to end, matching the founder's requested granularity.)
