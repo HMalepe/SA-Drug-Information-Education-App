@@ -37,14 +37,46 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-lilly", "name": "Eli Lilly", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-lundbeck", "name": "Lundbeck", "madeInSa": false },
-    { "id": "mfr-astra", "name": "AstraZeneca", "madeInSa": false },
-    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-lilly",
+      "name": "Eli Lilly",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-lundbeck",
+      "name": "Lundbeck",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-astra",
+      "name": "AstraZeneca",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-janssen",
+      "name": "Janssen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    }
   ],
   "excipients": [
     {
@@ -67,7 +99,11 @@
       "innName": "Fluoxetine",
       "className": "Selective serotonin reuptake inhibitor (SSRI)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["prozac", "nuzak", "fluoxetine"],
+      "synonyms": [
+        "prozac",
+        "nuzak",
+        "fluoxetine"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Inhibits serotonin reuptake → increases synaptic serotonin — educational framing only; confirm against labelled product and SA guidelines. Never invent a dose or taper schedule.",
@@ -81,7 +117,10 @@
       "innName": "Sertraline",
       "className": "Selective serotonin reuptake inhibitor (SSRI)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["zoloft", "sertraline"],
+      "synonyms": [
+        "zoloft",
+        "sertraline"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "SSRI used widely in depression/anxiety teaching — onset delay and activation counselling are the hooks; dosing stays unpublished until founder review.",
@@ -95,7 +134,10 @@
       "innName": "Citalopram",
       "className": "Selective serotonin reuptake inhibitor (SSRI)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["cipramil", "citalopram"],
+      "synonyms": [
+        "cipramil",
+        "citalopram"
+      ],
       "publishState": "published"
     },
     {
@@ -104,7 +146,11 @@
       "innName": "Escitalopram",
       "className": "Selective serotonin reuptake inhibitor (SSRI)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["cipralex", "lexapro", "escitalopram"],
+      "synonyms": [
+        "cipralex",
+        "lexapro",
+        "escitalopram"
+      ],
       "publishState": "published"
     },
     {
@@ -113,7 +159,11 @@
       "innName": "Venlafaxine",
       "className": "Serotonin–noradrenaline reuptake inhibitor (SNRI)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["efexor", "effexor", "venlafaxine"],
+      "synonyms": [
+        "efexor",
+        "effexor",
+        "venlafaxine"
+      ],
       "publishState": "published"
     },
     {
@@ -122,7 +172,10 @@
       "innName": "Mirtazapine",
       "className": "Noradrenergic and specific serotonergic antidepressant (NaSSA)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["remeron", "mirtazapine"],
+      "synonyms": [
+        "remeron",
+        "mirtazapine"
+      ],
       "publishState": "published"
     },
     {
@@ -131,7 +184,10 @@
       "innName": "Amitriptyline",
       "className": "Tricyclic antidepressant (TCA)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["tryptanol", "amitriptyline"],
+      "synonyms": [
+        "tryptanol",
+        "amitriptyline"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "TCA with anticholinergic and cardiac-risk counselling hooks — overdose is high-stakes; Materia never invents a dose.",
@@ -145,7 +201,10 @@
       "innName": "Quetiapine",
       "className": "Atypical antipsychotic",
       "therapeuticArea": "mental-health",
-      "synonyms": ["seroquel", "quetiapine"],
+      "synonyms": [
+        "seroquel",
+        "quetiapine"
+      ],
       "publishState": "published"
     },
     {
@@ -154,7 +213,10 @@
       "innName": "Risperidone",
       "className": "Atypical antipsychotic",
       "therapeuticArea": "mental-health",
-      "synonyms": ["risperdal", "risperidone"],
+      "synonyms": [
+        "risperdal",
+        "risperidone"
+      ],
       "publishState": "published"
     },
     {
@@ -163,7 +225,11 @@
       "innName": "Haloperidol",
       "className": "Typical antipsychotic (butyrophenone)",
       "therapeuticArea": "mental-health",
-      "synonyms": ["serenace", "haldol", "haloperidol"],
+      "synonyms": [
+        "serenace",
+        "haldol",
+        "haloperidol"
+      ],
       "publishState": "published"
     },
     {
@@ -172,7 +238,11 @@
       "innName": "Lithium",
       "className": "Mood stabiliser",
       "therapeuticArea": "mental-health",
-      "synonyms": ["camcolit", "lithium carbonate", "priadel"],
+      "synonyms": [
+        "camcolit",
+        "lithium carbonate",
+        "priadel"
+      ],
       "publishState": "published"
     },
     {
@@ -181,7 +251,10 @@
       "innName": "Diazepam",
       "className": "Benzodiazepine",
       "therapeuticArea": "mental-health",
-      "synonyms": ["valium", "diazepam"],
+      "synonyms": [
+        "valium",
+        "diazepam"
+      ],
       "publishState": "published"
     },
     {
@@ -190,7 +263,10 @@
       "innName": "Lorazepam",
       "className": "Benzodiazepine",
       "therapeuticArea": "mental-health",
-      "synonyms": ["ativan", "lorazepam"],
+      "synonyms": [
+        "ativan",
+        "lorazepam"
+      ],
       "publishState": "published"
     }
   ],
@@ -205,8 +281,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["prozac"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "prozac"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -221,8 +301,13 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["fluoxetine aspen", "nuzak"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "fluoxetine aspen",
+        "nuzak"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -235,8 +320,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["zoloft"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "zoloft"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -249,8 +338,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["cipralex"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "cipralex"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -263,8 +356,13 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["efexor", "effexor"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "efexor",
+        "effexor"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -277,8 +375,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["remeron"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "remeron"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -291,8 +393,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["tryptanol"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "tryptanol"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -305,8 +411,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["seroquel"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "seroquel"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -319,8 +429,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["risperdal"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "risperdal"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -333,8 +447,12 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["valium"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "valium"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -427,6 +545,872 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-sertraline",
+      "moleculeId": "mol-sertraline",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Serotonin syndrome risk with other serotonergic drugs. SSRIs increase bleeding risk via platelet serotonin depletion, adding to risk from NSAIDs or anticoagulants. Abrupt stopping can cause a discontinuation syndrome.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food to reduce nausea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Agitation, tremor, sweating (early serotonin syndrome signs).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Hyperthermia, muscle rigidity or seizures (serotonin syndrome) are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — serotonin syndrome is managed supportively under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The SSRI+NSAID bleeding-risk interaction is easy to miss because neither drug is 'the' anticoagulant on the list.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Don't stop abruptly — taper under guidance. Report unusual mood changes, especially in the first weeks of treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-citalopram",
+      "moleculeId": "mol-citalopram",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Congenital long QT syndrome."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Dose-related QT-interval prolongation is a specific, regulator-flagged caution for citalopram, more prominent than for most other SSRIs — do not exceed labelled maximum doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food to reduce nausea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Agitation, tremor, palpitations.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Arrhythmia from QT prolongation, or serotonin syndrome features, are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — ECG monitoring and supportive care under medical direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Citalopram's QT signal is the main SSRI-specific differentiator to flag when reviewing a cardiac patient's medicine list.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Don't exceed the prescribed dose. Report palpitations or dizziness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-escitalopram",
+      "moleculeId": "mol-escitalopram",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Congenital long QT syndrome."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "As citalopram's active enantiomer, escitalopram carries the same dose-related QT-prolongation caution, though generally at a lower milligram exposure for equivalent effect.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food to reduce nausea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Agitation, tremor, palpitations.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Arrhythmia from QT prolongation, or serotonin syndrome features, are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — ECG monitoring and supportive care under medical direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Escitalopram vs citalopram is a classic 'same QT signal, different exposure' comparison point in SSRI teaching.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Don't exceed the prescribed dose. Report palpitations or dizziness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-venlafaxine",
+      "moleculeId": "mol-venlafaxine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Can raise blood pressure, especially at higher doses — monitoring is standard. Discontinuation symptoms can be more pronounced than with SSRIs if stopped abruptly. Serotonin syndrome risk with other serotonergic drugs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Elevated blood pressure, agitation, tremor.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Seizures or serotonin syndrome features reported in overdose are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Venlafaxine's discontinuation symptoms are among the more difficult of the antidepressants — never stop it abruptly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never stop abruptly — always taper under guidance. Keep blood pressure checks if on higher doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-mirtazapine",
+      "moleculeId": "mol-mirtazapine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Sedation and increased appetite/weight gain are prominent, especially at lower doses — paradoxically, higher doses tend to be less sedating due to its receptor-binding profile. Agranulocytosis is a rare but recognised risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Often taken at night given its sedating effect.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Sore throat, fever, or signs of infection (possible agranulocytosis) need urgent blood-count assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mirtazapine being less sedating at higher doses than lower ones is one of psychiatry's most commonly cited counter-intuitive pharmacology facts.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take at night. Report sore throat, fever or unusual infections promptly. Expect increased appetite.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-quetiapine",
+      "moleculeId": "mol-quetiapine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Atypical antipsychotics carry a regulator-flagged increased mortality risk when used for dementia-related psychosis in elderly patients — a class-wide caution, not specific to one drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": "Metabolic syndrome risk (weight gain, dyslipidaemia, hyperglycaemia), sedation, orthostatic hypotension, and dose-related QT prolongation are all recognised.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Often taken at night given its sedating effect.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Sedation, dizziness on standing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypotension or arrhythmia (QT prolongation) needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The increased-mortality warning in elderly dementia-related psychosis applies to the whole atypical antipsychotic class, not just quetiapine.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Keep routine weight, glucose and lipid checks. Report excessive drowsiness or dizziness on standing.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-risperidone",
+      "moleculeId": "mol-risperidone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Atypical antipsychotics carry a regulator-flagged increased mortality risk when used for dementia-related psychosis in elderly patients — a class-wide caution, not specific to one drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": "Extrapyramidal symptoms are more likely than with some other atypicals, especially at higher doses. Hyperprolactinaemia (menstrual changes, galactorrhoea, sexual dysfunction) is a comparatively prominent risperidone-specific effect.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Muscle stiffness, tremor, sedation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe extrapyramidal reactions or hypotension need urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Risperidone's relatively stronger prolactin-raising effect versus other atypicals is a frequently tested comparative point.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report menstrual changes, unusual breast discharge, or new muscle stiffness/tremor.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-haloperidol",
+      "moleculeId": "mol-haloperidol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe CNS depression or coma."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Parkinson's disease — dopamine blockade worsens motor symptoms."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Extrapyramidal symptoms (acute dystonia, akathisia, and tardive dyskinesia with long-term use) are prominent and dose-related, more so than with atypical antipsychotics. Neuroleptic malignant syndrome is a rare but serious risk. QT prolongation is more notable with IV administration.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Muscle stiffness, tremor, restlessness (early extrapyramidal signs).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "High fever, severe muscle rigidity, and autonomic instability (possible neuroleptic malignant syndrome) are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote for haloperidol itself — acute dystonia and NMS are managed under specialist/emergency direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Haloperidol's higher extrapyramidal burden versus atypical antipsychotics is the classic first-generation-versus-second-generation teaching contrast.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report muscle stiffness, tremor or restlessness promptly — catching extrapyramidal effects early matters.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-lithium",
+      "moleculeId": "mol-lithium",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant cardiac disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Dehydration or low-sodium states — these raise toxicity risk."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Narrow therapeutic index — regular blood-level monitoring is essential. Toxicity risk rises with dehydration, low-sodium diets, NSAIDs, ACE inhibitors/ARBs and diuretics (thiazides particularly). Long-term use can affect thyroid and renal function.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Keep fluid and salt intake consistent — sudden changes in either can swing lithium levels significantly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Tremor, GI upset, unsteadiness (ataxia) are early toxicity signs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion, seizures or arrhythmia in toxicity are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — severe toxicity may require dialysis under specialist hospital care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Lithium toxicity from dehydration, NSAIDs, or diuretics is one of the most consistently tested drug-safety interactions in psychiatric pharmacology.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Keep hydration and salt intake consistent. Tell every prescriber you're on lithium before starting anything new, especially NSAIDs or diuretics. Keep scheduled blood-level checks.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-lorazepam",
+      "moleculeId": "mol-lorazepam",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant respiratory depression."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Myasthenia gravis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Dependence/tolerance can develop with regular use. Additive CNS/respiratory depression with alcohol, opioids or other sedatives is a major risk. Abrupt discontinuation after prolonged use can cause withdrawal, including seizures.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Avoid alcohol.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, slurred speech, unsteadiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Respiratory depression, especially combined with opioids or alcohol, is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Flumazenil is a benzodiazepine-reversal agent used under specialist/emergency care, but it carries a seizure risk in people who are benzodiazepine-dependent — its use is a clinical judgement call, not routine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Lorazepam's simpler, non-oxidative liver metabolism is why it's often preferred among benzodiazepines in significant liver disease.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Avoid alcohol and other sedating medicines. Don't stop abruptly after regular use — taper under medical guidance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -446,13 +1430,70 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-sertraline-ibuprofen",
+      "moleculeAId": "mol-sertraline",
+      "moleculeBId": "mol-ibuprofen",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "SSRIs reduce platelet serotonin uptake, impairing clotting; combined with an NSAID's GI mucosal effect, bleeding risk is additive.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review; a gastroprotective agent or alternative analgesic may be considered.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-lithium-hctz",
+      "moleculeAId": "mol-lithium",
+      "moleculeBId": "mol-hctz",
+      "severity": "major",
+      "mechanism": {
+        "value": "Thiazide diuretics reduce renal lithium clearance, raising lithium levels toward toxicity in a drug with an already narrow therapeutic index.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for lithium-level and renal-function monitoring whenever both are co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-haloperidol-azithromycin",
+      "moleculeAId": "mol-haloperidol",
+      "moleculeBId": "mol-azithro",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Both drugs can independently prolong the QT interval; combined use adds to arrhythmia risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review, particularly with other QT risk factors present.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-prozac",
       "productId": "prod-prozac",
-      "sepZar": 185.0,
+      "sepZar": 185,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -461,7 +1502,7 @@
     {
       "id": "price-fluoxetine-asp",
       "productId": "prod-fluoxetine-asp",
-      "sepZar": 48.0,
+      "sepZar": 48,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -470,7 +1511,7 @@
     {
       "id": "price-zoloft",
       "productId": "prod-zoloft",
-      "sepZar": 210.0,
+      "sepZar": 210,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",

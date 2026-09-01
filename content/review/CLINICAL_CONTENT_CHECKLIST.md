@@ -45,8 +45,9 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **diabetes** (10 molecules) — SP: done (8 profiles added) · IX: done (2 added: glimepiride+atenolol masked hypoglycaemia, empagliflozin+furosemide volume depletion) · DOSE: pending founder
 - [x] **gastrointestinal** (12 molecules) — SP: done (9 profiles added) · IX: done (2 added: domperidone+clarithromycin QT/CYP3A4, ondansetron+azithromycin additive QT) · DOSE: pending founder
 - [x] **respiratory** (10 molecules) — SP: done (8 profiles added) · IX: done (2 added: theophylline+clarithromycin, theophylline+ciprofloxacin) · DOSE: pending founder
+- [x] **mental-health** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: sertraline+ibuprofen, lithium+hctz, haloperidol+azithromycin) · DOSE: pending founder
 
-## Remaining batches (14 areas, ~124 molecules)
+## Remaining batches (13 areas, ~111 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
@@ -56,7 +57,6 @@ no SP/IX gap, only the DOSE step remains, tracked via
 | ent-allergy | 13 | [ ] | [ ] | [ ] |
 | haematology | 13 | [ ] | [ ] | [ ] |
 | hiv-tb | 10 | [ ] | [ ] | [ ] |
-| mental-health | 13 | [ ] | [ ] | [ ] |
 | neurology | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
 | ophthalmology | 13 | [ ] | [ ] | [ ] |
