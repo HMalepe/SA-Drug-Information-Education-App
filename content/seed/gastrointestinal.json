@@ -37,13 +37,41 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-astra", "name": "AstraZeneca", "madeInSa": false },
-    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-takeda", "name": "Takeda", "madeInSa": false },
-    { "id": "mfr-boehringer", "name": "Boehringer Ingelheim", "madeInSa": false },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-astra",
+      "name": "AstraZeneca",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-janssen",
+      "name": "Janssen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-takeda",
+      "name": "Takeda",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-boehringer",
+      "name": "Boehringer Ingelheim",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -66,7 +94,11 @@
       "innName": "Omeprazole",
       "className": "Proton pump inhibitor (PPI)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["losec", "omeprazole", "ppi"],
+      "synonyms": [
+        "losec",
+        "omeprazole",
+        "ppi"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Irreversibly blocks the gastric H+/K+-ATPase (proton pump) → suppresses acid secretion — educational framing only; confirm against labelled product and SA guidelines.",
@@ -80,7 +112,11 @@
       "innName": "Pantoprazole",
       "className": "Proton pump inhibitor (PPI)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["controloc", "pantocid", "pantoprazole"],
+      "synonyms": [
+        "controloc",
+        "pantocid",
+        "pantoprazole"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "PPI that suppresses gastric acid via the proton pump — common SA counter molecule; dosing stays unpublished until founder review.",
@@ -94,7 +130,9 @@
       "innName": "Esomeprazole",
       "className": "Proton pump inhibitor (PPI)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["nexium"],
+      "synonyms": [
+        "nexium"
+      ],
       "publishState": "published"
     },
     {
@@ -103,7 +141,10 @@
       "innName": "Lansoprazole",
       "className": "Proton pump inhibitor (PPI)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["lanzor", "prevacid"],
+      "synonyms": [
+        "lanzor",
+        "prevacid"
+      ],
       "publishState": "published"
     },
     {
@@ -112,7 +153,10 @@
       "innName": "Metoclopramide",
       "className": "Prokinetic / antiemetic (dopamine antagonist)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["maxolon", "clopamon"],
+      "synonyms": [
+        "maxolon",
+        "clopamon"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Dopamine D2 antagonism with prokinetic and antiemetic effects — EPS risk is the counselling hook; never invent a dose.",
@@ -126,7 +170,9 @@
       "innName": "Domperidone",
       "className": "Peripheral dopamine antagonist (antiemetic / prokinetic)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["motilium"],
+      "synonyms": [
+        "motilium"
+      ],
       "publishState": "published"
     },
     {
@@ -135,7 +181,9 @@
       "innName": "Ondansetron",
       "className": "5-HT3 receptor antagonist (antiemetic)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["zofran"],
+      "synonyms": [
+        "zofran"
+      ],
       "publishState": "published"
     },
     {
@@ -144,7 +192,10 @@
       "innName": "Loperamide",
       "className": "Peripheral opioid agonist (antimotility)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["imodium", "loperamide"],
+      "synonyms": [
+        "imodium",
+        "loperamide"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Slows intestinal motility via peripheral µ-opioid receptors — red-flag diarrhoea / fever / bloody stool counselling is the teaching hook.",
@@ -158,7 +209,11 @@
       "innName": "Hyoscine butylbromide",
       "className": "Antispasmodic (antimuscarinic)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["buscopan", "hyoscine butylbromide", "scopolamine butylbromide"],
+      "synonyms": [
+        "buscopan",
+        "hyoscine butylbromide",
+        "scopolamine butylbromide"
+      ],
       "publishState": "published"
     },
     {
@@ -167,7 +222,9 @@
       "innName": "Bisacodyl",
       "className": "Stimulant laxative",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["dulcolax"],
+      "synonyms": [
+        "dulcolax"
+      ],
       "publishState": "published"
     },
     {
@@ -176,7 +233,10 @@
       "innName": "Lactulose",
       "className": "Osmotic laxative",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["duphalac", "lactulose"],
+      "synonyms": [
+        "duphalac",
+        "lactulose"
+      ],
       "publishState": "published"
     },
     {
@@ -185,7 +245,12 @@
       "innName": "Mesalazine",
       "className": "5-ASA (aminosalicylate)",
       "therapeuticArea": "gastrointestinal",
-      "synonyms": ["mesalamine", "asacol", "pentasa", "mezavant"],
+      "synonyms": [
+        "mesalamine",
+        "asacol",
+        "pentasa",
+        "mezavant"
+      ],
       "publishState": "published"
     }
   ],
@@ -200,8 +265,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["losec"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "losec"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -216,8 +285,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["omeprazole aspen"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "omeprazole aspen"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -230,8 +303,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["controloc"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "controloc"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -244,8 +321,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["nexium"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "nexium"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -258,8 +339,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["maxolon"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "maxolon"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -272,8 +357,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["motilium"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "motilium"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -286,8 +375,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["imodium"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "imodium"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -300,8 +393,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["buscopan"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "buscopan"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -314,8 +411,12 @@
       "schedule": "S1",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["dulcolax"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "dulcolax"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -328,8 +429,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["zofran"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "zofran"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -410,6 +515,792 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-pantoprazole",
+      "moleculeId": "mol-pantoprazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Long-term use is associated with reduced bone density/fracture risk, hypomagnesaemia, and an increased risk of Clostridioides difficile infection. Prolonged unsupervised use can also mask symptoms of more serious upper-GI disease.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take before a meal (commonly in the morning) for the most reliable acid suppression.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Generally well tolerated even in overdose; GI upset possible.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "No characteristic severe toxidrome reported at typical overdose amounts — seek medical advice if large ingestion suspected.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "PPIs are meant for defined courses or the lowest effective long-term dose, not indefinite unsupervised use — a recurring deprescribing conversation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": "Pantoprazole has fewer CYP2C19-mediated interactions than omeprazole, which is why it's often preferred alongside clopidogrel.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take before food. Don't continue long-term without a medical review of ongoing need.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-esomeprazole",
+      "moleculeId": "mol-esomeprazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Long-term use is associated with reduced bone density/fracture risk, hypomagnesaemia, and an increased risk of Clostridioides difficile infection. Prolonged unsupervised use can also mask symptoms of more serious upper-GI disease.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take before a meal for the most reliable acid suppression.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Generally well tolerated even in overdose; GI upset possible.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "No characteristic severe toxidrome reported at typical overdose amounts — seek medical advice if large ingestion suspected.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "PPIs are meant for defined courses or the lowest effective long-term dose, not indefinite unsupervised use — a recurring deprescribing conversation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take before food. Don't continue long-term without a medical review of ongoing need.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-lansoprazole",
+      "moleculeId": "mol-lansoprazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Long-term use is associated with reduced bone density/fracture risk, hypomagnesaemia, and an increased risk of Clostridioides difficile infection. Prolonged unsupervised use can also mask symptoms of more serious upper-GI disease.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take before a meal for the most reliable acid suppression.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Generally well tolerated even in overdose; GI upset possible.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "No characteristic severe toxidrome reported at typical overdose amounts — seek medical advice if large ingestion suspected.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "PPIs are meant for defined courses or the lowest effective long-term dose, not indefinite unsupervised use — a recurring deprescribing conversation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take before food. Don't continue long-term without a medical review of ongoing need.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-domperidone",
+      "moleculeId": "mol-domperidone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant cardiac disease or known QT prolongation."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hepatic impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent strong CYP3A4 inhibitors or other QT-prolonging drugs."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cardiac arrhythmia/QT-prolongation risk rises with higher doses, longer duration, and older age — regulators have restricted domperidone to short courses at the lowest effective dose for this reason.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take before meals for best effect on nausea/motility symptoms.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, extrapyramidal reactions are rare given limited CNS penetration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Palpitations or collapse from cardiac arrhythmia is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — cardiac monitoring and supportive care under medical direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Domperidone's cardiac QT signal is the single most important safety teaching point — shortest effective duration, lowest effective dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Use for the shortest time needed. Report palpitations, dizziness or fainting immediately.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-ondansetron",
+      "moleculeId": "mol-ondansetron",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Congenital long QT syndrome."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Dose-related QT-prolongation risk, particularly with IV use or when combined with other QT-prolonging drugs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, constipation, dizziness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Palpitations or arrhythmia from QT prolongation needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — ECG monitoring and supportive care under medical direction if QT concerns arise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Always check the rest of the medicine list for other QT-prolonging drugs (certain antibiotics, antipsychotics) before adding ondansetron.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report palpitations or dizziness, especially if taking other heart-rhythm-affecting medicines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-hyoscine-butylbromide",
+      "moleculeId": "mol-hyoscine-butylbromide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Myasthenia gravis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Paralytic ileus or significant bowel obstruction."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant urinary retention."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Angle-closure glaucoma."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Anticholinergic side effects (dry mouth, blurred vision, urinary retention) can occur, though limited central nervous system penetration means sedation/confusion is less prominent than with other anticholinergics.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dry mouth, blurred vision, fast heartbeat.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant urinary retention or eye pain (possible acute angle-closure glaucoma) needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — anticholinergic effects are managed supportively under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Its poor CNS penetration is exactly why hyoscine butylbromide is favoured for pure GI-spasm relief without the sedation of other anticholinergics.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report difficulty urinating or eye pain/vision changes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-bisacodyl",
+      "moleculeId": "mol-bisacodyl",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Acute abdominal conditions (e.g. suspected appendicitis or bowel obstruction)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe dehydration."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Prolonged or excessive use can cause electrolyte disturbance and encourage reliance on stimulant laxatives for normal bowel function.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Often taken at night for a morning effect; maintain adequate fluid intake.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Abdominal cramping, diarrhoea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant fluid/electrolyte loss from prolonged diarrhoea needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — fluid and electrolyte correction is supportive, under medical guidance if needed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Stimulant-laxative overuse/dependence is a genuine, under-counselled risk with unsupervised long-term use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Use short-term or as needed rather than continuously without medical review. Maintain fluid intake.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-lactulose",
+      "moleculeId": "mol-lactulose",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Galactosaemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Suspected intestinal obstruction."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Bloating and flatulence are common, especially when starting. Excessive use can rarely cause electrolyte disturbance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; effect can take a day or two to establish — it is not a fast-acting laxative.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Diarrhoea, abdominal cramping.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant fluid/electrolyte loss from prolonged diarrhoea needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — fluid and electrolyte correction is supportive, under medical guidance if needed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Lactulose is also used at a different treatment intensity for hepatic encephalopathy — the same molecule, a very different clinical context and goal.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Give it a day or two to work before assuming it isn't working. Maintain fluid intake.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-mesalazine",
+      "moleculeId": "mol-mesalazine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known salicylate hypersensitivity."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Rare but recognised risk of renal impairment/interstitial nephritis with 5-ASA drugs — periodic renal function monitoring is standard. Rare blood dyscrasias have been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Follow the labelled product's instructions exactly — many formulations are enteric-coated or time/pH-release dependent and must be swallowed whole, not crushed or chewed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Unexplained bruising, sore throat or fever (possible blood dyscrasia), or reduced urine output need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mesalazine drops the sulfapyridine component present in sulfasalazine, giving it a different (generally milder) hypersensitivity and haematological side-effect profile.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Swallow enteric-coated/controlled-release forms whole. Keep scheduled renal-function blood tests.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -429,13 +1320,51 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-domperidone-clarithromycin",
+      "moleculeAId": "mol-domperidone",
+      "moleculeBId": "mol-clarithro",
+      "severity": "major",
+      "mechanism": {
+        "value": "Clarithromycin's strong CYP3A4 inhibition raises domperidone levels and compounds QT-prolongation risk — a combination regulators specifically warn against.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "This combination should generally be avoided — flag clearly rather than adjusting a dose to compensate.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-ondansetron-azithromycin",
+      "moleculeAId": "mol-ondansetron",
+      "moleculeBId": "mol-azithro",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Both drugs can independently prolong the QT interval; combined use adds to arrhythmia risk, especially with other cardiac risk factors.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review, particularly in patients with other QT risk factors.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-losec",
       "productId": "prod-losec",
-      "sepZar": 145.0,
+      "sepZar": 145,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -444,7 +1373,7 @@
     {
       "id": "price-omeprazole-asp",
       "productId": "prod-omeprazole-asp",
-      "sepZar": 52.0,
+      "sepZar": 52,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -453,7 +1382,7 @@
     {
       "id": "price-controloc",
       "productId": "prod-controloc",
-      "sepZar": 168.0,
+      "sepZar": 168,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
