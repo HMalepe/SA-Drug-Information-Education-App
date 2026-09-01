@@ -40,30 +40,30 @@ no SP/IX gap, only the DOSE step remains, tracked via
 
 - [x] **antibiotics** (20 molecules) — SP: done (18 profiles added) · IX: done (5 added: clarithromycin+statins x2, metronidazole+warfarin, co-trimoxazole+warfarin, ciprofloxacin+warfarin) · DOSE: pending founder
 - [x] **analgesics** (10 molecules) — SP: done (8 profiles added) · IX: done (3 added: ibuprofen+warfarin, ibuprofen+enalapril, tramadol+fluoxetine) · DOSE: pending founder
+- [x] **cardiovascular** (10 molecules) — SP: done (8 profiles added) · IX: done (4 added: clopidogrel+omeprazole, digoxin+furosemide, digoxin+hctz, isosorbide+sildenafil) · DOSE: pending founder
+- [x] **antihypertensives** (10 molecules) — SP: done (8 profiles added) · IX: done (3 added: enalapril+spironolactone, furosemide+gentamicin, atenolol+gliclazide) · DOSE: pending founder
 
-## Remaining batches (20 areas, ~186 molecules)
+## Remaining batches (17 areas, ~156 molecules)
 
 | # | Area | Molecules | SP | IX | DOSE |
 |---|------|-----------|----|----|------|
 | 1 | anaesthetics | 13 | [ ] | [ ] | [ ] |
-| 2 | antihypertensives | 10 | [ ] | [ ] | [ ] |
-| 3 | cardiovascular | 10 | [ ] | [ ] | [ ] |
-| 4 | dermatology | 13 | [ ] | [ ] | [ ] |
-| 5 | diabetes | 10 | [ ] | [ ] | [ ] |
-| 6 | endocrine | 13 | [ ] | [ ] | [ ] |
-| 7 | ent-allergy | 13 | [ ] | [ ] | [ ] |
-| 8 | gastrointestinal | 12 | [ ] | [ ] | [ ] |
-| 9 | haematology | 13 | [ ] | [ ] | [ ] |
-| 10 | hiv-tb | 10 | [ ] | [ ] | [ ] |
-| 11 | mental-health | 13 | [ ] | [ ] | [ ] |
-| 12 | neurology | 13 | [ ] | [ ] | [ ] |
-| 13 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
-| 14 | ophthalmology | 13 | [ ] | [ ] | [ ] |
-| 15 | respiratory | 10 | [ ] | [ ] | [ ] |
-| 16 | rheumatology | 13 | [ ] | [ ] | [ ] |
-| 17 | urology | 13 | [ ] | [ ] | [ ] |
-| 18 | vaccines | 13 | [ ] | [ ] | [ ] |
-| 19 | womens-health | 13 | [ ] | [ ] | [ ] |
+| 2 | dermatology | 13 | [ ] | [ ] | [ ] |
+| 3 | diabetes | 10 | [ ] | [ ] | [ ] |
+| 4 | endocrine | 13 | [ ] | [ ] | [ ] |
+| 5 | ent-allergy | 13 | [ ] | [ ] | [ ] |
+| 6 | gastrointestinal | 12 | [ ] | [ ] | [ ] |
+| 7 | haematology | 13 | [ ] | [ ] | [ ] |
+| 8 | hiv-tb | 10 | [ ] | [ ] | [ ] |
+| 9 | mental-health | 13 | [ ] | [ ] | [ ] |
+| 10 | neurology | 13 | [ ] | [ ] | [ ] |
+| 11 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
+| 12 | ophthalmology | 13 | [ ] | [ ] | [ ] |
+| 13 | respiratory | 10 | [ ] | [ ] | [ ] |
+| 14 | rheumatology | 13 | [ ] | [ ] | [ ] |
+| 15 | urology | 13 | [ ] | [ ] | [ ] |
+| 16 | vaccines | 13 | [ ] | [ ] | [ ] |
+| 17 | womens-health | 13 | [ ] | [ ] | [ ] |
 
 (19 rows above + 2 already done this session + 9 EML batches = the ~30
 `content/seed` files / therapeutic areas in the repo. Each SP/IX/DOSE

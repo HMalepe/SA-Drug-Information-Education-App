@@ -37,10 +37,26 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-servier", "name": "Servier", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-servier",
+      "name": "Servier",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -63,7 +79,10 @@
       "innName": "Amlodipine",
       "className": "Calcium channel blocker — dihydropyridine",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["norvasc", "amlodipine besylate"],
+      "synonyms": [
+        "norvasc",
+        "amlodipine besylate"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Blocks L-type calcium channels in vascular smooth muscle → arterial vasodilation and lower blood pressure — educational framing only; confirm against labelled product and guidelines.",
@@ -77,7 +96,10 @@
       "innName": "Enalapril",
       "className": "ACE inhibitor",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["renitec", "enalapril maleate"],
+      "synonyms": [
+        "renitec",
+        "enalapril maleate"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Inhibits angiotensin-converting enzyme → less angiotensin II → lower vascular tone and aldosterone effect — educational layer; founder clinical review still required for counselling depth.",
@@ -91,7 +113,10 @@
       "innName": "Perindopril",
       "className": "ACE inhibitor",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["coversyl", "perindopril arginine"],
+      "synonyms": [
+        "coversyl",
+        "perindopril arginine"
+      ],
       "publishState": "published"
     },
     {
@@ -100,7 +125,9 @@
       "innName": "Ramipril",
       "className": "ACE inhibitor",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["tritace"],
+      "synonyms": [
+        "tritace"
+      ],
       "publishState": "published"
     },
     {
@@ -109,7 +136,10 @@
       "innName": "Losartan",
       "className": "Angiotensin II receptor blocker (ARB)",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["cozaar", "losartan potassium"],
+      "synonyms": [
+        "cozaar",
+        "losartan potassium"
+      ],
       "publishState": "published"
     },
     {
@@ -118,7 +148,10 @@
       "innName": "Hydrochlorothiazide",
       "className": "Thiazide diuretic",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["hctz", "retic"],
+      "synonyms": [
+        "hctz",
+        "retic"
+      ],
       "publishState": "published"
     },
     {
@@ -127,7 +160,9 @@
       "innName": "Atenolol",
       "className": "Beta-blocker — selective",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["tenormin"],
+      "synonyms": [
+        "tenormin"
+      ],
       "publishState": "published"
     },
     {
@@ -136,7 +171,9 @@
       "innName": "Carvedilol",
       "className": "Beta-blocker — non-selective + alpha-block",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["dilatrend"],
+      "synonyms": [
+        "dilatrend"
+      ],
       "publishState": "published"
     },
     {
@@ -145,7 +182,9 @@
       "innName": "Spironolactone",
       "className": "Mineralocorticoid receptor antagonist",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["aldactone"],
+      "synonyms": [
+        "aldactone"
+      ],
       "publishState": "published"
     },
     {
@@ -154,7 +193,9 @@
       "innName": "Furosemide",
       "className": "Loop diuretic",
       "therapeuticArea": "antihypertensives",
-      "synonyms": ["lasix"],
+      "synonyms": [
+        "lasix"
+      ],
       "publishState": "published"
     }
   ],
@@ -169,8 +210,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["norvasc"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "norvasc"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -185,8 +230,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["amlodipine aspen"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "amlodipine aspen"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -199,8 +248,13 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["renitec"],
-      "excipientIds": ["exc-lactose", "exc-mg-stearate"],
+      "synonymKeys": [
+        "renitec"
+      ],
+      "excipientIds": [
+        "exc-lactose",
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -213,8 +267,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["coversyl"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "coversyl"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -227,8 +285,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["cozaar"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "cozaar"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -241,8 +303,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["lasix"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "lasix"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -291,14 +357,845 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-perindopril",
+      "moleculeId": "mol-perindopril",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy — ACE inhibitors are teratogenic, particularly in the second and third trimesters."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Bilateral renal artery stenosis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of angioedema with an ACE inhibitor."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "A persistent dry cough (bradykinin-mediated) is a well-known class effect. Hyperkalaemia risk rises with potassium-sparing diuretics or potassium supplements. First-dose hypotension can occur, especially if already volume-depleted.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, light-headedness (hypotension).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypotension or facial/tongue/throat swelling (angioedema) is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hypotension is managed supportively; angioedema needs urgent emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The bradykinin-driven cough is the key mechanistic reason ARBs are usually substituted rather than another ACE inhibitor when cough becomes intolerable.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report a persistent dry cough — a switch to a different drug class may help. Facial, lip or tongue swelling needs emergency care immediately.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-ramipril",
+      "moleculeId": "mol-ramipril",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy — ACE inhibitors are teratogenic, particularly in the second and third trimesters."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Bilateral renal artery stenosis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of angioedema with an ACE inhibitor."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the ACE-inhibitor class dry cough (bradykinin-mediated), hyperkalaemia risk (especially with potassium-sparing diuretics/supplements), and first-dose hypotension risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, light-headedness (hypotension).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypotension or facial/tongue/throat swelling (angioedema) is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hypotension is managed supportively; angioedema needs urgent emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Any ACE inhibitor can cause angioedema — it is a class effect, not specific to one molecule, and can occur even after long uneventful use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report a persistent dry cough. Facial, lip or tongue swelling needs emergency care immediately, even years into treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-losartan",
+      "moleculeId": "mol-losartan",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy — ARBs are teratogenic, particularly in the second and third trimesters."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Bilateral renal artery stenosis."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyperkalaemia risk from RAAS blockade, similar to ACE inhibitors. Cough is less common than with ACE inhibitors because bradykinin breakdown is not affected, but angioedema, while rarer, can still occur.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, light-headedness (hypotension).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypotension or facial/tongue/throat swelling (angioedema) is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hypotension is managed supportively; angioedema needs urgent emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "ARBs are the usual substitute when ACE-inhibitor cough is intolerable, precisely because they spare bradykinin breakdown.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Routine renal-function and potassium monitoring is standard. Facial, lip or tongue swelling needs emergency care immediately.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-hydrochlorothiazide",
+      "moleculeId": "mol-hctz",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hyponatraemia or refractory hypokalaemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Symptomatic hyperuricaemia/gout — thiazides can precipitate acute gout attacks."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Electrolyte disturbances (hypokalaemia, hyponatraemia) are common; unlike loop diuretics, thiazides reduce calcium excretion (can raise serum calcium). Can modestly raise blood glucose and lipids; photosensitivity is possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take in the morning to avoid needing the bathroom overnight.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, muscle cramps (electrolyte disturbance), dehydration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe electrolyte imbalance or hypotension is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — electrolyte and fluid correction is supportive, under medical guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Thiazides retain calcium while loop diuretics waste it — a reliable exam contrast between the two diuretic classes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take in the morning. Report muscle cramps, weakness or palpitations, which can signal an electrolyte imbalance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-atenolol",
+      "moleculeId": "mol-atenolol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe bradycardia or high-grade heart block without a pacemaker."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Decompensated heart failure."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe asthma/bronchospastic disease — caution rises with dose even though atenolol is relatively cardioselective."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Never stop abruptly — sudden discontinuation can cause rebound tachycardia, hypertension or angina; taper under guidance. Can mask the tachycardia/tremor warning signs of hypoglycaemia in people with diabetes (sweating is usually still preserved).",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "No special food restriction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Bradycardia, dizziness, fatigue.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe bradycardia, hypotension or bronchospasm is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote widely used at primary-care level — significant toxicity is managed under specialist/emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Beta-blockers should never be stopped abruptly — this is one of the most consistently tested 'never do this' points in cardiovascular pharmacology.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never stop without medical guidance. If you have diabetes, monitor glucose closely since some hypoglycaemia warning signs may be blunted.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-carvedilol",
+      "moleculeId": "mol-carvedilol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe bradycardia or high-grade heart block without a pacemaker."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Decompensated/acute heart failure — only started once a patient is stable, not during an acute episode."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe bronchospastic disease — carvedilol is non-selective, so this caution is stronger than for cardioselective beta-blockers."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Combined alpha- and beta-blockade means postural hypotension/dizziness on standing is more prominent than with pure beta-blockers. Can mask hypoglycaemia warning signs in diabetes. Never stop abruptly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food — this reduces the rate of absorption and lessens orthostatic hypotension.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness on standing, bradycardia, fatigue.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe bradycardia, hypotension or bronchospasm is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote widely used at primary-care level — significant toxicity is managed under specialist/emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Carvedilol's added alpha-blockade is why it causes more standing dizziness than atenolol — a useful contrast when patients report this symptom.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food. Rise slowly from sitting or lying down. Never stop without medical guidance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-spironolactone",
+      "moleculeId": "mol-spironolactone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hyperkalaemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Addison's disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyperkalaemia risk, especially with ACE inhibitors, ARBs or potassium supplements. Anti-androgenic effects can cause gynaecomastia/breast tenderness and menstrual irregularities.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Avoid potassium supplements or salt substitutes (often potassium-based) without medical advice.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Muscle weakness, palpitations (hyperkalaemia signs).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hyperkalaemia with cardiac arrhythmia is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hyperkalaemia is managed supportively under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Gynaecomastia/breast tenderness is the classic reason spironolactone is sometimes switched to eplerenone, which is more receptor-selective.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report breast tenderness or enlargement. Keep scheduled blood tests for potassium and renal function.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-furosemide",
+      "moleculeId": "mol-furosemide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Anuria."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe, untreated electrolyte depletion."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Electrolyte disturbances (hypokalaemia, hyponatraemia, hypomagnesaemia) are common; unlike thiazides, loop diuretics waste calcium too. Ototoxicity risk rises with rapid IV administration, high doses, or concurrent ototoxic drugs (e.g. aminoglycosides).",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take in the morning (or morning plus early afternoon if dosed twice daily) to avoid needing the bathroom overnight.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, muscle cramps, dehydration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe electrolyte imbalance, hypotension, or hearing changes need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — fluid and electrolyte correction is supportive, under medical guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Loop diuretics waste calcium while thiazides retain it — a reliable exam contrast, and relevant when choosing a diuretic in a patient with calcium-related disease.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take earlier in the day. Report muscle cramps, dizziness, or any change in hearing — the last can signal ototoxicity, especially with other ototoxic medicines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
-  "interactions": [],
+  "interactions": [
+    {
+      "id": "ix-enalapril-spironolactone",
+      "moleculeAId": "mol-enalapril",
+      "moleculeBId": "mol-spironolactone",
+      "severity": "major",
+      "mechanism": {
+        "value": "Combining an ACE inhibitor with a potassium-sparing diuretic compounds hyperkalaemia risk through two RAAS-related mechanisms.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for potassium and renal-function monitoring whenever both are co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-furosemide-gentamicin",
+      "moleculeAId": "mol-furosemide",
+      "moleculeBId": "mol-genta",
+      "severity": "major",
+      "mechanism": {
+        "value": "Loop diuretics and aminoglycosides both carry independent ototoxicity risk; combined, the risk of hearing damage is additive.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for audiology/toxicity monitoring whenever both are co-prescribed, especially at higher doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-atenolol-gliclazide",
+      "moleculeAId": "mol-atenolol",
+      "moleculeBId": "mol-gliclazide",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Beta-blockers can blunt the tachycardia and tremor that normally warn of hypoglycaemia from a sulfonylurea, though sweating is usually preserved.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — counsel on alternative hypoglycaemia warning signs and more frequent glucose checks.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    }
+  ],
   "priceRecords": [
     {
       "id": "price-norvasc",
       "productId": "prod-norvasc",
-      "sepZar": 112.0,
+      "sepZar": 112,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
