@@ -48,8 +48,9 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **mental-health** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: sertraline+ibuprofen, lithium+hctz, haloperidol+azithromycin) · DOSE: pending founder
 - [x] **hiv-tb** (10 molecules) — SP: done (8 profiles added) · IX: done (2 added: ritonavir+simvastatin contraindicated combo, rifampicin+dolutegravir TB/HIV co-treatment) · DOSE: pending founder
 - [x] **neurology** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: lamotrigine+valproate, phenytoin+isoniazid, donepezil+atenolol bradycardia) · DOSE: pending founder
+- [x] **rheumatology** (13 molecules) — SP: done (8 profiles added, incl. meloxicam) · IX: done (3 added: azathioprine+allopurinol, colchicine+clarithromycin, febuxostat+azathioprine) · DOSE: pending founder. Note: naproxen/celecoxib in this file reuse the same `mol-id` as their analgesics.json entries, which already carry a profile — not re-authored here to avoid duplicate/conflicting content under one ID.
 
-## Remaining batches (11 areas, ~88 molecules)
+## Remaining batches (10 areas, ~75 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
@@ -60,7 +61,6 @@ no SP/IX gap, only the DOSE step remains, tracked via
 | haematology | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
 | ophthalmology | 13 | [ ] | [ ] | [ ] |
-| rheumatology | 13 | [ ] | [ ] | [ ] |
 | urology | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |
 | womens-health | 13 | [ ] | [ ] | [ ] |

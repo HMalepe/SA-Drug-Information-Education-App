@@ -37,14 +37,46 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-abbvie", "name": "AbbVie", "madeInSa": false },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
-    { "id": "mfr-roche", "name": "Roche", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-abbvie",
+      "name": "AbbVie",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-roche",
+      "name": "Roche",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -67,7 +99,12 @@
       "innName": "Methotrexate",
       "className": "DMARD / antimetabolite (weekly in rheumatology)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["mtx", "trexate", "methoblastin", "methotrexate"],
+      "synonyms": [
+        "mtx",
+        "trexate",
+        "methoblastin",
+        "methotrexate"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Folate antagonist used as a weekly DMARD in inflammatory disease — educational framing only; confirm against labelled product. Never invent a dose or confuse weekly with daily.",
@@ -81,7 +118,10 @@
       "innName": "Sulfasalazine",
       "className": "DMARD (aminosalicylate)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["salazopyrin", "sulfasalazine"],
+      "synonyms": [
+        "salazopyrin",
+        "sulfasalazine"
+      ],
       "publishState": "published"
     },
     {
@@ -90,7 +130,10 @@
       "innName": "Hydroxychloroquine",
       "className": "DMARD / antimalarial (rheumatology use)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["plaquenil", "hydroxychloroquine"],
+      "synonyms": [
+        "plaquenil",
+        "hydroxychloroquine"
+      ],
       "publishState": "published"
     },
     {
@@ -99,7 +142,10 @@
       "innName": "Leflunomide",
       "className": "DMARD",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["arava", "leflunomide"],
+      "synonyms": [
+        "arava",
+        "leflunomide"
+      ],
       "publishState": "published"
     },
     {
@@ -108,7 +154,11 @@
       "innName": "Allopurinol",
       "className": "Xanthine oxidase inhibitor (gout)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["zyloprim", "puricos", "allopurinol"],
+      "synonyms": [
+        "zyloprim",
+        "puricos",
+        "allopurinol"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Lowers uric acid production — start-low counselling and rash vigilance are teaching hooks; dosing stays unpublished until founder review.",
@@ -122,7 +172,10 @@
       "innName": "Colchicine",
       "className": "Anti-inflammatory (gout flare)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["colchicine", "colgout"],
+      "synonyms": [
+        "colchicine",
+        "colgout"
+      ],
       "publishState": "published"
     },
     {
@@ -131,7 +184,10 @@
       "innName": "Febuxostat",
       "className": "Xanthine oxidase inhibitor (gout)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["adenuric", "febuxostat"],
+      "synonyms": [
+        "adenuric",
+        "febuxostat"
+      ],
       "publishState": "published"
     },
     {
@@ -140,7 +196,11 @@
       "innName": "Naproxen",
       "className": "NSAID",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["naprosyn", "aleve", "naproxen"],
+      "synonyms": [
+        "naprosyn",
+        "aleve",
+        "naproxen"
+      ],
       "publishState": "published"
     },
     {
@@ -149,7 +209,11 @@
       "innName": "Diclofenac",
       "className": "NSAID",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["voltaren", "cataflam", "diclofenac"],
+      "synonyms": [
+        "voltaren",
+        "cataflam",
+        "diclofenac"
+      ],
       "publishState": "published"
     },
     {
@@ -158,7 +222,10 @@
       "innName": "Meloxicam",
       "className": "NSAID (COX-2 preferential)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["mobic", "meloxicam"],
+      "synonyms": [
+        "mobic",
+        "meloxicam"
+      ],
       "publishState": "published"
     },
     {
@@ -167,7 +234,10 @@
       "innName": "Celecoxib",
       "className": "COX-2 selective NSAID",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["celebrex", "celecoxib"],
+      "synonyms": [
+        "celebrex",
+        "celecoxib"
+      ],
       "publishState": "published"
     },
     {
@@ -176,7 +246,10 @@
       "innName": "Azathioprine",
       "className": "Immunosuppressant / DMARD adjunct",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["imuran", "azathioprine"],
+      "synonyms": [
+        "imuran",
+        "azathioprine"
+      ],
       "publishState": "published"
     },
     {
@@ -185,7 +258,10 @@
       "innName": "Folic acid (MTX support context)",
       "className": "Vitamin B9 (DMARD support counselling)",
       "therapeuticArea": "rheumatology",
-      "synonyms": ["folate mtx", "folic acid methotrexate support"],
+      "synonyms": [
+        "folate mtx",
+        "folic acid methotrexate support"
+      ],
       "publishState": "published"
     }
   ],
@@ -200,8 +276,13 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["trexate", "methotrexate"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "trexate",
+        "methotrexate"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -215,8 +296,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["salazopyrin"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "salazopyrin"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -229,8 +314,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["plaquenil"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "plaquenil"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -243,8 +332,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["arava"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "arava"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -257,8 +350,13 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["zyloprim", "puricos"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "zyloprim",
+        "puricos"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -271,8 +369,13 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["colgout", "colchicine"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "colgout",
+        "colchicine"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -285,8 +388,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["voltaren"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "voltaren"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -299,8 +406,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["mobic"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "mobic"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -313,8 +424,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["celebrex"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "celebrex"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -327,8 +442,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["imuran"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "imuran"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     }
   ],
@@ -415,6 +534,706 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-sulfasalazine",
+      "moleculeId": "mol-sulfasalazine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known sulfonamide or salicylate hypersensitivity."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "G6PD deficiency — haemolysis risk."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hepatic or renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Rare but serious blood dyscrasias (including agranulocytosis) and hepatotoxicity require routine blood count and liver function monitoring.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, dizziness, headache.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Unusual bruising, sore throat or fever (possible blood dyscrasia) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Sulfasalazine can turn urine, sweat and tears orange-yellow, and may stain soft contact lenses — harmless, but alarming if patients aren't warned in advance.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report sore throat, fever or unusual bruising promptly. Don't be alarmed by orange-tinted urine/sweat — it's expected. Contact lens wearers should be aware of possible staining.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-hydroxychloroquine",
+      "moleculeId": "mol-hydroxychloroquine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pre-existing retinopathy or maculopathy."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Retinal toxicity is a well-established long-term risk — routine ophthalmological screening is a standard, non-negotiable part of monitoring. Rare cardiac effects (including cardiomyopathy) have been reported with very long-term, high-dose use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, visual disturbance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Cardiac effects in significant overdose are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — cardiac monitoring and supportive care under medical direction if severe toxicity is suspected.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Annual retinal screening is one of hydroxychloroquine's most important long-term monitoring requirements — missed appointments are a genuine safety gap, not a formality.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Attend every scheduled eye examination. Report any new visual changes promptly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-leflunomide",
+      "moleculeId": "mol-leflunomide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy — teratogenic, with a long washout requirement given its very long half-life."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hepatic impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hepatotoxicity risk requires routine liver function monitoring. Can cause or worsen hypertension. Its very long half-life means an accelerated elimination procedure may be needed before pregnancy or after serious toxicity.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of liver injury (jaundice, dark urine) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "A cholestyramine-based accelerated elimination procedure exists to washout leflunomide when needed (e.g. before pregnancy or after serious toxicity), carried out under specialist direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Leflunomide's unusually long half-life is exactly why the accelerated elimination (washout) procedure exists — a distinctive pharmacokinetic teaching point tied directly to pregnancy planning.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Reliable contraception is essential during treatment and after stopping, per specialist guidance on washout timing. Keep scheduled liver-function and blood-pressure checks.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-colchicine",
+      "moleculeId": "mol-colchicine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal or hepatic impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent strong CYP3A4/P-glycoprotein inhibitors (e.g. certain macrolides) — can raise colchicine to dangerous, potentially fatal levels."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Narrow therapeutic index — new or worsening diarrhoea is often the first sign of excess, not just a tolerability issue. Myelosuppression and rhabdomyolysis are risks with toxic accumulation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Diarrhoea, abdominal pain, nausea.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe diarrhoea progressing towards multi-organ toxicity is a medical emergency requiring urgent care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — significant toxicity requires intensive supportive care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Colchicine combined with a strong CYP3A4 inhibitor like clarithromycin is one of the most dangerous, occasionally fatal interactions seen in general practice — always screen before dispensing either drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report new or worsening diarrhoea — treat it as a possible early toxicity sign, not something to just tolerate. Tell your pharmacist about every other medicine before starting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-febuxostat",
+      "moleculeId": "mol-febuxostat",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent azathioprine or mercaptopurine — xanthine oxidase inhibition can raise these to dangerous levels."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Some post-marketing data has raised a cardiovascular safety question relative to allopurinol, particularly in patients with existing heart disease — worth discussing when choosing between the two. Liver function monitoring is recommended.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Chest pain or new cardiac symptoms need urgent assessment given the cardiovascular caution.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Febuxostat shares azathioprine/mercaptopurine's dangerous xanthine-oxidase interaction with allopurinol — the same must-check question applies to both gout drugs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist immediately if you're also taking azathioprine or mercaptopurine. Report chest pain or unusual cardiac symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-azathioprine",
+      "moleculeId": "mol-azathioprine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known TPMT (thiopurine methyltransferase) deficiency without appropriate dose adjustment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent allopurinol or febuxostat without a substantial dose reduction — xanthine oxidase inhibition raises azathioprine's active metabolite to dangerous levels."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Myelosuppression risk requires routine blood count monitoring. Increased infection risk and a long-term increased risk of certain skin cancers/lymphoma accompany prolonged immunosuppression.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Unusual bruising, fatigue, signs of infection.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant bruising, fever or infection (possible severe myelosuppression) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care, with blood counts monitored.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Azathioprine combined with allopurinol or febuxostat without dose adjustment is one of the highest-stakes interaction checks in routine pharmacy practice — always ask about gout medicines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report unusual bruising, infections or fatigue promptly. Use sun protection given the long-term skin-cancer risk. Keep scheduled blood tests.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-folic-acid-mtx-support",
+      "moleculeId": "mol-folic-acid-rheum",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Generally very well tolerated; given specifically to reduce methotrexate's GI and blood-count side effects without blunting its therapeutic effect, when dosed and timed correctly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food; timing relative to the methotrexate dose follows the specific regimen prescribed (often a different day to the methotrexate dose).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "No significant toxicity expected at typical doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not applicable at typical doses.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Folic acid alongside methotrexate is a textbook example of mitigating a drug's side effects without undoing its therapeutic mechanism — but only if the timing is followed correctly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take folic acid exactly as scheduled relative to your methotrexate dose — don't skip it thinking it's 'just a vitamin', and don't take it on the same day as methotrexate unless specifically directed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-meloxicam",
+      "moleculeId": "mol-meloxicam",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active peptic ulcer or GI bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the NSAID-class GI/renal/cardiovascular risk triad; described as relatively more COX-2-preferential than some older NSAIDs, but this does not remove cardiovascular or renal risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "GI bleeding, renal impairment, CNS depression — seek emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management of NSAID overdose is supportive under emergency care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Meloxicam's relative COX-2 preference is a dose-dependent property, not an absolute one — high doses behave more like a non-selective NSAID.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with food. Don't combine with other NSAIDs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -434,13 +1253,70 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-azathioprine-allopurinol",
+      "moleculeAId": "mol-azathioprine",
+      "moleculeBId": "mol-allopurinol",
+      "severity": "major",
+      "mechanism": {
+        "value": "Allopurinol inhibits xanthine oxidase, the enzyme that clears azathioprine's active metabolite, raising it to potentially dangerous levels.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — this combination requires a substantial, clinician-directed azathioprine dose reduction, not routine co-administration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-colchicine-clarithro",
+      "moleculeAId": "mol-colchicine",
+      "moleculeBId": "mol-clarithro",
+      "severity": "major",
+      "mechanism": {
+        "value": "Clarithromycin's potent CYP3A4/P-glycoprotein inhibition can raise colchicine to toxic, occasionally fatal levels.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "This combination should generally be avoided — flag clearly rather than adjusting a dose to compensate.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-febuxostat-azathioprine",
+      "moleculeAId": "mol-febuxostat",
+      "moleculeBId": "mol-azathioprine",
+      "severity": "major",
+      "mechanism": {
+        "value": "Febuxostat inhibits xanthine oxidase, the enzyme that clears azathioprine's active metabolite, raising it to potentially dangerous levels — the same mechanism as allopurinol.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "This combination should generally be avoided — flag clearly rather than adjusting a dose to compensate.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-trexate",
       "productId": "prod-trexate",
-      "sepZar": 85.0,
+      "sepZar": 85,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -449,7 +1325,7 @@
     {
       "id": "price-zyloprim",
       "productId": "prod-zyloprim",
-      "sepZar": 72.0,
+      "sepZar": 72,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -458,7 +1334,7 @@
     {
       "id": "price-voltaren",
       "productId": "prod-voltaren",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
