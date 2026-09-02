@@ -37,14 +37,46 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-roche", "name": "Roche", "madeInSa": false },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
-    { "id": "mfr-amgen", "name": "Amgen", "madeInSa": false },
-    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-roche",
+      "name": "Roche",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-amgen",
+      "name": "Amgen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-janssen",
+      "name": "Janssen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    }
   ],
   "excipients": [
     {
@@ -67,7 +99,11 @@
       "innName": "Enoxaparin",
       "className": "Low-molecular-weight heparin (LMWH)",
       "therapeuticArea": "haematology",
-      "synonyms": ["clexane", "enoxaparin", "lovenox"],
+      "synonyms": [
+        "clexane",
+        "enoxaparin",
+        "lovenox"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Antithrombin-mediated anti-Xa (and some anti-IIa) activity — educational framing only; confirm against labelled product. Never invent a mg/kg dose.",
@@ -81,7 +117,10 @@
       "innName": "Heparin (unfractionated)",
       "className": "Unfractionated heparin",
       "therapeuticArea": "haematology",
-      "synonyms": ["ufh", "heparin sodium"],
+      "synonyms": [
+        "ufh",
+        "heparin sodium"
+      ],
       "publishState": "published"
     },
     {
@@ -90,7 +129,10 @@
       "innName": "Fondaparinux",
       "className": "Synthetic pentasaccharide (anti-Xa)",
       "therapeuticArea": "haematology",
-      "synonyms": ["arixtra", "fondaparinux"],
+      "synonyms": [
+        "arixtra",
+        "fondaparinux"
+      ],
       "publishState": "published"
     },
     {
@@ -99,7 +141,11 @@
       "innName": "Phytomenadione (vitamin K1)",
       "className": "Vitamin K",
       "therapeuticArea": "haematology",
-      "synonyms": ["konakion", "vitamin k1", "phytonadione"],
+      "synonyms": [
+        "konakion",
+        "vitamin k1",
+        "phytonadione"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Supports hepatic synthesis of vitamin K–dependent clotting factors — warfarin reversal conversations are clinician-directed; Materia never invents an INR protocol.",
@@ -113,7 +159,9 @@
       "innName": "Protamine sulfate",
       "className": "Heparin antidote (hospital)",
       "therapeuticArea": "haematology",
-      "synonyms": ["protamine"],
+      "synonyms": [
+        "protamine"
+      ],
       "publishState": "published"
     },
     {
@@ -122,7 +170,11 @@
       "innName": "Epoetin alfa",
       "className": "Erythropoiesis-stimulating agent (ESA)",
       "therapeuticArea": "haematology",
-      "synonyms": ["eprex", "epogen", "epoetin"],
+      "synonyms": [
+        "eprex",
+        "epogen",
+        "epoetin"
+      ],
       "publishState": "published"
     },
     {
@@ -131,7 +183,10 @@
       "innName": "Darbepoetin alfa",
       "className": "Long-acting ESA",
       "therapeuticArea": "haematology",
-      "synonyms": ["aranesp", "darbepoetin"],
+      "synonyms": [
+        "aranesp",
+        "darbepoetin"
+      ],
       "publishState": "published"
     },
     {
@@ -140,7 +195,11 @@
       "innName": "Cyanocobalamin",
       "className": "Vitamin B12",
       "therapeuticArea": "haematology",
-      "synonyms": ["vitamin b12", "cytamen", "cyanocobalamin"],
+      "synonyms": [
+        "vitamin b12",
+        "cytamen",
+        "cyanocobalamin"
+      ],
       "publishState": "published"
     },
     {
@@ -149,7 +208,11 @@
       "innName": "Hydroxycarbamide",
       "className": "Antimetabolite (sickle cell / myeloproliferative contexts)",
       "therapeuticArea": "haematology",
-      "synonyms": ["hydroxyurea", "hydrea", "hydroxycarbamide"],
+      "synonyms": [
+        "hydroxyurea",
+        "hydrea",
+        "hydroxycarbamide"
+      ],
       "publishState": "published"
     },
     {
@@ -158,7 +221,11 @@
       "innName": "Deferasirox",
       "className": "Oral iron chelator",
       "therapeuticArea": "haematology",
-      "synonyms": ["exjade", "jadenu", "deferasirox"],
+      "synonyms": [
+        "exjade",
+        "jadenu",
+        "deferasirox"
+      ],
       "publishState": "published"
     },
     {
@@ -167,7 +234,11 @@
       "innName": "Eltrombopag",
       "className": "Thrombopoietin receptor agonist",
       "therapeuticArea": "haematology",
-      "synonyms": ["revolade", "promacta", "eltrombopag"],
+      "synonyms": [
+        "revolade",
+        "promacta",
+        "eltrombopag"
+      ],
       "publishState": "published"
     },
     {
@@ -176,7 +247,11 @@
       "innName": "Folinic acid (calcium folinate)",
       "className": "Reduced folate (rescue / haematology support)",
       "therapeuticArea": "haematology",
-      "synonyms": ["leucovorin", "calcium folinate", "folinic acid"],
+      "synonyms": [
+        "leucovorin",
+        "calcium folinate",
+        "folinic acid"
+      ],
       "publishState": "published"
     },
     {
@@ -185,7 +260,10 @@
       "innName": "Tranexamic acid (haematology / bleeding contexts)",
       "className": "Antifibrinolytic",
       "therapeuticArea": "haematology",
-      "synonyms": ["cyklokapron haem", "tranexamic haematology"],
+      "synonyms": [
+        "cyklokapron haem",
+        "tranexamic haematology"
+      ],
       "publishState": "published"
     }
   ],
@@ -200,7 +278,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["clexane"],
+      "synonymKeys": [
+        "clexane"
+      ],
       "excipientIds": [],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
@@ -215,7 +295,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["arixtra"],
+      "synonymKeys": [
+        "arixtra"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -229,7 +311,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["konakion"],
+      "synonymKeys": [
+        "konakion"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -243,7 +327,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["eprex"],
+      "synonymKeys": [
+        "eprex"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -257,7 +343,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["aranesp"],
+      "synonymKeys": [
+        "aranesp"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -271,7 +359,10 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["cytamen", "vitamin b12"],
+      "synonymKeys": [
+        "cytamen",
+        "vitamin b12"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -285,8 +376,13 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["hydrea", "hydroxyurea"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "hydrea",
+        "hydroxyurea"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -299,8 +395,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["exjade"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "exjade"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -313,8 +413,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["revolade"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "revolade"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -328,7 +432,10 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["leucovorin", "calcium folinate"],
+      "synonymKeys": [
+        "leucovorin",
+        "calcium folinate"
+      ],
       "excipientIds": [],
       "publishState": "published"
     }
@@ -416,6 +523,888 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-heparin",
+      "moleculeId": "mol-heparin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active major bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe thrombocytopenia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of heparin-induced thrombocytopenia (HIT)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Heparin-induced thrombocytopenia (HIT) is a serious, immune-mediated risk requiring platelet count monitoring, especially in the first one to two weeks. Bleeding risk requires aPTT monitoring, unlike low-molecular-weight heparins which need less routine monitoring.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Unusual bruising or bleeding.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant bleeding is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Protamine sulfate is the established reversal agent for heparin.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Heparin's need for aPTT monitoring and its HIT risk are the two biggest practical differences from low-molecular-weight heparins like enoxaparin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report unusual bruising or bleeding. Routine platelet count monitoring is standard, especially early in treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-fondaparinux",
+      "moleculeId": "mol-fondaparinux",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active major bleeding."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe renal impairment — it is renally cleared and can accumulate."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Bleeding risk applies as with any anticoagulant, but unlike heparin, fondaparinux does not cause heparin-induced thrombocytopenia (HIT) — a distinguishing, clinically useful fact.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Unusual bruising or bleeding.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant bleeding is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific, widely available reversal agent exists, unlike heparin's protamine — a genuine limitation to be aware of before choosing it.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Fondaparinux's lack of HIT risk is why it's sometimes chosen specifically for patients with a HIT history, but it also lacks heparin's ready reversibility — a real clinical trade-off.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report unusual bruising or bleeding.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-protamine",
+      "moleculeId": "mol-protamine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known fish allergy — protamine is derived from fish sperm and can trigger hypersensitivity."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Can itself cause hypotension or anaphylactoid reactions if given too quickly — ironic for a drug used in bleeding emergencies, so administration rate matters. Only partially reverses low-molecular-weight heparins compared with its full reversal of unfractionated heparin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — hospital-administered parenteral use only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not typically applicable outside hospital administration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Paradoxically, excessive doses can themselves have an anticoagulant-like effect and worsen bleeding — a genuine pharmacological curiosity managed under specialist care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — protamine is itself the antidote being administered.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Protamine only partially reversing LMWH (versus fully reversing unfractionated heparin) is an important limitation to know before relying on it in an emergency.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable — hospital-administered only.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-epoetin-alfa",
+      "moleculeId": "mol-epoetin-alfa",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncontrolled hypertension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Pure red cell aplasia — a rare but serious immune reaction to erythropoiesis-stimulating agents."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Increased cardiovascular and thromboembolic risk is a well-established regulatory caution across erythropoiesis-stimulating agents, particularly if haemoglobin is corrected too high or too quickly — 'more isn't better' applies strongly here.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, raised blood pressure.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of a blood clot (leg swelling/pain, breathlessness) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — dose adjustment or withholding under specialist care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The cardiovascular/thromboembolic risk of over-correcting haemoglobin is one of the most important safety signals for this drug class.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Keep routine blood pressure and haemoglobin monitoring. Report headache or other unusual symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-darbepoetin",
+      "moleculeId": "mol-darbepoetin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncontrolled hypertension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Pure red cell aplasia — a rare but serious immune reaction to erythropoiesis-stimulating agents."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Increased cardiovascular and thromboembolic risk is a well-established regulatory caution across erythropoiesis-stimulating agents, particularly if haemoglobin is corrected too high or too quickly — 'more isn't better' applies strongly here.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, raised blood pressure.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of a blood clot (leg swelling/pain, breathlessness) need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — dose adjustment or withholding under specialist care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Darbepoetin's longer half-life allows less frequent dosing than epoetin alfa, but the same haemoglobin-overcorrection risk applies.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Keep routine blood pressure and haemoglobin monitoring. Report headache or other unusual symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-cyanocobalamin",
+      "moleculeId": "mol-cyanocobalamin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Leber's hereditary optic neuropathy — cyanide-containing B12 forms may worsen this specific, rare condition."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Very safe overall. It's important to identify and treat the underlying cause of B12 deficiency (e.g. pernicious anaemia, malabsorption) rather than simply replacing without investigation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food (oral); parenteral formulations are also used depending on the cause.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Minimal toxicity expected — very safe.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Replacing B12 without identifying the underlying cause (e.g. missing a pernicious anaemia or malabsorption diagnosis) is a common, avoidable clinical oversight.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Continue treatment as directed — this matters especially for neurological symptoms, which can become irreversible if deficiency is left untreated too long.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-deferasirox",
+      "moleculeId": "mol-deferasirox",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal or hepatic impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Low platelet counts or advanced myelodysplastic syndrome — specific cautions apply."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Renal impairment is a recognised risk requiring routine monitoring. GI upset, including rare serious GI bleeding/ulceration, and hepatotoxicity are also recognised risks.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Typically taken on an empty stomach — follow the specific product's instructions.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Reduced urine output, GI bleeding, or signs of liver injury need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care with organ function monitored.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Routine renal monitoring is a non-negotiable part of using an iron chelator safely in patients on regular transfusions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Keep scheduled blood tests for kidney and liver function. Report reduced urine output or GI symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-eltrombopag",
+      "moleculeId": "mol-eltrombopag",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hepatic impairment — added caution."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hepatotoxicity risk requires liver function monitoring. Despite raising platelet counts, it carries an increased risk of blood clots — a genuinely counterintuitive but important safety point. Absorption is reduced by calcium, iron and antacid products, requiring spacing.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Separate dosing from calcium, iron and antacid products by several hours.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Leg swelling/pain or breathlessness (possible blood clot), or signs of liver injury, need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Eltrombopag raising clot risk despite treating low platelets is a genuinely counterintuitive point worth actively counselling on, not assuming is obvious.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Space dosing away from calcium, iron and antacid products. Report leg swelling/pain or breathlessness. Keep scheduled liver tests.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-folinic-acid",
+      "moleculeId": "mol-folinic-acid",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Must not be confused with folic acid — folinic acid (leucovorin) has a specific 'rescue' role after high-dose methotrexate regimens, a different clinical purpose from routine low-dose folic acid supplementation alongside standard-dose methotrexate.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Timing follows the specific rescue protocol exactly — not general over-the-counter-style guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Minimal toxicity from folinic acid itself.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not applicable in the usual sense — the risk in a rescue protocol is giving it too late or on the wrong schedule, not folinic acid overdose itself.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — folinic acid itself functions as the rescue/antidote agent in these protocols.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Folinic acid (leucovorin) rescue after high-dose methotrexate is a completely different clinical scenario from routine low-dose folic acid support for standard-dose methotrexate — confusing the two is a genuine, dangerous medication-safety risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Follow the specific rescue protocol timing exactly as directed by the treating team. Never substitute folic acid for folinic acid in a rescue protocol.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-tranexamic-acid-haematology",
+      "moleculeId": "mol-tranexamic-haem",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active thromboembolic disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of venous thromboembolism."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment — dose adjustment needed."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the clot-stabilising (antifibrinolytic) mechanism and theoretical VTE risk of tranexamic acid generally, but is used here in broader, often time-critical bleeding contexts (trauma, surgery, major haemorrhage) rather than routine outpatient menstrual bleeding.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Parenteral administration is common in acute settings — not applicable in the outpatient sense.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness; rare visual disturbance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Visual changes, leg swelling/pain, or breathlessness need urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Tranexamic acid's role in time-critical major-trauma/haemorrhage protocols is a very different clinical urgency from its outpatient menstrual-bleeding use — same drug, very different stakes and context.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Follow the specific protocol for the clinical context — emergency use differs significantly from elective/outpatient use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -435,13 +1424,51 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-heparin-ibuprofen",
+      "moleculeAId": "mol-heparin",
+      "moleculeBId": "mol-ibuprofen",
+      "severity": "major",
+      "mechanism": {
+        "value": "NSAIDs add bleeding risk on top of an anticoagulant through antiplatelet effects and GI mucosal injury.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review; an alternative analgesic is often preferred alongside heparin.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-eltrombopag-rosuvastatin",
+      "moleculeAId": "mol-eltrombopag",
+      "moleculeBId": "mol-rosuvastatin",
+      "severity": "major",
+      "mechanism": {
+        "value": "Eltrombopag inhibits the OATP1B1 transporter that clears rosuvastatin, raising its levels and increasing myopathy risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review; a lower statin dose or alternative may be considered.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-clexane",
       "productId": "prod-clexane",
-      "sepZar": 245.0,
+      "sepZar": 245,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -450,7 +1477,7 @@
     {
       "id": "price-konakion",
       "productId": "prod-konakion",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -459,7 +1486,7 @@
     {
       "id": "price-hydrea",
       "productId": "prod-hydrea",
-      "sepZar": 185.0,
+      "sepZar": 185,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
