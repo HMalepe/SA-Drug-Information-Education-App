@@ -56,14 +56,14 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **ent-allergy** (13 molecules) — SP: done (9 profiles added) · IX: done (2 added: pseudoephedrine+atenolol, diphenhydramine+lorazepam) · DOSE: pending founder. mol-montelukast here reuses the respiratory.json id (already profiled).
 - [x] **haematology** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: heparin+ibuprofen, eltrombopag+rosuvastatin OATP1B1 interaction) · DOSE: pending founder
 - [x] **ophthalmology** (13 molecules) — SP: done (10 profiles added) · IX: already had timolol+atenolol pre-existing (systemic beta-blockade from topical timolol) · DOSE: pending founder
+- [x] **vaccines** (13 molecules) — SP: done (10 profiles added) · IX: done (1 added: bcg+azathioprine live-vaccine/immunosuppression risk) · DOSE: pending founder (N/A in the numeric-dosing sense — vaccine schedules, not weight-based drug dosing)
 
-## Remaining batches (3 areas, ~39 molecules)
+## Remaining batches (2 areas, ~26 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
 | anaesthetics | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
-| vaccines | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |
 
 (16 rows above + 5 already done this session + 9 EML batches = the ~30

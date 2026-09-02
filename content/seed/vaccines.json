@@ -37,13 +37,41 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-biovac", "name": "Biovac", "madeInSa": true },
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-serum", "name": "Serum Institute", "madeInSa": false }
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-biovac",
+      "name": "Biovac",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-serum",
+      "name": "Serum Institute",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -66,7 +94,12 @@
       "innName": "Hepatitis B vaccine",
       "className": "Inactivated recombinant vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["engerix-b", "heplisav", "hep b vaccine", "hepatitis b vaccine"],
+      "synonyms": [
+        "engerix-b",
+        "heplisav",
+        "hep b vaccine",
+        "hepatitis b vaccine"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Induces immunity against HBsAg — educational framing only; confirm against labelled product and current SA EPI/adult schedules. Never invent a dose interval.",
@@ -80,7 +113,11 @@
       "innName": "Measles, mumps, rubella (MMR) vaccine",
       "className": "Live attenuated combined vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["priorix", "mmr ii", "mmr vaccine"],
+      "synonyms": [
+        "priorix",
+        "mmr ii",
+        "mmr vaccine"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Live attenuated viruses induce humoral/cellular immunity — immunosuppression and pregnancy conversations are teaching hooks; schedules stay clinician/DoH-directed.",
@@ -94,7 +131,12 @@
       "innName": "Influenza vaccine (inactivated)",
       "className": "Inactivated seasonal influenza vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["fluarix", "influvac", "flu vaccine", "influenza vaccine"],
+      "synonyms": [
+        "fluarix",
+        "influvac",
+        "flu vaccine",
+        "influenza vaccine"
+      ],
       "publishState": "published"
     },
     {
@@ -103,7 +145,10 @@
       "innName": "Tetanus–diphtheria (Td) vaccine",
       "className": "Inactivated toxoid vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["td vaccine", "tetanus diphtheria"],
+      "synonyms": [
+        "td vaccine",
+        "tetanus diphtheria"
+      ],
       "publishState": "published"
     },
     {
@@ -112,7 +157,11 @@
       "innName": "Tetanus–diphtheria–acellular pertussis (Tdap) vaccine",
       "className": "Inactivated toxoid / acellular pertussis vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["adacel", "boostrix", "tdap"],
+      "synonyms": [
+        "adacel",
+        "boostrix",
+        "tdap"
+      ],
       "publishState": "published"
     },
     {
@@ -121,7 +170,11 @@
       "innName": "Human papillomavirus (HPV) vaccine",
       "className": "Inactivated recombinant vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["gardasil", "cervarix", "hpv vaccine"],
+      "synonyms": [
+        "gardasil",
+        "cervarix",
+        "hpv vaccine"
+      ],
       "publishState": "published"
     },
     {
@@ -130,7 +183,11 @@
       "innName": "Pneumococcal conjugate vaccine (PCV)",
       "className": "Inactivated conjugate vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["prevenar", "pcv13", "pcv vaccine"],
+      "synonyms": [
+        "prevenar",
+        "pcv13",
+        "pcv vaccine"
+      ],
       "publishState": "published"
     },
     {
@@ -139,7 +196,10 @@
       "innName": "Pneumococcal polysaccharide vaccine (PPSV)",
       "className": "Inactivated polysaccharide vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["pneumovax", "ppsv23"],
+      "synonyms": [
+        "pneumovax",
+        "ppsv23"
+      ],
       "publishState": "published"
     },
     {
@@ -148,7 +208,10 @@
       "innName": "BCG vaccine",
       "className": "Live attenuated mycobacterial vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["bcg", "bacille calmette-guerin"],
+      "synonyms": [
+        "bcg",
+        "bacille calmette-guerin"
+      ],
       "publishState": "published"
     },
     {
@@ -157,7 +220,11 @@
       "innName": "Inactivated polio vaccine (IPV)",
       "className": "Inactivated vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["ipv", "imovax polio", "polio vaccine inactivated"],
+      "synonyms": [
+        "ipv",
+        "imovax polio",
+        "polio vaccine inactivated"
+      ],
       "publishState": "published"
     },
     {
@@ -166,7 +233,11 @@
       "innName": "Rotavirus vaccine",
       "className": "Live attenuated oral vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["rotarix", "rotateq", "rotavirus vaccine"],
+      "synonyms": [
+        "rotarix",
+        "rotateq",
+        "rotavirus vaccine"
+      ],
       "publishState": "published"
     },
     {
@@ -175,7 +246,11 @@
       "innName": "Hepatitis A vaccine",
       "className": "Inactivated vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["havrix", "avaxim", "hep a vaccine"],
+      "synonyms": [
+        "havrix",
+        "avaxim",
+        "hep a vaccine"
+      ],
       "publishState": "published"
     },
     {
@@ -184,7 +259,11 @@
       "innName": "Rabies vaccine",
       "className": "Inactivated vaccine",
       "therapeuticArea": "vaccines",
-      "synonyms": ["verorab", "rabipur", "rabies vaccine"],
+      "synonyms": [
+        "verorab",
+        "rabipur",
+        "rabies vaccine"
+      ],
       "publishState": "published"
     }
   ],
@@ -199,8 +278,13 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["engerix-b", "engerix"],
-      "excipientIds": ["exc-aluminium-adjuvant"],
+      "synonymKeys": [
+        "engerix-b",
+        "engerix"
+      ],
+      "excipientIds": [
+        "exc-aluminium-adjuvant"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -214,7 +298,9 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["priorix"],
+      "synonymKeys": [
+        "priorix"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -228,7 +314,9 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["influvac"],
+      "synonymKeys": [
+        "influvac"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -242,8 +330,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["boostrix"],
-      "excipientIds": ["exc-aluminium-adjuvant"],
+      "synonymKeys": [
+        "boostrix"
+      ],
+      "excipientIds": [
+        "exc-aluminium-adjuvant"
+      ],
       "publishState": "published"
     },
     {
@@ -256,8 +348,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["gardasil"],
-      "excipientIds": ["exc-aluminium-adjuvant"],
+      "synonymKeys": [
+        "gardasil"
+      ],
+      "excipientIds": [
+        "exc-aluminium-adjuvant"
+      ],
       "publishState": "published"
     },
     {
@@ -270,8 +366,13 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["prevenar", "prevnar"],
-      "excipientIds": ["exc-aluminium-adjuvant"],
+      "synonymKeys": [
+        "prevenar",
+        "prevnar"
+      ],
+      "excipientIds": [
+        "exc-aluminium-adjuvant"
+      ],
       "publishState": "published"
     },
     {
@@ -284,7 +385,9 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["pneumovax"],
+      "synonymKeys": [
+        "pneumovax"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -298,7 +401,9 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["rotarix"],
+      "synonymKeys": [
+        "rotarix"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -312,8 +417,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["havrix"],
-      "excipientIds": ["exc-aluminium-adjuvant"],
+      "synonymKeys": [
+        "havrix"
+      ],
+      "excipientIds": [
+        "exc-aluminium-adjuvant"
+      ],
       "publishState": "published"
     },
     {
@@ -326,7 +435,9 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["verorab"],
+      "synonymKeys": [
+        "verorab"
+      ],
       "excipientIds": [],
       "publishState": "published"
     }
@@ -408,6 +519,843 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-tetanus-diphtheria-vaccine",
+      "moleculeId": "mol-td-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe allergic reaction to a previous dose or vaccine component."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions (pain, swelling) are common; rare systemic reactions such as fever or malaise can occur.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A severe allergic reaction shortly after injection is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — anaphylaxis is managed under emergency protocols if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Wound management is a common real-world trigger for a tetanus booster decision — worth checking vaccination history whenever a significant wound is treated.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report severe injection-site reactions. Keep vaccination records up to date to inform future wound-management decisions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-tdap-vaccine",
+      "moleculeId": "mol-tdap-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe allergic reaction to a previous dose or vaccine component."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Encephalopathy within 7 days of a previous pertussis-containing vaccine dose not attributable to another cause."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions are common, slightly more so than with Td alone. Vaccination during pregnancy with a pertussis-containing vaccine is recommended in many guidelines specifically to protect the newborn before their own vaccinations begin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A severe allergic reaction shortly after injection is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — anaphylaxis is managed under emergency protocols if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Passive pertussis antibody transfer to a newborn via maternal vaccination is a clear example of vaccination protecting someone who can't yet be vaccinated themselves.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report severe reactions. Discuss pregnancy vaccination timing with your clinician.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-hpv-vaccine",
+      "moleculeId": "mol-hpv-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe allergic reaction to a previous dose or vaccine component."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions are common. Fainting (syncope) shortly after injection has been specifically noted as more common in adolescents receiving this vaccine, which is why a brief observation period afterwards is often recommended.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A severe allergic reaction shortly after injection is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — anaphylaxis is managed under emergency protocols if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The post-injection fainting signal in adolescents reflects a reaction to the injection itself in this age group, not something specific to the vaccine's ingredients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Sit or lie down for a short period after vaccination if advised. Report any severe reaction.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-pneumococcal-conjugate-vaccine",
+      "moleculeId": "mol-pcv-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe allergic reaction to a previous dose or vaccine component."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions and mild fever are common, especially in infants.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A severe allergic reaction shortly after injection is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — anaphylaxis is managed under emergency protocols if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Conjugate vaccines like PCV generate a stronger, more durable immune response in infants than plain polysaccharide vaccines — a key immunology contrast with PPSV.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Mild fever or fussiness after infant vaccination is expected and usually settles within a day or two. Report high fever or unusual symptoms.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-pneumococcal-polysaccharide-vaccine",
+      "moleculeId": "mol-ppsv-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe allergic reaction to a previous dose or vaccine component."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions are common. It is less immunogenic in young children than conjugate vaccines, which is why it is reserved for older children/adults and specific risk groups rather than routine infant use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A severe allergic reaction shortly after injection is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — anaphylaxis is managed under emergency protocols if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "PPSV's weaker response in young children versus PCV is exactly why conjugate vaccines cover infants while PPSV targets older ages and specific risk groups.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report severe injection-site reactions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-bcg-vaccine",
+      "moleculeId": "mol-bcg-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant immunosuppression, including HIV infection in many guidelines — this is a live vaccine."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy — caution given it is a live vaccine."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "A small local ulcer/scar at the injection site is an expected, normal part of the vaccine's action, not a complication. Rare disseminated BCG infection can occur in significantly immunocompromised individuals, which is why the immunosuppression contraindication matters so much.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "An unusually large, spreading, or non-healing lesion at the injection site needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — disseminated infection is managed under specialist medical care if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "BCG being a live vaccine is precisely why HIV status matters so much before giving it — a core vaccine-safety point that is especially relevant in the South African context.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "A small local ulcer/scar is normal and expected, not a sign of infection. Report unusually large or spreading lesions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-inactivated-polio-vaccine",
+      "moleculeId": "mol-ipv-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe allergic reaction to a previous dose or vaccine component."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions are common. Being inactivated, it carries no risk of vaccine-associated paralytic polio, unlike the oral live polio vaccine historically used in many programmes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A severe allergic reaction shortly after injection is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — anaphylaxis is managed under emergency protocols if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "IPV carrying no vaccine-associated paralytic polio risk, unlike the historical oral live vaccine, is a key reason many countries transitioned their schedules to IPV.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report severe injection-site reactions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-rotavirus-vaccine",
+      "moleculeId": "mol-rotavirus-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe combined immunodeficiency (SCID) — this is a live oral vaccine."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "History of intussusception, or a congenital malformation predisposing to it."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "A small increased risk of intussusception has been observed with rotavirus vaccination in some studies, though the overall benefit-risk balance remains favourable per public health guidance — worth actively counselling on early warning signs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Given orally per the recommended schedule, not tied to routine feeding times.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe abdominal pain, vomiting, or blood in stool in the weeks after vaccination need prompt medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — suspected intussusception is managed under emergency paediatric care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The intussusception signal with rotavirus vaccine is one of vaccine-safety surveillance's best-known real-world examples of a rare risk being carefully monitored and weighed against clear benefit.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Watch for severe abdominal pain, vomiting, or blood in the stool in the weeks after vaccination and seek care promptly if these occur.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-hepatitis-a-vaccine",
+      "moleculeId": "mol-hep-a-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe allergic reaction to a previous dose or vaccine component."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions are common; mild systemic symptoms are possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A severe allergic reaction shortly after injection is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — anaphylaxis is managed under emergency protocols if it occurs.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Hepatitis A vaccination is a classic pre-travel counselling point for travellers heading to areas with limited sanitation infrastructure.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report severe injection-site reactions. Complete the recommended dosing schedule for full protection.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-rabies-vaccine",
+      "moleculeId": "mol-rabies-vaccine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local injection-site reactions are common. Post-exposure treatment often combines the vaccine with rabies immunoglobulin depending on the wound category, per the treating clinician's assessment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — injectable vaccine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not applicable in the usual sense — the real danger is untreated exposure, not the vaccine itself.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Rabies is essentially always fatal once symptomatic, which is why post-exposure prophylaxis is treated as a true medical emergency and is never delayed or withheld for other medical conditions.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Seek post-exposure treatment immediately after any potential rabies exposure (a bite or scratch from a suspect animal) — don't wait to see if symptoms develop.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -427,13 +1375,32 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-bcg-azathioprine",
+      "moleculeAId": "mol-bcg-vaccine",
+      "moleculeBId": "mol-azathioprine",
+      "severity": "major",
+      "mechanism": {
+        "value": "BCG is a live vaccine; significant immunosuppression from azathioprine raises the risk of disseminated BCG infection instead of a normal, contained local reaction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "This combination should generally be avoided — flag clearly rather than adjusting a dose to compensate; defer live vaccination until immunosuppression is reviewed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-engerix-b",
       "productId": "prod-engerix-b",
-      "sepZar": 185.0,
+      "sepZar": 185,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -442,7 +1409,7 @@
     {
       "id": "price-priorix",
       "productId": "prod-priorix",
-      "sepZar": 245.0,
+      "sepZar": 245,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -451,7 +1418,7 @@
     {
       "id": "price-gardasil",
       "productId": "prod-gardasil",
-      "sepZar": 980.0,
+      "sepZar": 980,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
