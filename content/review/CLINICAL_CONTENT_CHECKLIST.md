@@ -55,14 +55,14 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **dermatology** (13 molecules) — SP: done (10 profiles added) · IX: done (1 added: oral terbinafine+warfarin) · DOSE: pending founder. Mostly-topical file — fewer systemic interactions genuinely apply, so only one is claimed rather than padding the count.
 - [x] **ent-allergy** (13 molecules) — SP: done (9 profiles added) · IX: done (2 added: pseudoephedrine+atenolol, diphenhydramine+lorazepam) · DOSE: pending founder. mol-montelukast here reuses the respiratory.json id (already profiled).
 - [x] **haematology** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: heparin+ibuprofen, eltrombopag+rosuvastatin OATP1B1 interaction) · DOSE: pending founder
+- [x] **ophthalmology** (13 molecules) — SP: done (10 profiles added) · IX: already had timolol+atenolol pre-existing (systemic beta-blockade from topical timolol) · DOSE: pending founder
 
-## Remaining batches (4 areas, ~49 molecules)
+## Remaining batches (3 areas, ~39 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
 | anaesthetics | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
-| ophthalmology | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |
 

@@ -37,13 +37,41 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
-    { "id": "mfr-allergan", "name": "Allergan", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-bausch", "name": "Bausch & Lomb", "madeInSa": false },
-    { "id": "mfr-santen", "name": "Santen", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-allergan",
+      "name": "Allergan",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-bausch",
+      "name": "Bausch & Lomb",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-santen",
+      "name": "Santen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    }
   ],
   "excipients": [
     {
@@ -66,7 +94,11 @@
       "innName": "Chloramphenicol (ophthalmic)",
       "className": "Topical ophthalmic antibiotic",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["chloromycetin", "chloramphenicol eye drops", "chloramphenicol eye ointment"],
+      "synonyms": [
+        "chloromycetin",
+        "chloramphenicol eye drops",
+        "chloramphenicol eye ointment"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Inhibits bacterial protein synthesis on the ocular surface — educational framing for red-eye counselling only; confirm against labelled product. Never invent a dose or duration.",
@@ -80,7 +112,10 @@
       "innName": "Tobramycin (ophthalmic)",
       "className": "Topical ophthalmic aminoglycoside",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["tobrex", "tobramycin eye"],
+      "synonyms": [
+        "tobrex",
+        "tobramycin eye"
+      ],
       "publishState": "published"
     },
     {
@@ -89,7 +124,10 @@
       "innName": "Ciprofloxacin (ophthalmic)",
       "className": "Topical ophthalmic fluoroquinolone",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["ciloxan", "ciprofloxacin eye"],
+      "synonyms": [
+        "ciloxan",
+        "ciprofloxacin eye"
+      ],
       "publishState": "published"
     },
     {
@@ -98,7 +136,10 @@
       "innName": "Latanoprost",
       "className": "Prostaglandin analogue (glaucoma)",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["xalatan", "latanoprost"],
+      "synonyms": [
+        "xalatan",
+        "latanoprost"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Increases uveoscleral outflow to lower IOP — iris darkening / lash growth counselling hooks; regimens stay clinician-directed.",
@@ -112,7 +153,11 @@
       "innName": "Timolol (ophthalmic)",
       "className": "Topical beta-blocker (glaucoma)",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["timoptol", "timolol eye", "timoptic"],
+      "synonyms": [
+        "timoptol",
+        "timolol eye",
+        "timoptic"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Reduces aqueous humour production via ocular beta blockade — systemic absorption and asthma/bradycardia cautions are the teaching hooks.",
@@ -126,7 +171,10 @@
       "innName": "Brimonidine",
       "className": "Alpha-2 agonist (glaucoma)",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["alphagan", "brimonidine"],
+      "synonyms": [
+        "alphagan",
+        "brimonidine"
+      ],
       "publishState": "published"
     },
     {
@@ -135,7 +183,10 @@
       "innName": "Dorzolamide",
       "className": "Carbonic anhydrase inhibitor (topical)",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["trusopt", "dorzolamide"],
+      "synonyms": [
+        "trusopt",
+        "dorzolamide"
+      ],
       "publishState": "published"
     },
     {
@@ -144,7 +195,11 @@
       "innName": "Hypromellose",
       "className": "Ocular lubricant (artificial tears)",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["tears naturale", "hypromellose", "artificial tears"],
+      "synonyms": [
+        "tears naturale",
+        "hypromellose",
+        "artificial tears"
+      ],
       "publishState": "published"
     },
     {
@@ -153,7 +208,10 @@
       "innName": "Prednisolone (ophthalmic)",
       "className": "Topical ophthalmic corticosteroid",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["pred forte", "prednisolone acetate eye"],
+      "synonyms": [
+        "pred forte",
+        "prednisolone acetate eye"
+      ],
       "publishState": "published"
     },
     {
@@ -162,7 +220,11 @@
       "innName": "Olopatadine",
       "className": "Ocular antihistamine / mast-cell stabiliser",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["patanol", "opatanol", "olopatadine"],
+      "synonyms": [
+        "patanol",
+        "opatanol",
+        "olopatadine"
+      ],
       "publishState": "published"
     },
     {
@@ -171,7 +233,10 @@
       "innName": "Tropicamide",
       "className": "Mydriatic / cycloplegic",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["mydriacyl", "tropicamide"],
+      "synonyms": [
+        "mydriacyl",
+        "tropicamide"
+      ],
       "publishState": "published"
     },
     {
@@ -180,7 +245,11 @@
       "innName": "Aciclovir (ophthalmic)",
       "className": "Topical ophthalmic antiviral",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["zovirax eye ointment", "aciclovir eye", "acyclovir eye"],
+      "synonyms": [
+        "zovirax eye ointment",
+        "aciclovir eye",
+        "acyclovir eye"
+      ],
       "publishState": "published"
     },
     {
@@ -189,7 +258,10 @@
       "innName": "Ketotifen (ophthalmic)",
       "className": "Ocular antihistamine / mast-cell stabiliser",
       "therapeuticArea": "ophthalmology",
-      "synonyms": ["zaditen", "ketotifen eye"],
+      "synonyms": [
+        "zaditen",
+        "ketotifen eye"
+      ],
       "publishState": "published"
     }
   ],
@@ -204,8 +276,13 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["chloromycetin", "chloramphenicol eye drops"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "chloromycetin",
+        "chloramphenicol eye drops"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -219,8 +296,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["tobrex"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "tobrex"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -233,8 +314,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["xalatan"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "xalatan"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -247,8 +332,13 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["timoptol", "timoptic"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "timoptol",
+        "timoptic"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -261,8 +351,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["alphagan"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "alphagan"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -275,8 +369,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["trusopt"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "trusopt"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -289,8 +387,12 @@
       "schedule": "S0",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["tears naturale"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "tears naturale"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -303,8 +405,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["pred forte"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "pred forte"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -317,8 +423,13 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["patanol", "opatanol"],
-      "excipientIds": ["exc-benzalkonium"],
+      "synonymKeys": [
+        "patanol",
+        "opatanol"
+      ],
+      "excipientIds": [
+        "exc-benzalkonium"
+      ],
       "publishState": "published"
     },
     {
@@ -331,7 +442,10 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["zovirax eye", "zovirax eye ointment"],
+      "synonymKeys": [
+        "zovirax eye",
+        "zovirax eye ointment"
+      ],
       "excipientIds": [],
       "publishState": "published"
     }
@@ -419,6 +533,787 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-tobramycin-ophthalmic",
+      "moleculeId": "mol-tobramycin-eye",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local irritation or allergic reaction is possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": "Systemic absorption from topical ophthalmic use is minimal, so the systemic risks seen with the oral/injectable form of this drug class do not meaningfully apply here.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Topical ophthalmic aminoglycosides avoid the systemic nephrotoxicity/ototoxicity concerns of injectable aminoglycosides like gentamicin — a useful route-of-administration teaching contrast.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Complete the prescribed course. Remove contact lenses during treatment unless the product says otherwise.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-ciprofloxacin-ophthalmic",
+      "moleculeId": "mol-ciprofloxacin-eye",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local irritation is possible; rare corneal deposits have been reported with prolonged use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": "Systemic absorption from topical ophthalmic use is minimal, so the systemic risks seen with the oral/injectable form of this drug class do not meaningfully apply here.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Oral ciprofloxacin's tendon and QT concerns don't meaningfully translate to the topical eye-drop form given how little reaches the bloodstream.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Complete the prescribed course. Remove contact lenses during treatment unless the product says otherwise.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-brimonidine",
+      "moleculeId": "mol-brimonidine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Infants and young children — risk of serious CNS depression/apnoea from systemic absorption."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Drowsiness/fatigue can occur in adults. Local allergic conjunctivitis is common with longer-term use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "In young children, accidental exposure can cause serious CNS depression or apnoea — a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — supportive care is critical, especially for accidental paediatric exposure.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Brimonidine's infant apnoea risk is one of the most safety-critical, non-negotiable contraindications in ophthalmology — it is never used in young children.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Keep well away from children. Report drowsiness or unusual fatigue.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-dorzolamide",
+      "moleculeId": "mol-dorzolamide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known sulfonamide hypersensitivity — dorzolamide is a sulfonamide derivative."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Local stinging and a bitter taste after application are common. Systemic sulfonamide-type reactions are rare at topical doses but theoretically possible.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local stinging.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Dorzolamide being a sulfonamide derivative is worth remembering when a patient reports a sulfa allergy — even for a topical eye drop.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Expect transient stinging or a bitter taste after application. Tell your pharmacist about any sulfa allergy.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-hypromellose",
+      "moleculeId": "mol-hypromellose",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Very safe with minimal risk. Preservative-containing formulations can irritate the eye with very frequent, long-term use in some patients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Recommending preservative-free artificial tears for patients using drops very frequently (e.g. more than four times a day) is a genuinely useful, practical dispensing point.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Remove contact lenses before use unless the product is specifically contact-lens-compatible. Consider preservative-free drops if using very frequently.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-prednisolone-ophthalmic",
+      "moleculeId": "mol-prednisolone-eye",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Active untreated ocular infection (viral, bacterial or fungal) without concurrent antimicrobial cover — steroids can worsen an underlying infection."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Raised intraocular pressure (steroid-induced glaucoma) is a recognised risk with prolonged use and needs monitoring. Cataract risk also rises with long-term use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Eye pain or visual changes need urgent ophthalmology assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — managed by adjusting or stopping treatment under specialist direction.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Topical ocular steroids requiring ophthalmologist supervision — not routine community dispensing without a diagnosis — exists precisely because of the infection-masking and pressure-raising risks.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Use exactly as directed by the eye specialist. Report visual changes or eye pain. Never use for an undiagnosed 'red eye'.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-olopatadine",
+      "moleculeId": "mol-olopatadine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local stinging or irritation is possible but generally well tolerated.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Combining antihistamine and mast-cell-stabiliser action gives both fast symptom relief and a preventive effect — a useful mechanism contrast with single-action alternatives.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Remove contact lenses before application and wait the recommended time before reinserting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-tropicamide",
+      "moleculeId": "mol-tropicamide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Angle-closure glaucoma or narrow anterior chamber angles — dilation can precipitate acute angle-closure glaucoma."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Blurred near vision and light sensitivity typically last several hours after use. Systemic anticholinergic effects are rare at topical doses but possible, especially in children or the elderly.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Prolonged blurred vision, light sensitivity.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Systemic anticholinergic signs from significant exposure (confusion, fast heartbeat) need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable at typical topical doses — supportive care for significant systemic exposure.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Warning patients not to drive after pupil dilation is one of the most practically important, routinely needed counselling points in ophthalmology.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Arrange for someone else to drive you home after your appointment. Expect light sensitivity and blurred near vision for several hours.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-aciclovir-ophthalmic",
+      "moleculeId": "mol-aciclovir-eye",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local irritation is common. Must be used specifically for confirmed viral (herpetic) keratitis — using it, or the wrong product, for a non-herpetic red eye delays correct treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Worsening symptoms despite treatment need prompt ophthalmology reassessment rather than assuming it just needs more time.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Correct diagnosis before treatment matters enormously in ophthalmology — an antiviral won't help a bacterial or allergic red eye, and vice versa.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Complete the full course as directed by the eye specialist. Report if symptoms worsen rather than waiting it out.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-ketotifen-ophthalmic",
+      "moleculeId": "mol-ketotifen-eye",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local stinging is possible but generally well tolerated.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical eye use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Combining antihistamine and mast-cell-stabiliser action gives both fast symptom relief and a preventive effect — a useful mechanism contrast with single-action alternatives.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Remove contact lenses before application and wait the recommended time before reinserting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -444,7 +1339,7 @@
     {
       "id": "price-chloromycetin-eye",
       "productId": "prod-chloromycetin-eye",
-      "sepZar": 55.0,
+      "sepZar": 55,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -453,7 +1348,7 @@
     {
       "id": "price-xalatan",
       "productId": "prod-xalatan",
-      "sepZar": 285.0,
+      "sepZar": 285,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -462,7 +1357,7 @@
     {
       "id": "price-timoptol",
       "productId": "prod-timoptol",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
