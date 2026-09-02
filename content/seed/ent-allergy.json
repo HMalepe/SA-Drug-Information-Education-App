@@ -37,14 +37,46 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false },
-    { "id": "mfr-bayer", "name": "Bayer", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-janssen",
+      "name": "Janssen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-bayer",
+      "name": "Bayer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -67,7 +99,11 @@
       "innName": "Cetirizine",
       "className": "Second-generation H1 antihistamine",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["zyrtec", "texa", "cetirizine"],
+      "synonyms": [
+        "zyrtec",
+        "texa",
+        "cetirizine"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Selective peripheral H1 blockade — educational framing for allergic rhinitis/urticaria counselling only; confirm against labelled product. Never invent a dose.",
@@ -81,7 +117,11 @@
       "innName": "Loratadine",
       "className": "Second-generation H1 antihistamine",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["clarityne", "claritin", "loratadine"],
+      "synonyms": [
+        "clarityne",
+        "claritin",
+        "loratadine"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Non-sedating H1 antihistamine teaching molecule — onset and once-daily framing stay educational; dosing unpublished until founder review.",
@@ -95,7 +135,11 @@
       "innName": "Fexofenadine",
       "className": "Second-generation H1 antihistamine",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["telfast", "allegra", "fexofenadine"],
+      "synonyms": [
+        "telfast",
+        "allegra",
+        "fexofenadine"
+      ],
       "publishState": "published"
     },
     {
@@ -104,7 +148,10 @@
       "innName": "Desloratadine",
       "className": "Second-generation H1 antihistamine",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["aerius", "desloratadine"],
+      "synonyms": [
+        "aerius",
+        "desloratadine"
+      ],
       "publishState": "published"
     },
     {
@@ -113,7 +160,11 @@
       "innName": "Chlorphenamine",
       "className": "First-generation H1 antihistamine (sedating)",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["chlorpheniramine", "allergex", "piriton"],
+      "synonyms": [
+        "chlorpheniramine",
+        "allergex",
+        "piriton"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Sedating H1 antihistamine — drowsiness and CNS-depressant combinations are the counselling hooks.",
@@ -127,7 +178,10 @@
       "innName": "Diphenhydramine",
       "className": "First-generation H1 antihistamine (sedating)",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["benadryl", "diphenhydramine"],
+      "synonyms": [
+        "benadryl",
+        "diphenhydramine"
+      ],
       "publishState": "published"
     },
     {
@@ -136,7 +190,11 @@
       "innName": "Fluticasone (nasal)",
       "className": "Intranasal corticosteroid",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["flixonase", "avamys", "fluticasone nasal"],
+      "synonyms": [
+        "flixonase",
+        "avamys",
+        "fluticasone nasal"
+      ],
       "publishState": "published"
     },
     {
@@ -145,7 +203,10 @@
       "innName": "Mometasone (nasal)",
       "className": "Intranasal corticosteroid",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["nasonex", "mometasone nasal"],
+      "synonyms": [
+        "nasonex",
+        "mometasone nasal"
+      ],
       "publishState": "published"
     },
     {
@@ -154,7 +215,10 @@
       "innName": "Xylometazoline",
       "className": "Topical nasal decongestant (alpha agonist)",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["otrivin", "xylometazoline"],
+      "synonyms": [
+        "otrivin",
+        "xylometazoline"
+      ],
       "publishState": "published"
     },
     {
@@ -163,7 +227,10 @@
       "innName": "Oxymetazoline",
       "className": "Topical nasal decongestant (alpha agonist)",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["iliadin", "oxymetazoline"],
+      "synonyms": [
+        "iliadin",
+        "oxymetazoline"
+      ],
       "publishState": "published"
     },
     {
@@ -172,7 +239,10 @@
       "innName": "Pseudoephedrine",
       "className": "Oral sympathomimetic decongestant",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["sudafed", "pseudoephedrine"],
+      "synonyms": [
+        "sudafed",
+        "pseudoephedrine"
+      ],
       "publishState": "published"
     },
     {
@@ -181,7 +251,10 @@
       "innName": "Montelukast",
       "className": "Leukotriene receptor antagonist",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["singulair", "montelukast"],
+      "synonyms": [
+        "singulair",
+        "montelukast"
+      ],
       "publishState": "published"
     },
     {
@@ -190,7 +263,11 @@
       "innName": "Sodium cromoglicate",
       "className": "Mast-cell stabiliser (nasal / ocular contexts)",
       "therapeuticArea": "ent-allergy",
-      "synonyms": ["cromolyn", "lomusol", "sodium cromoglycate"],
+      "synonyms": [
+        "cromolyn",
+        "lomusol",
+        "sodium cromoglycate"
+      ],
       "publishState": "published"
     }
   ],
@@ -205,8 +282,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["zyrtec"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "zyrtec"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -221,8 +302,13 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["cetirizine aspen", "texa"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "cetirizine aspen",
+        "texa"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -235,8 +321,13 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["clarityne", "claritin"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "clarityne",
+        "claritin"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -249,8 +340,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["telfast"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "telfast"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -263,8 +358,13 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["allergex", "piriton"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "allergex",
+        "piriton"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -277,7 +377,10 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["flixonase", "avamys"],
+      "synonymKeys": [
+        "flixonase",
+        "avamys"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -291,7 +394,9 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["nasonex"],
+      "synonymKeys": [
+        "nasonex"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -305,7 +410,9 @@
       "schedule": "S1",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["otrivin"],
+      "synonymKeys": [
+        "otrivin"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -319,8 +426,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["singulair"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "singulair"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -333,8 +444,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["sudafed"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "sudafed"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -421,6 +536,722 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-loratadine",
+      "moleculeId": "mol-loratadine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Much less sedating than first-generation antihistamines, though individual sensitivity varies and sedation can still occur, especially at higher doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness (more likely at higher doses), dry mouth.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant sedation or cardiac symptoms in large overdose need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The reduced sedation of second-generation antihistamines versus first-generation ones is exactly why they're now first-line for routine allergy treatment, especially when driving or operating machinery matters.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Generally non-drowsy, but individual response varies — avoid alcohol if you notice drowsiness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-fexofenadine",
+      "moleculeId": "mol-fexofenadine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Much less sedating than first-generation antihistamines, though individual sensitivity varies and sedation can still occur, especially at higher doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": "Fruit juices (grapefruit, orange, apple) can reduce fexofenadine absorption via a transporter interaction — a distinctive, fexofenadine-specific counselling point among antihistamines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with water rather than fruit juice.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness (more likely at higher doses), dry mouth.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant sedation or cardiac symptoms in large overdose need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The reduced sedation of second-generation antihistamines versus first-generation ones is exactly why they're now first-line for routine allergy treatment, especially when driving or operating machinery matters.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": "Fexofenadine's fruit-juice absorption interaction is a frequently tested point that distinguishes it from most other antihistamines.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take with water, not fruit juice, for the most reliable effect.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-desloratadine",
+      "moleculeId": "mol-desloratadine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Much less sedating than first-generation antihistamines, though individual sensitivity varies and sedation can still occur, especially at higher doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness (more likely at higher doses), dry mouth.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant sedation or cardiac symptoms in large overdose need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The reduced sedation of second-generation antihistamines versus first-generation ones is exactly why they're now first-line for routine allergy treatment, especially when driving or operating machinery matters.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Generally non-drowsy, but individual response varies — avoid alcohol if you notice drowsiness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-diphenhydramine",
+      "moleculeId": "mol-diphenhydramine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Angle-closure glaucoma."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant urinary retention."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Significant sedation and anticholinergic effects (dry mouth, blurred vision, urinary retention) are common. Additive CNS depression occurs with alcohol or other sedatives. It appears in many combination cold and sleep products, creating a real risk of accidental double-dosing.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Avoid alcohol.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Drowsiness, dry mouth, blurred vision; in children, paradoxical excitation is possible instead of sedation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe anticholinergic toxicity (confusion, fast heartbeat, urinary retention) is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote widely used at primary-care level — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Diphenhydramine hiding inside multiple combination cold/sleep products is a classic accidental-double-dosing risk — always check other products before adding it.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Check other products (cold remedies, sleep aids) for antihistamine content before combining. Avoid driving until you know how it affects you. Avoid alcohol.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-fluticasone-nasal",
+      "moleculeId": "mol-fluticasone-nasal",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Nasal irritation and occasional nosebleeds can occur; rare septal perforation has been reported with prolonged or incorrect technique. Systemic absorption is low at recommended doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — nasal use only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local nasal irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Recurrent or heavy nosebleeds need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — local effects are managed supportively.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Correct technique — aiming the spray away from the central nasal septum — meaningfully reduces nosebleed and perforation risk, a practical point that's easy to overlook.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Aim the spray away from the central nasal septum. Report recurrent nosebleeds.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-mometasone-nasal",
+      "moleculeId": "mol-mometasone-nasal",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Nasal irritation and occasional nosebleeds can occur; rare septal perforation has been reported with prolonged or incorrect technique. Systemic absorption is low at recommended doses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — nasal use only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local nasal irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Recurrent or heavy nosebleeds need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — local effects are managed supportively.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Correct technique — aiming the spray away from the central nasal septum — meaningfully reduces nosebleed and perforation risk, a practical point that's easy to overlook.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Aim the spray away from the central nasal septum. Report recurrent nosebleeds.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-oxymetazoline",
+      "moleculeId": "mol-oxymetazoline",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Rebound congestion (rhinitis medicamentosa) is a well-known risk with use beyond a few days — shared by all nasal decongestant sprays.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — nasal use only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local nasal irritation, worsening congestion with overuse.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of systemic absorption (raised blood pressure) with excessive use need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — stopping the spray and allowing rebound congestion to settle is the usual management.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Rebound congestion beyond about 5-7 days of continuous use is the single most important counselling point for any nasal decongestant spray.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Don't use for more than the recommended few days in a row, even if congestion persists.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-pseudoephedrine",
+      "moleculeId": "mol-pseudoephedrine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncontrolled hypertension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant cardiac disease."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Can raise blood pressure and heart rate, and cause CNS stimulation (insomnia, jitteriness). Regulated in many countries as a controlled precursor chemical alongside its use as a decongestant.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Avoid dosing close to bedtime given its stimulant effect.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Raised heart rate, agitation, insomnia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant hypertension or arrhythmia needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Pseudoephedrine's dual identity — useful decongestant and regulated precursor chemical — is why it's often kept behind the pharmacy counter rather than on open shelves.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Avoid if you have uncontrolled high blood pressure or heart problems. Avoid dosing near bedtime.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-sodium-cromoglicate",
+      "moleculeId": "mol-sodium-cromoglicate",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Very good overall safety profile. Needs regular, sustained use for its preventive effect — it is not a quick-relief treatment and won't help once symptoms are already established.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — topical, inhaled or nasal use depending on formulation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Sodium cromoglicate is a prevention drug, not a rescue drug — it must be started before allergen exposure or symptom onset to work, unlike antihistamines or decongestants.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Start use before expected allergen exposure (e.g. before hay fever season) and use it regularly, not just once symptoms begin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -440,13 +1271,51 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-pseudoephedrine-atenolol",
+      "moleculeAId": "mol-pseudoephedrine",
+      "moleculeBId": "mol-atenolol",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Pseudoephedrine's stimulant, blood-pressure-raising effect works against a beta-blocker's intended effect, potentially blunting blood pressure control.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for blood pressure review whenever both are used together, especially for more than a few days.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-diphenhydramine-lorazepam",
+      "moleculeAId": "mol-diphenhydramine",
+      "moleculeBId": "mol-lorazepam",
+      "severity": "major",
+      "mechanism": {
+        "value": "Both drugs cause CNS depression through different mechanisms; combined, sedation and respiratory depression risk are additive.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review; avoid combining unless specifically directed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-zyrtec",
       "productId": "prod-zyrtec",
-      "sepZar": 98.0,
+      "sepZar": 98,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -455,7 +1324,7 @@
     {
       "id": "price-cetirizine-asp",
       "productId": "prod-cetirizine-asp",
-      "sepZar": 42.0,
+      "sepZar": 42,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -464,7 +1333,7 @@
     {
       "id": "price-clarityne",
       "productId": "prod-clarityne",
-      "sepZar": 105.0,
+      "sepZar": 105,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",

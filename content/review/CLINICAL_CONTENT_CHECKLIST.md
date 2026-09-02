@@ -53,16 +53,17 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **womens-health** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: fluconazole+warfarin, fluconazole+gliclazide, drospirenone+enalapril hyperkalaemia) · DOSE: pending founder
 - [x] **urology** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: alfuzosin+tadalafil, doxazosin+sildenafil — both alpha-blocker+PDE5i additive hypotension) · DOSE: pending founder
 - [x] **dermatology** (13 molecules) — SP: done (10 profiles added) · IX: done (1 added: oral terbinafine+warfarin) · DOSE: pending founder. Mostly-topical file — fewer systemic interactions genuinely apply, so only one is claimed rather than padding the count.
+- [x] **ent-allergy** (13 molecules) — SP: done (9 profiles added) · IX: done (2 added: pseudoephedrine+atenolol, diphenhydramine+lorazepam) · DOSE: pending founder. mol-montelukast here reuses the respiratory.json id (already profiled).
 
-## Remaining batches (6 areas, ~23 molecules)
+## Remaining batches (5 areas, ~62 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
 | anaesthetics | 13 | [ ] | [ ] | [ ] |
-| ent-allergy | 13 | [ ] | [ ] | [ ] |
 | haematology | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
 | ophthalmology | 13 | [ ] | [ ] | [ ] |
+| vaccines | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |
 
 (16 rows above + 5 already done this session + 9 EML batches = the ~30
