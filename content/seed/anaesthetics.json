@@ -37,16 +37,56 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-astrazeneca", "name": "AstraZeneca", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-baxter", "name": "Baxter", "madeInSa": false },
-    { "id": "mfr-fresenius", "name": "Fresenius Kabi", "madeInSa": false },
-    { "id": "mfr-roche", "name": "Roche", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false },
-    { "id": "mfr-abbvie", "name": "AbbVie", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-astrazeneca",
+      "name": "AstraZeneca",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-baxter",
+      "name": "Baxter",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-fresenius",
+      "name": "Fresenius Kabi",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-roche",
+      "name": "Roche",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-janssen",
+      "name": "Janssen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-abbvie",
+      "name": "AbbVie",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -69,7 +109,11 @@
       "innName": "Lidocaine (lignocaine)",
       "className": "Amide local anaesthetic / class Ib antiarrhythmic",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["lignocaine", "xylocaine", "lidocaine"],
+      "synonyms": [
+        "lignocaine",
+        "xylocaine",
+        "lidocaine"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Blocks voltage-gated sodium channels — educational framing for local anaesthesia and systemic toxicity vigilance only; never invent a max dose.",
@@ -83,7 +127,11 @@
       "innName": "Bupivacaine",
       "className": "Amide local anaesthetic (long-acting)",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["marcaine", "sensorcaine", "bupivacaine"],
+      "synonyms": [
+        "marcaine",
+        "sensorcaine",
+        "bupivacaine"
+      ],
       "publishState": "published"
     },
     {
@@ -92,7 +140,10 @@
       "innName": "Ropivacaine",
       "className": "Amide local anaesthetic",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["naropin", "ropivacaine"],
+      "synonyms": [
+        "naropin",
+        "ropivacaine"
+      ],
       "publishState": "published"
     },
     {
@@ -101,7 +152,10 @@
       "innName": "Propofol",
       "className": "IV anaesthetic / sedative-hypnotic",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["diprivan", "propofol"],
+      "synonyms": [
+        "diprivan",
+        "propofol"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Potentiates GABA-A mediated inhibition — airway/haemodynamic monitoring is clinician-only; Materia never invents an infusion rate.",
@@ -115,7 +169,10 @@
       "innName": "Midazolam",
       "className": "Benzodiazepine (anaesthesia / procedural sedation)",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["dormicum", "midazolam"],
+      "synonyms": [
+        "dormicum",
+        "midazolam"
+      ],
       "publishState": "published"
     },
     {
@@ -124,7 +181,10 @@
       "innName": "Ketamine",
       "className": "Dissociative anaesthetic (NMDA antagonist)",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["ketalar", "ketamine"],
+      "synonyms": [
+        "ketalar",
+        "ketamine"
+      ],
       "publishState": "published"
     },
     {
@@ -133,7 +193,10 @@
       "innName": "Fentanyl",
       "className": "Opioid analgesic (peri-operative)",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["sublimaze", "fentanyl"],
+      "synonyms": [
+        "sublimaze",
+        "fentanyl"
+      ],
       "publishState": "published"
     },
     {
@@ -142,7 +205,10 @@
       "innName": "Remifentanil",
       "className": "Ultra-short-acting opioid",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["ultiva", "remifentanil"],
+      "synonyms": [
+        "ultiva",
+        "remifentanil"
+      ],
       "publishState": "published"
     },
     {
@@ -151,7 +217,11 @@
       "innName": "Suxamethonium (succinylcholine)",
       "className": "Depolarising neuromuscular blocker",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["scoline", "succinylcholine", "suxamethonium"],
+      "synonyms": [
+        "scoline",
+        "succinylcholine",
+        "suxamethonium"
+      ],
       "publishState": "published"
     },
     {
@@ -160,7 +230,10 @@
       "innName": "Rocuronium",
       "className": "Non-depolarising neuromuscular blocker",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["esmeron", "rocuronium"],
+      "synonyms": [
+        "esmeron",
+        "rocuronium"
+      ],
       "publishState": "published"
     },
     {
@@ -169,7 +242,10 @@
       "innName": "Atracurium",
       "className": "Non-depolarising neuromuscular blocker",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["tracrium", "atracurium"],
+      "synonyms": [
+        "tracrium",
+        "atracurium"
+      ],
       "publishState": "published"
     },
     {
@@ -178,7 +254,10 @@
       "innName": "Neostigmine",
       "className": "Acetylcholinesterase inhibitor (reversal)",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["prostigmin", "neostigmine"],
+      "synonyms": [
+        "prostigmin",
+        "neostigmine"
+      ],
       "publishState": "published"
     },
     {
@@ -187,7 +266,10 @@
       "innName": "Sevoflurane",
       "className": "Inhalational anaesthetic",
       "therapeuticArea": "anaesthetics",
-      "synonyms": ["sevorane", "sevoflurane"],
+      "synonyms": [
+        "sevorane",
+        "sevoflurane"
+      ],
       "publishState": "published"
     }
   ],
@@ -202,7 +284,10 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["xylocaine", "lignocaine"],
+      "synonymKeys": [
+        "xylocaine",
+        "lignocaine"
+      ],
       "excipientIds": [],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
@@ -217,7 +302,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["marcaine"],
+      "synonymKeys": [
+        "marcaine"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -231,7 +318,9 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["diprivan"],
+      "synonymKeys": [
+        "diprivan"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -245,7 +334,9 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["dormicum"],
+      "synonymKeys": [
+        "dormicum"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -259,7 +350,9 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["ketalar"],
+      "synonymKeys": [
+        "ketalar"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -273,7 +366,10 @@
       "schedule": "S6",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["sublimaze", "fentanyl"],
+      "synonymKeys": [
+        "sublimaze",
+        "fentanyl"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -287,7 +383,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["esmeron"],
+      "synonymKeys": [
+        "esmeron"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -301,7 +399,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["scoline"],
+      "synonymKeys": [
+        "scoline"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -315,7 +415,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["naropin"],
+      "synonymKeys": [
+        "naropin"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -329,7 +431,9 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["sevorane"],
+      "synonymKeys": [
+        "sevorane"
+      ],
       "excipientIds": [],
       "publishState": "published"
     }
@@ -417,6 +521,862 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-bupivacaine",
+      "moleculeId": "mol-bupivacaine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known local anaesthetic hypersensitivity."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Intravenous regional anaesthesia (Bier block) — historically avoided due to cardiotoxicity risk if the tourniquet fails."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cardiotoxicity is a well-known, serious risk specific to bupivacaine among local anaesthetics — accidental intravascular injection can cause severe, hard-to-treat cardiac arrest.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Perioral tingling, tinnitus.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Seizures and cardiac arrest from local anaesthetic systemic toxicity are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Intravenous lipid emulsion ('lipid rescue') is the established treatment for severe local anaesthetic systemic toxicity.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Bupivacaine's disproportionate cardiotoxicity relative to other local anaesthetics is exactly why lipid emulsion rescue protocols exist and are kept ready wherever it's used.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-ropivacaine",
+      "moleculeId": "mol-ropivacaine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known local anaesthetic hypersensitivity."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the local anaesthetic systemic toxicity (LAST) class risk, though it is generally considered to have a somewhat wider cardiac safety margin than bupivacaine at equivalent effect.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Perioral tingling, tinnitus.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Seizures and cardiac effects from local anaesthetic systemic toxicity are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Intravenous lipid emulsion ('lipid rescue') is the established treatment for severe local anaesthetic systemic toxicity.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Ropivacaine's development specifically targeted a wider margin between effective dose and cardiotoxic dose compared with bupivacaine — a clean pharmacology-to-formulation story.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-ketamine",
+      "moleculeId": "mol-ketamine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant uncontrolled hypertension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Emergence phenomena (hallucinations, vivid dreams, agitation on waking) are a well-known, distinctive side effect. Unlike most other anaesthetic agents, it tends to raise rather than lower heart rate and blood pressure. Recreational misuse potential is a real, relevant dispensing/storage consideration.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Agitation, hypertension, tachycardia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypertension or prolonged emergence reactions need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Ketamine raising, rather than lowering, heart rate and blood pressure is a distinguishing haemodynamic property versus most other anaesthetic/sedative agents — useful in an unstable patient, but a specific caution in hypertensive ones.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care. Its misuse potential is a relevant consideration for storage and dispensing security.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-fentanyl",
+      "moleculeId": "mol-fentanyl",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant respiratory depression without ventilatory support available."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with MAO inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Potent, monitored-administration-requiring respiratory depression risk. Transdermal patch formulations carry a specific risk: heat exposure (hot baths, fever, heating pads) increases absorption and overdose risk. Used patches still contain active drug and pose an accidental-exposure risk to children/pets.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable for parenteral use; patch-specific advice applies where that formulation is used.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Sedation, pinpoint pupils, slowed breathing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant respiratory depression is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Naloxone is the established opioid-reversal agent.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Fentanyl patch heat exposure increasing absorption and overdose risk is a genuinely important, patch-specific counselling point whenever this formulation is used outside a monitored hospital setting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "For patch use: avoid heat sources over the patch and dispose of used patches safely, away from children and pets. Otherwise, hospital-administered/monitored use only.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-remifentanil",
+      "moleculeId": "mol-remifentanil",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Use as the sole analgesic without a plan for post-procedure pain control — its context-sensitive half-life is extremely short, so pain can return almost immediately once the infusion stops."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Respiratory depression risk requires monitored administration with ventilatory support available.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — continuous IV infusion during anaesthesia only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable outside monitored administration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant respiratory depression is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Naloxone is the established opioid-reversal agent.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Remifentanil's near-instant offset — unique among opioids — means analgesia for after the infusion stops must be planned in advance, not as an afterthought.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-suxamethonium",
+      "moleculeId": "mol-suxamethonium",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Personal or family history of malignant hyperthermia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Conditions predisposing to a hyperkalaemic response (major burns, significant muscle trauma/denervation, certain neuromuscular diseases)."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Known pseudocholinesterase deficiency — significantly prolongs its effect."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Malignant hyperthermia is a rare but life-threatening reaction requiring immediate recognition and treatment. Hyperkalaemia in susceptible patients can be severe or fatal. Muscle fasciculations and post-operative muscle pain are common, expected minor effects.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Prolonged paralysis (especially with pseudocholinesterase deficiency).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of malignant hyperthermia (rapidly rising temperature, muscle rigidity) or severe hyperkalaemia are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Dantrolene is the established specific treatment for malignant hyperthermia. There is no direct reversal agent for suxamethonium itself — it wears off through its own metabolism.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Malignant hyperthermia is one of anaesthesia's most safety-critical, must-always-be-ready-for reactions — screening family history matters before use, and dantrolene must be immediately available wherever a trigger agent is given.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care. Screening for malignant hyperthermia family history before use is the key practice point.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-rocuronium",
+      "moleculeId": "mol-rocuronium",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to neuromuscular blockers — cross-reactivity between different agents in this class is a recognised anaesthesia-allergy concern."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Certain interacting drugs, notably aminoglycoside antibiotics, can potentiate and prolong neuromuscular blockade. Requires monitored ventilation until reversed or metabolised.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable outside monitored administration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Prolonged paralysis with inadequate ventilation is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Sugammadex is a specific, rapid reversal agent for rocuronium (and vecuronium), distinct from the cholinesterase-inhibitor reversal (neostigmine) used for other non-depolarising agents.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Sugammadex providing rapid, specific reversal for rocuronium — unlike neostigmine's less complete and less predictable reversal — is one of modern anaesthesia's most useful safety advances.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-atracurium",
+      "moleculeId": "mol-atracurium",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to neuromuscular blockers."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Histamine release can occur with rapid administration, causing flushing, hypotension or bronchospasm — more prominent than with some newer neuromuscular blockers.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable outside monitored administration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Significant hypotension or bronchospasm from histamine release needs immediate medical management.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Neostigmine (a cholinesterase inhibitor), given alongside an antimuscarinic to offset its side effects, is used to reverse non-depolarising blockade from atracurium.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Atracurium's organ-independent (Hofmann) elimination — breaking down spontaneously regardless of liver or kidney function — is why it's often chosen specifically in patients with significant organ failure.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-neostigmine",
+      "moleculeId": "mol-neostigmine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Mechanical bowel or urinary tract obstruction — cholinergic stimulation can worsen these."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Cholinergic excess (bradycardia, excessive secretions, bronchospasm) is a recognised risk, which is why it's routinely co-administered with an antimuscarinic (e.g. glycopyrrolate or atropine) specifically to offset these effects.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Context-dependent — oral use in myasthenia gravis differs from injectable use for neuromuscular-blockade reversal in anaesthesia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Excessive secretions, bradycardia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "A cholinergic crisis — excessive secretions, bradycardia, and paradoxically worsened muscle weakness in myasthenia gravis — is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Atropine is used to counteract severe cholinergic/muscarinic excess from neostigmine.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Neostigmine causing muscle weakness in overdose (a cholinergic crisis) despite being used to treat myasthenic weakness is a genuinely counterintuitive safety point specific to that patient population.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at general patient level for anaesthesia-reversal use; myasthenia gravis patients on oral neostigmine should be counselled by their treating team on distinguishing cholinergic excess from myasthenic weakness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-sevoflurane",
+      "moleculeId": "mol-sevoflurane",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known or family history of malignant hyperthermia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the malignant hyperthermia trigger risk of volatile anaesthetics as a class. Can cause post-operative nausea/vomiting, though it is generally well tolerated for induction given comparatively low airway irritation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — inhalational anaesthetic administered under monitored anaesthesia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not applicable outside monitored administration.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of malignant hyperthermia (rapidly rising temperature, muscle rigidity), or excessive anaesthetic depth causing hypotension/respiratory depression, are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Dantrolene is the established specific treatment for malignant hyperthermia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Malignant hyperthermia is one of anaesthesia's most safety-critical, must-always-be-ready-for reactions — screening family history matters before use, and dantrolene must be immediately available wherever a trigger agent is given.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Not applicable at patient-counselling level — this drug is administered only under monitored anaesthesia/hospital care.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -436,13 +1396,51 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-rocuronium-gentamicin",
+      "moleculeAId": "mol-rocuronium",
+      "moleculeBId": "mol-genta",
+      "severity": "major",
+      "mechanism": {
+        "value": "Aminoglycoside antibiotics can potentiate and prolong non-depolarising neuromuscular blockade.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for extended monitoring of neuromuscular recovery whenever both are used together.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-fentanyl-clarithro",
+      "moleculeAId": "mol-fentanyl",
+      "moleculeBId": "mol-clarithro",
+      "severity": "major",
+      "mechanism": {
+        "value": "Clarithromycin's potent CYP3A4 inhibition can raise fentanyl levels, increasing respiratory depression risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review and closer respiratory monitoring whenever both are co-prescribed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-xylocaine",
       "productId": "prod-xylocaine",
-      "sepZar": 65.0,
+      "sepZar": 65,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -451,7 +1449,7 @@
     {
       "id": "price-diprivan",
       "productId": "prod-diprivan",
-      "sepZar": 185.0,
+      "sepZar": 185,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -460,7 +1458,7 @@
     {
       "id": "price-dormicum",
       "productId": "prod-dormicum",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",

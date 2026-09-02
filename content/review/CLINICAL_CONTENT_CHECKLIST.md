@@ -57,12 +57,12 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **haematology** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: heparin+ibuprofen, eltrombopag+rosuvastatin OATP1B1 interaction) · DOSE: pending founder
 - [x] **ophthalmology** (13 molecules) — SP: done (10 profiles added) · IX: already had timolol+atenolol pre-existing (systemic beta-blockade from topical timolol) · DOSE: pending founder
 - [x] **vaccines** (13 molecules) — SP: done (10 profiles added) · IX: done (1 added: bcg+azathioprine live-vaccine/immunosuppression risk) · DOSE: pending founder (N/A in the numeric-dosing sense — vaccine schedules, not weight-based drug dosing)
+- [x] **anaesthetics** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: rocuronium+gentamicin potentiated blockade, fentanyl+clarithromycin CYP3A4) · DOSE: pending founder. Hospital-only drugs — counselling points marked not-applicable at patient level, safety content framed for clinical/dispensing use instead.
 
-## Remaining batches (2 areas, ~26 molecules)
+## Remaining batches (1 area, ~13 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
-| anaesthetics | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
 | vaccines | 13 | [ ] | [ ] | [ ] |
 
