@@ -37,14 +37,46 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-astellas", "name": "Astellas", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-lilly", "name": "Eli Lilly", "madeInSa": false },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-astellas",
+      "name": "Astellas",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-lilly",
+      "name": "Eli Lilly",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -67,7 +99,11 @@
       "innName": "Tamsulosin",
       "className": "Alpha-1 blocker (BPH)",
       "therapeuticArea": "urology",
-      "synonyms": ["flomax", "omnic", "tamsulosin"],
+      "synonyms": [
+        "flomax",
+        "omnic",
+        "tamsulosin"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Relaxes prostatic / bladder-neck smooth muscle via alpha-1 blockade — educational framing only; confirm against labelled product. Never invent a dose.",
@@ -81,7 +117,10 @@
       "innName": "Alfuzosin",
       "className": "Alpha-1 blocker (BPH)",
       "therapeuticArea": "urology",
-      "synonyms": ["xatral", "alfuzosin"],
+      "synonyms": [
+        "xatral",
+        "alfuzosin"
+      ],
       "publishState": "published"
     },
     {
@@ -90,7 +129,10 @@
       "innName": "Doxazosin",
       "className": "Alpha-1 blocker (BPH / hypertension contexts)",
       "therapeuticArea": "urology",
-      "synonyms": ["cardura", "doxazosin"],
+      "synonyms": [
+        "cardura",
+        "doxazosin"
+      ],
       "publishState": "published"
     },
     {
@@ -99,7 +141,11 @@
       "innName": "Finasteride",
       "className": "5-alpha reductase inhibitor",
       "therapeuticArea": "urology",
-      "synonyms": ["proscar", "propecia", "finasteride"],
+      "synonyms": [
+        "proscar",
+        "propecia",
+        "finasteride"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Blocks conversion of testosterone to DHT — handling precautions and slow onset are teaching hooks; regimens stay clinician-directed.",
@@ -113,7 +159,10 @@
       "innName": "Dutasteride",
       "className": "5-alpha reductase inhibitor",
       "therapeuticArea": "urology",
-      "synonyms": ["avodart", "dutasteride"],
+      "synonyms": [
+        "avodart",
+        "dutasteride"
+      ],
       "publishState": "published"
     },
     {
@@ -122,7 +171,10 @@
       "innName": "Sildenafil",
       "className": "PDE5 inhibitor",
       "therapeuticArea": "urology",
-      "synonyms": ["viagra", "sildenafil"],
+      "synonyms": [
+        "viagra",
+        "sildenafil"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Enhances nitric-oxide–cGMP pathway in erectile tissue — nitrate contraindication is the non-negotiable counselling hook.",
@@ -136,7 +188,10 @@
       "innName": "Tadalafil",
       "className": "PDE5 inhibitor",
       "therapeuticArea": "urology",
-      "synonyms": ["cialis", "tadalafil"],
+      "synonyms": [
+        "cialis",
+        "tadalafil"
+      ],
       "publishState": "published"
     },
     {
@@ -145,7 +200,10 @@
       "innName": "Vardenafil",
       "className": "PDE5 inhibitor",
       "therapeuticArea": "urology",
-      "synonyms": ["levitra", "vardenafil"],
+      "synonyms": [
+        "levitra",
+        "vardenafil"
+      ],
       "publishState": "published"
     },
     {
@@ -154,7 +212,10 @@
       "innName": "Oxybutynin",
       "className": "Antimuscarinic (overactive bladder)",
       "therapeuticArea": "urology",
-      "synonyms": ["ditropan", "oxybutynin"],
+      "synonyms": [
+        "ditropan",
+        "oxybutynin"
+      ],
       "publishState": "published"
     },
     {
@@ -163,7 +224,10 @@
       "innName": "Solifenacin",
       "className": "Antimuscarinic (overactive bladder)",
       "therapeuticArea": "urology",
-      "synonyms": ["vesicare", "solifenacin"],
+      "synonyms": [
+        "vesicare",
+        "solifenacin"
+      ],
       "publishState": "published"
     },
     {
@@ -172,7 +236,10 @@
       "innName": "Tolterodine",
       "className": "Antimuscarinic (overactive bladder)",
       "therapeuticArea": "urology",
-      "synonyms": ["detrusitol", "tolterodine"],
+      "synonyms": [
+        "detrusitol",
+        "tolterodine"
+      ],
       "publishState": "published"
     },
     {
@@ -181,7 +248,11 @@
       "innName": "Mirabegron",
       "className": "Beta-3 agonist (overactive bladder)",
       "therapeuticArea": "urology",
-      "synonyms": ["betmiga", "myrbetriq", "mirabegron"],
+      "synonyms": [
+        "betmiga",
+        "myrbetriq",
+        "mirabegron"
+      ],
       "publishState": "published"
     },
     {
@@ -190,7 +261,10 @@
       "innName": "Potassium citrate",
       "className": "Urinary alkaliniser / stone support",
       "therapeuticArea": "urology",
-      "synonyms": ["uratex", "potassium citrate"],
+      "synonyms": [
+        "uratex",
+        "potassium citrate"
+      ],
       "publishState": "published"
     }
   ],
@@ -205,8 +279,13 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["flomax", "omnic"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "flomax",
+        "omnic"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -220,8 +299,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["xatral"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "xatral"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -234,8 +317,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["proscar"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "proscar"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -248,7 +335,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["avodart"],
+      "synonymKeys": [
+        "avodart"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -262,8 +351,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["viagra"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "viagra"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -276,8 +369,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["cialis"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "cialis"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -290,8 +387,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["vesicare"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "vesicare"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -304,8 +405,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["ditropan"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "ditropan"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -318,8 +423,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["betmiga"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "betmiga"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -332,8 +441,12 @@
       "schedule": "S3",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["cardura"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "cardura"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -420,6 +533,907 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-alfuzosin",
+      "moleculeId": "mol-alfuzosin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hepatic impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent strong CYP3A4 inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Postural hypotension is common, especially with the first dose. Intraoperative floppy iris syndrome is a recognised risk during cataract surgery in patients taking alpha-blockers.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take after the same meal each day for consistent absorption.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, light-headedness on standing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypotension or fainting needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hypotension is managed supportively under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Alpha-blocker use is an important cross-specialty flag for cataract surgery — always mention it to an eye surgeon in advance because of intraoperative floppy iris syndrome risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Rise slowly from sitting or lying down. Tell your eye surgeon you're on this medicine before any cataract surgery.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-doxazosin",
+      "moleculeId": "mol-doxazosin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant hepatic impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent strong CYP3A4 inhibitors."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Postural hypotension, particularly with the first dose, is a notable signal for doxazosin among alpha-blockers. Floppy iris syndrome risk during cataract surgery applies here too.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Often taken at bedtime given the hypotension risk.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dizziness, light-headedness on standing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypotension or fainting needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hypotension is managed supportively under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Alpha-blocker use is an important cross-specialty flag for cataract surgery — always mention it to an eye surgeon in advance because of intraoperative floppy iris syndrome risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take at bedtime if advised. Rise slowly from sitting or lying down. Tell your eye surgeon you're on this medicine before any cataract surgery.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-dutasteride",
+      "moleculeId": "mol-dutasteride",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Women who are or may become pregnant should not handle broken or crushed tablets — risk of absorption through the skin affecting a male fetus."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Lowers PSA test results — an important confounder that must be accounted for when interpreting prostate cancer screening. Sexual side effects (reduced libido, erectile dysfunction) have been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Not typically acutely toxic; sexual side effects are the main tolerability concern.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not applicable in the usual acute-overdose sense.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "5-alpha reductase inhibitors lowering PSA is a critical fact for clinicians interpreting a patient's prostate cancer screening results — must always be accounted for.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Pregnant women should avoid handling broken or crushed tablets. Tell your doctor you're on this medicine before any PSA test.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-tadalafil",
+      "moleculeId": "mol-tadalafil",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with nitrates — risk of severe, potentially life-threatening hypotension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Its notably longer half-life than sildenafil means side effects and interactions also last longer, even though it allows more flexible timing. Priapism (a rare but urgent complication) and rare reports of sudden vision or hearing loss are class effects.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Less affected by food than sildenafil.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, flushing, visual changes.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "An erection lasting more than a few hours (priapism), or sudden vision/hearing loss, needs urgent medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hypotension or priapism is managed supportively/surgically under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Tadalafil's long half-life is its main practical differentiator from sildenafil — more flexible timing, but any interaction or side effect also lasts longer.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never combine with nitrates. Seek urgent care for an erection lasting more than a few hours, or sudden vision/hearing changes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-vardenafil",
+      "moleculeId": "mol-vardenafil",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Concurrent use with nitrates — risk of severe, potentially life-threatening hypotension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the PDE5-inhibitor class risks of hypotension, priapism, and rare vision/hearing changes; QT-interval prolongation at higher doses is a distinguishing caution for vardenafil specifically.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "High-fat meals can delay absorption.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, flushing, visual changes.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "An erection lasting more than a few hours (priapism), or sudden vision/hearing loss, needs urgent medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hypotension or priapism is managed supportively/surgically under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Vardenafil's QT signal at higher doses is a distinguishing caution to flag among the PDE5 inhibitors when reviewing a cardiac patient's medicine list.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Never combine with nitrates. Seek urgent care for an erection lasting more than a few hours, or sudden vision/hearing changes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-oxybutynin",
+      "moleculeId": "mol-oxybutynin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Angle-closure glaucoma."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant urinary retention."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe GI motility disorders."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Anticholinergic side effects (dry mouth, constipation, blurred vision) are common. Cognitive effects and confusion are a genuine risk, particularly in elderly patients, and are easy to attribute to other causes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dry mouth, blurred vision, fast heartbeat.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion or significant urinary retention needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote widely used at primary-care level — anticholinergic effects are managed supportively.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Oxybutynin's anticholinergic burden in elderly patients is a genuinely important geriatric-pharmacology point — new confusion is easy to blame on something else.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report confusion or significant dry mouth/constipation, especially in older patients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-solifenacin",
+      "moleculeId": "mol-solifenacin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Angle-closure glaucoma."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant urinary retention."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe GI motility disorders."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Anticholinergic effects are generally milder than with oxybutynin due to more selective receptor binding, but are still present.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dry mouth, blurred vision.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion or significant urinary retention needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote widely used at primary-care level — anticholinergic effects are managed supportively.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Newer, more selective anticholinergics like solifenacin are often chosen specifically to reduce the cognitive burden seen with oxybutynin in older patients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report dry mouth/constipation, blurred vision, or confusion.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-tolterodine",
+      "moleculeId": "mol-tolterodine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Angle-closure glaucoma."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant urinary retention."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe GI motility disorders."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the class anticholinergic effects, generally with somewhat greater bladder selectivity than oxybutynin.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Dry mouth, blurred vision.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Confusion or significant urinary retention needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote widely used at primary-care level — anticholinergic effects are managed supportively.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Comparing bladder selectivity across oxybutynin, solifenacin and tolterodine is a useful way to individualise overactive-bladder treatment to tolerability.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report dry mouth/constipation, blurred vision, or confusion.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-mirabegron",
+      "moleculeId": "mol-mirabegron",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Severe uncontrolled hypertension."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Can raise blood pressure — monitoring is recommended, especially in patients with existing hypertension. Its much lower anticholinergic burden is a key differentiator from oxybutynin/solifenacin/tolterodine.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, raised blood pressure.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hypertension needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mirabegron's non-anticholinergic mechanism is exactly why it's chosen for patients who can't tolerate the dry-mouth/cognitive burden of anticholinergic bladder drugs, such as some elderly patients.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Keep routine blood pressure checks, especially if you already have hypertension.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "safe-potassium-citrate",
+      "moleculeId": "mol-potassium-citrate",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Hyperkalaemia."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Hyperkalaemia risk, especially with ACE inhibitors, ARBs, potassium-sparing diuretics, or renal impairment — easy to overlook since it's often thought of simply as a 'urinary alkaliniser' rather than a potassium-containing product.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food to reduce GI upset.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseEarlySigns": {
+        "value": "Muscle weakness, palpitations (hyperkalaemia signs).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "overdoseSevereSigns": {
+        "value": "Severe hyperkalaemia with cardiac arrhythmia is a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — hyperkalaemia is managed supportively under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Potassium citrate's hyperkalaemia risk is genuinely easy to overlook precisely because it isn't thought of as 'a potassium medicine' the way a supplement would be.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about other potassium-affecting medicines. Report muscle weakness or palpitations.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-01"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -439,13 +1453,51 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-alfuzosin-tadalafil",
+      "moleculeAId": "mol-alfuzosin",
+      "moleculeBId": "mol-tadalafil",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Alpha-blockers and PDE5 inhibitors both cause vasodilation; combined, the risk of significant hypotension is additive — relevant since both are commonly prescribed to the same patients (BPH and erectile dysfunction overlap).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review on timing/spacing between the two drug classes.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-doxazosin-sildenafil",
+      "moleculeAId": "mol-doxazosin",
+      "moleculeBId": "mol-sildenafil",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Alpha-blockers and PDE5 inhibitors both cause vasodilation; combined, the risk of significant hypotension is additive.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for clinical review on timing/spacing between the two drug classes.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-01"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-flomax",
       "productId": "prod-flomax",
-      "sepZar": 195.0,
+      "sepZar": 195,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -454,7 +1506,7 @@
     {
       "id": "price-viagra",
       "productId": "prod-viagra",
-      "sepZar": 280.0,
+      "sepZar": 280,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -463,7 +1515,7 @@
     {
       "id": "price-proscar",
       "productId": "prod-proscar",
-      "sepZar": 165.0,
+      "sepZar": 165,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
