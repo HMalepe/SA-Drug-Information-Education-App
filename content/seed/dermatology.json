@@ -37,15 +37,51 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-gsk", "name": "GlaxoSmithKline", "madeInSa": false },
-    { "id": "mfr-leo", "name": "LEO Pharma", "madeInSa": false },
-    { "id": "mfr-roche", "name": "Roche", "madeInSa": false },
-    { "id": "mfr-galderma", "name": "Galderma", "madeInSa": false },
-    { "id": "mfr-adcock", "name": "Adcock Ingram", "madeInSa": true },
-    { "id": "mfr-bayer", "name": "Bayer", "madeInSa": false },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
-    { "id": "mfr-janssen", "name": "Janssen", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-gsk",
+      "name": "GlaxoSmithKline",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-leo",
+      "name": "LEO Pharma",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-roche",
+      "name": "Roche",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-galderma",
+      "name": "Galderma",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-adcock",
+      "name": "Adcock Ingram",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-bayer",
+      "name": "Bayer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-janssen",
+      "name": "Janssen",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -74,7 +110,11 @@
       "innName": "Hydrocortisone",
       "className": "Mild topical corticosteroid",
       "therapeuticArea": "dermatology",
-      "synonyms": ["cortaid", "hydrocortisone", "mild steroid"],
+      "synonyms": [
+        "cortaid",
+        "hydrocortisone",
+        "mild steroid"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Local anti-inflammatory glucocorticoid action on skin — educational framing only; confirm potency, site, and duration against the labelled product. Never invent a dose.",
@@ -88,7 +128,11 @@
       "innName": "Betamethasone",
       "className": "Potent topical corticosteroid",
       "therapeuticArea": "dermatology",
-      "synonyms": ["betnovate", "diprosone", "betamethasone"],
+      "synonyms": [
+        "betnovate",
+        "diprosone",
+        "betamethasone"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Potent topical steroid — thin-skin and face/fold counselling is the teaching hook; dosing stays unpublished until founder review.",
@@ -102,7 +146,10 @@
       "innName": "Clobetasol",
       "className": "Very potent topical corticosteroid",
       "therapeuticArea": "dermatology",
-      "synonyms": ["dermovate", "clobetasol"],
+      "synonyms": [
+        "dermovate",
+        "clobetasol"
+      ],
       "publishState": "published"
     },
     {
@@ -111,7 +158,10 @@
       "innName": "Mometasone",
       "className": "Potent topical corticosteroid",
       "therapeuticArea": "dermatology",
-      "synonyms": ["elocon", "mometasone"],
+      "synonyms": [
+        "elocon",
+        "mometasone"
+      ],
       "publishState": "published"
     },
     {
@@ -120,7 +170,12 @@
       "innName": "Isotretinoin",
       "className": "Systemic retinoid (acne)",
       "therapeuticArea": "dermatology",
-      "synonyms": ["roaccutane", "accutane", "oratane", "isotretinoin"],
+      "synonyms": [
+        "roaccutane",
+        "accutane",
+        "oratane",
+        "isotretinoin"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Reduces sebaceous activity and comedogenesis — teratogenicity and lab-monitoring conversations are the teaching hooks; regimens stay clinician-directed.",
@@ -134,7 +189,10 @@
       "innName": "Adapalene",
       "className": "Topical retinoid",
       "therapeuticArea": "dermatology",
-      "synonyms": ["differin", "adapalene"],
+      "synonyms": [
+        "differin",
+        "adapalene"
+      ],
       "publishState": "published"
     },
     {
@@ -143,7 +201,10 @@
       "innName": "Tretinoin",
       "className": "Topical retinoid",
       "therapeuticArea": "dermatology",
-      "synonyms": ["retin-a", "tretinoin"],
+      "synonyms": [
+        "retin-a",
+        "tretinoin"
+      ],
       "publishState": "published"
     },
     {
@@ -152,7 +213,11 @@
       "innName": "Benzoyl peroxide",
       "className": "Topical antibacterial / keratolytic (acne)",
       "therapeuticArea": "dermatology",
-      "synonyms": ["brevoxyl", "benzac", "benzoyl peroxide"],
+      "synonyms": [
+        "brevoxyl",
+        "benzac",
+        "benzoyl peroxide"
+      ],
       "publishState": "published"
     },
     {
@@ -161,7 +226,10 @@
       "innName": "Fusidic acid",
       "className": "Topical antibiotic",
       "therapeuticArea": "dermatology",
-      "synonyms": ["fucidin", "fusidic acid"],
+      "synonyms": [
+        "fucidin",
+        "fusidic acid"
+      ],
       "publishState": "published"
     },
     {
@@ -170,7 +238,10 @@
       "innName": "Mupirocin",
       "className": "Topical antibiotic",
       "therapeuticArea": "dermatology",
-      "synonyms": ["bactroban", "mupirocin"],
+      "synonyms": [
+        "bactroban",
+        "mupirocin"
+      ],
       "publishState": "published"
     },
     {
@@ -179,7 +250,10 @@
       "innName": "Terbinafine",
       "className": "Allylamine antifungal",
       "therapeuticArea": "dermatology",
-      "synonyms": ["lamisil", "terbinafine"],
+      "synonyms": [
+        "lamisil",
+        "terbinafine"
+      ],
       "publishState": "published"
     },
     {
@@ -188,7 +262,10 @@
       "innName": "Ketoconazole",
       "className": "Azole antifungal (topical / shampoo)",
       "therapeuticArea": "dermatology",
-      "synonyms": ["nizoral", "ketoconazole"],
+      "synonyms": [
+        "nizoral",
+        "ketoconazole"
+      ],
       "publishState": "published"
     },
     {
@@ -197,7 +274,10 @@
       "innName": "Permethrin",
       "className": "Topical scabicide / pediculicide",
       "therapeuticArea": "dermatology",
-      "synonyms": ["lyclear", "permethrin"],
+      "synonyms": [
+        "lyclear",
+        "permethrin"
+      ],
       "publishState": "published"
     }
   ],
@@ -213,8 +293,13 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["hydrocortisone aspen", "hydrocortisone cream"],
-      "excipientIds": ["exc-propylene-glycol"],
+      "synonymKeys": [
+        "hydrocortisone aspen",
+        "hydrocortisone cream"
+      ],
+      "excipientIds": [
+        "exc-propylene-glycol"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -228,8 +313,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["betnovate"],
-      "excipientIds": ["exc-propylene-glycol"],
+      "synonymKeys": [
+        "betnovate"
+      ],
+      "excipientIds": [
+        "exc-propylene-glycol"
+      ],
       "publishState": "published"
     },
     {
@@ -242,8 +331,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["dermovate"],
-      "excipientIds": ["exc-propylene-glycol"],
+      "synonymKeys": [
+        "dermovate"
+      ],
+      "excipientIds": [
+        "exc-propylene-glycol"
+      ],
       "publishState": "published"
     },
     {
@@ -256,8 +349,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["elocon"],
-      "excipientIds": ["exc-propylene-glycol"],
+      "synonymKeys": [
+        "elocon"
+      ],
+      "excipientIds": [
+        "exc-propylene-glycol"
+      ],
       "publishState": "published"
     },
     {
@@ -270,8 +367,13 @@
       "schedule": "S5",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["roaccutane", "accutane"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "roaccutane",
+        "accutane"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -285,8 +387,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["oratane"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "oratane"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -299,8 +405,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["differin"],
-      "excipientIds": ["exc-propylene-glycol"],
+      "synonymKeys": [
+        "differin"
+      ],
+      "excipientIds": [
+        "exc-propylene-glycol"
+      ],
       "publishState": "published"
     },
     {
@@ -313,8 +423,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["fucidin"],
-      "excipientIds": ["exc-propylene-glycol"],
+      "synonymKeys": [
+        "fucidin"
+      ],
+      "excipientIds": [
+        "exc-propylene-glycol"
+      ],
       "publishState": "published"
     },
     {
@@ -327,8 +441,12 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["lamisil"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "lamisil"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -341,7 +459,9 @@
       "schedule": "S2",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["nizoral"],
+      "synonymKeys": [
+        "nizoral"
+      ],
       "excipientIds": [],
       "publishState": "published"
     }
@@ -435,6 +555,807 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-clobetasol",
+      "moleculeId": "mol-clobetasol",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Untreated bacterial, fungal or viral skin infection at the application site."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Rosacea or perioral dermatitis — can worsen these conditions."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "As a very potent topical corticosteroid, skin atrophy, stretch marks and visible blood vessels can develop with prolonged use. Extensive or occluded use raises the risk of systemic absorption and adrenal suppression.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical only — follow the prescribed application-site and duration limits strictly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local skin thinning or irritation with prolonged use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of systemic steroid effect from extensive/prolonged misuse need medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — stop and taper use under medical guidance if used long-term.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Clobetasol is among the most potent topical steroids available — duration limits matter far more here than for milder options like hydrocortisone.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Don't use on the face or in skin folds unless specifically directed. Don't exceed the prescribed duration. Report skin thinning.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-mometasone",
+      "moleculeId": "mol-mometasone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Untreated infection at the application site."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Lower systemic absorption risk than very potent steroids, but topical skin use still needs duration limits. Local irritation is possible with the nasal spray form.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical/nasal use only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended use — seek advice for any concerning new symptom.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mometasone's intermediate potency is a common choice when hydrocortisone is too weak and a very potent steroid like clobetasol is more than needed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Follow the application instructions and duration limits.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-adapalene",
+      "moleculeId": "mol-adapalene",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Retinoids as a class carry a significant teratogenicity signal — pregnancy should be avoided during treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": "Skin irritation, dryness and photosensitivity are common, especially when starting treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical only — apply at night and use daily sun protection.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation, dryness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "The 'purging' phase — temporary worsening before improvement — is a well-known, important expectation to set before starting a topical retinoid.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Expect some initial irritation or dryness. Use daily sun protection. Avoid during pregnancy.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-tretinoin",
+      "moleculeId": "mol-tretinoin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Retinoids as a class carry a significant teratogenicity signal — pregnancy should be avoided during treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": "Skin irritation, dryness and photosensitivity are common, especially when starting treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical only — apply at night and use daily sun protection.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation, dryness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Tretinoin shares the retinoid-class teratogenicity signal, which is why pregnancy avoidance needs to be actively counselled even for a topical product.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Expect some initial irritation or dryness. Use daily sun protection. Avoid during pregnancy — discuss contraception if relevant.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-benzoyl-peroxide",
+      "moleculeId": "mol-benzoyl-peroxide",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Can bleach fabric, hair and towels — a practical point that's easy to miss until it happens. Skin irritation/dryness is common, especially combined with retinoids.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation, dryness.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Benzoyl peroxide bleaching towels, pillowcases and clothing is one of the most practically important, most frequently missed counselling points for this drug.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Use white or old towels/pillowcases. Apply sparingly. Expect some initial dryness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-fusidic-acid",
+      "moleculeId": "mol-fusidic-acid",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Resistance can develop with prolonged or repeated use — intended for short, defined courses rather than ongoing use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Fusidic acid resistance concerns are exactly why short, defined courses are recommended rather than long-term daily use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Use for the prescribed duration only — don't use it as an ongoing, moisturiser-like product.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-mupirocin",
+      "moleculeId": "mol-mupirocin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Resistance can develop with prolonged use. The nasal formulation is used specifically for staphylococcal decolonisation in defined short courses, a distinct use-case from general skin infection treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical/nasal use only.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mupirocin's nasal decolonisation use for recurrent staph infections or pre-surgical MRSA clearance is a distinct, important use-case beyond simple skin infection treatment.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Complete the full prescribed course even if the area looks better.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-terbinafine",
+      "moleculeId": "mol-terbinafine",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant liver disease — relevant to the oral form specifically."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Oral terbinafine carries a rare but serious hepatotoxicity signal — liver function monitoring is often recommended for longer courses (e.g. nail fungus). Taste disturbance has also been reported with oral use. The topical form carries minimal systemic risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food (oral form).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset (oral); local irritation (topical).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Unusual fatigue, dark urine, or yellowing of skin/eyes (possible liver injury with oral use) needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Oral terbinafine's hepatotoxicity signal is the key reason liver function is specifically monitored for longer nail-fungus treatment courses.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "If on oral treatment, report unusual fatigue, dark urine, or yellowing of the skin/eyes.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-ketoconazole",
+      "moleculeId": "mol-ketoconazole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant liver disease — relevant where oral use is being considered."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Oral ketoconazole carries a well-documented serious hepatotoxicity signal that led regulators in many jurisdictions to restrict it from routine oral antifungal use — topical/shampoo forms remain widely used and carry much lower systemic risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical/shampoo use is the dominant modern use — follow product instructions.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation (topical).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Unusual fatigue or yellowing of skin/eyes if ever prescribed an oral course needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable for topical use; oral toxicity is managed under specialist medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Ketoconazole's oral hepatotoxicity history is exactly why topical/shampoo forms now dominate its modern use — worth knowing the 'why' behind that formulation shift.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Follow topical/shampoo instructions. Report unusual symptoms promptly if ever prescribed an oral course.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-permethrin",
+      "moleculeId": "mol-permethrin",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Local irritation or itching is common and can persist for some time even after successful treatment — this does not automatically mean the treatment failed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Topical only — follow the application, contact-time and re-treatment instructions exactly.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Local irritation, itching.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended topical use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Itching persisting for days to weeks after successful scabies treatment (from the body's ongoing reaction to dead mites) is one of the most misunderstood counselling points — patients often re-treat unnecessarily, thinking it failed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Persistent itching after treatment doesn't automatically mean it failed — check before re-treating. Treat household/close contacts as directed.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -454,13 +1375,32 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-terbinafine-warfarin",
+      "moleculeAId": "mol-terbinafine",
+      "moleculeBId": "mol-warfarin",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Oral terbinafine has been reported to alter warfarin's anticoagulant effect, though data are mixed and the mechanism is not fully defined.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for INR monitoring during and shortly after an oral terbinafine course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-hydrocortisone-asp",
       "productId": "prod-hydrocortisone-asp",
-      "sepZar": 38.0,
+      "sepZar": 38,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -469,7 +1409,7 @@
     {
       "id": "price-betnovate",
       "productId": "prod-betnovate",
-      "sepZar": 95.0,
+      "sepZar": 95,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -478,7 +1418,7 @@
     {
       "id": "price-roaccutane",
       "productId": "prod-roaccutane",
-      "sepZar": 420.0,
+      "sepZar": 420,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -487,7 +1427,7 @@
     {
       "id": "price-oratane",
       "productId": "prod-oratane",
-      "sepZar": 185.0,
+      "sepZar": 185,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",

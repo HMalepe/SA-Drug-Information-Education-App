@@ -52,13 +52,13 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **endocrine** (13 molecules) — SP: done (9 profiles added) · IX: done (3 added: calcium+levothyroxine, calcium+ciprofloxacin, calcium+alendronate — all absorption-chelation spacing interactions) · DOSE: pending founder. Note: mol-prednisone here reuses the respiratory.json id (already profiled).
 - [x] **womens-health** (13 molecules) — SP: done (10 profiles added) · IX: done (3 added: fluconazole+warfarin, fluconazole+gliclazide, drospirenone+enalapril hyperkalaemia) · DOSE: pending founder
 - [x] **urology** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: alfuzosin+tadalafil, doxazosin+sildenafil — both alpha-blocker+PDE5i additive hypotension) · DOSE: pending founder
+- [x] **dermatology** (13 molecules) — SP: done (10 profiles added) · IX: done (1 added: oral terbinafine+warfarin) · DOSE: pending founder. Mostly-topical file — fewer systemic interactions genuinely apply, so only one is claimed rather than padding the count.
 
-## Remaining batches (7 areas, ~36 molecules)
+## Remaining batches (6 areas, ~23 molecules)
 
 | Area | Molecules | SP | IX | DOSE |
 |------|-----------|----|----|------|
 | anaesthetics | 13 | [ ] | [ ] | [ ] |
-| dermatology | 13 | [ ] | [ ] | [ ] |
 | ent-allergy | 13 | [ ] | [ ] | [ ] |
 | haematology | 13 | [ ] | [ ] | [ ] |
 | oncology-supportive | 13 | [ ] | [ ] | [ ] |
