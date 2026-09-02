@@ -58,12 +58,9 @@ no SP/IX gap, only the DOSE step remains, tracked via
 - [x] **ophthalmology** (13 molecules) — SP: done (10 profiles added) · IX: already had timolol+atenolol pre-existing (systemic beta-blockade from topical timolol) · DOSE: pending founder
 - [x] **vaccines** (13 molecules) — SP: done (10 profiles added) · IX: done (1 added: bcg+azathioprine live-vaccine/immunosuppression risk) · DOSE: pending founder (N/A in the numeric-dosing sense — vaccine schedules, not weight-based drug dosing)
 - [x] **anaesthetics** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: rocuronium+gentamicin potentiated blockade, fentanyl+clarithromycin CYP3A4) · DOSE: pending founder. Hospital-only drugs — counselling points marked not-applicable at patient level, safety content framed for clinical/dispensing use instead.
+- [x] **oncology-supportive** (13 molecules) — SP: done (10 profiles added) · IX: done (2 added: aprepitant+warfarin, zoledronic-acid+ibuprofen additive renal risk) · DOSE: pending founder
 
-## Remaining batches (1 area, ~13 molecules)
-
-| Area | Molecules | SP | IX | DOSE |
-|------|-----------|----|----|------|
-| oncology-supportive | 13 | [ ] | [ ] | [ ] |
+## Remaining batches — none. All 21 non-EML areas (plus the 9 prior EML batches) now have full SP/IX coverage; only DOSE (real founder-attested numeric dosing) remains, tracked separately via `npm run review:batches -- progress`.
 | vaccines | 13 | [ ] | [ ] | [ ] |
 
 (16 rows above + 5 already done this session + 9 EML batches = the ~30

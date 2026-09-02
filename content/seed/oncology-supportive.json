@@ -37,14 +37,46 @@
     }
   ],
   "manufacturers": [
-    { "id": "mfr-asp", "name": "Aspen Pharmacare", "madeInSa": true },
-    { "id": "mfr-astra", "name": "AstraZeneca", "madeInSa": false },
-    { "id": "mfr-roche", "name": "Roche", "madeInSa": false },
-    { "id": "mfr-novartis", "name": "Novartis", "madeInSa": false },
-    { "id": "mfr-amgen", "name": "Amgen", "madeInSa": false },
-    { "id": "mfr-msd", "name": "MSD", "madeInSa": false },
-    { "id": "mfr-pfizer", "name": "Pfizer", "madeInSa": false },
-    { "id": "mfr-sanofi", "name": "Sanofi", "madeInSa": false }
+    {
+      "id": "mfr-asp",
+      "name": "Aspen Pharmacare",
+      "madeInSa": true
+    },
+    {
+      "id": "mfr-astra",
+      "name": "AstraZeneca",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-roche",
+      "name": "Roche",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-novartis",
+      "name": "Novartis",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-amgen",
+      "name": "Amgen",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-msd",
+      "name": "MSD",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-pfizer",
+      "name": "Pfizer",
+      "madeInSa": false
+    },
+    {
+      "id": "mfr-sanofi",
+      "name": "Sanofi",
+      "madeInSa": false
+    }
   ],
   "excipients": [
     {
@@ -67,7 +99,10 @@
       "innName": "Tamoxifen",
       "className": "Selective oestrogen receptor modulator (SERM)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["nolvadex", "tamoxifen"],
+      "synonyms": [
+        "nolvadex",
+        "tamoxifen"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Blocks oestrogen receptors in breast tissue contexts — educational framing only; confirm against labelled product and oncology team. Never invent a dose or duration.",
@@ -81,7 +116,10 @@
       "innName": "Anastrozole",
       "className": "Aromatase inhibitor",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["arimidex", "anastrozole"],
+      "synonyms": [
+        "arimidex",
+        "anastrozole"
+      ],
       "publishState": "published"
     },
     {
@@ -90,7 +128,10 @@
       "innName": "Letrozole",
       "className": "Aromatase inhibitor",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["femara", "letrozole"],
+      "synonyms": [
+        "femara",
+        "letrozole"
+      ],
       "publishState": "published"
     },
     {
@@ -99,7 +140,10 @@
       "innName": "Exemestane",
       "className": "Aromatase inhibitor (steroidal)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["aromasin", "exemestane"],
+      "synonyms": [
+        "aromasin",
+        "exemestane"
+      ],
       "publishState": "published"
     },
     {
@@ -108,7 +152,10 @@
       "innName": "Filgrastim",
       "className": "G-CSF (neutropenia support)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["neupogen", "filgrastim"],
+      "synonyms": [
+        "neupogen",
+        "filgrastim"
+      ],
       "publishState": "published",
       "moaSummary": {
         "value": "Stimulates neutrophil production — timing relative to chemo is clinician-directed; Materia never invents an injection schedule.",
@@ -122,7 +169,10 @@
       "innName": "Pegfilgrastim",
       "className": "Pegylated G-CSF",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["neulasta", "pegfilgrastim"],
+      "synonyms": [
+        "neulasta",
+        "pegfilgrastim"
+      ],
       "publishState": "published"
     },
     {
@@ -131,7 +181,10 @@
       "innName": "Dexamethasone",
       "className": "Systemic corticosteroid (supportive / antiemetic adjunct)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["dexamethasone", "decadron"],
+      "synonyms": [
+        "dexamethasone",
+        "decadron"
+      ],
       "publishState": "published"
     },
     {
@@ -140,7 +193,10 @@
       "innName": "Aprepitant",
       "className": "NK1 receptor antagonist (antiemetic)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["emend", "aprepitant"],
+      "synonyms": [
+        "emend",
+        "aprepitant"
+      ],
       "publishState": "published"
     },
     {
@@ -149,7 +205,10 @@
       "innName": "Granisetron",
       "className": "5-HT3 antagonist (antiemetic)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["kytril", "granisetron"],
+      "synonyms": [
+        "kytril",
+        "granisetron"
+      ],
       "publishState": "published"
     },
     {
@@ -158,7 +217,11 @@
       "innName": "Zoledronic acid",
       "className": "Bisphosphonate (bone metastases / hypercalcaemia contexts)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["zometa", "aclasta", "zoledronic acid"],
+      "synonyms": [
+        "zometa",
+        "aclasta",
+        "zoledronic acid"
+      ],
       "publishState": "published"
     },
     {
@@ -167,7 +230,11 @@
       "innName": "Denosumab",
       "className": "RANKL inhibitor (bone support)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["xgeva", "prolia", "denosumab"],
+      "synonyms": [
+        "xgeva",
+        "prolia",
+        "denosumab"
+      ],
       "publishState": "published"
     },
     {
@@ -176,7 +243,10 @@
       "innName": "Capecitabine",
       "className": "Oral fluoropyrimidine antimetabolite",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["xeloda", "capecitabine"],
+      "synonyms": [
+        "xeloda",
+        "capecitabine"
+      ],
       "publishState": "published"
     },
     {
@@ -185,7 +255,10 @@
       "innName": "Mesna",
       "className": "Uroprotectant (ifosfamide / cyclophosphamide support)",
       "therapeuticArea": "oncology-supportive",
-      "synonyms": ["uromitexan", "mesna"],
+      "synonyms": [
+        "uromitexan",
+        "mesna"
+      ],
       "publishState": "published"
     }
   ],
@@ -200,8 +273,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["nolvadex"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "nolvadex"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published",
       "sahpraRegNo": "PENDING-REGISTER-LOOKUP"
     },
@@ -215,8 +292,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["arimidex"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "arimidex"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -229,8 +310,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["femara"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "femara"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -243,7 +328,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["neupogen"],
+      "synonymKeys": [
+        "neupogen"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -257,7 +344,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["neulasta"],
+      "synonymKeys": [
+        "neulasta"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -271,8 +360,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["emend"],
-      "excipientIds": ["exc-mg-stearate"],
+      "synonymKeys": [
+        "emend"
+      ],
+      "excipientIds": [
+        "exc-mg-stearate"
+      ],
       "publishState": "published"
     },
     {
@@ -285,7 +378,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["zometa"],
+      "synonymKeys": [
+        "zometa"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -299,7 +394,9 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["xgeva"],
+      "synonymKeys": [
+        "xgeva"
+      ],
       "excipientIds": [],
       "publishState": "published"
     },
@@ -313,8 +410,12 @@
       "schedule": "S4",
       "isOriginator": true,
       "isDiscontinued": false,
-      "synonymKeys": ["xeloda"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "xeloda"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     },
     {
@@ -328,8 +429,12 @@
       "isOriginator": false,
       "isDiscontinued": false,
       "bioequivalentFlag": true,
-      "synonymKeys": ["dexamethasone aspen"],
-      "excipientIds": ["exc-lactose"],
+      "synonymKeys": [
+        "dexamethasone aspen"
+      ],
+      "excipientIds": [
+        "exc-lactose"
+      ],
       "publishState": "published"
     }
   ],
@@ -416,6 +521,848 @@
           "publishState": "published"
         }
       ]
+    },
+    {
+      "id": "safe-anastrozole",
+      "moleculeId": "mol-anastrozole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Premenopausal status — relies on postmenopausal oestrogen physiology and is not appropriate before menopause."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Bone mineral density loss is a well-established long-term risk — routine bone health monitoring is recommended. Joint pain/stiffness is common.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Hot flushes, joint pain.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "New bone pain or a fracture with minimal trauma needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — managed with dose review under oncology care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Aromatase inhibitors' bone-density risk versus tamoxifen's relative bone-protective effect is a key comparative point when choosing between the two drug classes for hormone-receptor-positive breast cancer.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report joint pain. Keep scheduled bone density monitoring. Report any unusual bone pain or fractures.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-letrozole",
+      "moleculeId": "mol-letrozole",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Premenopausal status."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Bone mineral density loss is a well-established long-term risk — routine bone health monitoring is recommended. Joint pain/stiffness is common.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Hot flushes, joint pain.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "New bone pain or a fracture with minimal trauma needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — managed with dose review under oncology care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Aromatase inhibitors' bone-density risk versus tamoxifen's relative bone-protective effect is a key comparative point when choosing between the two drug classes for hormone-receptor-positive breast cancer.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report joint pain. Keep scheduled bone density monitoring. Report any unusual bone pain or fractures.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-exemestane",
+      "moleculeId": "mol-exemestane",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Pregnancy."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Premenopausal status."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Bone mineral density loss is a well-established long-term risk — routine bone health monitoring is recommended. Joint pain/stiffness is common.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Hot flushes, joint pain.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "New bone pain or a fracture with minimal trauma needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — managed with dose review under oncology care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Aromatase inhibitors' bone-density risk versus tamoxifen's relative bone-protective effect is a key comparative point when choosing between the two drug classes for hormone-receptor-positive breast cancer.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report joint pain. Keep scheduled bone density monitoring. Report any unusual bone pain or fractures.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-pegfilgrastim",
+      "moleculeId": "mol-pegfilgrastim",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Known hypersensitivity to filgrastim/pegfilgrastim."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Bone pain from bone-marrow stimulation is very common and generally manageable. Splenic rupture is a rare but serious, well-documented risk — new left upper abdominal or shoulder-tip pain needs urgent assessment, not dismissal as 'just bone pain'. Rare acute respiratory distress has also been reported.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Bone pain, raised white cell count.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "New severe left-sided abdominal or shoulder-tip pain (possible splenic rupture), or breathlessness, needs urgent medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — management is supportive under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Splenic rupture is a rare but genuinely important G-CSF safety signal — new left-sided abdominal or shoulder-tip pain after treatment should never be waved off as ordinary bone pain.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Expect bone pain, manageable with simple analgesia as directed. Report new severe left-sided abdominal or shoulder pain immediately.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-dexamethasone",
+      "moleculeId": "mol-dexamethasone",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Untreated systemic fungal infection."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Shares the broad corticosteroid risk profile (adrenal suppression, hyperglycaemia, infection risk), but in oncology it's often used in short 'pulse' courses around chemotherapy cycles rather than continuously — even short courses can cause insomnia, mood changes and transient hyperglycaemia.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Take with food; timing is often dictated by the specific chemotherapy protocol rather than a fixed morning rule.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Raised blood glucose, mood changes, insomnia.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Signs of adrenal crisis after abrupt stopping of a longer course are a medical emergency.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable for short pulse courses — longer courses are tapered gradually under medical guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Even a short 'pulse' dexamethasone course around a chemotherapy cycle can cause real insomnia, mood changes and transient hyperglycaemia — worth flagging, not just for chronic steroid use.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Take as directed around your chemotherapy schedule. Report significant mood changes or difficulty sleeping. Monitor blood glucose if diabetic.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-aprepitant",
+      "moleculeId": "mol-aprepitant",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "A moderate CYP3A4 inhibitor with real interaction potential — can affect levels of some chemotherapy agents, warfarin, and hormonal contraception, so needs screening against the rest of the medicine list.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, fatigue.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Not typically applicable at recommended use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Aprepitant's CYP3A4 interaction potential means it needs to be actively screened against a cancer patient's full medicine list — it isn't interaction-free just because it's 'only an antiemetic'.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Tell your pharmacist about all other medicines, especially blood thinners or hormonal contraception, before starting.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-granisetron",
+      "moleculeId": "mol-granisetron",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Congenital long QT syndrome."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Dose-related QT-interval prolongation risk, similar to other 5-HT3 antagonists such as ondansetron. Headache and constipation are common.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "May be taken with or without food.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Headache, constipation.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Palpitations or arrhythmia from QT prolongation needs urgent assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — ECG monitoring and supportive care under medical direction if QT concerns arise.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "5-HT3 antagonists as a class share the QT-prolongation caution — always check the rest of the medicine list for other QT-prolonging drugs.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Report palpitations or dizziness.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-zoledronic-acid",
+      "moleculeId": "mol-zoledronic-acid",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Significant renal impairment — dose caution needed given renal clearance."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncorrected hypocalcaemia — must be corrected before starting."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Osteonecrosis of the jaw is a rare but serious, well-documented risk, particularly around dental procedures during treatment — a dental check-up before starting is often recommended.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        },
+        {
+          "value": "Renal function monitoring is required. An acute phase reaction (flu-like symptoms) is common after the first infusion.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Flu-like symptoms after infusion, signs of low calcium.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Jaw pain or a non-healing mouth sore (possible osteonecrosis of the jaw), or significant renal impairment, needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — management is supportive with renal function and calcium monitored under medical care.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "A dental check-up before starting IV bisphosphonate therapy is a genuinely important, often-overlooked practice point given the osteonecrosis-of-the-jaw risk.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Have a dental check-up before starting if possible. Report jaw pain or non-healing mouth sores. Expect possible flu-like symptoms after the first dose.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-denosumab",
+      "moleculeId": "mol-denosumab",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [
+        {
+          "value": {
+            "level": "red",
+            "text": "Uncorrected hypocalcaemia — must be corrected before starting."
+          },
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "warnings": [
+        {
+          "value": "Osteonecrosis of the jaw is a rare but serious, well-documented risk, particularly around dental procedures during treatment — a dental check-up before starting is often recommended. Hypocalcaemia risk is notable, particularly in renal impairment. Stopping abruptly without a follow-on treatment plan has been linked to rebound vertebral fracture risk — a point that differs from how bisphosphonates behave when stopped.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Not applicable — parenteral use.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "Signs of low calcium (muscle cramps, tingling).",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Jaw pain or a non-healing mouth sore (possible osteonecrosis of the jaw), or significant hypocalcaemia, needs medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "No specific antidote — calcium correction under medical care as needed.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Denosumab's rebound fracture risk if stopped without a transition plan is a distinctive safety point that sets it apart from bisphosphonates on discontinuation.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Have a dental check-up before starting if possible. Don't stop without discussing a follow-on plan with your treating team. Report jaw pain or non-healing mouth sores.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "id": "safe-mesna",
+      "moleculeId": "mol-mesna",
+      "publishState": "published",
+      "dosingAdult": {
+        "value": "Adult dosing must be verified against current SA STG/EML and the product insert for the indication. Numeric dose not published in Materia seed until founder clinical review completes.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "dosingPaediatric": {
+        "value": "Paediatric weight-based dosing pending founder-sourced publish. Calculator will refuse until a published rule exists.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "contraindications": [],
+      "warnings": [
+        {
+          "value": "Generally very well tolerated on its own. Its entire purpose is protective — inadequate or missed doses alongside its target chemotherapy agent (e.g. cyclophosphamide, ifosfamide) significantly raise haemorrhagic cystitis risk, so following the exact co-administration schedule is critical.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "foodLifestyle": {
+        "value": "Timing follows the specific chemotherapy protocol exactly, not general guidance.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "pregnancy": {
+        "value": "Pregnancy category / trimester notes pending sourced publish from authoritative SA-appropriate references.",
+        "sourceId": "src-doh-stg",
+        "publishState": "draft",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseEarlySigns": {
+        "value": "GI upset, headache.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "overdoseSevereSigns": {
+        "value": "Blood in the urine, even if mesna was given, needs prompt medical assessment.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "antidoteOrSupportive": {
+        "value": "Not applicable — mesna itself is the protective agent in this pairing.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "clinicalPearls": [
+        {
+          "value": "Mesna is essentially always a companion to specific chemotherapy agents, never a stand-alone treatment — it exists purely to prevent a particular chemo-induced bladder toxicity.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ],
+      "counsellingPoints": [
+        {
+          "value": "Follow the exact co-administration schedule with your chemotherapy as directed. Report blood in the urine promptly even if mesna was given.",
+          "sourceId": "src-materia-edu",
+          "publishState": "published",
+          "lastReviewed": "2026-09-02"
+        }
+      ]
     }
   ],
   "interactions": [
@@ -435,13 +1382,51 @@
         "publishState": "published"
       },
       "publishState": "published"
+    },
+    {
+      "id": "ix-aprepitant-warfarin",
+      "moleculeAId": "mol-aprepitant",
+      "moleculeBId": "mol-warfarin",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Aprepitant can alter warfarin's anticoagulant effect through CYP-mediated interactions over the days after each dose.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for INR monitoring during and after each aprepitant course.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
+    },
+    {
+      "id": "ix-zoledronic-acid-ibuprofen",
+      "moleculeAId": "mol-zoledronic-acid",
+      "moleculeBId": "mol-ibuprofen",
+      "severity": "moderate",
+      "mechanism": {
+        "value": "Both zoledronic acid and NSAIDs carry independent renal risk; combined use adds to the risk of kidney injury.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "action": {
+        "value": "Do not invent a dose change — flag for renal function monitoring and hydration status whenever both are used together.",
+        "sourceId": "src-materia-edu",
+        "publishState": "published",
+        "lastReviewed": "2026-09-02"
+      },
+      "publishState": "published"
     }
   ],
   "priceRecords": [
     {
       "id": "price-nolvadex",
       "productId": "prod-nolvadex",
-      "sepZar": 185.0,
+      "sepZar": 185,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -450,7 +1435,7 @@
     {
       "id": "price-arimidex",
       "productId": "prod-arimidex",
-      "sepZar": 420.0,
+      "sepZar": 420,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
@@ -459,7 +1444,7 @@
     {
       "id": "price-xeloda",
       "productId": "prod-xeloda",
-      "sepZar": 980.0,
+      "sepZar": 980,
       "effectiveDate": "2026-07-01",
       "sourceId": "src-sep",
       "publishState": "published",
